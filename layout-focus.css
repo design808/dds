@@ -1,9 +1,25 @@
 /* Thumbnails are a non-interactive scene plus a sibling navigation link.
    Never wrap component examples in an anchor: examples may contain links. */
 .component-card{min-width:0;align-self:start}
-.component-preview{position:relative;height:220px;padding:20px;isolation:isolate}
+.component-preview{position:relative;height:220px;padding:20px;isolation:isolate;background:var(--background)}
 .component-preview>.preview-inner{position:relative;width:280px;min-width:280px;max-width:none;flex:0 0 280px;transform:scale(var(--preview-scale,1));transform-origin:center;pointer-events:none}
 .component-preview>.preview-link{position:absolute;inset:0;z-index:1;border-radius:inherit}
+/* Presentation alignment belongs to the documentation frame. Form labels,
+   navigation alignment and message directions inside examples stay intact. */
+.playground-inner{background:var(--background);background-image:none}
+:is(.component-preview,.playground-inner) .dds-demo:not(.dds-demo--centered){display:flow-root}
+:is(.component-preview,.playground-inner) .dds-demo>:first-child{margin-block-start:0}
+:is(.component-preview,.playground-inner) .dds-demo>:last-child,
+:is(.component-preview,.playground-inner) .dds-demo>:has(+[data-ext-status]:empty){margin-block-end:0}
+:is(.component-preview,.playground-inner) .dds-demo--centered{width:max-content;max-width:100%;display:flex;flex-direction:column;align-items:center;gap:0}
+:is(.component-preview,.playground-inner) .dds-demo--centered>.helper{text-align:center}
+:is(.component-preview,.playground-inner) .dds-demo--centered>.dds-avatar-group{width:max-content;max-width:100%}
+.component-preview .preview-inner>.demo-row,.playground-inner>.demo-row,
+:is(.component-preview,.playground-inner) .dds-demo>.demo-row{justify-content:center}
+:is(.component-preview,.playground-inner) .tab-demo{display:grid;justify-items:center}
+:is(.component-preview,.playground-inner) .tab-demo>.tab-body{width:100%;text-align:center}
+.component-preview .stepper{margin:0;justify-content:center}
+.playground-inner>.stepper{margin:0}
 .component-preview .breadcrumbs{margin:0;gap:8px;justify-content:center;font-size:11px}
 .component-preview .sample-sidebar{width:240px;padding:14px}
 .component-preview .sample-sidebar>b{display:block;margin-bottom:10px;font-size:12px}

@@ -5,10 +5,13 @@ const link=(text,route)=>`<a href="#${route}">${text}</a>`;
 const status='<p class="helper" data-ext-status role="status"></p>';
 const choices=(name,values,type='radio')=>values.map((t,i)=>`<label class="dds-choice"><input type="${type}" name="${name}" value="${t}" ${i===0?'checked':''}><span>${t}</span></label>`).join('');
 const menu=(uid,title,items=['새 문서','문서 복사','내보내기'])=>`<div class="dds-menu-unit">${button(title,`data-ext-menu="${uid}" aria-haspopup="menu" aria-expanded="false" aria-controls="${uid}"`)}<div id="${uid}" class="dds-menu" role="menu" aria-label="${title}" hidden>${items.map(t=>`<button type="button" role="menuitem" data-ext-command="${t}">${t}</button>`).join('')}</div></div>`;
-const box=(html,extra='')=>`<div class="dds-demo" ${extra}>${html}</div>`;
+// Compact examples are centered as a whole; form and navigation examples keep
+// their natural full-width layout and internal text alignment.
+const centeredExamples=new Set(['text-button','button-group','toggle','toggle-group','alert-dialog','sheet','drawer','popover','hover-card','push-badge','avatar-group','spinner']);
 const bubble=(text,out=false)=>`<div class="dds-bubble ${out?'outgoing':''}">${text}</div>`;
 const message=(text,who='DDS 코치',out=false)=>`<article class="dds-message ${out?'outgoing':''}"><span class="avatar">${out?'나':'D'}</span><div><div class="dds-message-meta"><b>${who}</b><time>09:30</time></div>${bubble(text,out)}</div></article>`;
 export function extensionDemo(id,uid,mini=false){
+ const box=(html,extra='')=>`<div class="dds-demo${centeredExamples.has(id)?' dds-demo--centered':''}" ${extra}>${html}</div>`;
  switch(id){
  case 'action-area':return box(`<p class="helper">변경사항을 확인한 뒤 저장해 주세요.</p><div class="dds-action-area">${button('취소','data-ext-notice="편집을 계속합니다."')}${button('저장','data-ext-notice="예제 내용이 저장되었습니다."','primary')}</div>${status}`);
  case 'text-button':return box(button('전체 보기 '+icon('right'),'data-ext-notice="전체 목록 보기 예제입니다."','ghost')+status);

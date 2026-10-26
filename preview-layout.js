@@ -1,10 +1,11 @@
 // Fit each complete component scene into its thumbnail without clipping.
+// Scaling is limited to thumbnail scenes; interactive examples retain their layout.
 const observed=new Set();
 let scheduled=false;
 function fit(){
  scheduled=false;
  for(const box of observed){
-  if(!box.isConnected){observer.unobserve(box);observed.delete(box);continue;}
+  if(!box.isConnected){observer.unobserve(box);const oldScene=box.querySelector('.preview-inner');if(oldScene)observer.unobserve(oldScene);observed.delete(box);continue;}
   const scene=box.querySelector('.preview-inner');if(!scene)continue;
   const css=getComputedStyle(box);
   const w=box.clientWidth-parseFloat(css.paddingLeft)-parseFloat(css.paddingRight);
@@ -16,6 +17,6 @@ function fit(){
 }
 function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(fit);}}
 const observer=new ResizeObserver(schedule);
-function discover(){for(const box of document.querySelectorAll('.component-preview'))if(!observed.has(box)){observed.add(box);observer.observe(box);}schedule();}
+function discover(){for(const box of document.querySelectorAll('.component-preview'))if(!observed.has(box)){observed.add(box);observer.observe(box);const scene=box.querySelector('.preview-inner');if(scene)observer.observe(scene);}schedule();}
 new MutationObserver(discover).observe(document.getElementById('main'),{childList:true,subtree:true});
 document.fonts.ready.then(schedule);discover();
