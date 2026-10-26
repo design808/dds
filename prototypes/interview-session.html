@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>실전 면접 — DeepInterview</title>
+  <link rel="icon" href="../assets/deepresume-mark.png">
+  <script src="./appearance.js"></script>
+  <link rel="preload" href="../assets/fonts/pretendard/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../tokens.css">
+  <link rel="stylesheet" href="./appearance.css">
+  <link rel="stylesheet" href="./interview-session.css">
+  <link rel="stylesheet" href="../interactions.css">
+  <script src="../vendor/lucide/lucide.min.js"></script>
+  <script type="module" src="../icon-tooltips.js"></script>
+  <script type="module" src="./interview-session.js"></script>
+  <link rel="stylesheet" href="../control-sizing.css">
+  <link rel="stylesheet" href="../service-typography.css">
+</head>
+<body class="dds-service dds-interview-session">
+  <a class="skip-link" href="#session-question">본문으로 건너뛰기</a>
+  <header class="session-header">
+    <a class="session-logo" href="./interview-setup.html" aria-label="딥인터뷰 홈"><img src="./assets/deepinterview-logo.png" alt="DeepInterview"></a>
+    <div class="session-progress" aria-label="면접 진행 상황"><span class="session-counter"><span id="current-question">1</span><span class="session-counter-divider">/</span><span id="total-questions">9</span> 질문</span><div class="session-progress-track" id="session-progress-track" role="progressbar" aria-label="완료한 질문" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><span id="session-progress-fill"></span></div></div>
+    <button type="button" class="btn session-exit" id="session-exit"><i data-icon="LogOut"></i><span>면접 종료</span></button>
+  </header>
+  <main class="session-main" id="session-main">
+    <div class="session-layout">
+      <section class="session-content" aria-labelledby="session-question">
+        <div class="session-question-meta"><span class="session-question-type" id="question-type">지원동기</span><span class="session-phase" id="session-phase">질문 확인</span></div>
+        <div class="session-question-content" data-id="up_sight">
+          <h1 class="session-question" id="session-question" tabindex="-1">지원한 직무를 선택한 이유와 이를 위해 준비한 경험을 말씀해 주세요.</h1>
+          <p class="session-instruction" id="session-instruction">준비시간 동안 질문을 읽고 답변을 생각해 주세요.<br>준비가 되면 ‘답변하기’를 눌러 주세요.</p>
+        </div>
+        <div class="session-answer-guide" id="answer-guide"><i data-icon="Clock3"></i><div><strong>질문당 최대 90초</strong><p>답변을 마쳤다면 제한시간 전에 종료할 수 있습니다.</p></div></div>
+        <div class="session-question-list" aria-label="선택한 면접 주제"><span>면접 주제</span><div id="session-topics"></div></div>
+      </section>
+      <section class="session-stage" aria-label="면접 영상">
+        <div class="session-video" id="video_start">
+          <video id="videoElement" autoplay muted playsinline aria-label="내 카메라 미리보기" hidden></video>
+          <img class="session-avatar" id="avatar-static-img" src="./assets/di-avatar.jpg" alt="아바타 면접관" hidden>
+          <div class="session-video-label"><span id="video-label">내 화면</span><span class="session-device-badge" id="device-badge"><i data-icon="VideoOff"></i>카메라 꺼짐</span></div>
+          <div class="session-camera-placeholder" id="camera-placeholder"><span class="session-camera-icon"><i data-icon="Video"></i></span><h2>카메라 미리보기</h2><p>카메라를 연결하면 내 모습을 확인할 수 있습니다.</p><button type="button" class="btn session-connect" id="connect-device"><i data-icon="Video"></i>카메라 연결</button></div>
+          <div class="session-countdown-layer" id="countdown-layer" hidden><span>곧 답변이 시작됩니다</span><strong id="countdown-value">3</strong></div>
+          <div class="session-video-controls"><span class="session-video-state" id="video-state"><span></span>답변 대기</span><button type="button" class="session-icon-button" id="toggle-camera" aria-label="카메라 연결"><i data-icon="VideoOff"></i></button><button type="button" class="session-icon-button" id="fullscreen-video" aria-label="영상 영역 전체화면"><i data-icon="Maximize"></i></button></div>
+        </div>
+        <div class="session-stage-bottom" hidden><p class="session-device-status" id="device-status" role="status"></p><button type="button" class="session-text-button" id="interviewContents" hidden><i data-icon="FileText"></i>인터뷰 내용 보기</button></div>
+      </section>
+    </div>
+    <section class="session-answer-actions" aria-label="답변 진행" data-id="down_sight">
+      <div class="session-timer-group"><span class="session-timer-icon"><i data-icon="Clock3"></i></span><div><span class="session-timer-label" id="timer-label">답변 제한시간</span><div class="session-timer" role="timer" aria-label="남은 답변시간"><strong id="answer-time">01:30</strong><span id="timer-suffix">/ 90초</span></div></div></div>
+      <div class="session-action-content"><p class="session-action-help" id="action-help">질문을 확인한 후 답변을 시작해 주세요.</p><div class="session-actions" id="session-actions"><button class="btn u-btn-primary" type="button" name="AnswerBtn">답변하기<i data-icon="ArrowRight"></i></button></div></div>
+      <div class="session-answer-progress" id="answer-progress" role="progressbar" aria-label="답변 남은 시간" aria-valuemin="0" aria-valuemax="90" aria-valuenow="90"><span id="answer-progress-fill"></span></div>
+    </section>
+  </main>
+  <div class="session-utility"><button type="button" id="appearance-toggle" aria-label="다크 모드로 전환"><i data-icon="Moon"></i></button></div>
+  <dialog id="session-dialog" class="session-modal" aria-labelledby="dialog-title"><div class="dialog-heading"><h2 id="dialog-title"></h2><button class="session-dialog-close" type="button" id="dialog-close" aria-label="닫기"><i data-icon="X"></i></button></div><div id="dialog-body"></div><div class="session-dialog-actions" id="dialog-actions"></div></dialog>
+  <div id="preview-status" role="status" aria-live="polite"></div>
+  <div class="session-sr-only" id="session-announcement" aria-live="polite"></div>
+</body>
+</html>

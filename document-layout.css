@@ -1,0 +1,210 @@
+/* Documentation rhythm. Scoped to the DDS workspace; service examples keep
+   their own layout, type, color and component dimensions. */
+.workspace > #main {
+  --doc-section-gap: var(--space-12);
+  --doc-subsection-gap: var(--space-8);
+  --doc-content-gap: var(--space-5);
+  min-width: 0;
+}
+
+.workspace > #main :is(.reading, .doc-layout, .doc-layout > article, .doc-section,
+  .two-col > *, .principles-grid > *, .process-list article > div) {
+  min-width: 0;
+}
+
+/* Flat reference pages and section-based documents share the same hierarchy. */
+.workspace > #main > h2,
+.workspace > #main .reading > h2 {
+  margin-block: var(--doc-section-gap) var(--doc-content-gap);
+}
+.workspace > #main > .section-heading {
+  margin-block: var(--doc-section-gap) var(--doc-content-gap);
+}
+.workspace > #main .reading > h3 {
+  margin-block: var(--doc-subsection-gap) var(--space-4);
+}
+.workspace > #main .reading > :first-child,
+.workspace > #main .reading > .section-heading:first-child {
+  margin-top: 0;
+}
+.workspace > #main .doc-section + .doc-section {
+  margin-top: var(--doc-section-gap);
+}
+.workspace > #main .doc-section > h2 {
+  margin-block: 0 var(--doc-content-gap);
+}
+.workspace > #main .doc-section > h3 {
+  margin-block: var(--doc-subsection-gap) var(--space-4);
+}
+.workspace > #main .doc-section > h3:first-child {
+  margin-top: 0;
+}
+.workspace > #main :is(.reading, .doc-section) > :is(.table-wrap, .two-col,
+  .shape-grid, .icon-gallery, .token-chain) {
+  margin-block: var(--space-6);
+}
+.workspace > #main :is(.reading, .doc-section) > :is(h2, h3, .section-heading)
+  + :is(.table-wrap, .two-col, .shape-grid, .icon-gallery, .token-chain) {
+  margin-top: 0;
+}
+.workspace > #main :is(.reading, .doc-section) > .two-col > .guideline {
+  margin-bottom: 0;
+}
+.workspace > #main :is(.reading, .doc-section) > .two-col > .elevation {
+  margin-block: 0;
+}
+.workspace > #main :is(.reading, .doc-section) > :last-child {
+  margin-bottom: 0;
+}
+
+/* Foundation chapters contain nested sections rather than .reading children.
+   Give those document blocks the same rhythm, without touching specimen cards. */
+.workspace > #main .typography-docs > section {
+  margin-block: 0;
+}
+.workspace > #main .typography-docs > section + section {
+  margin-top: var(--doc-section-gap);
+}
+.workspace > #main .typography-docs > section > h2 {
+  margin-block: 0 var(--doc-content-gap);
+}
+.workspace > #main :is(.typography-docs > section, .color-subsection,
+  .text-color-section, .text-scale-section, .color-doc-section) > h3 {
+  margin-block: 0 var(--space-4);
+}
+.workspace > #main :is(.typography-docs > section, .color-subsection,
+  .text-color-section, .text-scale-section, .color-doc-section) > h3:not(:first-child) {
+  margin-top: var(--doc-subsection-gap);
+}
+.workspace > #main .color-doc-section > .color-section-heading + h3 {
+  margin-top: 0;
+}
+.workspace > #main .color-doc-section > :is(.color-subsection,
+  .text-color-section, .text-scale-section) {
+  margin-block: 0;
+}
+.workspace > #main .color-doc-section
+  > :is(.color-subsection, .text-color-section, .text-scale-section, .color-detail)
+  + :is(.color-subsection, .text-color-section, .text-scale-section) {
+  margin-top: var(--doc-subsection-gap);
+}
+.workspace > #main :is(.typography-docs > section, .color-subsection,
+  .text-color-section) > :last-child {
+  margin-bottom: 0;
+}
+.workspace > #main .text-color-section > .helper + .guideline {
+  margin-top: var(--doc-content-gap);
+}
+
+/* Component documentation owns section spacing. Nested preview sections are
+   live components, so the old global section margin must not reach them. */
+.workspace > #main .doc-layout section {
+  margin-bottom: 0;
+}
+.workspace > #main .doc-layout [data-doc-panel] > section + section {
+  margin-top: var(--doc-section-gap);
+}
+.workspace > #main .doc-layout [data-doc-panel] > section > .section-heading {
+  margin-block: 0 var(--doc-content-gap);
+}
+.workspace > #main .doc-layout [data-doc-panel] > section > h3 {
+  margin-block: var(--doc-subsection-gap) var(--space-4);
+}
+.workspace > #main .doc-layout [data-doc-panel] > section > .section-heading + h3 {
+  margin-top: 0;
+}
+.workspace > #main .doc-layout [data-doc-panel] > section > :last-child {
+  margin-bottom: 0;
+}
+.workspace > #main .doc-layout [data-doc-panel="code"] > details {
+  margin-block: var(--space-6);
+}
+.workspace > #main .doc-layout [data-doc-panel="code"] > details > summary {
+  cursor: pointer;
+}
+.workspace > #main .doc-layout [data-doc-panel="code"] > details > ul {
+  margin-block: var(--space-4) 0;
+}
+.workspace > #main .doc-tabs {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.workspace > #main .anatomy-list > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.workspace > #main .anatomy-list span {
+  flex-shrink: 0;
+}
+.workspace > #main .playground-inner > .breadcrumbs {
+  margin: 0;
+}
+
+/* Reference lists and tables need room before the next block, including the
+   process checklist that previously touched the final process row. */
+.workspace > #main :is(.reading, .doc-section, .doc-layout section) > .plain-list {
+  margin-block: 0 var(--space-6);
+}
+.workspace > #main .doc-layout [data-doc-panel] > section > .table-wrap + .plain-list {
+  margin-top: var(--space-6);
+}
+.workspace > #main .plain-list li:last-child {
+  margin-bottom: 0;
+}
+.workspace > #main .process-list + h2,
+.workspace > #main .process-list + .doc-section {
+  margin-top: var(--doc-section-gap);
+}
+.workspace > #main .process-list article:first-child {
+  padding-top: 0;
+}
+.workspace > #main .process-list .two-col {
+  gap: var(--space-6);
+}
+.workspace > #main .table-wrap {
+  max-width: 100%;
+  overscroll-behavior-inline: contain;
+}
+.workspace > #main :is(.reading, .doc-section, .doc-layout [data-doc-panel] > section)
+  > .table-wrap + :is(p, .helper) {
+  margin-top: var(--space-4);
+}
+.workspace > #main :is(.dds-rules-table, .dds-contract-table) th[scope="row"] {
+  vertical-align: top;
+}
+.workspace > #main .pattern-flow > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.workspace > #main .type-family-panel > code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+  .workspace > #main {
+    --doc-section-gap: var(--space-10);
+    --doc-subsection-gap: var(--space-6);
+  }
+  .workspace > #main .section-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  .workspace > #main .doc-tabs {
+    gap: var(--space-6);
+  }
+  .workspace > #main .spacing-list > div {
+    gap: var(--space-3);
+  }
+  .workspace > #main .spacing-list code {
+    flex: 0 0 64px;
+  }
+  .workspace > #main .spacing-list > div > div {
+    min-width: 0;
+    flex-shrink: 1;
+  }
+  .workspace > #main .spacing-list > div > span {
+    flex-shrink: 0;
+  }
+}

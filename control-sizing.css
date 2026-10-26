@@ -1,0 +1,96 @@
+/* Load after component and page styles. One size belongs to the whole field.
+   Textareas, uploads, checkboxes, radios, switches and sliders have separate geometry. */
+[data-control-size=sm],.component-preview{
+  --control-height:var(--control-height-sm);
+  --control-type-role:body-2-normal;--control-font-size:var(--type-body-2-normal-size);
+  --control-line-height:var(--type-body-2-normal-line-height);
+  --control-font-weight:var(--type-body-2-normal-weight);--control-tracking:var(--type-body-2-normal-tracking);
+  --control-padding-inline:10px;--control-gap:8px;--control-icon-size:16px;
+}
+[data-control-size=md],[data-control-size=lg],.resume-title,.title-field,.write-document-title{
+  --control-height:var(--control-height-md);
+  --control-type-role:body-1-normal;--control-font-size:var(--type-body-1-normal-size);
+  --control-line-height:var(--type-body-1-normal-line-height);
+  --control-font-weight:var(--type-body-1-normal-weight);--control-tracking:var(--type-body-1-normal-tracking);
+  --control-padding-inline:12px;--control-gap:10px;--control-icon-size:18px;
+}
+[data-control-size=lg],.resume-title,.title-field,.write-document-title{--control-height:var(--control-height-lg);--control-padding-inline:16px;--control-gap:12px;--control-icon-size:20px}
+
+:root :is(input:not(:where([type=hidden],[type=file],[type=checkbox],[type=radio],[type=range],[type=color],[type=button],[type=submit],[type=reset],[type=image],[role=switch])),select,.custom-trigger,.custom-date,.custom-combo,.custom-search,.search-field,.dds-input-group,.input-group){
+  box-sizing:border-box;
+  height:var(--control-height);
+  min-height:var(--control-height);
+  padding-block:0;
+  line-height:var(--control-line-height);
+}
+/* Small is an explicit component variant, never an automatic mobile shrink. */
+:root :is(input:not(:where([type=hidden],[type=file],[type=checkbox],[type=radio],[type=range],[type=color],[type=button],[type=submit],[type=reset],[type=image],[role=switch])),select){padding-inline:var(--control-padding-inline)}
+:root :is(input:not(:where([type=hidden],[type=file],[type=checkbox],[type=radio],[type=range],[type=color])),select,.custom-trigger,.custom-option,.custom-select-measure){
+  font-family:var(--font-sans);font-size:var(--control-font-size);line-height:var(--control-line-height);
+  font-weight:var(--control-font-weight);letter-spacing:var(--control-tracking);
+}
+:root .custom-trigger{
+  height:auto;min-height:var(--control-height);
+  padding:calc((var(--control-height) - var(--control-line-height) - 2px) / 2) var(--control-padding-inline);
+  gap:var(--control-gap);
+}
+:root .custom-trigger>svg{width:var(--control-icon-size);height:var(--control-icon-size);flex-shrink:0}
+:root .custom-option{min-height:var(--control-height);padding:6px var(--control-padding-inline);gap:var(--control-gap)}
+:root .custom-option>svg{width:var(--control-icon-size);height:var(--control-icon-size);flex-shrink:0}
+/* Intrinsic toolbar width reserves the longest option, capped by available space. */
+:root .custom-select[data-control-width=content]{display:inline-grid;grid-template-columns:minmax(0,1fr);width:max-content;min-width:0;max-width:100%;flex:0 1 auto}
+.custom-select-measure{display:none}
+.custom-select[data-control-width=content]>.custom-trigger,.custom-select[data-control-width=content]>.custom-select-measure{grid-area:1/1}
+.custom-select[data-control-width=content]>.custom-select-measure{display:grid;visibility:hidden;pointer-events:none;height:0;overflow:hidden;padding-inline:var(--control-padding-inline);padding-right:calc(var(--control-padding-inline) + var(--control-gap) + var(--control-icon-size));border-inline:1px solid transparent}
+.custom-select-measure>span{grid-area:1/1;white-space:nowrap}
+:root .btn.sm{min-height:var(--control-height-sm);height:auto;white-space:normal;font-size:var(--type-label-2-size);line-height:var(--type-label-2-line-height);padding:8px 10px}
+
+/* Text components grow with their content; icons retain their own geometry. */
+:root :is(.btn,.chip,.badge,.doc-badge,.dds-choice),:root .page-heading>.btn{
+  max-width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere;height:auto;
+}
+:root :is(.btn,.chip,.badge,.doc-badge,.dds-choice)>svg{flex-shrink:0}
+:root :is(.custom-control,.custom-trigger,.custom-option){min-width:0;max-width:100%}
+:root .custom-option>span{min-width:0;white-space:normal;overflow-wrap:anywhere}
+:root .custom-option[aria-selected=true]{font-weight:var(--font-weight-semibold)}
+:root :is(.alert,.dds-items li)>:is(p,div){min-width:0;overflow-wrap:anywhere}
+.breadcrumbs>*{min-width:0;overflow-wrap:anywhere}
+.stepper li{min-width:0}.stepper li>span{flex-shrink:0}.stepper li>b{overflow-wrap:anywhere}
+.pagination{flex-wrap:wrap}
+.dds-input-group{min-width:0;max-width:100%}
+/* Let wrappers own both the border and size; inner inputs use the remaining area. */
+:root :is(.custom-date,.custom-combo,.custom-search,.search-field,.dds-input-group,.input-group) input,
+:root .search-field .custom-search{
+  box-sizing:border-box;
+  height:100%;
+  min-height:0;
+  padding-block:0;
+  border:0;
+  line-height:var(--control-line-height);
+}
+:root :is(.custom-date,.custom-combo,.custom-search)>input{display:block}
+:root :is(.custom-date,.custom-combo,.custom-search)>input{padding-inline-start:var(--control-padding-inline);padding-inline-end:calc(var(--control-height) - 2px)}
+:root :is(.custom-date,.custom-combo,.custom-search)>.control-icon>svg{width:var(--control-icon-size);height:var(--control-icon-size)}
+:root :is(.custom-date,.custom-combo,.custom-search)>.control-icon{
+  top:50%;
+  transform:translateY(-50%);
+  width:calc(var(--control-height) - 6px);
+  height:calc(var(--control-height) - 6px);
+  max-width:38px;
+  max-height:38px;
+}
+.dds-input-group>.btn,.dds-input-group>.icon-btn{height:calc(var(--control-height) - 8px);min-height:0;padding-block:0;flex-shrink:0}
+
+/* Side-by-side examples in the field sizing specification. */
+.control-size-examples{display:grid;gap:24px;margin-block:24px}
+.control-size-row>p{font-size:var(--type-label-1-size);font-weight:var(--font-weight-semibold);margin-bottom:12px}
+.control-size-row>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+.control-size-row .field{width:100%;min-width:0;max-width:none}
+.control-size-row .custom-select{min-width:0}
+.control-size-row input{width:100%}
+@media(max-width:767px){.control-size-row>div{grid-template-columns:minmax(0,1fr)}}
+
+.content-fit-examples{display:grid;gap:24px;min-width:0;max-width:100%;padding:20px;border:1px solid var(--border);border-radius:12px}
+.fit-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:12px;min-width:0}
+.content-fit-examples .field{max-width:none}
+.content-fit-examples .alert{margin:0}

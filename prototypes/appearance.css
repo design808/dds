@@ -1,0 +1,6 @@
+/* Icon-only control. Its accessible name is always present; the tooltip also
+   appears on keyboard focus and can be dismissed with Escape. */
+#appearance-toggle{position:relative;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:40px;height:40px;min-height:40px;padding:10px;border:0;border-radius:50%;background:transparent;color:var(--muted-foreground);cursor:pointer}
+#appearance-toggle:hover{background:var(--muted);color:var(--foreground)}
+#appearance-toggle:focus-visible{outline:1px solid var(--primary);outline-offset:0}
+#appearance-toggle>.icon{width:20px;height:20px;flex-shrink:0}

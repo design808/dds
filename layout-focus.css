@@ -1,0 +1,64 @@
+/* Thumbnails are a non-interactive scene plus a sibling navigation link.
+   Never wrap component examples in an anchor: examples may contain links. */
+.component-card{min-width:0;align-self:start}
+.component-preview{position:relative;height:220px;padding:20px;isolation:isolate}
+.component-preview>.preview-inner{position:relative;width:280px;min-width:280px;max-width:none;flex:0 0 280px;transform:scale(var(--preview-scale,1));transform-origin:center;pointer-events:none}
+.component-preview>.preview-link{position:absolute;inset:0;z-index:1;border-radius:inherit}
+.component-preview .breadcrumbs{margin:0;gap:8px;justify-content:center;font-size:11px}
+.component-preview .sample-sidebar{width:240px;padding:14px}
+.component-preview .sample-sidebar>b{display:block;margin-bottom:10px;font-size:12px}
+.component-preview .sample-sidebar a{padding:8px 10px}
+.component-preview .empty-state{width:100%;padding:8px;font-size:11px}
+.component-preview .empty-state h3{font-size:13px;line-height:1.5;margin:10px 0 8px}
+.component-preview .empty-state p{font-size:11px;margin-bottom:12px}
+.component-preview .upload-zone{padding:12px;width:100%}
+.component-preview .upload-zone>svg{width:24px;height:24px}
+.component-preview .upload-zone .helper{margin-top:5px}
+.component-preview .custom-trigger{font-size:11px;padding-inline:10px}
+
+.component-preview .control-icon{width:30px;height:30px;top:1px}
+.component-preview .control-icon svg{width:14px;height:14px}
+.component-preview .avatar+div b{font-size:11px}
+.component-preview .accordion p{margin-bottom:0}
+.component-preview .stepper{gap:10px}
+.component-preview .stepper li{gap:6px}
+.component-preview .pagination{flex-wrap:wrap;gap:6px}
+.component-preview .field{min-width:0}
+@media(max-width:600px){.component-grid{grid-template-columns:1fr;gap:26px}.component-preview{height:220px;padding:20px}.card-caption h3{font-size:15px}.card-caption p{font-size:12px}.component-preview>.preview-inner{min-width:280px;transform:scale(var(--preview-scale,1))}}
+
+/* Content panels use the available container width, not the active text length.
+   The compact tab list measures its own labels and scrolls at narrow widths. */
+.tab-demo{width:100%;max-width:440px;min-width:0}
+.tab-demo>.segmented{width:max-content;max-width:100%;overflow-x:auto}
+.tab-demo>.segmented>[role=tab]{flex:0 0 auto;white-space:nowrap}
+.tab-body{min-width:0;overflow-wrap:anywhere}
+.upload-zone{width:100%;min-width:0;overflow-wrap:anywhere}
+.doc-tabs button{font-weight:600;flex-shrink:0}
+.dds-segmented .dds-choice{min-width:0;flex:1 1 0;font-weight:700}
+.dds-segmented .dds-choice span{min-width:0;overflow-wrap:anywhere}
+.dds-stable-label{display:inline-grid;min-width:0}
+.dds-stable-label>span,.dds-stable-label::after{grid-area:1/1}
+.dds-stable-label::after{content:attr(data-size-label);visibility:hidden;pointer-events:none}
+.pagination [data-page-state],.dds-pager output,.dds-carousel output{font-variant-numeric:tabular-nums}
+.dds-pager output,.dds-carousel output{min-width:5ch;text-align:center}
+
+/* Focus contract: one-pixel primary boundary, no offset, no layout jump. */
+input:focus-visible,textarea:focus-visible,select:focus-visible{border-width:1px;border-color:var(--primary);outline:none;outline-offset:0;box-shadow:none}
+button:focus-visible,a:focus-visible,summary:focus-visible,.custom-option:focus-visible,.calendar-day:focus-visible{outline:1px solid var(--primary);outline-offset:0}
+.custom-trigger:focus-visible,.custom-trigger[aria-expanded=true]{border-width:1px;border-color:var(--primary);outline:none;outline-offset:0}
+.switch-label input:focus-visible+.switch-track,.switch-label:has(input:focus-visible) .switch-track,.focus-example{outline:1px solid var(--primary);outline-offset:0}
+input[type=checkbox]:focus-visible,input[type=radio]:focus-visible{border-width:1px;border-color:var(--primary);outline:1px solid var(--primary);outline-offset:0}
+
+/* Compound fields own their border; descendants never draw a second one. */
+.search-field,.custom-date,.custom-combo,.custom-search{border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);outline:none;outline-offset:0;box-shadow:none}
+
+.custom-date>input,.custom-combo>input,.custom-search>input{border:0;border-radius:inherit;background:transparent;outline:none;outline-offset:0;}
+.search-field .custom-search{border:0;background:transparent;margin:0;border-radius:inherit}
+.search-field input,.search-field input:focus,.search-field input:focus-visible,.custom-date>input:focus,.custom-date>input:focus-visible,.custom-combo>input:focus,.custom-combo>input:focus-visible,.custom-search>input:focus,.custom-search>input:focus-visible{border:0;outline:none;outline-offset:0;box-shadow:none}
+.search-field:focus-within,.custom-date:focus-within,.custom-combo:focus-within,.custom-search:focus-within{border-color:var(--primary);outline:none;outline-offset:0}
+.search-field .custom-search:focus-within{border:0}
+.search-field .control-icon:focus-visible,.custom-date>.control-icon:focus-visible,.custom-combo>.control-icon:focus-visible,.custom-search>.control-icon:focus-visible{outline:none;outline-offset:0;box-shadow:none}
+.custom-date:has(input[aria-invalid=true]){border-color:var(--destructive)}
+.custom-date:has(input[aria-invalid=true]):focus-within{border-color:var(--primary)}
+#global-search{margin-bottom:0}
+@media(forced-colors:active){.search-field:focus-within,.custom-date:focus-within,.custom-combo:focus-within,.custom-search:focus-within,input:focus-visible,textarea:focus-visible,.custom-trigger:focus-visible{border-color:Highlight}.component-preview>.preview-link:focus-visible{outline:1px solid Highlight}}

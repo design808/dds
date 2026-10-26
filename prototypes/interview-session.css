@@ -1,0 +1,144 @@
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{min-width:320px;background:var(--background)}
+body{margin:0;height:100dvh;min-height:360px;display:flex;flex-direction:column;overflow:hidden;background:var(--background);color:var(--text-primary)}
+button,a{-webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+button:disabled{cursor:default}
+a{color:inherit;text-decoration:none}
+button{color:inherit}
+h1,h2,h3,p{margin:0}
+svg.icon{width:20px;height:20px;flex-shrink:0;vertical-align:middle}
+button,a{touch-action:manipulation}
+button:focus-visible,a:focus-visible{outline:1px solid var(--primary);outline-offset:0}
+.skip-link{position:fixed;top:10px;left:12px;padding:12px 16px;background:var(--background);border:1px solid var(--primary);border-radius:8px;transform:translateY(-150%);z-index:10}
+.skip-link:focus{transform:translateY(0)}
+.session-header{height:80px;flex-shrink:0;width:100%;max-width:1440px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:32px;border-bottom:1px solid var(--border)}
+.session-logo{display:flex;align-items:center;width:176px;min-width:0}
+.session-logo img{display:block;width:152px;height:auto}
+.session-progress{width:248px;max-width:36%;display:flex;align-items:center;gap:16px}
+.session-counter{white-space:nowrap;color:var(--text-secondary)}
+#current-question{color:var(--text-primary)}
+.session-counter-divider{margin:0 6px;color:var(--text-tertiary)}
+.session-progress-track{height:4px;flex:1;min-width:36px;border-radius:20px;background:var(--muted);overflow:hidden}
+#session-progress-fill{display:block;height:100%;width:0;background:var(--primary);border-radius:inherit;transition:width 300ms var(--ease-standard)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 16px;border:1px solid var(--border);border-radius:8px;background:var(--background);color:var(--text-primary);transition:background var(--duration-normal),border-color var(--duration-normal),transform var(--duration-fast)}
+.btn:hover{background:var(--surface)}
+.btn:active{transform:translateY(1px)}
+.btn.u-btn-primary{background:var(--primary);border-color:transparent;color:var(--primary-foreground)}
+.btn.u-btn-primary:hover{background:var(--primary-hover);color:var(--primary-foreground)}
+.btn.u-btn-primary:active{background:var(--primary-active);color:var(--primary-foreground)}
+.btn:disabled{opacity:.45;transform:none}
+.session-exit{border-color:transparent;color:var(--text-secondary);padding-inline:12px}
+.session-exit .icon{width:18px;height:18px}
+.session-main{width:100%;max-width:1280px;flex:1;min-height:0;margin:0 auto;padding:32px 40px 0;display:flex;flex-direction:column;overflow:hidden}
+/* The stage scrolls within its own row. The answer row keeps its own space,
+   so controls stay reachable without covering questions or the camera. */
+.session-layout{display:grid;grid-template-columns:minmax(0, .85fr) minmax(0,1.15fr);gap:48px;align-items:start;flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding-bottom:4px;scrollbar-gutter:stable}
+.session-content{padding-top:8px;min-width:0}
+.session-question-meta{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.session-question-type{padding:6px 10px;border-radius:6px;background:var(--accent);color:var(--brand-ink)}
+.session-phase{display:flex;align-items:center;gap:8px;color:var(--text-tertiary)}
+.session-phase:before{content:"";width:4px;height:4px;border-radius:50%;background:var(--text-disabled)}
+.session-question{color:var(--text-strong);word-break:keep-all;overflow-wrap:anywhere;scroll-margin-top:24px}
+.session-question:focus{outline:none}
+.session-instruction{margin-top:20px;color:var(--text-secondary);word-break:keep-all;overflow-wrap:anywhere}
+.session-answer-guide{display:flex;gap:12px;align-items:start;margin-top:24px;padding:16px;background:var(--surface);border-radius:12px;color:var(--text-secondary)}
+.session-answer-guide>.icon{width:18px;height:18px;margin-top:1px;color:var(--text-tertiary)}
+.session-answer-guide strong{display:block;color:var(--text-primary);margin-bottom:4px}
+.session-answer-guide p{word-break:keep-all;overflow-wrap:anywhere}
+.session-question-list{margin-top:24px;display:flex;flex-direction:column;align-items:start;gap:10px;color:var(--text-tertiary)}
+#session-topics{display:flex;flex-wrap:wrap;gap:8px}
+.session-topic{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;color:var(--text-tertiary);background:var(--background)}
+.session-topic .icon{width:14px;height:14px}
+.session-topic[aria-current=true]{border-color:var(--primary);color:var(--brand-ink);background:var(--accent)}
+.session-stage{min-width:0}
+.session-video{position:relative;width:100%;aspect-ratio:16/10;max-height:min(420px,calc(100dvh - 350px));overflow:hidden;border-radius:16px;background:#232830;color:#e8ebf0;isolation:isolate}
+.session-video:fullscreen{aspect-ratio:auto;max-height:none;height:100%;border-radius:0;display:grid;place-items:center}
+.session-video video,.session-avatar{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.session-video video{transform:scaleX(-1)}
+.session-video-label{position:absolute;top:20px;left:20px;right:20px;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.session-device-badge{display:flex;align-items:center;gap:6px;color:#c2c8d1;padding:6px 9px;border-radius:6px;background:#14181c66;backdrop-filter:blur(10px)}
+.session-device-badge .icon{width:14px;height:14px}
+.session-camera-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:72px 24px;text-align:center}
+.session-camera-icon{display:grid;place-items:center;width:60px;height:60px;border:1px solid #ffffff14;background:#ffffff08;border-radius:18px;margin-bottom:20px;color:#c2c8d1}
+.session-camera-icon .icon{width:28px;height:28px;stroke-width:1.5}
+.session-camera-placeholder h2{color:#e8ebf0}
+.session-camera-placeholder p{margin-top:8px;color:#a8b1be;word-break:keep-all}
+.session-connect{margin-top:24px;background:#ffffff0a;color:#e8ebf0;border-color:#ffffff26}
+.session-connect:hover{background:#ffffff17}
+.session-video-controls{position:absolute;z-index:2;bottom:16px;left:20px;right:20px;display:flex;align-items:center;gap:8px}
+.session-video-state{margin-right:auto;display:flex;align-items:center;gap:7px;color:#c2c8d1;padding:8px 0}
+.session-video-state>span{display:block;width:6px;height:6px;border-radius:50%;background:#8993a0}
+.session-video-state[data-active=true]>span{background:var(--primary);box-shadow:0 0 0 4px #ffad311a;animation:session-pulse 1.8s ease-in-out infinite}
+.session-icon-button{width:36px;height:36px;display:grid;place-items:center;padding:0;border:1px solid #ffffff26;border-radius:8px;background:#15191d66;color:#e8ebf0;transition:background var(--duration-normal)}
+.session-icon-button:hover{background:#ffffff26}
+.session-icon-button .icon{width:18px;height:18px}
+.session-stage-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:14px;min-height:24px}
+.session-device-status{color:var(--text-tertiary);flex:1;min-width:160px;word-break:keep-all;overflow-wrap:anywhere}
+.session-text-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:6px;padding:6px 0;background:transparent;color:var(--text-secondary);text-decoration:underline;text-underline-offset:4px}
+.session-text-button:hover{color:var(--brand-ink)}
+.session-text-button .icon{width:16px;height:16px}
+.session-countdown-layer{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:3;background:#15191dba;backdrop-filter:blur(6px);color:white}
+.session-countdown-layer strong{display:grid;place-items:center;width:100px;height:100px;border:1px solid #ffffff40;border-radius:50%}
+.session-answer-actions{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:32px;position:relative;margin-top:24px;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--background)}
+.session-timer-group{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.session-timer-icon{display:grid;place-items:center;width:44px;height:44px;background:var(--surface);color:var(--text-tertiary);border-radius:12px}
+.session-timer-icon .icon{width:22px;height:22px;stroke-width:1.5}
+.session-timer-label{color:var(--text-tertiary)}
+.session-timer{display:flex;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums}
+.session-timer strong{color:var(--text-strong)}
+.session-timer>span{color:var(--text-tertiary)}
+.session-timer[data-warning=true] strong{color:var(--warning)}
+.session-timer[data-danger=true] strong{color:var(--destructive)}
+.session-action-content{display:flex;align-items:center;justify-content:flex-end;gap:24px;flex-wrap:wrap;min-width:0}
+.session-action-help{color:var(--text-secondary);word-break:keep-all;overflow-wrap:anywhere}
+.session-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;min-width:0}
+.session-actions .btn{min-width:128px;min-height:48px}
+.session-actions .btn>.icon{width:18px;height:18px}
+.session-actions .session-stop{background:var(--text-primary);color:var(--background);border-color:transparent}
+.session-actions .session-stop:hover{background:var(--text-strong)}
+.session-answer-progress{position:absolute;bottom:-1px;left:0;right:0;height:3px;overflow:hidden;background:transparent;opacity:0;transition:opacity var(--duration-normal)}
+.session-answer-progress[data-active=true]{opacity:1}
+#answer-progress-fill{display:block;width:100%;height:100%;background:var(--primary);transition:width 1s linear}
+.session-utility{width:100%;max-width:1280px;flex-shrink:0;margin:8px auto 0;padding:0 40px 12px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.session-privacy{display:flex;align-items:start;gap:8px;color:var(--text-tertiary);word-break:keep-all;overflow-wrap:anywhere}
+.session-privacy .icon{width:16px;height:16px;margin-top:1px}
+.session-utility #appearance-toggle{border:1px solid var(--border);width:36px;height:36px;min-height:36px;padding:8px;border-radius:8px}
+.session-utility #appearance-toggle>.icon{width:18px;height:18px}
+.session-modal{width:min(520px,calc(100% - 32px));max-height:calc(100dvh - 48px);padding:24px;border:1px solid var(--border);border-radius:16px;color:var(--text-primary);background:var(--background);box-shadow:var(--shadow-overlay);overflow:auto}
+.session-modal::backdrop{background:#10182066;backdrop-filter:blur(3px)}
+.session-modal[open]{animation:session-dialog-enter 180ms var(--ease-enter)}
+.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}
+.session-dialog-close{display:grid;place-items:center;flex-shrink:0;width:40px;height:40px;padding:0;border:0;border-radius:8px;background:transparent;color:var(--text-secondary);margin:-8px -8px -8px 0}
+.session-dialog-close:hover{background:var(--muted);color:var(--text-primary)}
+.session-dialog-close .icon{width:22px;height:22px}
+#dialog-body{color:var(--text-secondary);word-break:keep-all;overflow-wrap:anywhere}
+#dialog-body p+p{margin-top:12px}
+.session-dialog-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:24px}
+.session-dialog-actions .btn{min-width:96px}
+.session-transcript{padding:16px;border-radius:8px;background:var(--surface);margin-top:16px}
+.session-transcript strong{display:block;margin-bottom:8px;color:var(--text-primary)}
+.session-complete{max-width:720px;margin:auto;padding:48px 0 64px;text-align:center}
+.session-main.is-complete{display:block;overflow:auto;overscroll-behavior:contain}
+.session-complete-icon{display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--accent);color:var(--primary);margin:0 auto 24px}
+.session-complete-icon .icon{width:32px;height:32px}
+.session-complete>p{color:var(--text-secondary);margin-top:16px;word-break:keep-all}
+.session-complete-summary{margin-top:36px;border:1px solid var(--border);border-radius:12px;text-align:left;overflow:hidden}
+.session-complete-row{display:flex;align-items:center;gap:16px;padding:20px 24px;border-bottom:1px solid var(--border)}
+.session-complete-row:last-child{border:0}
+.session-complete-row>span{color:var(--text-tertiary);min-width:80px}
+.session-complete-row>strong{margin-left:auto;color:var(--text-primary);text-align:right}
+.session-complete .session-actions{justify-content:center;margin-top:32px}
+.session-complete-note{margin-top:24px;color:var(--text-tertiary)}
+#preview-status:not(:empty){position:fixed;bottom:24px;left:50%;transform:translateX(-50%);max-width:calc(100% - 32px);width:max-content;background:var(--surface-inverse);color:var(--text-inverse);padding:12px 20px;border-radius:10px;z-index:20;box-shadow:var(--shadow-overlay);pointer-events:none}
+.session-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@keyframes session-pulse{0%,100%{box-shadow:0 0 0 3px #ffad311a}50%{box-shadow:0 0 0 6px #ffad3108}}
+@keyframes session-dialog-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1500px) and (min-height:900px){.session-main{padding-top:48px}}
+@media(max-width:1050px){.session-layout{gap:32px;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}.session-action-content{gap:12px}.session-action-help{flex-basis:100%;text-align:right}.session-camera-placeholder{padding-inline:20px}.session-camera-placeholder p{max-width:240px}}
+@media(max-width:760px){.session-header{height:72px;padding:0 24px;gap:16px}.session-logo{width:auto}.session-logo img{width:126px}.session-progress{width:auto;max-width:none;margin-left:auto}.session-progress-track{display:none}.session-exit{padding:8px;min-height:36px}.session-exit .icon{display:none}.session-main{padding:24px 24px 0}.session-layout{grid-template-columns:minmax(0,1fr);gap:24px;align-content:start}.session-content{padding-top:0}.session-question-meta{margin-bottom:16px}.session-instruction{margin-top:16px}.session-answer-guide{margin-top:20px}.session-question-list{display:none}.session-video{aspect-ratio:16/10}.session-video-label{top:16px;left:16px;right:16px}.session-camera-placeholder{padding:64px 16px}.session-camera-icon{width:44px;height:44px;border-radius:12px;margin-bottom:12px}.session-camera-icon .icon{width:22px;height:22px}.session-camera-placeholder p{display:none}.session-connect{margin-top:16px;min-height:36px;padding:8px 12px}.session-video-controls{bottom:12px;left:16px;right:16px}.session-answer-actions{margin-top:16px;padding:16px 0;align-items:flex-end;gap:16px}.session-timer-icon{display:none}.session-action-content{gap:8px}.session-action-help{max-width:260px}.session-actions .btn{min-width:108px;min-height:44px;padding:10px 12px}.session-utility{padding-inline:24px;gap:16px}.session-privacy{align-items:start}.session-privacy .icon{display:none}.session-complete{padding:24px 0 40px}}
+@media(max-width:440px){.session-header{padding:0 16px;gap:10px}.session-logo img{width:110px}.session-exit{padding-inline:4px}.session-main{padding:20px 16px 0}.session-stage-bottom{margin-top:10px}.session-answer-actions{flex-wrap:wrap;align-items:center;gap:12px}.session-timer-group{width:auto}.session-action-content{display:contents}.session-action-help{max-width:none;flex:1;text-align:right}.session-actions{width:100%;flex-wrap:nowrap}.session-actions .btn{flex:1;min-width:0}.session-utility{padding-inline:16px}.session-complete-row{padding:16px;gap:10px}.session-complete-summary{margin-top:28px}.session-complete .session-actions{flex-wrap:wrap}}
+@media(max-height:650px) and (min-width:761px){.session-header{height:64px}.session-main{padding-top:20px}.session-answer-actions{margin-top:16px;padding-block:14px}.session-video{max-height:320px}.session-utility{padding-bottom:8px}}
+@media(max-width:760px){.session-camera-placeholder{padding:44px 16px}.session-camera-icon{display:none}}
+.session-device-status:empty{display:none}.session-utility{justify-content:flex-end}
