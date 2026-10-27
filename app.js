@@ -1,4 +1,5 @@
 import {handoffPage} from './developer-guide.js';
+import {setupPage} from './adoption-content.js';
 import {typographyPage,bindTypography} from './typography-system.js';
 import {formValidationSpec,contentBehaviorSpec,bindServiceGuidelines} from './service-guidelines.js';
 import {sidebarContent,overviewContent,componentContent,renderPattern,searchableDocuments} from './document-shell.js';
@@ -22,7 +23,7 @@ function toast(message){$('#toast').textContent=message;$('#toast').classList.ad
 async function copy(text){try{await navigator.clipboard.writeText(text);toast('클립보드에 복사했습니다.');}catch{toast('복사 권한이 없습니다. 코드 내용을 선택해 복사해 주세요.');}}
 function nav(){
  $('#sidebar').innerHTML=sidebarContent(view);
- const active=view.startsWith('/foundations')?'foundations':view.startsWith('/components')?'components':view==='/handoff'?'handoff':['/','/principles','/process'].includes(view)?'overview':'';
+ const active=view.startsWith('/foundations')?'foundations':view.startsWith('/components')?'components':['/handoff','/setup'].includes(view)?'handoff':['/','/principles','/process'].includes(view)?'overview':'';
  $$('.topbar nav a').forEach(a=>a.classList.toggle('active',a.dataset.top===active));
 }
 
@@ -99,7 +100,7 @@ function render(){
  else if(route==='/foundations/icons')html=iconGallery();
  else if(route.startsWith('/foundations/'))html=foundations.some(f=>f[0]===route.split('/')[2])?foundationsPage(route.split('/')[2]):notFound();
  else if(route.startsWith('/patterns/')){const p=patterns.find(p=>p.id===route.split('/')[2]);html=p?patternPage(p):notFound();}
- else html=({'/handoff':handoffPage,'/principles':principles,'/process':processPage}[route]||notFound)();
+ else html=({'/setup':setupPage,'/handoff':handoffPage,'/principles':principles,'/process':processPage}[route]||notFound)();
  $('#main').innerHTML=html;
  document.title=route==='/'?'Deep Design System':($('#main h1')?.textContent||'DDS')+' — Deep Design System';
  nav();bind();window.scrollTo(0,0);document.body.classList.remove('menu-open');$('#mobile-menu').setAttribute('aria-expanded','false');

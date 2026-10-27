@@ -25,7 +25,7 @@ export function sidebarContent(view) {
   const item = (href, text) => `<a href="#${href}" class="${route === href ? 'active' : ''}"${route === href ? ' aria-current="page"' : ''}>${esc(text)}</a>`;
   const currentGroup = components.find(c => '/components/' + c.id === route)?.group;
   return `<div class="sidebar-intro"><span class="sidebar-title">Deep Design System</span></div>
-    <div class="nav-section">${item('/', '시작하기')}${item('/principles', '디자인 원칙')}${item('/process', '디자인 프로세스')}${item('/handoff', '개발 적용 안내')}</div>
+    <div class="nav-section">${item('/', '시작하기')}${item('/principles', '디자인 원칙')}${item('/process', '디자인 프로세스')}${item('/setup', 'AI로 적용하기')}${item('/handoff', '개발 적용 안내')}</div>
     <div class="nav-label">FOUNDATIONS</div><div class="nav-section">${foundations.map(([id, , ko]) => item('/foundations/' + id, ko)).join('')}</div>
     <div class="nav-label">COMPONENTS</div><div class="nav-section">${item('/components', '전체 컴포넌트')}${groups.map(group => `<details ${currentGroup === group ? 'open' : ''}><summary>${group}</summary>${components.filter(c => c.group === group).map(c => item('/components/' + c.id, c.name)).join('')}</details>`).join('')}</div>
     <div class="nav-label">PATTERNS</div><div class="nav-section">${patterns.map(p => item('/patterns/' + p.id, p.ko)).join('')}</div>
@@ -37,7 +37,7 @@ export function overviewContent(card) {
     <div class="entry-grid">${[
       ['기반 규칙', '색상·글자·간격·접근성', '/foundations/color'],
       ['컴포넌트', '용도·규격·상태·조작·코드', '/components'],
-      ['개발 적용 안내', '기준 파일·선택자 연결·검수', '/handoff']
+      ['AI로 적용하기', '설정 프롬프트·고정 버전 파일', '/setup']
     ].map(([title, description, url]) => `<a href="#${url}" class="entry-card"><div><h3>${title}</h3><p>${description}</p></div>${icon('arrow')}</a>`).join('')}</div>
     <div class="section-heading"><h2>주요 컴포넌트</h2><a href="#/components">전체 보기</a></div>
     <div class="component-grid">${['button','input','card','tabs','badge','dialog'].map(id => card(components.find(c => c.id === id))).join('')}</div>
@@ -81,6 +81,7 @@ export function searchableDocuments() {
     {name:'디자인 원칙', ko:'규칙 검수', url:'/principles'},
     {name:'디자인 프로세스', ko:'적용 순서', url:'/process'},
     {name:'개발 적용 안내', ko:'AI 핸드오프 기준 파일 적용 검수', url:'/handoff'},
+    {name:'AI로 적용하기', ko:'DDS 설정 설치 프롬프트 고정 버전 매니페스트', url:'/setup'},
     ...components.map(c => ({...c, url:'/components/' + c.id})),
     ...foundations.map(([id, name, ko]) => ({name, ko, url:'/foundations/' + id})),
     ...patterns.map(p => ({name:p.ko, ko:p.name, url:'/patterns/' + p.id})),

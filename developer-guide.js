@@ -7,6 +7,7 @@ export function handoffPage() {
   return `<div class="breadcrumbs"><a href="#/">DDS</a><span>/</span><span>개발 적용</span></div>
     <div class="page-heading"><div><h1>개발 적용 안내</h1><p class="lead">기존 서비스의 기능을 유지하며 DDS 디자인을 적용하는 방법.</p></div></div>
     <div class="reading wide">
+      ${section('프로젝트에 DDS 등록', `<p><a href="#/setup">AI로 적용하기</a>에서 설정 프롬프트와 고정 버전 파일을 제공합니다. 기준 파일 준비와 AI 규칙 등록 후, 적용할 화면을 지정해 아래 순서로 진행합니다.</p>`)}
       ${section('먼저 읽을 파일', table(['파일', '용도'], [
         ['<a href="./handoff.md" download>handoff.md</a>', '개발자·AI용 적용 지침. 작업 범위와 기준 파일을 먼저 확인합니다.'],
         ['<a href="./data/dds-contracts.json" download>dds-contracts.json</a>', '컴포넌트별 용도·규격·동작·검수. 웹 문서와 같은 데이터에서 생성합니다.'],
