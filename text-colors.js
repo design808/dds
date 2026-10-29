@@ -1,4 +1,4 @@
-import {contrast} from './color-contrast.js?v=ec100736812be7db';
+import {contrast} from './color-contrast.js?v=f6a5570cf3a6bf11';
 
 export const textScale = [
   ['50','#F7F8FA'],['100','#EEF0F3'],['200','#DDE1E7'],['300','#B4BCC8'],

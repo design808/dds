@@ -1,8 +1,8 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=ec100736812be7db';
-import {icon} from './icons.js?v=ec100736812be7db';
-import {formatHTML} from './format-html.js?v=ec100736812be7db';
-import {componentContract} from './component-contracts.js?v=ec100736812be7db';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=ec100736812be7db';
+import {components, groups, patterns, foundations} from './catalog.js?v=f6a5570cf3a6bf11';
+import {icon} from './icons.js?v=f6a5570cf3a6bf11';
+import {formatHTML} from './format-html.js?v=f6a5570cf3a6bf11';
+import {componentContract} from './component-contracts.js?v=f6a5570cf3a6bf11';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=f6a5570cf3a6bf11';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -39,7 +39,7 @@ export function overviewContent(card) {
       ['컴포넌트', '용도·규격·상태·조작·코드', '/components'],
       ['AI로 적용하기', '설정 프롬프트·고정 버전 파일', '/setup']
     ].map(([title, description, url]) => `<a href="#${url}" class="entry-card"><div><h3>${title}</h3><p>${description}</p></div>${icon('arrow')}</a>`).join('')}</div>
-    <div class="section-heading"><h2>주요 컴포넌트</h2><a class="section-link" href="#/components" aria-label="전체 컴포넌트 보기">전체 보기 ${icon('arrow')}</a></div>
+    <div class="section-heading"><h2>주요 컴포넌트</h2><a class="section-link" href="#/components" aria-label="전체 컴포넌트 보기">전체 보기</a></div>
     <div class="component-grid">${['button','input','card','tabs','badge','dialog'].map(id => card(components.find(c => c.id === id))).join('')}</div>
     <div class="section-heading"><h2>적용 예시</h2></div><div class="entry-grid">${screenExamples.map(screen => `<a href="${screen.url}" class="entry-card"><div><h3>${screen.name}</h3><p>${screen.description}</p></div>${icon('arrow')}</a>`).join('')}</div>`;
 }

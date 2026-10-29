@@ -1,4 +1,4 @@
-import {textColorSection} from './text-colors.js?v=ec100736812be7db';
+import {textColorSection} from './text-colors.js?v=f6a5570cf3a6bf11';
 
 export const typeStyles = [
   {id:'display-1', name:'Display 1', size:48, line:60, weight:700, tracking:'-0.01em', usage:'메인 히어로·캠페인의 대표 메시지'},
@@ -79,14 +79,14 @@ export function typographyPage() {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }</code></pre>
-      <a class="btn" href="./tokens.css?v=ec100736812be7db" download>타이포그래피·색상 토큰 다운로드</a>
+      <a class="btn" href="./tokens.css?v=f6a5570cf3a6bf11" download>타이포그래피·색상 토큰 다운로드</a>
     </section>
     <section aria-labelledby="type-service-contract"><h2 id="type-service-contract">서비스 적용 규칙</h2>
       <p>같은 크기여도 역할이 다르면 사용처를 구분합니다. GNB와 서브메뉴는 Label 1(14 / 20 / 500), 작은 칩·배지는 Label 2(13 / 18 / 500)입니다. 일반 입력 값은 Body 1 Normal(16px), 작은 도구 모음의 Small 입력·선택 값은 Body 2 Normal(14px), 자기소개서 본문은 Body 1 Reading을 사용합니다. 메뉴나 입력란의 너비가 부족하면 간격·줄바꿈·배치를 조정합니다.</p>
       <p>메인 2종·지원정보·문항 작성·마이페이지·이력서 작성은 하나의 역할 매핑을 공유합니다. 메인 제목은 Display 역할에 500·600·700의 굵기 강약을 적용하며, 메인 CTA는 16px / 700, 푸터는 14px를 유지합니다. 반응형에서 크기가 달라지는 제목도 정의된 역할로 전환합니다.</p>
       <ol class="plain-list"><li>화면을 옮기기 전에 제목·메뉴·필드·도움말·상태 메시지의 역할을 지정합니다. 숨겨진 메뉴·모달·오류·동적 추가 항목도 포함합니다.</li><li><code>.dds-service</code> 범위에서 공통 적용 CSS를 마지막에 불러옵니다. 원본의 글자 크기 유틸리티·인라인 스타일·<code>!important</code>가 충돌하면 DDS를 적용하는 템플릿에서 정리합니다. 필드 ID·이벤트·서버 처리 코드는 유지합니다.</li><li>크기 하나만 바꾸지 않고 서체·크기·행간·굵기·자간을 한 역할로 적용합니다. 새 요소는 <code>service-typography.js</code> 매핑 또는 <code>.dds-type-*</code> 역할 클래스로 지정합니다. 굵기 예외는 대상과 이유를 함께 기록합니다.</li><li><code>npm run typography:build</code>로 CSS를 생성하고 <code>npm run typography:check</code>로 검사합니다. 기본 검사와 공유 패키지 생성에도 검사가 실행됩니다. 운영 적용 시에는 각 권한·상태·화면 너비의 실제 렌더링을 확인합니다.</li></ol>
       <p>자동 검사는 직접 지정한 글자값과 매핑 누락·변경을 감지합니다. 새로운 요소에 어떤 역할이 적합한지, 기존 CSS와 충돌하는지에 대한 화면 검수도 함께 진행해야 합니다.</p>
-      <a class="btn" href="./service-typography.css?v=ec100736812be7db" download>서비스 타이포그래피 CSS 다운로드</a>
+      <a class="btn" href="./service-typography.css?v=f6a5570cf3a6bf11" download>서비스 타이포그래피 CSS 다운로드</a>
     </section>
   </div>`;
 }
