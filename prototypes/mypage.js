@@ -1,5 +1,5 @@
-import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=f6a5570cf3a6bf11';
-import {getDocuments} from './document-store.js?v=f6a5570cf3a6bf11';
+import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=5f538cf9e48c4250';
+import {getDocuments} from './document-store.js?v=5f538cf9e48c4250';
 common();
 // Fictional local data only. No service account data or mutation endpoints.
 let documents=getDocuments();

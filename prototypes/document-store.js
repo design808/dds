@@ -1,4 +1,4 @@
-import {load,save,sampleInfo} from './prototype-shared.js?v=f6a5570cf3a6bf11';
+import {load,save,sampleInfo} from './prototype-shared.js?v=5f538cf9e48c4250';
 export const documentSeed=[
  {id:'cover-1',kind:'cover',title:'사용자의 문제를 발견하는 프로덕트 디자이너',date:'2026.09.21',job:'디자인',industry:'IT·전기·전자',companyType:'스타트업',company:'딥레쥬메',state:'임시저장',representative:false},
  {id:'cover-2',kind:'cover',title:'데이터로 고객 경험을 개선하는 기획자',date:'2026.09.18',job:'기획·전략',industry:'IT·전기·전자',companyType:'중견기업',company:'지원 기업',state:'저장완료',representative:true},

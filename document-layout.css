@@ -16,8 +16,10 @@
 }
 .topbar nav a {
   position: relative;
-  display: inline-flex;
+  display: inline-grid;
+  grid-template-areas: 'label';
   align-items: center;
+  justify-items: center;
   height: 100%;
   padding: 0 var(--space-3);
   white-space: nowrap;
@@ -27,6 +29,21 @@
   letter-spacing: var(--type-label-1-tracking);
   color: var(--text-primary);
   transition: color var(--duration-fast);
+}
+/* Reserve bold text width so activating a link does not move its neighbours. */
+.topbar nav a::before {
+  content: attr(data-label);
+  grid-area: label;
+  visibility: hidden;
+  pointer-events: none;
+  font-weight: var(--font-weight-bold);
+}
+.topbar nav .nav-label-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .topbar nav a:hover {
   color: var(--brand-ink);
