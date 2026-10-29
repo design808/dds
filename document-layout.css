@@ -16,41 +16,25 @@
 }
 .topbar nav a {
   position: relative;
-  display: inline-grid;
-  grid-template-areas: 'label';
+  display: inline-flex;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   height: 100%;
   padding: 0 var(--space-3);
   white-space: nowrap;
   font-size: var(--type-label-1-size);
   line-height: var(--type-label-1-line-height);
-  font-weight: var(--type-label-1-weight);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: var(--type-label-1-tracking);
   color: var(--text-primary);
   transition: color var(--duration-fast);
-}
-/* Reserve bold text width so activating a link does not move its neighbours. */
-.topbar nav a::before {
-  content: attr(data-label);
-  grid-area: label;
-  visibility: hidden;
-  pointer-events: none;
-  font-weight: var(--font-weight-bold);
-}
-.topbar nav .nav-label-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .topbar nav a:hover {
   color: var(--brand-ink);
 }
 .topbar nav a.active {
   color: var(--primary);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
 }
 .topbar nav a.active:hover {
   color: var(--primary);
