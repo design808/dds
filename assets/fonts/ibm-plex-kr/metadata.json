@@ -1,0 +1,158 @@
+{
+  "family": "IBM Plex Sans KR",
+  "cssFamily": "DDS Plex KR",
+  "version": "1.1.0",
+  "format": "woff2",
+  "style": "normal",
+  "weights": [
+    100,
+    200,
+    300,
+    400,
+    450,
+    500,
+    600,
+    700
+  ],
+  "availableFamilyWeights": [
+    100,
+    200,
+    300,
+    400,
+    450,
+    500,
+    600,
+    700
+  ],
+  "files": [
+    {
+      "file": "IBMPlexSansKR-Thin.woff2",
+      "weight": 100,
+      "bytes": 336264,
+      "sha256": "757c22c1e5fcff277cb4b22d456e17b05a153ce3ff1d5a91b6ddeb1f5f8d411b",
+      "source": "https://raw.githubusercontent.com/IBM/plex/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-Thin.woff2"
+    },
+    {
+      "file": "IBMPlexSansKR-ExtraLight.woff2",
+      "weight": 200,
+      "bytes": 415536,
+      "sha256": "dbd224c4bfdc8d309daee71a1987c6f5d96b8e7db2d4457ca13ebf835cb75a58",
+      "source": "https://raw.githubusercontent.com/IBM/plex/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-ExtraLight.woff2"
+    },
+    {
+      "file": "IBMPlexSansKR-Light.woff2",
+      "weight": 300,
+      "bytes": 432372,
+      "sha256": "e227d5dd1654f0b2b0ad987369c165b11b295fca2a70c08deda56e52cde24e3f",
+      "source": "https://raw.githubusercontent.com/IBM/plex/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-Light.woff2"
+    },
+    {
+      "file": "IBMPlexSansKR-Regular.woff2",
+      "weight": 400,
+      "bytes": 438540,
+      "sha256": "055a35664c3c3965161c92292504c5633ba9604ec904edc1ed799bf2a436276d",
+      "source": "https://raw.githubusercontent.com/IBM/plex/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-Regular.woff2"
+    },
+    {
+      "file": "IBMPlexSansKR-Text.woff2",
+      "weight": 450,
+      "bytes": 436112,
+      "sha256": "0ab52545d43d9754f872cc8476909b40731aac5414481a5e00248ff8519c5169",
+      "source": "https://raw.githubusercontent.com/IBM/plex/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-Text.woff2"
+    },
+    {
+      "file": "IBMPlexSansKR-Medium.woff2",
+      "weight": 500,
+      "bytes": 439816,
+      "sha256": "c00dcd8a9c32a6b6ab8c6b3119e68b3d7aa6eba6f4441d5493019cc019dcdd1e",
+      "source": "https://raw.githubusercontent.com/IBM/plex/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-Medium.woff2"
+    },
+    {
+      "file": "IBMPlexSansKR-SemiBold.woff2",
+      "weight": 600,
+      "bytes": 434484,
+      "sha256": "5ad7db28ba74d59fe14c260205c62ddb701320f4f098d8a45ef2757bebc29666",
+      "source": "https://raw.githubusercontent.com/IBM/plex/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-SemiBold.woff2"
+    },
+    {
+      "file": "IBMPlexSansKR-Bold.woff2",
+      "weight": 700,
+      "bytes": 370492,
+      "sha256": "cf874a368dc2c2c0e4d1933c35611b849e48942023bfdd1fa11128475dbc4860",
+      "source": "https://raw.githubusercontent.com/IBM/plex/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr/fonts/complete/woff2/hinted/IBMPlexSansKR-Bold.woff2"
+    }
+  ],
+  "bytes": 3303616,
+  "license": "SIL Open Font License 1.1",
+  "licenseSource": "https://raw.githubusercontent.com/IBM/plex/71f558992315a12ca1f06a2215d57962a1992162/packages/plex-sans-kr/LICENSE.txt",
+  "repository": "https://github.com/IBM/plex",
+  "commit": "71f558992315a12ca1f06a2215d57962a1992162",
+  "reference": "https://www.ibm.com/plex/",
+  "modified": false,
+  "cssAdaptation": "Local font-face family alias and relative URLs only. Font files are unmodified.",
+  "scope": "DDS visual comparison only; not the default DDS typeface",
+  "coverage": {
+    "mappedCodePoints": 12183,
+    "hangulSyllables": 11172,
+    "totalModernHangulSyllables": 11172
+  },
+  "inspectedAxes": [],
+  "inspectedFiles": [
+    {
+      "file": "IBMPlexSansKR-Thin.woff2",
+      "os2Weight": 100,
+      "axes": [],
+      "mappedCodePoints": 12183,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "IBMPlexSansKR-ExtraLight.woff2",
+      "os2Weight": 200,
+      "axes": [],
+      "mappedCodePoints": 12183,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "IBMPlexSansKR-Light.woff2",
+      "os2Weight": 300,
+      "axes": [],
+      "mappedCodePoints": 12183,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "IBMPlexSansKR-Regular.woff2",
+      "os2Weight": 400,
+      "axes": [],
+      "mappedCodePoints": 12183,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "IBMPlexSansKR-Text.woff2",
+      "os2Weight": 450,
+      "axes": [],
+      "mappedCodePoints": 12183,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "IBMPlexSansKR-Medium.woff2",
+      "os2Weight": 500,
+      "axes": [],
+      "mappedCodePoints": 12183,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "IBMPlexSansKR-SemiBold.woff2",
+      "os2Weight": 600,
+      "axes": [],
+      "mappedCodePoints": 12183,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "IBMPlexSansKR-Bold.woff2",
+      "os2Weight": 700,
+      "axes": [],
+      "mappedCodePoints": 12183,
+      "hangulSyllables": 11172
+    }
+  ]
+}

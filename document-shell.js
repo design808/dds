@@ -1,8 +1,8 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=345e8a902fcf721a';
-import {icon} from './icons.js?v=345e8a902fcf721a';
-import {formatHTML} from './format-html.js?v=345e8a902fcf721a';
-import {componentContract} from './component-contracts.js?v=345e8a902fcf721a';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=345e8a902fcf721a';
+import {components, groups, patterns, foundations} from './catalog.js?v=f324b3980d4a15e8';
+import {icon} from './icons.js?v=f324b3980d4a15e8';
+import {formatHTML} from './format-html.js?v=f324b3980d4a15e8';
+import {componentContract} from './component-contracts.js?v=f324b3980d4a15e8';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=f324b3980d4a15e8';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -10,7 +10,6 @@ const section = (id, title, content) => `<section id="${id}"><div class="section
 const header = (category, title, description = '') => `<div class="breadcrumbs"><a href="#/">DDS</a><span>/</span><span>${esc(category)}</span></div><div class="page-heading"><div><h1>${esc(title)}</h1>${description ? `<p class="lead">${esc(description)}</p>` : ''}</div></div>`;
 
 export const screenExamples = [
-  {name:'메인화면 · 서비스안', url:'./prototypes/home.html', description:'기존 콘텐츠를 적용한 메인화면'},
   {name:'메인화면 · 독립안', url:'./prototypes/home-independent.html', description:'다른 구성의 메인화면'},
   {name:'자기소개서 · 지원정보', url:'./prototypes/coverletter-info.html', description:'제목과 지원정보 입력'},
   {name:'자기소개서 · 문항 작성', url:'./prototypes/coverletter-write.html', description:'문항·경험 입력과 AI 작성'},
@@ -25,7 +24,7 @@ export function sidebarContent(view) {
   const item = (href, text) => `<a href="#${href}" class="${route === href ? 'active' : ''}"${route === href ? ' aria-current="page"' : ''}>${esc(text)}</a>`;
   const currentGroup = components.find(c => '/components/' + c.id === route)?.group;
   return `<div class="sidebar-intro"><span class="sidebar-title">Deep Design System</span></div>
-    <div class="nav-section">${item('/', '시작하기')}${item('/principles', '디자인 원칙')}${item('/process', '디자인 프로세스')}${item('/setup', 'AI로 적용하기')}${item('/handoff', '개발 적용 안내')}</div>
+    <div class="nav-section">${item('/', '시작하기')}${item('/directions', '디자인 방향 비교')}${item('/principles', '디자인 원칙')}${item('/process', '디자인 프로세스')}${item('/setup', 'AI로 적용하기')}${item('/handoff', '개발 적용 안내')}</div>
     <div class="nav-label">FOUNDATIONS</div><div class="nav-section">${foundations.map(([id, , ko]) => item('/foundations/' + id, ko)).join('')}</div>
     <div class="nav-label">COMPONENTS</div><div class="nav-section">${item('/components', '전체 컴포넌트')}${groups.map(group => `<details ${currentGroup === group ? 'open' : ''}><summary>${group}</summary>${components.filter(c => c.group === group).map(c => item('/components/' + c.id, c.name)).join('')}</details>`).join('')}</div>
     <div class="nav-label">PATTERNS</div><div class="nav-section">${patterns.map(p => item('/patterns/' + p.id, p.ko)).join('')}</div>
@@ -67,7 +66,7 @@ export function componentContent(c, html) {
 }
 
 export function renderPattern(p, sample) {
-  const preview = p.id === 'service-footer' ? '<div class="demo-row"><a class="btn" href="./prototypes/home.html#contact-section">메인 푸터 보기</a><a class="btn" href="./prototypes/coverletter-info.html">서브 화면 보기</a></div>' : `<div class="playground pattern-preview">${sample}</div>`;
+  const preview = p.id === 'service-footer' ? '<div class="demo-row"><a class="btn" href="./prototypes/home-independent.html">메인 푸터 보기</a><a class="btn" href="./prototypes/coverletter-info.html">서브 화면 보기</a></div>' : `<div class="playground pattern-preview">${sample}</div>`;
   return header('패턴', p.ko, p.desc) + `<div class="reading wide">
     <div class="pattern-flow">${p.flow.split(' → ').map((step, i) => `<span><small>${String(i + 1).padStart(2, '0')}</small>${esc(step)}</span>`).join('')}</div>
     <h2>사용 컴포넌트</h2><div class="state-list">${p.parts.map(name => {const c = components.find(c => c.name === name); return `<a href="#/components/${c.id}" class="chip">${esc(name)} ${icon('arrow')}</a>`;}).join('')}</div>
@@ -78,6 +77,7 @@ export function renderPattern(p, sample) {
 export function searchableDocuments() {
   return [
     {name:'시작하기', ko:'DDS', url:'/'},
+    {name:'디자인 방향 비교', ko:'색상 팔레트 서체 폰트 대안 비교', url:'/directions'},
     {name:'디자인 원칙', ko:'규칙 검수', url:'/principles'},
     {name:'디자인 프로세스', ko:'적용 순서', url:'/process'},
     {name:'개발 적용 안내', ko:'AI 핸드오프 기준 파일 적용 검수', url:'/handoff'},

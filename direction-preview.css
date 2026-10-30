@@ -1,0 +1,125 @@
+/* These faces and overrides are loaded only inside the design-direction frames. */
+@import url('./assets/fonts/ibm-plex-kr/fontfaces.css');
+@import url('./assets/fonts/noto-serif-kr/fontfaces.css');
+@font-face {
+  font-family: 'DDS SUITE';
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url('./assets/fonts/suite/SUITE-Variable.woff2') format('woff2');
+}
+
+html.dds-direction-preview[data-direction-colors=true] .home-hero::before {
+  background: radial-gradient(ellipse at 50% 100%, var(--direction-glow) 0%, color-mix(in srgb,var(--direction-glow) 50%,transparent) 46%,transparent 75%);
+}
+html.dds-direction-preview[data-direction-colors=true] .hero::before {
+  background: radial-gradient(ellipse at 50% 68%,var(--direction-glow),transparent 61%);
+}
+html.dds-direction-preview[data-direction-colors=true] .session-video-state[data-active=true]>span {
+  box-shadow: 0 0 0 4px color-mix(in srgb,var(--primary) 12%,transparent);
+}
+html.dds-direction-preview[data-direction-neutral-logo=true] :is(.product-logo img,.home-footer-top>a>img,.product-footer .footer-inner>a>img,.session-logo img,.site-header .brand img,.site-footer .brand img) {
+  filter: grayscale(1) brightness(.35);
+}
+html.dds-direction-preview[data-direction-neutral-logo=true][data-theme=dark] :is(.product-logo img,.home-footer-top>a>img,.product-footer .footer-inner>a>img,.session-logo img,.site-header .brand img,.site-footer .brand img) {
+  filter: grayscale(1) brightness(0) invert(.92);
+}
+
+/* Navigation/selection, AI guidance, and positive outcomes have separate jobs. */
+html.dds-direction-preview[data-direction-multicolor=true] :is(.gnb-trigger.active,.product-header nav>a[aria-current=page],.mypage-sidebar nav>a[aria-current=page]) {
+  color: var(--direction-secondary-ink);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .hero-visual {
+  border-color: var(--direction-accent-border);
+  background: linear-gradient(90deg,transparent,var(--direction-secondary-soft) 20%,var(--direction-accent-soft) 55%,var(--direction-positive-soft) 85%,transparent);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .experience-tags span {
+  color: var(--direction-secondary-ink);
+  border-color: var(--direction-secondary-border);
+  background: var(--direction-secondary-soft);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .brand-core {
+  background: var(--direction-accent);
+  box-shadow: 0 0 0 12px var(--direction-accent-soft),0 0 0 13px var(--direction-accent-border);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .visual-outcome em {
+  color: var(--direction-positive-ink);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .connection {
+  background: linear-gradient(90deg,var(--direction-secondary-border),var(--direction-accent),var(--direction-positive-border));
+}
+html.dds-direction-preview[data-direction-multicolor=true] .method-list li:nth-child(1) :is(.step-number, .icon) {
+  color: var(--direction-secondary-ink);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .method-list li:nth-child(2) :is(.step-number, .icon) {
+  color: var(--direction-accent-ink);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .method-list li:nth-child(3) :is(.step-number, .icon) {
+  color: var(--direction-positive-ink);
+}
+@media(max-width:700px) {
+  html.dds-direction-preview[data-direction-multicolor=true] .brand-core {
+    box-shadow: 0 0 0 5px var(--direction-accent-soft),0 0 0 6px var(--direction-accent-border);
+  }
+}
+html.dds-direction-preview[data-direction-multicolor=true] :is(.chip.selected,.chip[aria-pressed=true],.session-topic[aria-current=true],#question-outline-links>a[aria-current=true]) {
+  color: var(--direction-secondary-ink);
+  border-color: var(--direction-secondary-border);
+  background: var(--direction-secondary-soft);
+}
+html.dds-direction-preview[data-direction-multicolor=true] :is(.tab-list,.pill-tabs) [aria-selected=true] {
+  color: var(--direction-secondary-ink);
+}
+html.dds-direction-preview[data-direction-multicolor=true] :is(.question-number,.dds-cover-write .question-number) {
+  background: var(--direction-secondary-soft);
+  color: var(--direction-secondary-ink);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .dds-cover-write .gpt_choose .btn.active {
+  background: var(--direction-accent-soft);
+  border-color: var(--direction-accent-border);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .dds-cover-write .gpt_choose .btn.active::before {
+  border-color: var(--direction-accent);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .ai-input label .icon {
+  color: var(--direction-accent-ink);
+}
+html.dds-direction-preview[data-direction-multicolor=true] :is(.sample-ai-panel,[data-direction-role=ai]) {
+  background: var(--ai-input-background);
+  border-color: var(--ai-input-border);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .sample-feature-icon,
+html.dds-direction-preview[data-direction-multicolor=true] [data-direction-role=secondary] {
+  color: var(--direction-secondary-ink);
+  background: var(--direction-secondary-soft);
+  border-color: var(--direction-secondary-border);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .sample-feature-icon[data-role=accent] {
+  color: var(--direction-accent-ink);
+  background: var(--direction-accent-soft);
+  border-color: var(--direction-accent-border);
+}
+html.dds-direction-preview[data-direction-multicolor=true] :is(.sample-feature-icon[data-role=positive],[data-direction-role=positive],.session-complete-icon) {
+  color: var(--direction-positive-ink);
+  background: var(--direction-positive-soft);
+  border-color: var(--direction-positive-border);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .di-process li:nth-child(-n+3) .di-step-number,
+html.dds-direction-preview[data-direction-multicolor=true] .di-benefits li:nth-child(1) .di-benefit-icon {
+  color: var(--direction-secondary-ink);
+  background: var(--direction-secondary-soft);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .di-process li:nth-child(4) .di-step-number,
+html.dds-direction-preview[data-direction-multicolor=true] .di-benefits li:nth-child(2) .di-benefit-icon {
+  color: var(--direction-accent-ink);
+  background: var(--direction-accent-soft);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .di-process li:nth-child(5) .di-step-number,
+html.dds-direction-preview[data-direction-multicolor=true] .di-benefits li:nth-child(3) .di-benefit-icon {
+  color: var(--direction-positive-ink);
+  background: var(--direction-positive-soft);
+}
+html.dds-direction-preview[data-direction-multicolor=true] .sample-tabs button[aria-pressed=true]{color:var(--direction-secondary-ink);box-shadow:inset 0 -2px var(--direction-secondary)}
+.direction-gallery-frame>.topbar,.direction-gallery-frame>#sidebar,.direction-gallery-frame .site-footer{display:none}
+.direction-gallery-frame .workspace{margin-left:0}
+.direction-gallery-frame .workspace>#main{padding:24px}

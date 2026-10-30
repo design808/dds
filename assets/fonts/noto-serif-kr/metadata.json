@@ -1,0 +1,2520 @@
+{
+  "family": "Noto Serif KR",
+  "cssFamily": "DDS Noto Serif KR",
+  "version": "Google Fonts web release v32",
+  "format": "woff2",
+  "style": "normal",
+  "weight": [
+    200,
+    900
+  ],
+  "files": [
+    {
+      "file": "NotoSerifKR-000.woff2",
+      "bytes": 45768,
+      "sha256": "d48e2f29935100e1334fd73d16bea5d6985ce988a81c4da63bfdccde50dbda8e",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.0.woff2"
+    },
+    {
+      "file": "NotoSerifKR-001.woff2",
+      "bytes": 75908,
+      "sha256": "400632822cdb3ec690725b7b660fa615eedf066a20474d2a6655a699a3e0a987",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.1.woff2"
+    },
+    {
+      "file": "NotoSerifKR-002.woff2",
+      "bytes": 61192,
+      "sha256": "7c3dcdb1770e2036c45f1e079a45b034e980957bb60590f2fcdc51d188c403b5",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.2.woff2"
+    },
+    {
+      "file": "NotoSerifKR-003.woff2",
+      "bytes": 52700,
+      "sha256": "5a982b56ab19288123cc761e61efc321429f1c4f38a9616d13139791a95fb1f5",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.3.woff2"
+    },
+    {
+      "file": "NotoSerifKR-004.woff2",
+      "bytes": 53428,
+      "sha256": "adba1ef2aaa39727213cc633b7291020378502daa1f648c21a619025fa583793",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.4.woff2"
+    },
+    {
+      "file": "NotoSerifKR-005.woff2",
+      "bytes": 48492,
+      "sha256": "14110968d67d2b6cccfbf394839509a84ba2f5ee9db6257c57622531a34b42e2",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.5.woff2"
+    },
+    {
+      "file": "NotoSerifKR-006.woff2",
+      "bytes": 50320,
+      "sha256": "e29297da253621d53cbf757b4ba4d06f0dcaf869f3587b8d744c2912b135e8c6",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.6.woff2"
+    },
+    {
+      "file": "NotoSerifKR-007.woff2",
+      "bytes": 52412,
+      "sha256": "03930c1d14e039858c9f236711b896648994746ed5294f59e85f06d474c13ee3",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.7.woff2"
+    },
+    {
+      "file": "NotoSerifKR-008.woff2",
+      "bytes": 43552,
+      "sha256": "f1e7f77cee5f0d9c5ea9ec8038a579930048102f905a734493a1d0cecd9387d0",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.8.woff2"
+    },
+    {
+      "file": "NotoSerifKR-009.woff2",
+      "bytes": 51388,
+      "sha256": "f85fdd11cda0d9c4878a8dabfc725494ec81553d9f556856ee0a194966f5cc0b",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.9.woff2"
+    },
+    {
+      "file": "NotoSerifKR-010.woff2",
+      "bytes": 47856,
+      "sha256": "7731db059665af38732d89c819bc5a42e5a3780bd368bac14e5e37c4abdcbb91",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.10.woff2"
+    },
+    {
+      "file": "NotoSerifKR-011.woff2",
+      "bytes": 43452,
+      "sha256": "e27b470195603216d41600a54da4466420fbfaac6027cf22cc4d1720d4600d45",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.11.woff2"
+    },
+    {
+      "file": "NotoSerifKR-012.woff2",
+      "bytes": 47780,
+      "sha256": "8fa61e7884e9092265e7caf2fb56f68791a59058d9a3574c3e88875aa4e93276",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.12.woff2"
+    },
+    {
+      "file": "NotoSerifKR-013.woff2",
+      "bytes": 48688,
+      "sha256": "b14633df3ae77ad1fb0cf76eab5661db234c211955af9b91ed7881376db2a21d",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.13.woff2"
+    },
+    {
+      "file": "NotoSerifKR-014.woff2",
+      "bytes": 46620,
+      "sha256": "99be342c5d668309a94d748881eee4d246efa1e4abae9c0a23df6b71fb56553a",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.14.woff2"
+    },
+    {
+      "file": "NotoSerifKR-015.woff2",
+      "bytes": 44616,
+      "sha256": "4cd5f5f70552e1bff32024ae549385c152edb6e0d564cfb1c01a5a9e3d4ec569",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.15.woff2"
+    },
+    {
+      "file": "NotoSerifKR-016.woff2",
+      "bytes": 52228,
+      "sha256": "515fda3b0b2b1858a12ed27d81280f03c0688aadecd64a9eb2de2503f3d4a723",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.16.woff2"
+    },
+    {
+      "file": "NotoSerifKR-017.woff2",
+      "bytes": 53684,
+      "sha256": "c5f914c9db012a283f1ea74ca43353ec7d242f4ae86323bf54011e979a6f74e5",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.17.woff2"
+    },
+    {
+      "file": "NotoSerifKR-018.woff2",
+      "bytes": 45680,
+      "sha256": "a1ca8c87f0354177bb863a917240ac99f3b8783d3296f6d04a54ce0733853e33",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.18.woff2"
+    },
+    {
+      "file": "NotoSerifKR-019.woff2",
+      "bytes": 52588,
+      "sha256": "492a9729dce308e454a5acf43ba9ec55582863fc390279fdb46a5414c7e35abd",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.19.woff2"
+    },
+    {
+      "file": "NotoSerifKR-020.woff2",
+      "bytes": 54128,
+      "sha256": "58fde5209774ec7a12a6fbbf617ab8bbbc029a3b38d347c9297c55e9014b8bcd",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.20.woff2"
+    },
+    {
+      "file": "NotoSerifKR-021.woff2",
+      "bytes": 49276,
+      "sha256": "7b8eeb2e8f84e01536a6e807e20e238df04addd5ff19a2a6fff65a5c9f842a49",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.21.woff2"
+    },
+    {
+      "file": "NotoSerifKR-022.woff2",
+      "bytes": 47840,
+      "sha256": "b0c56b15c8891bc527dfec3b62a198cd1f65175c700127e2ab1269e291af5eb8",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.22.woff2"
+    },
+    {
+      "file": "NotoSerifKR-023.woff2",
+      "bytes": 46696,
+      "sha256": "6290434384020e386d1170db002b76ef749b97b4975bf76562d54341a68368c9",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.23.woff2"
+    },
+    {
+      "file": "NotoSerifKR-024.woff2",
+      "bytes": 53312,
+      "sha256": "dd88fbc349b47db617591b77c61d16c9c4de79f6eb05ac6f5c21700216577af9",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.24.woff2"
+    },
+    {
+      "file": "NotoSerifKR-025.woff2",
+      "bytes": 41140,
+      "sha256": "78c77addf551d44bcfe7d3f24a55debcabafd68a5aabd84b4b572f2051191e9e",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.25.woff2"
+    },
+    {
+      "file": "NotoSerifKR-026.woff2",
+      "bytes": 45452,
+      "sha256": "8ecfcb0232f219ff7a358b8a685bd4a2180d5747987d17a55d170bfedac2fef5",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.26.woff2"
+    },
+    {
+      "file": "NotoSerifKR-027.woff2",
+      "bytes": 49572,
+      "sha256": "42970ec6960f96f235c6bc3725b08b0a87577ccf7b884861c7226a3c256b8734",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.27.woff2"
+    },
+    {
+      "file": "NotoSerifKR-028.woff2",
+      "bytes": 43512,
+      "sha256": "d221dc7114448446a625ffdf4c8bc9eaf40baef57b1514a2430a879b55f342ab",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.28.woff2"
+    },
+    {
+      "file": "NotoSerifKR-029.woff2",
+      "bytes": 48556,
+      "sha256": "2512917e6a8c1a5346cdbc4baf16c5b0971540a5809a863ccb7ddbf08092f1cc",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.29.woff2"
+    },
+    {
+      "file": "NotoSerifKR-030.woff2",
+      "bytes": 49916,
+      "sha256": "215f233c692f72e0da37075199bb56ed9345cefbeb381166c567cc42be599c2c",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.30.woff2"
+    },
+    {
+      "file": "NotoSerifKR-031.woff2",
+      "bytes": 44752,
+      "sha256": "fa2e4f50f8c7b84e75fd9b466d8e68b14da8ac21866f0de57a98a28ee06469b9",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.31.woff2"
+    },
+    {
+      "file": "NotoSerifKR-032.woff2",
+      "bytes": 50552,
+      "sha256": "613ed1be691a1db881ad484ba8bf55372f8bc3ffb9c7fdc6cd2fbbe98574a2ed",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.32.woff2"
+    },
+    {
+      "file": "NotoSerifKR-033.woff2",
+      "bytes": 48840,
+      "sha256": "a497a60cfece1f753c60763f82822032c1cde7baa358c3abbf559c75875e3bdf",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.33.woff2"
+    },
+    {
+      "file": "NotoSerifKR-034.woff2",
+      "bytes": 44008,
+      "sha256": "7c2d34d3c9d8d0b98740657115a8ea268c4423bf1a7a4ffb31f84c77a7078842",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.34.woff2"
+    },
+    {
+      "file": "NotoSerifKR-035.woff2",
+      "bytes": 49660,
+      "sha256": "26ff690fc37d4cc9c430be9a088cc7f974fd604529f87130d7955010605bbd28",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.35.woff2"
+    },
+    {
+      "file": "NotoSerifKR-036.woff2",
+      "bytes": 51308,
+      "sha256": "eafaf53d2f17ac354152f9bc74bb33806819c8cdcf57f6da15d822028be0e695",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.36.woff2"
+    },
+    {
+      "file": "NotoSerifKR-037.woff2",
+      "bytes": 53488,
+      "sha256": "e2ed76135be1370dd03b37a72f7ab330b17457d75ba7a57ad38f31faf561bd07",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.37.woff2"
+    },
+    {
+      "file": "NotoSerifKR-038.woff2",
+      "bytes": 41472,
+      "sha256": "affc5d9d69498ada0f66a16232eda4224901166ec37a9653eaca309820761953",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.38.woff2"
+    },
+    {
+      "file": "NotoSerifKR-039.woff2",
+      "bytes": 51728,
+      "sha256": "4d5f645edb8c9963e767b5953690610c8190715e664217c845e00a18dbd8ece6",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.39.woff2"
+    },
+    {
+      "file": "NotoSerifKR-040.woff2",
+      "bytes": 51816,
+      "sha256": "4518767ea99b1d1a15a7233a8f90314f5c1a0d0ad1d836b772352a6cdb8e4686",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.40.woff2"
+    },
+    {
+      "file": "NotoSerifKR-041.woff2",
+      "bytes": 39924,
+      "sha256": "52d611135b053307d9490b1594e078f9184c29f012cb36e0afd67bd27545ecce",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.41.woff2"
+    },
+    {
+      "file": "NotoSerifKR-042.woff2",
+      "bytes": 51696,
+      "sha256": "c9161bc1437e80ffbb28de7d282e48267eaad2370076233815dd37f8f0bc1c15",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.42.woff2"
+    },
+    {
+      "file": "NotoSerifKR-043.woff2",
+      "bytes": 54704,
+      "sha256": "c8fb3ac22e7ea84b73126e2b4d5468ed469a7c5e125328ac355702da5e3f6e9f",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.43.woff2"
+    },
+    {
+      "file": "NotoSerifKR-044.woff2",
+      "bytes": 47084,
+      "sha256": "3445280bc6700c39aece0be7a550789ee912f901f99f88ccadc825d98dfcedbd",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.44.woff2"
+    },
+    {
+      "file": "NotoSerifKR-045.woff2",
+      "bytes": 47352,
+      "sha256": "a3dd567627c5c617bc54ee9a12585ba275b18a03d691a6a2fa81088609903a72",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.45.woff2"
+    },
+    {
+      "file": "NotoSerifKR-046.woff2",
+      "bytes": 52572,
+      "sha256": "941926c93f1e210617691cab12f22ede14d0ebb24e763d02d3fccb3682707995",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.46.woff2"
+    },
+    {
+      "file": "NotoSerifKR-047.woff2",
+      "bytes": 52256,
+      "sha256": "6d05d73f1cd0c72041eddb89a913569f3d2fdecfe24d5116c37728dbfb6641bb",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.47.woff2"
+    },
+    {
+      "file": "NotoSerifKR-048.woff2",
+      "bytes": 45468,
+      "sha256": "d5a97ee38d42bd3d5818341f2160608b2e56f03fc77cb6e4433aab9b659a023f",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.48.woff2"
+    },
+    {
+      "file": "NotoSerifKR-049.woff2",
+      "bytes": 51136,
+      "sha256": "64dd111ed00c36a94c199ef84841315fcb3a50edd46f594e5008a36736e88c13",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.49.woff2"
+    },
+    {
+      "file": "NotoSerifKR-050.woff2",
+      "bytes": 50580,
+      "sha256": "78fa732e3c99ac252253b2305b64e01fa5be10b0eb8fb665ab93f0c83861ade6",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.50.woff2"
+    },
+    {
+      "file": "NotoSerifKR-051.woff2",
+      "bytes": 43520,
+      "sha256": "33514b4e1a72414c81a8af217c88f1c3c5cfcac61764665e9b53adcae1cb0407",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.51.woff2"
+    },
+    {
+      "file": "NotoSerifKR-052.woff2",
+      "bytes": 50052,
+      "sha256": "8241571feda783347c72deb3d3b9f3798f9c85b03af402cd95f707c50a017948",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.52.woff2"
+    },
+    {
+      "file": "NotoSerifKR-053.woff2",
+      "bytes": 50272,
+      "sha256": "f1c32558dc2a1f53920ca56bb411857e44f70fd0e4f25a5172de53e18617ec3c",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.53.woff2"
+    },
+    {
+      "file": "NotoSerifKR-054.woff2",
+      "bytes": 48032,
+      "sha256": "1043fc5a1cad4cfd6f1bae10d95b450d2937ad8862f1c3745736174a675458bd",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.54.woff2"
+    },
+    {
+      "file": "NotoSerifKR-055.woff2",
+      "bytes": 46196,
+      "sha256": "ad11a680c77092d171cc2c34ab5d4139ecb76d14e8b0db3f9be701d42fff1c77",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.55.woff2"
+    },
+    {
+      "file": "NotoSerifKR-056.woff2",
+      "bytes": 45404,
+      "sha256": "64d286e55c6bbf189e1b6ef0b052d7c95c67e1bd2c5d9986f0bbc98e3ce69ef8",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.56.woff2"
+    },
+    {
+      "file": "NotoSerifKR-057.woff2",
+      "bytes": 45684,
+      "sha256": "605662f001c594c1de7a84198bed8416b8036efbb4d5c26e6cd2c34b08b88096",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.57.woff2"
+    },
+    {
+      "file": "NotoSerifKR-058.woff2",
+      "bytes": 43932,
+      "sha256": "c534db79eba9d58bb76bf7aeaaf793ee3c4e5ccd219c52784d0f915a80164616",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.58.woff2"
+    },
+    {
+      "file": "NotoSerifKR-059.woff2",
+      "bytes": 50468,
+      "sha256": "09413c04793139d65c106c60cb0e5884c437a584490c377d436e54638bb9857a",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.59.woff2"
+    },
+    {
+      "file": "NotoSerifKR-060.woff2",
+      "bytes": 53112,
+      "sha256": "9afa6b9746e26cd6b7b2a48974d61091b5792a6468e4f73abc38ab19fd3fb388",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.60.woff2"
+    },
+    {
+      "file": "NotoSerifKR-061.woff2",
+      "bytes": 42776,
+      "sha256": "73da065043e98ebf7c29ac6df7a7ab9bb9ecb321ffcdc7a8c3745b52762445c2",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.61.woff2"
+    },
+    {
+      "file": "NotoSerifKR-062.woff2",
+      "bytes": 49796,
+      "sha256": "05a93fa399ff9bad7aecab5f410ac029843bbd63225b2824bebc00eef375efeb",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.62.woff2"
+    },
+    {
+      "file": "NotoSerifKR-063.woff2",
+      "bytes": 48740,
+      "sha256": "ddfa3b05e20dd566d463bc0ce3594850fe69159e04fcba01d4d37f4316956483",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.63.woff2"
+    },
+    {
+      "file": "NotoSerifKR-064.woff2",
+      "bytes": 37432,
+      "sha256": "35cd307db07cbc477e2c1d8cb9bafe53a8c3d4edcfc669423e551576901c5613",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.64.woff2"
+    },
+    {
+      "file": "NotoSerifKR-065.woff2",
+      "bytes": 92484,
+      "sha256": "7502f6a1a77789030b316e82366d4d6ed300cb4a51a3c2ccc90e48b7aa33e7ee",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.65.woff2"
+    },
+    {
+      "file": "NotoSerifKR-066.woff2",
+      "bytes": 78216,
+      "sha256": "999ba2d5c0df4ee4e8733fefd5b96c6d1871cc4f51ff8e03e061e17d68476142",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.66.woff2"
+    },
+    {
+      "file": "NotoSerifKR-067.woff2",
+      "bytes": 68452,
+      "sha256": "469675ac7c9d08e903c4ab6944d7241dfac8083a16a649607a9219b031d69dac",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.67.woff2"
+    },
+    {
+      "file": "NotoSerifKR-068.woff2",
+      "bytes": 68396,
+      "sha256": "e180f4aca652de364fcb5ecd5dce3eeb1d4ea798a1b1d8788c822ef9b5d2a590",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.68.woff2"
+    },
+    {
+      "file": "NotoSerifKR-069.woff2",
+      "bytes": 70564,
+      "sha256": "a3186ed034f8c4e893d0f379579873cf88e73a22444d8d0c22166e055b93a8f2",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.69.woff2"
+    },
+    {
+      "file": "NotoSerifKR-070.woff2",
+      "bytes": 72388,
+      "sha256": "86132b89350baf9a3578ed3b1f98de54bb62ef93f4b0d11290848669731f1194",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.70.woff2"
+    },
+    {
+      "file": "NotoSerifKR-071.woff2",
+      "bytes": 78584,
+      "sha256": "ff6b7f83e7af81690965d9dbeff785f7f1f123d6818a14de60c286fcde4ac8cd",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.71.woff2"
+    },
+    {
+      "file": "NotoSerifKR-072.woff2",
+      "bytes": 63776,
+      "sha256": "9e293d9652bbd4faef805afb55d20d448718ae4c2f202e202233f73abfb1c62a",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.72.woff2"
+    },
+    {
+      "file": "NotoSerifKR-073.woff2",
+      "bytes": 67392,
+      "sha256": "8928abe290f6dbb0c9aec909de21ae0b7c76783edab5bf3f831f315d0eea0d63",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.73.woff2"
+    },
+    {
+      "file": "NotoSerifKR-074.woff2",
+      "bytes": 79396,
+      "sha256": "543c729312525a4e0dfff9cba9f51495d121d6f8bf71f5651bb5b4ba67fed7c8",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.74.woff2"
+    },
+    {
+      "file": "NotoSerifKR-075.woff2",
+      "bytes": 74612,
+      "sha256": "ea88c8b9856cc36195c3fa23070e1e732f5d6303d08ee0502176b117d3f7c752",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.75.woff2"
+    },
+    {
+      "file": "NotoSerifKR-076.woff2",
+      "bytes": 67768,
+      "sha256": "dd3768d763022a8c488bd576615372c75da9a3ce3819ae528f98ff507b218a81",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.76.woff2"
+    },
+    {
+      "file": "NotoSerifKR-077.woff2",
+      "bytes": 69616,
+      "sha256": "1e07a89fc9dd3003ed57891cab462d803a75677aa8f03b55b2a5324daefb3a7f",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.77.woff2"
+    },
+    {
+      "file": "NotoSerifKR-078.woff2",
+      "bytes": 65084,
+      "sha256": "1aae263eebc010e4b358e41c645aebce4876b3f70d601e460f57e7d50f3a2d31",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.78.woff2"
+    },
+    {
+      "file": "NotoSerifKR-079.woff2",
+      "bytes": 85996,
+      "sha256": "235092d1b2b98085e8f1cc76bcba27728918a7ca6dc22f93ea3f4a25594fd7f8",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.79.woff2"
+    },
+    {
+      "file": "NotoSerifKR-080.woff2",
+      "bytes": 76704,
+      "sha256": "82304489af543837055729928f1b010a30e16348e8fb06f365c5031d53a4fedc",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.80.woff2"
+    },
+    {
+      "file": "NotoSerifKR-081.woff2",
+      "bytes": 65276,
+      "sha256": "d7870da81e9cf02aa8e4dda2a57dd234ef6088d63861416d4d247f60c308b5cb",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.81.woff2"
+    },
+    {
+      "file": "NotoSerifKR-082.woff2",
+      "bytes": 68580,
+      "sha256": "436484cb6c3762f776a6d32c796ad33f15a7cb651629f7060226c9f51a4e5698",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.82.woff2"
+    },
+    {
+      "file": "NotoSerifKR-083.woff2",
+      "bytes": 56632,
+      "sha256": "7bc372e9718e562b8eb3cf96bd846263201e205461fe5b0d65f374d64fe05ebe",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.83.woff2"
+    },
+    {
+      "file": "NotoSerifKR-084.woff2",
+      "bytes": 72668,
+      "sha256": "4fd92487edffe03849d0a1e72aba4cafb41bb7ef178774043bda07fd237526d8",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.84.woff2"
+    },
+    {
+      "file": "NotoSerifKR-085.woff2",
+      "bytes": 68040,
+      "sha256": "761ec3256b23c9df50f50b90644a67f88f1f8821adb022e09a082d5b3e84d22f",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.85.woff2"
+    },
+    {
+      "file": "NotoSerifKR-086.woff2",
+      "bytes": 66036,
+      "sha256": "ec0488fd1e7c58ae470021cab7a6a9981c04c08f61d09590339f1e84d7051212",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.86.woff2"
+    },
+    {
+      "file": "NotoSerifKR-087.woff2",
+      "bytes": 62528,
+      "sha256": "3dddaed667c61d6230fbdf1506b2a9bb9ecc57fce38dfeb1362e3aa73084151f",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.87.woff2"
+    },
+    {
+      "file": "NotoSerifKR-088.woff2",
+      "bytes": 65152,
+      "sha256": "5472a1cfe16677477f3ab1237cef52453341402610a1be459b9e547ee778ac0d",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.88.woff2"
+    },
+    {
+      "file": "NotoSerifKR-089.woff2",
+      "bytes": 63092,
+      "sha256": "d03418bdd566d045d2578953aacb6074aed75598db139201d4174d7b2ed78588",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.89.woff2"
+    },
+    {
+      "file": "NotoSerifKR-090.woff2",
+      "bytes": 59220,
+      "sha256": "fcc04b8cc0596ee532ef2b4657bd91d335f4f2614eff074582b6df9948788e51",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.90.woff2"
+    },
+    {
+      "file": "NotoSerifKR-091.woff2",
+      "bytes": 59156,
+      "sha256": "fc4c952c9fcdba0af512970407720e754d00a5c73180b47d640760b414473f4b",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.91.woff2"
+    },
+    {
+      "file": "NotoSerifKR-092.woff2",
+      "bytes": 58312,
+      "sha256": "90365f680427a3f8d17ce836a2b3ae4b2dcc1aac11e26ca920c4b1151983e117",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.92.woff2"
+    },
+    {
+      "file": "NotoSerifKR-093.woff2",
+      "bytes": 41344,
+      "sha256": "e76fc3d317ec4785f7b0b1844f4644cded0174a3c8afb6525352c4242dd83e7d",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.93.woff2"
+    },
+    {
+      "file": "NotoSerifKR-094.woff2",
+      "bytes": 33076,
+      "sha256": "e4b62f95bb0b59b9865474f8e54a528574e0aad68d27ccfb7721d29240ff01bd",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.94.woff2"
+    },
+    {
+      "file": "NotoSerifKR-095.woff2",
+      "bytes": 74808,
+      "sha256": "e124fffccc4a807c6ee696446e1691bd1632bb635463670cceb5c321d945e6aa",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.95.woff2"
+    },
+    {
+      "file": "NotoSerifKR-096.woff2",
+      "bytes": 23672,
+      "sha256": "54fa51613263811236a23ee743788d0f27d28ee3184da1023358ef3c2282d5ea",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.96.woff2"
+    },
+    {
+      "file": "NotoSerifKR-097.woff2",
+      "bytes": 17520,
+      "sha256": "c88514bf876d1d83f11534aebba7932944a7c763c6a577673ccd256160eae702",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.97.woff2"
+    },
+    {
+      "file": "NotoSerifKR-098.woff2",
+      "bytes": 13476,
+      "sha256": "0061081589bf2ea677ab981b22c319fbd9f29703158cdeaf02268fae64d1dfe6",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.98.woff2"
+    },
+    {
+      "file": "NotoSerifKR-099.woff2",
+      "bytes": 22088,
+      "sha256": "ebc308ebfcd6958f2fd7b4a1169382e6bc2b22b86fb0d1f6c0519be6ebffbf17",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.99.woff2"
+    },
+    {
+      "file": "NotoSerifKR-100.woff2",
+      "bytes": 45760,
+      "sha256": "1fc3efc5b611a86dde44dd60ff13f459c6d75c91f5482109347b927637b32dc4",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.100.woff2"
+    },
+    {
+      "file": "NotoSerifKR-101.woff2",
+      "bytes": 42964,
+      "sha256": "a5acb6354cb498c5f04cc62a7384128598730e538bb4d7631218d86e6968b977",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.101.woff2"
+    },
+    {
+      "file": "NotoSerifKR-102.woff2",
+      "bytes": 47144,
+      "sha256": "59b7eab1b2e0818bbcaf4d7e8ad8e5ca8c6df9e29b7dcf45c8c4ce1b82c47078",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.102.woff2"
+    },
+    {
+      "file": "NotoSerifKR-103.woff2",
+      "bytes": 45084,
+      "sha256": "125c292b109de2e4370edb16448ccca0a2876a22fa5554c23e3f334dd615ad72",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.103.woff2"
+    },
+    {
+      "file": "NotoSerifKR-104.woff2",
+      "bytes": 51208,
+      "sha256": "099a30d837dd1bad2295560ca94acfd0585b20114ea42721358ee1b0bfe44242",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.104.woff2"
+    },
+    {
+      "file": "NotoSerifKR-105.woff2",
+      "bytes": 46556,
+      "sha256": "2993a10f78443a2486ebdc7108f599ab2d5853c2882741ffa745187143c012b2",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.105.woff2"
+    },
+    {
+      "file": "NotoSerifKR-106.woff2",
+      "bytes": 47592,
+      "sha256": "be41be93fc1e253a120f8799e1306d3dc16b67377f1f796ab6358553f3508662",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.106.woff2"
+    },
+    {
+      "file": "NotoSerifKR-107.woff2",
+      "bytes": 42224,
+      "sha256": "12dd6e408f48ab22e53c15b60e2f61e1fcb5d9269ecd776317176c596ddaa0b0",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.107.woff2"
+    },
+    {
+      "file": "NotoSerifKR-108.woff2",
+      "bytes": 45780,
+      "sha256": "a6ca3facc3e616b32139a2ca8c6822b8e5b4eafd2cb77beab04f84f633dc1720",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.108.woff2"
+    },
+    {
+      "file": "NotoSerifKR-109.woff2",
+      "bytes": 41564,
+      "sha256": "d914ae13694c7af2c2df5e93074828b545623742d14636da2334eb1dadc67aca",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.109.woff2"
+    },
+    {
+      "file": "NotoSerifKR-110.woff2",
+      "bytes": 43252,
+      "sha256": "8f1cc478c29c7008968b2b86081e6c14ce5752ecbb4e53c4374fa4fc0b84b96c",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.110.woff2"
+    },
+    {
+      "file": "NotoSerifKR-111.woff2",
+      "bytes": 42460,
+      "sha256": "8b73eb4ebf77ae22d2161e09fc8813ad84476157ff4db03026910bcd44308a61",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.111.woff2"
+    },
+    {
+      "file": "NotoSerifKR-112.woff2",
+      "bytes": 41136,
+      "sha256": "24cb09d7ded676e7e38da3a7ab887b71f9e1495cace6c2c0a70c54c3a87d2363",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.112.woff2"
+    },
+    {
+      "file": "NotoSerifKR-113.woff2",
+      "bytes": 41568,
+      "sha256": "22b11e932572a41369cc55cbef09fabdd19626ac1fe1c6467f70a5847827629c",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.113.woff2"
+    },
+    {
+      "file": "NotoSerifKR-114.woff2",
+      "bytes": 40172,
+      "sha256": "8f1a70cc5f46281a00836f9025400fc556ed7d327f5cc10f79dbc8cde51caa4b",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.114.woff2"
+    },
+    {
+      "file": "NotoSerifKR-115.woff2",
+      "bytes": 38704,
+      "sha256": "87504e1383830a536e3245459b897ffbe824b437706c3939d3ee36573214ea0d",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.115.woff2"
+    },
+    {
+      "file": "NotoSerifKR-116.woff2",
+      "bytes": 39004,
+      "sha256": "2dbd1a00e7e456ff4981c6a57607cbff944b73e4ceb84e97cc57398fb592dff6",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.116.woff2"
+    },
+    {
+      "file": "NotoSerifKR-117.woff2",
+      "bytes": 36464,
+      "sha256": "1d3510b10db2d4122ed90112b2b463d4d89bc2bbd4f6a182ece32f1c18c5ebde",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.117.woff2"
+    },
+    {
+      "file": "NotoSerifKR-118.woff2",
+      "bytes": 31032,
+      "sha256": "303009e04a217921bac075f317d316e670ddb9cbadace43156b7ca8ffbccef1c",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.118.woff2"
+    },
+    {
+      "file": "NotoSerifKR-119.woff2",
+      "bytes": 23928,
+      "sha256": "2b74540e8b343f8e58c17be52112abe645d7d5dec30dd6a5eb095a4463f4f1be",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXduUBwuF9Wxop-KlAZIoTrf6uFZh_9Q.119.woff2"
+    },
+    {
+      "file": "NotoSerifKR-120.woff2",
+      "bytes": 14616,
+      "sha256": "002d9b678e7c15d9722123ef366b149227ca9f1844751c9576f1d3e4bc73d534",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXRuNj1dNy.woff2"
+    },
+    {
+      "file": "NotoSerifKR-121.woff2",
+      "bytes": 11024,
+      "sha256": "3a0c3e12b7d73267dbd39a7c6e518f9ca039d2243b1d4e13d554a28105665d42",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXRuhj1dNy.woff2"
+    },
+    {
+      "file": "NotoSerifKR-122.woff2",
+      "bytes": 10376,
+      "sha256": "57556148e28bcd9aa810b5497cc608f32907eb5df6ec5a68e13a4a6f23d3cf2d",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXRulj1dNy.woff2"
+    },
+    {
+      "file": "NotoSerifKR-123.woff2",
+      "bytes": 34728,
+      "sha256": "0fbdeef37354cbcf6faf64c03ee0d12009f10beb9ebd5dd898793de269fceba7",
+      "source": "https://fonts.gstatic.com/s/notoserifkr/v32/3Jn7SDn90Gmq2mr3blnHaTZXRudj1Q.woff2"
+    }
+  ],
+  "bytes": 6258008,
+  "license": "SIL Open Font License 1.1",
+  "licenseSource": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notoserifkr/OFL.txt",
+  "cssSource": "https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap",
+  "upstreamCSSSha256": "ff1be43e871d84586427705dc22aa00ae6895d88250847f00d688d6f23d54477",
+  "repository": "https://github.com/google/fonts/tree/main/ofl/notoserifkr",
+  "metadataCommit": "6157dfaa640ca5738b4d1a7070fe389c3036d7fc",
+  "sourceFontCommit": "985fa52c81c1d6692ccdd82bc3656e8fb932fd89",
+  "reference": "https://fonts.google.com/noto/specimen/Noto+Serif+KR",
+  "modified": false,
+  "cssAdaptation": "Google unicode-range split CSS retained; only local font-family alias and font URLs changed. WOFF2 bytes are unmodified.",
+  "scope": "DDS visual comparison only; not the default DDS typeface",
+  "coverage": {
+    "mappedCodePoints": 17646,
+    "hangulSyllables": 11172,
+    "totalModernHangulSyllables": 11172
+  },
+  "inspectedAxes": [
+    {
+      "tag": "wght",
+      "min": 200,
+      "default": 200,
+      "max": 900
+    }
+  ],
+  "inspectedFiles": [
+    {
+      "file": "NotoSerifKR-000.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 157,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-001.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 155,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-002.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 157,
+      "hangulSyllables": 108
+    },
+    {
+      "file": "NotoSerifKR-003.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 158,
+      "hangulSyllables": 154
+    },
+    {
+      "file": "NotoSerifKR-004.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 158,
+      "hangulSyllables": 154
+    },
+    {
+      "file": "NotoSerifKR-005.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 158,
+      "hangulSyllables": 154
+    },
+    {
+      "file": "NotoSerifKR-006.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 158,
+      "hangulSyllables": 154
+    },
+    {
+      "file": "NotoSerifKR-007.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-008.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-009.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-010.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-011.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-012.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-013.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-014.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-015.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-016.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-017.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-018.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-019.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-020.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-021.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-022.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-023.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-024.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-025.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-026.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-027.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-028.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-029.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-030.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-031.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-032.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-033.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-034.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-035.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-036.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-037.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-038.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-039.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-040.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-041.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-042.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-043.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-044.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-045.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-046.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-047.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-048.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-049.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-050.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-051.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-052.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-053.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-054.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-055.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-056.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-057.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-058.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-059.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-060.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-061.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-062.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-063.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-064.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 155
+    },
+    {
+      "file": "NotoSerifKR-065.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 19
+    },
+    {
+      "file": "NotoSerifKR-066.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-067.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-068.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-069.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-070.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-071.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-072.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-073.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-074.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-075.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-076.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-077.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-078.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-079.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-080.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-081.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-082.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-083.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-084.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-085.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-086.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-087.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-088.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-089.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-090.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-091.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-092.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-093.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-094.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-095.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-096.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 148,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-097.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 159,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-098.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 119,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-099.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 119,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-100.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 38
+    },
+    {
+      "file": "NotoSerifKR-101.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 105,
+      "hangulSyllables": 35
+    },
+    {
+      "file": "NotoSerifKR-102.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 103,
+      "hangulSyllables": 46
+    },
+    {
+      "file": "NotoSerifKR-103.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 103,
+      "hangulSyllables": 46
+    },
+    {
+      "file": "NotoSerifKR-104.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 49
+    },
+    {
+      "file": "NotoSerifKR-105.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 105,
+      "hangulSyllables": 55
+    },
+    {
+      "file": "NotoSerifKR-106.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 105,
+      "hangulSyllables": 65
+    },
+    {
+      "file": "NotoSerifKR-107.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 82
+    },
+    {
+      "file": "NotoSerifKR-108.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 81
+    },
+    {
+      "file": "NotoSerifKR-109.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 80
+    },
+    {
+      "file": "NotoSerifKR-110.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 90
+    },
+    {
+      "file": "NotoSerifKR-111.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 90
+    },
+    {
+      "file": "NotoSerifKR-112.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 95
+    },
+    {
+      "file": "NotoSerifKR-113.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 96
+    },
+    {
+      "file": "NotoSerifKR-114.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 105,
+      "hangulSyllables": 95
+    },
+    {
+      "file": "NotoSerifKR-115.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 96
+    },
+    {
+      "file": "NotoSerifKR-116.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 105,
+      "hangulSyllables": 95
+    },
+    {
+      "file": "NotoSerifKR-117.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 103,
+      "hangulSyllables": 97
+    },
+    {
+      "file": "NotoSerifKR-118.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 103,
+      "hangulSyllables": 95
+    },
+    {
+      "file": "NotoSerifKR-119.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 101,
+      "hangulSyllables": 13
+    },
+    {
+      "file": "NotoSerifKR-120.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 72,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-121.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 110,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-122.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 80,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "NotoSerifKR-123.woff2",
+      "os2Weight": 200,
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 200,
+          "default": 200,
+          "max": 900
+        }
+      ],
+      "mappedCodePoints": 218,
+      "hangulSyllables": 0
+    }
+  ]
+}

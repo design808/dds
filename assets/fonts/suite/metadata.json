@@ -1,0 +1,35 @@
+{
+  "family": "SUITE Variable",
+  "version": "2.0.4",
+  "file": "SUITE-Variable.woff2",
+  "format": "woff2",
+  "style": "normal",
+  "weight": [
+    300,
+    900
+  ],
+  "bytes": 535788,
+  "sha256": "fc5e0648d5413b55b79ebbab0f50de561a026574cba3a9c8eb03d5bddd432263",
+  "license": "SIL Open Font License 1.1",
+  "source": "https://raw.githubusercontent.com/sun-typeface/SUITE/a114fec078bfcbdc93a7b2190510ab83de2a2d40/fonts/variable/woff2/SUITE-Variable.woff2",
+  "licenseSource": "https://raw.githubusercontent.com/sun-typeface/SUITE/a114fec078bfcbdc93a7b2190510ab83de2a2d40/LICENSE",
+  "repository": "https://github.com/sun-typeface/SUITE",
+  "commit": "a114fec078bfcbdc93a7b2190510ab83de2a2d40",
+  "reference": "https://sun.fo/suite/",
+  "modified": false,
+  "scope": "DDS visual comparison only; not the default DDS typeface",
+  "notes": "기하학적인 UI 헤드라인 타입페이스. 공식 소개는 한글2,350+318자 최적화. 드문 한글 음절에는 Pretendard 폴백 유지. 긴 글·작은 UI의 가독성은 실제 화면 비교 후 선택.",
+  "axes": [
+    {
+      "tag": "wght",
+      "min": 300,
+      "default": 300,
+      "max": 900
+    }
+  ],
+  "coverage": {
+    "mappedCodePoints": 2933,
+    "hangulSyllables": 2668,
+    "totalModernHangulSyllables": 11172
+  }
+}
