@@ -11,7 +11,7 @@
   for (let index=0; index<args.length; index++) {
     const flag = args[index];
     if (flag === '--dry-run') {if (options.dryRun) throw new Error('Duplicate --dry-run.'); options.dryRun=true; continue;}
-    if (!['--version','--bundle','--manifest','--target'].includes(flag) || options[flag] || !args[index+1] || args[index+1].startsWith('--')) throw new Error('Usage: node dds-install.js --version 0.2.0 --bundle bundle.json --manifest manifest.json --target docs/dds/0.2.0 [--dry-run]');
+    if (!['--version','--bundle','--manifest','--target'].includes(flag) || options[flag] || !args[index+1] || args[index+1].startsWith('--')) throw new Error('Usage: node dds-install.js --version <version> --bundle bundle.json --manifest manifest.json --target docs/dds/0.2.0 [--dry-run]');
     options[flag] = args[++index];
   }
   for (const flag of ['--version','--bundle','--manifest','--target']) if (!options[flag]) throw new Error('Missing ' + flag + '.');

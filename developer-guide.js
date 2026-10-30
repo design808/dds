@@ -1,21 +1,25 @@
-import {implementationRules} from './service-guidelines.js?v=f6c1f153a6058e30';
+import {implementationRules} from './service-guidelines.js?v=345e8a902fcf721a';
 
 const table = (headings, rows) => `<div class="table-wrap"><table class="dds-rules-table"><thead><tr>${headings.map(text => `<th scope="col">${text}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((text, i) => i ? `<td>${text}</td>` : `<th scope="row">${text}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 const section = (title, content) => `<section class="doc-section"><h2>${title}</h2>${content}</section>`;
 
 export function handoffPage() {
   return `<div class="breadcrumbs"><a href="#/">DDS</a><span>/</span><span>개발 적용</span></div>
-    <div class="page-heading"><div><h1>개발 적용 안내</h1><p class="lead">기존 서비스의 기능을 유지하며 DDS 디자인을 적용하는 방법.</p></div></div>
+    <div class="page-heading"><div><h1>개발 적용 안내</h1><p class="lead">회사의 기존·신규 서비스에 DDS 디자인 기준을 연결하는 방법.</p></div></div>
     <div class="reading wide">
       ${section('프로젝트에 DDS 등록', `<p><a href="#/setup">AI로 적용하기</a>에서 설정 프롬프트와 고정 버전 파일을 제공합니다. 기준 파일 준비와 AI 규칙 등록 후, 적용할 화면을 지정해 아래 순서로 진행합니다.</p>`)}
       ${section('먼저 읽을 파일', table(['파일', '용도'], [
         ['<a href="./handoff.md" download>handoff.md</a>', '개발자·AI용 적용 지침. 작업 범위와 기준 파일을 먼저 확인합니다.'],
         ['<a href="./data/dds-contracts.json" download>dds-contracts.json</a>', '컴포넌트별 용도·규격·동작·검수. 웹 문서와 같은 데이터에서 생성합니다.'],
-        ['<a href="./tokens.css?v=f6c1f153a6058e30" download>tokens.css</a>', '색·간격·형태·입력 크기·모션과 라이트/다크 값. 웹폰트 파일을 함께 배포합니다.'],
-        ['<a href="./typography-system.js?v=f6c1f153a6058e30" download>typography-system.js</a>', '서체·크기·행간·굵기·자간이 묶인 글자 역할. 코드와 토큰 표시에도 Pretendard를 사용합니다.'],
-        ['<a href="./service-typography.js?v=f6c1f153a6058e30" download>service-typography.js</a>', '서비스 선택자와 글자 역할의 연결 원본. CSS 생성 후 적용합니다.']
+        ['<a href="./tokens.css?v=345e8a902fcf721a" download>tokens.css</a>', '색·간격·형태·입력 크기·모션과 라이트/다크 값. 웹폰트 파일을 함께 배포합니다.'],
+        ['<a href="./typography-system.js?v=345e8a902fcf721a" download>typography-system.js</a>', '서체·크기·행간·굵기·자간이 묶인 글자 역할. 코드와 토큰 표시에도 Pretendard를 사용합니다.'],
+        ['<a href="./service-typography.js?v=345e8a902fcf721a" download>service-typography.js</a>', '서비스 선택자와 글자 역할의 연결 원본. CSS 생성 후 적용합니다.']
       ]))}
-      ${section('적용 순서', table(['단계', '작업'], implementationRules))}
+      ${section('프로젝트에 따른 적용', table(['대상', '적용 방법'], [
+        ['기존 서비스 개선', '현재 프레임워크·기능·이벤트를 보존하며 CSS와 필요한 마크업을 연결하고 변경 전 동작과 대조합니다.'],
+        ['신규 서비스 구축', '요구사항에 맞춰 화면과 재사용 컴포넌트를 설계하고 DDS 토큰·글자 역할·규격·상태·조작 규칙을 연결합니다. 특정 프레임워크나 기존 서비스 메뉴를 전제로 하지 않습니다.']
+      ]) + '<p>딥레쥬메·딥인터뷰 화면은 적용 예시입니다. 콘텐츠·권한·업무 흐름과 기술 환경은 대상 서비스에 맞게 정합니다.</p>')}
+      ${section('기존 서비스 개선 순서', table(['단계', '작업'], implementationRules))}
       ${section('변경 범위', table(['대상', '적용 방법'], [
         ['CSS', '기존 선택자에 색·글자·여백·테두리·배치를 연결합니다. 인라인 스타일·유틸리티·!important와의 우선순위를 확인합니다.'],
         ['HTML·아이콘', '레이아웃 래퍼, 라벨, 번역 제외 속성, 아이콘과 읽기 순서를 보완합니다. 이벤트용 id·class·name·data-*와 서버 템플릿 조건을 보존합니다.'],

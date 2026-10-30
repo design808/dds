@@ -1,12 +1,12 @@
 # DDS · Deep Design System
 
-> 기존 서비스의 기능을 유지하며 디자인을 적용하는 기준과 참조 소스. 운영 UI 라이브러리 설치와 다릅니다.
+> 딥레쥬메·딥인터뷰와 향후 신규 서비스를 위한 회사 공통 디자인 기준과 참조 소스. 기존 개선과 신규 구축의 적용 방법을 구분합니다.
 
-## 고정 버전 0.2.0
+## 고정 버전 0.2.1
 
-- [매니페스트](https://design808.github.io/dds/releases/0.2.0/manifest.json): 버전·파일·SHA-256.
-- [참조 묶음](https://design808.github.io/dds/releases/0.2.0/bundle.json): 토큰·규칙·폰트·라이선스의 고정 스냅샷.
-- [준비 도구](https://design808.github.io/dds/releases/0.2.0/dds-install.js): Node.js 18 이상. 기준 폴더만 준비하며 앱은 수정하지 않습니다.
+- [매니페스트](https://design808.github.io/dds/releases/0.2.1/manifest.json): 버전·파일·SHA-256.
+- [참조 묶음](https://design808.github.io/dds/releases/0.2.1/bundle.json): 토큰·규칙·폰트·라이선스의 고정 스냅샷.
+- [준비 도구](https://design808.github.io/dds/releases/0.2.1/dds-install.js): Node.js 18 이상. 기준 폴더만 준비하며 앱은 수정하지 않습니다.
 
 ## 현재 문서
 
