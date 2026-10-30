@@ -123,3 +123,177 @@ html.dds-direction-preview[data-direction-multicolor=true] .sample-tabs button[a
 .direction-gallery-frame>.topbar,.direction-gallery-frame>#sidebar,.direction-gallery-frame .site-footer{display:none}
 .direction-gallery-frame .workspace{margin-left:0}
 .direction-gallery-frame .workspace>#main{padding:24px}
+
+/* Comparison-only category colors: one color family for each function. */
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(1) {
+  background: var(--direction-secondary-soft);
+  box-shadow: inset 0 2px var(--direction-secondary);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(2) {
+  background: var(--direction-accent-soft);
+  box-shadow: inset 0 2px var(--direction-accent);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(3) {
+  background: var(--direction-positive-soft);
+  box-shadow: inset 0 2px var(--direction-positive);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(1) .sample-feature-icon {
+  background: var(--direction-secondary);
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(2) .sample-feature-icon {
+  background: var(--direction-accent);
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(3) .sample-feature-icon {
+  background: var(--direction-positive);
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article strong,
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article>div>span {
+  color: var(--text-strong);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-panel,.di-introduction) {
+  background: var(--background);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-panel,.dds-cover-write .ai-input) {
+  background: radial-gradient(ellipse at 0% 0%,color-mix(in srgb,var(--direction-accent) 12%,var(--background)),transparent 80%),
+    linear-gradient(125deg,var(--direction-accent-soft),color-mix(in srgb,var(--direction-accent) 9%,var(--background)));
+  border-color: var(--direction-accent-border);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-panel h3,.dds-cover-write .ai-input label) {
+  color: var(--direction-accent-ink);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-actions>.btn.primary,.dds-cover-write .ai-input-bottom>.btn.u-btn-primary) {
+  background: var(--direction-accent);
+  border-color: transparent;
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-actions>.btn.primary,.dds-cover-write .ai-input-bottom>.btn.u-btn-primary):hover {
+  background: color-mix(in srgb,var(--direction-accent) 90%,#000);
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-actions>.btn.primary,.dds-cover-write .ai-input-bottom>.btn.u-btn-primary):active {
+  background: color-mix(in srgb,var(--direction-accent) 82%,#000);
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-reading>h2 {
+  color: var(--direction-secondary-ink);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-reading>.badge {
+  background: var(--direction-secondary-soft);
+  border-color: var(--direction-secondary-border);
+  color: var(--direction-secondary-ink);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-progress strong {
+  color: var(--direction-positive-ink);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-progress progress::-webkit-progress-value {
+  background: var(--direction-positive);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .sample-progress progress::-moz-progress-bar {
+  background: var(--direction-positive);
+}
+
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li {
+  border-radius: 16px;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(1) {
+  background: linear-gradient(90deg,var(--direction-secondary-soft),transparent);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(2) {
+  background: linear-gradient(90deg,var(--direction-primary-soft),transparent);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(3) {
+  background: linear-gradient(90deg,var(--direction-positive-soft),transparent);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(4) {
+  background: linear-gradient(90deg,var(--direction-accent-soft),transparent);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(5) {
+  background: linear-gradient(90deg,var(--direction-positive-soft),transparent);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(1) .di-step-number {
+  background: var(--direction-secondary);
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(2) .di-step-number {
+  background: var(--primary);
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(3) .di-step-number,
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(5) .di-step-number {
+  background: var(--direction-positive);
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(4) .di-step-number {
+  background: var(--direction-accent);
+  color: #fff;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-benefits li:nth-child(1) :is(.di-benefit-icon,h3) {
+  color: var(--direction-secondary-ink);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-benefits li:nth-child(1) .di-benefit-icon {
+  background: var(--direction-secondary-soft);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-benefits li:nth-child(2) :is(.di-benefit-icon,h3) {
+  color: var(--direction-accent-ink);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-benefits li:nth-child(2) .di-benefit-icon {
+  background: var(--direction-accent-soft);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-benefits li:nth-child(3) :is(.di-benefit-icon,h3) {
+  color: var(--direction-positive-ink);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .di-benefits li:nth-child(3) .di-benefit-icon {
+  background: var(--direction-positive-soft);
+}
+
+html.dds-direction-preview[data-direction-feature-colors=true] .hero-visual {
+  background: var(--background);
+  border-color: var(--border);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .visual-experience {
+  background: var(--direction-secondary-soft);
+  border-radius: 12px;
+  padding: 16px;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .visual-experience .visual-caption {
+  color: var(--direction-secondary-ink);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .experience-tags span {
+  background: var(--background);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .visual-outcome {
+  padding: 20px 16px;
+  background: var(--direction-positive-soft);
+  border-radius: 12px;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .hero-visual>.connection {
+  background: var(--border);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .method-list {
+  gap: 12px;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .method-list li {
+  padding: 22px;
+  border: 0;
+  border-radius: 12px;
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .method-list li:nth-child(1) {
+  background: var(--direction-secondary-soft);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .method-list li:nth-child(2) {
+  background: var(--direction-accent-soft);
+}
+html.dds-direction-preview[data-direction-feature-colors=true] .method-list li:nth-child(3) {
+  background: var(--direction-positive-soft);
+}
+@media(max-width:700px) {
+  html.dds-direction-preview[data-direction-feature-colors=true] :is(.visual-experience,.visual-outcome) {
+    padding: 12px;
+  }
+  html.dds-direction-preview[data-direction-feature-colors=true] .method-list li {
+    padding: 18px;
+  }
+}

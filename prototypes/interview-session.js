@@ -1,4 +1,4 @@
-import {icon, icons, esc, toast} from './prototype-shared.js?v=f324b3980d4a15e8';
+import {icon, icons, esc, toast} from './prototype-shared.js?v=bdc234b2469c85f9';
 
 const $ = selector => document.querySelector(selector);
 let setup = {};

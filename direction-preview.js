@@ -76,7 +76,7 @@ function remember(doc){
   if(state.has(doc))return state.get(doc);
   const root=doc.documentElement;
   const previous={theme:root.getAttribute('data-theme'),attributes:{}};
-  for(const name of ['data-direction-id','data-direction-colors','data-direction-multicolor','data-direction-neutral-logo'])previous.attributes[name]=root.getAttribute(name);
+  for(const name of ['data-direction-id','data-direction-colors','data-direction-multicolor','data-direction-neutral-logo','data-direction-feature-colors'])previous.attributes[name]=root.getAttribute(name);
   previous.classPresent=root.classList.contains('dds-direction-preview');
   state.set(doc,previous);
   return previous;
@@ -131,6 +131,7 @@ export async function applyDirection(doc,profile,theme='light'){
   root.dataset.directionId=profile.id;
   root.dataset.directionColors=String(colorsEnabled);
   root.dataset.directionMulticolor=String(colorsEnabled&&Boolean(profile.multicolor));
+  root.dataset.directionFeatureColors=String(colorsEnabled&&Boolean(profile.featureColors));
   root.dataset.directionNeutralLogo=String(colorsEnabled&&Boolean(profile.neutralLogo));
   await loadSheet(doc);
   if(font!=='pretendard'&&doc.fonts){
