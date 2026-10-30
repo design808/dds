@@ -1,4 +1,4 @@
-import {implementationRules} from './service-guidelines.js?v=bdc234b2469c85f9';
+import {implementationRules} from './service-guidelines.js?v=3ea17f0ff21b92cc';
 
 const table = (headings, rows) => `<div class="table-wrap"><table class="dds-rules-table"><thead><tr>${headings.map(text => `<th scope="col">${text}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((text, i) => i ? `<td>${text}</td>` : `<th scope="row">${text}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 const section = (title, content) => `<section class="doc-section"><h2>${title}</h2>${content}</section>`;
@@ -11,9 +11,9 @@ export function handoffPage() {
       ${section('먼저 읽을 파일', table(['파일', '용도'], [
         ['<a href="./handoff.md" download>handoff.md</a>', '개발자·AI용 적용 지침. 작업 범위와 기준 파일을 먼저 확인합니다.'],
         ['<a href="./data/dds-contracts.json" download>dds-contracts.json</a>', '컴포넌트별 용도·규격·동작·검수. 웹 문서와 같은 데이터에서 생성합니다.'],
-        ['<a href="./tokens.css?v=bdc234b2469c85f9" download>tokens.css</a>', '색·간격·형태·입력 크기·모션과 라이트/다크 값. 웹폰트 파일을 함께 배포합니다.'],
-        ['<a href="./typography-system.js?v=bdc234b2469c85f9" download>typography-system.js</a>', '서체·크기·행간·굵기·자간이 묶인 글자 역할. 코드와 토큰 표시에도 Pretendard를 사용합니다.'],
-        ['<a href="./service-typography.js?v=bdc234b2469c85f9" download>service-typography.js</a>', '서비스 선택자와 글자 역할의 연결 원본. CSS 생성 후 적용합니다.']
+        ['<a href="./tokens.css?v=3ea17f0ff21b92cc" download>tokens.css</a>', '색·간격·형태·입력 크기·모션과 라이트/다크 값. 웹폰트 파일을 함께 배포합니다.'],
+        ['<a href="./typography-system.js?v=3ea17f0ff21b92cc" download>typography-system.js</a>', '서체·크기·행간·굵기·자간이 묶인 글자 역할. 코드와 토큰 표시에도 Pretendard를 사용합니다.'],
+        ['<a href="./service-typography.js?v=3ea17f0ff21b92cc" download>service-typography.js</a>', '서비스 선택자와 글자 역할의 연결 원본. CSS 생성 후 적용합니다.']
       ]))}
       ${section('프로젝트에 따른 적용', table(['대상', '적용 방법'], [
         ['기존 서비스 개선', '현재 프레임워크·기능·이벤트를 보존하며 CSS와 필요한 마크업을 연결하고 변경 전 동작과 대조합니다.'],

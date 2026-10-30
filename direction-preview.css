@@ -18,12 +18,6 @@ html.dds-direction-preview[data-direction-colors=true] .hero::before {
 html.dds-direction-preview[data-direction-colors=true] .session-video-state[data-active=true]>span {
   box-shadow: 0 0 0 4px color-mix(in srgb,var(--primary) 12%,transparent);
 }
-html.dds-direction-preview[data-direction-neutral-logo=true] :is(.product-logo img,.home-footer-top>a>img,.product-footer .footer-inner>a>img,.session-logo img,.site-header .brand img,.site-footer .brand img) {
-  filter: grayscale(1) brightness(.35);
-}
-html.dds-direction-preview[data-direction-neutral-logo=true][data-theme=dark] :is(.product-logo img,.home-footer-top>a>img,.product-footer .footer-inner>a>img,.session-logo img,.site-header .brand img,.site-footer .brand img) {
-  filter: grayscale(1) brightness(0) invert(.92);
-}
 
 /* Navigation/selection, AI guidance, and positive outcomes have separate jobs. */
 html.dds-direction-preview[data-direction-multicolor=true] :is(.gnb-trigger.active,.product-header nav>a[aria-current=page],.mypage-sidebar nav>a[aria-current=page]) {
@@ -127,15 +121,12 @@ html.dds-direction-preview[data-direction-multicolor=true] .sample-tabs button[a
 /* Comparison-only category colors: one color family for each function. */
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(1) {
   background: var(--direction-secondary-soft);
-  box-shadow: inset 0 2px var(--direction-secondary);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(2) {
   background: var(--direction-accent-soft);
-  box-shadow: inset 0 2px var(--direction-accent);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(3) {
   background: var(--direction-positive-soft);
-  box-shadow: inset 0 2px var(--direction-positive);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(1) .sample-feature-icon {
   background: var(--direction-secondary);
@@ -195,9 +186,6 @@ html.dds-direction-preview[data-direction-feature-colors=true] .sample-progress 
   background: var(--direction-positive);
 }
 
-html.dds-direction-preview[data-direction-feature-colors=true] .di-process li {
-  border-radius: 16px;
-}
 html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(1) {
   background: linear-gradient(90deg,var(--direction-secondary-soft),transparent);
 }
@@ -255,8 +243,6 @@ html.dds-direction-preview[data-direction-feature-colors=true] .hero-visual {
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .visual-experience {
   background: var(--direction-secondary-soft);
-  border-radius: 12px;
-  padding: 16px;
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .visual-experience .visual-caption {
   color: var(--direction-secondary-ink);
@@ -265,20 +251,10 @@ html.dds-direction-preview[data-direction-feature-colors=true] .experience-tags 
   background: var(--background);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .visual-outcome {
-  padding: 20px 16px;
   background: var(--direction-positive-soft);
-  border-radius: 12px;
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .hero-visual>.connection {
   background: var(--border);
-}
-html.dds-direction-preview[data-direction-feature-colors=true] .method-list {
-  gap: 12px;
-}
-html.dds-direction-preview[data-direction-feature-colors=true] .method-list li {
-  padding: 22px;
-  border: 0;
-  border-radius: 12px;
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .method-list li:nth-child(1) {
   background: var(--direction-secondary-soft);
@@ -288,12 +264,4 @@ html.dds-direction-preview[data-direction-feature-colors=true] .method-list li:n
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .method-list li:nth-child(3) {
   background: var(--direction-positive-soft);
-}
-@media(max-width:700px) {
-  html.dds-direction-preview[data-direction-feature-colors=true] :is(.visual-experience,.visual-outcome) {
-    padding: 12px;
-  }
-  html.dds-direction-preview[data-direction-feature-colors=true] .method-list li {
-    padding: 18px;
-  }
 }
