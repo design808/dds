@@ -8,18 +8,18 @@
   <link rel="icon" href="./assets/deepresume-mark.png">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('deep-theme')==='dark'?'dark':'light';}catch{document.documentElement.dataset.theme='light';}</script>
   <link rel="preload" href="./assets/fonts/pretendard/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./tokens.css?v=7b3f7ae5d6d54033">
-  <link rel="stylesheet" href="./style.css?v=7b3f7ae5d6d54033">
-  <link rel="stylesheet" href="./brand-refinement.css?v=7b3f7ae5d6d54033">
-  <link rel="stylesheet" href="./custom-controls.css?v=7b3f7ae5d6d54033">
-  <link rel="stylesheet" href="./layout-focus.css?v=7b3f7ae5d6d54033">
-  <link rel="stylesheet" href="./interactions.css?v=7b3f7ae5d6d54033">
-  <link rel="stylesheet" href="./design-system-guide.css?v=7b3f7ae5d6d54033">
-  <link rel="stylesheet" href="./control-sizing.css?v=7b3f7ae5d6d54033">
-  <link rel="stylesheet" href="./design-settings-panel.css?v=7b3f7ae5d6d54033">
-  <script src="./vendor/lucide/lucide.min.js?v=7b3f7ae5d6d54033"></script>
-  <script type="module" src="./design-settings.js?v=7b3f7ae5d6d54033"></script>
-  <script type="module" src="./design-system-guide.js?v=7b3f7ae5d6d54033"></script>
+  <link rel="stylesheet" href="./tokens.css?v=d44d2c1ac5d9afd6">
+  <link rel="stylesheet" href="./style.css?v=d44d2c1ac5d9afd6">
+  <link rel="stylesheet" href="./brand-refinement.css?v=d44d2c1ac5d9afd6">
+  <link rel="stylesheet" href="./custom-controls.css?v=d44d2c1ac5d9afd6">
+  <link rel="stylesheet" href="./layout-focus.css?v=d44d2c1ac5d9afd6">
+  <link rel="stylesheet" href="./interactions.css?v=d44d2c1ac5d9afd6">
+  <link rel="stylesheet" href="./design-system-guide.css?v=d44d2c1ac5d9afd6">
+  <link rel="stylesheet" href="./control-sizing.css?v=d44d2c1ac5d9afd6">
+  <link rel="stylesheet" href="./design-settings-panel.css?v=d44d2c1ac5d9afd6">
+  <script src="./vendor/lucide/lucide.min.js?v=d44d2c1ac5d9afd6"></script>
+  <script type="module" src="./design-settings.js?v=d44d2c1ac5d9afd6"></script>
+  <script type="module" src="./design-system-guide.js?v=d44d2c1ac5d9afd6"></script>
 </head>
 <body class="dds-guide">
   <a class="skip" href="#guide-main">본문으로 건너뛰기</a>
@@ -37,8 +37,8 @@
   <main id="guide-main" tabindex="-1">
     <section class="guide-intro" aria-labelledby="guide-title">
       <h1 id="guide-title">디자인시스템이 뭔가요?</h1>
-      <p class="guide-lead">화면을 만들 때 함께 사용하는 <strong>디자인 규칙과 UI 부품, 사용 방법</strong>을 모아 둔 공통 기준입니다.</p>
-      <p>색상·글자·간격부터 버튼의 상태와 입력 오류 안내까지, 매번 다시 결정하는 일을 줄입니다. 디자이너와 개발자가 같은 기준으로 화면을 만들고 고칠 수 있도록 돕습니다.</p>
+      <p class="guide-lead">회사 서비스에서 공통으로 쓰는 <strong>UI의 디자인과 사용 방법</strong>을 정리한 기준입니다.</p>
+      <p>버튼, 입력창, 모달을 어떤 모양으로 만들고 어떻게 사용해야 하는지 정해 둡니다. 디자이너는 이 기준으로 화면을 설계하고, 개발자는 컴포넌트와 코드 예제를 가져와 구현합니다.</p>
       <nav class="guide-contents" aria-label="안내 목차">
         <a href="#why">왜 필요한가요?</a>
         <a href="#blocks">레고블록으로 이해하기</a>
@@ -50,11 +50,11 @@
     <section class="guide-section" id="why" aria-labelledby="why-title">
       <div class="guide-section-heading">
         <h2 id="why-title">왜 필요한가요?</h2>
-        <p>자기소개서를 쓰다가 내 정보를 수정하러 갔을 때, 같은 입력창과 저장 버튼을 다시 배워야 할까요? 공통 기준이 없으면 사용자는 화면마다 판단을 반복하고, 개발자는 같은 수정을 여러 곳에서 반복합니다.</p>
+        <p>화면마다 입력창 모양이 다르고 팝업의 닫는 방법도 다르면 사용하기 불편합니다. 개발할 때도 같은 요소를 매번 새로 만들고, 수정할 곳을 화면별로 찾아야 합니다.</p>
       </div>
       <div class="guide-evidence-heading">
         <h3>기존 서비스에서 확인한 차이</h3>
-        <p>딥레쥬메·딥인터뷰의 일반회원·컨설턴트 영역을 소스로 조사하고, 아래 항목은 실제 화면에서 확인해 촬영했습니다. 2026.11.02 기준입니다.</p>
+        <p>딥레쥬메 운영 화면에서 확인한 예입니다. 2026.11.02 기준입니다.</p>
       </div>
       <div class="guide-evidence-list">
         <article class="guide-evidence-case" aria-labelledby="evidence-input-title">
@@ -69,53 +69,39 @@
               <figcaption><a href="https://www.deepresume.kr/community/question" target="_blank" rel="noopener noreferrer">딥레쥬메 · Deep톡 작성</a><span>테두리 1px · 모서리 7px</span></figcaption>
             </figure>
           </div>
-          <p>둘 다 제목을 입력하는 곳이지만 경계의 두께와 모서리가 다릅니다. DDS에서는 입력창의 크기·기본·포커스·오류 상태를 공통 규격으로 관리합니다. 강조가 필요하면 그 용도까지 정해 사용합니다.</p>
+          <p>같은 제목 입력창인데 테두리 두께와 모서리가 다릅니다. 입력창의 기본 규격을 정해 두면 새 화면에서도 같은 형태로 사용할 수 있습니다. 크기나 강조를 달리할 때도 정해진 종류 중에서 선택합니다.</p>
         </article>
-        <article class="guide-evidence-case" aria-labelledby="evidence-button-title">
-          <h3 id="evidence-button-title">입력을 마치는 버튼의 강조 방식이 다릅니다</h3>
-          <div class="guide-evidence-pair">
+        <article class="guide-evidence-case" aria-labelledby="evidence-modal-title">
+          <h3 id="evidence-modal-title">모달의 기본 구성도 화면마다 다릅니다</h3>
+          <div class="guide-evidence-pair guide-evidence-modal-pair">
             <figure>
-              <div class="guide-evidence-image"><img src="./assets/guide-audit/dr-coverletter-save.jpg" alt="자소서 작성 화면의 회색 임시저장 버튼과 주황색 저장 후 다음 버튼." width="250" height="140"></div>
-              <figcaption><a href="https://www.deepresume.kr/coverletter/info" target="_blank" rel="noopener noreferrer">딥레쥬메 · AI 자소서 작성</a><span>주동작은 주황색 채움으로 강조</span></figcaption>
+              <div class="guide-evidence-image"><img src="./assets/guide-audit/dr-consulting-choice-modal.jpg" alt="컨설팅 항목 선택 모달. 상단 닫기 아이콘, 구분선으로 나뉜 목록과 하단 버튼 영역." width="481" height="686"></div>
+              <figcaption><a href="https://www.deepresume.kr/consultant/profile" target="_blank" rel="noopener noreferrer">컨설팅 항목 선택</a><span>상단 닫기 아이콘 · 본문과 버튼 영역 구분</span></figcaption>
             </figure>
             <figure>
-              <div class="guide-evidence-image"><img src="./assets/guide-audit/di-profile-save.jpg" alt="딥인터뷰 내 정보 수정 화면의 채움색이 없는 저장하기 버튼." width="164" height="76"></div>
-              <figcaption><a href="https://www.deepresume.kr/di/updateInfo" target="_blank" rel="noopener noreferrer">딥인터뷰 · 내 정보 수정</a><span>저장하기 버튼의 채움색 없음</span></figcaption>
+              <div class="guide-evidence-image"><svg class="guide-modal-crop" viewBox="484 289 518 332" width="518" height="332" role="img" aria-labelledby="experience-modal-capture-title"><title id="experience-modal-capture-title">경험리스트 선택 모달. 닫기 아이콘 없이 설명 아래에 세 개의 버튼을 세로로 배치.</title><image href="./assets/guide-audit/dr-experience-choice-context.png" width="1499" height="910"/></svg></div>
+              <figcaption><a href="https://www.deepresume.kr/coverletter/info" target="_blank" rel="noopener noreferrer">경험리스트 선택</a><span>닫기 아이콘 없음 · 본문 안에 버튼 배치</span></figcaption>
             </figure>
           </div>
-          <p>작성 완료 버튼을 찾는 시각적 기준이 달라집니다. DDS에서는 주동작·보조동작의 위계를 정해, 사용자가 다음에 할 일을 쉽게 찾도록 합니다. 모든 버튼을 같은 색으로 만드는 것이 아니라 역할이 같은 버튼에 같은 기준을 적용합니다.</p>
-        </article>
-        <article class="guide-evidence-case" aria-labelledby="evidence-navigation-title">
-          <h3 id="evidence-navigation-title">공통 메뉴의 이름도 화면마다 달라집니다</h3>
-          <div class="guide-evidence-pair">
-            <figure>
-              <div class="guide-evidence-image"><img src="./assets/guide-audit/dr-home-navigation.jpg" alt="딥레쥬메 메인화면의 콘텐츠 메뉴 표기." width="320" height="90"></div>
-              <figcaption><a href="https://www.deepresume.kr/" target="_blank" rel="noopener noreferrer">딥레쥬메 · 메인</a><span>‘콘텐츠’</span></figcaption>
-            </figure>
-            <figure>
-              <div class="guide-evidence-image"><img src="./assets/guide-audit/dr-faq-navigation.jpg" alt="딥레쥬메 FAQ 화면의 컨텐츠 메뉴 표기." width="320" height="90"></div>
-              <figcaption><a href="https://www.deepresume.kr/notice/FaQ" target="_blank" rel="noopener noreferrer">딥레쥬메 · FAQ</a><span>‘컨텐츠’</span></figcaption>
-            </figure>
-          </div>
-          <p>같은 메뉴도 화면별로 관리하면 표기와 간격이 어긋납니다. 공통 내비게이션은 이름·배치·선택·펼침 규칙까지 함께 관리해야 합니다. 디자인시스템은 색상표뿐 아니라 이런 사용 규칙도 포함합니다.</p>
+          <p>컨설팅 모달은 닫기 아이콘과 구분선이 있는 틀을 쓰고, 경험리스트 모달은 설명과 버튼을 한 영역에 배치합니다. 내용에 따라 목록이나 버튼 수는 달라질 수 있습니다. 그래도 제목과 본문 사이의 여백, 버튼 스타일, 닫기 방식은 모달의 용도별로 정해 둘 필요가 있습니다.</p>
         </article>
       </div>
       <div class="guide-maintenance-example">
-        <h3>저장 화면이 10개라면, 버튼 하나를 고치는 데도 차이가 납니다</h3>
-        <p>예를 들어 버튼 높이를 바꾸려면, 각 화면에서 따로 만든 버튼은 해당 구현을 찾아 각각 수정해야 합니다. 공통 Button을 사용하는 화면은 연결된 규격을 함께 바꾸고 화면별 배치와 동작을 검수할 수 있습니다.</p>
+        <h3>공통 규칙을 쓰면 같은 수정을 반복하지 않아도 됩니다</h3>
+        <p>예를 들어 입력창 높이를 바꿀 때, 화면마다 따로 만든 입력창은 CSS를 각각 찾아 고쳐야 합니다. 공통 컴포넌트를 쓰면 한곳에서 규격을 바꾸고 사용하는 화면들을 확인할 수 있습니다.</p>
       </div>
       <div class="table-wrap guide-comparison">
         <table>
           <caption class="sr-only">개별 구현과 공통 기준을 사용하는 구현의 차이</caption>
           <thead><tr><th scope="col">작업</th><th scope="col">화면마다 정하면</th><th scope="col">공통 기준을 사용하면</th></tr></thead>
           <tbody>
-            <tr><th scope="row">입력창 추가</th><td>높이·테두리·라벨·오류 위치를 다시 정합니다.</td><td>Input 규칙을 재사용하고 필요한 필드와 검증을 연결합니다.</td></tr>
-            <tr><th scope="row">버튼 높이 변경</th><td>각 화면의 CSS와 상태별 스타일을 찾아 고칩니다.</td><td>공통 규격을 수정하고 사용하는 화면의 배치를 검수합니다.</td></tr>
-            <tr><th scope="row">메뉴 이름 변경</th><td>화면별 헤더에서 누락된 곳이 없는지 찾습니다.</td><td>공통 내비게이션의 표기를 바꾸고 사용처를 확인합니다.</td></tr>
+            <tr><th scope="row">입력창 추가</th><td>높이·테두리·라벨·오류 위치를 다시 정합니다.</td><td>입력창 컴포넌트를 사용하고 필요한 필드와 검증을 추가합니다.</td></tr>
+            <tr><th scope="row">높이 변경</th><td>각 화면의 CSS를 찾아 고칩니다.</td><td>공통 규격을 바꾸고 각 화면에서 잘 보이는지 확인합니다.</td></tr>
+            <tr><th scope="row">모달 추가</th><td>제목·본문·버튼·닫기 방식을 새로 만듭니다.</td><td>모달의 기본 틀에 필요한 내용과 동작을 넣습니다.</td></tr>
           </tbody>
         </table>
       </div>
-      <p>효과를 내려면 실제 화면이 공통 컴포넌트와 토큰을 사용하도록 연결해야 합니다. DDS 문서를 갖추는 것만으로 기존 화면이나 저장·인증 같은 기능이 자동으로 바뀌지는 않습니다.</p>
+      <p>이 효과를 얻으려면 실제 서비스 코드에서도 공통 컴포넌트를 사용해야 합니다. 문서만 만들어 놓고 화면마다 따로 구현하면 수정할 곳은 그대로 남습니다.</p>
     </section>
 
     <section class="guide-section" id="blocks" aria-labelledby="blocks-title">
@@ -132,7 +118,7 @@
             <rect x="24" y="104" width="40" height="24"/><rect x="68" y="104" width="40" height="24"/><rect x="172" y="104" width="40" height="24"/><rect x="216" y="104" width="40" height="24"/>
             <rect x="24" y="132" width="84" height="16"/><rect x="172" y="132" width="84" height="16"/>
           </g></svg>
-          <figcaption><strong>성</strong><span>목적에 맞게 쌓은 조합</span></figcaption>
+          <figcaption><strong>성</strong></figcaption>
         </figure>
         <figure>
           <svg viewBox="0 0 280 160" role="img" aria-labelledby="ship-title"><title id="ship-title">같은 규격의 블록을 조합해 만든 배</title><g class="guide-bricks">
@@ -142,25 +128,25 @@
             <rect x="24" y="104" width="56" height="24"/><rect x="84" y="104" width="56" height="24"/><rect x="144" y="104" width="56" height="24"/><rect x="204" y="104" width="52" height="24"/>
             <rect x="52" y="132" width="56" height="16"/><rect x="112" y="132" width="56" height="16"/><rect x="172" y="132" width="56" height="16"/>
           </g></svg>
-          <figcaption><strong>배</strong><span>같은 블록으로 만든 다른 결과</span></figcaption>
+          <figcaption><strong>배</strong></figcaption>
         </figure>
       </div>
-      <p>블록이 잘 맞물리려면 규격이 필요하듯, UI에도 공통 기준이 필요합니다. 화면의 목적과 흐름은 조립하는 사람이 정합니다.</p>
+      <p>레고블록은 크기와 연결 방식이 정해져 있어 서로 맞물립니다. 컴포넌트도 크기와 사용 방법이 정해져 있으면 여러 화면에서 함께 쓸 수 있습니다. 어떤 화면을 만들지에 따라 필요한 컴포넌트를 골라 배치하면 됩니다.</p>
       <ol class="guide-structure">
-        <li><h3>토큰 · 규격을 정하는 값</h3><p>색상·높이·간격 등에 이름을 붙인 값입니다. <code>--primary</code>처럼 역할로 연결합니다.</p></li>
-        <li><h3>컴포넌트 · 재사용하는 블록</h3><p>버튼, 입력창, 카드처럼 규격과 상태가 정해진 UI 단위입니다.</p></li>
-        <li><h3>패턴 · 자주 쓰는 조합</h3><p>라벨·입력·오류 안내·저장처럼 반복되는 작업 흐름을 묶습니다.</p></li>
-        <li><h3>화면 · 목적에 맞게 조립한 결과</h3><p>서비스의 콘텐츠와 업무 흐름에 맞춰 컴포넌트와 패턴을 배치합니다.</p></li>
+        <li><h3>토큰</h3><p>색상, 높이, 간격 등의 값을 이름으로 관리합니다. 예를 들어 기본 색상을 <code>--primary</code>로 정해 두고 버튼과 탭에서 같은 값을 사용합니다.</p></li>
+        <li><h3>컴포넌트</h3><p>버튼, 입력창, 카드처럼 여러 곳에서 다시 쓰는 UI 요소입니다. 기본 모양과 선택·오류 등의 상태도 함께 정합니다.</p></li>
+        <li><h3>패턴</h3><p>함께 쓰는 컴포넌트의 구성입니다. 예를 들어 입력 폼에서는 라벨, 입력창, 오류 문구, 확인 버튼을 일정한 순서로 배치합니다.</p></li>
+        <li><h3>화면</h3><p>필요한 컴포넌트를 배치한 서비스 페이지입니다. 같은 카드와 입력창을 사용해도 작성 화면과 검색 화면을 다르게 만들 수 있습니다.</p></li>
       </ol>
     </section>
 
     <section class="guide-section" id="compose" aria-labelledby="compose-title">
       <div class="guide-section-heading">
-        <h2 id="compose-title">같은 부품으로 편집 화면과 탐색 화면 만들기</h2>
-        <p>자기소개서는 입력하며 미리 보고, 면접은 목록을 검색하며 고릅니다. 같은 컴포넌트의 배치와 반복 방식을 바꾸면 서로 다른 화면이 됩니다.</p>
+        <h2 id="compose-title">같은 컴포넌트로 서로 다른 화면 만들기</h2>
+        <p>두 탭을 눌러 비교해 보세요. 자기소개서 화면에는 입력 폼과 미리보기를, 면접 화면에는 검색창과 카드 목록을 배치했습니다. 두 화면 모두 같은 카드, 입력창, 버튼, 배지, 탭, 체크박스를 사용합니다.</p>
       </div>
       <div class="guide-component-inventory">
-        <p id="guide-block-instruction">두 화면이 공유하는 부품입니다. 이름을 누르면 사용한 위치가 표시됩니다.</p>
+        <p id="guide-block-instruction">컴포넌트 이름을 누르면 화면에서 사용한 위치를 볼 수 있습니다.</p>
         <div class="guide-component-list" role="group" aria-labelledby="guide-block-instruction">
           <button class="chip" type="button" data-guide-highlight="Card" aria-pressed="false">Card</button>
           <button class="chip" type="button" data-guide-highlight="Input" aria-pressed="false">Input</button>
@@ -178,15 +164,10 @@
               <button type="button" role="tab" id="example-interview" data-guide-context="interview" aria-selected="false" aria-controls="guide-browser-panel" tabindex="-1">면접 탐색</button>
             </div>
           </div>
-          <fieldset class="guide-shared-rule"><legend>두 화면의 공통 Button 크기</legend><div class="segmented">
-            <label><input type="radio" name="guide-button-size" value="md" checked><span>기본 · 44px</span></label>
-            <label><input type="radio" name="guide-button-size" value="sm"><span>작게 · 36px</span></label>
-          </div></fieldset>
         </div>
-        <p class="guide-rule-description" id="guide-rule-description" role="status">Button의 공통 크기를 바꾸면 두 화면의 행동 버튼에 함께 적용됩니다.</p>
-        <div class="guide-demo-canvas" id="guide-demo-canvas" data-button-size="md">
+        <div class="guide-demo-canvas" id="guide-demo-canvas">
           <div id="guide-editor-panel" role="tabpanel" aria-labelledby="example-coverletter">
-            <header class="guide-demo-heading"><div><h3>자기소개서 작성</h3><p>입력한 내용을 옆에서 확인하고 저장합니다.</p></div><span class="badge soft" data-block="Badge" id="guide-editor-state">작성 중</span></header>
+            <header class="guide-demo-heading"><div><h3>자기소개서 작성</h3><p>입력한 내용이 미리보기에 표시됩니다.</p></div><span class="badge soft" data-block="Badge" id="guide-editor-state">작성 중</span></header>
             <div class="guide-editor-layout">
               <form class="document-card guide-demo-card guide-editor-form" id="guide-editor-form" data-block="Card">
                 <div class="segmented guide-service-tabs" role="tablist" aria-label="자기소개서 입력 단계" data-block="Tabs">
@@ -202,8 +183,8 @@
                   <div class="field" data-block="Input"><label for="guide-document-contribution">내가 맡은 일</label><input id="guide-document-contribution" name="contribution" value="문제 정리와 개선안 기획" maxlength="120"></div>
                 </div>
                 <label class="check-label guide-demo-check" data-block="Checkbox"><input id="guide-include-experience" type="checkbox" checked>미리보기에 경험 포함</label>
-                <div class="guide-demo-actions"><button class="btn primary" type="submit" data-block="Button">자기소개서 저장</button><button class="btn" type="reset" data-block="Button">기본값으로</button></div>
-                <p class="guide-form-status" id="guide-editor-status" role="status" aria-live="polite">입력한 내용과 선택은 이 페이지에서만 유지됩니다.</p>
+                <div class="guide-demo-actions"><button class="btn primary" type="submit" data-block="Button">입력 내용 확인</button><button class="btn" type="reset" data-block="Button">초기화</button></div>
+                <p class="guide-form-status" id="guide-editor-status" role="status" aria-live="polite">직접 입력해 볼 수 있는 예제입니다. 입력 내용은 서버에 저장하지 않습니다.</p>
               </form>
               <aside class="document-card guide-demo-card guide-editor-preview" data-block="Card" aria-label="자기소개서 미리보기">
                 <div class="guide-preview-heading"><h4>미리보기</h4><span class="badge" data-block="Badge">지원정보</span></div>
@@ -215,7 +196,7 @@
           </div>
 
           <div id="guide-browser-panel" role="tabpanel" aria-labelledby="example-interview" hidden>
-            <header class="guide-demo-heading"><div><h3>면접 탐색</h3><p>검색과 선택으로 준비할 면접을 좁혀 갑니다.</p></div><span class="badge soft" data-block="Badge" id="guide-selected-count">0개 선택</span></header>
+            <header class="guide-demo-heading"><div><h3>면접 탐색</h3><p>직무를 검색하고 면접을 선택해 질문을 확인하세요.</p></div><span class="badge soft" data-block="Badge" id="guide-selected-count">0개 선택</span></header>
             <div class="guide-browser-toolbar">
               <div class="field" data-block="Input"><label for="guide-interview-search">면접 검색</label><input id="guide-interview-search" type="search" placeholder="예: 서비스 기획, 개발, 디자인"></div>
               <div class="segmented guide-service-tabs" role="tablist" aria-label="면접 목록 범위" data-block="Tabs">
@@ -235,17 +216,17 @@
           </div>
         </div>
       </div>
-      <div class="guide-code-example guide-composition-code"><h3>배치와 반복이 달라지는 조합 구조</h3><pre><code id="example-code"></code></pre><p id="guide-composition-description">입력 Card와 미리보기 Card를 나란히 배치합니다. 입력한 값이 미리보기에 반영됩니다.</p></div>
+      <div class="guide-code-example guide-composition-code"><h3>두 화면의 HTML 구조</h3><pre><code id="example-code"></code></pre><p id="guide-composition-description">입력 폼과 미리보기를 두 개의 카드로 나누어 나란히 배치했습니다.</p></div>
     </section>
 
     <section class="guide-section" id="apply" aria-labelledby="apply-title">
       <div class="guide-section-heading"><h2 id="apply-title">DDS는 어떻게 사용하나요?</h2><p>DDS(Deep Design System)는 딥레쥬메·딥인터뷰와 앞으로 만들 회사 서비스가 함께 사용하는 디자인 기준입니다.</p></div>
       <ol class="guide-steps">
-        <li><h3>요소의 역할을 먼저 정합니다</h3><p>주 행동인지 보조 행동인지, 제목인지 설명인지 구분한 뒤 문서에서 사용할 토큰과 컴포넌트 규칙을 찾습니다.</p><a href="./index.html#/foundations/color">색상과 공통 규칙 보기</a></li>
-        <li><h3>프로젝트의 UI에 기준을 연결합니다</h3><p>기존 버튼·입력창에 공통 색상과 규격, 상태를 적용합니다. 기존 서비스의 이벤트·API·권한·저장 처리는 유지하면서 필요한 CSS와 마크업을 정리합니다.</p><a href="./index.html#/components">컴포넌트 규칙 보기</a></li>
-        <li><h3>실제 동작까지 확인합니다</h3><p>기본·호버·포커스·오류·비활성 상태와 모바일 배치를 확인합니다. 화면이 예뻐진 것과 저장·검증 같은 서비스 기능이 정상인지는 따로 검수합니다.</p><a href="./index.html#/handoff">개발 적용 안내 보기</a></li>
+        <li><h3>필요한 컴포넌트를 고릅니다</h3><p>화면에 필요한 입력창, 버튼, 모달을 찾습니다. 기본 형태와 크기, 선택·오류 상태의 규칙을 확인합니다.</p><a href="./index.html#/components">컴포넌트 보기</a></li>
+        <li><h3>서비스 화면에 적용합니다</h3><p>컴포넌트 예제와 공통 CSS를 사용해 화면을 만듭니다. 기존 서비스를 수정할 때는 입력값, 클릭 이벤트, 저장 기능이 그대로 작동하도록 필요한 HTML과 CSS를 수정합니다.</p><a href="./index.html#/handoff">개발 적용 안내 보기</a></li>
+        <li><h3>모양과 동작을 확인합니다</h3><p>마우스를 올렸을 때, 키보드로 선택했을 때, 오류가 났을 때를 확인합니다. 모바일 배치와 실제 입력·저장 기능도 함께 테스트합니다.</p><a href="./index.html#/foundations/accessibility">접근성 안내 보기</a></li>
       </ol>
-      <p class="guide-apply-note">DDS 문서의 디자인 기준과 구현 예제를 프로젝트의 UI 코드에 연결합니다. 서버 통신·권한·저장은 각 서비스의 기능에 맞게 구현하고 검수합니다. AI로 작업할 때도 프로젝트 환경과 적용 범위를 확인합니다.</p>
+      <p class="guide-apply-note">AI로 구현할 때는 아래 설정 안내를 먼저 읽게 해 주세요. DDS의 규칙을 어떤 파일에 연결하고, 기존 기능은 어디까지 유지할지 확인할 수 있습니다.</p>
       <a class="btn primary" href="./index.html#/setup">DDS 적용 설정 보기</a>
     </section>
   </main>

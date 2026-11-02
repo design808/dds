@@ -32,6 +32,10 @@
 .dds-guide .guide-evidence-image img { display: block; width: auto; height: auto; max-width: 100%; max-height: 140px; object-fit: contain; }
 .dds-guide .guide-evidence-input-pair .guide-evidence-image { justify-content: flex-start; padding-inline: 0; }
 .dds-guide .guide-evidence-input-pair img { max-width: none; max-height: none; flex-shrink: 0; }
+.dds-guide .guide-evidence-modal-pair { align-items: start; }
+.dds-guide .guide-evidence-modal-pair .guide-evidence-image { height: auto; min-height: 0; padding: var(--space-4); background: var(--surface); }
+.dds-guide .guide-evidence-modal-pair img { width: 100%; max-height: none; }
+.dds-guide .guide-modal-crop { display: block; width: 100%; height: auto; }
 .dds-guide .guide-evidence-pair figcaption { display: grid; gap: var(--space-1); padding: var(--space-4); border-top: 1px solid var(--border); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
 .dds-guide .guide-evidence-pair figcaption a { font-weight: var(--font-weight-semibold); text-decoration: underline; text-underline-offset: 3px; }
 .dds-guide .guide-evidence-pair figcaption span { color: var(--text-secondary); }
@@ -63,29 +67,25 @@
 .dds-guide .guide-component-inventory > p { margin-bottom: var(--space-3); color: var(--text-secondary); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
 .dds-guide .guide-component-list .chip { min-height: var(--control-height-sm); font-size: var(--type-label-2-size); line-height: var(--type-label-2-line-height); font-weight: var(--type-label-2-weight); white-space: normal; }
 .dds-guide .guide-composer { padding: var(--space-6); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
-.dds-guide .guide-composer-tabs { display: block; margin: 0; }
-.dds-guide .guide-composer-tabs .segmented { display: inline-flex; width: max-content; max-width: 100%; border-radius: var(--radius-md); padding: var(--space-1); background: var(--muted); }
-.dds-guide :is(.guide-composer-tabs .segmented,.guide-service-tabs) button { min-height: var(--control-height-sm); padding: var(--space-2) var(--space-4); border: 0; border-radius: var(--radius-sm); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-medium); color: var(--text-secondary); white-space: normal; word-break: keep-all; overflow-wrap: anywhere; }
+.dds-guide .guide-compose-controls { margin-bottom: var(--space-6); }
+.dds-guide .guide-composer-tabs { display: block; width: fit-content; max-width: 100%; margin: 0 0 var(--space-6); }
+.dds-guide :is(.guide-composer-tabs .segmented,.guide-service-tabs) { display: inline-flex; flex-wrap: wrap; justify-self: start; align-self: start; width: max-content; max-width: 100%; gap: var(--space-1); border-radius: var(--radius-md); padding: var(--space-1); background: var(--muted); }
+.dds-guide :is(.guide-composer-tabs .segmented,.guide-service-tabs) button { flex: 0 1 auto; width: auto; min-width: 0; min-height: var(--control-height-sm); padding: var(--space-2) var(--space-4); border: 0; border-radius: var(--radius-sm); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-medium); color: var(--text-secondary); white-space: normal; word-break: keep-all; overflow-wrap: anywhere; }
 .dds-guide :is(.guide-composer-tabs .segmented,.guide-service-tabs) button[aria-selected=true] { background: var(--background); color: var(--text-strong); box-shadow: var(--shadow-sm); }
-.dds-guide .guide-compose-controls { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--space-5); }
-.dds-guide .guide-shared-rule { min-width: 0; padding: 0; margin: 0; border: 0; }
-.dds-guide .guide-shared-rule legend { padding: 0; margin-bottom: var(--space-2); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-medium); }
-.dds-guide .guide-shared-rule label { display: flex; position: relative; cursor: pointer; min-width: 0; }
-.dds-guide .guide-shared-rule input { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0; opacity: 0; }
-.dds-guide .guide-shared-rule label span { display: grid; place-items: center; min-height: var(--control-height-sm); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); font-size: var(--type-label-2-size); line-height: var(--type-label-2-line-height); color: var(--text-secondary); }
-.dds-guide .guide-shared-rule label:has(:checked) span { background: var(--background); color: var(--text-strong); box-shadow: var(--shadow-sm); }
-.dds-guide .guide-shared-rule label:has(:focus-visible) span { outline: 1px solid var(--primary); outline-offset: 0; }
-.dds-guide .guide-rule-description { margin: var(--space-4) 0 var(--space-6); color: var(--text-secondary); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
-.dds-guide .guide-demo-canvas { --guide-button-height: var(--control-height-md); --guide-button-size: var(--type-body-1-normal-size); --guide-button-line: var(--type-body-1-normal-line-height); --guide-button-padding: var(--space-4); }
-.dds-guide .guide-demo-canvas[data-button-size=sm] { --guide-button-height: var(--control-height-sm); --guide-button-size: var(--type-label-2-size); --guide-button-line: var(--type-label-2-line-height); --guide-button-padding: 10px; }
-.dds-guide .guide-demo-canvas .btn[data-block=Button] { min-height: var(--guide-button-height); padding: calc((var(--guide-button-height) - var(--guide-button-line) - 2px)/2) var(--guide-button-padding); font-size: var(--guide-button-size); line-height: var(--guide-button-line); }
+.dds-guide .guide-demo-canvas .btn[data-block=Button] { min-height: var(--control-height-md); padding: var(--space-2) var(--space-4); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); }
 .dds-guide .guide-demo-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-5); }
 .dds-guide .guide-demo-heading h3 { font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line-height); font-weight: var(--type-heading-2-weight); }
 .dds-guide .guide-demo-heading p { margin-top: var(--space-1); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); color: var(--text-secondary); }
 .dds-guide .guide-editor-layout { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(0,.85fr); gap: var(--space-5); align-items: start; }
 .dds-guide .guide-demo-card { position: relative; display: grid; width: 100%; min-width: 0; max-width: none; gap: var(--space-5); padding: var(--space-6); background: var(--background); border: 1px solid var(--border); border-radius: var(--radius-lg); }
 .dds-guide .guide-editor-fields { display: grid; gap: var(--space-5); }
-.dds-guide .guide-demo-check { min-height: var(--control-height-sm); margin: 0; font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
+.dds-guide .guide-demo-check { display: flex; align-items: center; gap: var(--space-2); min-height: var(--control-height-sm); margin: 0; cursor: pointer; font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
+.dds-guide :is(.guide-demo-check,.guide-card-check) > input[type=checkbox] { appearance: none; -webkit-appearance: none; display: inline-grid; place-content: center; width: 18px; height: 18px; min-height: 0; flex: 0 0 18px; margin: 0; padding: 0; border: 1px solid var(--control-border); border-radius: 4px; background: var(--background); cursor: pointer; }
+.dds-guide :is(.guide-demo-check,.guide-card-check) > input[type=checkbox]::after { content: ''; display: block; width: 14px; height: 14px; border: 0; transform: none; background: var(--primary-foreground); mask: url('./assets/icons/check.svg') center/contain no-repeat; -webkit-mask: url('./assets/icons/check.svg') center/contain no-repeat; opacity: 0; }
+.dds-guide :is(.guide-demo-check,.guide-card-check) > input[type=checkbox]:checked { background: var(--primary); border-color: var(--primary); }
+.dds-guide :is(.guide-demo-check,.guide-card-check) > input[type=checkbox]:checked::after { opacity: 1; }
+.dds-guide :is(.guide-demo-check,.guide-card-check):hover > input[type=checkbox] { border-color: var(--primary); }
+.dds-guide :is(.guide-demo-check,.guide-card-check) > input[type=checkbox]:focus-visible { border: 1px solid var(--primary); outline: 1px solid var(--primary); outline-offset: 0; }
 .dds-guide .guide-demo-actions { display: flex; align-items: start; flex-wrap: wrap; gap: var(--space-3); }
 .dds-guide .guide-demo-card :is(h4,h5) { margin: 0; font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); font-weight: var(--font-weight-semibold); color: var(--text-strong); }
 .dds-guide .guide-demo-card h5 { font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); }
@@ -98,6 +98,7 @@
 .dds-guide #guide-preview-experience { display: grid; gap: var(--space-2); }
 .dds-guide #guide-preview-contribution { color: var(--text-secondary); }
 .dds-guide .guide-browser-toolbar { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: var(--space-5); margin-bottom: var(--space-5); }
+.dds-guide .guide-browser-toolbar > .guide-service-tabs { align-self: end; }
 .dds-guide .guide-result-count { margin-bottom: var(--space-3); color: var(--text-secondary); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); }
 .dds-guide .guide-interview-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-4); }
 .dds-guide .guide-interview-card { gap: var(--space-3); padding: var(--space-5); }
@@ -167,9 +168,7 @@
   .dds-guide .guide-browser-toolbar { grid-template-columns: 1fr; }
   .dds-guide .guide-interview-grid { grid-template-columns: 1fr; }
   .dds-guide .guide-interview-detail { grid-template-columns: 1fr; }
-  .dds-guide .guide-composer-tabs .segmented { width: 100%; }
-  .dds-guide .guide-composer-tabs .segmented button { flex: 1; }
-  .dds-guide .guide-service-tabs button { flex: 1; padding-inline: var(--space-3); }
+  .dds-guide :is(.guide-composer-tabs .segmented,.guide-service-tabs) button { padding-inline: var(--space-3); }
   .dds-guide .guide-steps li { padding-left: var(--space-8); }
   .dds-guide .guide-footer { margin-inline: var(--space-5); }
 }

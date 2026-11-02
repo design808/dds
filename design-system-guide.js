@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=7b3f7ae5d6d54033';
+import {icon} from './icons.js?v=d44d2c1ac5d9afd6';
 
 const themeButton=document.getElementById('theme-toggle');
 function updateThemeButton(){
@@ -20,12 +20,12 @@ const editorTabs=[...document.querySelectorAll('[data-editor-tab]')];
 const browserTabs=[...document.querySelectorAll('[data-browser-tab]')];
 const code=document.getElementById('example-code');
 const snippets={
-  coverletter:`<div class="guide-editor-layout">\n  <form class="document-card">\n    <!-- Tabs + Input + Checkbox -->\n    <button class="btn primary">저장</button>\n  </form>\n  <aside class="document-card">미리보기</aside>\n</div>`,
-  interview:`<div class="guide-browser-toolbar">\n  <!-- Input 검색 + Tabs 필터 -->\n</div>\n<div class="guide-interview-grid">\n  <article class="document-card">면접 1</article>\n  <article class="document-card">면접 2</article>\n  <article class="document-card">면접 3</article>\n</div>\n<section class="document-card">선택한 면접 상세</section>`
+  coverletter:`<div class="guide-editor-layout">\n  <form class="document-card">\n    <!-- 탭 + 입력창 + 체크박스 -->\n    <button class="btn primary">입력 내용 확인</button>\n  </form>\n  <aside class="document-card">미리보기</aside>\n</div>`,
+  interview:`<div class="guide-browser-toolbar">\n  <!-- 검색창 + 목록 필터 탭 -->\n</div>\n<div class="guide-interview-grid">\n  <article class="document-card">면접 1</article>\n  <article class="document-card">면접 2</article>\n  <article class="document-card">면접 3</article>\n</div>\n<section class="document-card">선택한 면접 상세</section>`
 };
 const compositions={
-  coverletter:'입력 Card와 미리보기 Card를 나란히 배치합니다. 입력한 값이 미리보기에 반영됩니다.',
-  interview:'검색 Input과 필터 Tabs 아래에 Card를 반복 배치하고, 고른 항목의 질문을 상세 Card에 표시합니다.'
+  coverletter:'입력 폼과 미리보기를 두 개의 카드로 나누어 나란히 배치했습니다. 모바일에서는 위아래로 배치됩니다.',
+  interview:'검색창과 필터 아래에 카드를 반복 배치했습니다. 카드를 누르면 아래 상세 영역에 해당 면접의 질문이 표시됩니다.'
 };
 let highlightedBlock='';
 function highlightBlocks(){
@@ -66,14 +66,6 @@ function showComposition(tab){
 }
 bindTabs(contextTabs,showComposition);
 showComposition(contextTabs[0]);
-for(const input of document.querySelectorAll('[name="guide-button-size"]')){
-  input.addEventListener('change',()=>{
-    if(!input.checked)return;
-    canvas.dataset.buttonSize=input.value;
-    document.getElementById('guide-rule-description').textContent=`두 화면의 행동 버튼이 모두 ${input.value==='sm'?'36':'44'}px 규격을 사용합니다.`;
-  });
-}
-
 const form=document.getElementById('guide-editor-form');
 const editorStatus=document.getElementById('guide-editor-status');
 const editorState=document.getElementById('guide-editor-state');
@@ -98,7 +90,7 @@ function markEditorDirty(){
   editorState.textContent='작성 중';
   editorState.classList.remove('success');
   editorState.classList.add('soft');
-  editorStatus.textContent='입력한 내용과 선택은 이 페이지에서만 유지됩니다.';
+  editorStatus.textContent='입력한 내용을 미리보기에서 확인해 보세요.';
   updatePreview();
 }
 form.noValidate=true;
@@ -113,10 +105,10 @@ form.addEventListener('submit',event=>{
     form.reportValidity();
     return;
   }
-  editorState.textContent='저장 완료';
+  editorState.textContent='확인 완료';
   editorState.classList.remove('soft');
   editorState.classList.add('success');
-  editorStatus.textContent='입력한 자기소개서를 예제 안에 저장했습니다.';
+  editorStatus.textContent='입력한 내용을 확인했습니다.';
 });
 form.addEventListener('reset',()=>queueMicrotask(()=>{showEditorTab(editorTabs[0]);markEditorDirty();}));
 updatePreview();
@@ -141,7 +133,7 @@ function showInterviewDetail(id){
   const prepare=document.getElementById('guide-prepare-interview');
   prepare.textContent=selected.has(id)?'선택 해제':'이 면접 선택';
   prepare.setAttribute('aria-pressed',String(selected.has(id)));
-  document.getElementById('guide-interview-status').textContent='선택한 면접은 ‘선택한 면접’ 탭에서 모아 봅니다.';
+  document.getElementById('guide-interview-status').textContent='관심 있는 면접을 선택해 목록에 모아 두세요.';
 }
 function renderInterviews(restoreId){
   const query=searchInput.value.trim().toLowerCase();
