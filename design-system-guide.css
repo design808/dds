@@ -1,0 +1,111 @@
+.dds-guide { font-family: var(--font-sans); font-size: var(--type-body-1-reading-size); line-height: var(--type-body-1-reading-line-height); letter-spacing: var(--type-body-1-reading-tracking); }
+.dds-guide :is(h1,h2,h3,p,figure,ol) { margin: 0; }
+.dds-guide :is(h1,h2,h3,p) { word-break: keep-all; overflow-wrap: anywhere; }
+.dds-guide :is(a,button,input):focus-visible { outline: 1px solid var(--primary); outline-offset: 0; }
+.dds-guide .guide-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding: var(--space-5) max(var(--space-6),calc((100vw - 1120px)/2)); border-bottom: 1px solid var(--border); background: var(--background); }
+.dds-guide .guide-brand { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); min-width: 0; }
+.dds-guide .guide-brand span { padding-left: var(--space-4); border-left: 1px solid var(--border); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-bold); color: var(--text-secondary); }
+.dds-guide .guide-header-actions { display: flex; align-items: center; gap: var(--space-3); flex-shrink: 0; }
+.dds-guide .guide-header .icon-btn { width: 40px; height: 40px; }
+.dds-guide .guide-header .icon { width: 20px; height: 20px; }
+.dds-guide #guide-main { max-width: 1120px; min-height: 0; margin: auto; padding: var(--space-12) var(--space-6) var(--space-16); }
+.dds-guide #guide-main:focus { outline: none; }
+.dds-guide .guide-intro { padding: var(--space-5) 0 var(--space-12); }
+.dds-guide h1 { font-size: var(--type-display-2-size); line-height: var(--type-display-2-line-height); font-weight: var(--type-display-2-weight); letter-spacing: var(--type-display-2-tracking); color: var(--text-strong); }
+.dds-guide .guide-intro > p { max-width: 800px; margin-top: var(--space-5); }
+.dds-guide .guide-lead { font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line-height); letter-spacing: var(--type-heading-2-tracking); color: var(--text-strong); }
+.dds-guide .guide-intro > p:not(.guide-lead) { color: var(--text-secondary); }
+.dds-guide .guide-contents { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); margin-top: var(--space-8); }
+.dds-guide .guide-contents a,.dds-guide .guide-steps a,.dds-guide .guide-component-list a,.dds-guide .guide-footer a { font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-medium); text-decoration: underline; text-underline-offset: 4px; }
+.dds-guide .guide-section { padding-block: var(--space-12); border-top: 1px solid var(--border); scroll-margin-top: var(--space-6); }
+.dds-guide .guide-section-heading { max-width: 800px; margin-bottom: var(--space-8); }
+.dds-guide h2 { font-size: var(--type-heading-1-size); line-height: var(--type-heading-1-line-height); font-weight: var(--type-heading-1-weight); letter-spacing: var(--type-heading-1-tracking); color: var(--text-strong); }
+.dds-guide .guide-section-heading p { margin-top: var(--space-3); color: var(--text-secondary); }
+.dds-guide .guide-section > p { margin-top: var(--space-5); max-width: 840px; }
+.dds-guide .guide-same-action { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-4); margin-bottom: var(--space-6); }
+.dds-guide .guide-same-action > div { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); padding: var(--space-6); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.dds-guide .guide-same-action span { color: var(--text-secondary); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); }
+.dds-guide .guide-comparison { margin-top: var(--space-8); }
+.dds-guide .guide-comparison table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: var(--type-body-2-reading-size); line-height: var(--type-body-2-reading-line-height); }
+.dds-guide .guide-comparison th,.dds-guide .guide-comparison td { padding: var(--space-4); border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+.dds-guide .guide-comparison thead th { background: var(--surface); font-weight: var(--font-weight-semibold); }
+.dds-guide .guide-comparison th:first-child { width: 22%; }
+.dds-guide .guide-comparison tbody th { font-weight: var(--font-weight-medium); }
+.dds-guide .guide-example-status:empty { display: none; }
+.dds-guide .guide-example-status { color: var(--text-secondary); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
+.dds-guide .guide-block-figures { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-6); }
+.dds-guide .guide-block-figures figure { padding: var(--space-6); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.dds-guide .guide-block-figures svg { display: block; width: 100%; max-width: 280px; height: auto; margin: 0 auto var(--space-5); }
+.dds-guide .guide-bricks rect { fill: var(--accent); stroke: var(--brand-ink); stroke-width: 1; rx: 2; }
+.dds-guide .guide-block-figures figcaption { display: flex; align-items: baseline; justify-content: center; flex-wrap: wrap; gap: var(--space-2) var(--space-3); }
+.dds-guide .guide-block-figures figcaption strong { font-weight: var(--font-weight-semibold); }
+.dds-guide .guide-block-figures figcaption span { color: var(--text-secondary); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
+.dds-guide .guide-structure { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-6) var(--space-8); padding: 0; margin-top: var(--space-8); list-style: none; counter-reset: guide-part; }
+.dds-guide .guide-structure li { position: relative; padding-left: var(--space-8); counter-increment: guide-part; min-width: 0; }
+.dds-guide .guide-structure li::before { content: counter(guide-part); position: absolute; left: 0; top: 0; color: var(--text-tertiary); font-weight: var(--font-weight-medium); }
+.dds-guide h3 { font-size: var(--type-headline-1-size); line-height: var(--type-headline-1-line-height); font-weight: var(--type-headline-1-weight); letter-spacing: var(--type-headline-1-tracking); color: var(--text-strong); }
+.dds-guide .guide-structure p { margin-top: var(--space-2); color: var(--text-secondary); font-size: var(--type-body-2-reading-size); line-height: var(--type-body-2-reading-line-height); }
+.dds-guide code { font-family: var(--font-sans); font-size: var(--type-code-size); line-height: var(--type-code-line-height); letter-spacing: var(--type-code-tracking); }
+.dds-guide .guide-component-list { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
+.dds-guide .guide-component-list > span { color: var(--text-tertiary); }
+.dds-guide .guide-composer { padding: var(--space-6); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.dds-guide .guide-composer-tabs { display: block; margin-bottom: var(--space-6); }
+.dds-guide .guide-composer-tabs .segmented { display: inline-flex; width: max-content; max-width: 100%; border-radius: var(--radius-md); padding: var(--space-1); background: var(--muted); }
+.dds-guide .guide-composer-tabs .segmented button { min-height: var(--control-height-sm); padding: var(--space-2) var(--space-4); border: 0; border-radius: var(--radius-sm); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-medium); color: var(--text-secondary); }
+.dds-guide .guide-composer-tabs .segmented button[aria-selected=true] { background: var(--background); color: var(--text-strong); box-shadow: var(--shadow-sm); }
+.dds-guide .guide-example-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--space-8); align-items: start; }
+.dds-guide .guide-example-grid > * { min-width: 0; }
+.dds-guide .guide-example-card { display: grid; width: 100%; max-width: none; gap: var(--space-5); padding: var(--space-6); background: var(--background); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.dds-guide .guide-card-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-3); }
+.dds-guide .guide-example-card h3 { font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line-height); font-weight: var(--type-heading-2-weight); letter-spacing: var(--type-heading-2-tracking); }
+.dds-guide .field { width: 100%; max-width: none; display: grid; gap: var(--space-2); }
+.dds-guide .field label { display: block; font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--type-label-1-weight); margin: 0; }
+.dds-guide .field input { width: 100%; max-width: 100%; margin: 0; }
+.dds-guide .field input:focus-visible { border-color: var(--primary); border-width: 1px; outline: 0; }
+.dds-guide .guide-example-card .btn { justify-self: start; }
+.dds-guide .guide-form-status { color: var(--text-secondary); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); min-height: var(--type-body-2-normal-line-height); }
+.dds-guide .guide-code-example pre { margin: var(--space-4) 0 0; padding: var(--space-5); background: var(--background); max-height: none; overflow-wrap: anywhere; }
+.dds-guide .guide-code-example p { margin-top: var(--space-4); color: var(--text-secondary); font-size: var(--type-body-2-reading-size); line-height: var(--type-body-2-reading-line-height); }
+.dds-guide .btn { white-space: normal; min-height: var(--control-height-md); padding: var(--space-2) var(--space-4); font-family: var(--font-sans); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-medium); letter-spacing: var(--type-label-1-tracking); }
+.dds-guide .btn.primary { font-weight: var(--font-weight-bold); }
+.dds-guide .badge { font-size: var(--type-label-2-size); line-height: var(--type-label-2-line-height); font-weight: var(--type-label-2-weight); }
+.dds-guide .guide-steps { list-style: none; counter-reset: guide-step; padding: 0; }
+.dds-guide .guide-steps li { position: relative; padding: var(--space-6) 0 var(--space-6) var(--space-10); border-bottom: 1px solid var(--border); counter-increment: guide-step; }
+.dds-guide .guide-steps li:first-child { padding-top: 0; }
+.dds-guide .guide-steps li:first-child::before { top: 0; }
+.dds-guide .guide-steps li::before { content: counter(guide-step); position: absolute; left: 0; top: var(--space-6); font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line-height); font-weight: var(--font-weight-semibold); color: var(--text-tertiary); }
+.dds-guide .guide-steps p { margin-top: var(--space-2); max-width: 760px; color: var(--text-secondary); }
+.dds-guide .guide-steps a { display: inline-block; margin-top: var(--space-3); }
+.dds-guide .guide-apply-note { color: var(--text-secondary); }
+.dds-guide .guide-section > .btn { margin-top: var(--space-6); }
+.dds-guide .guide-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-4); max-width: 1072px; margin: 0 auto; padding: var(--space-6) 0; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
+@media (max-width: 767px) {
+  .dds-guide .guide-header { padding: var(--space-4) var(--space-5); gap: var(--space-3); }
+  .dds-guide .guide-brand span { display: none; }
+  .dds-guide .guide-header-actions { gap: var(--space-1); }
+  .dds-guide .guide-header-actions .btn { padding-inline: var(--space-2); font-size: var(--type-label-2-size); line-height: var(--type-label-2-line-height); }
+  .dds-guide .guide-header .brand-logo { width: 145px; }
+  .dds-guide #guide-main { padding: var(--space-8) var(--space-5) var(--space-10); }
+  .dds-guide .guide-intro { padding: var(--space-3) 0 var(--space-8); }
+  .dds-guide h1 { font-size: var(--type-title-1-size); line-height: var(--type-title-1-line-height); letter-spacing: var(--type-title-1-tracking); }
+  .dds-guide .guide-lead { font-size: var(--type-headline-1-size); line-height: var(--type-headline-1-line-height); letter-spacing: var(--type-headline-1-tracking); }
+  .dds-guide .guide-contents { gap: var(--space-4) var(--space-5); }
+  .dds-guide .guide-section { padding-block: var(--space-8); }
+  .dds-guide .guide-section-heading { margin-bottom: var(--space-6); }
+  .dds-guide .guide-same-action { grid-template-columns: 1fr; gap: var(--space-3); }
+  .dds-guide .guide-same-action > div { flex-direction: row; justify-content: space-between; padding: var(--space-4); }
+  .dds-guide .guide-comparison { overflow-x: auto; }
+  .dds-guide .guide-comparison table { min-width: 600px; }
+  .dds-guide .guide-block-figures { grid-template-columns: 1fr; gap: var(--space-4); }
+  .dds-guide .guide-block-figures figure { padding: var(--space-5); }
+  .dds-guide .guide-structure { grid-template-columns: 1fr; gap: var(--space-6); }
+  .dds-guide .guide-composer { padding: var(--space-4); }
+  .dds-guide .guide-example-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .dds-guide .guide-example-card { padding: var(--space-5); }
+  .dds-guide .guide-steps li { padding-left: var(--space-8); }
+  .dds-guide .guide-footer { margin-inline: var(--space-5); }
+}
+@media (max-width: 359px) {
+  .dds-guide .guide-header { flex-wrap: wrap; }
+  .dds-guide .guide-header-actions { margin-left: auto; }
+}

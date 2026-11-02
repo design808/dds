@@ -201,6 +201,15 @@
 
 /* Documentation rhythm. Scoped to the DDS workspace; service examples keep
    their own layout, type, color and component dimensions. */
+.overview-heading .overview-guide-link {
+  min-height: var(--control-height-md);
+  padding: 10px 16px;
+  font-family: var(--font-sans);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--type-label-1-tracking);
+}
 .workspace > #main {
   --doc-section-gap: var(--space-12);
   --doc-subsection-gap: var(--space-8);

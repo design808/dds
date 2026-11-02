@@ -1,8 +1,8 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=43bc41b75b0a9e31';
-import {icon} from './icons.js?v=43bc41b75b0a9e31';
-import {formatHTML} from './format-html.js?v=43bc41b75b0a9e31';
-import {componentContract} from './component-contracts.js?v=43bc41b75b0a9e31';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=43bc41b75b0a9e31';
+import {components, groups, patterns, foundations} from './catalog.js?v=0420b0edec83fe4c';
+import {icon} from './icons.js?v=0420b0edec83fe4c';
+import {formatHTML} from './format-html.js?v=0420b0edec83fe4c';
+import {componentContract} from './component-contracts.js?v=0420b0edec83fe4c';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=0420b0edec83fe4c';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -32,7 +32,7 @@ export function sidebarContent(view) {
 }
 
 export function overviewContent(card) {
-  return `<section class="overview-heading"><h1>Deep Design System</h1><p>회사 서비스가 함께 사용하는 디자인 규칙, 컴포넌트와 적용 방법.</p></section>
+  return `<section class="overview-heading"><h1>Deep Design System</h1><p>회사 서비스가 함께 사용하는 디자인 규칙, 컴포넌트와 적용 방법.</p><a class="btn overview-guide-link" href="./design-system-guide.html" target="_blank" rel="noopener noreferrer" aria-label="디자인시스템이 뭔가요? (새 창)">디자인시스템이 뭔가요?</a></section>
     <div class="entry-grid">${[
       ['기반 규칙', '색상·글자·간격·접근성', '/foundations/color'],
       ['컴포넌트', '용도·규격·상태·조작·코드', '/components'],

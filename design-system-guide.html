@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="디자인시스템의 개념과 필요한 이유, 컴포넌트를 조합하는 방법을 DDS 예제로 알아봅니다.">
+  <title>디자인시스템이 뭔가요? — Deep Design System</title>
+  <link rel="icon" href="./assets/deepresume-mark.png">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('deep-theme')==='dark'?'dark':'light';}catch{document.documentElement.dataset.theme='light';}</script>
+  <link rel="preload" href="./assets/fonts/pretendard/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./tokens.css?v=0420b0edec83fe4c">
+  <link rel="stylesheet" href="./style.css?v=0420b0edec83fe4c">
+  <link rel="stylesheet" href="./brand-refinement.css?v=0420b0edec83fe4c">
+  <link rel="stylesheet" href="./custom-controls.css?v=0420b0edec83fe4c">
+  <link rel="stylesheet" href="./layout-focus.css?v=0420b0edec83fe4c">
+  <link rel="stylesheet" href="./interactions.css?v=0420b0edec83fe4c">
+  <link rel="stylesheet" href="./design-system-guide.css?v=0420b0edec83fe4c">
+  <link rel="stylesheet" href="./control-sizing.css?v=0420b0edec83fe4c">
+  <link rel="stylesheet" href="./design-settings-panel.css?v=0420b0edec83fe4c">
+  <script src="./vendor/lucide/lucide.min.js?v=0420b0edec83fe4c"></script>
+  <script type="module" src="./design-settings.js?v=0420b0edec83fe4c"></script>
+  <script type="module" src="./design-system-guide.js?v=0420b0edec83fe4c"></script>
+</head>
+<body class="dds-guide">
+  <a class="skip" href="#guide-main">본문으로 건너뛰기</a>
+  <header class="guide-header">
+    <a class="guide-brand" href="./index.html#/" aria-label="Deep Design System 살펴보기">
+      <img class="brand-logo" src="./assets/deepresume-logo.png" alt="DeepResume" width="184" height="30">
+      <span>Deep Design System</span>
+    </a>
+    <div class="guide-header-actions">
+      <a class="btn" href="./index.html#/">DDS 살펴보기</a>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="다크 모드로 전환"></button>
+    </div>
+  </header>
+
+  <main id="guide-main" tabindex="-1">
+    <section class="guide-intro" aria-labelledby="guide-title">
+      <h1 id="guide-title">디자인시스템이 뭔가요?</h1>
+      <p class="guide-lead">화면을 만들 때 함께 사용하는 <strong>디자인 규칙과 UI 부품, 사용 방법</strong>을 모아 둔 공통 기준입니다.</p>
+      <p>색상·글자·간격부터 버튼의 상태와 입력 오류 안내까지, 매번 다시 결정하는 일을 줄입니다. 디자이너와 개발자가 같은 기준으로 화면을 만들고 고칠 수 있도록 돕습니다.</p>
+      <nav class="guide-contents" aria-label="안내 목차">
+        <a href="#why">왜 필요한가요?</a>
+        <a href="#blocks">레고블록으로 이해하기</a>
+        <a href="#compose">실제로 조합해 보기</a>
+        <a href="#apply">DDS 적용하기</a>
+      </nav>
+    </section>
+
+    <section class="guide-section" id="why" aria-labelledby="why-title">
+      <div class="guide-section-heading">
+        <h2 id="why-title">왜 필요한가요?</h2>
+        <p>예를 들어, 세 화면에 ‘저장’ 버튼이 필요하다고 생각해 보세요.</p>
+      </div>
+      <div class="guide-same-action" aria-label="자기소개서, 면접 설정, 신규 서비스에서 같은 버튼 규칙을 사용하는 예">
+        <div><span>자기소개서</span><button class="btn primary" type="button" data-example-save>저장</button></div>
+        <div><span>면접 설정</span><button class="btn primary" type="button" data-example-save>저장</button></div>
+        <div><span>신규 서비스</span><button class="btn primary" type="button" data-example-save>저장</button></div>
+      </div>
+      <p>각 화면에서 색상·높이·호버·비활성 상태를 따로 만들면, 같은 행동인데도 모양과 동작이 달라집니다. 규칙이 바뀔 때는 구현과 검수도 화면별로 반복합니다.</p>
+      <p>공통 토큰과 컴포넌트를 연결한 화면은 그 기준을 함께 사용합니다. 서비스에 필요한 콘텐츠와 기능을 만드는 데 더 집중할 수 있습니다.</p>
+      <div class="table-wrap guide-comparison">
+        <table>
+          <caption class="sr-only">개별 구현과 공통 기준을 사용하는 구현의 차이</caption>
+          <thead><tr><th scope="col">작업</th><th scope="col">화면마다 정하면</th><th scope="col">공통 기준을 사용하면</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">새 입력 폼 만들기</th><td>라벨·높이·포커스·오류 배치를 다시 정합니다.</td><td>정의된 입력 규칙을 사용하고 필드와 내용을 정합니다.</td></tr>
+            <tr><th scope="row">버튼 색상 바꾸기</th><td>각 화면의 값과 상태를 찾아 수정합니다.</td><td>공통 토큰을 사용하는 범위를 함께 바꾸고 검수합니다.</td></tr>
+            <tr><th scope="row">오류 안내 추가하기</th><td>표시 위치와 문구가 구현자마다 달라집니다.</td><td>같은 형식으로 이유와 해결 방법을 안내합니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="guide-example-status" id="save-example-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="guide-section" id="blocks" aria-labelledby="blocks-title">
+      <div class="guide-section-heading">
+        <h2 id="blocks-title">컴포넌트는 레고블록과 같습니다</h2>
+        <p>같은 레고블록을 조립해 성도 만들고, 배도 만들 수 있습니다. 화면도 같은 버튼·입력창·카드를 목적에 맞게 조합해 만듭니다.</p>
+      </div>
+      <div class="guide-block-figures">
+        <figure>
+          <svg viewBox="0 0 280 160" role="img" aria-labelledby="castle-title"><title id="castle-title">같은 규격의 블록을 쌓아 만든 성</title><g class="guide-bricks">
+            <rect x="24" y="20" width="28" height="24"/><rect x="80" y="20" width="28" height="24"/><rect x="172" y="20" width="28" height="24"/><rect x="228" y="20" width="28" height="24"/>
+            <rect x="24" y="48" width="40" height="24"/><rect x="68" y="48" width="40" height="24"/><rect x="172" y="48" width="40" height="24"/><rect x="216" y="48" width="40" height="24"/>
+            <rect x="24" y="76" width="56" height="24"/><rect x="84" y="76" width="56" height="24"/><rect x="144" y="76" width="56" height="24"/><rect x="204" y="76" width="52" height="24"/>
+            <rect x="24" y="104" width="40" height="24"/><rect x="68" y="104" width="40" height="24"/><rect x="172" y="104" width="40" height="24"/><rect x="216" y="104" width="40" height="24"/>
+            <rect x="24" y="132" width="84" height="16"/><rect x="172" y="132" width="84" height="16"/>
+          </g></svg>
+          <figcaption><strong>성</strong><span>목적에 맞게 쌓은 조합</span></figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 280 160" role="img" aria-labelledby="ship-title"><title id="ship-title">같은 규격의 블록을 조합해 만든 배</title><g class="guide-bricks">
+            <rect x="136" y="20" width="16" height="24"/><rect x="136" y="48" width="16" height="24"/><rect x="136" y="76" width="16" height="24"/>
+            <rect x="92" y="48" width="40" height="24"/><rect x="48" y="76" width="40" height="24"/><rect x="92" y="76" width="40" height="24"/>
+            <rect x="156" y="48" width="40" height="24"/><rect x="156" y="76" width="40" height="24"/><rect x="200" y="76" width="40" height="24"/>
+            <rect x="24" y="104" width="56" height="24"/><rect x="84" y="104" width="56" height="24"/><rect x="144" y="104" width="56" height="24"/><rect x="204" y="104" width="52" height="24"/>
+            <rect x="52" y="132" width="56" height="16"/><rect x="112" y="132" width="56" height="16"/><rect x="172" y="132" width="56" height="16"/>
+          </g></svg>
+          <figcaption><strong>배</strong><span>같은 블록으로 만든 다른 결과</span></figcaption>
+        </figure>
+      </div>
+      <p>블록이 잘 맞물리려면 규격이 필요하듯, UI에도 공통 기준이 필요합니다. 화면의 목적과 흐름은 조립하는 사람이 정합니다.</p>
+      <ol class="guide-structure">
+        <li><h3>토큰 · 규격을 정하는 값</h3><p>색상·높이·간격 등에 이름을 붙인 값입니다. <code>--primary</code>처럼 역할로 연결합니다.</p></li>
+        <li><h3>컴포넌트 · 재사용하는 블록</h3><p>버튼, 입력창, 카드처럼 규격과 상태가 정해진 UI 단위입니다.</p></li>
+        <li><h3>패턴 · 자주 쓰는 조합</h3><p>라벨·입력·오류 안내·저장처럼 반복되는 작업 흐름을 묶습니다.</p></li>
+        <li><h3>화면 · 목적에 맞게 조립한 결과</h3><p>서비스의 콘텐츠와 업무 흐름에 맞춰 컴포넌트와 패턴을 배치합니다.</p></li>
+      </ol>
+    </section>
+
+    <section class="guide-section" id="compose" aria-labelledby="compose-title">
+      <div class="guide-section-heading">
+        <h2 id="compose-title">같은 컴포넌트로 다른 화면 만들기</h2>
+        <p>두 화면 모두 카드·입력창·버튼·배지를 사용합니다. 서비스 이름과 필드, 저장할 내용은 달라도 같은 디자인 규칙을 공유합니다.</p>
+      </div>
+      <div class="guide-component-list" aria-label="조합에 사용하는 컴포넌트"><a href="./index.html#/components/card">Card</a><span>+</span><a href="./index.html#/components/input">Input</a><span>+</span><a href="./index.html#/components/button">Button</a><span>+</span><a href="./index.html#/components/badge">Badge</a></div>
+      <div class="guide-composer">
+        <div class="tab-demo guide-composer-tabs">
+          <div class="segmented" role="tablist" aria-label="컴포넌트 조합 예제">
+            <button type="button" role="tab" id="example-coverletter" data-guide-context="coverletter" aria-selected="true" aria-controls="example-panel">자기소개서</button>
+            <button type="button" role="tab" id="example-interview" data-guide-context="interview" aria-selected="false" aria-controls="example-panel" tabindex="-1">면접</button>
+          </div>
+        </div>
+        <div class="guide-example-grid">
+          <div id="example-panel" role="tabpanel" aria-labelledby="example-coverletter">
+            <form class="document-card guide-example-card" id="guide-example-form">
+              <div class="guide-card-heading"><h3 id="example-title">자기소개서 지원정보</h3><span class="badge soft">작성 중</span></div>
+              <div class="field"><label for="example-name" id="example-name-label">자기소개서 제목</label><input id="example-name" name="documentTitle" value="서비스 기획 인턴 지원" required maxlength="80"></div>
+              <div class="field"><label for="example-job">지원 직무</label><input id="example-job" name="job" value="서비스 기획자" required maxlength="80"></div>
+              <button class="btn primary" type="submit" id="example-save">지원정보 저장</button>
+              <p class="guide-form-status" id="example-status" role="status" aria-live="polite">입력한 내용은 이 예제 안에서만 확인합니다.</p>
+            </form>
+          </div>
+          <div class="guide-code-example"><h3>같은 클래스, 다른 내용</h3><pre><code id="example-code">&lt;div class="field"&gt;
+  &lt;label for="document-title"&gt;자기소개서 제목&lt;/label&gt;
+  &lt;input id="document-title" name="documentTitle"&gt;
+&lt;/div&gt;
+
+&lt;button class="btn primary" type="submit"&gt;
+  지원정보 저장
+&lt;/button&gt;</code></pre><p>색상과 상태는 공통 클래스와 토큰으로 연결합니다. 필드 이름·데이터·저장 처리는 각 서비스가 결정합니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section" id="apply" aria-labelledby="apply-title">
+      <div class="guide-section-heading"><h2 id="apply-title">DDS는 어떻게 사용하나요?</h2><p>DDS(Deep Design System)는 딥레쥬메·딥인터뷰와 앞으로 만들 회사 서비스가 함께 사용하는 디자인 기준입니다.</p></div>
+      <ol class="guide-steps">
+        <li><h3>요소의 역할을 먼저 정합니다</h3><p>주 행동인지 보조 행동인지, 제목인지 설명인지 구분한 뒤 문서에서 사용할 토큰과 컴포넌트 규칙을 찾습니다.</p><a href="./index.html#/foundations/color">색상과 공통 규칙 보기</a></li>
+        <li><h3>프로젝트의 UI에 기준을 연결합니다</h3><p>기존 버튼·입력창에 공통 색상과 규격, 상태를 적용합니다. 기존 서비스의 이벤트·API·권한·저장 처리는 유지하면서 필요한 CSS와 마크업을 정리합니다.</p><a href="./index.html#/components">컴포넌트 규칙 보기</a></li>
+        <li><h3>실제 동작까지 확인합니다</h3><p>기본·호버·포커스·오류·비활성 상태와 모바일 배치를 확인합니다. 화면이 예뻐진 것과 저장·검증 같은 서비스 기능이 정상인지는 따로 검수합니다.</p><a href="./index.html#/handoff">개발 적용 안내 보기</a></li>
+      </ol>
+      <p class="guide-apply-note">DDS 문서의 디자인 기준과 구현 예제를 프로젝트의 UI 코드에 연결합니다. 서버 통신·권한·저장은 각 서비스의 기능에 맞게 구현하고 검수합니다. AI로 작업할 때도 프로젝트 환경과 적용 범위를 확인합니다.</p>
+      <a class="btn primary" href="./index.html#/setup">DDS 적용 설정 보기</a>
+    </section>
+  </main>
+  <footer class="guide-footer"><span>Deep Design System</span><a href="./index.html#/">DDS 살펴보기</a></footer>
+</body>
+</html>
