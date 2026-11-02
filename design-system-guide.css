@@ -22,8 +22,6 @@
 .dds-guide h2 { font-size: var(--type-heading-1-size); line-height: var(--type-heading-1-line-height); font-weight: var(--type-heading-1-weight); letter-spacing: var(--type-heading-1-tracking); color: var(--text-strong); }
 .dds-guide .guide-section-heading p { margin-top: var(--space-3); color: var(--text-secondary); }
 .dds-guide .guide-section > p { margin-top: var(--space-5); max-width: 840px; }
-.dds-guide .guide-evidence-heading { margin-bottom: var(--space-6); }
-.dds-guide .guide-evidence-heading p { margin-top: var(--space-2); color: var(--text-secondary); font-size: var(--type-body-2-reading-size); line-height: var(--type-body-2-reading-line-height); }
 .dds-guide .guide-evidence-list { display: grid; gap: var(--space-10); }
 .dds-guide .guide-evidence-case { min-width: 0; }
 .dds-guide .guide-evidence-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-5); margin-top: var(--space-4); }
@@ -36,6 +34,8 @@
 .dds-guide .guide-evidence-modal-pair .guide-evidence-image { height: auto; min-height: 0; padding: var(--space-4); background: var(--surface); }
 .dds-guide .guide-evidence-modal-pair img { width: 100%; max-height: none; }
 .dds-guide .guide-modal-crop { display: block; width: 100%; height: auto; }
+.dds-guide .guide-evidence-crop { display: block; width: auto; max-width: 100%; height: auto; flex-shrink: 0; }
+.dds-guide .guide-header-crop { display: block; width: 480px; max-width: 100%; height: auto; flex-shrink: 0; }
 .dds-guide .guide-evidence-pair figcaption { display: grid; gap: var(--space-1); padding: var(--space-4); border-top: 1px solid var(--border); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
 .dds-guide .guide-evidence-pair figcaption a { font-weight: var(--font-weight-semibold); text-decoration: underline; text-underline-offset: 3px; }
 .dds-guide .guide-evidence-pair figcaption span { color: var(--text-secondary); }

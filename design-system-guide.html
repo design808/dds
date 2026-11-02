@@ -8,18 +8,18 @@
   <link rel="icon" href="./assets/deepresume-mark.png">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('deep-theme')==='dark'?'dark':'light';}catch{document.documentElement.dataset.theme='light';}</script>
   <link rel="preload" href="./assets/fonts/pretendard/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./tokens.css?v=d44d2c1ac5d9afd6">
-  <link rel="stylesheet" href="./style.css?v=d44d2c1ac5d9afd6">
-  <link rel="stylesheet" href="./brand-refinement.css?v=d44d2c1ac5d9afd6">
-  <link rel="stylesheet" href="./custom-controls.css?v=d44d2c1ac5d9afd6">
-  <link rel="stylesheet" href="./layout-focus.css?v=d44d2c1ac5d9afd6">
-  <link rel="stylesheet" href="./interactions.css?v=d44d2c1ac5d9afd6">
-  <link rel="stylesheet" href="./design-system-guide.css?v=d44d2c1ac5d9afd6">
-  <link rel="stylesheet" href="./control-sizing.css?v=d44d2c1ac5d9afd6">
-  <link rel="stylesheet" href="./design-settings-panel.css?v=d44d2c1ac5d9afd6">
-  <script src="./vendor/lucide/lucide.min.js?v=d44d2c1ac5d9afd6"></script>
-  <script type="module" src="./design-settings.js?v=d44d2c1ac5d9afd6"></script>
-  <script type="module" src="./design-system-guide.js?v=d44d2c1ac5d9afd6"></script>
+  <link rel="stylesheet" href="./tokens.css?v=c3b380b0c099d9c1">
+  <link rel="stylesheet" href="./style.css?v=c3b380b0c099d9c1">
+  <link rel="stylesheet" href="./brand-refinement.css?v=c3b380b0c099d9c1">
+  <link rel="stylesheet" href="./custom-controls.css?v=c3b380b0c099d9c1">
+  <link rel="stylesheet" href="./layout-focus.css?v=c3b380b0c099d9c1">
+  <link rel="stylesheet" href="./interactions.css?v=c3b380b0c099d9c1">
+  <link rel="stylesheet" href="./design-system-guide.css?v=c3b380b0c099d9c1">
+  <link rel="stylesheet" href="./control-sizing.css?v=c3b380b0c099d9c1">
+  <link rel="stylesheet" href="./design-settings-panel.css?v=c3b380b0c099d9c1">
+  <script src="./vendor/lucide/lucide.min.js?v=c3b380b0c099d9c1"></script>
+  <script type="module" src="./design-settings.js?v=c3b380b0c099d9c1"></script>
+  <script type="module" src="./design-system-guide.js?v=c3b380b0c099d9c1"></script>
 </head>
 <body class="dds-guide">
   <a class="skip" href="#guide-main">본문으로 건너뛰기</a>
@@ -52,10 +52,6 @@
         <h2 id="why-title">왜 필요한가요?</h2>
         <p>화면마다 입력창 모양이 다르고 팝업의 닫는 방법도 다르면 사용하기 불편합니다. 개발할 때도 같은 요소를 매번 새로 만들고, 수정할 곳을 화면별로 찾아야 합니다.</p>
       </div>
-      <div class="guide-evidence-heading">
-        <h3>기존 서비스에서 확인한 차이</h3>
-        <p>딥레쥬메 운영 화면에서 확인한 예입니다. 2026.11.02 기준입니다.</p>
-      </div>
       <div class="guide-evidence-list">
         <article class="guide-evidence-case" aria-labelledby="evidence-input-title">
           <h3 id="evidence-input-title">같은 제목 입력창인데 테두리 규격이 다릅니다</h3>
@@ -75,15 +71,57 @@
           <h3 id="evidence-modal-title">모달의 기본 구성도 화면마다 다릅니다</h3>
           <div class="guide-evidence-pair guide-evidence-modal-pair">
             <figure>
-              <div class="guide-evidence-image"><img src="./assets/guide-audit/dr-consulting-choice-modal.jpg" alt="컨설팅 항목 선택 모달. 상단 닫기 아이콘, 구분선으로 나뉜 목록과 하단 버튼 영역." width="481" height="686"></div>
+              <div class="guide-evidence-image"><svg class="guide-modal-crop" viewBox="2 2 473 724" width="473" height="724" role="img" aria-labelledby="consulting-modal-capture-title"><title id="consulting-modal-capture-title">컨설팅 항목 선택 모달. 상단 닫기 아이콘, 구분선으로 나뉜 목록과 하단 버튼 영역.</title><image href="./assets/guide-audit/dr-consulting-choice-modal.jpg?v=2" width="477" height="728"/></svg></div>
               <figcaption><a href="https://www.deepresume.kr/consultant/profile" target="_blank" rel="noopener noreferrer">컨설팅 항목 선택</a><span>상단 닫기 아이콘 · 본문과 버튼 영역 구분</span></figcaption>
             </figure>
             <figure>
-              <div class="guide-evidence-image"><svg class="guide-modal-crop" viewBox="484 289 518 332" width="518" height="332" role="img" aria-labelledby="experience-modal-capture-title"><title id="experience-modal-capture-title">경험리스트 선택 모달. 닫기 아이콘 없이 설명 아래에 세 개의 버튼을 세로로 배치.</title><image href="./assets/guide-audit/dr-experience-choice-context.png" width="1499" height="910"/></svg></div>
+              <div class="guide-evidence-image"><svg class="guide-modal-crop" viewBox="488 293 510 324" width="510" height="324" role="img" aria-labelledby="experience-modal-capture-title"><title id="experience-modal-capture-title">경험리스트 선택 모달. 닫기 아이콘 없이 설명 아래에 세 개의 버튼을 세로로 배치.</title><image href="./assets/guide-audit/dr-experience-choice-context.png" width="1499" height="910"/></svg></div>
               <figcaption><a href="https://www.deepresume.kr/coverletter/info" target="_blank" rel="noopener noreferrer">경험리스트 선택</a><span>닫기 아이콘 없음 · 본문 안에 버튼 배치</span></figcaption>
             </figure>
           </div>
           <p>컨설팅 모달은 닫기 아이콘과 구분선이 있는 틀을 쓰고, 경험리스트 모달은 설명과 버튼을 한 영역에 배치합니다. 내용에 따라 목록이나 버튼 수는 달라질 수 있습니다. 그래도 제목과 본문 사이의 여백, 버튼 스타일, 닫기 방식은 모달의 용도별로 정해 둘 필요가 있습니다.</p>
+        </article>
+        <article class="guide-evidence-case" aria-labelledby="evidence-selection-title">
+          <h3 id="evidence-selection-title">선택 상태를 표시하는 색과 모양이 다릅니다</h3>
+          <div class="guide-evidence-pair">
+            <figure>
+              <div class="guide-evidence-image"><svg class="guide-evidence-crop" viewBox="204 214 340 70" width="340" height="70" role="img" aria-labelledby="notice-selection-capture-title"><title id="notice-selection-capture-title">공지사항에서 선택한 항목을 주황색 밑줄과 연한 배경으로 표시한 탭.</title><image href="./assets/guide-audit/dr-notice-table-context.jpg" width="1485" height="846"/></svg></div>
+              <figcaption><a href="https://www.deepresume.kr/notice/notice" target="_blank" rel="noopener noreferrer">공지사항</a><span>주황색 밑줄 · 연한 배경</span></figcaption>
+            </figure>
+            <figure>
+              <div class="guide-evidence-image"><svg class="guide-evidence-crop" viewBox="216 375 305 60" width="305" height="60" role="img" aria-labelledby="recruitment-selection-capture-title"><title id="recruitment-selection-capture-title">채용공고에서 선택한 출처를 검정 채움과 흰 글자로 표시한 알약 형태 필터.</title><image href="./assets/guide-audit/dr-recruitment-controls-context.jpg" width="1485" height="846"/></svg></div>
+              <figcaption><a href="https://www.deepresume.kr/notice/contents/recruitment" target="_blank" rel="noopener noreferrer">채용공고</a><span>검정색 채움 · 알약 형태</span></figcaption>
+            </figure>
+          </div>
+          <p>선택한 항목을 공지사항에서는 주황 밑줄로, 채용공고에서는 검정 채움으로 표시합니다. 용도에 따라 다른 종류를 쓸 수 있지만, 탭과 필터의 사용 기준을 정해 두면 새 화면을 만들 때도 같은 기준으로 선택할 수 있습니다.</p>
+        </article>
+        <article class="guide-evidence-case" aria-labelledby="evidence-table-title">
+          <h3 id="evidence-table-title">표의 제목 행도 다른 기준으로 만듭니다</h3>
+          <div class="guide-evidence-pair guide-evidence-table-pair">
+            <figure>
+              <div class="guide-evidence-image"><svg class="guide-header-crop" viewBox="210 311 480 47" width="480" height="47" role="img" aria-labelledby="notice-header-capture-title"><title id="notice-header-capture-title">공지사항 표의 회색 배경 제목 행 앞부분.</title><image href="./assets/guide-audit/dr-notice-table-context.jpg" width="1485" height="846"/></svg></div>
+              <figcaption><a href="https://www.deepresume.kr/notice/notice" target="_blank" rel="noopener noreferrer">공지사항</a><span>회색 배경으로 제목 행 구분</span></figcaption>
+            </figure>
+            <figure>
+              <div class="guide-evidence-image"><svg class="guide-header-crop" viewBox="0 0 480 50" width="480" height="50" role="img" aria-labelledby="consulting-header-capture-title"><title id="consulting-header-capture-title">컨설팅 현황 표의 흰 배경, 굵은 열 제목과 위아래 경계선이 보이는 제목 행 앞부분.</title><image href="./assets/guide-audit/dr-consulting-table-header.jpg" width="770" height="50"/></svg></div>
+              <figcaption><a href="https://www.deepresume.kr/consultant/consulting" target="_blank" rel="noopener noreferrer">컨설팅 현황</a><span>흰 배경 · 굵은 글자 · 위아래 경계선</span></figcaption>
+            </figure>
+          </div>
+          <p>공지사항은 회색 채움으로 제목 행을 구분하고, 컨설팅 현황은 글자 굵기와 위아래 선을 사용합니다. 표 제목 행의 배경, 경계, 높이를 공통 규격으로 정하면 목록마다 새로운 스타일을 만들지 않아도 됩니다.</p>
+        </article>
+        <article class="guide-evidence-case" aria-labelledby="evidence-pagination-title">
+          <h3 id="evidence-pagination-title">페이지 이동 요소의 기본 형태가 다릅니다</h3>
+          <div class="guide-evidence-pair">
+            <figure>
+              <div class="guide-evidence-image"><svg class="guide-evidence-crop" viewBox="500 472 280 60" width="280" height="60" role="img" aria-labelledby="notice-pagination-capture-title"><title id="notice-pagination-capture-title">공지사항의 테두리 없는 숫자와 화살표 페이지 이동.</title><image href="./assets/guide-audit/dr-notice-pagination-context.jpg" width="1266" height="712"/></svg></div>
+              <figcaption><a href="https://www.deepresume.kr/notice/notice" target="_blank" rel="noopener noreferrer">공지사항</a><span>숫자 · 테두리 없는 화살표</span></figcaption>
+            </figure>
+            <figure>
+              <div class="guide-evidence-image"><svg class="guide-evidence-crop" viewBox="500 486 280 60" width="280" height="60" role="img" aria-labelledby="news-pagination-capture-title"><title id="news-pagination-capture-title">채용 뉴스의 현재와 전체 페이지 표시, 테두리 있는 둥근 다음 버튼.</title><image href="./assets/guide-audit/dr-news-pagination-context.jpg" width="1266" height="712"/></svg></div>
+              <figcaption><a href="https://www.deepresume.kr/notice/contents/news" target="_blank" rel="noopener noreferrer">채용 NEWS</a><span>현재/전체 페이지 · 둥근 이동 버튼</span></figcaption>
+            </figure>
+          </div>
+          <p>목록에서 페이지를 옮기는 UI도 숫자를 나열하는 방식과 현재 페이지만 표시하는 방식으로 나뉩니다. 두 종류의 사용 조건을 정하고, 버튼 크기·아이콘·선택 표시를 공통 규격에 맞추면 화면마다 따로 구현하는 일을 줄일 수 있습니다.</p>
         </article>
       </div>
       <div class="guide-maintenance-example">
