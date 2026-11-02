@@ -1,3 +1,91 @@
+/* First paint mirrors the document shell while modules load. */
+.dds-loading .skeleton,
+.dds-loading-nav .skeleton {
+  margin: 0;
+}
+.dds-loading-heading {
+  padding: 30px 0 42px;
+}
+.dds-loading-title {
+  width: min(460px, 78%);
+  height: 52px;
+  margin-bottom: 22px !important;
+}
+.dds-loading-description {
+  width: min(520px, 92%);
+  height: 20px;
+}
+.dds-loading-entries,
+.dds-loading-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.dds-loading-entries {
+  margin-bottom: var(--space-12);
+}
+.dds-loading-entry {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+}
+.dds-loading-entry .skeleton:first-child {
+  width: 55%;
+  height: 20px;
+  margin-bottom: 14px;
+}
+.dds-loading-section {
+  width: 170px;
+  height: 24px;
+  margin-bottom: var(--space-5) !important;
+}
+.dds-loading-preview {
+  height: 190px;
+  border-radius: 10px;
+}
+.dds-loading-caption {
+  width: 45%;
+  height: 18px;
+  margin-top: var(--space-4) !important;
+}
+.dds-loading-nav-title {
+  width: 145px;
+  height: 14px;
+  margin-bottom: 30px !important;
+}
+.dds-loading-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 0 12px;
+}
+.dds-loading-nav-group .skeleton {
+  height: 14px;
+  width: 75%;
+}
+.dds-loading-nav-group .skeleton.short {
+  width: 55%;
+}
+.dds-loading-nav-label {
+  width: 85px;
+  height: 10px;
+  margin: 36px 12px 22px !important;
+}
+@media (min-width: 1600px) {
+  .dds-loading-preview {height: 220px;}
+}
+@media (max-width: 1020px) {
+  .dds-loading-entries {grid-template-columns: 1fr;}
+  .dds-loading-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  .dds-loading-card:last-child {display: none;}
+}
+@media (max-width: 767px) {
+  .dds-loading-heading {padding: 24px 0 30px;}
+  .dds-loading-title {height: 40px;}
+  .dds-loading-preview {height: 160px;}
+  .dds-loading-entry {padding: 20px 24px;}
+}
+
 /* DDS navigation uses action labels; captions remain supporting information. */
 .topbar {
   gap: var(--space-8);

@@ -1,4 +1,4 @@
-import {PRIMARY_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=bbbac1e5a90800cd';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=2ff3073e7b3f0c6d';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {
@@ -27,7 +27,27 @@ function iconButton(label, iconName, className) {
   return button;
 }
 
-function colorField(key, label) {
+function swatch(key, preset) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'dds-settings-preset';
+  button.dataset.ddsColorKey = key;
+  button.dataset.ddsPreset = preset.value;
+  button.style.setProperty('--swatch-color', preset.value);
+  // The selection mark remains visible on light amber as well as dark swatches.
+  const rgb = [1,3,5].map(i => parseInt(preset.value.slice(i,i+2),16)/255).map(v => v<=.04045 ? v/12.92 : ((v+.055)/1.055)**2.4);
+  const luminance = rgb.reduce((sum,v,i) => sum+v*[.2126,.7152,.0722][i],0);
+  button.style.setProperty('--swatch-mark', luminance>.35 ? '#172238' : '#FFFFFF');
+  button.setAttribute('aria-pressed', 'false');
+  const name = (preset.name||preset.label) + ' ' + preset.value + ' 색상 사용';
+  button.setAttribute('aria-label', name);
+  button.setAttribute('data-tooltip', name);
+  const check = createIcon('Check');
+  if (check) button.append(check);
+  return button;
+}
+
+function colorField(key, label, withPresets=false) {
   const field = document.createElement('div');
   field.className = 'dds-settings-field';
   const id = 'dds-settings-' + key;
@@ -37,6 +57,14 @@ function colorField(key, label) {
       <input id="${id}" type="text" data-dds-color="${key}" maxlength="7" pattern="#?[0-9a-fA-F]{6}" spellcheck="false" autocomplete="off" autocapitalize="characters" aria-describedby="${id}-error">
     </div>
     <p class="dds-settings-error" id="${id}-error" aria-live="polite" hidden></p>`;
+  if (withPresets) {
+    const presets = document.createElement('div');
+    presets.className = 'dds-settings-presets';
+    presets.setAttribute('role','group');
+    presets.setAttribute('aria-label',label.replace(' HEX','')+' 색상 프리셋');
+    for (const preset of PRIMARY_PRESETS) presets.append(swatch(key,preset));
+    field.querySelector('label').after(presets);
+  }
   return field;
 }
 
@@ -47,6 +75,10 @@ function fontField(key, label) {
     <select id="dds-settings-${key}" data-dds-setting="${key}" data-control-size="sm" aria-label="${label}">
       ${FONTS.map(font => `<option value="${font.value}">${font.name}</option>`).join('')}
     </select>`;
+  for (const option of field.querySelectorAll('option')) {
+    const font = FONT_OPTIONS.find(font => font.value===option.value);
+    if (font?.family) option.style.fontFamily = font.family;
+  }
   return field;
 }
 
@@ -86,18 +118,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   presets.setAttribute('role', 'group');
   presets.setAttribute('aria-label', '브랜드 색상 프리셋');
   for (const preset of PRESETS) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'dds-settings-preset btn sm';
-    button.dataset.ddsPreset = preset.value;
-    button.setAttribute('aria-pressed', 'false');
-    button.setAttribute('aria-label', preset.name + ' ' + preset.value + ' 색상 사용');
-    const dot = document.createElement('span');
-    dot.className = 'dds-settings-color-dot';
-    dot.setAttribute('aria-hidden', 'true');
-    dot.style.background = preset.value;
-    button.append(dot, document.createTextNode(preset.name));
-    presets.append(button);
+    presets.append(swatch('primary',preset));
   }
   brandSection.append(presets, colorField('primary', 'Primary HEX'));
 
@@ -113,10 +134,30 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   functionalSection.className = 'dds-settings-section dds-settings-functional';
   functionalSection.id = 'dds-settings-functional';
   functionalSection.setAttribute('aria-label', '기능별 색상');
+  const combinations = document.createElement('div');
+  combinations.className = 'dds-settings-combinations';
+  combinations.setAttribute('role','group');
+  combinations.setAttribute('aria-label','기능별 색상 조합');
+  for (const preset of FUNCTIONAL_PRESETS) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'dds-settings-combination';
+    button.dataset.ddsCombination = preset.id;
+    button.setAttribute('aria-label',preset.label+' 조합 사용');
+    button.setAttribute('data-tooltip',preset.label+' 조합 사용');
+    button.setAttribute('aria-pressed','false');
+    for (const key of ['secondary','accent','positive']) {
+      const color = document.createElement('span');
+      color.style.background = preset[key];
+      button.append(color);
+    }
+    combinations.append(button);
+  }
   functionalSection.append(
-    colorField('secondary', '탐색 HEX'),
-    colorField('accent', 'AI HEX'),
-    colorField('positive', '완료 HEX')
+    combinations,
+    colorField('secondary', '탐색 HEX',true),
+    colorField('accent', 'AI HEX',true),
+    colorField('positive', '완료 HEX',true)
   );
 
   const fontsSection = document.createElement('section');
@@ -200,8 +241,12 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
       const preview = host.querySelector('[data-color-preview="' + key + '"]');
       preview.style.background = settings[key];
     }
-    for (const button of presets.querySelectorAll('[data-dds-preset]')) {
-      button.setAttribute('aria-pressed', String(button.dataset.ddsPreset === settings.primary.toUpperCase()));
+    for (const button of host.querySelectorAll('[data-dds-preset]')) {
+      button.setAttribute('aria-pressed', String(button.dataset.ddsPreset === settings[button.dataset.ddsColorKey].toUpperCase()));
+    }
+    for (const button of combinations.children) {
+      const preset = FUNCTIONAL_PRESETS.find(preset=>preset.id===button.dataset.ddsCombination);
+      button.setAttribute('aria-pressed',String(['secondary','accent','positive'].every(key=>settings[key]===preset[key])));
     }
     for (const radio of modeSection.querySelectorAll('input')) radio.checked = radio.value === settings.colorMode;
     functionalSection.hidden = settings.colorMode !== 'functional';
@@ -266,9 +311,14 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     target.focus({preventScroll: true});
   }, {signal});
 
-  presets.addEventListener('click', event => {
+  host.addEventListener('click', event => {
     const button = event.target.closest('[data-dds-preset]');
-    if (button) updateSettings({primary: button.dataset.ddsPreset});
+    if (button) updateSettings({[button.dataset.ddsColorKey]: button.dataset.ddsPreset});
+    const combination = event.target.closest('[data-dds-combination]');
+    if (combination) {
+      const preset = FUNCTIONAL_PRESETS.find(preset=>preset.id===combination.dataset.ddsCombination);
+      updateSettings({secondary:preset.secondary,accent:preset.accent,positive:preset.positive});
+    }
   }, {signal});
   host.addEventListener('change', event => {
     if (syncing) return;

@@ -1,0 +1,64 @@
+/* Copyright 2024 The PAPERLOGY Authors. SIL Open Font License 1.1; see LICENSE. */
+@font-face {
+  font-family: 'DDS Paperlogy';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('./PaperlogyJP-1Thin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DDS Paperlogy';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('./PaperlogyJP-2ExtraLight.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DDS Paperlogy';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('./PaperlogyJP-3Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DDS Paperlogy';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./PaperlogyJP-4Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DDS Paperlogy';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./PaperlogyJP-5Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DDS Paperlogy';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./PaperlogyJP-6SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DDS Paperlogy';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./PaperlogyJP-7Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DDS Paperlogy';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('./PaperlogyJP-8ExtraBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DDS Paperlogy';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('./PaperlogyJP-9Black.woff2') format('woff2');
+}

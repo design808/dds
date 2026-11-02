@@ -1,6 +1,8 @@
 /* User-selected fonts and colors; component geometry remains authored by DDS. */
 @import url('./assets/fonts/ibm-plex-kr/fontfaces.css');
 @import url('./assets/fonts/noto-serif-kr/fontfaces.css');
+@import url('./assets/fonts/wanted-sans/fontfaces.css');
+@import url('./assets/fonts/paperlogy/fontfaces.css');
 @font-face {
   font-family: 'DDS SUITE';
   font-style: normal;

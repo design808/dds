@@ -1,0 +1,22 @@
+{
+  "family": "Wanted Sans Variable",
+  "cssFamily": "DDS Wanted Sans",
+  "version": "1.0.3",
+  "file": "WantedSansVariable.woff2",
+  "bytes": 1289292,
+  "sha256": "4259e7e9a172e634c2cb419d793b84148990316341e910443e5d10965b2c8f16",
+  "format": "woff2",
+  "style": "normal",
+  "weight": [
+    400,
+    1000
+  ],
+  "license": "SIL Open Font License 1.1",
+  "source": "https://raw.githubusercontent.com/wanteddev/wanted-sans/02c9b822349c188ada95f9e2d90c2ed18f853235/packages/wanted-sans/fonts/webfonts/variable/complete/woff2/WantedSansVariable.woff2",
+  "licenseSource": "https://raw.githubusercontent.com/wanteddev/wanted-sans/02c9b822349c188ada95f9e2d90c2ed18f853235/OFL.txt",
+  "repository": "https://github.com/wanteddev/wanted-sans",
+  "commit": "02c9b822349c188ada95f9e2d90c2ed18f853235",
+  "reference": "https://github.com/wanteddev/wanted-sans/blob/02c9b822349c188ada95f9e2d90c2ed18f853235/packages/wanted-sans/documentation/webfonts/README.md",
+  "modified": false,
+  "scope": "DDS browser display preference; not the default DDS typeface"
+}

@@ -1,0 +1,8 @@
+/* Copyright (c) 2024 Wanted Lab, Inc. SIL Open Font License 1.1; see LICENSE. */
+@font-face {
+  font-family: 'DDS Wanted Sans';
+  font-style: normal;
+  font-weight: 400 1000;
+  font-display: swap;
+  src: url('./WantedSansVariable.woff2') format('woff2');
+}

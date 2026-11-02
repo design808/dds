@@ -1,0 +1,91 @@
+{
+  "family": "Paperlogy",
+  "cssFamily": "DDS Paperlogy",
+  "version": "1.001 (Japanese-inclusive release)",
+  "format": "woff2",
+  "style": "normal",
+  "weights": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+  ],
+  "files": [
+    {
+      "file": "PaperlogyJP-1Thin.woff2",
+      "bytes": 432548,
+      "sha256": "7d82658377aa25412937c87b5d6ed3aa58ec1e49bb535ac21bac57b847bca159",
+      "weight": 100,
+      "source": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/woff2/PaperlogyJP-1Thin.woff2"
+    },
+    {
+      "file": "PaperlogyJP-2ExtraLight.woff2",
+      "bytes": 428488,
+      "sha256": "19525e3299d76b75e3a2f90bdb26729abf38bdd5d860e4505b90c4a6777c3d59",
+      "weight": 200,
+      "source": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/woff2/PaperlogyJP-2ExtraLight.woff2"
+    },
+    {
+      "file": "PaperlogyJP-3Light.woff2",
+      "bytes": 434128,
+      "sha256": "145b0a391f4dc38c3fd945257638621db2ea9a2899634256cef27519db3ab3cb",
+      "weight": 300,
+      "source": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/woff2/PaperlogyJP-3Light.woff2"
+    },
+    {
+      "file": "PaperlogyJP-4Regular.woff2",
+      "bytes": 437984,
+      "sha256": "edb8bb29b881f4acdfbee35f9aa326b93b2e7f35ddeb7144ef37523c43887e0d",
+      "weight": 400,
+      "source": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/woff2/PaperlogyJP-4Regular.woff2"
+    },
+    {
+      "file": "PaperlogyJP-5Medium.woff2",
+      "bytes": 439340,
+      "sha256": "d1248f498e65d5f2078af02c568f30384e77185dcab75f4da9ae46e1c869b789",
+      "weight": 500,
+      "source": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/woff2/PaperlogyJP-5Medium.woff2"
+    },
+    {
+      "file": "PaperlogyJP-6SemiBold.woff2",
+      "bytes": 441276,
+      "sha256": "7e542e0a80fb7553caed6b03941a4d4b116c5ef58d87ce04410f9b0b13c05457",
+      "weight": 600,
+      "source": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/woff2/PaperlogyJP-6SemiBold.woff2"
+    },
+    {
+      "file": "PaperlogyJP-7Bold.woff2",
+      "bytes": 441152,
+      "sha256": "a168166c87eaa0ff799d1b85c0bf3dd208ecd9c3ed7c19ed840bdfc2f77f05e1",
+      "weight": 700,
+      "source": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/woff2/PaperlogyJP-7Bold.woff2"
+    },
+    {
+      "file": "PaperlogyJP-8ExtraBold.woff2",
+      "bytes": 429168,
+      "sha256": "e15220393a72f489a178b785d48f2ce64911d17d9c327a54c358cc265f7c17a3",
+      "weight": 800,
+      "source": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/woff2/PaperlogyJP-8ExtraBold.woff2"
+    },
+    {
+      "file": "PaperlogyJP-9Black.woff2",
+      "bytes": 447816,
+      "sha256": "69c7f0d3c863a2936e32fa02c9d38a7fe41e4116d85821352735f3f86f19a63c",
+      "weight": 900,
+      "source": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/woff2/PaperlogyJP-9Black.woff2"
+    }
+  ],
+  "license": "SIL Open Font License 1.1",
+  "licenseSource": "https://raw.githubusercontent.com/Freesentation/paperlogy/8ef35f53b318c7ca914c52b1b382b9a8bad07a61/OFL%20license.txt",
+  "repository": "https://github.com/Freesentation/paperlogy",
+  "commit": "8ef35f53b318c7ca914c52b1b382b9a8bad07a61",
+  "reference": "https://freesentation.blog/paperlogyfont",
+  "modified": false,
+  "scope": "DDS browser display preference; not the default DDS typeface",
+  "notes": "공식 배포의 일본어 포함 웹폰트. 한글은 제작자가 제공한 2,780자 범위를 사용하며 미포함 문자는 Pretendard로 폴백한다."
+}

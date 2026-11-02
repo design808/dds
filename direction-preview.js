@@ -147,7 +147,7 @@ export async function applyDirection(doc,profile,theme='light'){
   if(!profile?.id)throw new Error('디자인 설정을 확인해 주세요.');
   const font=profile.font||'pretendard';
   const headingFont=profile.headingFont||font;
-  const families={suite:'DDS SUITE',plex:'DDS Plex KR',serif:'DDS Noto Serif KR'};
+  const families={suite:'DDS SUITE',plex:'DDS Plex KR',serif:'DDS Noto Serif KR',wanted:'DDS Wanted Sans',paperlogy:'DDS Paperlogy'};
   if(![font,headingFont].every(value=>['pretendard',...Object.keys(families)].includes(value)))throw new Error('지원하지 않는 서체입니다.');
   remember(doc);
   const root=doc.documentElement;

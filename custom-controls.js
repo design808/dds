@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=bbbac1e5a90800cd';
+import {icon} from './icons.js?v=2ff3073e7b3f0c6d';
 // Progressive enhancement: retain form values/events; replace browser-drawn controls.
 const svg=name=>icon(name==='chevron'?'down':name);
 const el=(tag,cls)=>{const x=document.createElement(tag);x.className=cls;return x;};
@@ -43,7 +43,7 @@ function show(trigger,kind,label){close();const popup=el('div','control-popup '+
 function copyControlLayout(native,wrap){for(const name of ['data-control-size','data-control-width'])if(native.hasAttribute(name))wrap.setAttribute(name,native.getAttribute(name));}
 function optionList(trigger,options,selected,onPick,searchable=false){
  const popup=show(trigger,'select-popup',labelOf(trigger));let active=-1;
- const rows=options.map((o,i)=>{const b=el('button','custom-option');b.type='button';b.id=popup.id+'-'+i;b.setAttribute('role','option');b.setAttribute('aria-selected',String(o.value===selected));b.disabled=!!o.disabled;b.tabIndex=-1;const text=el('span','');text.textContent=o.label;b.append(text);if(o.value===selected)b.insertAdjacentHTML('beforeend',svg('check'));b.onclick=()=>{onPick(o.value);close();trigger.focus();};popup.append(b);return b;});
+ const rows=options.map((o,i)=>{const b=el('button','custom-option');b.type='button';b.id=popup.id+'-'+i;b.setAttribute('role','option');b.setAttribute('aria-selected',String(o.value===selected));b.disabled=!!o.disabled;b.tabIndex=-1;const text=el('span','');text.textContent=o.label;if(o.fontFamily)text.style.fontFamily=o.fontFamily;b.append(text);if(o.value===selected)b.insertAdjacentHTML('beforeend',svg('check'));b.onclick=()=>{onPick(o.value);close();trigger.focus();};popup.append(b);return b;});
  if(!rows.length){const msg=el('p','helper');msg.textContent='검색 결과가 없습니다.';popup.append(msg);}
  const enabled=()=>rows.map((x,i)=>!x.disabled?i:-1).filter(i=>i>=0);
  const activate=i=>{if(!rows[i]||rows[i].disabled)return;active=i;rows.forEach((x,n)=>x.classList.toggle('highlighted',i===n));trigger.setAttribute('aria-activedescendant',rows[i].id);rows[i].scrollIntoView({block:'nearest'});if(!searchable)rows[i].focus();};
@@ -56,9 +56,9 @@ function selectControl(native){
  if(native.id){trigger.id=native.id;native.id+='-native';}native.hidden=true;native.tabIndex=-1;wrap.append(trigger);
  const measure=el('span','custom-select-measure');measure.setAttribute('aria-hidden','true');wrap.append(measure);
  const originalLabel=trigger.getAttribute('aria-label');
- const sync=()=>{trigger.replaceChildren();const text=el('span','');text.textContent=native.selectedOptions[0]?.textContent||'선택해 주세요';trigger.append(text);trigger.insertAdjacentHTML('beforeend',svg('chevron'));copyControlState(native,trigger,true);trigger.setAttribute('aria-label',native.getAttribute('aria-label')||trigger.labels?.[0]?.textContent.trim()||originalLabel);measure.replaceChildren(...[...native.options].map(option=>{const label=el('span','');label.textContent=option.textContent;return label;}));if(trigger.disabled&&opened?.trigger===trigger)close();};native.addEventListener('change',sync);
+ const sync=()=>{trigger.replaceChildren();const text=el('span','');const selected=native.selectedOptions[0];text.textContent=selected?.textContent||'선택해 주세요';if(selected?.style.fontFamily)text.style.fontFamily=selected.style.fontFamily;trigger.append(text);trigger.insertAdjacentHTML('beforeend',svg('chevron'));copyControlState(native,trigger,true);trigger.setAttribute('aria-label',native.getAttribute('aria-label')||trigger.labels?.[0]?.textContent.trim()||originalLabel);measure.replaceChildren(...[...native.options].map(option=>{const label=el('span','');label.textContent=option.textContent;if(option.style.fontFamily)label.style.fontFamily=option.style.fontFamily;return label;}));if(trigger.disabled&&opened?.trigger===trigger)close();};native.addEventListener('change',sync);
  watchControl(native,sync,{subtree:true,attributes:['selected','label'],reset:()=>{if(opened?.trigger===trigger)close();sync();}});
- const open=()=>{if(trigger.disabled)return;optionList(trigger,[...native.options].map(o=>({value:o.value,label:o.textContent,disabled:o.disabled||o.parentElement?.tagName==='OPTGROUP'&&o.parentElement.disabled})),native.value,value=>{native.value=value;native.dispatchEvent(new Event('change',{bubbles:true}));});};
+ const open=()=>{if(trigger.disabled)return;optionList(trigger,[...native.options].map(o=>({value:o.value,label:o.textContent,fontFamily:o.style.fontFamily,disabled:o.disabled||o.parentElement?.tagName==='OPTGROUP'&&o.parentElement.disabled})),native.value,value=>{native.value=value;native.dispatchEvent(new Event('change',{bubbles:true}));});};
  trigger.onclick=()=>opened?.trigger===trigger?close():open();trigger.onkeydown=e=>{if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();open();}};
 }
 function comboControl(input){

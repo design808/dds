@@ -1,11 +1,13 @@
-import {createSettingsStore} from './design-preferences.js?v=bbbac1e5a90800cd';
-import {applyDirection} from './direction-preview.js?v=bbbac1e5a90800cd';
-import {mountDesignSettings} from './design-settings-panel.js?v=bbbac1e5a90800cd';
-import './custom-controls.js?v=bbbac1e5a90800cd';
-import './icon-tooltips.js?v=bbbac1e5a90800cd';
+import {createSettingsStore} from './design-preferences.js?v=2ff3073e7b3f0c6d';
+import {applyDirection} from './direction-preview.js?v=2ff3073e7b3f0c6d';
+import {mountDesignSettings} from './design-settings-panel.js?v=2ff3073e7b3f0c6d';
+import {createBrandLogoSync} from './brand-logo.js?v=2ff3073e7b3f0c6d';
+import './custom-controls.js?v=2ff3073e7b3f0c6d';
+import './icon-tooltips.js?v=2ff3073e7b3f0c6d';
 
 const store=createSettingsStore(window);
 const root=document.documentElement;
+const brandLogos=createBrandLogoSync(document);
 const moduleURL=new URL(import.meta.url);
 let revision=0;
 let appliedTheme;
@@ -49,6 +51,7 @@ async function apply(){
   root.dataset.ddsSettingsReady='false';
   root.dataset.ddsHeadingFont=settings.headingFont;
   root.dataset.ddsBodyFont=settings.bodyFont;
+  brandLogos.update(settings.primary);
   try{
     const loading=applyDirection(document,profile(settings),appliedTheme);
     window.dispatchEvent(new CustomEvent('dds-design-settings-change',{detail:{settings,theme:appliedTheme}}));
