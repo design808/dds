@@ -1,5 +1,5 @@
-import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=e2c231567dd72a87';
-import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=e2c231567dd72a87';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=5b1fcd74cc0b83fe';
+import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=5b1fcd74cc0b83fe';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {
@@ -115,6 +115,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   dialog.id = 'dds-settings-dialog';
   dialog.className = 'dds-settings-dialog';
   dialog.setAttribute('aria-labelledby', 'dds-settings-title');
+  dialog.setAttribute('aria-modal', 'false');
   const heading = document.createElement('div');
   heading.className = 'dds-settings-heading dialog-heading';
   heading.innerHTML = '<h2 id="dds-settings-title">디자인 설정</h2>';
@@ -200,8 +201,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   const hueSliders = new Map([...host.querySelectorAll('[data-dds-hue]')].map(slider => [slider.dataset.ddsHue,slider]));
   const hueSelections = new Map();
   let focusBeforeOpen;
-  let bodyOverflow;
-  let pointerStartedOutside = false;
+  let restoreFocusAfterClose = false;
   let disposed = false;
   let syncing = false;
   let placementFrame;
@@ -287,53 +287,38 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     schedulePlacement();
   }
 
-  function unlockBody() {
-    if (!bodyOverflow) return;
-    if (bodyOverflow.value) document.body.style.setProperty('overflow', bodyOverflow.value, bodyOverflow.priority);
-    else document.body.style.removeProperty('overflow');
-    if (bodyOverflow.padding) document.body.style.setProperty('padding-right',bodyOverflow.padding,bodyOverflow.paddingPriority);
-    else document.body.style.removeProperty('padding-right');
-    bodyOverflow = null;
-  }
-
   function open() {
     if (dialog.open) return;
     sync();
     focusBeforeOpen = document.activeElement;
-    bodyOverflow = {value: document.body.style.getPropertyValue('overflow'), priority: document.body.style.getPropertyPriority('overflow'),padding:document.body.style.getPropertyValue('padding-right'),paddingPriority:document.body.style.getPropertyPriority('padding-right')};
-    const scrollbar = innerWidth-document.documentElement.clientWidth;
-    if (scrollbar > 0) document.body.style.setProperty('padding-right',(parseFloat(getComputedStyle(document.body).paddingRight)+scrollbar)+'px');
-    document.body.style.setProperty('overflow', 'hidden');
-    try {
-      dialog.showModal();
-      launcher.setAttribute('aria-expanded', 'true');
-      closeButton.focus({preventScroll: true});
-    } catch (error) {
-      unlockBody();
-      throw error;
-    }
+    restoreFocusAfterClose = false;
+    dialog.show();
+    launcher.setAttribute('aria-expanded', 'true');
+    closeButton.focus({preventScroll: true});
   }
 
-  function isOutside(event) {
-    const rect = dialog.getBoundingClientRect();
-    return event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+  function close() {
+    if (!dialog.open) return;
+    restoreFocusAfterClose = dialog.contains(document.activeElement);
+    dialog.close();
   }
 
   launcher.addEventListener('click', open, {signal});
-  closeButton.addEventListener('click', () => dialog.close(), {signal});
-  dialog.addEventListener('pointerdown', event => {
-    pointerStartedOutside = event.target === dialog && isOutside(event);
-  }, {signal});
-  dialog.addEventListener('click', event => {
-    if (pointerStartedOutside && event.target === dialog && isOutside(event)) dialog.close();
-    pointerStartedOutside = false;
+  closeButton.addEventListener('click', close, {signal});
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || event.defaultPrevented || !dialog.open || document.querySelector('dialog:modal')) return;
+    event.preventDefault();
+    close();
   }, {signal});
   dialog.addEventListener('close', () => {
+    if (dialog.open) return;
     launcher.setAttribute('aria-expanded', 'false');
-    unlockBody();
     schedulePlacement();
-    const target = focusBeforeOpen?.isConnected ? focusBeforeOpen : launcher;
-    target.focus({preventScroll: true});
+    if (restoreFocusAfterClose) {
+      const target = focusBeforeOpen?.isConnected ? focusBeforeOpen : launcher;
+      target.focus({preventScroll: true});
+    }
+    restoreFocusAfterClose = false;
   }, {signal});
 
   host.addEventListener('click', event => {
@@ -397,14 +382,14 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   const unsubscribe = subscribe(sync);
   return () => {
     if (disposed) return;
+    const restoreFocus = dialog.open && dialog.contains(document.activeElement);
     disposed = true;
     controller.abort();
     if (placementFrame) cancelAnimationFrame(placementFrame);
     layoutObserver?.disconnect();
     if (typeof unsubscribe === 'function') unsubscribe();
     if (dialog.open) dialog.close();
-    unlockBody();
     host.remove();
-    if (focusBeforeOpen?.isConnected && focusBeforeOpen !== launcher) focusBeforeOpen.focus({preventScroll: true});
+    if (restoreFocus && focusBeforeOpen?.isConnected) focusBeforeOpen.focus({preventScroll: true});
   };
 }
