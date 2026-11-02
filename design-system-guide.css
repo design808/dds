@@ -66,7 +66,7 @@
 .dds-guide .guide-component-list { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
 .dds-guide .guide-component-inventory > p { margin-bottom: var(--space-3); color: var(--text-secondary); font-size: var(--type-body-2-normal-size); line-height: var(--type-body-2-normal-line-height); }
 .dds-guide .guide-component-list .chip { min-height: var(--control-height-sm); font-size: var(--type-label-2-size); line-height: var(--type-label-2-line-height); font-weight: var(--type-label-2-weight); white-space: normal; }
-.dds-guide .guide-composer { padding: var(--space-6); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.dds-guide .guide-composer { padding: var(--space-6); background: color-mix(in srgb,var(--surface) 40%,var(--background)); border: 1px solid var(--border); border-radius: var(--radius-lg); }
 .dds-guide .guide-compose-controls { margin-bottom: var(--space-6); }
 .dds-guide .guide-composer-tabs { display: block; width: fit-content; max-width: 100%; margin: 0 0 var(--space-6); }
 .dds-guide :is(.guide-composer-tabs .segmented,.guide-service-tabs) { display: inline-flex; flex-wrap: wrap; justify-self: start; align-self: start; width: max-content; max-width: 100%; gap: var(--space-1); border-radius: var(--radius-md); padding: var(--space-1); background: var(--muted); }
