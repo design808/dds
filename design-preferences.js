@@ -31,7 +31,7 @@ export const PRIMARY_PRESETS=Object.freeze([
   Object.freeze({value:'#E76C24',label:'코럴 오렌지'}),
   Object.freeze({value:'#D79919',label:'앰버'}),
   Object.freeze({value:'#769B21',label:'라임'}),
-  Object.freeze({value:'#30964C',label:'그린'}),
+  Object.freeze({value:'#009A53',label:'그린'}),
   Object.freeze({value:'#16967F',label:'에메랄드'}),
   Object.freeze({value:'#2195A8',label:'틸'}),
   Object.freeze({value:'#172238',label:'네이비'})

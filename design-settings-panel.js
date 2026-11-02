@@ -1,4 +1,5 @@
-import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=b820f249716f02c6';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=d38f4d36711dc945';
+import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=d38f4d36711dc945';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {
@@ -65,6 +66,17 @@ function colorField(key, label, withPresets=false) {
     for (const preset of PRIMARY_PRESETS) presets.append(swatch(key,preset));
     field.querySelector('label').after(presets);
   }
+  const slider = document.createElement('input');
+  slider.type = 'range';
+  slider.className = 'dds-settings-hue';
+  slider.min = '0';
+  slider.max = '360';
+  slider.step = '1';
+  slider.dataset.ddsHue = key;
+  slider.setAttribute('aria-label', (key==='primary'?'브랜드':label.replace(' HEX',''))+' 색상 조절');
+  slider.style.setProperty('--hue-spectrum',CSS.supports('background-image',HUE_GRADIENT)?HUE_GRADIENT:HUE_GRADIENT.replace(' in oklab',''));
+  if (withPresets) field.querySelector('.dds-settings-color-control').before(slider);
+  else field.prepend(slider);
   return field;
 }
 
@@ -126,8 +138,8 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   modeSection.className = 'dds-settings-section dds-settings-mode';
   modeSection.innerHTML = `<legend>색상 사용</legend>
     <div class="dds-segmented">
-      <label class="dds-choice"><input type="radio" name="dds-settings-color-mode" data-dds-setting="colorMode" value="brand"><span>브랜드 중심</span></label>
-      <label class="dds-choice"><input type="radio" name="dds-settings-color-mode" data-dds-setting="colorMode" value="functional"><span>기능별 색상</span></label>
+      <label class="dds-choice"><input type="radio" name="dds-settings-color-mode" data-dds-setting="colorMode" value="brand"><span>메인 색상만 사용</span></label>
+      <label class="dds-choice"><input type="radio" name="dds-settings-color-mode" data-dds-setting="colorMode" value="functional"><span>기능별로 다른 색상 사용</span></label>
     </div>`;
 
   const functionalSection = document.createElement('section');
@@ -182,6 +194,8 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   const {signal} = controller;
   const inputs = new Map([...host.querySelectorAll('[data-dds-color]')].map(input => [input.dataset.ddsColor, input]));
   const selects = new Map([...host.querySelectorAll('select[data-dds-setting]')].map(select => [select.dataset.ddsSetting, select]));
+  const hueSliders = new Map([...host.querySelectorAll('[data-dds-hue]')].map(slider => [slider.dataset.ddsHue,slider]));
+  const hueSelections = new Map();
   let focusBeforeOpen;
   let bodyOverflow;
   let pointerStartedOutside = false;
@@ -233,6 +247,14 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   function sync() {
     if (disposed) return;
     const settings = getSettings();
+    for (const [key,slider] of hueSliders) {
+      const selection = hueSelections.get(key);
+      const hue = selection?.hex===settings[key] ? selection.hue : Math.round(hexToHue(settings[key]));
+      if (selection?.hex!==settings[key]) hueSelections.delete(key);
+      slider.value = String(hue);
+      slider.style.setProperty('--hue-color',settings[key]);
+      slider.setAttribute('aria-valuetext',settings[key]);
+    }
     for (const [key, input] of inputs) {
       if (document.activeElement !== input) {
         input.value = settings[key];
@@ -325,6 +347,23 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     const input = event.target.closest('[data-dds-setting]');
     if (input && (input.tagName !== 'INPUT' || input.checked)) updateSettings({[input.dataset.ddsSetting]: input.value});
   }, {signal});
+  for (const [key,slider] of hueSliders) {
+    const changeHue = () => {
+      const hue = Number(slider.value);
+      const hex = hueToHex(hue);
+      hueSelections.set(key,{hue,hex});
+      updateSettings({[key]:hex});
+      // End and Home share a red endpoint; retain the thumb even if HEX is unchanged.
+      sync();
+    };
+    slider.addEventListener('input',changeHue,{signal});
+    slider.addEventListener('keydown',event => {
+      if (event.key!=='PageUp'&&event.key!=='PageDown') return;
+      event.preventDefault();
+      slider.value = String(Math.max(0,Math.min(360,Number(slider.value)+(event.key==='PageUp'?10:-10))));
+      changeHue();
+    },{signal});
+  }
   for (const [key, input] of inputs) {
     input.addEventListener('input', () => {
       const value = normalizeHex(input.value);
