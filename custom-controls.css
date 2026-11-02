@@ -20,3 +20,9 @@ input:disabled,textarea:disabled,select:disabled,.custom-trigger:disabled{color:
 .calendar-head b,.calendar-week,.calendar-day,.calendar-footer button{font-family:var(--font-sans);font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:var(--type-label-1-weight);letter-spacing:var(--type-label-1-tracking)}
 .custom-option[aria-selected=true]{font-weight:var(--font-weight-semibold)}
 .calendar-day[aria-current=date],.calendar-day[aria-selected=true]{font-weight:var(--font-weight-bold)}
+
+/* Selected dates keep their filled color pair during pointer interactions. */
+@media(forced-colors:none){
+  .calendar-day[aria-selected=true]:hover:not(:disabled){background:var(--primary-hover);color:var(--primary-foreground)}
+  .calendar-day[aria-selected=true]:active:not(:disabled){background:var(--primary-active);color:var(--primary-foreground)}
+}

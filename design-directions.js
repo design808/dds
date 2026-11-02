@@ -1,5 +1,5 @@
-import {applyDirection} from './direction-preview.js?v=3ea17f0ff21b92cc';
-import {icon} from './icons.js?v=3ea17f0ff21b92cc';
+import {applyDirection} from './direction-preview.js?v=b649cef91b4771bd';
+import {icon} from './icons.js?v=b649cef91b4771bd';
 
 // Review values only. They do not change the DDS token source or release files.
 export const directionOptions = [

@@ -13,37 +13,59 @@ const mix = (first, second, ratio) => '#'+rgb(first).map((value,index) => Math.r
 const luminance = value => rgb(value).map(channel => channel/255).map(channel => channel<=.04045 ? channel/12.92 : ((channel+.055)/1.055)**2.4).reduce((sum,value,index) => sum+value*[.2126,.7152,.0722][index],0);
 const contrast = (first,second) => (Math.max(luminance(first),luminance(second))+.05)/(Math.min(luminance(first),luminance(second))+.05);
 const ink = (seed,background,dark) => {
+  const surfaces=Array.isArray(background)?background:[background];
   for(let step=0;step<=20;step++){
     const candidate=mix(seed,dark?'#ffffff':'#17212f',step/20);
-    if(contrast(candidate,background)>=4.5)return candidate;
+    if(surfaces.every(surface=>contrast(candidate,surface)>=4.5))return candidate;
   }
   return dark?'#f7f8fa':'#17212f';
+};
+const filledStates = (seed,dark) => {
+  if(!dark)return {hover:mix(seed,'#000000',.08),active:mix(seed,'#000000',.15)};
+  // Keep white labels readable while preserving the dark-theme brightening order.
+  // A seed below 4.5 is retained for review rather than silently recolored.
+  if(contrast(seed,'#ffffff')<4.5)return {hover:seed,active:seed};
+  for(let step=40;step>=0;step--){
+    const activeRatio=.18*step/40;
+    const active=mix(seed,'#ffffff',activeRatio);
+    if(contrast(active,'#ffffff')>=4.5)return {hover:mix(seed,'#ffffff',activeRatio*.10/.18),active};
+  }
+  return {hover:seed,active:seed};
 };
 
 function palette(profile,dark){
   const background=dark?'#17191c':'#ffffff';
+  const muted=dark?'#292d33':'#f1f2f4';
   const primary=hex(profile.colors?.primary||'#ffad31');
   const secondary=hex(profile.colors?.secondary||primary);
   const accent=hex(profile.colors?.accent||secondary);
   const positive=hex(profile.colors?.positive||'#18734b');
   const sameOrange=primary==='#ffad31';
   const primarySoft=sameOrange?(dark?'#3c251d':'#fff9ef'):mix(background,primary,dark?.18:.07);
+  const primaryStates=sameOrange
+    ? {hover:dark?'#ffbe5c':'#ff941a',active:dark?'#ffca7a':'#e8750a'}
+    : filledStates(primary,dark);
   const roles={};
   for(const [name,value] of Object.entries({primary,secondary,accent,positive})){
+    const soft=mix(background,value,dark?.19:.075);
+    const aiTint=mix(background,value,dark?.20:.12);
+    const states=name==='primary'?primaryStates:filledStates(value,dark);
     roles[`--direction-${name}`]=value;
-    roles[`--direction-${name}-ink`]=ink(value,background,dark);
-    roles[`--direction-${name}-soft`]=mix(background,value,dark?.19:.075);
+    roles[`--direction-${name}-ink`]=ink(value,[background,muted,soft,aiTint],dark);
+    roles[`--direction-${name}-soft`]=soft;
     roles[`--direction-${name}-border`]=mix(background,value,dark?.42:.24);
+    roles[`--direction-${name}-hover`]=states.hover;
+    roles[`--direction-${name}-active`]=states.active;
   }
   Object.assign(roles,{
     '--primary':primary,
-    '--primary-hover':sameOrange?(dark?'#ffbe5c':'#ff941a'):mix(primary,dark?'#ffffff':'#000000',dark?.10:.08),
-    '--primary-active':sameOrange?(dark?'#ffca7a':'#e8750a'):mix(primary,dark?'#ffffff':'#000000',dark?.18:.15),
+    '--primary-hover':primaryStates.hover,
+    '--primary-active':primaryStates.active,
     '--primary-foreground':'#ffffff',
     '--primary-border':'transparent',
-    '--brand-ink':ink(primary,background,dark),
+    '--brand-ink':roles['--direction-primary-ink'],
     '--accent':primarySoft,
-    '--accent-foreground':ink(primary,background,dark),
+    '--accent-foreground':ink(primary,[background,muted,primarySoft],dark),
     '--accent-border':sameOrange?(dark?'#554022':'#fff0d6'):mix(background,primary,dark?.40:.22),
     '--ring':primary,
     '--text-link':ink(primary,background,dark),
@@ -60,13 +82,17 @@ function palette(profile,dark){
     ].join(',')
   });
   if(profile.multicolor){
+    const successBg=mix(background,positive,dark?.20:.075);
+    const infoBg=mix(background,secondary,dark?.20:.075);
+    const successInk=ink(positive,[background,successBg],dark);
+    const infoInk=ink(secondary,[background,infoBg],dark);
     Object.assign(roles,{
-      '--success':ink(positive,background,dark),
-      '--success-bg':mix(background,positive,dark?.20:.075),
-      '--text-success':ink(positive,background,dark),
-      '--info':ink(secondary,background,dark),
-      '--info-bg':mix(background,secondary,dark?.20:.075),
-      '--text-info':ink(secondary,background,dark)
+      '--success':successInk,
+      '--success-bg':successBg,
+      '--text-success':successInk,
+      '--info':infoInk,
+      '--info-bg':infoBg,
+      '--text-info':infoInk
     });
   }
   return roles;

@@ -20,6 +20,9 @@ html.dds-direction-preview[data-direction-colors=true] .session-video-state[data
 }
 
 /* Navigation/selection, AI guidance, and positive outcomes have separate jobs. */
+html.dds-direction-preview[data-direction-colors=true] :is(.dds-demo [data-ext-toggle][aria-pressed=true],.dds-applied,.dds-segmented label:has(:checked),.dds-topnav>b,.dds-bottomnav>[aria-current],.dds-mini-image,.di-radio>input:checked+span) {
+  color: var(--brand-ink);
+}
 html.dds-direction-preview[data-direction-multicolor=true] :is(.gnb-trigger.active,.product-header nav>a[aria-current=page],.mypage-sidebar nav>a[aria-current=page]) {
   color: var(--direction-secondary-ink);
 }
@@ -60,9 +63,6 @@ html.dds-direction-preview[data-direction-multicolor=true] :is(.chip.selected,.c
   color: var(--direction-secondary-ink);
   border-color: var(--direction-secondary-border);
   background: var(--direction-secondary-soft);
-}
-html.dds-direction-preview[data-direction-multicolor=true] :is(.tab-list,.pill-tabs) [aria-selected=true] {
-  color: var(--direction-secondary-ink);
 }
 html.dds-direction-preview[data-direction-multicolor=true] :is(.question-number,.dds-cover-write .question-number) {
   background: var(--direction-secondary-soft);
@@ -161,11 +161,11 @@ html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-ac
   color: #fff;
 }
 html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-actions>.btn.primary,.dds-cover-write .ai-input-bottom>.btn.u-btn-primary):hover {
-  background: color-mix(in srgb,var(--direction-accent) 90%,#000);
+  background: var(--direction-accent-hover);
   color: #fff;
 }
 html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-actions>.btn.primary,.dds-cover-write .ai-input-bottom>.btn.u-btn-primary):active {
-  background: color-mix(in srgb,var(--direction-accent) 82%,#000);
+  background: var(--direction-accent-active);
   color: #fff;
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-reading>h2 {
@@ -186,21 +186,6 @@ html.dds-direction-preview[data-direction-feature-colors=true] .sample-progress 
   background: var(--direction-positive);
 }
 
-html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(1) {
-  background: linear-gradient(90deg,var(--direction-secondary-soft),transparent);
-}
-html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(2) {
-  background: linear-gradient(90deg,var(--direction-primary-soft),transparent);
-}
-html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(3) {
-  background: linear-gradient(90deg,var(--direction-positive-soft),transparent);
-}
-html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(4) {
-  background: linear-gradient(90deg,var(--direction-accent-soft),transparent);
-}
-html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(5) {
-  background: linear-gradient(90deg,var(--direction-positive-soft),transparent);
-}
 html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(1) .di-step-number {
   background: var(--direction-secondary);
   color: #fff;
@@ -241,27 +226,12 @@ html.dds-direction-preview[data-direction-feature-colors=true] .hero-visual {
   background: var(--background);
   border-color: var(--border);
 }
-html.dds-direction-preview[data-direction-feature-colors=true] .visual-experience {
-  background: var(--direction-secondary-soft);
-}
 html.dds-direction-preview[data-direction-feature-colors=true] .visual-experience .visual-caption {
   color: var(--direction-secondary-ink);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .experience-tags span {
   background: var(--background);
 }
-html.dds-direction-preview[data-direction-feature-colors=true] .visual-outcome {
-  background: var(--direction-positive-soft);
-}
 html.dds-direction-preview[data-direction-feature-colors=true] .hero-visual>.connection {
   background: var(--border);
-}
-html.dds-direction-preview[data-direction-feature-colors=true] .method-list li:nth-child(1) {
-  background: var(--direction-secondary-soft);
-}
-html.dds-direction-preview[data-direction-feature-colors=true] .method-list li:nth-child(2) {
-  background: var(--direction-accent-soft);
-}
-html.dds-direction-preview[data-direction-feature-colors=true] .method-list li:nth-child(3) {
-  background: var(--direction-positive-soft);
 }
