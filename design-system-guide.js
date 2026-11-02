@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=0420b0edec83fe4c';
+import {icon} from './icons.js?v=3d0074ac8047139a';
 
 const themeButton=document.getElementById('theme-toggle');
 function updateThemeButton(){
