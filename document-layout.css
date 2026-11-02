@@ -91,9 +91,10 @@
   gap: var(--space-8);
 }
 .topbar .brand-caption {
-  font-size: var(--type-caption-1-size);
-  line-height: var(--type-caption-1-line-height);
-  font-weight: var(--font-weight-regular);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--type-label-1-tracking);
   color: var(--text-secondary);
 }
 .topbar nav {

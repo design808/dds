@@ -22,7 +22,7 @@ export const FONT_OPTIONS=Object.freeze([
 
 export const PRIMARY_PRESETS=Object.freeze([
   Object.freeze({value:'#FFAD31',label:'오렌지'}),
-  Object.freeze({value:'#2864DC',label:'블루'}),
+  Object.freeze({value:'#007AFF',label:'블루'}),
   Object.freeze({value:'#4296D8',label:'스카이'}),
   Object.freeze({value:'#515ED6',label:'인디고'}),
   Object.freeze({value:'#9B49BD',label:'퍼플'}),
