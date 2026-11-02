@@ -1,4 +1,4 @@
-import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=7da485205ae8f430';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=b820f249716f02c6';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {
@@ -41,7 +41,7 @@ function swatch(key, preset) {
   button.setAttribute('aria-pressed', 'false');
   const name = (preset.name||preset.label) + ' ' + preset.value + ' 색상 사용';
   button.setAttribute('aria-label', name);
-  button.setAttribute('data-tooltip', name);
+  button.setAttribute('data-tooltip-disabled', '');
   const check = createIcon('Check');
   if (check) button.append(check);
   return button;
@@ -144,7 +144,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     button.className = 'dds-settings-combination';
     button.dataset.ddsCombination = preset.id;
     button.setAttribute('aria-label',preset.label+' 조합 사용');
-    button.setAttribute('data-tooltip',preset.label+' 조합 사용');
+    button.setAttribute('data-tooltip-disabled','');
     button.setAttribute('aria-pressed','false');
     for (const key of ['secondary','accent','positive']) {
       const color = document.createElement('span');

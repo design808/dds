@@ -1,4 +1,4 @@
-// Icon actions always expose their function on hover and keyboard focus.
+// Icon actions expose their function on hover and keyboard focus unless explicitly excluded.
 // Delegation also covers controls created inside dialogs, calendars and repeaters.
 const selector='button,a[href],summary,[role="button"]';
 let active,tip,hideTimer,hovered,focused,dismissed;
@@ -8,6 +8,7 @@ const labelOf=button=>button.getAttribute('aria-label')?.trim()
   || button.querySelector('.sr-only')?.textContent.trim();
 function isIconAction(button){
   if(!button?.matches(selector))return false;
+  if(button.hasAttribute('data-tooltip-disabled'))return false;
   if(button.hasAttribute('data-tooltip'))return true;
   if(!button.querySelector('svg,[data-icon],.icon')&&!button.matches('.icon-btn,.control-icon'))return false;
   const copy=button.cloneNode(true);
@@ -74,4 +75,4 @@ new MutationObserver(()=>{
   const name=labelOf(active),detail=active.getAttribute('data-tooltip');
   const text=detail&&detail!==name?name+' · '+detail:name;
   if(!text){hide();return;}if(tip.textContent!==text){tip.textContent=text;position();}
-}).observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['aria-label','aria-labelledby','data-tooltip']});
+}).observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['aria-label','aria-labelledby','data-tooltip','data-tooltip-disabled']});
