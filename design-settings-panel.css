@@ -178,14 +178,30 @@
   box-shadow: none;
 }
 #dds-design-settings .dds-settings-color-control input:focus-visible { border: 0; outline: 0; }
+#dds-design-settings .dds-settings-hue-well {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  margin: -6px 0;
+}
+#dds-design-settings .dds-settings-hue-well::before {
+  content: '';
+  position: absolute;
+  inset: 6px 0;
+  border-radius: 999px;
+  background: var(--hue-spectrum);
+  pointer-events: none;
+}
 #dds-design-settings input.dds-settings-hue {
+  position: relative;
   display: block;
   width: 100%;
   min-width: 0;
   height: 44px;
   min-height: 44px;
-  margin: -6px 0;
-  padding: 0;
+  margin: 0;
+  padding: 0 4px;
   border: 0;
   border-radius: 999px;
   background: transparent;
@@ -195,8 +211,8 @@
   appearance: none;
   -webkit-appearance: none;
 }
-#dds-design-settings input.dds-settings-hue::-webkit-slider-runnable-track { height: 32px; border: 0; border-radius: 999px; background: var(--hue-spectrum); }
-#dds-design-settings input.dds-settings-hue::-moz-range-track { height: 32px; border: 0; border-radius: 999px; background: var(--hue-spectrum); }
+#dds-design-settings input.dds-settings-hue::-webkit-slider-runnable-track { height: 32px; border: 0; border-radius: 999px; background: transparent; }
+#dds-design-settings input.dds-settings-hue::-moz-range-track { height: 32px; border: 0; border-radius: 999px; background: transparent; }
 #dds-design-settings input.dds-settings-hue::-webkit-slider-thumb { box-sizing: border-box; width: 24px; height: 24px; margin-top: 4px; border: 2px solid #fff; border-radius: 50%; background: var(--hue-color); box-shadow: 0 6px 16px -4px #0000001f,0 2px 4px -1px #0000000f; appearance: none; -webkit-appearance: none; }
 #dds-design-settings input.dds-settings-hue::-moz-range-thumb { box-sizing: border-box; width: 24px; height: 24px; border: 2px solid #fff; border-radius: 50%; background: var(--hue-color); box-shadow: 0 6px 16px -4px #0000001f,0 2px 4px -1px #0000000f; }
 #dds-design-settings input.dds-settings-hue:focus-visible { outline: 1px solid var(--primary); outline-offset: 0; }

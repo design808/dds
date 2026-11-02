@@ -1,5 +1,5 @@
-import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=d38f4d36711dc945';
-import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=d38f4d36711dc945';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=43bc41b75b0a9e31';
+import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=43bc41b75b0a9e31';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {
@@ -74,9 +74,12 @@ function colorField(key, label, withPresets=false) {
   slider.step = '1';
   slider.dataset.ddsHue = key;
   slider.setAttribute('aria-label', (key==='primary'?'브랜드':label.replace(' HEX',''))+' 색상 조절');
-  slider.style.setProperty('--hue-spectrum',CSS.supports('background-image',HUE_GRADIENT)?HUE_GRADIENT:HUE_GRADIENT.replace(' in oklab',''));
-  if (withPresets) field.querySelector('.dds-settings-color-control').before(slider);
-  else field.prepend(slider);
+  const well = document.createElement('div');
+  well.className = 'dds-settings-hue-well';
+  well.style.setProperty('--hue-spectrum',CSS.supports('background-image',HUE_GRADIENT)?HUE_GRADIENT:HUE_GRADIENT.replace(' in oklab',''));
+  well.append(slider);
+  if (withPresets) field.querySelector('.dds-settings-color-control').before(well);
+  else field.prepend(well);
   return field;
 }
 
