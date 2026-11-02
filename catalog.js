@@ -1,4 +1,4 @@
-import {extensionComponents,componentAliases} from './extension-catalog.js?v=b649cef91b4771bd';
+import {extensionComponents,componentAliases} from './extension-catalog.js?v=bbbac1e5a90800cd';
 export const groups=['Actions','Inputs','Navigation','Feedback','Data display'];
 // The catalog describes proposed target components. source names link to static evidence, not production React components.
 const row=(id,name,ko,group,description,source,anatomy,states,rule)=>({id,name,ko,group,description,source,anatomy,states,rule});

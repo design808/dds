@@ -1,11 +1,11 @@
-// Comparison-only adapter. The authored DDS tokens and the original pages stay unchanged.
+// Runtime display preferences. Authored DDS tokens and release files stay unchanged.
 const state = new WeakMap();
 const moduleURL = new URL(import.meta.url);
 const previewSheetURL = new URL('./direction-preview.css', moduleURL);
 previewSheetURL.search = moduleURL.search;
 const sheetURL = previewSheetURL.href;
 const hex = value => {
-  if (typeof value !== 'string' || !/^#[0-9a-f]{6}$/i.test(value)) throw new Error('비교 색상은 6자리 HEX 값이어야 합니다.');
+  if (typeof value !== 'string' || !/^#[0-9a-f]{6}$/i.test(value)) throw new Error('색상은 6자리 HEX 값이어야 합니다.');
   return value.toLowerCase();
 };
 const rgb = value => [1,3,5].map(index => parseInt(value.slice(index,index+2),16));
@@ -33,7 +33,7 @@ const filledStates = (seed,dark) => {
   return {hover:seed,active:seed};
 };
 
-function palette(profile,dark){
+export function palette(profile,dark){
   const background=dark?'#17191c':'#ffffff';
   const muted=dark?'#292d33':'#f1f2f4';
   const primary=hex(profile.colors?.primary||'#ffad31');
@@ -46,6 +46,11 @@ function palette(profile,dark){
     ? {hover:dark?'#ffbe5c':'#ff941a',active:dark?'#ffca7a':'#e8750a'}
     : filledStates(primary,dark);
   const roles={};
+  if(!sameOrange){
+    for(const [step,ratio] of [[50,.96],[100,.90],[200,.75],[300,.55],[400,.30]])roles[`--brand-${step}`]=mix(primary,'#ffffff',ratio);
+    roles['--brand-500']=primary;
+    for(const [step,ratio] of [[600,.10],[700,.23],[800,.38],[900,.53],[950,.67]])roles[`--brand-${step}`]=mix(primary,'#000000',ratio);
+  }
   for(const [name,value] of Object.entries({primary,secondary,accent,positive})){
     const soft=mix(background,value,dark?.19:.075);
     const aiTint=mix(background,value,dark?.20:.12);
@@ -119,7 +124,7 @@ function loadSheet(doc){
     sheet.href=sheetURL;
   }
   const promise=new Promise((resolve,reject)=>{
-    const timeout=setTimeout(()=>finish(new Error('비교용 스타일을 불러오지 못했습니다.')),8000);
+    const timeout=setTimeout(()=>finish(new Error('디자인 설정 스타일을 불러오지 못했습니다.')),8000);
     const finish=error=>{
       clearTimeout(timeout);
       sheet.removeEventListener('load',loaded);
@@ -136,19 +141,21 @@ function loadSheet(doc){
   return promise;
 }
 
-/** Apply one lab direction to a same-origin preview document, never to the DDS shell. */
+/** Apply browser preferences without changing source tokens or page structure. */
 export async function applyDirection(doc,profile,theme='light'){
-  if(!doc?.documentElement||!doc.head)throw new Error('비교 화면이 아직 준비되지 않았습니다.');
-  if(!profile?.id)throw new Error('비교할 방향을 선택해 주세요.');
+  if(!doc?.documentElement||!doc.head)throw new Error('화면이 아직 준비되지 않았습니다.');
+  if(!profile?.id)throw new Error('디자인 설정을 확인해 주세요.');
   const font=profile.font||'pretendard';
+  const headingFont=profile.headingFont||font;
   const families={suite:'DDS SUITE',plex:'DDS Plex KR',serif:'DDS Noto Serif KR'};
-  if(!['pretendard',...Object.keys(families)].includes(font))throw new Error('지원하지 않는 비교 서체입니다.');
+  if(![font,headingFont].every(value=>['pretendard',...Object.keys(families)].includes(value)))throw new Error('지원하지 않는 서체입니다.');
   remember(doc);
   const root=doc.documentElement;
   const dark=theme==='dark';
   const colorsEnabled=!profile.preserveColors&&!['current','baseline'].includes(profile.id);
   const declarations=colorsEnabled?palette(profile,dark):{};
   if(font!=='pretendard')declarations['--font-sans']=`'${families[font]}','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif`;
+  declarations['--font-heading']=headingFont==='pretendard'?"'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif":`'${families[headingFont]}','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif`;
   let values=doc.getElementById('dds-direction-values');
   if(!values){values=doc.createElement('style');values.id='dds-direction-values';doc.head.append(values);}
   values.textContent='html.dds-direction-preview{'+Object.entries(declarations).map(([name,value])=>name+':'+value).join(';')+'}';
@@ -159,9 +166,8 @@ export async function applyDirection(doc,profile,theme='light'){
   root.dataset.directionMulticolor=String(colorsEnabled&&Boolean(profile.multicolor));
   root.dataset.directionFeatureColors=String(colorsEnabled&&Boolean(profile.featureColors));
   await loadSheet(doc);
-  if(font!=='pretendard'&&doc.fonts){
-    const family=families[font];
-    await Promise.all([400,500,600,700].map(weight=>doc.fonts.load(`${weight} 16px "${family}"`,'지원자 경험을 새로운 기회로 0123456789')));
+  if(doc.fonts){
+    await Promise.all([...new Set([font,headingFont])].filter(value=>value!=='pretendard').flatMap(value=>[400,500,600,700].map(weight=>doc.fonts.load(`${weight} 16px "${families[value]}"`,'지원자 경험을 새로운 기회로 0123456789'))));
   }
   return ()=>removeDirection(doc);
 }

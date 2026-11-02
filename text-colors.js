@@ -1,4 +1,6 @@
-import {contrast} from './color-contrast.js?v=b649cef91b4771bd';
+import {contrast} from './color-contrast.js?v=bbbac1e5a90800cd';
+import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=bbbac1e5a90800cd';
+import {palette} from './direction-preview.js?v=bbbac1e5a90800cd';
 
 export const textScale = [
   ['50','#F7F8FA'],['100','#EEF0F3'],['200','#DDE1E7'],['300','#B4BCC8'],
@@ -39,15 +41,42 @@ export const textColors = [
   {id:'info', name:'Info · 정보', light:'#265EBC', dark:'#99BAFF', usage:'정보성 안내. 일반 보조 설명에는 Secondary를 사용합니다.', sample:'작성한 내용은 임시저장할 수 있습니다.', background:'--info-bg', lightBg:'#EDF3FF', darkBg:'#202F48'},
 ];
 
-export function textColorSection({includeScale=true,headingLevel=2}={}) {
+function configuredRoles(input){
+  if(input===undefined)return textColors;
+  const settings=normalizeSettings(input);
+  if(settings.primary===DEFAULT_SETTINGS.primary&&settings.colorMode==='brand')return textColors;
+  const profile={colors:{primary:settings.primary,secondary:settings.secondary,accent:settings.accent,positive:settings.positive},multicolor:settings.colorMode==='functional'};
+  const light=palette(profile,false),dark=palette(profile,true);
+  const value=(theme,token)=>((theme==='light'?light:dark)[token]).toUpperCase();
+  return textColors.map(role=>{
+    if(role.id==='link')return {...role,light:value('light','--text-link'),dark:value('dark','--text-link')};
+    if(role.id==='on-primary'){
+      const next={...role,light:value('light','--primary-foreground'),dark:value('dark','--primary-foreground'),lightBg:value('light','--primary'),darkBg:value('dark','--primary')};
+      next.exception=contrast(next.light,next.lightBg)<4.5||contrast(next.dark,next.darkBg)<4.5;
+      next.exceptionLabel=settings.primary===DEFAULT_SETTINGS.primary?'브랜드 예외':'대비 미달';
+      return next;
+    }
+    if(profile.multicolor&&['success','info'].includes(role.id))return {...role,light:value('light','--text-'+role.id),dark:value('dark','--text-'+role.id),lightBg:value('light','--'+role.id+'-bg'),darkBg:value('dark','--'+role.id+'-bg')};
+    return role;
+  });
+}
+
+export function textColorSection({includeScale=true,headingLevel=2,settings}={}) {
+  const roles=configuredRoles(settings);
+  const primaryRole=roles.find(role=>role.id==='on-primary');
+  const primaryDescription=primaryRole.exception
+    ? primaryRole.exceptionLabel==='대비 미달'
+      ? 'Primary 위의 흰색은 현재 기준색에서 일반 텍스트 대비 기준에 미달합니다. 서비스 적용 전에 대비를 만족하는 기준색을 선택하거나 별도 예외를 검토합니다. 굵기를 높여도 대비 수치는 변하지 않습니다.'
+      : 'Primary 위의 흰색은 기존 브랜드 예외이며 굵기를 높여도 대비 수치는 변하지 않습니다.'
+    : 'Primary 위의 흰색은 현재 기준색에서 WCAG AA 일반 텍스트 대비 기준을 충족합니다. 굵기를 높여도 대비 수치는 변하지 않습니다.';
   const cell = (role, theme) => {
     const background = role[theme + 'Bg'] || (theme === 'light' ? '#F7F8FA' : '#1E2125');
     const ratio = contrast(role[theme], background).toFixed(2);
-    return `<td><span class="text-token-value"><i style="background:${role[theme]}"></i><code>${role[theme]}</code></span><small>${role.exempt ? '비활성 전용' : `${ratio}:1${role.exception ? ' · 브랜드 예외' : ''}`}</small></td>`;
+    return `<td><span class="text-token-value"><i style="background:${role[theme]}"></i><code>${role[theme]}</code></span><small>${role.exempt ? '비활성 전용' : `${ratio}:1${role.exception ? ' · '+(role.exceptionLabel||'브랜드 예외') : ''}`}</small></td>`;
   };
   return `<section class="text-color-section" aria-labelledby="text-color-title">
     <h${headingLevel} id="text-color-title">텍스트·상태 색상</h${headingLevel}>
-    <p>텍스트는 크기와 독립적으로 역할에 따라 색을 선택합니다. 기본색은 부드러운 차콜 <code>#293241</code>이며, 제목은 Strong, 본문은 Primary, 설명은 Secondary로 구분합니다. 텍스트의 Primary는 주황색 브랜드 토큰 <code>--primary</code>와 역할이 다릅니다.</p>
+    <p>텍스트는 크기와 독립적으로 역할에 따라 색을 선택합니다. 기본색은 부드러운 차콜 <code>#293241</code>이며, 제목은 Strong, 본문은 Primary, 설명은 Secondary로 구분합니다. 텍스트의 Primary는 브랜드 토큰 <code>--primary</code>와 역할이 다릅니다.</p>
     ${includeScale?textScaleSection():''}
     <div class="text-hierarchy-demo">
       <span class="text-hierarchy-kicker">예시 · 문서 카드</span>
@@ -59,13 +88,13 @@ export function textColorSection({includeScale=true,headingLevel=2}={}) {
     <div class="table-wrap text-color-table"><table>
       <caption class="sr-only">텍스트 색상 13개 역할, 라이트·다크 값과 사용처</caption>
       <thead><tr><th scope="col">역할 / 토큰</th><th scope="col">현재 테마 예시 / 사용처</th><th scope="col">Light</th><th scope="col">Dark</th></tr></thead>
-      <tbody>${textColors.map(role => `<tr>
+      <tbody>${roles.map(role => `<tr>
         <th scope="row">${role.name}<button class="token-copy" data-copy="var(--text-${role.id})" aria-label="text-${role.id} 토큰 복사"><code>--text-${role.id}</code></button></th>
         <td><span class="text-role-example ${role.id === 'link' ? 'text-role-link' : ''}" style="color:var(--text-${role.id});background:var(${role.background || '--surface'});${role.id === 'on-primary' ? 'font-weight:700;' : ''}">${role.sample}</span><p>${role.usage}</p></td>
         ${cell(role, 'light')}${cell(role, 'dark')}
       </tr>`).join('')}</tbody>
     </table></div>
-    <p class="helper">대비 수치는 기본 역할은 Surface, 반전·주 행동·상태 역할은 예시의 배경을 기준으로 계산했습니다. 비활성 색은 일반 정보 전달에 사용하지 않습니다. Primary 위의 흰색은 기존 브랜드 예외이며 굵기를 높여도 대비 수치는 변하지 않습니다.</p>
+    <p class="helper">대비 수치는 기본 역할은 Surface, 반전·주 행동·상태 역할은 예시의 배경을 기준으로 계산했습니다. 비활성 색은 일반 정보 전달에 사용하지 않습니다. ${primaryDescription}</p>
     <div class="guideline"><b>값 대신 역할을 연결합니다</b><p><code>--foreground → --text-primary</code>, <code>--muted-foreground → --text-secondary</code>로 연결해 기존 컴포넌트도 같은 색상 체계를 사용합니다. 오류·성공·링크는 역할 토큰을 명시하고 색상만으로 의미를 전달하지 않습니다.</p></div>
   </section>`;
 }

@@ -1,8 +1,8 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=b649cef91b4771bd';
-import {icon} from './icons.js?v=b649cef91b4771bd';
-import {formatHTML} from './format-html.js?v=b649cef91b4771bd';
-import {componentContract} from './component-contracts.js?v=b649cef91b4771bd';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=b649cef91b4771bd';
+import {components, groups, patterns, foundations} from './catalog.js?v=bbbac1e5a90800cd';
+import {icon} from './icons.js?v=bbbac1e5a90800cd';
+import {formatHTML} from './format-html.js?v=bbbac1e5a90800cd';
+import {componentContract} from './component-contracts.js?v=bbbac1e5a90800cd';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=bbbac1e5a90800cd';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -24,7 +24,7 @@ export function sidebarContent(view) {
   const item = (href, text) => `<a href="#${href}" class="${route === href ? 'active' : ''}"${route === href ? ' aria-current="page"' : ''}>${esc(text)}</a>`;
   const currentGroup = components.find(c => '/components/' + c.id === route)?.group;
   return `<div class="sidebar-intro"><span class="sidebar-title">Deep Design System</span></div>
-    <div class="nav-section">${item('/', '시작하기')}${item('/directions', '디자인 방향 비교')}${item('/principles', '디자인 원칙')}${item('/process', '디자인 프로세스')}${item('/setup', 'AI로 적용하기')}${item('/handoff', '개발 적용 안내')}</div>
+    <div class="nav-section">${item('/', '시작하기')}${item('/principles', '디자인 원칙')}${item('/process', '디자인 프로세스')}${item('/setup', 'AI로 적용하기')}${item('/handoff', '개발 적용 안내')}</div>
     <div class="nav-label">FOUNDATIONS</div><div class="nav-section">${foundations.map(([id, , ko]) => item('/foundations/' + id, ko)).join('')}</div>
     <div class="nav-label">COMPONENTS</div><div class="nav-section">${item('/components', '전체 컴포넌트')}${groups.map(group => `<details ${currentGroup === group ? 'open' : ''}><summary>${group}</summary>${components.filter(c => c.group === group).map(c => item('/components/' + c.id, c.name)).join('')}</details>`).join('')}</div>
     <div class="nav-label">PATTERNS</div><div class="nav-section">${patterns.map(p => item('/patterns/' + p.id, p.ko)).join('')}</div>
@@ -77,7 +77,6 @@ export function renderPattern(p, sample) {
 export function searchableDocuments() {
   return [
     {name:'시작하기', ko:'DDS', url:'/'},
-    {name:'디자인 방향 비교', ko:'색상 팔레트 서체 폰트 대안 비교', url:'/directions'},
     {name:'디자인 원칙', ko:'규칙 검수', url:'/principles'},
     {name:'디자인 프로세스', ko:'적용 순서', url:'/process'},
     {name:'개발 적용 안내', ko:'AI 핸드오프 기준 파일 적용 검수', url:'/handoff'},

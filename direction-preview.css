@@ -1,4 +1,4 @@
-/* These faces and overrides are loaded only inside the design-direction frames. */
+/* User-selected fonts and colors; component geometry remains authored by DDS. */
 @import url('./assets/fonts/ibm-plex-kr/fontfaces.css');
 @import url('./assets/fonts/noto-serif-kr/fontfaces.css');
 @font-face {
@@ -7,6 +7,11 @@
   font-weight: 300 900;
   font-display: swap;
   src: url('./assets/fonts/suite/SUITE-Variable.woff2') format('woff2');
+}
+
+html.dds-direction-preview :is(h1,h2,h3,h4,h5,h6,.dds-type-display-1,.dds-type-display-2,.dds-type-title-1,.dds-type-title-2,.dds-type-heading-1,.dds-type-heading-2,.dds-type-headline-1) {
+  --font-sans: var(--font-heading);
+  font-family: var(--font-sans);
 }
 
 html.dds-direction-preview[data-direction-colors=true] .home-hero::before {
@@ -114,9 +119,6 @@ html.dds-direction-preview[data-direction-multicolor=true] .di-benefits li:nth-c
   background: var(--direction-positive-soft);
 }
 html.dds-direction-preview[data-direction-multicolor=true] .sample-tabs button[aria-pressed=true]{color:var(--direction-secondary-ink);box-shadow:inset 0 -2px var(--direction-secondary)}
-.direction-gallery-frame>.topbar,.direction-gallery-frame>#sidebar,.direction-gallery-frame .site-footer{display:none}
-.direction-gallery-frame .workspace{margin-left:0}
-.direction-gallery-frame .workspace>#main{padding:24px}
 
 /* Comparison-only category colors: one color family for each function. */
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(1) {

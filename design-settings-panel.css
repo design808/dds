@@ -1,0 +1,244 @@
+#dds-design-settings {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-2-normal-size);
+  line-height: var(--type-body-2-normal-line-height);
+  color: var(--foreground);
+  letter-spacing: var(--type-body-2-normal-tracking);
+}
+#dds-design-settings *,
+#dds-design-settings *::before,
+#dds-design-settings *::after { box-sizing: border-box; }
+#dds-design-settings [hidden] { display: none !important; }
+#dds-design-settings :is(button,input,select) { font-family: inherit; letter-spacing: inherit; }
+#dds-design-settings button { cursor: pointer; }
+#dds-design-settings :is(button,a,input,select):focus-visible {
+  outline: 1px solid var(--primary);
+  outline-offset: 0;
+}
+#dds-design-settings .icon { display: block; flex-shrink: 0; stroke-width: 2; }
+#dds-design-settings .dds-settings-launcher {
+  position: fixed;
+  right: 24px;
+  bottom: calc(max(24px,env(safe-area-inset-bottom) + 16px) + var(--dds-settings-avoidance,0px));
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  color: var(--foreground);
+  box-shadow: var(--shadow-sm);
+}
+#dds-design-settings .dds-settings-launcher:hover { background: var(--muted); }
+#dds-design-settings .dds-settings-launcher .icon { width: 22px; height: 22px; }
+#dds-design-settings .dds-settings-dialog {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: 420px;
+  max-width: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  min-height: 0;
+  margin: 0;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-right: 0;
+  border-radius: 14px 0 0 14px;
+  background: var(--background);
+  color: var(--foreground);
+  box-shadow: var(--shadow-overlay);
+  overflow: hidden;
+  font: inherit;
+  text-align: left;
+}
+#dds-design-settings .dds-settings-dialog[open] { display: flex; flex-direction: column; }
+#dds-design-settings .dds-settings-dialog::backdrop { background: transparent; backdrop-filter: none; }
+#dds-design-settings .dds-settings-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 24px;
+  flex-shrink: 0;
+}
+#dds-design-settings .dds-settings-heading h2 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: var(--type-heading-2-size);
+  line-height: var(--type-heading-2-line-height);
+  font-weight: var(--type-heading-2-weight);
+  letter-spacing: var(--type-heading-2-tracking);
+}
+#dds-design-settings .dds-settings-close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 8px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--muted-foreground);
+}
+#dds-design-settings .dds-settings-close .icon { width: 22px; height: 22px; }
+#dds-design-settings .dds-settings-close:is(:hover,:focus-visible) { background: var(--muted); color: var(--foreground); }
+#dds-design-settings .dds-settings-body {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 28px;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 1px;
+}
+#dds-design-settings .dds-settings-section {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  border: 0;
+}
+#dds-design-settings .dds-settings-section :is(h3,legend) {
+  float: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: var(--foreground);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--type-label-1-tracking);
+}
+#dds-design-settings .dds-settings-mode legend { margin-bottom: 16px; }
+#dds-design-settings .dds-settings-presets { display: flex; gap: 8px; flex-wrap: wrap; }
+#dds-design-settings .dds-settings-preset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  gap: 8px;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: var(--type-label-2-size);
+  line-height: var(--type-label-2-line-height);
+  font-weight: var(--type-label-2-weight);
+}
+#dds-design-settings .dds-settings-preset:hover { background: var(--surface); border-color: var(--control-border); }
+#dds-design-settings .dds-settings-preset[aria-pressed=true] { border-color: var(--primary); background: var(--accent); }
+#dds-design-settings .dds-settings-color-dot { display: block; width: 16px; height: 16px; flex-shrink: 0; border-radius: var(--radius-sm); }
+#dds-design-settings .dds-settings-field { display: grid; gap: 8px; min-width: 0; }
+#dds-design-settings .dds-settings-field>label {
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--type-label-1-weight);
+  color: var(--foreground);
+}
+#dds-design-settings .dds-settings-color-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-inline: 10px;
+  min-height: 36px;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+}
+#dds-design-settings .dds-settings-color-control:focus-within { border-color: var(--primary); }
+#dds-design-settings .dds-settings-color-control:has([aria-invalid=true]) { border-color: var(--destructive); }
+#dds-design-settings .dds-settings-color-control input {
+  min-width: 0;
+  width: 100%;
+  height: 34px;
+  min-height: 34px;
+  margin: 0;
+  padding: 6px 0;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--foreground);
+  font-size: var(--type-body-2-normal-size);
+  line-height: var(--type-body-2-normal-line-height);
+  font-weight: var(--type-body-2-normal-weight);
+  box-shadow: none;
+}
+#dds-design-settings .dds-settings-color-control input:focus-visible { border: 0; outline: 0; }
+#dds-design-settings .dds-settings-error { margin: 0; color: var(--destructive); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height); }
+#dds-design-settings .dds-segmented { display: flex; gap: 4px; padding: 4px; border-radius: 9px; background: var(--surface); }
+#dds-design-settings .dds-choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 36px;
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--muted-foreground);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+#dds-design-settings .dds-choice input { position: absolute; width: 1px; height: 1px; min-height: 0; padding: 0; margin: 0; opacity: 0; }
+#dds-design-settings .dds-choice:has(:checked) { background: var(--background); color: var(--foreground); box-shadow: var(--shadow-sm); }
+#dds-design-settings .dds-choice:has(:focus-visible) { outline: 1px solid var(--primary); outline-offset: 0; }
+#dds-design-settings .dds-settings-field :is(select,.custom-select,.custom-trigger) { width: 100%; min-width: 0; }
+#dds-design-settings .dds-settings-field select,
+#dds-design-settings .dds-settings-field .custom-trigger {
+  min-height: 36px;
+  border: 1px solid var(--control-border);
+  border-radius: var(--radius-md);
+  padding: 6px 10px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: var(--type-body-2-normal-size);
+  line-height: var(--type-body-2-normal-line-height);
+  font-weight: var(--type-body-2-normal-weight);
+}
+#dds-design-settings .dds-settings-field .custom-trigger[aria-expanded=true] { border-color: var(--primary); }
+#dds-design-settings .dds-settings-field :is(select,.custom-trigger):focus-visible {
+  border-color: var(--primary);
+  outline: 0;
+  outline-offset: 0;
+}
+#dds-design-settings .dds-settings-footer { flex-shrink: 0; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+#dds-design-settings .dds-settings-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-medium);
+}
+#dds-design-settings .dds-settings-reset:hover { background: var(--surface); border-color: var(--control-border); }
+@media(max-width:520px) {
+  #dds-design-settings .dds-settings-launcher { right: 16px; bottom: calc(max(16px,env(safe-area-inset-bottom) + 12px) + var(--dds-settings-avoidance,0px)); }
+  #dds-design-settings .dds-settings-dialog { width: 100%; border-radius: 0; border-left: 0; padding-bottom: max(24px,env(safe-area-inset-bottom)); }
+}
+@media(forced-colors:active) {
+  #dds-design-settings :is(.dds-settings-launcher,.dds-settings-color-control,.dds-settings-preset,.dds-settings-reset,.custom-trigger) { border-color: ButtonText; }
+  #dds-design-settings .dds-settings-preset[aria-pressed=true],
+  #dds-design-settings .dds-choice:has(:checked) { outline: 1px solid Highlight; }
+}
