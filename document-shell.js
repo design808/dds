@@ -1,8 +1,8 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=fd534b683fb18343';
-import {icon} from './icons.js?v=fd534b683fb18343';
-import {formatHTML} from './format-html.js?v=fd534b683fb18343';
-import {componentContract} from './component-contracts.js?v=fd534b683fb18343';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=fd534b683fb18343';
+import {components, groups, patterns, foundations} from './catalog.js?v=0254d56c7df869e9';
+import {icon} from './icons.js?v=0254d56c7df869e9';
+import {formatHTML} from './format-html.js?v=0254d56c7df869e9';
+import {componentContract} from './component-contracts.js?v=0254d56c7df869e9';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=0254d56c7df869e9';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -30,7 +30,6 @@ export function sidebarContent(view) {
     <div class="nav-section">${item('/', '시작하기')}${item('/principles', '디자인 원칙')}${item('/process', '디자인 프로세스')}${item('/setup', 'AI로 적용하기')}${item('/handoff', '개발 적용 안내')}</div>
     <div class="nav-label">FOUNDATIONS</div><div class="nav-section">${foundations.map(([id, , ko]) => item('/foundations/' + id, ko)).join('')}</div>
     <div class="nav-label">COMPONENTS</div><div class="nav-section">${item('/components', '전체 컴포넌트')}${groups.map(group => `<details ${currentGroup === group ? 'open' : ''}><summary>${group}</summary>${components.filter(c => c.group === group).map(c => item('/components/' + c.id, c.name)).join('')}</details>`).join('')}</div>
-    <div class="nav-label">PATTERNS</div><div class="nav-section">${patterns.map(p => item('/patterns/' + p.id, p.ko)).join('')}</div>
     <div class="nav-label">적용 예시</div><div class="nav-section">${screenExamples.map(screen => `<a href="${screen.url}">${screen.name}</a>`).join('')}</div>`;
 }
 
