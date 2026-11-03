@@ -46,6 +46,8 @@ export const serviceTypography = [
   {role:'body-1-normal', weight:'semibold', reason:'문서 목록 카드의 제목은 16px로 밀도를 유지하고 굵기로 구분', selectors:['.document-open']},
   {role:'body-2-normal', selectors:['.my-document .document-context','.document-secondary']},
   {role:'label-2', selectors:['.doc-badge']},
+  {role:'label-1', weight:'semibold', reason:'마이페이지 문서 개수와 현재 메뉴', selectors:['&.dds-mypage .document-count','&.dds-mypage .mypage-sidebar nav>[aria-current=page]']},
+  {role:'body-2-normal', weight:'medium', reason:'문서 카드의 기업·직무 정보', selectors:['&.dds-mypage .document-primary']},
   {role:'caption-1', selectors:['.document-card-actions time']},
   {role:'label-1', selectors:['.dialog-field']},
   // Resume editor and preview.

@@ -417,6 +417,23 @@
   font-weight: var(--type-label-2-weight);
   letter-spacing: var(--type-label-2-tracking);
 }
+:root .dds-service.dds-mypage .document-count,
+:root .dds-service.dds-mypage .mypage-sidebar nav>[aria-current=page] {
+  --dds-type-role: label-1;
+  font-family: var(--font-sans);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--type-label-1-tracking);
+}
+:root .dds-service.dds-mypage .document-primary {
+  --dds-type-role: body-2-normal;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-2-normal-size);
+  line-height: var(--type-body-2-normal-line-height);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--type-body-2-normal-tracking);
+}
 :root .dds-service .document-card-actions time {
   --dds-type-role: caption-1;
   font-family: var(--font-sans);

@@ -1,8 +1,8 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=4255094fac65093f';
-import {icon} from './icons.js?v=4255094fac65093f';
-import {formatHTML} from './format-html.js?v=4255094fac65093f';
-import {componentContract} from './component-contracts.js?v=4255094fac65093f';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=4255094fac65093f';
+import {components, groups, patterns, foundations} from './catalog.js?v=5e72238aab557e02';
+import {icon} from './icons.js?v=5e72238aab557e02';
+import {formatHTML} from './format-html.js?v=5e72238aab557e02';
+import {componentContract} from './component-contracts.js?v=5e72238aab557e02';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=5e72238aab557e02';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
