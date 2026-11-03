@@ -1,5 +1,5 @@
-import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=7a39748fbcc3ec88';
-import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=7a39748fbcc3ec88';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=bafc9ff2bbb18270';
+import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=bafc9ff2bbb18270';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {

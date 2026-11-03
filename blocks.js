@@ -1,17 +1,17 @@
-import {icon} from './icons.js?v=7a39748fbcc3ec88';
-import {components} from './catalog.js?v=7a39748fbcc3ec88';
-import {bindCharts} from './chart-system.js?v=7a39748fbcc3ec88';
-import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=7a39748fbcc3ec88';
-import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=7a39748fbcc3ec88';
-import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=7a39748fbcc3ec88';
-import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=7a39748fbcc3ec88';
+import {icon} from './icons.js?v=bafc9ff2bbb18270';
+import {components} from './catalog.js?v=bafc9ff2bbb18270';
+import {bindCharts} from './chart-system.js?v=bafc9ff2bbb18270';
+import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=bafc9ff2bbb18270';
+import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=bafc9ff2bbb18270';
+import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=bafc9ff2bbb18270';
+import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=bafc9ff2bbb18270';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const blockCategories=[
   {id:'all',name:'전체'}, {id:'marketing',name:'랜딩'},
   {id:'account',name:'계정'}, {id:'workspace',name:'업무'}
 ];
-const blockOrder=['social-proof','feature-navigation','basic-table','login','signup','dashboard','data-flow','journey-flow','cohort-retention','sidebar','notifications','settings','kanban','metric-explorer','invoice-studio','hero','value-proposition','content-gallery','how-it-works','pricing','faq','header','footer'];
+const blockOrder=['social-proof','feature-navigation','basic-table','login','signup','dashboard','data-flow','journey-flow','cohort-retention','sidebar','notifications','settings','kanban','metric-explorer','invoice-studio','hero','content-gallery','how-it-works','pricing','faq','header','footer'];
 export const blocks=[...contentBlocks,...tableBlocks,...formBlocks,...workspaceBlocks].sort((a,b)=>blockOrder.indexOf(a.id)-blockOrder.indexOf(b.id));
 const formIds=new Set(formBlocks.map(block=>block.id));
 const tableIds=new Set(tableBlocks.map(block=>block.id));
@@ -29,7 +29,7 @@ function scene(block,prefix){
 
 function cards(items){
   if(!items.length)return '<div class="dds-blocks-empty"><h2>등록된 블록이 없습니다.</h2></div>';
-  return items.map(block=>`<article class="dds-block-card">
+  return items.map(block=>`<article class="dds-block-card" data-block-id="${esc(block.id)}">
     <div class="dds-block-thumbnail"><div class="dds-block-scene" inert aria-hidden="true">${scene(block,'thumbnail')}</div></div>
     <div class="dds-block-card-caption"><h2>${esc(block.title)}</h2><span class="dds-block-expand" aria-hidden="true">${icon('Expand')}</span></div>
     <button type="button" class="dds-block-card-trigger" data-block-open="${esc(block.id)}" aria-label="${esc(block.title)} 크게 보기"></button>

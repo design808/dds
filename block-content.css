@@ -81,8 +81,8 @@
 }
 
 /* Landing examples retain the inspected arrangement and use DDS primitives. */
-.dds-block-example :is(.dbc-hero-block,.dbc-value-proposition,.dbc-content-gallery,.dbc-how-it-works,.dbc-pricing,.dbc-faq) {min-width:0; color:var(--text-primary);}
-.dds-block-example :is(.dbc-hero-block,.dbc-value-proposition,.dbc-content-gallery,.dbc-how-it-works,.dbc-pricing,.dbc-faq) :is(h2,h3,h4,p,ul,dl,dd,fieldset) {margin:0;}
+.dds-block-example :is(.dbc-hero-block,.dbc-content-gallery,.dbc-how-it-works,.dbc-pricing,.dbc-faq) {min-width:0; color:var(--text-primary);}
+.dds-block-example :is(.dbc-hero-block,.dbc-content-gallery,.dbc-how-it-works,.dbc-pricing,.dbc-faq) :is(h2,h3,h4,p,ul,dl,dd,fieldset) {margin:0;}
 .dds-block-example .dbc-landing-heading {display:grid; justify-items:center; gap:var(--space-5); text-align:center; padding-block:var(--space-6);}
 .dds-block-example .dbc-landing-heading h2,.dds-block-example .dbc-large-title {color:var(--text-strong); font:600 var(--type-title-1-size)/var(--type-title-1-line-height) var(--font-sans); letter-spacing:var(--type-title-1-tracking); word-break:keep-all; overflow-wrap:anywhere;}
 .dds-block-example .dbc-landing-heading p {max-width:540px; word-break:keep-all; overflow-wrap:anywhere;}
@@ -129,19 +129,14 @@
 .dds-block-example .dbc-project-list li {display:grid; gap:var(--space-2);}
 .dds-block-example .dbc-ui-card .search-field {min-width:0; width:100%; margin:0;}
 .dds-block-example .dbc-ui-card .search-field :is(input,.custom-search) {min-width:0; flex:1; width:100%;}
-.dds-block-example .dbc-value-proposition {display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:center; gap:var(--space-10);}
-.dds-block-example .dbc-value-copy {display:grid; justify-items:start; gap:var(--space-6); min-width:0;}
-.dds-block-example .dbc-tool-labels {display:flex; flex-wrap:wrap; gap:var(--space-4); list-style:none; padding:0; color:var(--text-primary); font:600 var(--type-body-1-normal-size)/var(--type-body-1-normal-line-height) var(--font-sans);}
-.dds-block-example .dbc-conversation {display:grid; gap:var(--space-5); padding:var(--space-5); box-shadow:none; min-width:0;}
-.dds-block-example .dbc-prompt {justify-self:end; max-width:100%; padding:var(--space-3) var(--space-4); border-radius:var(--radius-lg); background:var(--surface); color:var(--text-primary); overflow-wrap:anywhere;}
-.dds-block-example .dbc-ai-reply {display:grid; gap:var(--space-2);}
-.dds-block-example .dbc-ai-name {color:var(--text-strong); font-weight:600;}
-.dds-block-example .dbc-generated-workspace {display:grid; gap:var(--space-5); padding:var(--space-4); min-width:0; box-shadow:none;}
-.dds-block-example .dbc-generated-workspace > header .avatar {width:28px; height:28px; background:var(--accent); color:var(--brand-ink); font-size:var(--type-label-2-size);}
 .dds-block-example .dbc-content-gallery,.dds-block-example .dbc-how-it-works {gap:var(--space-8);}
 .dds-block-example .dbc-gallery-grid {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--space-4);}
 .dds-block-example .dbc-gallery-card {display:grid; gap:var(--space-5); padding:var(--space-4); min-width:0; box-shadow:none;}
-.dds-block-example .dbc-gallery-preview {display:flex; align-items:center; justify-content:center; min-width:0; min-height:150px; padding:var(--space-2); pointer-events:none;}
+.dds-block-example .dbc-gallery-preview {display:flex; align-items:center; justify-content:center; min-width:0; min-height:150px; padding-block:var(--space-2); pointer-events:none;}
+.dds-block-example .dbc-gallery-preview .dds-segmented {display:inline-flex; flex:0 0 auto; width:max-content; min-width:max-content; max-width:none;}
+.dds-block-example .dbc-gallery-preview .dds-segmented .dds-choice {flex:0 0 auto; width:auto; min-width:max-content; min-height:var(--control-height-sm); padding:9px 10px; white-space:nowrap; font-size:var(--type-label-2-size); line-height:var(--type-label-2-line-height); letter-spacing:var(--type-label-2-tracking);}
+.dds-block-example .dbc-gallery-preview .dds-segmented .dds-choice > span {min-width:max-content; white-space:nowrap; overflow-wrap:normal; word-break:normal;}
+.dds-block-example .dbc-gallery-preview .dds-segmented input {width:1px; height:1px; min-width:0; min-height:0; margin:0; padding:0;}
 .dds-block-example .dbc-gallery-preview .dds-chart-example--mini {min-width:0; width:100%; padding:0; border:0; background:transparent;}
 .dds-block-example .dbc-gallery-card .db-section-title {padding-right:var(--space-6);}
 .dds-block-example .dbc-gallery-card .dds-card-link {font:inherit;}
@@ -151,6 +146,12 @@
 .dds-block-example .dbc-gallery-avatars .avatar {background:var(--accent); color:var(--brand-ink);}
 .dds-block-example .dbc-gallery-progress {display:grid; gap:var(--space-3); min-width:0; width:100%;}
 .dds-block-example .dbc-gallery-progress progress {width:100%; height:8px; accent-color:var(--primary);}
+.dds-block-example .dbc-ui-card .db-header > :first-child {min-width:0; overflow-wrap:anywhere;}
+.dds-block-example .dbc-ui-card .db-header > :last-child {flex-shrink:0;}
+.dds-block-example .dbc-ui-card .custom-select,.dds-block-example .dbc-ui-card .custom-trigger {min-width:0; max-width:100%; width:100%;}
+.dds-block-example .dbc-project-list .db-header {align-items:flex-start;}
+.dds-block-example .dbc-project-list .db-header > span:last-child {white-space:nowrap; font-variant-numeric:tabular-nums;}
+.dds-block-example .dbc-step-brand .db-inline > .db-muted {flex:1 1 90px; min-width:0; overflow-wrap:anywhere;}
 .dds-block-example .dbc-steps-grid {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--space-5);}
 .dds-block-example .dbc-step {display:grid; align-content:start; gap:var(--space-3); min-width:0;}
 .dds-block-example .dbc-step-visual {display:flex; align-items:center; justify-content:center; min-height:200px; margin-bottom:var(--space-2); padding:var(--space-4); border:1px solid var(--border); border-radius:var(--radius-lg); background:var(--background); pointer-events:none;}
@@ -198,17 +199,14 @@
 .dds-block-example .dbc-faq-footer a {color:var(--brand-ink); text-decoration:underline; text-underline-offset:3px;}
 @container (max-width:700px) {
   .dds-block-example .dbc-hero-columns {grid-template-columns:minmax(0,1fr);}
-  .dds-block-example .dbc-value-proposition {grid-template-columns:minmax(0,1fr); gap:var(--space-6);}
   .dds-block-example .dbc-gallery-grid,.dds-block-example .dbc-steps-grid {grid-template-columns:minmax(0,1fr);}
   .dds-block-example .dbc-landing-heading h2,.dds-block-example .dbc-large-title {font-size:var(--type-title-2-size); line-height:var(--type-title-2-line-height); letter-spacing:var(--type-title-2-tracking);}
   .dds-block-example .dbc-plan-grid {grid-template-columns:minmax(0,1fr);}
   .dds-block-example .dbc-landing-heading {padding-block:var(--space-4);}
-  .dds-block-example .dbc-value-copy > .db-muted br {display:none;}
   .dds-block-example .dbc-gallery-preview {min-height:160px;}
 }
 @container (max-width:420px) {
   .dds-block-example .dbc-plan {padding:var(--space-5);}
-  .dds-block-example .dbc-conversation {padding:var(--space-4);}
   .dds-block-example .dbc-step-visual {min-height:180px;}
   .dds-block-example .dbc-faq-item summary {padding:var(--space-4);}
   .dds-block-example .dbc-faq-item > div {padding:0 var(--space-4) var(--space-4);}

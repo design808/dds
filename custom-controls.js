@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=7a39748fbcc3ec88';
+import {icon} from './icons.js?v=bafc9ff2bbb18270';
 // Progressive enhancement: retain form values/events; replace browser-drawn controls.
 const svg=name=>icon(name==='chevron'?'down':name);
 const el=(tag,cls)=>{const x=document.createElement(tag);x.className=cls;return x;};

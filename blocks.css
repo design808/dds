@@ -64,3 +64,5 @@
   .dds-block-dialog {width:calc(100vw - 24px);max-width:calc(100vw - 24px);height:calc(100dvh - 24px);max-height:calc(100dvh - 24px);}
   .dds-block-dialog-header {display:grid;grid-template-columns:minmax(0,1fr) auto;padding:16px;gap:12px;}.dds-block-device-tabs {grid-column:1/-1;grid-row:2;justify-self:center;}.dds-block-dialog-body {padding:16px;}.dds-block-dialog-footer {padding:12px 16px;max-height:144px;overflow:auto;}
 }
+/* A thumbnail scales a desktop header; its card width is not a mobile viewport. */
+.dds-block-card[data-block-id="header"] .dds-block-scene {width:1200px;}

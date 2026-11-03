@@ -1,6 +1,6 @@
-import {icon} from './icons.js?v=7a39748fbcc3ec88';
-import {statusBadge, collectionCount} from './visibility.js?v=7a39748fbcc3ec88';
-import {chartData, chartDemo} from './chart-system.js?v=7a39748fbcc3ec88';
+import {icon} from './icons.js?v=bafc9ff2bbb18270';
+import {statusBadge, collectionCount} from './visibility.js?v=bafc9ff2bbb18270';
+import {chartData, chartDemo} from './chart-system.js?v=bafc9ff2bbb18270';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[character]));
 let renderSequence = 0;
@@ -10,7 +10,6 @@ export const contentBlocks = [
   {id: 'social-proof', title: '소셜 프루프', category: 'marketing', description: '인용문과 작성자 정보를 담은 여섯 개의 후기 카드.', components: ['card', 'avatar']},
   {id: 'feature-navigation', title: '여러 기능 탐색', category: 'marketing', description: '선택한 기능의 설명과 화면 구성을 함께 보여 주는 탐색.', components: ['accordion', 'button', 'chip', 'input', 'card', 'badge']},
   {id: 'hero', title: '히어로', category: 'marketing', description: '소개와 주요 행동 아래에 배치한 여섯 개의 작업 UI.', components: ['button', 'input', 'select', 'checkbox', 'switch', 'card', 'progress', 'area-chart']},
-  {id: 'value-proposition', title: '가치 제안', category: 'marketing', description: '핵심 가치와 AI 대화·작업 화면 구성.', components: ['button', 'card', 'avatar', 'checkbox', 'area-chart', 'segmented-control']},
   {id: 'content-gallery', title: '콘텐츠 갤러리', category: 'marketing', description: '대표 컴포넌트를 보여 주는 여섯 개의 미리보기 카드.', components: ['button', 'segmented-control', 'badge', 'avatar', 'progress', 'contributions']},
   {id: 'how-it-works', title: '작동 방식', category: 'marketing', description: '시각 예시와 설명으로 안내하는 세 단계.', components: ['card', 'chip', 'button']},
   {id: 'pricing', title: '프라이싱', category: 'marketing', description: '결제 주기별 두 플랜의 가격과 포함 항목 비교.', components: ['card', 'button', 'segmented-control']},
@@ -75,10 +74,10 @@ function button(label, attrs = '', variant = 'solid', color = 'primary', size = 
 function tabs(prefix, label, items, hook, separate = false) {
   return `<div class="segmented dbc-tabs" role="tablist" aria-label="${label}">${items.map(([value, name], index) => `<button type="button" role="tab" id="${prefix}-tab-${value}" aria-controls="${prefix}-panel${separate ? `-${value}` : ''}" aria-selected="${index === 0}" tabindex="${index === 0 ? 0 : -1}" ${hook}="${value}">${name}</button>`).join('')}</div>`;
 }
-function taskList(prefix, compact = false) {
-  const tasks = compact ? ['화면 구조 정리', '접근성 확인'] : ['요구사항 정리', '정보 구조 검토', '화면 구성', '사용성 확인'];
-  const done = compact ? 1 : 2;
-  return `<section class="dbc-task-group db-stack" data-dbc-task-group><div class="db-header"><h3 class="db-section-title">${compact ? '할 일' : '출시 준비'}</h3><output data-dbc-task-count>${done}/${tasks.length}</output></div>${compact ? '' : `<progress max="${tasks.length}" value="${done}" data-dbc-task-progress aria-label="준비 완료 비율"></progress>${tabs(prefix, '준비 작업 보기', [['all', '전체'], ['unfinished', '진행 중']], 'data-dbc-task-filter')}`}<div id="${prefix}-panel" ${compact ? '' : `role="tabpanel" aria-labelledby="${prefix}-tab-all"`}><ul class="dbc-task-list">${tasks.map((task, index) => `<li data-dbc-task-row><label><input type="checkbox" id="${prefix}-task-${index}" data-dbc-task ${index < done ? 'checked' : ''}><span>${task}</span></label></li>`).join('')}</ul></div></section>`;
+function taskList(prefix) {
+  const tasks = ['요구사항 정리', '정보 구조 검토', '화면 구성', '사용성 확인'];
+  const done = 2;
+  return `<section class="dbc-task-group db-stack" data-dbc-task-group><div class="db-header"><h3 class="db-section-title">출시 준비</h3><output data-dbc-task-count>${done}/${tasks.length}</output></div><progress max="${tasks.length}" value="${done}" data-dbc-task-progress aria-label="준비 완료 비율"></progress>${tabs(prefix, '준비 작업 보기', [['all', '전체'], ['unfinished', '진행 중']], 'data-dbc-task-filter')}<div id="${prefix}-panel" role="tabpanel" aria-labelledby="${prefix}-tab-all"><ul class="dbc-task-list">${tasks.map((task, index) => `<li data-dbc-task-row><label><input type="checkbox" id="${prefix}-task-${index}" data-dbc-task ${index < done ? 'checked' : ''}><span>${task}</span></label></li>`).join('')}</ul></div></section>`;
 }
 function activityCard(prefix) {
   const data = chartData('area-chart', 'basic'), values = data.series[0].values;
@@ -96,9 +95,6 @@ function hero(prefix) {
     <div class="dbc-hero-column"><section class="dds-content-card dbc-ui-card db-stack" data-dbc-members><div class="db-header"><h3 class="db-section-title">팀 멤버</h3><button type="button" class="dds-button" data-variant="outlined" data-color="assistive" data-control-size="sm" data-icon-only="true" data-dbc-member-toggle aria-label="멤버 추가" data-tooltip="멤버 추가" aria-expanded="false" aria-controls="${prefix}-member-form"><span class="dds-button-label">${icon('Plus')}</span></button></div><ul class="dbc-member-list" data-dbc-member-list>${[['김○○', '소유자'], ['박○○', '편집자'], ['이○○', '뷰어']].map(([name, role]) => `<li><span class="avatar" aria-hidden="true">${name[0]}</span><span class="dbc-member-name">${name}</span><span class="db-muted">${role}</span></li>`).join('')}</ul><span data-dbc-member-count>${collectionCount(3, {label: '멤버', unit: '명'})}</span><form class="db-stack" id="${prefix}-member-form" data-dbc-member-form hidden novalidate><div class="field"><label for="${prefix}-member-name">이름</label><input id="${prefix}-member-name" data-dbc-member-name required placeholder="이름 입력"></div><div class="field"><label for="${prefix}-member-role">역할</label><select id="${prefix}-member-role" data-dbc-member-role><option>뷰어</option><option>편집자</option></select></div><button type="submit" class="dds-button" data-variant="solid" data-color="primary" data-control-size="sm"><span class="dds-button-label">목록에 추가</span></button><p class="db-muted dbc-feedback" data-dbc-member-feedback role="status"></p></form></section><section class="dds-content-card dbc-ui-card">${activityCard(prefix + '-hero-activity')}</section></div>
     <div class="dbc-hero-column"><section class="dds-content-card dbc-ui-card">${taskList(prefix + '-readiness')}</section><section class="dds-content-card dbc-ui-card db-stack" data-dbc-projects><div class="db-header"><h3 class="db-section-title">내 프로젝트</h3><span data-dbc-project-count>${collectionCount(projects.length, {label: '프로젝트'})}</span></div><label class="search-field"><span class="sr-only">프로젝트 검색</span>${icon('Search')}<input type="search" data-dbc-project-search aria-label="프로젝트 검색" placeholder="프로젝트 검색"></label>${tabs(prefix + '-projects', '프로젝트 보기', [['all', '전체'], ['personal', '나만 보기']], 'data-dbc-project-filter')}<div role="tabpanel" id="${prefix}-projects-panel" aria-labelledby="${prefix}-projects-tab-all"><ul class="dbc-project-list" data-dbc-project-list>${projects.map(args => projectRow(...args)).join('')}</ul><p class="db-muted" data-dbc-project-empty hidden>일치하는 프로젝트가 없습니다.</p></div></section></div>
   </div></section>`;
-}
-function valueProposition(prefix) {
-  return `<section class="dbc-value-proposition" data-dbc-block="value-proposition"><div class="dbc-value-copy"><h2 class="dbc-large-title">공통 UI 기준을<br>AI 작업에도 연결하세요.</h2><p class="db-muted">프로젝트의 규칙과 실제 컴포넌트를 함께 전달해<br>새 화면에도 같은 디자인 기준을 적용하세요.</p><ul class="dbc-tool-labels" aria-label="AI 작업 도구"><li>Codex</li><li>Claude</li><li>Cursor</li></ul>${action('AI 적용 가이드', '#/setup', {variant: 'solid', color: 'primary'})}</div><section class="dds-content-card dbc-conversation"><div class="dbc-prompt">DDS로 팀의 작업 공간을 구성해 줘.</div><div class="dbc-ai-reply"><span class="dbc-ai-name">AI 작업</span><p>공통 컴포넌트로 작업 현황을 정리하겠습니다.</p><span class="db-muted">프로젝트 규칙과 DDS 기준 확인</span></div><section class="dds-content-card dbc-generated-workspace"><header class="db-header"><h3 class="db-section-title">팀 작업 공간</h3><span class="avatar" aria-hidden="true">김</span></header>${activityCard(prefix + '-value-activity')}${taskList(prefix + '-value-tasks', true)}</section></section></section>`;
 }
 function contentGallery(prefix) {
   const examples = [
@@ -138,7 +134,7 @@ function faq(prefix) {
 
 export function renderContentBlock(id, uid) {
   const prefix = `dbc-${safeId(uid || `content-${++renderSequence}`)}`;
-  const renderers = {'social-proof': socialProof, 'feature-navigation': featureNavigation, hero, 'value-proposition': valueProposition, 'content-gallery': contentGallery, 'how-it-works': howItWorks, pricing, faq};
+  const renderers = {'social-proof': socialProof, 'feature-navigation': featureNavigation, hero, 'content-gallery': contentGallery, 'how-it-works': howItWorks, pricing, faq};
   return renderers[id]?.(prefix) || '';
 }
 

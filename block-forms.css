@@ -79,7 +79,9 @@
 .dds-block-example .df-header-bar {display:flex;align-items:center;gap:var(--space-5);min-height:72px;min-width:0;border-bottom:1px solid var(--border);}
 .dds-block-example .df-header-brand {display:flex;flex-shrink:0;}
 .dds-block-example .df-header-brand img {display:block;width:174px;max-width:100%;height:auto;}
-.dds-block-example .df-header-nav {display:flex;align-items:center;gap:var(--space-1);min-width:0;}
+.dds-block-example .df-header-nav {display:flex;align-items:center;gap:var(--space-1);flex-shrink:0;min-width:0;}
+.dds-block-example .df-header-nav>.df-header-menu {flex-shrink:0;}
+.dds-block-example .df-header-nav>.dds-nav-control {white-space:nowrap;}
 .dds-block-example .df-header-nav>.df-header-menu>.dds-nav-control {gap:var(--space-2);white-space:nowrap;}
 .dds-block-example .df-header-nav>.df-header-menu>.dds-nav-control>.icon {width:14px;height:14px;}
 .dds-block-example .df-header-menu {position:relative;}
@@ -91,7 +93,7 @@
 .dds-block-example .df-header-dropdown>a>span:last-child {display:grid;gap:var(--space-1);min-width:0;}
 .dds-block-example .df-header-dropdown strong {font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:var(--font-weight-semibold);overflow-wrap:anywhere;}
 .dds-block-example .df-header-dropdown>a>span>span {font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);color:var(--text-secondary);overflow-wrap:anywhere;}
-.dds-block-example .df-header-tools {display:flex;align-items:center;gap:var(--space-2);margin-left:auto;}
+.dds-block-example .df-header-tools {display:flex;align-items:center;gap:var(--space-2);margin-left:auto;flex-shrink:0;}
 .dds-block-example .df-header-icon {display:grid;place-items:center;width:40px;height:40px;padding:8px;flex-shrink:0;border:0;border-radius:var(--radius-md);background:transparent;color:var(--text-primary);cursor:pointer;}
 .dds-block-example .df-header-icon>.icon {width:20px;height:20px;}
 .dds-block-example .df-header-icon:is(:hover,:focus-visible) {background:var(--surface);}
@@ -103,7 +105,7 @@
 .dds-block-example .df-header-mobile-toggle {display:none;}
 .dds-block-example :is(.df-header-icon,.df-header-profile,.df-header-dropdown a,.df-header-dropdown button):focus-visible {outline:1px solid var(--primary);outline-offset:0;}
 
-.dds-block-example .df-product-footer {display:flex;flex-direction:column;gap:var(--space-12);min-width:0;padding-block:var(--space-8);border-top:1px solid var(--border);}
+.dds-block-example .df-product-footer {min-width:0;padding-block:var(--space-8);border-top:1px solid var(--border);}
 .dds-block-example .df-footer-upper {display:grid;grid-template-columns:minmax(120px,.8fr) minmax(0,4fr) auto;align-items:start;gap:var(--space-8);min-width:0;}
 .dds-block-example .df-footer-brand {display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);min-width:0;color:var(--text-secondary);}
 .dds-block-example .df-footer-brand>img {width:40px;height:40px;object-fit:contain;margin-bottom:var(--space-4);}
@@ -116,7 +118,6 @@
 .dds-block-example .df-footer-groups a:hover {color:var(--text-primary);text-decoration:underline;text-underline-offset:3px;}
 .dds-block-example .df-footer-contact {display:inline-flex;align-items:center;gap:var(--space-2);color:var(--text-primary);text-decoration:none;white-space:nowrap;}
 .dds-block-example .df-footer-contact .icon {width:16px;height:16px;}
-.dds-block-example .df-footer-wordmark {display:block;width:100%;max-width:100%;height:auto;object-fit:contain;}
 .dds-block-example :is(.df-footer-brand,.df-footer-groups a,.df-footer-contact) {font-family:var(--font-sans);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);font-weight:var(--type-body-2-normal-weight);letter-spacing:var(--type-body-2-normal-tracking);}
 .dds-block-example :is(.df-footer-groups a,.df-footer-contact):focus-visible {outline:1px solid var(--primary);outline-offset:0;}
 
@@ -147,5 +148,5 @@
   .dds-block-example .df-header-brand img {width:136px;}
   .dds-block-example .df-header-bar {gap:var(--space-1);}
   .dds-block-example .df-header-tools {gap:var(--space-1);}
-  .dds-block-example .df-product-footer {gap:var(--space-8);padding-block:var(--space-6);}
+  .dds-block-example .df-product-footer {padding-block:var(--space-6);}
 }

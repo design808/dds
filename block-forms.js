@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=7a39748fbcc3ec88';
-import {collectionCount,statusBadge} from './visibility.js?v=7a39748fbcc3ec88';
+import {icon} from './icons.js?v=bafc9ff2bbb18270';
+import {collectionCount,statusBadge} from './visibility.js?v=bafc9ff2bbb18270';
 
 export const formBlocks = [
   {id:'login',title:'로그인',category:'account',description:'소셜 계정 또는 이메일 로그인과 비밀번호 찾기.',components:['input','button']},
@@ -7,7 +7,7 @@ export const formBlocks = [
   {id:'notifications',title:'알림',category:'account',description:'전체·읽지 않은 알림과 읽음 표시.',components:['avatar','badge','tabs','button']},
   {id:'settings',title:'설정',category:'account',description:'프로필·일반·알림·보안·청구 정보 설정.',components:['sidebar','avatar','input','select','switch','radio','button']},
   {id:'header',title:'헤더',category:'marketing',description:'로고·주 메뉴·하위 메뉴와 언어·계정 도구.',components:['top-navigation','navigation-menu','button','avatar']},
-  {id:'footer',title:'푸터',category:'marketing',description:'브랜드 정보·네 열 링크와 큰 워드마크.',components:['navigation-menu','text-button','separator']}
+  {id:'footer',title:'푸터',category:'marketing',description:'브랜드 정보와 네 열의 바로가기 링크.',components:['navigation-menu','text-button','separator']}
 ];
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[character]));
@@ -132,7 +132,7 @@ const footerGroups=[
   ['서비스',[['딥레쥬메','./prototypes/home-independent.html'],['자기소개서','./prototypes/coverletter-info.html'],['이력서','./prototypes/resume-write.html'],['AI 면접','./prototypes/interview-setup.html'],['내 작업 공간','./prototypes/mypage.html']]]
 ];
 function footerBlock(prefix) {
-  return `<footer class="df-product-footer"><div class="df-footer-upper"><div class="df-footer-brand"><img src="./assets/deepresume-mark.png" width="40" height="40" alt="딥레쥬메"><p>Deep Design System</p><p>© ${new Date().getFullYear()} PENa Labs.</p></div><nav class="df-footer-groups" aria-label="하단 메뉴">${footerGroups.map(([label,links],index)=>`<section aria-labelledby="${prefix}-footer-${index}"><h3 id="${prefix}-footer-${index}">${label}</h3><ul>${links.map(([text,href])=>`<li><a href="${href}">${text}</a></li>`).join('')}</ul></section>`).join('')}</nav><a class="df-footer-contact" href="#/handoff">적용 방법${icon('ArrowUpRight')}</a></div><img class="df-footer-wordmark" src="./assets/deepresume-logo.png" width="920" height="150" alt="DeepResume"></footer>`;
+  return `<footer class="df-product-footer"><div class="df-footer-upper"><div class="df-footer-brand"><img src="./assets/deepresume-mark.png" width="40" height="40" alt="딥레쥬메"><p>Deep Design System</p><p>© ${new Date().getFullYear()} PENa Labs.</p></div><nav class="df-footer-groups" aria-label="하단 메뉴">${footerGroups.map(([label,links],index)=>`<section aria-labelledby="${prefix}-footer-${index}"><h3 id="${prefix}-footer-${index}">${label}</h3><ul>${links.map(([text,href])=>`<li><a href="${href}">${text}</a></li>`).join('')}</ul></section>`).join('')}</nav><a class="df-footer-contact" href="#/handoff">적용 방법${icon('ArrowUpRight')}</a></div></footer>`;
 }
 function renderScene(id,prefix,state) {
   return id==='notifications'?notifications(prefix,state):id==='settings'?settings(prefix,state):id==='header'?headerBlock(prefix,state):id==='footer'?footerBlock(prefix):sceneContent(prefix,state);
@@ -180,10 +180,13 @@ export function bindFormBlocks(root) {
   root.addEventListener('click',event=>{
     const scene=sceneOf(event.target),control=event.target.closest?.('button');
     if(!scene){
-      for(const headerScene of root.querySelectorAll('[data-form-block="header"]'))if(stateOf(headerScene).headerOpen){stateOf(headerScene).headerOpen='';redraw(headerScene);}
+      for(const headerScene of root.querySelectorAll('[data-form-block="header"]'))if(stateOf(headerScene).headerOpen){const menu=stateOf(headerScene).headerOpen;stateOf(headerScene).headerOpen='';redraw(headerScene,`[data-df-header-menu="${menu}"]`);}
       return;
     }
-    if(!control||control.disabled)return;
+    if(!control||control.disabled){
+      if(scene.dataset.formBlock==='header'&&stateOf(scene).headerOpen&&!event.target.closest('.df-header-menu,a')){const menu=stateOf(scene).headerOpen;stateOf(scene).headerOpen='';redraw(scene,`[data-df-header-menu="${menu}"]`);}
+      return;
+    }
     const state=stateOf(scene);
     if(control.hasAttribute('data-df-view'))changeView(scene,control.dataset.dfView);
     else if(control.hasAttribute('data-df-provider'))changeView(scene,'social',control.dataset.dfProvider);
