@@ -1,4 +1,4 @@
-import {chartComponents} from './chart-catalog.js?v=d05621b267929a20';
+import {chartComponents} from './chart-catalog.js?v=a50398fb5a4538e0';
 
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const table = (caption, headings, rows) => `<div class="table-wrap"><table class="dds-rules-table"><caption class="sr-only">${esc(caption)}</caption><thead><tr>${headings.map(h => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((cell, i) => i === 0 ? `<th scope="row">${esc(cell)}</th>` : `<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
@@ -46,7 +46,7 @@ export const implementationRules = [
 ];
 
 export const exampleScopes = {
-  button: ['기본·비활성 버튼과 클릭 피드백', '서버 제출·로딩 상태 전환'],
+  button: ['채움·테두리 5종, 아이콘 조합, 크기·너비, 비활성·로딩 표시와 상태 전환', '서비스 요청·제출·성공·실패 결과 연결'],
   table: ['정적 표와 상태 표시', '정렬·행 선택·서버 페이지 이동'],
   chart: ['차트 선택 기준과 고정된 예제 데이터', '서비스 데이터·집계·로딩·오류 연결'],
   'bar-chart': ['고정 데이터의 막대 비교·범례 선택·수치 확인·데이터 표', '서비스 데이터·집계·로딩·오류 연결'],

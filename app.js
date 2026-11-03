@@ -1,19 +1,20 @@
-import {handoffPage} from './developer-guide.js?v=d05621b267929a20';
-import {getDesignSettings} from './design-settings.js?v=d05621b267929a20';
-import {textColorSection} from './text-colors.js?v=d05621b267929a20';
-import {setupPage,ddsRelease} from './adoption-content.js?v=d05621b267929a20';
-import {typographyPage,bindTypography} from './typography-system.js?v=d05621b267929a20';
-import {formValidationSpec,contentBehaviorSpec,bindServiceGuidelines} from './service-guidelines.js?v=d05621b267929a20';
-import {sidebarContent,overviewContent,componentContent,renderPattern,searchableDocuments} from './document-shell.js?v=d05621b267929a20';
-import {principlesContent,processContent} from './document-content.js?v=d05621b267929a20';
-import {icon,iconGallery,bindIconGallery} from './icons.js?v=d05621b267929a20';
-import {collectionCount,statusBadge} from './visibility.js?v=d05621b267929a20';
-import './interactions.js?v=d05621b267929a20';
-import {extensionDemo,bindExtensions} from './extension-demos.js?v=d05621b267929a20';
-import {chartDemo,bindCharts} from './chart-system.js?v=d05621b267929a20';
-import {chartRouteAliases} from './chart-catalog.js?v=d05621b267929a20';
-import {colorPage} from './color-system.js?v=d05621b267929a20';
-import {components,groups,patterns,foundations} from './catalog.js?v=d05621b267929a20';
+import {handoffPage} from './developer-guide.js?v=a50398fb5a4538e0';
+import {getDesignSettings} from './design-settings.js?v=a50398fb5a4538e0';
+import {textColorSection} from './text-colors.js?v=a50398fb5a4538e0';
+import {setupPage,ddsRelease} from './adoption-content.js?v=a50398fb5a4538e0';
+import {typographyPage,bindTypography} from './typography-system.js?v=a50398fb5a4538e0';
+import {formValidationSpec,contentBehaviorSpec,bindServiceGuidelines} from './service-guidelines.js?v=a50398fb5a4538e0';
+import {sidebarContent,overviewContent,componentContent,renderPattern,searchableDocuments} from './document-shell.js?v=a50398fb5a4538e0';
+import {principlesContent,processContent} from './document-content.js?v=a50398fb5a4538e0';
+import {icon,iconGallery,bindIconGallery} from './icons.js?v=a50398fb5a4538e0';
+import {collectionCount,statusBadge} from './visibility.js?v=a50398fb5a4538e0';
+import './interactions.js?v=a50398fb5a4538e0';
+import {extensionDemo,bindExtensions} from './extension-demos.js?v=a50398fb5a4538e0';
+import {chartDemo,bindCharts} from './chart-system.js?v=a50398fb5a4538e0';
+import {buttonDemo,buttonCodeExample,bindButtonDemos} from './button-demos.js?v=a50398fb5a4538e0';
+import {chartRouteAliases} from './chart-catalog.js?v=a50398fb5a4538e0';
+import {colorPage} from './color-system.js?v=a50398fb5a4538e0';
+import {components,groups,patterns,foundations} from './catalog.js?v=a50398fb5a4538e0';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const releaseBadge=document.querySelector('[data-dds-release]');
 if(releaseBadge){releaseBadge.textContent='v'+ddsRelease;releaseBadge.setAttribute('aria-label','DDS 버전 '+ddsRelease);}
@@ -23,6 +24,7 @@ $('#search-open').setAttribute('data-tooltip','Ctrl K');
 
 let demoSequence=0;
 let view='/',selectedGroup='All';
+let cleanupButtonDemos=()=>{};
 let theme=localStorage.getItem('deep-theme')||'light';document.documentElement.dataset.theme=theme;document.querySelector('#theme-toggle').innerHTML=icon(theme==='light'?'moon':'sun');$("#theme-toggle").setAttribute("aria-label",theme==="light"?"다크 모드로 전환":"라이트 모드로 전환");
 const badge=(s,t='')=>({success:'complete',info:'pending',danger:'error'}[t]?statusBadge({success:'complete',info:'pending',danger:'error'}[t],s,icon):`<span class="badge dds-badge ${t}">${esc(s)}</span>`);
 const btn=(label,cls='',extra='')=>`<button class="btn ${cls}" ${extra}>${label}</button>`;
@@ -43,7 +45,7 @@ function nav(){
 
 function documentCard(title='프로덕트 디자이너 자기소개서',status='임시저장'){return `<article class="dds-document-card dds-content-card"><div class="dds-card-header">${statusBadge(status==='저장 완료'?'complete':'draft',status,icon)}<button class="icon-btn dds-card-tools" type="button" data-dialog aria-label="${esc(title)} 미리보기">${icon('Eye')}</button></div><h3 class="dds-card-title"><a class="dds-card-link" href="./prototypes/coverletter-write.html">${esc(title)}</a></h3><p class="dds-meta-primary">딥레쥬메 · 프로덕트 디자이너</p><p class="dds-meta-secondary">IT 서비스 · 신입</p><time class="dds-meta-date" datetime="2026-09-16">2026.09.16 수정</time></article>`;}
 function demo(id,mini=false){const uid='demo-'+id+(mini?'-mini-'+(++demoSequence):'');const chart=chartDemo(id,uid,mini);if(chart!==null)return chart;switch(id){
-case 'button':return `<div class="demo-row">${btn('저장 후 다음 '+icon('chevron'),'primary','data-toast="예제 저장이 완료되었습니다."')}${btn('임시저장','','data-toast="임시저장 예제입니다."')}${!mini?btn('사용할 수 없음','','disabled'):''}</div>`;
+case 'button':return buttonDemo(mini,uid);
 case 'icon-button':return `<div class="demo-row">${['plus','copy','more'].map((i,n)=>`<button class="icon-btn bordered" aria-label="${['문항 추가','문항 복사','추가 메뉴'][n]}" data-toast="${['문항 추가','문항 복사','추가 메뉴'][n]} 예제입니다.">${icon(i)}</button>`).join('')}</div>`;
 case 'chip':return `<div class="demo-row"><button class="chip selected" aria-pressed="true" data-chip>프로덕트 디자인</button><button class="chip" aria-pressed="false" data-chip>사용자 리서치</button><button class="chip" aria-pressed="false" data-chip>프로토타이핑</button></div>`;
 case 'input':return `<div class="field"><label for="${uid}">자기소개서 제목 <span class="required">*</span></label><input id="${uid}" placeholder="지원 직무가 드러나는 제목" ${mini?'value="함께 성장하는 디자이너"':''}><p class="helper">나의 강점이 드러나는 제목을 작성해 주세요.</p></div>`;
@@ -85,11 +87,17 @@ function componentList(){return head('COMPONENTS','Components','컴포넌트별 
 const fieldControlIds=['input','select','combobox','date-picker','search','input-group','time-picker','field','input-otp'];
 function controlSizingSpec(){return `<div class="guideline"><b>입력 크기와 콘텐츠 대응</b><p>크기는 높이·글자·패딩·아이콘을 함께 바꿉니다. Small은 도구 모음의 짧은 입력·선택에, Medium은 일반 폼에, Large는 문서 제목처럼 강조하는 입력에 사용합니다. 화면이 좁다는 이유만으로 Small로 바꾸지 않습니다.</p><p>높이는 한 줄일 때의 테두리 포함 기준입니다. 선택값이 길면 Select는 줄바꿈하며 높이가 늘어납니다. 직접 입력하는 한 줄 텍스트는 내부에서 스크롤하고, 긴 작성 본문은 Textarea를 사용합니다.</p></div>
 <div class="table-wrap"><table><thead><tr><th>크기</th><th>한 줄 높이</th><th>입력·선택 값</th><th>좌우 여백 / 아이콘</th></tr></thead><tbody><tr><td>Small</td><td>36px</td><td>Body 2 Normal · 14 / 22</td><td>10px / 16px</td></tr><tr><td>Medium · 기본</td><td>44px</td><td>Body 1 Normal · 16 / 24</td><td>12px / 18px</td></tr><tr><td>Large</td><td>52px</td><td>Body 1 Normal · 16 / 24</td><td>16px / 20px</td></tr></tbody></table></div>
-<p><code>data-control-size="sm|md|lg"</code>를 필드 또는 부모에 지정합니다. 펼친 선택 목록도 같은 글자 크기를 사용합니다. Small 버튼은 Label 2(13 / 18)와 최소 높이 36px를 사용합니다. <a href="./control-sizing.css?v=d05621b267929a20" download>control-sizing.css</a>를 컴포넌트·화면 스타일 뒤에 로드합니다.</p>
+<p><code>data-control-size="sm|md|lg"</code>를 필드 또는 부모에 지정합니다. 펼친 선택 목록도 같은 글자 크기를 사용합니다. Small 버튼은 Label 2(13 / 18)와 최소 높이 36px를 사용합니다. <a href="./control-sizing.css?v=a50398fb5a4538e0" download>control-sizing.css</a>를 컴포넌트·화면 스타일 뒤에 로드합니다.</p>
 <div class="control-size-examples">${[['sm','Small · 36px / 14px'],['md','Medium · 44px / 16px'],['lg','Large · 52px / 16px']].map(([size,label])=>`<div class="control-size-row" data-control-size="${size}"><p>${label}</p><div><div class="field"><label for="sizing-${size}-text">텍스트 입력</label><input id="sizing-${size}-text" placeholder="내용을 입력해 주세요"></div><div class="field"><label for="sizing-${size}-select">선택 상자</label><select id="sizing-${size}-select"><option>선택해 주세요</option><option>디자인</option><option>개발</option></select></div><div class="field"><label for="sizing-${size}-date">날짜 입력</label><input id="sizing-${size}-date" type="date"></div></div></div>`).join('')}</div>
 <h3>내용에 맞는 너비와 줄바꿈</h3><p>폼은 가용 너비를 채우고, 짧은 도구 모음은 <code>data-control-width="content"</code>로 가장 긴 옵션의 너비를 확보합니다. 선택값이 바뀌어도 버튼 위치가 흔들리지 않습니다. 가용 공간보다 긴 값은 줄임표 대신 줄바꿈합니다. 버튼·칩·상태·도움말도 내용에 따라 높이가 늘어나며 아이콘은 줄어들지 않습니다.</p>
 <div class="content-fit-examples"><div class="fit-toolbar" data-control-size="sm"><select aria-label="콘텐츠 너비 번역 언어" data-control-width="content"><option>한국어</option><option>English</option><option>日本語</option><option>简体中文</option><option>Español (Latinoamérica)</option></select><button class="btn sm">번역 결과를 확인하고 적용하기</button></div><div class="field"><label for="fit-long-selection">긴 선택값</label><select id="fit-long-selection"><option>서비스 기획·사용자 경험 설계와 프로덕트 디자인을 함께 담당하는 직무</option><option>짧은 항목</option></select></div><div class="fit-toolbar"><button class="btn">작성한 자기소개서를 저장하고 다음 단계로 이동하기</button><span class="badge">담당 컨설턴트의 상세 검토와 피드백 작성을 기다리고 있습니다</span><button class="chip">사용자 리서치와 서비스 경험을 개선한 프로젝트</button></div><div class="alert info">${icon('info')}<div><b>긴 안내 문장도 생략하지 않습니다.</b><p>첨부 파일: DeepResume_Application_DesignResearch_ProjectPortfolio_FinalReview_2026.pdf</p></div></div></div>`;}
-function componentDetail(c){return componentContent(c,demo(c.id));}
+function componentDetail(c){
+ if(c.id==='button')return componentContent(c,buttonCodeExample(),{
+   previewHTML:buttonDemo(),
+   previewToc:[['button-variants','Variants'],['button-icons','아이콘'],['button-sizes','크기'],['button-disabled','비활성'],['button-loading','로딩'],['button-width','너비']]
+ });
+ return componentContent(c,demo(c.id));
+}
 
 function foundationsPage(id){const f=foundations.find(x=>x[0]===id);let body='';if(id==='color'){body=colorPage(getDesignSettings());}
 else if(id==='typography'){body=typographyPage();}
@@ -106,6 +114,7 @@ function principles(){return head('시작하기','디자인 원칙','화면을 �
 function processPage(){return head('시작하기','디자인 프로세스','기존 화면에 DDS를 적용하는 순서.')+processContent();}
 
 function render(){
+ cleanupButtonDemos();
  view=location.hash.slice(1)||'/';if(view.split('?')[0]==='/directions'){history.replaceState(null,'','#/');view='/';}const chartAlias=chartRouteAliases[view.split('?')[0].replace('/components/','')];if(view.startsWith('/components/')&&chartAlias){view='/components/'+chartAlias;history.replaceState(null,'','#'+view);}const route=view.split('?')[0];let html;
  if(route==='/')html=overview();
  else if(route==='/components')html=componentList();
@@ -121,7 +130,7 @@ function render(){
 }
 
 function notFound(){return head('404','문서를 찾을 수 없습니다.','메뉴에서 문서를 선택해 주세요.')+'<a class="btn" href="#/">살펴보기로 이동</a>';}
-function bind(){ bindCharts(); bindServiceGuidelines(); bindTypography(); bindExtensions(); bindIconGallery(); document.querySelectorAll('[data-doc-tab]').forEach(t=>{const key=t.dataset.docTab;t.id='doc-tab-'+key;t.setAttribute('aria-controls','doc-panel-'+key);const p=document.querySelector('[data-doc-panel="'+key+'"]');p.id='doc-panel-'+key;p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby',t.id);}); $$('[data-counter]').forEach(t=>{const count=()=>{const el=t.closest('.field,.editor-demo')?.querySelector('[data-count]');if(el)el.textContent=`${t.value.length} / ${t.maxLength}`;};count();t.addEventListener('input',count);});$('#component-search')?.addEventListener('input',e=>{$('#component-results').innerHTML=components.filter(c=>(selectedGroup==='All'||c.group===selectedGroup)&&`${c.name} ${c.ko} ${(c.aliases||[]).join(" ")}`.toLowerCase().includes(e.target.value.toLowerCase())).map(card).join('')||'<p>검색 결과가 없습니다.</p>';});$$('[data-demo-search]').forEach(el=>el.addEventListener('input',()=>{el.closest('.field').querySelector('[data-search-count]').textContent=el.value?`“${el.value}” 검색 · ${'자기소개서'.includes(el.value)?1:0}개 예제 문서`:'문서 제목을 입력해 검색 예제를 확인하세요.';}));$$('[data-file]').forEach(el=>el.addEventListener('change',()=>{const f=el.files[0];el.closest('.upload-zone').querySelector('.file-state').textContent=!f?'선택한 파일이 없습니다.':f.size>10*1024*1024?'10MB 이하 파일을 선택해 주세요.':!f.name.toLowerCase().endsWith('.pdf')?'PDF 파일을 선택해 주세요.':`${f.name} · 선택 완료 (업로드하지 않음)`;}));}
+function bind(){ cleanupButtonDemos=bindButtonDemos($('#main'),{notify:toast}); bindCharts(); bindServiceGuidelines(); bindTypography(); bindExtensions(); bindIconGallery(); document.querySelectorAll('[data-doc-tab]').forEach(t=>{const key=t.dataset.docTab;t.id='doc-tab-'+key;t.setAttribute('aria-controls','doc-panel-'+key);const p=document.querySelector('[data-doc-panel="'+key+'"]');p.id='doc-panel-'+key;p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby',t.id);}); $$('[data-counter]').forEach(t=>{const count=()=>{const el=t.closest('.field,.editor-demo')?.querySelector('[data-count]');if(el)el.textContent=`${t.value.length} / ${t.maxLength}`;};count();t.addEventListener('input',count);});$('#component-search')?.addEventListener('input',e=>{$('#component-results').innerHTML=components.filter(c=>(selectedGroup==='All'||c.group===selectedGroup)&&`${c.name} ${c.ko} ${(c.aliases||[]).join(" ")}`.toLowerCase().includes(e.target.value.toLowerCase())).map(card).join('')||'<p>검색 결과가 없습니다.</p>';});$$('[data-demo-search]').forEach(el=>el.addEventListener('input',()=>{el.closest('.field').querySelector('[data-search-count]').textContent=el.value?`“${el.value}” 검색 · ${'자기소개서'.includes(el.value)?1:0}개 예제 문서`:'문서 제목을 입력해 검색 예제를 확인하세요.';}));$$('[data-file]').forEach(el=>el.addEventListener('change',()=>{const f=el.files[0];el.closest('.upload-zone').querySelector('.file-state').textContent=!f?'선택한 파일이 없습니다.':f.size>10*1024*1024?'10MB 이하 파일을 선택해 주세요.':!f.name.toLowerCase().endsWith('.pdf')?'PDF 파일을 선택해 주세요.':`${f.name} · 선택 완료 (업로드하지 않음)`;}));}
 document.addEventListener('click',e=>{const t=e.target.closest('button,[data-copy]');if(!t)return;if(t.hasAttribute('data-toast'))toast(t.dataset.toast);if(t.hasAttribute('data-copy'))copy(t.dataset.copy);if(t.hasAttribute('data-dialog')){$('#demo-dialog').showModal();}if(t.hasAttribute('data-close'))t.closest('dialog').close();if(t.hasAttribute('data-chip')){const s=t.getAttribute('aria-pressed')!=='true';t.setAttribute('aria-pressed',s);t.classList.toggle('selected',s);}if(t.hasAttribute('data-demo-tab')){const container=t.closest('.tab-demo');container.querySelectorAll('[role=tab]').forEach(x=>{x.setAttribute('aria-selected',x===t);x.tabIndex=x===t?0:-1;});const panel=container.querySelector('[role=tabpanel]');panel.textContent=t.textContent+' 목록을 확인하고 작성을 이어가세요.';panel.setAttribute('aria-labelledby',t.id);}if(t.hasAttribute('data-page')){const nav=t.closest('nav');nav.querySelectorAll('[data-page]').forEach(x=>{x.classList.toggle('primary',x===t);x.removeAttribute('aria-current');});t.setAttribute('aria-current','page');nav.querySelector('[data-page-state]').textContent=t.textContent+' / 4 페이지';}if(t.hasAttribute('data-group')){selectedGroup=t.dataset.group;render();}if(t.hasAttribute('data-doc-tab')){const chosen=t.dataset.docTab;$$('[data-doc-tab]').forEach(x=>{x.setAttribute('aria-selected',x===t);x.tabIndex=x===t?0:-1;});$$('[data-doc-panel]').forEach(p=>p.hidden=p.dataset.docPanel!==chosen);}if(t.classList.contains('copy-code'))copy(t.parentElement.querySelector('pre code').textContent);if(t.hasAttribute('data-scroll')){$('[data-doc-tab="design"]')?.click();$('#'+t.dataset.scroll)?.scrollIntoView({behavior:'smooth',block:'start'});}});
 document.addEventListener('keydown',e=>{if(e.target.matches('[role=tab]')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const tabs=[...e.target.parentElement.querySelectorAll('[role=tab]')];let i=tabs.indexOf(e.target);i=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click();}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openSearch();}if(e.key==='Escape'){document.body.classList.remove('menu-open');$('#mobile-menu').setAttribute('aria-expanded','false');}});
 function openSearch(){$('#search-dialog').showModal();$('#global-search').value='';search('');$('#global-search').focus();}

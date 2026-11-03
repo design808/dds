@@ -8,7 +8,7 @@ DDS는 딥레쥬메·딥인터뷰와 향후 신규 서비스를 포함한 회사
 ## 프로젝트 설정
 
 AI 설정 프롬프트는 https://design808.github.io/dds/#/setup 에서 제공합니다.
-DDS 0.2.3의 고정 참조 묶음은 releases/0.2.3/manifest.json과 bundle.json을 기준으로 확인합니다.
+DDS 0.2.4의 고정 참조 묶음은 releases/0.2.4/manifest.json과 bundle.json을 기준으로 확인합니다.
 기준 파일 준비·프로젝트 규칙 등록·서비스 화면 적용·기능 검증은 각각 기록합니다.
 자세한 연결 방법은 dds-adoption.md를 읽습니다. 기준 설정만 요청한 작업에서 기존 서비스 파일을 수정하지 않습니다.
 
@@ -19,6 +19,7 @@ DDS 0.2.3의 고정 참조 묶음은 releases/0.2.3/manifest.json과 bundle.json
 - public/service-typography.js: 서비스 선택자별 역할 원본. scripts/service-typography.mjs로 CSS 생성.
 - public/visibility.css: 카드·텍스트·상태·개수·탐색에 필요한 공통 표시 클래스.
 - public/visibility.js: 선택적인 collectionCount/statusBadge 순수 마크업 함수. 기존 데이터·상태·Lucide 렌더러를 전달.
+- public/button-system.css: Solid·Outlined 버튼의 크기·색·상태·아이콘·전체 너비 스타일.
 - public/component-contracts.js: 컴포넌트 선택·조작·규격·검수 기준.
 - public/service-guidelines.js: 폼·오류·번역·서비스 패턴의 처리 기준.
 - public/data/dds-contracts.json: 위 문서와 같은 데이터에서 생성한 전체 규칙.
@@ -50,6 +51,7 @@ DDS 0.2.3의 고정 참조 묶음은 releases/0.2.3/manifest.json과 bundle.json
 - Primary #FFAD31; Primary 채움 글자 흰색·700. 대비 1.86:1의 기존 예외 유지.
 - 일반 글자 굵기 400–700. 장식 예외는 대상·이유 기록.
 - Small 입력 36px/14px, Medium 44px/16px, Large 52px/16px.
+- 버튼 Solid Primary·Assistive·Negative / Outlined Primary·Assistive. 크기 36/44/52px와 글자 13/14/16px. 기본 600, Solid Primary·Negative 700. 실제 비동기 상태는 서비스에서 관리.
 - 입력 외곽 포커스 1px Primary·offset 0; 활성 칩 Primary 글자·경계.
 - 모달 패딩 24px. 아이콘 전용 버튼에는 기능 이름과 hover·focus 툴팁.
 - 문서 카드 제목 16/24/600 Strong, 기업·직무 14/22/500 Primary, 보조정보 14/22 Secondary, 날짜 12/18 Tertiary.
@@ -63,8 +65,9 @@ DDS 0.2.3의 고정 참조 묶음은 releases/0.2.3/manifest.json과 bundle.json
 - tokens.css와 같은 경로의 assets/fonts/pretendard/를 함께 배포합니다.
 - 기존 선택자에 맞는 스킨 CSS와 타이포그래피 매핑을 작성합니다. 생성된 service-typography.css는 직접 편집하지 않습니다.
 - visibility.css의 필요한 클래스를 서비스 범위에 연결하고 기존 선택자와의 우선순위를 확인합니다. visibility.js는 이벤트·상태 관리를 제공하지 않습니다.
+- button-system.css의 .dds-button을 연결하고 기존 type·form·이벤트를 보존합니다. aria-busy와 native disabled를 함께 사용하며 실제 요청·완료·오류·초점 처리는 서비스에서 관리합니다.
 - 컴포넌트 계약의 assetGroups.service는 서비스 기준, documentation은 문서 전용, adapter는 서비스 연결 검토가 필요한 참조 파일입니다. 전체 참조 목록을 운영 설치 목록으로 사용하지 않습니다.
-- style.css, app.js, extension-demos.js, preview-layout.js는 DDS 문서와 예제용입니다. 운영 서비스에 통째로 추가하지 않습니다.
+- style.css, app.js, extension-demos.js, preview-layout.js, button-demos.js, button-docs.css는 DDS 문서와 예제용입니다. 운영 서비스에 통째로 추가하지 않습니다.
 - custom-controls.js는 원본 입력 옆에 UI를 생성합니다. 기존 위젯 교체 시 필드·이벤트·검증·초기화 연결을 별도 확인합니다.
 - research-data/의 기존 사용처는 정적 검출 후보입니다. 확인하지 않은 선택자를 임의로 채우지 않습니다.
 - 원본 인벤토리는 2026-09-16 / 8e913146 기준입니다. 현재 checkout과 자동 동기화되지 않으므로 대상 템플릿과 선택자를 현재 소스에서 다시 확인합니다.

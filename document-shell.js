@@ -1,8 +1,8 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=d05621b267929a20';
-import {icon} from './icons.js?v=d05621b267929a20';
-import {formatHTML} from './format-html.js?v=d05621b267929a20';
-import {componentContract} from './component-contracts.js?v=d05621b267929a20';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=d05621b267929a20';
+import {components, groups, patterns, foundations} from './catalog.js?v=a50398fb5a4538e0';
+import {icon} from './icons.js?v=a50398fb5a4538e0';
+import {formatHTML} from './format-html.js?v=a50398fb5a4538e0';
+import {componentContract} from './component-contracts.js?v=a50398fb5a4538e0';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=a50398fb5a4538e0';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -45,15 +45,15 @@ export function overviewContent(card) {
     <div class="section-heading"><h2>적용 예시</h2></div><div class="entry-grid">${screenExamples.map(screen => `<a href="${screen.url}" class="entry-card"><div><h3>${screen.name}</h3><p>${screen.description}</p></div>${icon('arrow')}</a>`).join('')}</div>`;
 }
 
-export function componentContent(c, html) {
+export function componentContent(c, html, {previewHTML, previewToc} = {}) {
   const contract = componentContract(c);
-  const toc = [['preview','예제'],['anatomy','구성'],['guidelines','사용 기준'],['specification','규격'],['states','상태'],['keyboard','조작'],['checks','검수']];
+  const toc = [...(previewToc || [['preview','예제']]),['anatomy','구성'],['guidelines','사용 기준'],['specification','규격'],['states','상태'],['keyboard','조작'],['checks','검수']];
   const usage = `<div class="table-wrap"><table class="dds-rules-table"><tbody><tr><th scope="row">사용할 때</th><td>${esc(contract.usage.when)}</td></tr><tr><th scope="row">다른 선택</th><td>${esc(contract.usage.alternative)}</td></tr></tbody></table></div>${list(contract.rules)}`;
   const spec = `<div class="table-wrap"><table class="dds-rules-table"><thead><tr><th scope="col">항목</th><th scope="col">규격</th></tr></thead><tbody>${contract.specification.map(([name, value]) => `<tr><th scope="row">${esc(name)}</th><td>${esc(value)}</td></tr>`).join('')}</tbody></table></div>`;
   return header('컴포넌트 / ' + c.group, c.name, c.description) + `<div class="doc-layout"><article>
     <div class="doc-tabs" role="tablist" aria-label="컴포넌트 문서"><button role="tab" aria-selected="true" data-doc-tab="design">사용법</button><button role="tab" aria-selected="false" data-doc-tab="code" tabindex="-1">코드</button></div>
     <div data-doc-panel="design">
-      ${section('preview','예제', `<div class="playground"><div class="playground-inner">${html}</div></div>${exampleScope(c.id)}`)}
+      ${previewHTML ?? section('preview','예제', `<div class="playground"><div class="playground-inner">${html}</div></div>${exampleScope(c.id)}`)}
       ${section('anatomy','구성', `<div class="anatomy-list">${c.anatomy.split(' · ').map((part, i) => `<div><span>${i + 1}</span>${esc(part)}</div>`).join('')}</div>`)}
       ${section('guidelines','사용 기준', usage)}
       ${section('specification','규격', spec)}
@@ -61,7 +61,7 @@ export function componentContent(c, html) {
       ${section('keyboard','조작', list(contract.keyboard))}
       ${section('checks','검수', list(contract.checks))}
     </div>
-    <div data-doc-panel="code" hidden><h2>HTML</h2><p>문서 예제의 마크업입니다. 기존 서비스의 이벤트 연결은 <a href="#/handoff">개발 적용 안내</a>에 따라 확인합니다.</p>
+    <div data-doc-panel="code" hidden><h2>HTML</h2><p>${c.id === 'button' ? '<code>tokens.css</code> 다음에 <code>button-system.css</code>를 연결합니다. 아래 마크업을 사용하고 실행·저장·로딩 해제는 서비스의 처리 결과와 연결합니다.' : '문서 예제의 마크업입니다. 기존 서비스의 이벤트 연결은 <a href="#/handoff">개발 적용 안내</a>에 따라 확인합니다.'}</p>
       <button class="btn sm copy-code">${icon('copy')} 코드 복사</button><pre class="html-example" tabindex="0" aria-label="HTML 코드 예제"><code>${esc(formatHTML(html))}</code></pre>
       <details><summary>예제 참조 파일</summary><p>문서 예제 전용 파일은 운영 화면에 연결하지 않습니다. 서비스 연결 검토 파일은 대상 선택자·데이터·이벤트에 맞춰 적용합니다.</p>${contract.assets.includes('service-typography.css')?'<p>service-typography.css는 현재 적용 예시의 매핑입니다. 대상 서비스에 맞게 다시 생성합니다.</p>':''}${assetReferences(contract.assetGroups)}</details>
     </div></article><aside class="toc"><span>이 페이지</span>${toc.map(([id, label]) => `<button data-scroll="${id}">${label}</button>`).join('')}</aside></div>`;

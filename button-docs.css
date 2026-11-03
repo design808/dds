@@ -1,0 +1,174 @@
+/* Documentation composition only; button appearance lives in button-system.css. */
+.dds-button-docs {
+  display: grid;
+  gap: var(--space-12);
+  width: 100%;
+  min-width: 0;
+}
+.dds-button-docs .dds-button-doc-section {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  min-width: 0;
+  scroll-margin-top: 104px;
+}
+.dds-button-docs .dds-button-doc-heading {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-2);
+}
+.dds-button-docs .dds-button-doc-heading h2 {
+  margin: 0;
+  color: var(--text-strong);
+  font: 600 var(--type-heading-2-size)/var(--type-heading-2-line-height) var(--font-sans);
+  letter-spacing: var(--type-heading-2-tracking);
+}
+.dds-button-docs .dds-button-doc-heading p,
+.dds-button-docs .dds-button-example-heading p,
+.dds-button-docs .dds-button-loading-status {
+  margin: 0;
+  color: var(--text-secondary);
+  font: 400 var(--type-body-2-normal-size)/var(--type-body-2-normal-line-height) var(--font-sans);
+  letter-spacing: var(--type-body-2-normal-tracking);
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+.dds-button-docs .dds-button-example {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  background: var(--background);
+}
+.dds-button-docs .dds-button-example-body {
+  display: grid;
+  gap: var(--space-6);
+  min-width: 0;
+  padding: var(--space-6);
+}
+.dds-button-docs .dds-button-example-heading {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+}
+.dds-button-docs .dds-button-example-heading h3 {
+  margin: 0;
+  color: var(--text-strong);
+  font: 600 var(--type-body-1-normal-size)/var(--type-body-1-normal-line-height) var(--font-sans);
+  letter-spacing: var(--type-body-1-normal-tracking);
+}
+.dds-button-docs .dds-button-sample-grid,
+.dds-button-docs .dds-button-size-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 128px), 1fr));
+  align-items: start;
+  gap: var(--space-6) var(--space-4);
+  min-width: 0;
+}
+.dds-button-docs .dds-button-sample-cell {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.dds-button-docs .dds-button-sample-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: var(--control-height-lg);
+  max-width: 100%;
+}
+.dds-button-docs .dds-button-sample-caption {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+  max-width: 100%;
+  text-align: center;
+  color: var(--text-secondary);
+  font: 500 var(--type-label-2-size)/var(--type-label-2-line-height) var(--font-sans);
+  letter-spacing: var(--type-label-2-tracking);
+  overflow-wrap: anywhere;
+}
+.dds-button-docs .dds-button-sample-row,
+.dds-button-mini {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-width: 0;
+  max-width: 100%;
+}
+.dds-button-docs .dds-button-full-width-example {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 400px;
+  min-width: 0;
+  margin-inline: auto;
+}
+.dds-button-docs .dds-button-loading-example {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  text-align: center;
+}
+.dds-button-docs .dds-button-loading-status {
+  min-height: var(--type-body-2-normal-line-height);
+}
+.dds-button-docs .dds-button-code {
+  margin: 0;
+  min-width: 0;
+  border-top: 1px solid var(--border);
+}
+.dds-button-docs .dds-button-code summary {
+  display: list-item;
+  padding: var(--space-4) var(--space-6);
+  color: var(--text-primary);
+  font: 500 var(--type-label-1-size)/var(--type-label-1-line-height) var(--font-sans);
+  letter-spacing: var(--type-label-1-tracking);
+  cursor: pointer;
+  border-radius: 0 0 var(--radius-lg, 12px) var(--radius-lg, 12px);
+}
+.dds-button-docs .dds-button-code summary:focus-visible {
+  outline: 1px solid var(--primary);
+  outline-offset: 0;
+}
+.dds-button-docs .dds-button-code-content {
+  display: grid;
+  gap: var(--space-3);
+  padding: 0 var(--space-6) var(--space-6);
+  min-width: 0;
+}
+.dds-button-docs .dds-button-code-tools {
+  display: flex;
+  justify-content: flex-end;
+}
+.dds-button-docs .dds-button-code pre {
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 8px);
+  background: var(--background);
+  color: var(--text-primary);
+  font: 400 var(--type-body-2-normal-size)/var(--type-body-2-normal-line-height) var(--font-sans);
+  white-space: pre;
+  overflow: auto;
+  tab-size: 2;
+}
+.dds-button-docs .dds-button-code pre code {
+  color: inherit;
+  font: inherit;
+}
+.doc-layout .dds-button-docs + section {
+  margin-block-start: var(--space-12);
+}
+@media (max-width: 600px) {
+  .dds-button-docs .dds-button-example-body {padding: var(--space-5);}
+  .dds-button-docs .dds-button-code summary {padding-inline: var(--space-5);}
+  .dds-button-docs .dds-button-code-content {padding-inline: var(--space-5); padding-bottom: var(--space-5);}
+}

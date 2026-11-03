@@ -1,0 +1,227 @@
+/* DDS buttons are opt-in. Existing .btn components keep their authored styles. */
+.dds-button {
+  --dds-button-height: var(--control-height-md);
+  --dds-button-font-size: var(--type-label-1-size);
+  --dds-button-line-height: var(--type-label-1-line-height);
+  --dds-button-tracking: var(--type-label-1-tracking);
+  --dds-button-padding-inline: 12px;
+  --dds-button-icon-size: 18px;
+  --dds-button-gap: 8px;
+  --dds-button-weight: var(--font-weight-bold);
+  --dds-button-background: var(--primary);
+  --dds-button-hover-background: var(--primary-hover);
+  --dds-button-active-background: var(--primary-active);
+  --dds-button-foreground: var(--primary-foreground);
+  --dds-button-border: transparent;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  min-height: var(--dds-button-height);
+  height: auto;
+  gap: var(--dds-button-gap);
+  padding: calc((var(--dds-button-height) - var(--dds-button-line-height) - 2px) / 2) var(--dds-button-padding-inline);
+  border: 1px solid var(--dds-button-border);
+  border-radius: var(--radius-md);
+  background: var(--dds-button-background);
+  color: var(--dds-button-foreground);
+  font-family: var(--font-sans);
+  font-size: var(--dds-button-font-size);
+  line-height: var(--dds-button-line-height);
+  font-weight: var(--dds-button-weight);
+  letter-spacing: var(--dds-button-tracking);
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  vertical-align: middle;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color var(--duration-fast) var(--ease-standard),border-color var(--duration-fast) var(--ease-standard),color var(--duration-fast) var(--ease-standard);
+}
+
+.dds-button[data-control-size=sm] {
+  --dds-button-height: var(--control-height-sm);
+  --dds-button-font-size: var(--type-label-2-size);
+  --dds-button-line-height: var(--type-label-2-line-height);
+  --dds-button-tracking: var(--type-label-2-tracking);
+  --dds-button-padding-inline: 10px;
+  --dds-button-icon-size: 16px;
+  --dds-button-gap: 6px;
+}
+.dds-button[data-control-size=lg] {
+  --dds-button-height: var(--control-height-lg);
+  --dds-button-font-size: var(--type-body-1-normal-size);
+  --dds-button-line-height: var(--type-body-1-normal-line-height);
+  --dds-button-tracking: var(--type-body-1-normal-tracking);
+  --dds-button-padding-inline: 16px;
+  --dds-button-icon-size: 20px;
+}
+
+.dds-button[data-color=assistive] {
+  --dds-button-weight: var(--font-weight-semibold);
+  --dds-button-background: var(--surface);
+  --dds-button-hover-background: var(--muted);
+  --dds-button-active-background: color-mix(in srgb,var(--muted) 80%,var(--control-border));
+  --dds-button-foreground: var(--text-strong);
+}
+.dds-button[data-color=negative]:not([data-variant=outlined]) {
+  --dds-button-background: var(--destructive);
+  --dds-button-hover-background: color-mix(in srgb,var(--destructive) 92%,var(--text-scale-950));
+  --dds-button-active-background: color-mix(in srgb,var(--destructive) 85%,var(--text-scale-950));
+  --dds-button-foreground: var(--primary-foreground);
+}
+[data-theme=dark] .dds-button[data-color=negative]:not([data-variant=outlined]) {
+  --dds-button-background: color-mix(in srgb,var(--destructive) 55%,var(--background));
+  --dds-button-hover-background: color-mix(in srgb,var(--destructive) 58%,var(--background));
+  --dds-button-active-background: color-mix(in srgb,var(--destructive) 60%,var(--background));
+}
+
+.dds-button[data-variant=outlined] {
+  --dds-button-weight: var(--font-weight-semibold);
+  --dds-button-background: transparent;
+  --dds-button-hover-background: var(--accent);
+  --dds-button-active-background: color-mix(in srgb,var(--primary) 14%,var(--background));
+  --dds-button-foreground: var(--primary);
+  --dds-button-border: var(--primary);
+}
+.dds-button[data-variant=outlined][data-color=assistive] {
+  --dds-button-hover-background: var(--surface);
+  --dds-button-active-background: var(--muted);
+  --dds-button-foreground: var(--foreground);
+  --dds-button-border: var(--border);
+}
+
+@media (hover:hover) {
+  .dds-button:hover:not(:disabled,[aria-disabled=true],[aria-busy=true]) {
+    background: var(--dds-button-hover-background);
+    color: var(--dds-button-foreground);
+  }
+}
+.dds-button:active:not(:disabled,[aria-disabled=true],[aria-busy=true]) {
+  background: var(--dds-button-active-background);
+  color: var(--dds-button-foreground);
+}
+.dds-button:focus-visible {
+  outline: 1px solid var(--primary);
+  outline-offset: 0;
+}
+.dds-button:is(:disabled,[aria-disabled=true]) {
+  cursor: not-allowed;
+}
+.dds-button:is(:disabled,[aria-disabled=true]):not([aria-busy=true]) {
+  opacity: .45;
+}
+.dds-button[aria-busy=true] {
+  opacity: 1;
+  cursor: progress;
+}
+
+.dds-button[data-full-width=true] {
+  display: flex;
+  width: 100%;
+}
+.dds-button:has(> .dds-button-loading) {
+  display: inline-grid;
+  grid-template-columns: minmax(0,1fr);
+}
+.dds-button[data-full-width=true]:has(> .dds-button-loading) {
+  display: grid;
+}
+.dds-button[data-icon-only=true] {
+  flex-shrink: 0;
+  width: var(--dds-button-height);
+  min-width: var(--dds-button-height);
+  height: var(--dds-button-height);
+  padding: 0;
+}
+.dds-button > :is(svg,.icon,[data-button-icon]),
+.dds-button > .dds-button-label > :is(svg,.icon,[data-button-icon]),
+.dds-button > .dds-button-loading > :is(svg,.icon,[data-button-icon]) {
+  display: block;
+  flex-shrink: 0;
+  width: var(--dds-button-icon-size);
+  height: var(--dds-button-icon-size);
+  color: inherit;
+}
+.dds-button > .dds-button-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  max-width: 100%;
+  gap: var(--dds-button-gap);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.dds-button > .dds-button-loading {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  max-width: 100%;
+  gap: var(--dds-button-gap);
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  visibility: hidden;
+  pointer-events: none;
+}
+.dds-button:has(> .dds-button-loading) > :is(.dds-button-label,.dds-button-loading) {
+  grid-area: 1 / 1;
+}
+.dds-button > :is(.dds-button-label,.dds-button-loading) > span {
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.dds-button[aria-busy=true] > :is(.dds-button-label,svg,.icon,[data-button-icon]) {
+  visibility: hidden;
+}
+.dds-button[aria-busy=true] > .dds-button-loading {
+  visibility: visible;
+}
+.dds-button .dds-button-spinner,
+.dds-button > .dds-button-loading > svg {
+  display: block;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: var(--dds-button-icon-size);
+  height: var(--dds-button-icon-size);
+  animation: dds-button-spin 800ms linear infinite;
+}
+.dds-button .dds-button-spinner:not(svg) {
+  border: 2px solid color-mix(in srgb,currentColor 25%,transparent);
+  border-top-color: currentColor;
+  border-radius: 50%;
+}
+@keyframes dds-button-spin {
+  to {transform: rotate(1turn);}
+}
+
+@media (forced-colors:active) {
+  .dds-button,
+  .dds-button:hover:not(:disabled,[aria-disabled=true],[aria-busy=true]),
+  .dds-button:active:not(:disabled,[aria-disabled=true],[aria-busy=true]) {
+    background: ButtonFace;
+    color: ButtonText;
+    border: 1px solid ButtonText;
+  }
+  .dds-button:focus-visible {
+    outline-color: Highlight;
+  }
+  .dds-button .dds-button-spinner:not(svg) {
+    border-color: transparent;
+    border-top-color: currentColor;
+  }
+}

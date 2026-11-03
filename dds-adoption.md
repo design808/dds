@@ -2,17 +2,17 @@
 
 DDS(Deep Design System)는 딥레쥬메·딥인터뷰와 향후 신규 서비스를 포함한 회사 서비스 공통 디자인 시스템이다. 색상·글자 역할·간격·컴포넌트의 상태와 조작 규칙을 공유한다. 서비스의 콘텐츠·권한·업무 흐름·기술 환경은 각 프로젝트에서 정한다.
 
-DDS 0.2.3은 디자인 기준과 웹 구현 참조 소스 묶음이다. 특정 프레임워크의 완성된 운영 UI 라이브러리가 아니다. 기준 파일 준비와 서비스 구현·연결 완료는 구분한다. 기존 0.2.0·0.2.1·0.2.2 묶음은 보존하며 등록된 프로젝트를 자동 업그레이드하지 않는다.
+DDS 0.2.4는 디자인 기준과 웹 구현 참조 소스 묶음이다. 특정 프레임워크의 완성된 운영 UI 라이브러리가 아니다. 기준 파일 준비와 서비스 구현·연결 완료는 구분한다. 기존 공개 묶음은 보존하며 등록된 프로젝트를 자동 업그레이드하지 않는다.
 
 ## 기준 파일과 경로
 
-공개 주소: https://design808.github.io/dds/releases/0.2.3/
+공개 주소: https://design808.github.io/dds/releases/0.2.4/
 
 - manifest.json: 버전, 파일별 SHA-256, 묶음과 준비 도구의 SHA-256.
 - bundle.json: 매니페스트에 명시한 파일을 포함하는 고정 스냅샷.
 - dds-install.js: Node.js 18 이상의 기본 모듈만 사용하는 기준 파일 준비 도구.
 
-대상 프로젝트의 docs/dds/0.2.3/에 풀어 사용한다. 다른 위치를 선택하면 프로젝트 지침과 적용 기록의 경로도 함께 바꾼다. 준비 도구는 파일을 검증해 복사할 뿐, CSS 로드나 규칙 등록을 하지 않는다. 같은 내용은 재사용하고 수정된 파일은 덮어쓰지 않는다.
+대상 프로젝트의 docs/dds/0.2.4/에 풀어 사용한다. 다른 위치를 선택하면 프로젝트 지침과 적용 기록의 경로도 함께 바꾼다. 준비 도구는 파일을 검증해 복사할 뿐, CSS 로드나 규칙 등록을 하지 않는다. 같은 내용은 재사용하고 수정된 파일은 덮어쓰지 않는다.
 
 매니페스트·묶음·도구를 같은 버전 주소에서 내려받는다. 각 SHA-256을 프로젝트 기록에 남긴다. 해시 검사는 파일 일치 여부를 확인하며, 참조 주소의 신뢰를 대신하지 않는다. 접근 실패나 해시 불일치가 있으면 중단하고 같은 버전의 정상 파일을 확보한다. 과거 버전은 바꾸지 않고 변경 내용은 새 버전으로 제공한다.
 
@@ -40,6 +40,7 @@ DDS 0.2.3은 디자인 기준과 웹 구현 참조 소스 묶음이다. 특정 �
 | typography-system.js | 크기·행간·굵기·자간·서체를 묶은 글자 역할 |
 | service-typography.js / service-typography.css | 적용 예시의 글자 매핑 원본 / 생성 결과 |
 | visibility.css / visibility.js | 카드·텍스트·상태·탐색의 공통 스타일 / 선택적인 마크업 helper |
+| button-system.css | Solid·Outlined 버튼의 크기·색·상태·아이콘·전체 너비 스타일 |
 | data/dds-contracts.json | 전체 컴포넌트·패턴·입력·피드백 규칙 |
 | component-contracts.js / service-guidelines.js | 규칙의 참조 원본. 운영 진입점이 아님 |
 | chart-catalog.js / chart-system.js / chart-system.css | 차트 유형·참조 구현·공통 표현 규칙 |
@@ -47,7 +48,7 @@ DDS 0.2.3은 디자인 기준과 웹 구현 참조 소스 묶음이다. 특정 �
 
 참조 JS는 문서 구조를 설명하기 위해 제공한다. 운영 앱에서 바로 import하는 UI 컴포넌트가 아니다. 문서·카탈로그의 과거 조사 경로는 현재 프로젝트에서 다시 확인한다. 원본 서비스 소스나 조사 데이터는 이 묶음에 제공하지 않는다.
 
-묶음은 위 파일을 public/ 접두어 없이 기준 폴더에 준비한다. handoff.md 등에 남아 있는 public/ 경로는 DDS 저작 원본의 위치를 가리키므로, 외부 프로젝트에서는 docs/dds/0.2.3/ 아래의 대응 파일을 읽는다. 생성 도구는 별도 DDS 저장소에 있으며 참조 JS의 모든 문서용 import를 실행하는 패키지가 아니다.
+묶음은 위 파일을 public/ 접두어 없이 기준 폴더에 준비한다. handoff.md 등에 남아 있는 public/ 경로는 DDS 저작 원본의 위치를 가리키므로, 외부 프로젝트에서는 docs/dds/0.2.4/ 아래의 대응 파일을 읽는다. 생성 도구는 별도 DDS 저장소에 있으며 참조 JS의 모든 문서용 import를 실행하는 패키지가 아니다.
 
 ## 기존 서비스 연결
 
@@ -97,7 +98,7 @@ visibility.js의 collectionCount(count, {label, unit})와 statusBadge(state, lab
 
 ## 운영에 직접 연결하지 않는 파일
 
-- style.css, app.js, document-* 및 데모·미리보기용 스크립트.
+- style.css, app.js, document-*, button-demos.js, button-docs.css 및 데모·미리보기용 스크립트.
 - prototypes의 임시 저장·AI·목업 데이터 처리.
 - custom-controls.js 전체 자동 변환. 이 코드는 운영 위젯 어댑터가 아니다.
 
@@ -107,6 +108,8 @@ visibility.js의 collectionCount(count, {label, unit})와 statusBadge(state, lab
 
 - Primary #FFAD31, 채움 라벨 흰색/700. 일반 글자 최대 굵기 700. 특수 디자인 요소만 근거를 기록해 예외를 둔다.
 - 입력 Small 36px/14px, Medium 44px/16px, Large 52px/16px. 높이·글자·패딩·아이콘을 함께 적용한다.
+- 버튼은 .dds-button과 data-variant/data-color를 사용한다. Solid는 primary·assistive·negative, Outlined는 primary·assistive만 지원한다. Small/Medium/Large는 36/44/52px와 13/14/16px를 함께 적용한다. 기본은 Solid/Primary/Medium이다.
+- 같은 행동 영역의 주 행동은 하나만 두고 Negative는 실제 파괴 행동에만 사용한다. 이동은 a, 실행은 button으로 구현한다. 로딩은 aria-busy와 native disabled를 함께 사용하고 서비스에서 실제 요청·완료·오류·초점을 관리한다. aria-disabled만으로 동작이 차단되지는 않는다.
 - 전체 입력 외곽 포커스 1px Primary, offset 0. 활성 칩은 Primary 글자·경계.
 - 모달 패딩 24px. 아이콘만 있는 동작에 기능 이름과 hover/focus 툴팁.
 - Lucide 원본을 재사용하고 컴포넌트별 아이콘 크기를 유지한다.

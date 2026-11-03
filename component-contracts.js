@@ -2,8 +2,8 @@
 // Only confirmed shared CSS measurements are listed as fixed specifications.
 const baseAssets = ['tokens.css', 'style.css', 'brand-refinement.css', 'layout-focus.css', 'interactions.css'];
 const visibilityAssets = ['visibility.css', 'visibility.js', 'service-typography.css'];
-const serviceAssets = new Set(['tokens.css', 'visibility.css', 'visibility.js']);
-const documentationAssets = new Set(['style.css', 'brand-refinement.css', 'layout-focus.css', 'extensions.css', 'extension-demos.js']);
+const serviceAssets = new Set(['tokens.css', 'visibility.css', 'visibility.js', 'button-system.css']);
+const documentationAssets = new Set(['style.css', 'brand-refinement.css', 'layout-focus.css', 'extensions.css', 'extension-demos.js', 'button-demos.js', 'button-docs.css']);
 const fieldSizes = [
   ['Small', '--control-height-sm: 36px · Body 2 Normal 14/22 · 좌우 10px · 아이콘 16px'],
   ['Medium', '--control-height-md: 44px · Body 1 Normal 16/24 · 좌우 12px · 아이콘 18px'],
@@ -150,9 +150,26 @@ const overrides = {
   ),
   button: {
     usage: {when: '저장·생성·다음 단계처럼 사용자가 실행하는 행동에 사용합니다.', alternative: '페이지 이동은 링크, 짧은 보조 행동은 Text button을 사용합니다.'},
-    rules: ['한 행동 영역에서 주 행동을 구분합니다. 임시저장은 보조, 저장 후 다음은 주 행동으로 둡니다.', 'Primary 채움은 흰색/700을 유지하며 hover·active에서도 글자색이 바뀌지 않아야 합니다.', '요청 중 중복 실행을 막고, 완료·실패를 실제 처리 결과와 연결합니다.'],
-    checks: ['기본·hover·active·focus·disabled에서 라벨과 크기가 유지되는지 확인합니다.', '긴 라벨이 줄바꿈하고 아이콘이 찌그러지지 않는지 확인합니다.'],
-    specification: [['Primary', '--primary / --primary-hover / --primary-active · 글자 --primary-foreground / 700 · 진한 외곽선 없음'], ['Small', '최소 높이 --control-height-sm: 36px · Label 2 13/18 · 좌우 10px'], buttonFocus],
+    rules: ['한 행동 영역에는 주 행동을 하나만 둡니다. 임시저장은 보조, 저장 후 다음은 주 행동으로 표현합니다.', 'Solid는 primary·assistive·negative, Outlined는 primary·assistive를 지원합니다. Outlined negative를 임의로 만들지 않습니다.', 'Negative는 삭제·해제처럼 실제로 손실이나 되돌리기 어려운 결과를 만드는 행동에 사용합니다. 취소·닫기 같은 일반 보조 행동을 Negative로 표시하지 않습니다.', '실행은 button, 목적지가 있는 이동은 href가 있는 a로 구현합니다. button의 type과 기존 form·이벤트·제출값을 유지합니다.', '로딩은 aria-busy와 native disabled로 중복 실행을 막고 기능명을 유지합니다. 비동기 작업은 button을 사용하며 실제 요청·완료·실패 처리는 서비스가 관리합니다. aria-disabled만으로는 링크나 버튼의 동작이 차단되지 않습니다.', '아이콘만 있는 버튼에도 접근 가능한 기능명과 hover·focus 툴팁을 제공합니다. 전체 너비와 아이콘 전용 형태는 명시적인 속성으로 지정합니다.'],
+    keyboard: ['button은 Tab으로 이동하고 Enter/Space로 실행합니다. a는 Enter로 이동합니다.', 'native disabled는 실행되지 않으며 Tab 순서에서 제외됩니다. aria-disabled를 사용한 요소는 개발자가 클릭과 키보드 실행을 차단해야 합니다. 로딩 종료 후 초점과 다음 조작 경로를 확인합니다.'],
+    checks: [...defaultChecks, '지원하는 다섯 색·형태 조합을 라이트·다크와 hover·pressed·focus·disabled·loading에서 확인합니다.', '긴 문구·아이콘·전체 너비·로딩 전환에서 내용과 클릭 영역이 잘리지 않는지 확인합니다.', 'button type·링크 목적지·기존 제출값이 유지되고 로딩 중 중복 요청이 발생하지 않는지 확인합니다.'],
+    specification: [
+      ['공통 CSS', 'button-system.css · .dds-button · 기본 Solid / Primary / Medium'],
+      ['형태', 'data-variant="solid | outlined" · data-color="primary | assistive | negative" · Outlined negative 미지원'],
+      ['Solid Primary', '--primary / --primary-hover / --primary-active · 흰색 / 700 · 기존 대비 예외 유지'],
+      ['Solid Assistive', '연한 표면 · 강한 텍스트 / 600'],
+      ['Solid Negative', '--destructive 기반 표면 · 흰색 / 700 · 다크 표면은 대비를 보정'],
+      ['Outlined Primary', 'Primary 글자 / 600 · 1px Primary 경계'],
+      ['Outlined Assistive', '기본 글자색 / 600 · 1px 경계'],
+      ['Small', 'data-control-size="sm" · 최소 높이 36px · Label 2 13/18 · 좌우 10px · 아이콘 16px · 간격 6px'],
+      ['Medium', 'data-control-size="md" · 최소 높이 44px · Label 1 14/20 · 좌우 12px · 아이콘 18px · 간격 8px'],
+      ['Large', 'data-control-size="lg" · 최소 높이 52px · Body 1 Normal 16/24 · 좌우 16px · 아이콘 20px · 간격 8px'],
+      ['너비·아이콘', 'data-full-width="true" · data-icon-only="true"'],
+      ['로딩 마크업', '.dds-button-label과 .dds-button-loading을 미리 배치해 너비 확보 · 원래 기능명은 aria-label로 유지 · 아이콘 전용은 spinner만 표시'],
+      ['로딩·비활성', 'aria-busy="true" + native disabled · 요청 상태는 서비스가 관리'],
+      buttonFocus,
+    ],
+    assets: ['button-system.css', 'button-demos.js', 'button-docs.css', 'icon-tooltips.js'],
   },
   'icon-button': {
     usage: {when: '도구 모음의 검색·복사·닫기 등 이름을 짧은 아이콘으로 표현할 때 사용합니다.', alternative: '뜻이 불명확하거나 중요한 주 행동이면 텍스트가 있는 Button을 사용합니다.'},

@@ -1,4 +1,4 @@
-export const ddsRelease = '0.2.3';
+export const ddsRelease = '0.2.4';
 export const ddsSite = 'https://design808.github.io/dds/';
 export const ddsReleaseURL = `${ddsSite}releases/${ddsRelease}/`;
 
@@ -34,6 +34,8 @@ node dds-install.js --version ${ddsRelease} --bundle bundle.json --manifest mani
 6. tokens.css는 전역 :root 값을 포함하므로 대상 환경의 CSS 변수·reset·인라인 스타일·!important 충돌을 확인해줘. 기존 서비스는 적용 범위를 제한한 어댑터로 연결하고, 신규 서비스는 공통 스타일 진입점에 토큰과 글자 역할을 연결해줘. visibility.css의 필요한 클래스와 토큰·마크업을 서비스 루트 범위의 스킨 또는 재사용 컴포넌트에 연결해줘. visibility.js는 선택적인 개수·상태 마크업 helper이며 상태 관리나 이벤트를 제공하지 않아. 필요한 상태 아이콘은 서비스의 Lucide renderer를 주입하고 DDS 문서용 icons.js는 import하지 마. 문서용 style.css를 가져와 외형을 맞추지 마. 제목은 강한 텍스트, 핵심정보는 기본 텍스트, 날짜와 부가정보는 보조 텍스트 역할로 구분해줘. 밀도 높은 문서 카드 제목은 Body 1 Normal/600, 식별 메타정보는 Body 2 Normal/500을 사용하고 모든 카드에 큰 제목 역할을 일괄 적용하지 마. 카드 경계·그림자·호버·포커스, 상태 라벨, 목록 개수, 탐색 선택 상태는 공통 기준을 재사용해줘. 이동 카드의 주동작은 카드 전체의 실제 링크로 제공하고 메뉴·삭제 같은 보조동작은 링크와 분리해줘. 정적 카드를 클릭 가능한 것처럼 꾸미거나 상태·개수를 장식용 고정값으로 넣지 마. 섹션 제목 장식 아이콘과 회색 섹션 래퍼는 추가하지 마. 페이지 바탕 변경이 필요하면 body 또는 페이지 루트에서 정하고 기존 배경을 임의로 바꾸지 마. 폰트와 라이선스는 상대경로를 유지해 함께 배포하고 Pretendard를 한 번만 로드해줘. Primary #FFAD31·채움 라벨 흰색/700, 일반 텍스트 최대 굵기 700, 명명된 글자 역할, 입력 Small 36px/14px·Medium 44px/16px·Large 52px/16px를 유지해줘. 포커스는 박스 전체 1px Primary·offset 0, 활성 칩은 Primary 글자·경계, 모달 패딩 24px야. 아이콘은 Lucide 원본을 사용하고 아이콘 전용 동작에는 접근 가능한 이름과 hover/focus 툴팁을 붙여줘. 서비스별 차이가 필요하면 대상·이유·영향을 기록하고 디자인 결정을 먼저 확인해줘. 색이나 크기를 임의로 재해석하지 마.
 
 탐색은 텍스트 링크와 배경이 있는 컨트롤을 구분해줘. .dds-nav-link는 글자·색·focus만 제공하며 hover·현재 위치에 배경을 자동으로 칠하지 않아. 본문·히어로·푸터·뒤로가기·앵커 링크에도 임의의 배경을 추가하지 마. 배경이 필요한 항목에만 .dds-nav-control을 명시해줘. 기본은 최소 높이 40px·패딩 10px 12px·간격 8px·가운데 수직 정렬이고, hover는 surface·현재 위치는 accent·focus는 Primary 1px/offset 0이야. 같은 GNB의 링크와 버튼에는 같은 클릭 영역을 제공해줘. 현재 서비스 적용 예시는 1180px 이하에서 모바일 메뉴로 전환하고 최소 높이 44px·패딩 12px 12px를 사용해. 새 서비스의 전환 너비는 메뉴·로고·서체에 맞춰 정하되 CSS와 드롭다운 JS의 기준을 일치시켜줘. 사이드바·목차·하위메뉴는 고유한 밀도를 유지할 수 있지만 배경을 쓰면 양옆 패딩을 확보해줘. 실제 계산된 높이·패딩·정렬과 hover·현재 위치·focus에서의 레이아웃 이동을 확인해줘.
+
+버튼은 button-system.css의 .dds-button을 재사용해줘. Solid는 primary·assistive·negative, Outlined는 primary·assistive만 사용하고 지원하지 않는 조합을 추측해 만들지 마. 기본은 Solid/Primary/Medium이며 Small·Medium·Large는 높이 36/44/52px와 글자 13/14/16px를 함께 적용해줘. 같은 행동 영역의 주 행동은 하나만 두고 Negative는 실제 파괴 행동에만 사용해줘. 이동은 a, 실행은 button을 사용하며 비동기 작업은 aria-busy와 native disabled로 중복 실행을 막아줘. aria-disabled만으로 동작이 막히지는 않아. 로딩의 실제 요청·완료·오류와 기능명·초점 처리는 서비스에서 유지하고 button-demos.js·button-docs.css는 운영에 연결하지 마.
 
 7. 라이트·다크 토큰과 light 기본값을 유지하고 사용자가 선택한 모드를 저장해줘. 저장 키와 테마 연결 방식은 대상 서비스에 맞춰 정하고, 기존 구현이 있으면 통합해 provider나 토글을 중복 추가하지 마. 번역 기능이 있는 서비스에서는 서비스명과 언어 원문을 translate="no"와 notranslate로 보호하고 기존 번역 연결을 유지해줘. 모든 서비스에 번역 기능이나 특정 저장 키를 강제로 추가하지 마. 흰 글자/Primary 대비 1.86:1과 OS 동작 줄이기를 따르지 않는 모션은 현재 확정 예외로 기록하고 접근성 충족으로 보고하지 마.
 
