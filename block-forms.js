@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=17683691bc90d855';
-import {collectionCount,statusBadge} from './visibility.js?v=17683691bc90d855';
+import {icon} from './icons.js?v=594c4a56f8f4fbab';
+import {collectionCount,statusBadge} from './visibility.js?v=594c4a56f8f4fbab';
 
 export const formBlocks = [
   {id:'login',title:'로그인',category:'account',description:'소셜 계정 또는 이메일 로그인과 비밀번호 찾기.',components:['input','button']},
@@ -123,7 +123,7 @@ const headerMenus=[
   ['docs','문서',[['BookOpen','개발 적용 안내','서비스에 연결하는 방법','#/handoff']]]
 ];
 function headerBlock(prefix,state) {
-  return `<header class="df-product-header"><div class="df-header-bar"><a class="df-header-brand" href="#/" aria-label="DDS 살펴보기"><img src="./assets/deepresume-logo.png" width="174" height="29" alt="딥레쥬메"></a><button type="button" class="df-header-icon df-header-mobile-toggle" data-df-header-mobile aria-label="${state.headerMobile?'메뉴 닫기':'메뉴 열기'}" aria-expanded="${state.headerMobile}" aria-controls="${prefix}-navigation">${icon(state.headerMobile?'X':'Menu')}</button><nav class="df-header-nav" id="${prefix}-navigation" aria-label="주 메뉴" data-mobile-open="${state.headerMobile}">${headerMenus.map(([id,label,links])=>`<div class="df-header-menu"><button type="button" class="dds-nav-link dds-nav-control" data-df-header-menu="${id}" aria-controls="${prefix}-menu-${id}" aria-expanded="${state.headerOpen===id}" ${id==='blocks'?'aria-current="page"':''}>${label}${icon('ChevronDown')}</button><div class="df-header-dropdown" id="${prefix}-menu-${id}" ${state.headerOpen===id?'':'hidden'}>${links.map(([glyph,title,description,href])=>`<a href="${href}"><span class="df-header-link-icon" aria-hidden="true">${icon(glyph)}</span><span><strong>${title}</strong><span>${description}</span></span></a>`).join('')}</div></div>`).join('')}<a class="dds-nav-link dds-nav-control" href="#/setup">AI로 적용</a></nav><div class="df-header-tools"><div class="df-header-menu"><button type="button" class="df-header-icon" data-df-header-menu="language" aria-label="언어 선택" aria-expanded="${state.headerOpen==='language'}" aria-controls="${prefix}-menu-language">${icon('Languages')}</button><div class="df-header-dropdown df-header-small-dropdown" id="${prefix}-menu-language" ${state.headerOpen==='language'?'':'hidden'}>${[['ko','한국어'],['en','English']].map(([value,label])=>`<button type="button" data-df-header-language="${value}" aria-pressed="${state.headerLanguage===value}">${label}${state.headerLanguage===value?icon('Check'):''}</button>`).join('')}</div></div><div class="df-header-menu"><button type="button" class="avatar df-header-profile" data-df-header-menu="profile" aria-label="프로필 메뉴" aria-expanded="${state.headerOpen==='profile'}" aria-controls="${prefix}-menu-profile">민</button><div class="df-header-dropdown df-header-small-dropdown" id="${prefix}-menu-profile" ${state.headerOpen==='profile'?'':'hidden'}><strong>김민서</strong><a href="#/blocks">계정 블록</a><a href="#/setup">설정과 적용 방법</a></div></div></div></div><span class="sr-only" data-df-header-status role="status"></span></header>`;
+  return `<header class="df-product-header"><div class="df-header-bar"><a class="df-header-brand" href="#/" aria-label="DDS 살펴보기"><img src="./assets/deepresume-logo.png" width="174" height="29" alt="딥레쥬메"></a><button type="button" class="df-header-icon df-header-mobile-toggle" data-df-header-mobile aria-label="${state.headerMobile?'메뉴 닫기':'메뉴 열기'}" aria-expanded="${state.headerMobile}" aria-controls="${prefix}-navigation">${icon(state.headerMobile?'X':'Menu')}</button><div class="df-header-navigation" id="${prefix}-navigation" data-mobile-open="${state.headerMobile}"><nav class="df-header-nav" aria-label="주 메뉴">${headerMenus.map(([id,label,links])=>`<div class="df-header-menu"><button type="button" class="dds-nav-link dds-nav-control" data-df-header-menu="${id}" aria-controls="${prefix}-menu-${id}" aria-expanded="${state.headerOpen===id}" ${id==='blocks'?'aria-current="page"':''}>${label}${icon('ChevronDown')}</button><div class="df-header-dropdown" id="${prefix}-menu-${id}" ${state.headerOpen===id?'':'hidden'}>${links.map(([glyph,title,description,href])=>`<a href="${href}"><span class="df-header-link-icon" aria-hidden="true">${icon(glyph)}</span><span><strong>${title}</strong><span>${description}</span></span></a>`).join('')}</div></div>`).join('')}<a class="dds-nav-link dds-nav-control" href="#/setup">AI로 적용</a></nav><div class="df-header-tools"><div class="df-header-menu"><button type="button" class="df-header-icon df-header-language" data-df-header-menu="language" aria-label="언어 선택" aria-expanded="${state.headerOpen==='language'}" aria-controls="${prefix}-menu-language">${icon('Languages')}<span class="df-header-tool-label"><span>언어 선택</span><span class="df-header-tool-value">${state.headerLanguage==='ko'?'한국어':'English'}</span></span><span class="df-header-tool-chevron" aria-hidden="true">${icon('ChevronDown')}</span></button><div class="df-header-dropdown df-header-small-dropdown" id="${prefix}-menu-language" ${state.headerOpen==='language'?'':'hidden'}>${[['ko','한국어'],['en','English']].map(([value,label])=>`<button type="button" data-df-header-language="${value}" aria-pressed="${state.headerLanguage===value}">${label}${state.headerLanguage===value?icon('Check'):''}</button>`).join('')}</div></div><div class="df-header-menu"><button type="button" class="df-header-profile" data-df-header-menu="profile" aria-label="프로필 메뉴" aria-expanded="${state.headerOpen==='profile'}" aria-controls="${prefix}-menu-profile"><span class="avatar df-header-avatar" aria-hidden="true">민</span><span class="df-header-tool-label"><span>프로필</span><span class="df-header-tool-value">김민서</span></span><span class="df-header-tool-chevron" aria-hidden="true">${icon('ChevronDown')}</span></button><div class="df-header-dropdown df-header-small-dropdown" id="${prefix}-menu-profile" ${state.headerOpen==='profile'?'':'hidden'}><strong>김민서</strong><a href="#/blocks">계정 블록</a><a href="#/setup">설정과 적용 방법</a></div></div></div></div></div><span class="sr-only" data-df-header-status role="status"></span></header>`;
 }
 const footerGroups=[
   ['둘러보기',[['살펴보기','#/'],['색상','#/foundations/color'],['컴포넌트','#/components'],['블록','#/blocks']]],
@@ -154,6 +154,49 @@ export function bindFormBlocks(root) {
     scene.innerHTML=renderScene(scene.dataset.formBlock,scene.dataset.formBlockUid,stateOf(scene));
     if(focusSelector)scene.querySelector(focusSelector)?.focus({preventScroll:true});
   };
+  const headerModes=new WeakMap(),headerContainers=new Map(),headerFocus=new WeakMap();
+  const syncHeaderMode=(scene,width)=>{
+    const mobile=width<=900,previous=headerModes.get(scene);headerModes.set(scene,mobile);
+    if(previous===undefined||previous===mobile)return;
+    const state=stateOf(scene),document=scene.ownerDocument,current=document.activeElement,recent=headerFocus.get(scene);
+    const active=scene.contains(current)?current:current===document.body&&recent?.isConnected&&scene.contains(recent)?recent:null;
+    const panel=scene.querySelector('.df-header-navigation'),toggle=scene.querySelector('[data-df-header-mobile]');
+    const activeDropdown=scene.contains(active)?active.closest('.df-header-dropdown'):null;
+    const dropdownTrigger=activeDropdown?.closest('.df-header-menu')?.querySelector('[data-df-header-menu]');
+    const focusToggle=mobile&&panel.contains(active),focusBrand=!mobile&&active===toggle;
+    state.headerMobile=false;state.headerOpen='';
+    panel.dataset.mobileOpen='false';
+    toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','메뉴 열기');toggle.innerHTML=icon('Menu');
+    panel.querySelectorAll('[data-df-header-menu]').forEach(button=>button.setAttribute('aria-expanded','false'));
+    panel.querySelectorAll('.df-header-dropdown').forEach(dropdown=>{dropdown.hidden=true;});
+    if(focusToggle)toggle.focus({preventScroll:true});
+    else if(focusBrand)scene.querySelector('.df-header-brand').focus({preventScroll:true});
+    else if(activeDropdown)dropdownTrigger?.focus({preventScroll:true});
+  };
+  const headerResize=new ResizeObserver(entries=>{
+    for(const entry of entries){
+      const width=entry.contentBoxSize?.[0]?.inlineSize??entry.contentBoxSize?.inlineSize??entry.contentRect.width;
+      for(const scene of headerContainers.get(entry.target)||[])syncHeaderMode(scene,width);
+    }
+  });
+  const headerScenes=[...(root.matches?.('[data-form-block="header"]')?[root]:[]),...root.querySelectorAll('[data-form-block="header"]')];
+  if(headerScenes.length){
+    const document=root.ownerDocument;
+    document.addEventListener('focusin',event=>{
+      if(event.target===document.body)return;
+      for(const scene of headerScenes){if(scene.contains(event.target))headerFocus.set(scene,event.target);else headerFocus.delete(scene);}
+    },options);
+    document.addEventListener('pointerdown',event=>{
+      for(const scene of headerScenes)if(!scene.contains(event.target))headerFocus.delete(scene);
+    },options);
+  }
+  for(const scene of headerScenes){
+    const container=scene.closest('.dds-block-example');if(!container)continue;
+    if(!headerContainers.has(container)){headerContainers.set(container,new Set());headerResize.observe(container);}
+    headerContainers.get(container).add(scene);
+    const style=getComputedStyle(container),width=container.clientWidth-parseFloat(style.paddingLeft||0)-parseFloat(style.paddingRight||0);
+    syncHeaderMode(scene,width);
+  }
   const fieldMessage=field=>{
     const value=field.value.trim();
     if(!value){
@@ -242,7 +285,7 @@ export function bindFormBlocks(root) {
     }
     if(scene.dataset.formBlock!=='header')return;
     const state=stateOf(scene),trigger=event.target.closest('[data-df-header-menu]');
-    if(event.key==='Escape'&&(state.headerOpen||state.headerMobile)){
+    if(event.key==='Escape'&&(state.headerOpen||(state.headerMobile&&headerModes.get(scene)))){
       event.preventDefault();event.stopPropagation();
       if(state.headerOpen){const menu=state.headerOpen;state.headerOpen='';redraw(scene,`[data-df-header-menu="${menu}"]`);}
       else{state.headerMobile=false;redraw(scene,'[data-df-header-mobile]');}
@@ -263,7 +306,7 @@ export function bindFormBlocks(root) {
     else if(form.dataset.dfForm==='signup')result.textContent='이름·이메일·비밀번호의 입력 형식이 올바릅니다.';
     else result.textContent=`사용할 이메일로 ${state.email} 주소를 선택했습니다.`;
   },options);
-  const cleanup=()=>{controller.abort();for(const url of photoURLs)URL.revokeObjectURL(url);photoURLs.clear();if(bindings.get(root)===cleanup)bindings.delete(root);};
+  const cleanup=()=>{controller.abort();headerResize.disconnect();headerContainers.clear();for(const url of photoURLs)URL.revokeObjectURL(url);photoURLs.clear();if(bindings.get(root)===cleanup)bindings.delete(root);};
   bindings.set(root,cleanup);
   return cleanup;
 }

@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=17683691bc90d855';
-import {collectionCount,statusBadge} from './visibility.js?v=17683691bc90d855';
+import {icon} from './icons.js?v=594c4a56f8f4fbab';
+import {collectionCount,statusBadge} from './visibility.js?v=594c4a56f8f4fbab';
 const button=(text,attrs='',cls='')=>`<button type="button" class="btn ${cls}" ${attrs}>${text}</button>`;
 const ic=(name,label,attrs='')=>`<button type="button" class="icon-btn" aria-label="${label}" ${attrs}>${icon(name)}</button>`;
 const link=(text,route,current=false)=>`<a class="dds-nav-link dds-nav-control" href="#${route}" ${current?'aria-current="page"':''}>${text}</a>`;
@@ -11,6 +11,11 @@ const menu=(uid,title,items=['새 문서','문서 복사','내보내기'])=>`<di
 const centeredExamples=new Set(['text-button','button-group','toggle','toggle-group','alert-dialog','sheet','drawer','popover','hover-card','push-badge','avatar-group','spinner']);
 const bubble=(text,out=false)=>`<div class="dds-bubble ${out?'outgoing':''}">${text}</div>`;
 const message=(text,who='DDS 코치',out=false)=>`<article class="dds-message ${out?'outgoing':''}"><span class="avatar">${out?'나':'D'}</span><div><div class="dds-message-meta"><b>${who}</b><time>09:30</time></div>${bubble(text,out)}</div></article>`;
+let topnavSequence=0;
+function topNavigation(uid){
+ const prefix='topnav-'+String(uid||++topnavSequence).replace(/[^a-zA-Z0-9_-]/g,'-');
+ return `<div class="dds-demo dds-topnav-demo"><header class="dds-topnav" data-ext-topnav><a class="dds-topnav-brand" href="#/">DDS</a><button type="button" class="dds-button dds-topnav-toggle" data-variant="outlined" data-color="assistive" data-control-size="md" data-icon-only="true" data-ext-topnav-toggle aria-label="메뉴 열기" data-tooltip="메뉴 열기" aria-expanded="false" aria-controls="${prefix}-panel"><span class="dds-button-label">${icon('Menu')}</span></button><div class="dds-topnav-panel" id="${prefix}-panel" data-ext-topnav-panel><nav class="dds-topnav-links" aria-label="주 메뉴">${link('문서','/patterns/document-list',true)}${link('컨설팅','/patterns/consulting')}</nav><div class="dds-topnav-tools"><div class="dds-topnav-language" data-control-size="sm"><label for="${prefix}-language">언어</label><select id="${prefix}-language" aria-label="언어 선택" data-control-width="content"><option value="ko">한국어</option><option value="en">English</option><option value="ja">日本語</option></select></div>${link('내 정보','/patterns/account-access')}</div></div></header></div>`;
+}
 export function extensionDemo(id,uid,mini=false){
  const box=(html,extra='')=>`<div class="dds-demo${centeredExamples.has(id)?' dds-demo--centered':''}" ${extra}>${html}</div>`;
  switch(id){
@@ -31,7 +36,7 @@ export function extensionDemo(id,uid,mini=false){
  case 'time-picker':return box(`<fieldset data-ext-time><legend>상담 시작 시간</legend><div class="dds-time">${icon('Clock')}<select aria-label="시">${Array.from({length:24},(_,i)=>`<option ${i===9?'selected':''}>${String(i).padStart(2,'0')}</option>`).join('')}</select><span>:</span><select aria-label="분">${['00','15','30','45'].map(t=>`<option>${t}</option>`).join('')}</select></div><p class="helper" data-time-result role="status">09:00 · Asia/Seoul (KST)</p></fieldset>`);
  case 'questionnaire':return box(`<form data-ext-questionnaire><p class="helper" data-question-progress>1 / 3 질문</p><fieldset data-question="0"><legend>지원 단계는 무엇인가요?</legend>${choices(uid+'-stage',['첫 지원','지원 경험 있음'])}</fieldset><fieldset data-question="1" hidden><legend>도움이 필요한 항목 (선택)</legend>${choices(uid+'-help',['지원 동기','직무 경험'],'checkbox')}</fieldset><fieldset data-question="2" hidden><legend>추가로 전달할 내용 (선택)</legend><textarea aria-label="추가로 전달할 내용" placeholder="자유롭게 작성해 주세요."></textarea></fieldset><div class="dds-action-area">${button('이전','data-question-back disabled')}${button('다음','data-question-next','primary')}</div>${status}</form>`);
  case 'navigation-menu':return box(`<nav aria-label="서비스 탐색"><details class="dds-nav-details"><summary class="dds-nav-link dds-nav-control">자기소개서 ${icon('down')}</summary><div>${link('내 문서','/patterns/document-list')}${link('AI 작성','/patterns/ai-writing')}${link('검사와 피드백','/patterns/analysis')}</div></details></nav>`);
- case 'top-navigation':return box(`<nav class="dds-topnav" aria-label="제품 상단 예제"><b>DDS</b>${link('문서','/patterns/document-list',true)}${link('컨설팅','/patterns/consulting')}${link('내 정보','/patterns/account-access')}</nav>`);
+ case 'top-navigation':return topNavigation(uid);
  case 'bottom-navigation':return box(`<nav class="dds-bottomnav" aria-label="모바일 주요 메뉴">${[['House','홈','/'],['FileText','문서','/patterns/document-list'],['Users','컨설팅','/patterns/consulting']].map(([i,t,r],n)=>`<a class="dds-nav-link dds-nav-control" href="#${r}" ${n===0?'aria-current="page"':''}>${icon(i)}<span>${t}</span></a>`).join('')}</nav>`);
  case 'category':return box(`<div class="demo-row" role="group" aria-label="콘텐츠 분류">${['전체','자기소개서','면접'].map((t,i)=>button(t,`data-ext-category aria-pressed="${i===0}"`,i===0?'selected':'')).join('')}</div><p class="helper" data-category-result>전체 콘텐츠</p>`);
  case 'page-counter':return box(`<div class="dds-pager" data-ext-pager>${ic('left','이전 페이지','data-page-shift="-1" disabled')}<output aria-live="polite" data-pager-output>1 / 5</output>${ic('right','다음 페이지','data-page-shift="1"')}</div>`);
@@ -73,8 +78,61 @@ function renderCalendar(c,focusDate){const y=+c.dataset.year,m=+c.dataset.month;
 function announce(node,text){const out=node.closest('.dds-demo')?.querySelector('[data-ext-status]');if(out)out.textContent=text;}
 function closeMenus(){document.querySelectorAll('[data-ext-menu][aria-expanded=true]').forEach(t=>{t.setAttribute('aria-expanded','false');document.getElementById(t.dataset.extMenu).hidden=true;});}
 function openMenu(t){closeMenus();const p=document.getElementById(t.dataset.extMenu);p.hidden=false;t.setAttribute('aria-expanded','true');p.querySelector('button')?.focus();}
+const topnavStates=new Map();
+let topnavResize,topnavMutation,topnavScanPending=false;
+const topnavWidth=element=>{const style=getComputedStyle(element);return element.clientWidth-parseFloat(style.paddingLeft||0)-parseFloat(style.paddingRight||0);};
+function closeTopnavSelect(panel){
+ for(const trigger of panel.querySelectorAll('.custom-trigger[aria-expanded="true"][aria-controls]')){
+  const popup=panel.ownerDocument.getElementById(trigger.getAttribute('aria-controls'));
+  if(popup?.classList.contains('control-popup')){trigger.dispatchEvent(new panel.ownerDocument.defaultView.KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true}));return true;}
+ }
+ return false;
+}
+function syncTopnav(wrapper,width=topnavWidth(wrapper)){
+ const state=topnavStates.get(wrapper);if(!state)return;
+ const header=wrapper.querySelector('[data-ext-topnav]'),toggle=header?.querySelector('[data-ext-topnav-toggle]'),panel=header?.querySelector('[data-ext-topnav-panel]');if(!toggle||!panel)return;
+ const doc=wrapper.ownerDocument,current=doc.activeElement,active=(current===doc.body||!current)&&state.lastFocused&&header.contains(state.lastFocused)?state.lastFocused:current,mobile=width<=640,changed=state.mobile!==null&&state.mobile!==mobile;
+ const popupClosed=changed&&closeTopnavSelect(panel);
+ if(changed||!mobile)state.open=false;
+ state.mobile=mobile;state.width=width;
+ header.dataset.topnavMode=mobile?'mobile':'desktop';
+ toggle.hidden=!mobile;
+ const expanded=mobile&&state.open,label=expanded?'메뉴 닫기':'메뉴 열기';
+ toggle.setAttribute('aria-expanded',String(expanded));
+ if(toggle.getAttribute('aria-label')!==label){toggle.setAttribute('aria-label',label);toggle.setAttribute('data-tooltip',label);toggle.querySelector('.dds-button-label').innerHTML=icon(expanded?'X':'Menu');}
+ const canRestore=typeof doc.hasFocus!=='function'||doc.hasFocus();
+ if(canRestore&&mobile&&!expanded&&(panel.contains(active)||popupClosed))toggle.focus({preventScroll:true});
+ if(canRestore&&!mobile&&active===toggle)header.querySelector('.dds-topnav-brand').focus({preventScroll:true});
+ panel.hidden=mobile&&!expanded;
+ panel.inert=mobile&&!expanded;
+}
+function scanTopnavs(){
+ for(const [wrapper] of topnavStates)if(!wrapper.isConnected){topnavResize?.unobserve(wrapper);topnavStates.delete(wrapper);}
+ document.querySelectorAll('.dds-topnav-demo').forEach(wrapper=>{
+  if(topnavStates.has(wrapper))return;
+  topnavStates.set(wrapper,{mobile:null,open:false,width:0,lastFocused:null});
+  syncTopnav(wrapper);
+  topnavResize?.observe(wrapper);
+ });
+}
+function prepareTopnavs(){
+ if(!topnavResize&&typeof ResizeObserver==='function')topnavResize=new ResizeObserver(entries=>{for(const entry of entries)if(topnavStates.has(entry.target))syncTopnav(entry.target,entry.contentRect.width);});
+ if(!topnavMutation&&typeof MutationObserver==='function'){
+  topnavMutation=new MutationObserver(()=>{if(topnavScanPending)return;topnavScanPending=true;queueMicrotask(()=>{topnavScanPending=false;scanTopnavs();});});
+  topnavMutation.observe(document.body,{childList:true,subtree:true});
+ }
+ scanTopnavs();
+}
+function setTopnavOpen(header,open,restore=false){
+ const wrapper=header.closest('.dds-topnav-demo'),state=topnavStates.get(wrapper);if(!state)return;
+ state.open=state.mobile&&open;
+ if(!state.open)closeTopnavSelect(header.querySelector('[data-ext-topnav-panel]'));
+ syncTopnav(wrapper,state.width);
+ if(restore&&state.mobile)header.querySelector('[data-ext-topnav-toggle]').focus({preventScroll:true});
+}
 const dialogOrigins=new WeakMap();
 export function bindExtensions(){
+ prepareTopnavs();
  document.querySelectorAll('.dds-overlay').forEach(d=>{if(d.dataset.bound)return;d.dataset.bound='true';d.addEventListener('close',()=>dialogOrigins.get(d)?.focus());});
  document.querySelectorAll('[data-ext-form]').forEach(f=>{f.onsubmit=e=>{e.preventDefault();validate(f);};});
  document.querySelectorAll('[data-ext-questionnaire]').forEach(f=>f.onsubmit=e=>e.preventDefault());
@@ -87,7 +145,9 @@ function validate(f){const i=f.querySelector('input'),ok=i.validity.valid;f.quer
 function resize(h,n){n=Math.max(25,Math.min(75,Math.round(n)));h.setAttribute('aria-valuenow',n);h.parentElement.style.setProperty('--panel',n+'%');}
 function showPopover(t,focus){const p=document.getElementById(t.dataset.extPopover);if(p.matches(':popover-open')){if(focus)p.querySelector('button,input')?.focus();return;}p.showPopover();const r=t.getBoundingClientRect(),w=p.offsetWidth,h=p.offsetHeight;p.style.left=Math.max(8,Math.min(r.left,innerWidth-w-8))+'px';p.style.top=Math.max(8,r.bottom+h+8>innerHeight?r.top-h-8:r.bottom+8)+'px';t.setAttribute('aria-expanded','true');if(focus)p.querySelector('button,input')?.focus();}
 document.addEventListener('click',e=>{
+ const topnavLink=e.target.closest('.dds-topnav-panel a[href]');if(topnavLink)setTopnavOpen(topnavLink.closest('[data-ext-topnav]'),false);
  const t=e.target.closest('button');if(!t)return;
+ if(t.hasAttribute('data-ext-topnav-toggle')){const header=t.closest('[data-ext-topnav]');setTopnavOpen(header,t.getAttribute('aria-expanded')!=='true');}
  if(!t.closest('.dds-menu-unit'))closeMenus();
  if(t.hasAttribute('data-ext-notice'))announce(t,t.dataset.extNotice);
  if(t.hasAttribute('data-ext-toggle')){const on=t.getAttribute('aria-pressed')!=='true';t.setAttribute('aria-pressed',on);announce(t,(t.getAttribute('aria-label')||t.textContent.trim())+(on?' 켜짐':' 꺼짐'));}
@@ -116,11 +176,22 @@ document.addEventListener('click',e=>{
  if(t.hasAttribute('data-thread-add')){const p=t.closest('[data-ext-thread]'),log=p.querySelector('[data-thread-log]'),follow=log.scrollHeight-log.scrollTop-log.clientHeight<24;log.insertAdjacentHTML('beforeend',message('새 피드백: 결과를 수치로 표현해 보세요.'));if(follow)log.scrollTop=log.scrollHeight;p.querySelector('[data-thread-status]').textContent=follow?'새 예제 메시지를 표시했습니다.':'새 메시지가 있습니다. 최신으로 이동할 수 있습니다.';}
  if(t.hasAttribute('data-thread-bottom')){const p=t.closest('[data-ext-thread]'),log=p.querySelector('[data-thread-log]');log.scrollTop=log.scrollHeight;p.querySelector('[data-thread-status]').textContent='최신 메시지';}
 });
+
+// CSS may hide a focused control before ResizeObserver runs. Keep only the
+// latest in-header focus; any real outside focus or pointer action clears it.
+document.addEventListener('focusin',e=>{
+ if(e.target===document.body){for(const state of topnavStates.values())if(state.lastFocused?.getClientRects().length)state.lastFocused=null;return;}
+ for(const [wrapper,state] of topnavStates)state.lastFocused=wrapper.contains(e.target)?e.target:null;
+});
+document.addEventListener('pointerdown',e=>{
+ for(const [wrapper,state] of topnavStates)if(!wrapper.contains(e.target))state.lastFocused=null;
+},true);
 document.addEventListener('input',e=>{const t=e.target;if(t.matches('[data-ext-slider]')){t.style.setProperty('--value',t.value+'%');t.closest('.dds-demo').querySelector('output').textContent=t.value+'%';}if(t.matches('[data-ext-otp]')){t.value=t.value.replace(/\D/g,'').slice(0,6);t.closest('.dds-demo').querySelector('[data-otp-status]').textContent=t.value.length===6?'6자리 입력 완료 · 인증 요청 전':`${t.value.length} / 6자리 입력`;}if(t.matches('[data-ext-command-search]')){const p=t.closest('.dds-command');let count=0;p.querySelectorAll('[data-ext-command]').forEach(b=>{b.hidden=!b.textContent.includes(t.value);if(!b.hidden)count++;});p.querySelector('[data-command-empty]').hidden=count!==0;}});
 document.addEventListener('change',e=>{const p=e.target.closest('[data-ext-time]');if(p){const values=[...p.querySelectorAll('select')].map(s=>s.value);p.querySelector('[data-time-result]').textContent=values.join(':')+' · Asia/Seoul (KST)';}});
 document.addEventListener('contextmenu',e=>{const p=e.target.closest('[data-ext-context]');if(p){e.preventDefault();openMenu(p.querySelector('[data-ext-menu]'));}});
 document.addEventListener('keydown',e=>{
  const t=e.target;
+ if(e.key==='Escape'){const header=t.closest('[data-ext-topnav]');if(header?.querySelector('[data-ext-topnav-toggle]')?.getAttribute('aria-expanded')==='true'){e.preventDefault();e.stopPropagation();setTopnavOpen(header,false,true);return;}}
  if(e.key==='Escape'){const m=t.closest('.dds-menu-unit');closeMenus();m?.querySelector('[data-ext-menu]')?.focus();const d=t.closest('.dds-nav-details');if(d){d.open=false;d.querySelector('summary').focus();}}
  if(e.shiftKey&&e.key==='F10'&&t.closest('[data-ext-context]')){e.preventDefault();openMenu(t.closest('[data-ext-context]').querySelector('[data-ext-menu]'));}
  if(t.matches('.dds-resize-handle')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();resize(t,e.key==='Home'?25:e.key==='End'?75:+t.getAttribute('aria-valuenow')+(e.key==='ArrowRight'?5:-5));}

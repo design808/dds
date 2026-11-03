@@ -17,7 +17,7 @@ const entries = [
 ['time-picker','Time picker','시간 선택','Inputs','상담 시작 시각을 시·분 단위로 선택합니다.','Hour · Minute · Timezone · Selected value','Empty · Selected · Disabled','브라우저 기본 시계 아이콘 대신 공통 Select를 사용하며 시간대를 표시합니다.'],
 ['questionnaire','Questionnaire','단계형 질문','Inputs','단일·복수 선택과 자유 입력 질문을 순서대로 진행합니다.','Progress · Question · Choices · Back / Next','Required · Answered · Skipped · Complete','이전 답을 유지하고 필수 질문과 선택 질문을 구분합니다. 실제 제출은 별도 서버 계약입니다.'],
 ['navigation-menu','Navigation menu','내비게이션 메뉴','Navigation','서비스의 주요 영역과 하위 링크를 탐색합니다.','Navigation · Trigger · Link group','Closed · Open · Current · Focus','페이지 이동 링크를 유지하고 Escape로 하위 메뉴를 닫습니다.'],
-['top-navigation','Top navigation','상단 내비게이션','Navigation','로고·현재 영역·계정 행동을 배치합니다.','Brand · Links · Account action','Desktop · Mobile · Current','좁은 화면에서도 주요 행동을 잃지 않도록 줄바꿈 또는 메뉴 전환을 제공합니다.'],
+['top-navigation','Top navigation','상단 내비게이션','Navigation','로고·주 메뉴·언어와 계정 메뉴를 배치합니다.','Brand · Menu trigger · Navigation panel · Account actions','Desktop · Mobile closed · Mobile open · Current','모바일 첫 줄에는 왼쪽 로고와 오른쪽 햄버거만 두고 언어·프로필은 펼침 패널에 배치합니다.'],
 ['bottom-navigation','Bottom navigation','하단 내비게이션','Navigation','모바일의 핵심 목적지를 지속해서 제공합니다.','Icon · Label · Current destination','Default · Current · Focus','3–5개 주요 목적지만 두며 레이블을 함께 표시합니다.'],
 ['category','Category','카테고리','Navigation','주제별 콘텐츠를 나누어 탐색합니다.','Category list · Current · Result','All · Selected · Empty','선택된 카테고리와 결과 제목을 함께 변경합니다.'],
 ['page-counter','Page counter','페이지 카운터','Navigation','현재 위치와 전체 개수를 간단히 표시합니다.','Current · Total · Previous / Next','First · Middle · Last','숫자 표시만으로 이동 기능을 암시하지 않습니다.'],

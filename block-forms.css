@@ -79,6 +79,7 @@
 .dds-block-example .df-header-bar {display:flex;align-items:center;gap:var(--space-5);min-height:72px;min-width:0;border-bottom:1px solid var(--border);}
 .dds-block-example .df-header-brand {display:flex;flex-shrink:0;}
 .dds-block-example .df-header-brand img {display:block;width:174px;max-width:100%;height:auto;}
+.dds-block-example .df-header-navigation {display:flex;align-items:center;gap:var(--space-5);flex:1;min-width:0;}
 .dds-block-example .df-header-nav {display:flex;align-items:center;gap:var(--space-1);flex-shrink:0;min-width:0;}
 .dds-block-example .df-header-nav>.df-header-menu {flex-shrink:0;}
 .dds-block-example .df-header-nav>.dds-nav-control {white-space:nowrap;}
@@ -97,7 +98,9 @@
 .dds-block-example .df-header-icon {display:grid;place-items:center;width:40px;height:40px;padding:8px;flex-shrink:0;border:0;border-radius:var(--radius-md);background:transparent;color:var(--text-primary);cursor:pointer;}
 .dds-block-example .df-header-icon>.icon {width:20px;height:20px;}
 .dds-block-example .df-header-icon:is(:hover,:focus-visible) {background:var(--surface);}
-.dds-block-example .df-header-profile {width:40px;height:40px;padding:0;border:1px solid var(--border);background:var(--accent);color:var(--brand-ink);cursor:pointer;}
+.dds-block-example .df-header-profile {display:flex;align-items:center;justify-content:center;width:40px;height:40px;flex-shrink:0;padding:0;border:0;border-radius:50%;background:transparent;color:var(--text-primary);cursor:pointer;}
+.dds-block-example .df-header-avatar {width:40px;height:40px;flex-shrink:0;border:1px solid var(--border);background:var(--accent);color:var(--brand-ink);}
+.dds-block-example .df-header-tool-label,.dds-block-example .df-header-tool-chevron {display:none;}
 .dds-block-example .df-header-small-dropdown {right:0;left:auto;width:180px;}
 .dds-block-example .df-header-small-dropdown>strong,.dds-block-example .df-header-small-dropdown>button {padding:var(--space-3);}
 .dds-block-example .df-header-small-dropdown>button {display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);width:100%;border:0;border-radius:var(--radius-md);background:transparent;color:var(--text-primary);text-align:left;cursor:pointer;}
@@ -122,14 +125,24 @@
 .dds-block-example :is(.df-footer-groups a,.df-footer-contact):focus-visible {outline:1px solid var(--primary);outline-offset:0;}
 
 @container dds-block (max-width:900px) {
-  .dds-block-example .df-header-bar {flex-wrap:wrap;gap:var(--space-3);padding-block:var(--space-3);}
-  .dds-block-example .df-header-mobile-toggle {display:grid;margin-left:auto;}
-  .dds-block-example .df-header-tools {margin-left:auto;}
-  .dds-block-example .df-header-nav {display:none;order:4;flex:1 1 100%;align-items:stretch;flex-direction:column;}
-  .dds-block-example .df-header-nav[data-mobile-open=true] {display:flex;}
+  .dds-block-example .df-header-bar {display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--space-3);row-gap:0;padding-block:var(--space-3);}
+  .dds-block-example .df-header-brand {grid-column:1;grid-row:1;justify-self:start;min-width:0;max-width:100%;}
+  .dds-block-example .df-header-mobile-toggle {display:grid;grid-column:2;grid-row:1;justify-self:end;width:44px;height:44px;}
+  .dds-block-example .df-header-navigation {display:none;grid-column:1 / -1;grid-row:2;align-items:stretch;flex-direction:column;gap:var(--space-4);min-width:0;padding-top:var(--space-3);}
+  .dds-block-example .df-header-navigation[data-mobile-open=true] {display:flex;}
+  .dds-block-example .df-header-nav {align-items:stretch;flex-direction:column;width:100%;min-width:0;}
+  .dds-block-example .df-header-nav>.dds-nav-control,.dds-block-example .df-header-nav>.df-header-menu>.dds-nav-control {min-height:44px;padding:var(--space-3);}
   .dds-block-example .df-header-nav>.df-header-menu>.dds-nav-control {justify-content:space-between;width:100%;}
-  .dds-block-example .df-header-nav .df-header-dropdown {position:static;width:100%;max-width:100%;margin-block:var(--space-2);box-shadow:none;}
-  .dds-block-example .df-header-tools .df-header-small-dropdown {max-width:min(180px,calc(100cqi - 68px));}
+  .dds-block-example .df-header-navigation .df-header-dropdown {position:static;width:100%;max-width:100%;margin-block:var(--space-2);box-shadow:none;}
+  .dds-block-example .df-header-tools {align-items:stretch;flex-direction:column;gap:var(--space-1);width:100%;min-width:0;margin-left:0;padding-top:var(--space-3);border-top:1px solid var(--border);}
+  .dds-block-example .df-header-tools>.df-header-menu {min-width:0;}
+  .dds-block-example .df-header-language,.dds-block-example .df-header-profile {display:flex;justify-content:flex-start;gap:var(--space-3);width:100%;min-height:44px;height:auto;padding:var(--space-3);border-radius:var(--radius-md);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:var(--type-label-1-weight);letter-spacing:var(--type-label-1-tracking);text-align:left;}
+  .dds-block-example .df-header-profile:is(:hover,:focus-visible),.dds-block-example .df-header-tools [aria-expanded=true] {background:var(--surface);}
+  .dds-block-example .df-header-tool-label {display:flex;align-items:center;justify-content:space-between;flex:1;min-width:0;gap:var(--space-2);overflow-wrap:anywhere;}
+  .dds-block-example .df-header-tool-value {color:var(--text-secondary);}
+  .dds-block-example .df-header-tool-chevron {display:flex;flex-shrink:0;}
+  .dds-block-example .df-header-tool-chevron>.icon {width:14px;height:14px;}
+  .dds-block-example .df-header-avatar {width:24px;height:24px;}
   .dds-block-example .df-footer-upper {grid-template-columns:minmax(0,1fr);gap:var(--space-8);}
   .dds-block-example .df-footer-groups {grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-8);}
   .dds-block-example .df-footer-contact {justify-self:start;}
@@ -146,7 +159,6 @@
   .dds-block-example .df-profile-avatar {width:64px;height:64px;}
   .dds-block-example .df-profile-row {align-items:flex-start;}
   .dds-block-example .df-header-brand img {width:136px;}
-  .dds-block-example .df-header-bar {gap:var(--space-1);}
-  .dds-block-example .df-header-tools {gap:var(--space-1);}
+  .dds-block-example .df-header-bar {column-gap:var(--space-1);}
   .dds-block-example .df-product-footer {padding-block:var(--space-6);}
 }
