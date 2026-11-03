@@ -32,6 +32,36 @@ const filledStates = (seed,dark) => {
   }
   return {hover:seed,active:seed};
 };
+const functionalForeground = fill => {
+  if(contrast(fill,'#ffffff')>=4.5)return '#ffffff';
+  if(contrast(fill,'#17212f')>=4.5)return '#17212f';
+  return '#000000';
+};
+const functionalStates = (seed,dark) => {
+  const foreground=functionalForeground(seed),activeRatio=dark?.18:.15,hoverRatio=dark?.10:.08;
+  // Keep the label stable across states; switch the shading direction only if
+  // the preferred direction cannot produce two distinct, readable colors.
+  for(const target of (dark?['#ffffff','#000000']:['#000000','#ffffff'])){
+    for(let step=100;step>0;step--){
+      const active=mix(seed,target,activeRatio*step/100);
+      const hover=mix(seed,target,hoverRatio*step/100);
+      if(hover!==seed&&active!==hover&&contrast(hover,foreground)>=4.5&&contrast(active,foreground)>=4.5)return {hover,active};
+    }
+  }
+  return {hover:seed,active:seed};
+};
+const functionalSoft = (seed,background,dark) => {
+  // Bright colors retain their hue instead of being diluted to near white.
+  const ratio=dark?.19:.075+Math.min(1,Math.max(0,(luminance(seed)-.25)/.45))*.225;
+  return mix(background,seed,ratio);
+};
+const functionalStroke = (seed,surfaces,dark) => {
+  for(let step=0;step<=100;step++){
+    const candidate=mix(seed,dark?'#ffffff':'#17212f',step/100);
+    if(surfaces.every(surface=>contrast(candidate,surface)>=3))return candidate;
+  }
+  return dark?'#ffffff':'#000000';
+};
 
 export function palette(profile,dark){
   const background=dark?'#17191c':'#ffffff';
@@ -52,15 +82,21 @@ export function palette(profile,dark){
     for(const [step,ratio] of [[600,.10],[700,.23],[800,.38],[900,.53],[950,.67]])roles[`--brand-${step}`]=mix(primary,'#000000',ratio);
   }
   for(const [name,value] of Object.entries({primary,secondary,accent,positive})){
-    const soft=mix(background,value,dark?.19:.075);
+    const soft=name==='primary'?mix(background,value,dark?.19:.075):functionalSoft(value,background,dark);
     const aiTint=mix(background,value,dark?.20:.12);
-    const states=name==='primary'?primaryStates:filledStates(value,dark);
+    const states=name==='primary'?primaryStates:functionalStates(value,dark);
     roles[`--direction-${name}`]=value;
     roles[`--direction-${name}-ink`]=ink(value,[background,muted,soft,aiTint],dark);
     roles[`--direction-${name}-soft`]=soft;
     roles[`--direction-${name}-border`]=mix(background,value,dark?.42:.24);
     roles[`--direction-${name}-hover`]=states.hover;
     roles[`--direction-${name}-active`]=states.active;
+    if(name!=='primary'){
+      roles[`--direction-${name}-foreground`]=functionalForeground(value);
+      roles[`--direction-${name}-hover-foreground`]=functionalForeground(states.hover);
+      roles[`--direction-${name}-active-foreground`]=functionalForeground(states.active);
+      roles[`--direction-${name}-stroke`]=functionalStroke(value,[background,muted,soft,aiTint],dark);
+    }
   }
   Object.assign(roles,{
     '--primary':primary,
@@ -87,8 +123,8 @@ export function palette(profile,dark){
     ].join(',')
   });
   if(profile.multicolor){
-    const successBg=mix(background,positive,dark?.20:.075);
-    const infoBg=mix(background,secondary,dark?.20:.075);
+    const successBg=roles['--direction-positive-soft'];
+    const infoBg=roles['--direction-secondary-soft'];
     const successInk=ink(positive,[background,successBg],dark);
     const infoInk=ink(secondary,[background,infoBg],dark);
     Object.assign(roles,{

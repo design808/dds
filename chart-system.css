@@ -21,11 +21,11 @@
   letter-spacing:var(--type-body-2-normal-tracking);
 }
 html[data-direction-multicolor=true] .dds-chart-example {
-  --chart-series-2:var(--direction-secondary);
-  --chart-series-3:var(--direction-positive);
+  --chart-series-2:var(--direction-secondary-stroke);
+  --chart-series-3:var(--direction-positive-stroke);
 }
 html[data-theme=dark] .dds-chart-example {--chart-line-1:var(--primary);--chart-series-2:var(--text-scale-400);--chart-series-3:var(--text-scale-600);--chart-area-opacity:.1;--chart-area-stacked-opacity:.2;}
-html[data-theme=dark][data-direction-multicolor=true] .dds-chart-example {--chart-series-2:var(--direction-secondary-ink);--chart-series-3:var(--direction-positive-ink);}
+html[data-theme=dark][data-direction-multicolor=true] .dds-chart-example {--chart-series-2:var(--direction-secondary-stroke);--chart-series-3:var(--direction-positive-stroke);}
 .dds-chart-heading {display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin-bottom:24px;}
 .dds-chart-heading h3 {
   margin:0;

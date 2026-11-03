@@ -4,9 +4,9 @@ const STORAGE_KEY='dds-design-settings-v1';
 export const DEFAULT_SETTINGS=Object.freeze({
   primary:'#FFAD31',
   colorMode:'brand',
-  secondary:'#4568C8',
-  accent:'#8363BB',
-  positive:'#278577',
+  secondary:'#345BFF',
+  accent:'#8B3DFF',
+  positive:'#00B881',
   headingFont:'pretendard',
   bodyFont:'pretendard'
 });
@@ -39,12 +39,22 @@ export const PRIMARY_PRESETS=Object.freeze([
 
 // Independent functional combinations; selecting one keeps the brand color.
 export const FUNCTIONAL_PRESETS=Object.freeze([
-  Object.freeze({id:'blue-violet-teal',label:'블루 · 바이올렛 · 틸',secondary:'#4568C8',accent:'#8363BB',positive:'#278577'}),
-  Object.freeze({id:'indigo-rose-green',label:'인디고 · 로즈 · 그린',secondary:'#6265B7',accent:'#B05C82',positive:'#398566'}),
-  Object.freeze({id:'teal-violet-olive',label:'틸 · 퍼플 · 올리브',secondary:'#347D92',accent:'#9564A7',positive:'#718440'}),
-  Object.freeze({id:'blue-coral-emerald',label:'블루 · 코럴 · 에메랄드',secondary:'#397BAC',accent:'#C47754',positive:'#2B8B7C'}),
-  Object.freeze({id:'slate-indigo-sage',label:'슬레이트 · 인디고 · 세이지',secondary:'#55758F',accent:'#716FB0',positive:'#5A8970'})
+  Object.freeze({id:'bold',label:'볼드',secondary:'#345BFF',accent:'#8B3DFF',positive:'#00B881'}),
+  Object.freeze({id:'pastel',label:'파스텔',secondary:'#A6B8FF',accent:'#D5B5FF',positive:'#9BE4CA'}),
+  Object.freeze({id:'vivid',label:'비비드',secondary:'#00B8E4',accent:'#FF4FA3',positive:'#85D63A'}),
+  Object.freeze({id:'fresh',label:'프레시',secondary:'#36A9F3',accent:'#FF846B',positive:'#25C9A4'}),
+  Object.freeze({id:'soft-pop',label:'소프트 팝',secondary:'#9B7CFF',accent:'#F78EB8',positive:'#70D7B4'})
 ]);
+
+const functionalFields=Object.freeze(['secondary','accent','positive']);
+// Only the complete former presets migrate; any custom color keeps its value.
+const legacyFunctionalPresets=Object.freeze([
+  ['bold','#4568C8','#8363BB','#278577'],
+  ['pastel','#6265B7','#B05C82','#398566'],
+  ['vivid','#347D92','#9564A7','#718440'],
+  ['fresh','#397BAC','#C47754','#2B8B7C'],
+  ['soft-pop','#55758F','#716FB0','#5A8970']
+].map(Object.freeze));
 
 const fields=Object.keys(DEFAULT_SETTINGS);
 const colorFields=new Set(['primary','secondary','accent','positive']);
@@ -79,7 +89,15 @@ export function normalizeSettings(input){
 
 function parseSettings(serialized){
   if(typeof serialized!=='string')return DEFAULT_SETTINGS;
-  try{return normalizeSettings(JSON.parse(serialized));}catch{return DEFAULT_SETTINGS;}
+  try{
+    const input=JSON.parse(serialized);
+    const settings=normalizeSettings(input);
+    if(!isRecord(input)||!functionalFields.every(key=>Object.prototype.hasOwnProperty.call(input,key)))return settings;
+    const legacy=legacyFunctionalPresets.find(preset=>functionalFields.every((key,index)=>normalizeField(key,input[key],undefined)===preset[index+1]));
+    const replacement=legacy&&FUNCTIONAL_PRESETS.find(preset=>preset.id===legacy[0]);
+    if(!replacement)return settings;
+    return normalizeSettings({...settings,...Object.fromEntries(functionalFields.map(key=>[key,replacement[key]]))});
+  }catch{return DEFAULT_SETTINGS;}
 }
 
 /**

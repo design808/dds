@@ -44,6 +44,7 @@ html.dds-direction-preview[data-direction-multicolor=true] .experience-tags span
 }
 html.dds-direction-preview[data-direction-multicolor=true] .brand-core {
   background: var(--direction-accent);
+  color: var(--direction-accent-foreground);
   box-shadow: 0 0 0 12px var(--direction-accent-soft),0 0 0 13px var(--direction-accent-border);
 }
 html.dds-direction-preview[data-direction-multicolor=true] .visual-outcome em {
@@ -68,7 +69,7 @@ html.dds-direction-preview[data-direction-multicolor=true] .method-list li:nth-c
 }
 html.dds-direction-preview[data-direction-multicolor=true] :is(.chip.selected,.chip[aria-pressed=true],.session-topic[aria-current=true],#question-outline-links>a[aria-current=true]) {
   color: var(--direction-secondary-ink);
-  border-color: var(--direction-secondary-border);
+  border-color: var(--direction-secondary-stroke);
   background: var(--direction-secondary-soft);
 }
 html.dds-direction-preview[data-direction-multicolor=true] :is(.question-number,.dds-cover-write .question-number) {
@@ -77,10 +78,10 @@ html.dds-direction-preview[data-direction-multicolor=true] :is(.question-number,
 }
 html.dds-direction-preview[data-direction-multicolor=true] .dds-cover-write .gpt_choose .btn.active {
   background: var(--direction-accent-soft);
-  border-color: var(--direction-accent-border);
+  border-color: var(--direction-accent-stroke);
 }
 html.dds-direction-preview[data-direction-multicolor=true] .dds-cover-write .gpt_choose .btn.active::before {
-  border-color: var(--direction-accent);
+  border-color: var(--direction-accent-stroke);
 }
 html.dds-direction-preview[data-direction-multicolor=true] .ai-input label .icon {
   color: var(--direction-accent-ink);
@@ -120,7 +121,7 @@ html.dds-direction-preview[data-direction-multicolor=true] .di-benefits li:nth-c
   color: var(--direction-positive-ink);
   background: var(--direction-positive-soft);
 }
-html.dds-direction-preview[data-direction-multicolor=true] .sample-tabs button[aria-pressed=true]{color:var(--direction-secondary-ink);box-shadow:inset 0 -2px var(--direction-secondary)}
+html.dds-direction-preview[data-direction-multicolor=true] .sample-tabs button[aria-pressed=true]{color:var(--direction-secondary-ink);box-shadow:inset 0 -2px var(--direction-secondary-stroke)}
 
 /* Comparison-only category colors: one color family for each function. */
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(1) {
@@ -134,15 +135,15 @@ html.dds-direction-preview[data-direction-feature-colors=true] .sample-features 
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(1) .sample-feature-icon {
   background: var(--direction-secondary);
-  color: #fff;
+  color: var(--direction-secondary-foreground);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(2) .sample-feature-icon {
   background: var(--direction-accent);
-  color: #fff;
+  color: var(--direction-accent-foreground);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article:nth-child(3) .sample-feature-icon {
   background: var(--direction-positive);
-  color: #fff;
+  color: var(--direction-positive-foreground);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article strong,
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-features article>div>span {
@@ -162,15 +163,15 @@ html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-pa
 html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-actions>.btn.primary,.dds-cover-write .ai-input-bottom>.btn.u-btn-primary) {
   background: var(--direction-accent);
   border-color: transparent;
-  color: #fff;
+  color: var(--direction-accent-foreground);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-actions>.btn.primary,.dds-cover-write .ai-input-bottom>.btn.u-btn-primary):hover {
   background: var(--direction-accent-hover);
-  color: #fff;
+  color: var(--direction-accent-hover-foreground);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] :is(.sample-ai-actions>.btn.primary,.dds-cover-write .ai-input-bottom>.btn.u-btn-primary):active {
   background: var(--direction-accent-active);
-  color: #fff;
+  color: var(--direction-accent-active-foreground);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-reading>h2 {
   color: var(--direction-secondary-ink);
@@ -184,15 +185,15 @@ html.dds-direction-preview[data-direction-feature-colors=true] .sample-progress 
   color: var(--direction-positive-ink);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-progress progress::-webkit-progress-value {
-  background: var(--direction-positive);
+  background: var(--direction-positive-stroke);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .sample-progress progress::-moz-progress-bar {
-  background: var(--direction-positive);
+  background: var(--direction-positive-stroke);
 }
 
 html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(1) .di-step-number {
   background: var(--direction-secondary);
-  color: #fff;
+  color: var(--direction-secondary-foreground);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(2) .di-step-number {
   background: var(--primary);
@@ -201,11 +202,11 @@ html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nt
 html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(3) .di-step-number,
 html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(5) .di-step-number {
   background: var(--direction-positive);
-  color: #fff;
+  color: var(--direction-positive-foreground);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .di-process li:nth-child(4) .di-step-number {
   background: var(--direction-accent);
-  color: #fff;
+  color: var(--direction-accent-foreground);
 }
 html.dds-direction-preview[data-direction-feature-colors=true] .di-benefits li:nth-child(1) :is(.di-benefit-icon,h3) {
   color: var(--direction-secondary-ink);
