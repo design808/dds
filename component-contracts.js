@@ -47,7 +47,8 @@ const families = {
     when: '현재 위치를 알리거나 다른 화면·콘텐츠로 이동할 때 사용합니다.',
     alternative: '값 선택은 입력 컨트롤, 서버 요청이나 저장은 버튼으로 제공합니다.',
     keyboard: ['페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다.'],
-    specification: [buttonFocus, ['타이포그래피', '.dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지'], ['현재 위치', 'aria-current="page" · --brand-ink와 연한 강조 배경 · 글자 너비 유지']],
+    specification: [buttonFocus, ['타이포그래피', '.dds-nav-link와 .dds-nav-control: Label 1 14/20/500 · 상태별 크기·굵기 유지'], ['텍스트형 링크', '.dds-nav-link: 글자·색·포커스만 적용 · hover와 현재 위치에 자동 배경 없음'], ['메뉴 컨트롤', '.dds-nav-control: 최소 높이 40px · 패딩 10px 12px · 간격 8px'], ['컨트롤 배치', 'inline-flex · 세로 가운데 · 시작 정렬 · 글자와 아이콘 전체에 내부 패딩 확보'], ['컨트롤 상태', '기본 투명 · hover --surface · 현재 --accent · 포커스 1px Primary / offset 0'], ['현재 위치', 'aria-current="page"와 강조 색 사용 · 배경은 메뉴 컨트롤에서만 적용 · 탭 선택은 Tabs 규칙 사용'], ['현재 GNB 적용 예시', '너비 1180px 이하: 최소 높이 44px · 패딩 12px 12px'], ['밀도 조정', '사이드바·목차·하위 메뉴의 고유 너비·밀도 유지 · 개별 항목의 좌우 패딩 명시']],
+    checks: [...defaultChecks, 'hover·현재 위치·키보드 포커스에서 크기와 글자 너비가 유지되는지 확인합니다.', '배경이 있는 항목은 글자·아이콘 외곽 전체에 내부 패딩이 있는지 확인합니다. 부모 여백으로 대체하지 않습니다.', '긴 메뉴명과 좁은 화면에서 배경·클릭 영역·줄바꿈이 일치하고 인접 항목을 침범하지 않는지 확인합니다.'],
     assets: visibilityAssets,
   },
   Feedback: {
@@ -382,7 +383,7 @@ export function componentContract(c = {}) {
     usage: {...{when: family.when, alternative: family.alternative}, ...custom.usage},
     rules,
     keyboard: [...(custom.keyboard || family.keyboard)],
-    checks: [...(custom.checks || defaultChecks)],
+    checks: [...(custom.checks || family.checks || defaultChecks)],
     specification,
     assets: [...new Set(assets)],
     assetGroups: {

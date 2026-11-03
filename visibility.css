@@ -106,7 +106,7 @@
 .dds-status[data-status=complete] {color:var(--success);background:var(--success-bg)}
 .dds-status[data-status=pending] {color:var(--info);background:var(--info-bg)}
 .dds-status[data-status=error] {color:var(--destructive);background:var(--destructive-bg)}
-.dds-nav-link {
+.dds-nav-link,.dds-nav-control {
   color:var(--text-primary);
   font-family:var(--font-sans);
   font-size:var(--type-label-1-size);
@@ -114,11 +114,28 @@
   font-weight:var(--type-label-1-weight);
   letter-spacing:var(--type-label-1-tracking);
   text-decoration:none;
-  border-radius:var(--radius-md);
 }
 .dds-nav-link[aria-current]:not([aria-current=false]),
-.dds-nav-link[aria-selected=true] {color:var(--brand-ink);background:var(--accent)}
-.dds-nav-link:focus-visible {outline:1px solid var(--primary);outline-offset:0}
+.dds-nav-control[aria-current]:not([aria-current=false]) {color:var(--brand-ink)}
+.dds-nav-link:focus-visible,.dds-nav-control:focus-visible {outline:1px solid var(--primary);outline-offset:0}
+/* A background belongs to a padded control, never to every text link. */
+.dds-nav-control {
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:var(--space-2);
+  box-sizing:border-box;
+  max-width:100%;
+  min-height:40px;
+  padding:10px 12px;
+  border:0;
+  border-radius:var(--radius-md);
+  background:transparent;
+  text-align:start;
+  cursor:pointer;
+}
+.dds-nav-control[aria-expanded=true] {background:var(--surface)}
+.dds-nav-control[aria-current]:not([aria-current=false]) {background:var(--accent)}
 @media(hover:hover) and (pointer:fine) {
   .dds-content-card:has(.dds-card-link):hover,
   .dds-content-card[data-interactive=true]:hover {
@@ -127,7 +144,9 @@
     transform:translateY(-2px);
   }
   .dds-content-card:has(.dds-card-link:focus-visible):hover {border-color:var(--primary)}
-  .dds-nav-link:hover {color:var(--text-strong);background:var(--surface)}
+  .dds-nav-link:hover {color:var(--text-strong)}
+  .dds-nav-control:hover {color:var(--text-strong);background:var(--surface)}
   .dds-nav-link[aria-current]:not([aria-current=false]):hover,
-  .dds-nav-link[aria-selected=true]:hover {color:var(--brand-ink);background:var(--accent)}
+  .dds-nav-control[aria-current]:not([aria-current=false]):hover {color:var(--brand-ink)}
+  .dds-nav-control[aria-current]:not([aria-current=false]):hover {background:var(--accent)}
 }

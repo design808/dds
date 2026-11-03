@@ -1,4 +1,4 @@
-import {implementationRules} from './service-guidelines.js?v=404655015d20eb0b';
+import {implementationRules} from './service-guidelines.js?v=fd534b683fb18343';
 
 const table = (headings, rows) => `<div class="table-wrap"><table class="dds-rules-table"><thead><tr>${headings.map(text => `<th scope="col">${text}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((text, i) => i ? `<td>${text}</td>` : `<th scope="row">${text}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 const section = (title, content) => `<section class="doc-section"><h2>${title}</h2>${content}</section>`;
@@ -11,11 +11,11 @@ export function handoffPage() {
       ${section('먼저 읽을 파일', table(['파일', '용도'], [
         ['<a href="./handoff.md" download>handoff.md</a>', '개발자·AI용 적용 지침. 작업 범위와 기준 파일을 먼저 확인합니다.'],
         ['<a href="./data/dds-contracts.json" download>dds-contracts.json</a>', '컴포넌트별 용도·규격·동작·검수. 웹 문서와 같은 데이터에서 생성합니다.'],
-        ['<a href="./tokens.css?v=404655015d20eb0b" download>tokens.css</a>', '색·간격·형태·입력 크기·모션과 라이트/다크 값. 웹폰트 파일을 함께 배포합니다.'],
-        ['<a href="./typography-system.js?v=404655015d20eb0b" download>typography-system.js</a>', '서체·크기·행간·굵기·자간이 묶인 글자 역할. 코드와 토큰 표시에도 Pretendard를 사용합니다.'],
-        ['<a href="./service-typography.js?v=404655015d20eb0b" download>service-typography.js</a>', '서비스 선택자와 글자 역할의 연결 원본. CSS 생성 후 적용합니다.'],
-        ['<a href="./visibility.css?v=404655015d20eb0b" download>visibility.css</a>', '카드·메타정보·상태·개수·탐색의 공통 표시 규칙. 기존 선택자와 적용 범위를 확인해 연결합니다.'],
-        ['<a href="./visibility.js?v=404655015d20eb0b" download>visibility.js</a>', '실제 개수와 상태 문구를 표시하는 순수 도움 함수. 기존 데이터 처리와 이벤트를 대신하지 않습니다.']
+        ['<a href="./tokens.css?v=fd534b683fb18343" download>tokens.css</a>', '색·간격·형태·입력 크기·모션과 라이트/다크 값. 웹폰트 파일을 함께 배포합니다.'],
+        ['<a href="./typography-system.js?v=fd534b683fb18343" download>typography-system.js</a>', '서체·크기·행간·굵기·자간이 묶인 글자 역할. 코드와 토큰 표시에도 Pretendard를 사용합니다.'],
+        ['<a href="./service-typography.js?v=fd534b683fb18343" download>service-typography.js</a>', '서비스 선택자와 글자 역할의 연결 원본. CSS 생성 후 적용합니다.'],
+        ['<a href="./visibility.css?v=fd534b683fb18343" download>visibility.css</a>', '카드·메타정보·상태·개수·탐색의 공통 표시 규칙. 기존 선택자와 적용 범위를 확인해 연결합니다.'],
+        ['<a href="./visibility.js?v=fd534b683fb18343" download>visibility.js</a>', '실제 개수와 상태 문구를 표시하는 순수 도움 함수. 기존 데이터 처리와 이벤트를 대신하지 않습니다.']
       ]))}
       ${section('프로젝트에 따른 적용', table(['대상', '적용 방법'], [
         ['기존 서비스 개선', '현재 프레임워크·기능·이벤트를 보존하며 CSS와 필요한 마크업을 연결하고 변경 전 동작과 대조합니다.'],
@@ -27,7 +27,10 @@ export function handoffPage() {
         ['카드 행동', '<code>.dds-content-card</code> 안에 실제 href를 가진 <code>.dds-card-link</code>를 두고 카드 전체를 같은 목적지로 연결합니다. <code>.dds-card-tools</code>는 대표 링크 바깥에 두며 버튼·다른 링크를 대표 링크 안에 중첩하지 않습니다. 이동·실행이 없는 카드는 클릭을 암시하는 hover를 사용하지 않습니다.'],
         ['상태', '<code>.dds-status[data-status]</code>에 실제 상태 문구와 의미 아이콘을 표시합니다. draft·complete·pending·error는 기존 처리 결과에 연결합니다.'],
         ['개수', '<code>.dds-collection-count</code>는 실제 데이터와 단위를 표시합니다. 0도 표시하고 항목 추가·삭제·필터 변경 시 갱신합니다.'],
-        ['탐색', '<code>.dds-nav-link</code>는 Label 1 14/20/500을 유지합니다. 현재 링크에 <code>aria-current="page"</code>와 강조 색을 적용하며 굵기로 너비가 변하지 않게 합니다.'],
+        ['텍스트형 탐색', '<code>.dds-nav-link</code>는 Label 1 14/20/500과 색상·1px Primary 포커스(offset 0)를 적용합니다. 본문·경로·돌아가기 링크에 hover나 현재 위치 배경을 자동 추가하지 않습니다.'],
+        ['메뉴 컨트롤', '<code>.dds-nav-control</code>은 최소 높이 40px·패딩 10px 12px·간격 8px, inline-flex·세로 가운데·시작 정렬을 사용합니다. 단독 사용하거나 <code>.dds-nav-link</code>와 함께 사용할 수 있습니다. 기본 배경은 투명, hover는 <code>--surface</code>, 현재 항목은 <code>--accent</code>입니다.'],
+        ['메뉴 상태·배치', '현재 위치는 <code>aria-current="page"</code>로 전달하되 배경을 모든 링크에 강제하지 않습니다. 글자·아이콘 외곽 전체에 내부 패딩을 두고 부모 여백으로 대신하지 않습니다. 사이드바·목차·하위 메뉴는 고유 너비와 밀도를 유지하며 좌우 패딩을 명시합니다. hover·현재·focus에서 크기와 굵기는 유지하고, 탭 선택은 Tabs 규칙을 따릅니다.'],
+        ['좁은 화면', '현재 서비스 적용 예시의 GNB는 1180px 이하에서 최소 높이 44px·패딩 12px 12px을 사용합니다. 긴 메뉴명에서도 배경과 클릭 영역이 일치하고 인접 항목을 침범하지 않는지 확인합니다.'],
         ['섹션', '제목 앞 장식 아이콘이나 섹션별 회색 바탕을 추가하지 않습니다. 배경 캔버스가 필요하면 페이지·body 수준에서 정합니다.']
       ]))}
       ${section('변경 범위', table(['대상', '적용 방법'], [

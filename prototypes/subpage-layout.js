@@ -13,7 +13,7 @@ if(questions&&outline){
   outline.replaceChildren(...forms.map((form,index)=>{
    const link=document.createElement('a');
    link.href='#'+form.id;
-   link.className='dds-nav-link';
+   link.className='dds-nav-link dds-nav-control';
    const number=document.createElement('span');number.className='outline-number';number.textContent=String(index+1).padStart(2,'0');
    const text=document.createElement('span');text.className='outline-label';
    const title=document.createElement('strong');title.textContent='문항 '+(index+1);

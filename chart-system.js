@@ -1,4 +1,4 @@
-import {chartComponents, chartPresentation} from './chart-catalog.js?v=404655015d20eb0b';
+import {chartComponents, chartPresentation} from './chart-catalog.js?v=fd534b683fb18343';
 
 // SVG examples use local data. Service adapters keep their existing chart engine,
 // data requests, permissions and export behavior.

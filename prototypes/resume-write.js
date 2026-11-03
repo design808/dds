@@ -1,7 +1,7 @@
-import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=404655015d20eb0b';
-import {getDocument,updateDocument} from './document-store.js?v=404655015d20eb0b';
-import {personalFields,preferenceFields,militaryFields,hopeFields,sections,blankEntry,initialResume} from './resume-schema.js?v=404655015d20eb0b';
-import '../custom-controls.js?v=404655015d20eb0b';
+import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=fd534b683fb18343';
+import {getDocument,updateDocument} from './document-store.js?v=fd534b683fb18343';
+import {personalFields,preferenceFields,militaryFields,hopeFields,sections,blankEntry,initialResume} from './resume-schema.js?v=fd534b683fb18343';
+import '../custom-controls.js?v=fd534b683fb18343';
 common();
 const params=new URLSearchParams(location.search);
 const documentId=params.get('document')||crypto.randomUUID();
@@ -23,7 +23,7 @@ function conditions(){document.querySelectorAll('[data-condition]').forEach(wrap
 function entryHTML(section,entry,index){return `<div class="resume-entry" data-resume-entry="${entry.uid}"><header class="resume-entry-heading"><h3 class="dds-meta-primary">${section.label} ${index+1}</h3><div>${!section.single?`<button type="button" data-entry-action="up" data-section="${section.id}" data-uid="${entry.uid}" aria-label="${section.label} ${index+1} 위로" ${index===0?'disabled':''}>${icon('ArrowUp')}</button><button type="button" data-entry-action="down" data-section="${section.id}" data-uid="${entry.uid}" aria-label="${section.label} ${index+1} 아래로" ${index===state.entries[section.id].length-1?'disabled':''}>${icon('ArrowDown')}</button>`:''}<button type="button" data-entry-action="remove" data-section="${section.id}" data-uid="${entry.uid}" aria-label="${section.label} ${index+1} 삭제" ${section.required&&state.entries[section.id].length===1?'disabled':''}>${icon('Trash2')}</button></div></header><div class="resume-fields">${fields(section.fields,entry,section.id,entry.uid)}</div></div>`;}
 function renderSections(){
  $('#resume-sections').innerHTML=state.order.map(id=>{const s=sections.find(s=>s.id===id);return `<section class="resume-section dds-content-card" id="section-${id}" aria-labelledby="heading-${id}"><header><h2 id="heading-${id}">${s.label}</h2>${s.required?'<span class="resume-required dds-badge">필수</span>':''}</header>${state.entries[id].map((entry,i)=>entryHTML(s,entry,i)).join('')}${!s.single?`<button class="btn resume-add-entry" type="button" data-add-entry="${id}">${icon('Plus')} ${s.label} 추가</button>`:''}</section>`;}).join('');
- $('#resume-nav').innerHTML=`<a class="dds-nav-link" href="#section-personal">기본인적사항</a>`+state.order.map(id=>{const s=sections.find(s=>s.id===id);return `<a class="dds-nav-link" href="#section-${id}">${s.label}<span>${state.entries[id].length}</span></a>`;}).join('');
+ $('#resume-nav').innerHTML=`<a class="dds-nav-link dds-nav-control" href="#section-personal">기본인적사항</a>`+state.order.map(id=>{const s=sections.find(s=>s.id===id);return `<a class="dds-nav-link dds-nav-control" href="#section-${id}">${s.label}<span>${state.entries[id].length}</span></a>`;}).join('');
  $('#resume-picker').innerHTML=sections.filter(s=>!s.required).map(s=>`<button type="button" class="btn" data-add-section="${s.id}" ${state.order.includes(s.id)?'disabled':''}>${icon(state.order.includes(s.id)?'Check':'Plus')}${s.label}</button>`).join('');
 }
 $('#resume-title').value=state.title;

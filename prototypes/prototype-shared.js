@@ -1,4 +1,4 @@
-import {icon} from '../icons.js?v=404655015d20eb0b';
+import {icon} from '../icons.js?v=fd534b683fb18343';
 export {icon};
 export const $=s=>document.querySelector(s);
 export const $$=s=>[...document.querySelectorAll(s)];
@@ -15,20 +15,18 @@ export function summary(info){for(const key of ['job','ind','cor','supportArea',
 export function common(){
  icons();
  const currentGroup=document.body.classList.contains('dds-mypage')?'account':document.body.classList.contains('dds-resume-write')?'resume':document.body.classList.contains('dds-cover-info')?'cover':null;
- if(currentGroup){
-  $$('.gnb-trigger').forEach(trigger=>{
+ $$('.gnb-trigger').forEach(trigger=>{
    const current=trigger.getAttribute('aria-controls')==='gnb-'+currentGroup;
    trigger.classList.toggle('active',current);
    if(current)trigger.setAttribute('aria-current','page');else trigger.removeAttribute('aria-current');
-  });
- }
+ });
  const closeMenus=()=>{$$('.gnb-trigger').forEach(b=>{b.setAttribute('aria-expanded','false');$('#'+b.getAttribute('aria-controls')).hidden=true;});};
  $('#mobile-nav').addEventListener('click',()=>{const open=$('.product-header').classList.toggle('nav-open');$('#mobile-nav').setAttribute('aria-expanded',open);$('#mobile-nav').setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');if(!open)closeMenus();});
  for(const b of $$('.gnb-trigger')){
   const show=()=>{closeMenus();b.setAttribute('aria-expanded','true');$('#'+b.getAttribute('aria-controls')).hidden=false;};
-  b.addEventListener('click',()=>{const open=b.getAttribute('aria-expanded')==='true';closeMenus();if(!open||matchMedia('(min-width:1101px)').matches)show();});
+  b.addEventListener('click',()=>{const open=b.getAttribute('aria-expanded')==='true';closeMenus();if(!open||matchMedia('(min-width:1181px)').matches)show();});
   b.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();show();$('#'+b.getAttribute('aria-controls')).querySelector('a,button').focus();}});
-  b.parentElement.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&matchMedia('(min-width:1101px)').matches)show();});
+  b.parentElement.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&matchMedia('(min-width:1181px)').matches)show();});
   b.parentElement.addEventListener('pointerleave',()=>{if(!b.parentElement.contains(document.activeElement))closeMenus();});
   b.parentElement.addEventListener('focusout',e=>{if(!b.parentElement.contains(e.relatedTarget))closeMenus();});
  }
