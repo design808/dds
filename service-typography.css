@@ -409,15 +409,6 @@
   font-weight: var(--type-body-2-normal-weight);
   letter-spacing: var(--type-body-2-normal-tracking);
 }
-:root .dds-service .doc-badge {
-  --dds-type-role: label-2;
-  font-family: var(--font-sans);
-  font-size: var(--type-label-2-size);
-  line-height: var(--type-label-2-line-height);
-  font-weight: var(--type-label-2-weight);
-  letter-spacing: var(--type-label-2-tracking);
-}
-:root .dds-service.dds-mypage .document-count,
 :root .dds-service.dds-mypage .mypage-sidebar nav>[aria-current=page] {
   --dds-type-role: label-1;
   font-family: var(--font-sans);
@@ -762,6 +753,63 @@
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--type-title-2-tracking);
 }
+}
+:root .dds-service .dds-card-title {
+  --dds-type-role: body-1-normal;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--type-body-1-normal-tracking);
+}
+:root .dds-service .dds-meta-primary {
+  --dds-type-role: body-2-normal;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-2-normal-size);
+  line-height: var(--type-body-2-normal-line-height);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--type-body-2-normal-tracking);
+}
+:root .dds-service .dds-meta-secondary {
+  --dds-type-role: body-2-normal;
+  font-family: var(--font-sans);
+  font-size: var(--type-body-2-normal-size);
+  line-height: var(--type-body-2-normal-line-height);
+  font-weight: var(--type-body-2-normal-weight);
+  letter-spacing: var(--type-body-2-normal-tracking);
+}
+:root .dds-service .dds-meta-date {
+  --dds-type-role: caption-1;
+  font-family: var(--font-sans);
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  font-weight: var(--type-caption-1-weight);
+  letter-spacing: var(--type-caption-1-tracking);
+}
+:root .dds-service .dds-status,
+:root .dds-service .dds-badge {
+  --dds-type-role: label-2;
+  font-family: var(--font-sans);
+  font-size: var(--type-label-2-size);
+  line-height: var(--type-label-2-line-height);
+  font-weight: var(--type-label-2-weight);
+  letter-spacing: var(--type-label-2-tracking);
+}
+:root .dds-service .dds-collection-count {
+  --dds-type-role: label-2;
+  font-family: var(--font-sans);
+  font-size: var(--type-label-2-size);
+  line-height: var(--type-label-2-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--type-label-2-tracking);
+}
+:root .dds-service .dds-nav-link {
+  --dds-type-role: label-1;
+  font-family: var(--font-sans);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--type-label-1-weight);
+  letter-spacing: var(--type-label-1-tracking);
 }
 :root .dds-service .dds-type-display-1 {
   --dds-type-role: display-1;

@@ -1,18 +1,19 @@
-import {handoffPage} from './developer-guide.js?v=11c5e354898c5712';
-import {getDesignSettings} from './design-settings.js?v=11c5e354898c5712';
-import {textColorSection} from './text-colors.js?v=11c5e354898c5712';
-import {setupPage,ddsRelease} from './adoption-content.js?v=11c5e354898c5712';
-import {typographyPage,bindTypography} from './typography-system.js?v=11c5e354898c5712';
-import {formValidationSpec,contentBehaviorSpec,bindServiceGuidelines} from './service-guidelines.js?v=11c5e354898c5712';
-import {sidebarContent,overviewContent,componentContent,renderPattern,searchableDocuments} from './document-shell.js?v=11c5e354898c5712';
-import {principlesContent,processContent} from './document-content.js?v=11c5e354898c5712';
-import {icon,iconGallery,bindIconGallery} from './icons.js?v=11c5e354898c5712';
-import './interactions.js?v=11c5e354898c5712';
-import {extensionDemo,bindExtensions} from './extension-demos.js?v=11c5e354898c5712';
-import {chartDemo,bindCharts} from './chart-system.js?v=11c5e354898c5712';
-import {chartRouteAliases} from './chart-catalog.js?v=11c5e354898c5712';
-import {colorPage} from './color-system.js?v=11c5e354898c5712';
-import {components,groups,patterns,foundations} from './catalog.js?v=11c5e354898c5712';
+import {handoffPage} from './developer-guide.js?v=404655015d20eb0b';
+import {getDesignSettings} from './design-settings.js?v=404655015d20eb0b';
+import {textColorSection} from './text-colors.js?v=404655015d20eb0b';
+import {setupPage,ddsRelease} from './adoption-content.js?v=404655015d20eb0b';
+import {typographyPage,bindTypography} from './typography-system.js?v=404655015d20eb0b';
+import {formValidationSpec,contentBehaviorSpec,bindServiceGuidelines} from './service-guidelines.js?v=404655015d20eb0b';
+import {sidebarContent,overviewContent,componentContent,renderPattern,searchableDocuments} from './document-shell.js?v=404655015d20eb0b';
+import {principlesContent,processContent} from './document-content.js?v=404655015d20eb0b';
+import {icon,iconGallery,bindIconGallery} from './icons.js?v=404655015d20eb0b';
+import {collectionCount,statusBadge} from './visibility.js?v=404655015d20eb0b';
+import './interactions.js?v=404655015d20eb0b';
+import {extensionDemo,bindExtensions} from './extension-demos.js?v=404655015d20eb0b';
+import {chartDemo,bindCharts} from './chart-system.js?v=404655015d20eb0b';
+import {chartRouteAliases} from './chart-catalog.js?v=404655015d20eb0b';
+import {colorPage} from './color-system.js?v=404655015d20eb0b';
+import {components,groups,patterns,foundations} from './catalog.js?v=404655015d20eb0b';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const releaseBadge=document.querySelector('[data-dds-release]');
 if(releaseBadge){releaseBadge.textContent='v'+ddsRelease;releaseBadge.setAttribute('aria-label','DDS 버전 '+ddsRelease);}
@@ -23,7 +24,7 @@ $('#search-open').setAttribute('data-tooltip','Ctrl K');
 let demoSequence=0;
 let view='/',selectedGroup='All';
 let theme=localStorage.getItem('deep-theme')||'light';document.documentElement.dataset.theme=theme;document.querySelector('#theme-toggle').innerHTML=icon(theme==='light'?'moon':'sun');$("#theme-toggle").setAttribute("aria-label",theme==="light"?"다크 모드로 전환":"라이트 모드로 전환");
-const badge=(s,t='')=>`<span class="badge ${t}">${esc(s)}</span>`;
+const badge=(s,t='')=>({success:'complete',info:'pending',danger:'error'}[t]?statusBadge({success:'complete',info:'pending',danger:'error'}[t],s,icon):`<span class="badge dds-badge ${t}">${esc(s)}</span>`);
 const btn=(label,cls='',extra='')=>`<button class="btn ${cls}" ${extra}>${label}</button>`;
 const sectionTitle=(title,note='')=>`<div class="section-heading"><h2>${title}</h2>${note?`<span class="muted small">${note}</span>`:''}</div>`;
 const head=(category,title,description,tag='')=>`<div class="breadcrumbs"><a href="#/">DDS</a><span>/</span><span>${category}</span></div><div class="page-heading"><div><h1>${title}</h1><p class="lead">${description}</p></div>${tag}</div>`;
@@ -40,7 +41,7 @@ function nav(){
  });
 }
 
-function documentCard(title='프로덕트 디자이너 자기소개서',status='임시저장'){return `<div class="document-card"><div class="row-between">${icon('file')}${badge(status,status==='저장 완료'?'success':'')}</div><h3>${title}</h3><p>디자인 · IT 서비스 · 신입</p><div class="row-between small"><span class="muted">2026.09.16 수정</span>${btn('열기 '+icon('chevron'),'ghost sm','data-toast="예제 문서입니다. 실제 문서는 원본 서비스에서 확인하세요."')}</div></div>`;}
+function documentCard(title='프로덕트 디자이너 자기소개서',status='임시저장'){return `<article class="dds-document-card dds-content-card"><div class="dds-card-header">${statusBadge(status==='저장 완료'?'complete':'draft',status,icon)}<button class="icon-btn dds-card-tools" type="button" data-dialog aria-label="${esc(title)} 미리보기">${icon('Eye')}</button></div><h3 class="dds-card-title"><a class="dds-card-link" href="./prototypes/coverletter-write.html">${esc(title)}</a></h3><p class="dds-meta-primary">딥레쥬메 · 프로덕트 디자이너</p><p class="dds-meta-secondary">IT 서비스 · 신입</p><time class="dds-meta-date" datetime="2026-09-16">2026.09.16 수정</time></article>`;}
 function demo(id,mini=false){const uid='demo-'+id+(mini?'-mini-'+(++demoSequence):'');const chart=chartDemo(id,uid,mini);if(chart!==null)return chart;switch(id){
 case 'button':return `<div class="demo-row">${btn('저장 후 다음 '+icon('chevron'),'primary','data-toast="예제 저장이 완료되었습니다."')}${btn('임시저장','','data-toast="임시저장 예제입니다."')}${!mini?btn('사용할 수 없음','','disabled'):''}</div>`;
 case 'icon-button':return `<div class="demo-row">${['plus','copy','more'].map((i,n)=>`<button class="icon-btn bordered" aria-label="${['문항 추가','문항 복사','추가 메뉴'][n]}" data-toast="${['문항 추가','문항 복사','추가 메뉴'][n]} 예제입니다.">${icon(i)}</button>`).join('')}</div>`;
@@ -59,7 +60,7 @@ case 'tabs':return `<div class="tab-demo"><div class="segmented" role="tablist" 
 case 'breadcrumb':return `<nav class="breadcrumbs" aria-label="예제 경로"><a href="#/">홈</a><span>/</span><a href="#/patterns/document-list">내 문서</a><span>/</span><span aria-current="page">자기소개서</span></nav>`;
 case 'pagination':return `<nav class="pagination" aria-label="예제 페이지">${[1,2,3,4].map((n,i)=>`<button class="btn sm ${i?'':'primary'}" ${i?'':'aria-current="page"'} data-page>${n}</button>`).join('')}<span class="helper" data-page-state>1 / 4 페이지</span></nav>`;
 case 'stepper':return `<ol class="stepper">${['지원정보','문항 작성','검토·저장'].map((s,i)=>`<li class="${i===0?'done':i===1?'current':''}" ${i===1?'aria-current="step"':''}><span>${i===0?icon('check'):i+1}</span><b>${s}</b></li>`).join('')}</ol>`;
-case 'sidebar':return `<nav class="sample-sidebar" aria-label="예제 마이페이지"><b>내 작업 공간</b><a href="#/patterns/document-list" class="selected">내 자기소개서 <span>3</span></a><a href="#/patterns/resume-builder">내 이력서</a><a href="#/patterns/consulting">컨설팅 신청내역</a></nav>`;
+case 'sidebar':return `<nav class="sample-sidebar" aria-label="예제 마이페이지"><b>내 작업 공간</b><a href="#/patterns/document-list" class="dds-nav-link selected" aria-current="page">내 자기소개서 ${collectionCount(3,{label:'자기소개서'})}</a><a class="dds-nav-link" href="#/patterns/resume-builder">내 이력서</a><a class="dds-nav-link" href="#/patterns/consulting">컨설팅 신청내역</a></nav>`;
 case 'dropdown':return `<details class="sample-dropdown"><summary class="btn">문서 작업 ${icon('chevron')}</summary><div>${btn('미리보기','ghost','data-dialog')}${btn('코드 복사','ghost','data-toast="실제 문서 복사는 원본 서비스에서 진행합니다."')}</div></details>`;
 case 'dialog':return btn('미리보기 열기 '+icon('arrow'),'','data-dialog');
 case 'alert':return `<div class="alert info">${icon('info')}<div><b>AI가 작성한 내용은 검토가 필요해요.</b><p>나의 실제 경험과 맞는지 확인하고 수정해 주세요.</p></div></div>`;
@@ -68,7 +69,7 @@ case 'tooltip':return `<button class="icon-btn bordered" aria-label="글자 수 
 case 'progress':return `<div class="field"><div class="row-between"><label for="${uid}">파일 업로드 예제</label><span>64%</span></div><progress id="${uid}" max="100" value="64">64%</progress><p class="helper">실제 업로드와 연결되지 않은 상태 예제입니다.</p></div>`;
 case 'skeleton':return `<div class="skeleton-card" role="status" aria-label="문서 불러오는 중"><div class="skeleton circle"></div><div class="skeleton"></div><div class="skeleton short"></div><span class="sr-only">불러오는 중</span></div>`;
 case 'empty':return `<div class="empty-state">${icon('file')}<h3>첫 자기소개서를 작성해 보세요</h3><p>나의 경험을 정리하는 것부터 시작해요.</p><a href="#/patterns/ai-writing" class="btn primary">${icon('plus')} 작성 흐름 보기</a></div>`;
-case 'badge':return `<div class="demo-row">${badge('임시저장')}${badge('승인 대기','warning')}${badge('컨설팅 완료','success')}${!mini?badge('반려','danger'):''}</div>`;
+case 'badge':return `<div class="badge-demo"><div class="demo-row">${statusBadge('draft','임시저장',icon)}${statusBadge('pending','승인 대기',icon)}${statusBadge('complete','저장 완료',icon)}${!mini?statusBadge('error','반려',icon):''}</div>${!mini?`<div class="badge-count-example"><span class="dds-meta-primary">내 자기소개서</span>${collectionCount(3,{label:'자기소개서'})}</div>`:''}</div>`;
 case 'avatar':return `<div class="demo-row"><span class="avatar">김</span><span class="avatar orange">이</span><span class="avatar dark">박</span><div><b>김디자인 컨설턴트</b><p class="helper">프로덕트 디자인 · 예제 프로필</p></div></div>`;
 case 'card':return documentCard();
 case 'table':return `<div class="table-wrap"><table><caption class="sr-only">컨설팅 신청 예제</caption><thead><tr><th>문서</th><th>상태</th><th>신청일</th></tr></thead><tbody><tr><td>프로덕트 디자이너</td><td>${badge('검토 중','info')}</td><td>09.16</td></tr><tr><td>서비스 기획자</td><td>${badge('완료','success')}</td><td>09.12</td></tr></tbody></table></div>`;
@@ -84,7 +85,7 @@ function componentList(){return head('COMPONENTS','Components','컴포넌트별 
 const fieldControlIds=['input','select','combobox','date-picker','search','input-group','time-picker','field','input-otp'];
 function controlSizingSpec(){return `<div class="guideline"><b>입력 크기와 콘텐츠 대응</b><p>크기는 높이·글자·패딩·아이콘을 함께 바꿉니다. Small은 도구 모음의 짧은 입력·선택에, Medium은 일반 폼에, Large는 문서 제목처럼 강조하는 입력에 사용합니다. 화면이 좁다는 이유만으로 Small로 바꾸지 않습니다.</p><p>높이는 한 줄일 때의 테두리 포함 기준입니다. 선택값이 길면 Select는 줄바꿈하며 높이가 늘어납니다. 직접 입력하는 한 줄 텍스트는 내부에서 스크롤하고, 긴 작성 본문은 Textarea를 사용합니다.</p></div>
 <div class="table-wrap"><table><thead><tr><th>크기</th><th>한 줄 높이</th><th>입력·선택 값</th><th>좌우 여백 / 아이콘</th></tr></thead><tbody><tr><td>Small</td><td>36px</td><td>Body 2 Normal · 14 / 22</td><td>10px / 16px</td></tr><tr><td>Medium · 기본</td><td>44px</td><td>Body 1 Normal · 16 / 24</td><td>12px / 18px</td></tr><tr><td>Large</td><td>52px</td><td>Body 1 Normal · 16 / 24</td><td>16px / 20px</td></tr></tbody></table></div>
-<p><code>data-control-size="sm|md|lg"</code>를 필드 또는 부모에 지정합니다. 펼친 선택 목록도 같은 글자 크기를 사용합니다. Small 버튼은 Label 2(13 / 18)와 최소 높이 36px를 사용합니다. <a href="./control-sizing.css?v=11c5e354898c5712" download>control-sizing.css</a>를 컴포넌트·화면 스타일 뒤에 로드합니다.</p>
+<p><code>data-control-size="sm|md|lg"</code>를 필드 또는 부모에 지정합니다. 펼친 선택 목록도 같은 글자 크기를 사용합니다. Small 버튼은 Label 2(13 / 18)와 최소 높이 36px를 사용합니다. <a href="./control-sizing.css?v=404655015d20eb0b" download>control-sizing.css</a>를 컴포넌트·화면 스타일 뒤에 로드합니다.</p>
 <div class="control-size-examples">${[['sm','Small · 36px / 14px'],['md','Medium · 44px / 16px'],['lg','Large · 52px / 16px']].map(([size,label])=>`<div class="control-size-row" data-control-size="${size}"><p>${label}</p><div><div class="field"><label for="sizing-${size}-text">텍스트 입력</label><input id="sizing-${size}-text" placeholder="내용을 입력해 주세요"></div><div class="field"><label for="sizing-${size}-select">선택 상자</label><select id="sizing-${size}-select"><option>선택해 주세요</option><option>디자인</option><option>개발</option></select></div><div class="field"><label for="sizing-${size}-date">날짜 입력</label><input id="sizing-${size}-date" type="date"></div></div></div>`).join('')}</div>
 <h3>내용에 맞는 너비와 줄바꿈</h3><p>폼은 가용 너비를 채우고, 짧은 도구 모음은 <code>data-control-width="content"</code>로 가장 긴 옵션의 너비를 확보합니다. 선택값이 바뀌어도 버튼 위치가 흔들리지 않습니다. 가용 공간보다 긴 값은 줄임표 대신 줄바꿈합니다. 버튼·칩·상태·도움말도 내용에 따라 높이가 늘어나며 아이콘은 줄어들지 않습니다.</p>
 <div class="content-fit-examples"><div class="fit-toolbar" data-control-size="sm"><select aria-label="콘텐츠 너비 번역 언어" data-control-width="content"><option>한국어</option><option>English</option><option>日本語</option><option>简体中文</option><option>Español (Latinoamérica)</option></select><button class="btn sm">번역 결과를 확인하고 적용하기</button></div><div class="field"><label for="fit-long-selection">긴 선택값</label><select id="fit-long-selection"><option>서비스 기획·사용자 경험 설계와 프로덕트 디자인을 함께 담당하는 직무</option><option>짧은 항목</option></select></div><div class="fit-toolbar"><button class="btn">작성한 자기소개서를 저장하고 다음 단계로 이동하기</button><span class="badge">담당 컨설턴트의 상세 검토와 피드백 작성을 기다리고 있습니다</span><button class="chip">사용자 리서치와 서비스 경험을 개선한 프로젝트</button></div><div class="alert info">${icon('info')}<div><b>긴 안내 문장도 생략하지 않습니다.</b><p>첨부 파일: DeepResume_Application_DesignResearch_ProjectPortfolio_FinalReview_2026.pdf</p></div></div></div>`;}

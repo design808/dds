@@ -13,6 +13,8 @@
     "typography": "public/typography-system.js",
     "serviceTypographySource": "public/service-typography.js",
     "generatedTypography": "public/service-typography.css",
+    "visibilityStyles": "public/visibility.css",
+    "visibilityHelpers": "public/visibility.js",
     "componentRules": "public/component-contracts.js",
     "patternRules": "public/service-guidelines.js",
     "sourceEvidence": "research-data/inventory.json",
@@ -25,6 +27,10 @@
     "Small 입력 36px/14px, Medium 44px/16px, Large 52px/16px.",
     "입력 외곽 포커스 1px Primary·offset 0; 활성 칩 Primary 글자·경계.",
     "모달 패딩 24px. 아이콘 전용 버튼에는 기능 이름과 hover·focus 툴팁.",
+    "문서 카드 제목 16/24/600 Strong, 기업·직무 14/22/500 Primary, 보조정보 14/22 Secondary, 날짜 12/18 Tertiary.",
+    "상태는 실제 라벨·의미 아이콘, 목록 개수는 실제 데이터의 배지. 변경 뒤에도 갱신.",
+    "이동 카드의 실제 링크는 전체 영역에 연결하고 보조 동작은 링크 바깥에 분리. 정적 카드는 클릭 hover 없음.",
+    "섹션 제목 장식 아이콘과 회색 섹션·목록 트레이 없음. 배경 캔버스는 페이지/body에서 결정.",
     "현재 DDS는 운영체제 동작 줄이기 설정을 따르지 않음."
   ],
   "integration": [
@@ -39,6 +45,22 @@
     [
       "상태 보존",
       "권한·hidden·disabled·로딩·오류는 기존 로직에서 결정합니다. CSS로 숨겨진 기능을 강제로 노출하거나 데이터를 만들어 채우지 않습니다."
+    ],
+    [
+      "정보 위계",
+      "카드 제목 16/24/600은 --text-strong, 기업·직무 14/22/500은 --text-primary, 보조 설명 14/22는 --text-secondary, 날짜 12/18은 --text-tertiary로 연결합니다."
+    ],
+    [
+      "카드·탐색",
+      "대표 이동은 실제 href가 있는 카드 전체 링크로 연결하고 보조 행동은 대표 링크 바깥에 둡니다. 정적 카드에 클릭을 암시하는 hover를 넣지 않습니다. 메뉴는 현재 위치와 키보드 초점을 구분합니다."
+    ],
+    [
+      "상태·개수",
+      "처리 상태는 실제 문구와 의미 아이콘, 목록 개수는 실제 데이터의 배지로 표시합니다. 항목 추가·삭제·필터 변경 시 개수도 갱신합니다."
+    ],
+    [
+      "섹션 구성",
+      "섹션 제목에 장식 아이콘을 넣거나 섹션마다 회색 바탕의 틀을 추가하지 않습니다. 배경 캔버스가 필요하면 페이지·body 수준에서 정합니다."
     ],
     [
       "검수",
@@ -179,7 +201,15 @@
     "document-list": [
       [
         "카드 이동",
-        "주 링크는 카드 전체에서 작동. Enter로 같은 화면 이동. 복사·삭제 버튼은 링크 안에 중첩하지 않음."
+        ".dds-card-link의 실제 href로 카드 전체에서 이동. .dds-card-tools는 대표 링크 바깥에 배치. Enter와 보조 버튼의 동작 분리."
+      ],
+      [
+        "정보 위계",
+        "제목 16/24/600은 Strong, 기업·직무 14/22/500은 Primary 텍스트. 보조 14/22는 Secondary, 날짜 12/18은 Tertiary."
+      ],
+      [
+        "상태·개수",
+        "상태는 실제 문구와 의미 아이콘. 목록 개수는 실제 데이터 배지로 표시하고 변경 시 갱신."
       ],
       [
         "상세·편집",
@@ -192,6 +222,10 @@
       [
         "긴 제목·3개 카드",
         "제목은 줄바꿈. 마지막 카드가 한 행 전체로 늘어나지 않도록 동일 열 규칙 적용."
+      ],
+      [
+        "정적 카드",
+        "이동·실행이 없으면 손 모양 커서나 떠오르는 hover 효과 없음."
       ]
     ],
     "resume-builder": [
@@ -295,7 +329,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -355,7 +402,21 @@
           "layout-focus.css",
           "interactions.css",
           "icon-tooltips.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "icon-tooltips.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -414,7 +475,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -487,7 +561,21 @@
           "layout-focus.css",
           "interactions.css",
           "control-sizing.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "control-sizing.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Empty",
@@ -547,7 +635,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Empty",
@@ -623,7 +724,23 @@
           "control-sizing.css",
           "custom-controls.css",
           "custom-controls.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "control-sizing.css",
+            "custom-controls.css",
+            "custom-controls.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Placeholder",
@@ -693,7 +810,23 @@
           "control-sizing.css",
           "custom-controls.css",
           "custom-controls.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "control-sizing.css",
+            "custom-controls.css",
+            "custom-controls.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Idle",
@@ -751,7 +884,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Unchecked",
@@ -808,7 +954,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Unchecked",
@@ -861,7 +1020,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Off",
@@ -936,7 +1108,24 @@
           "custom-controls.css",
           "custom-controls.js",
           "icon-tooltips.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "control-sizing.css",
+            "custom-controls.css",
+            "custom-controls.js",
+            "icon-tooltips.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Empty",
@@ -993,7 +1182,22 @@
           "interactions.css",
           "custom-controls.css",
           "custom-controls.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "custom-controls.css",
+            "custom-controls.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Empty",
@@ -1064,7 +1268,24 @@
           "custom-controls.css",
           "custom-controls.js",
           "icon-tooltips.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "control-sizing.css",
+            "custom-controls.css",
+            "custom-controls.js",
+            "icon-tooltips.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Empty",
@@ -1119,8 +1340,27 @@
           "style.css",
           "brand-refinement.css",
           "layout-focus.css",
-          "interactions.css"
-        ]
+          "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css"
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -1164,7 +1404,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -1172,8 +1416,27 @@
           "style.css",
           "brand-refinement.css",
           "layout-focus.css",
-          "interactions.css"
-        ]
+          "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css"
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Parent",
@@ -1215,7 +1478,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -1223,8 +1490,27 @@
           "style.css",
           "brand-refinement.css",
           "layout-focus.css",
-          "interactions.css"
-        ]
+          "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css"
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "First",
@@ -1276,8 +1562,27 @@
           "style.css",
           "brand-refinement.css",
           "layout-focus.css",
-          "interactions.css"
-        ]
+          "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css"
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Upcoming",
@@ -1321,7 +1626,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -1329,8 +1638,27 @@
           "style.css",
           "brand-refinement.css",
           "layout-focus.css",
-          "interactions.css"
-        ]
+          "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css"
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Expanded",
@@ -1374,7 +1702,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -1382,8 +1714,27 @@
           "style.css",
           "brand-refinement.css",
           "layout-focus.css",
-          "interactions.css"
-        ]
+          "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css"
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -1442,7 +1793,21 @@
           "layout-focus.css",
           "interactions.css",
           "icon-tooltips.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "icon-tooltips.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -1495,7 +1860,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Info",
@@ -1548,7 +1926,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Success",
@@ -1605,7 +1996,21 @@
           "layout-focus.css",
           "interactions.css",
           "icon-tooltips.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "icon-tooltips.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Hidden",
@@ -1657,7 +2062,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Zero",
@@ -1710,7 +2128,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Loading",
@@ -1761,7 +2192,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "First use",
@@ -1784,27 +2228,36 @@
       "docs": "#/components/badge",
       "contract": {
         "usage": {
-          "when": "관련 정보를 읽고 비교할 수 있는 단위로 묶을 때 사용합니다.",
-          "alternative": "비교가 필요하면 Table, 단일 요약이면 Card 또는 Item을 선택합니다."
+          "when": "문서의 실제 처리 상태나 목록의 실제 개수를 짧게 표시할 때 사용합니다.",
+          "alternative": "값을 선택하거나 행동을 실행하려면 Chip 또는 Button을 사용합니다."
         },
         "rules": [
-          "상태 명칭을 전 제품에서 통일합니다. 상태 표시에 버튼 모양을 사용하지 않습니다."
+          "상태와 개수를 구분합니다. 상태는 .dds-status에 실제 상태 문구와 의미 아이콘을 함께 표시합니다.",
+          "draft·complete·pending·error는 기존 처리 결과에 연결합니다. 색상이나 CSS만으로 저장·완료 상태를 만들지 않습니다.",
+          "개수는 .dds-collection-count에 실제 데이터와 단위를 표시합니다. 장식용 숫자나 임의의 기본 개수를 넣지 않고 실제 0도 표시합니다."
         ],
         "keyboard": [
-          "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
+          "읽기 전용 상태·개수 배지는 Tab 정지점으로 만들지 않습니다. 색상 없이도 문구로 의미를 알 수 있어야 합니다."
         ],
         "checks": [
-          "긴 한글·영문과 200% 확대에서 내용과 행동이 잘리지 않는지 확인합니다.",
-          "Light/Dark에서 의미·선택 상태·포커스를 확인합니다."
+          "실제 상태와 문구·아이콘이 일치하는지, 항목 추가·삭제·필터 변경 후 개수가 갱신되는지 확인합니다."
         ],
         "specification": [
           [
-            "텍스트·간격",
-            "정보 위계에 맞는 타이포그래피·간격 토큰 사용"
+            "상태",
+            ".dds-status[data-status=\"draft | complete | pending | error\"] · 실제 문구 + 의미 아이콘"
           ],
           [
-            "크기·모서리",
-            "해당 예제와 사용처에 맞춰 결정 · 모든 표시 요소에 같은 패딩이나 모서리를 강제하지 않음"
+            "개수",
+            ".dds-collection-count · 실제 숫자와 단위 · 0 포함"
+          ],
+          [
+            "글자",
+            "일반·상태 배지 Label 2 13/18 / 500 · 개수 배지 13/18 / 600"
+          ],
+          [
+            "역할",
+            "배지는 정보 표시 · 독립적인 클릭·hover 행동 없음"
           ]
         ],
         "assets": [
@@ -1812,8 +2265,27 @@
           "style.css",
           "brand-refinement.css",
           "layout-focus.css",
-          "interactions.css"
-        ]
+          "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css"
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Draft",
@@ -1867,7 +2339,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Image",
@@ -1894,24 +2379,39 @@
           "alternative": "항목 간 값 비교는 Table, 단순한 반복 정보는 Item을 사용합니다."
         },
         "rules": [
-          "카드 전체의 대표 링크와 삭제·복사 등 보조 버튼을 중첩하지 않습니다.",
-          "카드 클릭과 제목 링크는 같은 목적지로 연결하며 보조 행동은 별도로 실행합니다.",
-          "밀도 높은 문서 목록은 제목·상태·보조정보의 순서를 통일합니다."
+          ".dds-content-card 안에 실제 href가 있는 .dds-card-link를 두고 카드 전체에서 같은 목적지로 이동하게 합니다. .dds-card-tools는 대표 링크 바깥의 별도 영역에 둡니다.",
+          "대표 링크 안에 삭제·복사 버튼이나 다른 링크를 중첩하지 않습니다. 보조 행동은 대표 이동과 별도로 실행합니다.",
+          "제목·기업·직무는 식별 정보로 먼저 읽히게 하고 보조 설명과 날짜를 구분합니다.",
+          "상태는 실제 문구와 의미 있는 아이콘으로 표시하고, 문서 수는 실제 데이터를 사용한 개수 배지로 표시합니다.",
+          "이동이나 행동이 없는 정적 카드에는 손 모양 커서·배경 전환·떠오르는 hover 효과를 넣지 않습니다."
         ],
         "keyboard": [
           "대표 링크와 보조 버튼 각각에 Tab으로 접근합니다. 같은 대표 이동을 불필요하게 중복 초점으로 제공하지 않습니다."
         ],
         "checks": [
-          "카드 빈 공간·제목·보조 버튼의 클릭 결과, 긴 제목, 홀수 개 항목의 반응형 너비를 확인합니다."
+          "카드 빈 공간·제목·보조 버튼과 키보드의 실행 결과가 의도한 기능으로 분리되는지 확인합니다.",
+          "기업·직무와 긴 제목의 가독성, 실제 상태·개수, 정적 카드의 hover, 홀수 개 항목의 반응형 너비를 확인합니다."
         ],
         "specification": [
           [
-            "문서 목록 제목",
-            "Body 1 Normal 16/24 / 600"
+            "식별 제목",
+            ".dds-card-title: Body 1 Normal 16/24 / 600 · --text-strong"
+          ],
+          [
+            "기업·직무",
+            ".dds-meta-primary: Body 2 Normal 14/22 / 500 · --text-primary"
           ],
           [
             "보조정보",
-            "Body 2 Normal 14/22 · 날짜 Caption 1 12/18"
+            ".dds-meta-secondary: Body 2 Normal 14/22 · --text-secondary"
+          ],
+          [
+            "날짜",
+            ".dds-meta-date: Caption 1 12/18 · --text-tertiary"
+          ],
+          [
+            "행동 구조",
+            ".dds-card-tools는 대표 링크 바깥에 배치 · 대표 링크는 한 번만 초점 이동"
           ],
           [
             "카드 배치",
@@ -1923,8 +2423,29 @@
           "style.css",
           "brand-refinement.css",
           "layout-focus.css",
-          "interactions.css"
-        ]
+          "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
+          "icon-tooltips.js"
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css",
+            "icon-tooltips.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -1978,7 +2499,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -2032,7 +2566,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -2111,7 +2658,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -2165,7 +2728,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Draft",
@@ -2220,7 +2796,20 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Ready",
@@ -2276,7 +2865,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Inline",
@@ -2328,7 +2932,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -2381,7 +3000,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -2433,7 +3067,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Off",
@@ -2485,7 +3134,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "None",
@@ -2537,7 +3201,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -2589,7 +3268,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Today",
@@ -2643,7 +3337,23 @@
           "extensions.css",
           "extension-demos.js",
           "control-sizing.css"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "control-sizing.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Empty",
@@ -2711,7 +3421,24 @@
           "extension-demos.js",
           "control-sizing.css",
           "icon-tooltips.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "control-sizing.css",
+            "icon-tooltips.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Idle",
@@ -2764,7 +3491,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Empty",
@@ -2817,7 +3559,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Required",
@@ -2869,7 +3626,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Min",
@@ -2922,7 +3694,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Selected",
@@ -2974,7 +3761,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -3027,7 +3829,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Empty",
@@ -3079,7 +3896,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Required",
@@ -3121,7 +3953,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -3130,9 +3966,30 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -3174,7 +4031,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -3183,9 +4044,30 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Desktop",
@@ -3226,7 +4108,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -3235,9 +4121,30 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -3278,7 +4185,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -3287,9 +4198,30 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "All",
@@ -3330,7 +4262,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -3339,9 +4275,30 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "First",
@@ -3382,7 +4339,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -3391,9 +4352,30 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "First",
@@ -3434,7 +4416,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -3443,9 +4429,30 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -3486,7 +4493,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -3495,9 +4506,30 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Empty",
@@ -3539,7 +4571,11 @@
           ],
           [
             "타이포그래피",
-            "기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다."
+            ".dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지"
+          ],
+          [
+            "현재 위치",
+            "aria-current=\"page\" · --brand-ink와 연한 강조 배경 · 글자 너비 유지"
           ]
         ],
         "assets": [
@@ -3548,9 +4584,30 @@
           "brand-refinement.css",
           "layout-focus.css",
           "interactions.css",
+          "visibility.css",
+          "visibility.js",
+          "service-typography.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css",
+            "visibility.css",
+            "visibility.js"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "service-typography.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -3607,7 +4664,23 @@
           "extensions.css",
           "extension-demos.js",
           "icon-tooltips.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css",
+            "icon-tooltips.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -3660,7 +4733,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -3712,7 +4800,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -3764,7 +4867,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -3816,7 +4934,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Hidden",
@@ -3869,7 +5002,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Shown",
@@ -3921,7 +5069,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Loading"
@@ -3971,7 +5134,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Error",
@@ -4023,7 +5201,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Zero",
@@ -4075,7 +5268,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "16:9",
@@ -4127,7 +5335,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -4179,7 +5402,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Ready",
@@ -4231,7 +5469,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "One",
@@ -4283,7 +5536,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -4335,7 +5603,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -4387,7 +5670,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -4439,7 +5737,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Selected",
@@ -4493,7 +5806,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "First",
@@ -4545,7 +5873,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Closed",
@@ -4597,7 +5940,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Horizontal",
@@ -4649,7 +6007,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Single",
@@ -4700,7 +6073,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Start",
@@ -4752,7 +6140,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Default",
@@ -4804,7 +6207,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "LTR",
@@ -4855,7 +6273,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Incoming",
@@ -4907,7 +6340,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Received",
@@ -4960,7 +6408,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "Date",
@@ -5012,7 +6475,22 @@
           "interactions.css",
           "extensions.css",
           "extension-demos.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css",
+            "extensions.css",
+            "extension-demos.js"
+          ],
+          "adapter": [
+            "interactions.css"
+          ]
+        }
       },
       "specifiedStates": [
         "At bottom",
@@ -5105,7 +6583,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -5202,7 +6696,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -5299,7 +6809,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -5396,7 +6922,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -5493,7 +7035,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -5590,7 +7148,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -5687,7 +7261,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -5784,7 +7374,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -5881,7 +7487,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -5978,7 +7600,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6075,7 +7713,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6172,7 +7826,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6269,7 +7939,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6366,7 +8052,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6463,7 +8165,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6560,7 +8278,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6657,7 +8391,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6746,7 +8496,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6835,7 +8601,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -6932,7 +8714,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -7029,7 +8827,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -7126,7 +8940,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -7223,7 +9053,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -7316,7 +9162,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -7409,7 +9271,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -7504,7 +9382,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -7596,7 +9490,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",
@@ -7684,7 +9594,23 @@
           "chart-catalog.js",
           "chart-system.css",
           "chart-system.js"
-        ]
+        ],
+        "assetGroups": {
+          "service": [
+            "tokens.css"
+          ],
+          "documentation": [
+            "style.css",
+            "brand-refinement.css",
+            "layout-focus.css"
+          ],
+          "adapter": [
+            "interactions.css",
+            "chart-catalog.js",
+            "chart-system.css",
+            "chart-system.js"
+          ]
+        }
       },
       "specifiedStates": [
         "Loaded",

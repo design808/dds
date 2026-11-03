@@ -1,4 +1,4 @@
-import {icon} from '../icons.js?v=11c5e354898c5712';
+import {icon} from '../icons.js?v=404655015d20eb0b';
 export {icon};
 export const $=s=>document.querySelector(s);
 export const $$=s=>[...document.querySelectorAll(s)];
@@ -14,6 +14,14 @@ export function modal(title,html,onConfirm){origin=document.activeElement;afterC
 export function summary(info){for(const key of ['job','ind','cor','supportArea','com','exp','hashtag']){const e=$('#'+key+'_text');if(!e)continue;const value=Array.isArray(info[key])?info[key].join(' · '):info[key];e.textContent=value||'선택 전';e.classList.toggle('empty',!value);e.parentElement.classList.toggle('complete',!!value);const old=$('#'+key+'_icon');if(old){const host=document.createElement('span');host.innerHTML=icon(value?'CircleCheck':'Circle');host.firstElementChild.id=old.id;old.replaceWith(host.firstElementChild);}}}
 export function common(){
  icons();
+ const currentGroup=document.body.classList.contains('dds-mypage')?'account':document.body.classList.contains('dds-resume-write')?'resume':document.body.classList.contains('dds-cover-info')?'cover':null;
+ if(currentGroup){
+  $$('.gnb-trigger').forEach(trigger=>{
+   const current=trigger.getAttribute('aria-controls')==='gnb-'+currentGroup;
+   trigger.classList.toggle('active',current);
+   if(current)trigger.setAttribute('aria-current','page');else trigger.removeAttribute('aria-current');
+  });
+ }
  const closeMenus=()=>{$$('.gnb-trigger').forEach(b=>{b.setAttribute('aria-expanded','false');$('#'+b.getAttribute('aria-controls')).hidden=true;});};
  $('#mobile-nav').addEventListener('click',()=>{const open=$('.product-header').classList.toggle('nav-open');$('#mobile-nav').setAttribute('aria-expanded',open);$('#mobile-nav').setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');if(!open)closeMenus();});
  for(const b of $$('.gnb-trigger')){

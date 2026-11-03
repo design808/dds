@@ -1,11 +1,14 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=11c5e354898c5712';
-import {icon} from './icons.js?v=11c5e354898c5712';
-import {formatHTML} from './format-html.js?v=11c5e354898c5712';
-import {componentContract} from './component-contracts.js?v=11c5e354898c5712';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=11c5e354898c5712';
+import {components, groups, patterns, foundations} from './catalog.js?v=404655015d20eb0b';
+import {icon} from './icons.js?v=404655015d20eb0b';
+import {formatHTML} from './format-html.js?v=404655015d20eb0b';
+import {componentContract} from './component-contracts.js?v=404655015d20eb0b';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=404655015d20eb0b';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
+const assetReferences = groups => [
+  ['service','서비스 기준'],['adapter','서비스 연결 검토'],['documentation','문서 예제 전용']
+].filter(([key])=>groups[key]?.length).map(([key,label])=>`<div class="asset-reference-group"><h3>${label}</h3><ul>${groups[key].map(file=>`<li><a href="./${esc(file)}" download>${esc(file)}</a></li>`).join('')}</ul></div>`).join('');
 const section = (id, title, content) => `<section id="${id}"><div class="section-heading"><h2>${title}</h2></div>${content}</section>`;
 const header = (category, title, description = '') => `<div class="breadcrumbs"><a href="#/">DDS</a><span>/</span><span>${esc(category)}</span></div><div class="page-heading"><div><h1>${esc(title)}</h1>${description ? `<p class="lead">${esc(description)}</p>` : ''}</div></div>`;
 
@@ -55,13 +58,13 @@ export function componentContent(c, html) {
       ${section('anatomy','구성', `<div class="anatomy-list">${c.anatomy.split(' · ').map((part, i) => `<div><span>${i + 1}</span>${esc(part)}</div>`).join('')}</div>`)}
       ${section('guidelines','사용 기준', usage)}
       ${section('specification','규격', spec)}
-      ${section('states','상태', `<div class="state-list">${c.states.split(' · ').map(state => `<span class="badge">${esc(state)}</span>`).join('')}</div>`)}
+      ${section('states','상태', `<div class="state-list">${c.states.split(' · ').map(state => `<span class="badge dds-badge">${esc(state)}</span>`).join('')}</div>`)}
       ${section('keyboard','조작', list(contract.keyboard))}
       ${section('checks','검수', list(contract.checks))}
     </div>
     <div data-doc-panel="code" hidden><h2>HTML</h2><p>문서 예제의 마크업입니다. 기존 서비스의 이벤트 연결은 <a href="#/handoff">개발 적용 안내</a>에 따라 확인합니다.</p>
       <button class="btn sm copy-code">${icon('copy')} 코드 복사</button><pre class="html-example" tabindex="0" aria-label="HTML 코드 예제"><code>${esc(formatHTML(html))}</code></pre>
-      <details><summary>예제 참조 파일</summary><ul>${contract.assets.map(file => `<li><a href="./${esc(file)}" download>${esc(file)}</a></li>`).join('')}</ul></details>
+      <details><summary>예제 참조 파일</summary><p>문서 예제 전용 파일은 운영 화면에 연결하지 않습니다. 서비스 연결 검토 파일은 대상 선택자·데이터·이벤트에 맞춰 적용합니다.</p>${contract.assets.includes('service-typography.css')?'<p>service-typography.css는 현재 적용 예시의 매핑입니다. 대상 서비스에 맞게 다시 생성합니다.</p>':''}${assetReferences(contract.assetGroups)}</details>
     </div></article><aside class="toc"><span>이 페이지</span>${toc.map(([id, label]) => `<button data-scroll="${id}">${label}</button>`).join('')}</aside></div>`;
 }
 
@@ -70,7 +73,7 @@ export function renderPattern(p, sample) {
   return header('패턴', p.ko, p.desc) + `<div class="reading wide">
     <div class="pattern-flow">${p.flow.split(' → ').map((step, i) => `<span><small>${String(i + 1).padStart(2, '0')}</small>${esc(step)}</span>`).join('')}</div>
     <h2>사용 컴포넌트</h2><div class="state-list">${p.parts.map(name => {const c = components.find(c => c.name === name); return `<a href="#/components/${c.id}" class="chip">${esc(name)} ${icon('arrow')}</a>`;}).join('')}</div>
-    ${preview}<h2>상태</h2><div class="state-list">${p.states.split(' / ').map(state => `<span class="badge">${esc(state)}</span>`).join('')}</div>
+    ${preview}<h2>상태</h2><div class="state-list">${p.states.split(' / ').map(state => `<span class="badge dds-badge">${esc(state)}</span>`).join('')}</div>
     <h2>적용 규칙</h2><p>${esc(p.decision)}</p>${patternRequirements(p.id)}</div>`;
 }
 

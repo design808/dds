@@ -1,6 +1,9 @@
 // Component guidance describes the target behavior; it is not a production API.
 // Only confirmed shared CSS measurements are listed as fixed specifications.
 const baseAssets = ['tokens.css', 'style.css', 'brand-refinement.css', 'layout-focus.css', 'interactions.css'];
+const visibilityAssets = ['visibility.css', 'visibility.js', 'service-typography.css'];
+const serviceAssets = new Set(['tokens.css', 'visibility.css', 'visibility.js']);
+const documentationAssets = new Set(['style.css', 'brand-refinement.css', 'layout-focus.css', 'extensions.css', 'extension-demos.js']);
 const fieldSizes = [
   ['Small', '--control-height-sm: 36px · Body 2 Normal 14/22 · 좌우 10px · 아이콘 16px'],
   ['Medium', '--control-height-md: 44px · Body 1 Normal 16/24 · 좌우 12px · 아이콘 18px'],
@@ -44,7 +47,8 @@ const families = {
     when: '현재 위치를 알리거나 다른 화면·콘텐츠로 이동할 때 사용합니다.',
     alternative: '값 선택은 입력 컨트롤, 서버 요청이나 저장은 버튼으로 제공합니다.',
     keyboard: ['페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다.'],
-    specification: [buttonFocus, ['타이포그래피', '기반 규칙의 역할을 사용합니다. GNB·서브메뉴는 Label 1 14/20/500입니다.']],
+    specification: [buttonFocus, ['타이포그래피', '.dds-nav-link: Label 1 14/20/500 · 현재 항목도 굵기 유지'], ['현재 위치', 'aria-current="page" · --brand-ink와 연한 강조 배경 · 글자 너비 유지']],
+    assets: visibilityAssets,
   },
   Feedback: {
     when: '현재 상태·처리 결과·복구 방법을 알릴 때 사용합니다.',
@@ -301,10 +305,19 @@ const overrides = {
   },
   card: {
     usage: {when: '문서·컨설턴트처럼 독립적인 정보 하나와 진입 행동을 묶을 때 사용합니다.', alternative: '항목 간 값 비교는 Table, 단순한 반복 정보는 Item을 사용합니다.'},
-    rules: ['카드 전체의 대표 링크와 삭제·복사 등 보조 버튼을 중첩하지 않습니다.', '카드 클릭과 제목 링크는 같은 목적지로 연결하며 보조 행동은 별도로 실행합니다.', '밀도 높은 문서 목록은 제목·상태·보조정보의 순서를 통일합니다.'],
+    rules: ['.dds-content-card 안에 실제 href가 있는 .dds-card-link를 두고 카드 전체에서 같은 목적지로 이동하게 합니다. .dds-card-tools는 대표 링크 바깥의 별도 영역에 둡니다.', '대표 링크 안에 삭제·복사 버튼이나 다른 링크를 중첩하지 않습니다. 보조 행동은 대표 이동과 별도로 실행합니다.', '제목·기업·직무는 식별 정보로 먼저 읽히게 하고 보조 설명과 날짜를 구분합니다.', '상태는 실제 문구와 의미 있는 아이콘으로 표시하고, 문서 수는 실제 데이터를 사용한 개수 배지로 표시합니다.', '이동이나 행동이 없는 정적 카드에는 손 모양 커서·배경 전환·떠오르는 hover 효과를 넣지 않습니다.'],
     keyboard: ['대표 링크와 보조 버튼 각각에 Tab으로 접근합니다. 같은 대표 이동을 불필요하게 중복 초점으로 제공하지 않습니다.'],
-    checks: ['카드 빈 공간·제목·보조 버튼의 클릭 결과, 긴 제목, 홀수 개 항목의 반응형 너비를 확인합니다.'],
-    specification: [['문서 목록 제목', 'Body 1 Normal 16/24 / 600'], ['보조정보', 'Body 2 Normal 14/22 · 날짜 Caption 1 12/18'], ['카드 배치', '같은 열의 너비 규칙 유지 · 마지막 항목만 100%로 늘리지 않음']],
+    checks: ['카드 빈 공간·제목·보조 버튼과 키보드의 실행 결과가 의도한 기능으로 분리되는지 확인합니다.', '기업·직무와 긴 제목의 가독성, 실제 상태·개수, 정적 카드의 hover, 홀수 개 항목의 반응형 너비를 확인합니다.'],
+    specification: [['식별 제목', '.dds-card-title: Body 1 Normal 16/24 / 600 · --text-strong'], ['기업·직무', '.dds-meta-primary: Body 2 Normal 14/22 / 500 · --text-primary'], ['보조정보', '.dds-meta-secondary: Body 2 Normal 14/22 · --text-secondary'], ['날짜', '.dds-meta-date: Caption 1 12/18 · --text-tertiary'], ['행동 구조', '.dds-card-tools는 대표 링크 바깥에 배치 · 대표 링크는 한 번만 초점 이동'], ['카드 배치', '같은 열의 너비 규칙 유지 · 마지막 항목만 100%로 늘리지 않음']],
+    assets: [...visibilityAssets, 'icon-tooltips.js'],
+  },
+  badge: {
+    usage: {when: '문서의 실제 처리 상태나 목록의 실제 개수를 짧게 표시할 때 사용합니다.', alternative: '값을 선택하거나 행동을 실행하려면 Chip 또는 Button을 사용합니다.'},
+    rules: ['상태와 개수를 구분합니다. 상태는 .dds-status에 실제 상태 문구와 의미 아이콘을 함께 표시합니다.', 'draft·complete·pending·error는 기존 처리 결과에 연결합니다. 색상이나 CSS만으로 저장·완료 상태를 만들지 않습니다.', '개수는 .dds-collection-count에 실제 데이터와 단위를 표시합니다. 장식용 숫자나 임의의 기본 개수를 넣지 않고 실제 0도 표시합니다.'],
+    keyboard: ['읽기 전용 상태·개수 배지는 Tab 정지점으로 만들지 않습니다. 색상 없이도 문구로 의미를 알 수 있어야 합니다.'],
+    checks: ['실제 상태와 문구·아이콘이 일치하는지, 항목 추가·삭제·필터 변경 후 개수가 갱신되는지 확인합니다.'],
+    specification: [['상태', '.dds-status[data-status="draft | complete | pending | error"] · 실제 문구 + 의미 아이콘'], ['개수', '.dds-collection-count · 실제 숫자와 단위 · 0 포함'], ['글자', '일반·상태 배지 Label 2 13/18 / 500 · 개수 배지 13/18 / 600'], ['역할', '배지는 정보 표시 · 독립적인 클릭·hover 행동 없음']],
+    assets: visibilityAssets,
   },
   table: {
     usage: {when: '여러 문서·사용자의 같은 속성을 행과 열로 비교할 때 사용합니다.', alternative: '핵심 정보가 짧고 비교가 필요하지 않으면 Item 또는 Card를 사용합니다.'},
@@ -356,7 +369,7 @@ const overrides = {
 export function componentContract(c = {}) {
   const family = families[c.group] || families['Data display'];
   const custom = overrides[c.chartFamily || c.id] || {};
-  const assets = [...baseAssets];
+  const assets = [...baseAssets, ...(family.assets || [])];
   if (c.added) assets.push('extensions.css', 'extension-demos.js');
   assets.push(...(custom.assets || []));
   const rules = [...(custom.rules || [c.rule || '이 요소의 역할과 사용처를 먼저 정하고 기존 동작에 맞춰 적용합니다.'])];
@@ -372,6 +385,11 @@ export function componentContract(c = {}) {
     checks: [...(custom.checks || defaultChecks)],
     specification,
     assets: [...new Set(assets)],
+    assetGroups: {
+      service: [...new Set(assets.filter(file => serviceAssets.has(file)))],
+      documentation: [...new Set(assets.filter(file => documentationAssets.has(file)))],
+      adapter: [...new Set(assets.filter(file => !serviceAssets.has(file) && !documentationAssets.has(file)))],
+    },
   };
 }
 

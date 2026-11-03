@@ -1,17 +1,19 @@
-import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=11c5e354898c5712';
-import {getDocuments} from './document-store.js?v=11c5e354898c5712';
+import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=404655015d20eb0b';
+import {getDocuments} from './document-store.js?v=404655015d20eb0b';
+import {statusBadge} from '../visibility.js?v=404655015d20eb0b';
 common();
-document.querySelectorAll(".gnb-trigger").forEach(trigger=>trigger.classList.toggle("active",trigger.getAttribute("aria-controls")==="gnb-account"));
 // Fictional local data only. No service account data or mutation endpoints.
 let documents=getDocuments();
-const metadata=d=>`<dl class="document-context"><div class="document-meta-line document-primary"><div class="document-company"><dt>기업명</dt><dd>${esc(d.company||'기업 미지정')}</dd></div><div><dt>직종</dt><dd>${esc(d.job||'직종 미지정')}</dd></div></div><div class="document-meta-line document-secondary"><div><dt>업종</dt><dd>${esc(d.industry||'업종 미지정')}</dd></div><div><dt>기업형태</dt><dd>${esc(d.companyType||'기업형태 미지정')}</dd></div></div></dl>`;
-const card=d=>`<article class="my-document" data-document="${esc(d.id)}"><div class="document-topline"><span class="doc-badge ${d.state==='임시저장'?'draft':d.state.includes('완료')?'complete':''}">${icon(d.state==='임시저장'?'PencilLine':d.state.includes('완료')?'Check':'Circle')}${esc(d.state)}</span><details class="document-menu"><summary aria-label="${esc(d.title)} 메뉴">${icon('Ellipsis')}</summary><div><button data-action="copy">${icon('Copy')}복사</button><button data-action="delete">${icon('Trash2')}삭제</button></div></details></div><a class="document-open" href="./${d.kind==='cover'?'coverletter-write':'resume-write'}.html?document=${encodeURIComponent(d.id)}" aria-label="${esc(d.title)} · 이어서 작성">${esc(d.title)}</a>${metadata(d)}<div class="document-card-actions"><time datetime="${d.date.replaceAll('.','-')}">${d.date}</time>${d.state==='임시저장'?'':`<button class="representative-action" data-action="representative" aria-pressed="${d.representative}">${icon(d.representative?'CircleCheck':'Circle')}${d.representative?'대표 문서':'대표 설정'}</button>`}</div></article>`;
+const metadata=d=>`<dl class="document-context"><div class="document-meta-line document-primary dds-meta-primary"><div class="document-company"><dt>기업명</dt><dd>${esc(d.company||'기업 미지정')}</dd></div><div><dt>직종</dt><dd>${esc(d.job||'직종 미지정')}</dd></div></div><div class="document-meta-line document-secondary dds-meta-secondary"><div><dt>업종</dt><dd>${esc(d.industry||'업종 미지정')}</dd></div><div><dt>기업형태</dt><dd>${esc(d.companyType||'기업형태 미지정')}</dd></div></div></dl>`;
+const documentStatus=d=>d.state==='임시저장'?'draft':d.state.includes('완료')?'complete':d.state.includes('오류')||d.state.includes('실패')?'error':'pending';
+const card=d=>`<article class="my-document dds-content-card" data-document="${esc(d.id)}"><div class="document-topline">${statusBadge(documentStatus(d),d.state,icon)}<details class="document-menu dds-card-tools"><summary aria-label="${esc(d.title)} 메뉴">${icon('Ellipsis')}</summary><div><button data-action="copy">${icon('Copy')}복사</button><button data-action="delete">${icon('Trash2')}삭제</button></div></details></div><a class="document-open dds-card-link dds-card-title" href="./${d.kind==='cover'?'coverletter-write':'resume-write'}.html?document=${encodeURIComponent(d.id)}" aria-label="${esc(d.title)} · 이어서 작성">${esc(d.title)}</a>${metadata(d)}<div class="document-card-actions"><time class="dds-meta-date" datetime="${d.date.replaceAll('.','-')}">${d.date}</time>${d.state==='임시저장'?'':`<button class="representative-action dds-card-tools" data-action="representative" aria-pressed="${d.representative}">${icon(d.representative?'CircleCheck':'Circle')}${d.representative?'대표 문서':'대표 설정'}</button>`}</div></article>`;
 function render(){
   for(const kind of ['cover','resume']){
     const items=documents.filter(d=>d.kind===kind);
     $('#'+kind+'-documents').innerHTML=items.map(card).join('')||'<p class="empty-documents">저장된 문서가 없습니다.</p>';
     const count=document.querySelector('[data-document-count="'+kind+'"]');
     count.textContent=items.length+'개';
+    count.setAttribute('aria-label',(kind==='cover'?'자기소개서 ':'이력서 ')+items.length+'개');
   }
 }
 const persist=()=>save('mypage-documents',documents);

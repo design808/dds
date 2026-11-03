@@ -21,7 +21,7 @@
 .write-help>summary{list-style:none;display:flex;align-items:center;gap:7px;cursor:pointer;padding:8px 0}.write-help>summary::-webkit-details-marker{display:none}.write-help>summary .icon{width:16px;height:16px}
 .dds-cover-write .write-resources{position:absolute;right:0;top:100%;z-index:10;width:230px;padding:8px;border:1px solid var(--border);border-radius:10px;background:var(--background);box-shadow:var(--shadow-overlay);display:flex;flex-direction:column;align-items:stretch;gap:2px;margin:4px 0 0}
 .dds-cover-write .write-resources a,.dds-cover-write .write-resources button{padding:10px 12px;justify-content:flex-start}
-.dds-cover-write .question-form{scroll-margin-top:108px;border:1px solid var(--border);border-radius:14px;padding:32px;margin:0 0 24px;background:var(--background)}
+.dds-cover-write .question-form{scroll-margin-top:108px;padding:24px;margin:0 0 24px}
 .dds-cover-write .question-form:last-child{margin-bottom:0}
 .dds-cover-write .question-card{display:block;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
 .dds-cover-write .question-heading{margin-bottom:24px}.dds-cover-write .question-heading h2{gap:10px}.question-heading>span{display:none}

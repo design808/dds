@@ -45,8 +45,7 @@ export const serviceTypography = [
   {role:'label-1', selectors:['.mode-switch','.mypage-sidebar nav>a','.mypage-sidebar nav>button','.representative-action','.list-more','.profile-file-label']},
   {role:'body-1-normal', weight:'semibold', reason:'문서 목록 카드의 제목은 16px로 밀도를 유지하고 굵기로 구분', selectors:['.document-open']},
   {role:'body-2-normal', selectors:['.my-document .document-context','.document-secondary']},
-  {role:'label-2', selectors:['.doc-badge']},
-  {role:'label-1', weight:'semibold', reason:'마이페이지 문서 개수와 현재 메뉴', selectors:['&.dds-mypage .document-count','&.dds-mypage .mypage-sidebar nav>[aria-current=page]']},
+  {role:'label-1', weight:'semibold', reason:'마이페이지의 현재 메뉴', selectors:['&.dds-mypage .mypage-sidebar nav>[aria-current=page]']},
   {role:'body-2-normal', weight:'medium', reason:'문서 카드의 기업·직무 정보', selectors:['&.dds-mypage .document-primary']},
   {role:'caption-1', selectors:['.document-card-actions time']},
   {role:'label-1', selectors:['.dialog-field']},
@@ -83,6 +82,14 @@ export const serviceTypography = [
   {media:'(max-width:520px)', role:'title-1', weight:'medium', reason:'서비스 메인 메시지의 기본 굵기 500', selectors:['.home-hero h1']},
   {media:'(max-width:520px)', role:'title-1', selectors:['.hero h1']},
   {media:'(max-width:360px)', role:'title-2', weight:'medium', reason:'320px 화면에서도 메인 첫 문장을 한 줄로 유지', selectors:['.home-hero h1']},
+  // Shared visibility roles apply as a complete type style across services.
+  {role:'body-1-normal', weight:'semibold', reason:'반복 목록 카드의 식별 제목', selectors:['.dds-card-title']},
+  {role:'body-2-normal', weight:'medium', reason:'기업·직무 등 식별 메타정보', selectors:['.dds-meta-primary']},
+  {role:'body-2-normal', selectors:['.dds-meta-secondary']},
+  {role:'caption-1', selectors:['.dds-meta-date']},
+  {role:'label-2', selectors:['.dds-status','.dds-badge']},
+  {role:'label-2', weight:'semibold', reason:'실제 컬렉션 개수 배지', selectors:['.dds-collection-count']},
+  {role:'label-1', selectors:['.dds-nav-link']},
   // Full-role class opt-in for future product templates. Keep these last.
 ];
 

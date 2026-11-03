@@ -1,4 +1,4 @@
-import {chartComponents} from './chart-catalog.js?v=11c5e354898c5712';
+import {chartComponents} from './chart-catalog.js?v=404655015d20eb0b';
 
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const table = (caption, headings, rows) => `<div class="table-wrap"><table class="dds-rules-table"><caption class="sr-only">${esc(caption)}</caption><thead><tr>${headings.map(h => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((cell, i) => i === 0 ? `<th scope="row">${esc(cell)}</th>` : `<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
@@ -35,6 +35,10 @@ export const implementationRules = [
   ['기준 파일', '색·간격·컨트롤 값은 tokens.css, 글자 역할은 typography-system.js, 서비스 사용처는 service-typography.js를 읽습니다. 문서 예제를 새 값의 근거로 삼지 않습니다.'],
   ['적용 범위', '대상 URL·템플릿·기존 선택자·상태 클래스·필드 id/name·연결 이벤트를 먼저 기록합니다. CSS 변경과 HTML 보완을 구분합니다.'],
   ['상태 보존', '권한·hidden·disabled·로딩·오류는 기존 로직에서 결정합니다. CSS로 숨겨진 기능을 강제로 노출하거나 데이터를 만들어 채우지 않습니다.'],
+  ['정보 위계', '카드 제목 16/24/600은 --text-strong, 기업·직무 14/22/500은 --text-primary, 보조 설명 14/22는 --text-secondary, 날짜 12/18은 --text-tertiary로 연결합니다.'],
+  ['카드·탐색', '대표 이동은 실제 href가 있는 카드 전체 링크로 연결하고 보조 행동은 대표 링크 바깥에 둡니다. 정적 카드에 클릭을 암시하는 hover를 넣지 않습니다. 메뉴는 현재 위치와 키보드 초점을 구분합니다.'],
+  ['상태·개수', '처리 상태는 실제 문구와 의미 아이콘, 목록 개수는 실제 데이터의 배지로 표시합니다. 항목 추가·삭제·필터 변경 시 개수도 갱신합니다.'],
+  ['섹션 구성', '섹션 제목에 장식 아이콘을 넣거나 섹션마다 회색 바탕의 틀을 추가하지 않습니다. 배경 캔버스가 필요하면 페이지·body 수준에서 정합니다.'],
   ['검수', 'PC·모바일, 라이트·다크, 긴 제목·빈 값·오류·대기·동적 항목에서 확인합니다. 키보드 순서와 실제 제출 값을 변경 전과 대조합니다.'],
   ['완료 보고', '수정 파일·선택자 매핑·화면별 검수 결과·미검증 항목을 남깁니다. 예제 표시와 실서비스 검증 완료를 구분합니다.']
 ];
@@ -80,10 +84,13 @@ export const patternContracts = {
     ['마지막 행동', '필수 입력 뒤에 저장·다음 배치. 유효하지 않은 제출은 해당 오류로 이동.']
   ],
   'document-list': [
-    ['카드 이동', '주 링크는 카드 전체에서 작동. Enter로 같은 화면 이동. 복사·삭제 버튼은 링크 안에 중첩하지 않음.'],
+    ['카드 이동', '.dds-card-link의 실제 href로 카드 전체에서 이동. .dds-card-tools는 대표 링크 바깥에 배치. Enter와 보조 버튼의 동작 분리.'],
+    ['정보 위계', '제목 16/24/600은 Strong, 기업·직무 14/22/500은 Primary 텍스트. 보조 14/22는 Secondary, 날짜 12/18은 Tertiary.'],
+    ['상태·개수', '상태는 실제 문구와 의미 아이콘. 목록 개수는 실제 데이터 배지로 표시하고 변경 시 갱신.'],
     ['상세·편집', '자기소개서·이력서는 기존 편집 경로로 직접 이동. 중간 확인 모달은 필수 정보 입력에만 사용.'],
     ['빈 목록', '첫 문서 작성 행동 제공. 검색 결과 없음과 구분.'],
-    ['긴 제목·3개 카드', '제목은 줄바꿈. 마지막 카드가 한 행 전체로 늘어나지 않도록 동일 열 규칙 적용.']
+    ['긴 제목·3개 카드', '제목은 줄바꿈. 마지막 카드가 한 행 전체로 늘어나지 않도록 동일 열 규칙 적용.'],
+    ['정적 카드', '이동·실행이 없으면 손 모양 커서나 떠오르는 hover 효과 없음.']
   ],
   'resume-builder': [
     ['반복 항목', '동일한 필드 크기 사용. 추가 후 새 항목으로 초점 이동. 삭제 시 인접 행동으로 초점 복귀.'],

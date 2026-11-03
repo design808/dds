@@ -8,7 +8,7 @@ DDS는 딥레쥬메·딥인터뷰와 향후 신규 서비스를 포함한 회사
 ## 프로젝트 설정
 
 AI 설정 프롬프트는 https://design808.github.io/dds/#/setup 에서 제공합니다.
-DDS 0.2.1의 고정 참조 묶음은 releases/0.2.1/manifest.json과 bundle.json을 기준으로 확인합니다.
+DDS 0.2.2의 고정 참조 묶음은 releases/0.2.2/manifest.json과 bundle.json을 기준으로 확인합니다.
 기준 파일 준비·프로젝트 규칙 등록·서비스 화면 적용·기능 검증은 각각 기록합니다.
 자세한 연결 방법은 dds-adoption.md를 읽습니다. 기준 설정만 요청한 작업에서 기존 서비스 파일을 수정하지 않습니다.
 
@@ -17,6 +17,8 @@ DDS 0.2.1의 고정 참조 묶음은 releases/0.2.1/manifest.json과 bundle.json
 - public/tokens.css: 색상·간격·형태·컨트롤 크기·모션과 라이트/다크 값.
 - public/typography-system.js: 크기·행간·굵기·자간이 묶인 글자 역할.
 - public/service-typography.js: 서비스 선택자별 역할 원본. scripts/service-typography.mjs로 CSS 생성.
+- public/visibility.css: 카드·텍스트·상태·개수·탐색에 필요한 공통 표시 클래스.
+- public/visibility.js: 선택적인 collectionCount/statusBadge 순수 마크업 함수. 기존 데이터·상태·Lucide 렌더러를 전달.
 - public/component-contracts.js: 컴포넌트 선택·조작·규격·검수 기준.
 - public/service-guidelines.js: 폼·오류·번역·서비스 패턴의 처리 기준.
 - public/data/dds-contracts.json: 위 문서와 같은 데이터에서 생성한 전체 규칙.
@@ -33,8 +35,12 @@ DDS 0.2.1의 고정 참조 묶음은 releases/0.2.1/manifest.json과 bundle.json
 1. 기준 파일: 색·간격·컨트롤 값은 tokens.css, 글자 역할은 typography-system.js, 서비스 사용처는 service-typography.js를 읽습니다. 문서 예제를 새 값의 근거로 삼지 않습니다.
 2. 적용 범위: 대상 URL·템플릿·기존 선택자·상태 클래스·필드 id/name·연결 이벤트를 먼저 기록합니다. CSS 변경과 HTML 보완을 구분합니다.
 3. 상태 보존: 권한·hidden·disabled·로딩·오류는 기존 로직에서 결정합니다. CSS로 숨겨진 기능을 강제로 노출하거나 데이터를 만들어 채우지 않습니다.
-4. 검수: PC·모바일, 라이트·다크, 긴 제목·빈 값·오류·대기·동적 항목에서 확인합니다. 키보드 순서와 실제 제출 값을 변경 전과 대조합니다.
-5. 완료 보고: 수정 파일·선택자 매핑·화면별 검수 결과·미검증 항목을 남깁니다. 예제 표시와 실서비스 검증 완료를 구분합니다.
+4. 정보 위계: 카드 제목 16/24/600은 --text-strong, 기업·직무 14/22/500은 --text-primary, 보조 설명 14/22는 --text-secondary, 날짜 12/18은 --text-tertiary로 연결합니다.
+5. 카드·탐색: 대표 이동은 실제 href가 있는 카드 전체 링크로 연결하고 보조 행동은 대표 링크 바깥에 둡니다. 정적 카드에 클릭을 암시하는 hover를 넣지 않습니다. 메뉴는 현재 위치와 키보드 초점을 구분합니다.
+6. 상태·개수: 처리 상태는 실제 문구와 의미 아이콘, 목록 개수는 실제 데이터의 배지로 표시합니다. 항목 추가·삭제·필터 변경 시 개수도 갱신합니다.
+7. 섹션 구성: 섹션 제목에 장식 아이콘을 넣거나 섹션마다 회색 바탕의 틀을 추가하지 않습니다. 배경 캔버스가 필요하면 페이지·body 수준에서 정합니다.
+8. 검수: PC·모바일, 라이트·다크, 긴 제목·빈 값·오류·대기·동적 항목에서 확인합니다. 키보드 순서와 실제 제출 값을 변경 전과 대조합니다.
+9. 완료 보고: 수정 파일·선택자 매핑·화면별 검수 결과·미검증 항목을 남깁니다. 예제 표시와 실서비스 검증 완료를 구분합니다.
 
 ## 디자인 결정
 
@@ -44,12 +50,18 @@ DDS 0.2.1의 고정 참조 묶음은 releases/0.2.1/manifest.json과 bundle.json
 - Small 입력 36px/14px, Medium 44px/16px, Large 52px/16px.
 - 입력 외곽 포커스 1px Primary·offset 0; 활성 칩 Primary 글자·경계.
 - 모달 패딩 24px. 아이콘 전용 버튼에는 기능 이름과 hover·focus 툴팁.
+- 문서 카드 제목 16/24/600 Strong, 기업·직무 14/22/500 Primary, 보조정보 14/22 Secondary, 날짜 12/18 Tertiary.
+- 상태는 실제 라벨·의미 아이콘, 목록 개수는 실제 데이터의 배지. 변경 뒤에도 갱신.
+- 이동 카드의 실제 링크는 전체 영역에 연결하고 보조 동작은 링크 바깥에 분리. 정적 카드는 클릭 hover 없음.
+- 섹션 제목 장식 아이콘과 회색 섹션·목록 트레이 없음. 배경 캔버스는 페이지/body에서 결정.
 - 현재 DDS는 운영체제 동작 줄이기 설정을 따르지 않음.
 
 ## 적용 파일 구분
 
 - tokens.css와 같은 경로의 assets/fonts/pretendard/를 함께 배포합니다.
 - 기존 선택자에 맞는 스킨 CSS와 타이포그래피 매핑을 작성합니다. 생성된 service-typography.css는 직접 편집하지 않습니다.
+- visibility.css의 필요한 클래스를 서비스 범위에 연결하고 기존 선택자와의 우선순위를 확인합니다. visibility.js는 이벤트·상태 관리를 제공하지 않습니다.
+- 컴포넌트 계약의 assetGroups.service는 서비스 기준, documentation은 문서 전용, adapter는 서비스 연결 검토가 필요한 참조 파일입니다. 전체 참조 목록을 운영 설치 목록으로 사용하지 않습니다.
 - style.css, app.js, extension-demos.js, preview-layout.js는 DDS 문서와 예제용입니다. 운영 서비스에 통째로 추가하지 않습니다.
 - custom-controls.js는 원본 입력 옆에 UI를 생성합니다. 기존 위젯 교체 시 필드·이벤트·검증·초기화 연결을 별도 확인합니다.
 - research-data/의 기존 사용처는 정적 검출 후보입니다. 확인하지 않은 선택자를 임의로 채우지 않습니다.
