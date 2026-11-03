@@ -19,28 +19,25 @@ function rgbHSL(red, green, blue) {
   return [hue, saturation, lightness];
 }
 
-function hslRGB(hue, saturation, lightness) {
-  const chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
-  const x = chroma * (1 - Math.abs((hue / 60) % 2 - 1));
-  const match = lightness - chroma / 2;
-  const channels = hue < 60 ? [chroma, x, 0] : hue < 120 ? [x, chroma, 0] : hue < 180 ? [0, chroma, x] : hue < 240 ? [0, x, chroma] : hue < 300 ? [x, 0, chroma] : [chroma, 0, x];
-  return channels.map(value => Math.round((value + match) * 255));
-}
-
 /** Pure pixel transform used by the runtime; alpha and neutral pixels are preserved. */
 export function recolorBrandPixels(source, anchor, primary) {
   const result = new Uint8ClampedArray(source);
-  const [targetHue, targetSaturation, targetLightness] = rgbHSL(...hexRGB(primary));
-  const [, anchorSaturation, anchorLightness] = rgbHSL(...hexRGB(anchor));
+  if (anchor.toUpperCase() === primary.toUpperCase()) return result;
+  const target = hexRGB(primary);
+  const [, , anchorLightness] = rgbHSL(...hexRGB(anchor));
   for (let index = 0; index < result.length; index += 4) {
     if (!source[index + 3]) continue;
     const [hue, saturation, lightness] = rgbHSL(source[index], source[index + 1], source[index + 2]);
     // The authored brand is orange. White details, neutral edges and shadows stay intact.
     if (hue < 12 || hue > 60 || saturation < .25) continue;
-    const mappedLightness = lightness <= anchorLightness
-      ? targetLightness * lightness / anchorLightness
-      : targetLightness + (1 - targetLightness) * (lightness - anchorLightness) / (1 - anchorLightness);
-    const color = hslRGB(targetHue, Math.min(1, targetSaturation * saturation / anchorSaturation), mappedLightness);
+    // Transfer the original white/black blend, not its HSL saturation. Keeping
+    // saturated highlights would turn a dark brand color into a neon light face.
+    const highlight = lightness > anchorLightness;
+    const amount = highlight
+      ? (1 - lightness) / (1 - anchorLightness)
+      : lightness / anchorLightness;
+    const white = highlight ? 255 * (1 - amount) : 0;
+    const color = target.map(channel => Math.round(channel * amount + white));
     result.set(color, index);
   }
   return result;
