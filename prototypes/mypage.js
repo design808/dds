@@ -1,5 +1,5 @@
-import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=5e72238aab557e02';
-import {getDocuments} from './document-store.js?v=5e72238aab557e02';
+import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=941e0d9ed8d75956';
+import {getDocuments} from './document-store.js?v=941e0d9ed8d75956';
 common();
 document.querySelectorAll(".gnb-trigger").forEach(trigger=>trigger.classList.toggle("active",trigger.getAttribute("aria-controls")==="gnb-account"));
 // Fictional local data only. No service account data or mutation endpoints.
