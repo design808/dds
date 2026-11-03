@@ -1,10 +1,10 @@
-import {icon} from './icons.js?v=60c916a64eb2cfb3';
-import {components} from './catalog.js?v=60c916a64eb2cfb3';
-import {bindCharts} from './chart-system.js?v=60c916a64eb2cfb3';
-import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=60c916a64eb2cfb3';
-import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=60c916a64eb2cfb3';
-import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=60c916a64eb2cfb3';
-import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=60c916a64eb2cfb3';
+import {icon} from './icons.js?v=17683691bc90d855';
+import {components} from './catalog.js?v=17683691bc90d855';
+import {bindCharts} from './chart-system.js?v=17683691bc90d855';
+import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=17683691bc90d855';
+import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=17683691bc90d855';
+import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=17683691bc90d855';
+import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=17683691bc90d855';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const blockCategories=[
@@ -63,6 +63,7 @@ export function bindBlocks(root){
   const dialog=root.querySelector('#dds-block-dialog');
   const expanded=root.querySelector('[data-block-expanded]');
   let cleanupExample=()=>{};
+  let cleanupGalleryCharts=()=>{};
   let returnFocus;
   let closingTimer;
   let fitFrame;
@@ -89,10 +90,11 @@ export function bindBlocks(root){
   }
   const update=()=>{
     const matches=matchingBlocks();
+    cleanupGalleryCharts?.();
     resize.disconnect();observed.clear();
     results.innerHTML=cards(matches);
     results.setAttribute('aria-labelledby',`block-category-${selectedCategory}`);
-    discover();bindCharts(results);
+    discover();cleanupGalleryCharts=bindCharts(results);
   };
   const setDevice=device=>{
     dialog.dataset.device=device;
@@ -112,8 +114,9 @@ export function bindBlocks(root){
     expanded.innerHTML=scene(block,'expanded');
     root.querySelector('[data-block-components]').innerHTML=block.components.map(id=>`<a class="chip" href="#/components/${esc(id)}">${esc(componentName(id))}</a>`).join('');
     const stopForms=bindFormBlocks(expanded),stopContent=bindContentBlocks(expanded),stopTable=bindTableBlocks(expanded),stopWorkspace=bindWorkspaceBlocks(expanded);
-    cleanupExample=()=>{stopForms?.();stopContent?.();stopTable?.();stopWorkspace?.();};
-    bindCharts(expanded);setDevice('desktop');
+    const stopCharts=bindCharts(expanded);
+    cleanupExample=()=>{stopForms?.();stopContent?.();stopTable?.();stopWorkspace?.();stopCharts?.();};
+    setDevice('desktop');
     if(!dialog.open)dialog.showModal();
     root.querySelector('[data-block-close]').focus({preventScroll:true});
   };
@@ -143,7 +146,7 @@ export function bindBlocks(root){
   discover();document.fonts?.ready.then(scheduleFit);
   window.addEventListener('dds-design-settings-change',scheduleFit,{signal});
   return ()=>{
-    disposed=true;controller.abort();cleanupExample();clearTimeout(closingTimer);
+    disposed=true;controller.abort();cleanupExample();cleanupGalleryCharts?.();clearTimeout(closingTimer);
     if(fitFrame)cancelAnimationFrame(fitFrame);
     resize.disconnect();if(dialog.open)dialog.close();
   };

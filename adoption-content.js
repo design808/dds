@@ -1,4 +1,4 @@
-export const ddsRelease = '0.2.4';
+export const ddsRelease = '0.2.5';
 export const ddsSite = 'https://design808.github.io/dds/';
 export const ddsReleaseURL = `${ddsSite}releases/${ddsRelease}/`;
 

@@ -1,6 +1,6 @@
-import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=60c916a64eb2cfb3';
-import {getDocuments} from './document-store.js?v=60c916a64eb2cfb3';
-import {statusBadge} from '../visibility.js?v=60c916a64eb2cfb3';
+import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=17683691bc90d855';
+import {getDocuments} from './document-store.js?v=17683691bc90d855';
+import {statusBadge} from '../visibility.js?v=17683691bc90d855';
 common();
 // Fictional local data only. No service account data or mutation endpoints.
 let documents=getDocuments();
