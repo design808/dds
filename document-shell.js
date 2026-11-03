@@ -1,9 +1,9 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=54c3eb9808c7bdad';
-import {icon} from './icons.js?v=54c3eb9808c7bdad';
-import {formatHTML} from './format-html.js?v=54c3eb9808c7bdad';
-import {componentContract} from './component-contracts.js?v=54c3eb9808c7bdad';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=54c3eb9808c7bdad';
-import {blocks} from './blocks.js?v=54c3eb9808c7bdad';
+import {components, groups, patterns, foundations} from './catalog.js?v=7a39748fbcc3ec88';
+import {icon} from './icons.js?v=7a39748fbcc3ec88';
+import {formatHTML} from './format-html.js?v=7a39748fbcc3ec88';
+import {componentContract} from './component-contracts.js?v=7a39748fbcc3ec88';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=7a39748fbcc3ec88';
+import {blocks} from './blocks.js?v=7a39748fbcc3ec88';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -84,7 +84,7 @@ export function searchableDocuments() {
     {name:'디자인 프로세스', ko:'적용 순서', url:'/process'},
     {name:'개발 적용 안내', ko:'AI 핸드오프 기준 파일 적용 검수', url:'/handoff'},
     {name:'AI로 적용하기', ko:'DDS 설정 설치 프롬프트 고정 버전 매니페스트', url:'/setup'},
-    {name:'블록', ko:blocks.map(block=>block.title).join(' '), url:'/blocks'},
+    {name:'블록', ko:'컴포넌트 조합 예시', aliases:blocks.map(block=>block.title), url:'/blocks'},
     ...components.map(c => ({...c, url:'/components/' + c.id})),
     ...foundations.map(([id, name, ko]) => ({name, ko, url:'/foundations/' + id})),
     ...patterns.map(p => ({name:p.ko, ko:p.name, url:'/patterns/' + p.id})),

@@ -2,6 +2,7 @@
 const DEFAULT_PRIMARY = '#FFAD31';
 const LOGO_ANCHORS = new Map([
   ['deepresume-logo.png', '#FFAD31'],
+  ['deepresume-mark.png', '#FFAD31'],
   ['deepinterview-logo.png', '#FFA031']
 ]);
 

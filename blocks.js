@@ -1,37 +1,37 @@
-import {icon} from './icons.js?v=54c3eb9808c7bdad';
-import {components} from './catalog.js?v=54c3eb9808c7bdad';
-import {collectionCount} from './visibility.js?v=54c3eb9808c7bdad';
-import {bindCharts} from './chart-system.js?v=54c3eb9808c7bdad';
-import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=54c3eb9808c7bdad';
-import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=54c3eb9808c7bdad';
+import {icon} from './icons.js?v=7a39748fbcc3ec88';
+import {components} from './catalog.js?v=7a39748fbcc3ec88';
+import {bindCharts} from './chart-system.js?v=7a39748fbcc3ec88';
+import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=7a39748fbcc3ec88';
+import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=7a39748fbcc3ec88';
+import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=7a39748fbcc3ec88';
+import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=7a39748fbcc3ec88';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const blockCategories=[
   {id:'all',name:'전체'}, {id:'marketing',name:'랜딩'},
-  {id:'account',name:'계정'}, {id:'workspace',name:'업무'}, {id:'data',name:'데이터'}
+  {id:'account',name:'계정'}, {id:'workspace',name:'업무'}
 ];
-export const blocks=[...contentBlocks.filter(b=>b.category==='marketing'),...formBlocks,...contentBlocks.filter(b=>b.category!=='marketing')];
+const blockOrder=['social-proof','feature-navigation','basic-table','login','signup','dashboard','data-flow','journey-flow','cohort-retention','sidebar','notifications','settings','kanban','metric-explorer','invoice-studio','hero','value-proposition','content-gallery','how-it-works','pricing','faq','header','footer'];
+export const blocks=[...contentBlocks,...tableBlocks,...formBlocks,...workspaceBlocks].sort((a,b)=>blockOrder.indexOf(a.id)-blockOrder.indexOf(b.id));
 const formIds=new Set(formBlocks.map(block=>block.id));
+const tableIds=new Set(tableBlocks.map(block=>block.id));
+const workspaceIds=new Set(workspaceBlocks.map(block=>block.id));
 let selectedCategory='all';
-let searchValue='';
 let sceneSequence=0;
 const componentName=id=>components.find(component=>component.id===id)?.name||id;
-const categoryName=id=>blockCategories.find(category=>category.id===id)?.name||id;
-const matchingBlocks=()=>blocks.filter(block=>(selectedCategory==='all'||block.category===selectedCategory)&&
-  `${block.title} ${block.description} ${block.components.map(componentName).join(' ')}`.toLowerCase().includes(searchValue.trim().toLowerCase()));
+const matchingBlocks=()=>blocks.filter(block=>selectedCategory==='all'||block.category===selectedCategory);
 
 function scene(block,prefix){
   const uid=`${prefix}-${block.id}-${++sceneSequence}`;
-  const html=formIds.has(block.id)?renderFormBlock(block.id,uid):renderContentBlock(block.id,uid);
+  const html=formIds.has(block.id)?renderFormBlock(block.id,uid):tableIds.has(block.id)?renderTableBlock(block.id,uid):workspaceIds.has(block.id)?renderWorkspaceBlock(block.id,uid):renderContentBlock(block.id,uid);
   return `<div class="dds-block-example">${html}</div>`;
 }
 
 function cards(items){
-  if(!items.length)return '<div class="dds-blocks-empty"><h2>일치하는 블록이 없습니다.</h2><p>다른 검색어를 입력하거나 전체 분류를 선택해 주세요.</p></div>';
+  if(!items.length)return '<div class="dds-blocks-empty"><h2>등록된 블록이 없습니다.</h2></div>';
   return items.map(block=>`<article class="dds-block-card">
     <div class="dds-block-thumbnail"><div class="dds-block-scene" inert aria-hidden="true">${scene(block,'thumbnail')}</div></div>
-    <div class="dds-block-card-caption"><div><span class="dds-block-category">${esc(categoryName(block.category))}</span><h2>${esc(block.title)}</h2></div><span class="dds-block-expand" aria-hidden="true">${icon('Expand')}</span></div>
-    <p class="dds-block-card-description">${esc(block.description)}</p>
+    <div class="dds-block-card-caption"><h2>${esc(block.title)}</h2><span class="dds-block-expand" aria-hidden="true">${icon('Expand')}</span></div>
     <button type="button" class="dds-block-card-trigger" data-block-open="${esc(block.id)}" aria-label="${esc(block.title)} 크게 보기"></button>
   </article>`).join('');
 }
@@ -39,12 +39,10 @@ function cards(items){
 export function blocksPage(){
   const matches=matchingBlocks();
   return `<div class="dds-blocks-page-content">
-    <div class="page-heading"><div><h1>블록</h1><p class="lead">DDS 컴포넌트를 조합한 화면 구성 예시입니다.</p></div></div>
+    <h1 class="sr-only">블록</h1>
     <div class="dds-blocks-toolbar">
       <div class="segmented dds-blocks-filters" role="tablist" aria-label="블록 분류">${blockCategories.map(category=>`<button type="button" role="tab" id="block-category-${category.id}" aria-selected="${category.id===selectedCategory}" aria-controls="block-results" tabindex="${category.id===selectedCategory?0:-1}" data-block-category="${category.id}">${category.name}</button>`).join('')}</div>
-      <div class="dds-blocks-search"><label class="sr-only" for="block-search">블록 검색</label><div class="search-field" data-control-size="sm">${icon('Search')}<input type="search" id="block-search" value="${esc(searchValue)}" placeholder="블록 검색" autocomplete="off"></div></div>
     </div>
-    <div class="dds-blocks-results-heading"><span>블록</span><span data-block-count aria-live="polite">${collectionCount(matches.length,{label:'블록'})}</span></div>
     <div class="dds-blocks-grid" id="block-results" role="tabpanel" aria-labelledby="block-category-${selectedCategory}">${cards(matches)}</div>
     <dialog class="dds-block-dialog" id="dds-block-dialog" aria-labelledby="dds-block-dialog-title" data-device="desktop">
       <header class="dds-block-dialog-header"><h2 id="dds-block-dialog-title"></h2>
@@ -94,7 +92,6 @@ export function bindBlocks(root){
     resize.disconnect();observed.clear();
     results.innerHTML=cards(matches);
     results.setAttribute('aria-labelledby',`block-category-${selectedCategory}`);
-    root.querySelector('[data-block-count]').innerHTML=collectionCount(matches.length,{label:'블록'});
     discover();bindCharts(results);
   };
   const setDevice=device=>{
@@ -114,8 +111,8 @@ export function bindBlocks(root){
     dialog.querySelector('h2').textContent=block.title;
     expanded.innerHTML=scene(block,'expanded');
     root.querySelector('[data-block-components]').innerHTML=block.components.map(id=>`<a class="chip" href="#/components/${esc(id)}">${esc(componentName(id))}</a>`).join('');
-    const stopForms=bindFormBlocks(expanded),stopContent=bindContentBlocks(expanded);
-    cleanupExample=()=>{stopForms?.();stopContent?.();};
+    const stopForms=bindFormBlocks(expanded),stopContent=bindContentBlocks(expanded),stopTable=bindTableBlocks(expanded),stopWorkspace=bindWorkspaceBlocks(expanded);
+    cleanupExample=()=>{stopForms?.();stopContent?.();stopTable?.();stopWorkspace?.();};
     bindCharts(expanded);setDevice('desktop');
     if(!dialog.open)dialog.showModal();
     root.querySelector('[data-block-close]').focus({preventScroll:true});
@@ -133,7 +130,6 @@ export function bindBlocks(root){
     if(device){setDevice(device.dataset.blockDevice);return;}
     if(event.target.closest('[data-block-close]'))close();
   },{signal});
-  root.querySelector('#block-search').addEventListener('input',event=>{searchValue=event.target.value;update();},{signal});
   dialog.addEventListener('click',event=>{
     if(event.target!==dialog)return;
     const rect=dialog.getBoundingClientRect();

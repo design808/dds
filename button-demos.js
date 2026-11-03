@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=54c3eb9808c7bdad';
-import {formatHTML} from './format-html.js?v=54c3eb9808c7bdad';
+import {icon} from './icons.js?v=7a39748fbcc3ec88';
+import {formatHTML} from './format-html.js?v=7a39748fbcc3ec88';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
