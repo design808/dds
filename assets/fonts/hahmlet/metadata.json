@@ -1,0 +1,2161 @@
+{
+  "family": "Hahmlet",
+  "displayName": "함렟",
+  "cssFamily": "DDS Hahmlet",
+  "version": "Google Fonts web release v21",
+  "format": "woff2",
+  "style": "normal",
+  "weights": {
+    "min": 100,
+    "max": 900
+  },
+  "variable": true,
+  "modified": false,
+  "source": "https://fonts.googleapis.com/css2?family=Hahmlet:wght@100..900&display=swap",
+  "upstream": "https://github.com/hyper-type/hahmlet",
+  "license": "SIL Open Font License 1.1",
+  "licenseSource": "https://raw.githubusercontent.com/hyper-type/hahmlet/master/OFL.txt",
+  "retrievedAt": "2026-11-03T02:01:46.328188+00:00",
+  "delivery": "Original Google Fonts variable WOFF2 files and unicode-range declarations. Only local CSS family and source URLs are changed; font binaries are unmodified.",
+  "files": [
+    {
+      "file": "Hahmlet-000.woff2",
+      "bytes": 12116,
+      "sha256": "cc4ecdd9a4533c9d013681932464b66dcc087d527ba2d4099d4274c12a94fa68",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.2.woff2"
+    },
+    {
+      "file": "Hahmlet-001.woff2",
+      "bytes": 16532,
+      "sha256": "8f3e997b0e4cf262f78943c1d6b98a32474c7dd64cc6638dd3a02ea4db86dd92",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.3.woff2"
+    },
+    {
+      "file": "Hahmlet-002.woff2",
+      "bytes": 16384,
+      "sha256": "2e175bfa27e404a7c131fcbd828397d2b7577c263e1afe4be40ac08d11e91ed5",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.4.woff2"
+    },
+    {
+      "file": "Hahmlet-003.woff2",
+      "bytes": 13540,
+      "sha256": "0a4e9c31ec92bfe0b09926b326c03b6ef41edd0a8d53d823cad504eb43a7c9b1",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.5.woff2"
+    },
+    {
+      "file": "Hahmlet-004.woff2",
+      "bytes": 12348,
+      "sha256": "0cbba4ae89cab3f04de34189124f496bedaada14a3096205ea1acd758c97d8f0",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.6.woff2"
+    },
+    {
+      "file": "Hahmlet-005.woff2",
+      "bytes": 12244,
+      "sha256": "a8c2c2aaec2715d91b4a2540274ec798a93b9e5168c9ccd61d7c1f595de44e2b",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.7.woff2"
+    },
+    {
+      "file": "Hahmlet-006.woff2",
+      "bytes": 12604,
+      "sha256": "f441ea5f918f7ae6e736b3be08bf68257d30210c7afd6203a6d2061c14faca61",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.8.woff2"
+    },
+    {
+      "file": "Hahmlet-007.woff2",
+      "bytes": 14348,
+      "sha256": "013c426bd20c10e44dac3d9ced0288b2e6c306e3bda0e47396cacfd60f307328",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.9.woff2"
+    },
+    {
+      "file": "Hahmlet-008.woff2",
+      "bytes": 10892,
+      "sha256": "fd62c453d9e66e2e8175d0cd5930fd5856c146cdacd505e186a890e3fd55505e",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.10.woff2"
+    },
+    {
+      "file": "Hahmlet-009.woff2",
+      "bytes": 12312,
+      "sha256": "225a9a7cd923f63c25235387ef4cf05e2b5ec1f3f9e5cb0bca51371999cc1af9",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.11.woff2"
+    },
+    {
+      "file": "Hahmlet-010.woff2",
+      "bytes": 10120,
+      "sha256": "baa5427abb1b5f10fdee654d8c7efddd63ebebddcf991152f0d2aebd4b6ebb0f",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.12.woff2"
+    },
+    {
+      "file": "Hahmlet-011.woff2",
+      "bytes": 11440,
+      "sha256": "e902aec899aab94e17ee8ac215b18726726488fd385cc1fa266e5ecea2d940fe",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.13.woff2"
+    },
+    {
+      "file": "Hahmlet-012.woff2",
+      "bytes": 13388,
+      "sha256": "a818c5511ea2603d4abffa39d4057a19d210c28728f1e82b85310854a279f8ea",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.14.woff2"
+    },
+    {
+      "file": "Hahmlet-013.woff2",
+      "bytes": 10724,
+      "sha256": "c371b5d76f77a30c2798452cceb777f4f192351d6bbacf27e28c43fcf616624d",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.15.woff2"
+    },
+    {
+      "file": "Hahmlet-014.woff2",
+      "bytes": 13640,
+      "sha256": "b96bc7ade6f6efcb2449503d79f0c77b3274cd6e25b9d6a5051ee9ad630c1455",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.16.woff2"
+    },
+    {
+      "file": "Hahmlet-015.woff2",
+      "bytes": 12308,
+      "sha256": "8a14adf359af424783a5b1bf5bea3026aeae83ffaaf8149392eabfe29353541a",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.17.woff2"
+    },
+    {
+      "file": "Hahmlet-016.woff2",
+      "bytes": 12116,
+      "sha256": "395ff00fe27b805b06429b4a6f8d5218e8b3d88038d6f4e3e1039259181f8ca1",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.18.woff2"
+    },
+    {
+      "file": "Hahmlet-017.woff2",
+      "bytes": 11284,
+      "sha256": "66b387bcff4cce9c1332226a2d1b8dc1f9d1a653ed44d4f7f26806c95f91291f",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.19.woff2"
+    },
+    {
+      "file": "Hahmlet-018.woff2",
+      "bytes": 17756,
+      "sha256": "011c21e00faef1c80e0f83aeffceb14365fbd9a20cf20a236f02fbbd7c8e6456",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.20.woff2"
+    },
+    {
+      "file": "Hahmlet-019.woff2",
+      "bytes": 13992,
+      "sha256": "1dd581acfcf77d81039dd1394f3957ecb5434d010d827ffc4f9386dc74fdd820",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.21.woff2"
+    },
+    {
+      "file": "Hahmlet-020.woff2",
+      "bytes": 15348,
+      "sha256": "2e4c436fd5b358a859fbd13f5ae58aa9aa80df7474f853ce9be0909d94ee2936",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.22.woff2"
+    },
+    {
+      "file": "Hahmlet-021.woff2",
+      "bytes": 10580,
+      "sha256": "ee3fd0c2472e343e5ed961a4770a7bac549791e4df33a79f9655a2bd3ae81211",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.23.woff2"
+    },
+    {
+      "file": "Hahmlet-022.woff2",
+      "bytes": 18808,
+      "sha256": "4defdd4b6879b83ed5700406717d838cf3bb641f0c8e430c67a950cab37342ab",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.24.woff2"
+    },
+    {
+      "file": "Hahmlet-023.woff2",
+      "bytes": 15364,
+      "sha256": "8009731b3a6354d1cb33922d83b8f97954b068b0cdd499719cbdc0ee551d1457",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.25.woff2"
+    },
+    {
+      "file": "Hahmlet-024.woff2",
+      "bytes": 17492,
+      "sha256": "5078950e8aebcc49565349a7856fd7a3461f3ab26c32ed25ee36947cc26747c6",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.26.woff2"
+    },
+    {
+      "file": "Hahmlet-025.woff2",
+      "bytes": 20552,
+      "sha256": "c0374c5d57f0d04ae0c00a9ebc15de1ba16956d0c9736e7979f7f661f0f31635",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.27.woff2"
+    },
+    {
+      "file": "Hahmlet-026.woff2",
+      "bytes": 14216,
+      "sha256": "3e62b6d5ec1bf9d9755dbec453d16556c267cf7ca0218b231f9597fcebc9694c",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.28.woff2"
+    },
+    {
+      "file": "Hahmlet-027.woff2",
+      "bytes": 13412,
+      "sha256": "84d019f6434f4aa2c66d391e24e25921dbb59db70d5be88647a54e60803d9921",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.29.woff2"
+    },
+    {
+      "file": "Hahmlet-028.woff2",
+      "bytes": 15316,
+      "sha256": "11da21bfc4d02e874fa8ed789e91d8cf82b25285cf6d35dbb246b285a0e9c190",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.30.woff2"
+    },
+    {
+      "file": "Hahmlet-029.woff2",
+      "bytes": 10116,
+      "sha256": "e7c2418a5ef88c45897e1ee23e12936be43e57e6d7be9f2e69b0ef1a2696f4c6",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.31.woff2"
+    },
+    {
+      "file": "Hahmlet-030.woff2",
+      "bytes": 14636,
+      "sha256": "3e173f08876f3cf02dff7471686d8b8f9f81a0d5e505888f3f6a12e9df79f37d",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.32.woff2"
+    },
+    {
+      "file": "Hahmlet-031.woff2",
+      "bytes": 15204,
+      "sha256": "fe464567968793a951ff06c76c006e89bd7fe0f61abd6a969b60b590f257ddab",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.33.woff2"
+    },
+    {
+      "file": "Hahmlet-032.woff2",
+      "bytes": 16804,
+      "sha256": "af29cb592235a13ef8a0d4402c8c8c4570fbbbcd5c757a1ee684e2de9288be25",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.34.woff2"
+    },
+    {
+      "file": "Hahmlet-033.woff2",
+      "bytes": 12376,
+      "sha256": "0f17fe00609317b1f2a4a7f3da952ff525dae960bf42cad9836a349d9b73cc80",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.35.woff2"
+    },
+    {
+      "file": "Hahmlet-034.woff2",
+      "bytes": 6304,
+      "sha256": "ce4082eef779cc5eb0e1e2fb96ff3ab09706ce85955d1522259d2d48ab97e2ff",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.36.woff2"
+    },
+    {
+      "file": "Hahmlet-035.woff2",
+      "bytes": 8576,
+      "sha256": "a08d46953f9d8b4ecefab9a839ab50a35eba9723bc5de18a847dd5011d4ed287",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.37.woff2"
+    },
+    {
+      "file": "Hahmlet-036.woff2",
+      "bytes": 13592,
+      "sha256": "c5979c6bb18381f581b851c8c8679a0f1d51f3bb72596e6cd01ec65896e14c77",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.38.woff2"
+    },
+    {
+      "file": "Hahmlet-037.woff2",
+      "bytes": 14184,
+      "sha256": "372fe9a9c0ec22d51e9e9379851847f900d7b1599b5baf81860dd8aa1e14d0f9",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.39.woff2"
+    },
+    {
+      "file": "Hahmlet-038.woff2",
+      "bytes": 13516,
+      "sha256": "a71c62ea1339c224a4262b467a5f7a3612f4b2779fb9d01c05dc1a95e4355e1f",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.40.woff2"
+    },
+    {
+      "file": "Hahmlet-039.woff2",
+      "bytes": 14152,
+      "sha256": "d41f4921e6a261388075a3e77638bff4d69ce6beb01fc61de18ba09df6430773",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.41.woff2"
+    },
+    {
+      "file": "Hahmlet-040.woff2",
+      "bytes": 16752,
+      "sha256": "e2d6e06659289206800bfea3cd74bf6e696f7e73ec522959cded9f7676005e99",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.42.woff2"
+    },
+    {
+      "file": "Hahmlet-041.woff2",
+      "bytes": 15488,
+      "sha256": "25739eb20ef0de35e2f5c293492ed32b0e8ea4293a5a73bb6329610ce140f7ae",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.43.woff2"
+    },
+    {
+      "file": "Hahmlet-042.woff2",
+      "bytes": 15228,
+      "sha256": "efb79b4093d2b441bf650307f94d5a0bd9996ece704aa2dd197cbceda42faea4",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.44.woff2"
+    },
+    {
+      "file": "Hahmlet-043.woff2",
+      "bytes": 14968,
+      "sha256": "d3c8b1976efad4403227d9719fd3389ef8ce9bf7ff06ce2c1de2bfec3db7a6fb",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.45.woff2"
+    },
+    {
+      "file": "Hahmlet-044.woff2",
+      "bytes": 12164,
+      "sha256": "a338f680dfb6779a1d889f2f117b2b161230545ae158c9bb787f2cb3484cfce9",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.46.woff2"
+    },
+    {
+      "file": "Hahmlet-045.woff2",
+      "bytes": 13096,
+      "sha256": "0914d36505103d47e82532185206324f52f09cafe890edde7bc5ff3bfc054d44",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.47.woff2"
+    },
+    {
+      "file": "Hahmlet-046.woff2",
+      "bytes": 14964,
+      "sha256": "3310166e37b64e187fd8bd118134d12a1399deee6cfe6e11bca76dddc70eefca",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.48.woff2"
+    },
+    {
+      "file": "Hahmlet-047.woff2",
+      "bytes": 13892,
+      "sha256": "07117e552d99f9b9182787b0a9f92ca89382e03c17a964afdc94fa3a87a6ca6b",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.49.woff2"
+    },
+    {
+      "file": "Hahmlet-048.woff2",
+      "bytes": 11532,
+      "sha256": "93c39efa2918e72397d6b91dfcc48a90d1b2739049d1d67facee6784da020bd2",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.50.woff2"
+    },
+    {
+      "file": "Hahmlet-049.woff2",
+      "bytes": 12152,
+      "sha256": "3fedc7ebbf1d119b7a306a65c71b5c6b60dc6015a56c307b95809576d96afbf4",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.51.woff2"
+    },
+    {
+      "file": "Hahmlet-050.woff2",
+      "bytes": 17644,
+      "sha256": "f1a51b3216e045ae1946dc88e94cea086603da6279ca7f2fe8eb9e05e64b843c",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.52.woff2"
+    },
+    {
+      "file": "Hahmlet-051.woff2",
+      "bytes": 8992,
+      "sha256": "2ba3c7d04227ce01938d1804abf4a4a9e548aa8b39f0add08700fed3cbc3e14c",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.53.woff2"
+    },
+    {
+      "file": "Hahmlet-052.woff2",
+      "bytes": 13888,
+      "sha256": "95e5bed696f5a212561657c020b921dceb3c04e492150c712b9cab3deeae0bfb",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.54.woff2"
+    },
+    {
+      "file": "Hahmlet-053.woff2",
+      "bytes": 15888,
+      "sha256": "f324d30b32230d3e5cab0765ac63de79c9cece4eb7a76620dc74d0ac7bf5fdb9",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.55.woff2"
+    },
+    {
+      "file": "Hahmlet-054.woff2",
+      "bytes": 14164,
+      "sha256": "de842271fe73028fbd06d0877e3bdc4dc2af6b7741f2fe9cf96bf0b2df430d93",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.56.woff2"
+    },
+    {
+      "file": "Hahmlet-055.woff2",
+      "bytes": 15276,
+      "sha256": "9bb2d98b34b9ccafe8111e4c1f7ad7bae1ab570b3f3837fbc08a2bed65b92b1c",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.57.woff2"
+    },
+    {
+      "file": "Hahmlet-056.woff2",
+      "bytes": 13492,
+      "sha256": "81dd63ad4585a8784a65af6f2f90ed9947eb5d37a15c3ad65df8fcfcb78936db",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.58.woff2"
+    },
+    {
+      "file": "Hahmlet-057.woff2",
+      "bytes": 13552,
+      "sha256": "4a90a8790a7fbf838c700ea46fc248df5803c9d80f82cbb45f35aa732fda1e1b",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.59.woff2"
+    },
+    {
+      "file": "Hahmlet-058.woff2",
+      "bytes": 15392,
+      "sha256": "fda0d7d053cfbe5df3a28f5611a7090bc0b6c9c948c00ddbb9ff1adca1eb2fe0",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.60.woff2"
+    },
+    {
+      "file": "Hahmlet-059.woff2",
+      "bytes": 14528,
+      "sha256": "2a5ee24ee48c3bd622950ced47cfa9e25a322b47a16f26e3819abdf3c8b63e04",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.61.woff2"
+    },
+    {
+      "file": "Hahmlet-060.woff2",
+      "bytes": 13196,
+      "sha256": "34ea33635ac628f912b8bac1dc965426216cd9b2ba4c273ca05b4dcaef3bf015",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.62.woff2"
+    },
+    {
+      "file": "Hahmlet-061.woff2",
+      "bytes": 18868,
+      "sha256": "ef0da7398032c92b0a3e411bfd369c02987dfb03e1aa967c6b8e7a364911fe08",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.63.woff2"
+    },
+    {
+      "file": "Hahmlet-062.woff2",
+      "bytes": 15336,
+      "sha256": "5ea7a5e8cc6a88029738b36775d4cbaf3a94931264e6000f6460c701fcaceb87",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.64.woff2"
+    },
+    {
+      "file": "Hahmlet-063.woff2",
+      "bytes": 5284,
+      "sha256": "dc545d1bba7ac6792d41c5fdc222ea39cdcb64aef7109dcb341064fae456e322",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.65.woff2"
+    },
+    {
+      "file": "Hahmlet-064.woff2",
+      "bytes": 21360,
+      "sha256": "8fdc8806a0c2a5e8b7a6d1ff7e68e599f0248edeef6c173046adf9c0905cbd52",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.94.woff2"
+    },
+    {
+      "file": "Hahmlet-065.woff2",
+      "bytes": 3540,
+      "sha256": "ebbc67b638ae82d84c732b4b98e302721c792371028ccd71f847db709ab6ea64",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.95.woff2"
+    },
+    {
+      "file": "Hahmlet-066.woff2",
+      "bytes": 2220,
+      "sha256": "c139d0f6cc464095ef11079391983d2f9461e5c79b32789973a3823785b07702",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.96.woff2"
+    },
+    {
+      "file": "Hahmlet-067.woff2",
+      "bytes": 7124,
+      "sha256": "29da6f895e831421c92d4195a2d02e157e9ce4d6ffbc190d38863e6d4f67ca5e",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.98.woff2"
+    },
+    {
+      "file": "Hahmlet-068.woff2",
+      "bytes": 22972,
+      "sha256": "a0980e8dfd4b8ebc36ef3117446778b2ad59e27666138013d8dc99837548d0af",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.99.woff2"
+    },
+    {
+      "file": "Hahmlet-069.woff2",
+      "bytes": 27696,
+      "sha256": "d0e79f0e2a757272572a90bc40e82f0573e30472c6bf3f4e428ed9a2f2342681",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.100.woff2"
+    },
+    {
+      "file": "Hahmlet-070.woff2",
+      "bytes": 25328,
+      "sha256": "84e18fdb210f628873b24fe3df9c758bba634754937eac46b9a5a016ee54fd3e",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.101.woff2"
+    },
+    {
+      "file": "Hahmlet-071.woff2",
+      "bytes": 29552,
+      "sha256": "581c0a1b77d89734f09223ac08501d01e5ba7954e335aca9c1bf8e3a5ea001f5",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.102.woff2"
+    },
+    {
+      "file": "Hahmlet-072.woff2",
+      "bytes": 30780,
+      "sha256": "0a87bc1473b86614e61ae6f9b6e71cc4b472cd2241b396064dcc5880b952b4f8",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.103.woff2"
+    },
+    {
+      "file": "Hahmlet-073.woff2",
+      "bytes": 31852,
+      "sha256": "90f2df12c9594fc2267286fd5e8254ff0a01d6b93a45d51f7da6c4fccd4cae30",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.104.woff2"
+    },
+    {
+      "file": "Hahmlet-074.woff2",
+      "bytes": 35340,
+      "sha256": "2fcf934e3f8b10c7b0c2816f3d5b70ba6b22f098cb1ac21a9d3de8ff60bc0772",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.105.woff2"
+    },
+    {
+      "file": "Hahmlet-075.woff2",
+      "bytes": 40832,
+      "sha256": "4084e8f35c75135e2bdd2f1245dd708c584ca70865d077bce1d64749c31a2005",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.106.woff2"
+    },
+    {
+      "file": "Hahmlet-076.woff2",
+      "bytes": 46436,
+      "sha256": "93d956a24f3dd7ff65e2416748a22aa376b3d423582f1471a8968913dd29c430",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.107.woff2"
+    },
+    {
+      "file": "Hahmlet-077.woff2",
+      "bytes": 50068,
+      "sha256": "42220e9087e626fc3a215c5a0530f76ff8554f8ca74c7d772bcf1fab2d59c53a",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.108.woff2"
+    },
+    {
+      "file": "Hahmlet-078.woff2",
+      "bytes": 49932,
+      "sha256": "78656c6313d64afb904a3cd00959ba9232fe38185fae209d756ae037a466c90c",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.109.woff2"
+    },
+    {
+      "file": "Hahmlet-079.woff2",
+      "bytes": 51548,
+      "sha256": "120110aa8de57268e2abc5f54a6e565c78b25b45f817878023683808b785ae4a",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.110.woff2"
+    },
+    {
+      "file": "Hahmlet-080.woff2",
+      "bytes": 49668,
+      "sha256": "13d87182a5332e9545ce32637c371c387f5ac49b0877230aff3b41c44c4dab89",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.111.woff2"
+    },
+    {
+      "file": "Hahmlet-081.woff2",
+      "bytes": 48540,
+      "sha256": "03da22c0fbf89a1605412800ce0ef01233784bbdf652bb13c6aed55fad263911",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.112.woff2"
+    },
+    {
+      "file": "Hahmlet-082.woff2",
+      "bytes": 49972,
+      "sha256": "42b1833fd838ccc2fb2ca5e74a62e7355935c8a026d6c38bf4dbef383e250937",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.113.woff2"
+    },
+    {
+      "file": "Hahmlet-083.woff2",
+      "bytes": 48668,
+      "sha256": "3d90997a295e7c66bcc015a2beb87f8e1add08866e3938233c7fc5d08806e362",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.114.woff2"
+    },
+    {
+      "file": "Hahmlet-084.woff2",
+      "bytes": 46508,
+      "sha256": "a4e811139d0a925da4b1b0b6815f4cb0c748d286b17dec3a42d3fcce843524c9",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.115.woff2"
+    },
+    {
+      "file": "Hahmlet-085.woff2",
+      "bytes": 46192,
+      "sha256": "68bca93cf70b37e2d7e6db07e87dc33bc721cd76778bdd0becefd96c0722f5f3",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.116.woff2"
+    },
+    {
+      "file": "Hahmlet-086.woff2",
+      "bytes": 43896,
+      "sha256": "6f1f79dd746320a248e5df5e1a4a9ac043ac063ef2c20adb4b6288e3047b012d",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.117.woff2"
+    },
+    {
+      "file": "Hahmlet-087.woff2",
+      "bytes": 35968,
+      "sha256": "4ac06889b19f87aadbe70721785479150c013598a9a368cbbb7eb8893594f70c",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.118.woff2"
+    },
+    {
+      "file": "Hahmlet-088.woff2",
+      "bytes": 31716,
+      "sha256": "16b7dbf065239897be3de3d786c92c0c4aa22150313e737411e9fa0d1804b4ac",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0V_24mv3Erc_zhHnsJJyNIqbDBDB2fQ.119.woff2"
+    },
+    {
+      "file": "Hahmlet-089.woff2",
+      "bytes": 13372,
+      "sha256": "d34e31db138a435084b0c4283e2c54f417170cfbf4562f349286904be13c33ac",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0Z_Dajc_L.woff2"
+    },
+    {
+      "file": "Hahmlet-090.woff2",
+      "bytes": 41040,
+      "sha256": "dc8dda000f7cccc22b673d7ba06c9db2dbc1d6e3c7660bba3ec348b562240888",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0Z_Hajc_L.woff2"
+    },
+    {
+      "file": "Hahmlet-091.woff2",
+      "bytes": 46032,
+      "sha256": "221c6ea3d1ade3bc3ac3e6c2a658039656bd8ee2ea5798bf858eb48caf92fbeb",
+      "source": "https://fonts.gstatic.com/s/hahmlet/v21/BngIUXpCQ3nKpIo0Z__ajQ.woff2"
+    }
+  ],
+  "binaryVersions": [
+    "Version 1.002"
+  ],
+  "verifiedCoverage": {
+    "mappedCodePoints": 3562,
+    "cssAccessibleCodePoints": 3562,
+    "hangulSyllables": 2788,
+    "hangulTotal": 11172,
+    "latinAscii": true,
+    "sampleText": "마루 부리 함렟 AI 자기소개서 면접 2026",
+    "sampleTextCovered": false,
+    "sampleMissingCodePoints": [
+      "U+B81F"
+    ]
+  },
+  "verifiedFontMetadata": [
+    {
+      "file": "Hahmlet-000.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 22,
+      "hangulSyllables": 19
+    },
+    {
+      "file": "Hahmlet-001.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 28,
+      "hangulSyllables": 25
+    },
+    {
+      "file": "Hahmlet-002.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 26,
+      "hangulSyllables": 23
+    },
+    {
+      "file": "Hahmlet-003.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 23,
+      "hangulSyllables": 20
+    },
+    {
+      "file": "Hahmlet-004.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 21,
+      "hangulSyllables": 18
+    },
+    {
+      "file": "Hahmlet-005.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 18,
+      "hangulSyllables": 15
+    },
+    {
+      "file": "Hahmlet-006.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 20,
+      "hangulSyllables": 17
+    },
+    {
+      "file": "Hahmlet-007.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 25,
+      "hangulSyllables": 22
+    },
+    {
+      "file": "Hahmlet-008.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 17,
+      "hangulSyllables": 14
+    },
+    {
+      "file": "Hahmlet-009.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 20,
+      "hangulSyllables": 17
+    },
+    {
+      "file": "Hahmlet-010.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 16,
+      "hangulSyllables": 13
+    },
+    {
+      "file": "Hahmlet-011.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 20,
+      "hangulSyllables": 17
+    },
+    {
+      "file": "Hahmlet-012.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 24,
+      "hangulSyllables": 21
+    },
+    {
+      "file": "Hahmlet-013.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 22,
+      "hangulSyllables": 19
+    },
+    {
+      "file": "Hahmlet-014.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 24,
+      "hangulSyllables": 21
+    },
+    {
+      "file": "Hahmlet-015.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 22,
+      "hangulSyllables": 19
+    },
+    {
+      "file": "Hahmlet-016.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 22,
+      "hangulSyllables": 19
+    },
+    {
+      "file": "Hahmlet-017.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 16,
+      "hangulSyllables": 13
+    },
+    {
+      "file": "Hahmlet-018.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 25,
+      "hangulSyllables": 22
+    },
+    {
+      "file": "Hahmlet-019.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 18,
+      "hangulSyllables": 15
+    },
+    {
+      "file": "Hahmlet-020.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 25,
+      "hangulSyllables": 22
+    },
+    {
+      "file": "Hahmlet-021.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 17,
+      "hangulSyllables": 14
+    },
+    {
+      "file": "Hahmlet-022.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 32,
+      "hangulSyllables": 29
+    },
+    {
+      "file": "Hahmlet-023.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 32,
+      "hangulSyllables": 29
+    },
+    {
+      "file": "Hahmlet-024.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 39,
+      "hangulSyllables": 36
+    },
+    {
+      "file": "Hahmlet-025.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 40,
+      "hangulSyllables": 37
+    },
+    {
+      "file": "Hahmlet-026.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 27,
+      "hangulSyllables": 24
+    },
+    {
+      "file": "Hahmlet-027.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 20,
+      "hangulSyllables": 17
+    },
+    {
+      "file": "Hahmlet-028.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 24,
+      "hangulSyllables": 21
+    },
+    {
+      "file": "Hahmlet-029.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 16,
+      "hangulSyllables": 13
+    },
+    {
+      "file": "Hahmlet-030.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 27,
+      "hangulSyllables": 24
+    },
+    {
+      "file": "Hahmlet-031.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 28,
+      "hangulSyllables": 25
+    },
+    {
+      "file": "Hahmlet-032.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 34,
+      "hangulSyllables": 31
+    },
+    {
+      "file": "Hahmlet-033.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 24,
+      "hangulSyllables": 21
+    },
+    {
+      "file": "Hahmlet-034.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 10,
+      "hangulSyllables": 7
+    },
+    {
+      "file": "Hahmlet-035.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 15,
+      "hangulSyllables": 12
+    },
+    {
+      "file": "Hahmlet-036.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 26,
+      "hangulSyllables": 23
+    },
+    {
+      "file": "Hahmlet-037.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 30,
+      "hangulSyllables": 27
+    },
+    {
+      "file": "Hahmlet-038.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 25,
+      "hangulSyllables": 22
+    },
+    {
+      "file": "Hahmlet-039.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 28,
+      "hangulSyllables": 25
+    },
+    {
+      "file": "Hahmlet-040.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 34,
+      "hangulSyllables": 31
+    },
+    {
+      "file": "Hahmlet-041.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 27,
+      "hangulSyllables": 24
+    },
+    {
+      "file": "Hahmlet-042.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 27,
+      "hangulSyllables": 24
+    },
+    {
+      "file": "Hahmlet-043.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 26,
+      "hangulSyllables": 23
+    },
+    {
+      "file": "Hahmlet-044.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 21,
+      "hangulSyllables": 18
+    },
+    {
+      "file": "Hahmlet-045.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 19,
+      "hangulSyllables": 16
+    },
+    {
+      "file": "Hahmlet-046.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 24,
+      "hangulSyllables": 21
+    },
+    {
+      "file": "Hahmlet-047.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 22,
+      "hangulSyllables": 19
+    },
+    {
+      "file": "Hahmlet-048.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 17,
+      "hangulSyllables": 14
+    },
+    {
+      "file": "Hahmlet-049.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 23,
+      "hangulSyllables": 20
+    },
+    {
+      "file": "Hahmlet-050.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 30,
+      "hangulSyllables": 27
+    },
+    {
+      "file": "Hahmlet-051.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 13,
+      "hangulSyllables": 10
+    },
+    {
+      "file": "Hahmlet-052.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 23,
+      "hangulSyllables": 20
+    },
+    {
+      "file": "Hahmlet-053.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 31,
+      "hangulSyllables": 28
+    },
+    {
+      "file": "Hahmlet-054.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 27,
+      "hangulSyllables": 24
+    },
+    {
+      "file": "Hahmlet-055.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 27,
+      "hangulSyllables": 24
+    },
+    {
+      "file": "Hahmlet-056.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 27,
+      "hangulSyllables": 24
+    },
+    {
+      "file": "Hahmlet-057.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 22,
+      "hangulSyllables": 19
+    },
+    {
+      "file": "Hahmlet-058.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 25,
+      "hangulSyllables": 22
+    },
+    {
+      "file": "Hahmlet-059.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 30,
+      "hangulSyllables": 27
+    },
+    {
+      "file": "Hahmlet-060.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 26,
+      "hangulSyllables": 23
+    },
+    {
+      "file": "Hahmlet-061.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 35,
+      "hangulSyllables": 32
+    },
+    {
+      "file": "Hahmlet-062.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 31,
+      "hangulSyllables": 28
+    },
+    {
+      "file": "Hahmlet-063.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 9,
+      "hangulSyllables": 6
+    },
+    {
+      "file": "Hahmlet-064.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 68,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "Hahmlet-065.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 11,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "Hahmlet-066.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 5,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "Hahmlet-067.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 24,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "Hahmlet-068.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 97,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "Hahmlet-069.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 47,
+      "hangulSyllables": 38
+    },
+    {
+      "file": "Hahmlet-070.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 43,
+      "hangulSyllables": 35
+    },
+    {
+      "file": "Hahmlet-071.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 50,
+      "hangulSyllables": 44
+    },
+    {
+      "file": "Hahmlet-072.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 54,
+      "hangulSyllables": 46
+    },
+    {
+      "file": "Hahmlet-073.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 51,
+      "hangulSyllables": 48
+    },
+    {
+      "file": "Hahmlet-074.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 63,
+      "hangulSyllables": 55
+    },
+    {
+      "file": "Hahmlet-075.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 75,
+      "hangulSyllables": 65
+    },
+    {
+      "file": "Hahmlet-076.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 90,
+      "hangulSyllables": 82
+    },
+    {
+      "file": "Hahmlet-077.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 91,
+      "hangulSyllables": 81
+    },
+    {
+      "file": "Hahmlet-078.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 95,
+      "hangulSyllables": 80
+    },
+    {
+      "file": "Hahmlet-079.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 101,
+      "hangulSyllables": 90
+    },
+    {
+      "file": "Hahmlet-080.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 98,
+      "hangulSyllables": 90
+    },
+    {
+      "file": "Hahmlet-081.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 99,
+      "hangulSyllables": 95
+    },
+    {
+      "file": "Hahmlet-082.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 103,
+      "hangulSyllables": 96
+    },
+    {
+      "file": "Hahmlet-083.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 103,
+      "hangulSyllables": 95
+    },
+    {
+      "file": "Hahmlet-084.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 103,
+      "hangulSyllables": 96
+    },
+    {
+      "file": "Hahmlet-085.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 104,
+      "hangulSyllables": 95
+    },
+    {
+      "file": "Hahmlet-086.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 103,
+      "hangulSyllables": 97
+    },
+    {
+      "file": "Hahmlet-087.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 103,
+      "hangulSyllables": 95
+    },
+    {
+      "file": "Hahmlet-088.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 102,
+      "hangulSyllables": 13
+    },
+    {
+      "file": "Hahmlet-089.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 115,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "Hahmlet-090.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 308,
+      "hangulSyllables": 0
+    },
+    {
+      "file": "Hahmlet-091.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 1.002"
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "min": 100.0,
+          "default": 400.0,
+          "max": 900.0
+        }
+      ],
+      "mappedCodePoints": 231,
+      "hangulSyllables": 0
+    }
+  ],
+  "coverageNote": "The official Hahmlet v1.002 upstream variable TTF and static WOFF2 also support 2,788 Hangul syllables. Less common syllables, including U+B81F in the Korean font name, require the host Pretendard fallback. The original Google Fonts unicode-range declarations and binaries are preserved.",
+  "licenseFile": {
+    "file": "LICENSE",
+    "bytes": 4477,
+    "sha256": "ddadb10d28a303e3ef3b1f7ec55d3027903b9ec566d2f87d3ee03f3c87c91711"
+  }
+}

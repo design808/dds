@@ -1,9 +1,9 @@
-import {createSettingsStore} from './design-preferences.js?v=1efb6220a88f30ed';
-import {applyDirection} from './direction-preview.js?v=1efb6220a88f30ed';
-import {mountDesignSettings} from './design-settings-panel.js?v=1efb6220a88f30ed';
-import {createBrandLogoSync} from './brand-logo.js?v=1efb6220a88f30ed';
-import './custom-controls.js?v=1efb6220a88f30ed';
-import './icon-tooltips.js?v=1efb6220a88f30ed';
+import {createSettingsStore} from './design-preferences.js?v=bbadd9cd6ada5a3d';
+import {applyDirection} from './direction-preview.js?v=bbadd9cd6ada5a3d';
+import {mountDesignSettings} from './design-settings-panel.js?v=bbadd9cd6ada5a3d';
+import {createBrandLogoSync} from './brand-logo.js?v=bbadd9cd6ada5a3d';
+import './custom-controls.js?v=bbadd9cd6ada5a3d';
+import './icon-tooltips.js?v=bbadd9cd6ada5a3d';
 
 const store=createSettingsStore(window);
 const root=document.documentElement;

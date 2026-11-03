@@ -1,0 +1,131 @@
+{
+  "family": "MaruBuri",
+  "displayName": "마루 부리",
+  "cssFamily": "DDS MaruBuri",
+  "version": "NAVER official 2023 webfont release",
+  "format": "woff2",
+  "style": "normal",
+  "weights": [
+    200,
+    300,
+    400,
+    600,
+    700
+  ],
+  "variable": false,
+  "modified": false,
+  "source": "https://hangeul.naver.com/css/fonts.css?5",
+  "license": "SIL Open Font License 1.1",
+  "licenseSource": "https://help.naver.com/service/30016/contents/18088?osType=PC&lang=ko",
+  "retrievedAt": "2026-11-03T02:01:41.404830+00:00",
+  "weightMatching": "No native 500 weight. Browser CSS matching uses the supplied 400/600 faces; no synthetic font file was created.",
+  "files": [
+    {
+      "file": "MaruBuri-ExtraLight.woff2",
+      "weight": 200,
+      "bytes": 412004,
+      "sha256": "53b95ab0da141254257b9548c4221415f9f573b0b432ab65d4fafda12a4648f7",
+      "source": "https://hangeul.pstatic.net/0/hangeul/2023/fonts/MaruBuri-ExtraLight.woff2"
+    },
+    {
+      "file": "MaruBuri-Light.woff2",
+      "weight": 300,
+      "bytes": 450216,
+      "sha256": "a839543dabc289a0b701435ad244a057606c98e71279921d6283aeb843ec9f25",
+      "source": "https://hangeul.pstatic.net/0/hangeul/2023/fonts/MaruBuri-Light.woff2"
+    },
+    {
+      "file": "MaruBuri-Regular.woff2",
+      "weight": 400,
+      "bytes": 429572,
+      "sha256": "74bd817d96466e5d071e19234faddc8099f9d5913757880a52a59516859a72ff",
+      "source": "https://hangeul.pstatic.net/0/hangeul/2023/fonts/MaruBuri-Regular.woff2"
+    },
+    {
+      "file": "MaruBuri-SemiBold.woff2",
+      "weight": 600,
+      "bytes": 502028,
+      "sha256": "5c8b39b683595d0ddcf2554148f4d2fb14c55cb967e5bff2e282b2936034fc75",
+      "source": "https://hangeul.pstatic.net/0/hangeul/2023/fonts/MaruBuri-SemiBold.woff2"
+    },
+    {
+      "file": "MaruBuri-Bold.woff2",
+      "weight": 700,
+      "bytes": 460008,
+      "sha256": "a1cfbd75774a5ff66a9f750bd4a33aa26d925488d047f077d06b0a44f1b895e0",
+      "source": "https://hangeul.pstatic.net/0/hangeul/2023/fonts/MaruBuri-Bold.woff2"
+    }
+  ],
+  "binaryVersions": [
+    "Version 2.000;hotconv 1.0.118;makeotfexe 2.5.65603",
+    "Version 2.000;hotconv 1.1.0;makeotfexe 2.6.0"
+  ],
+  "verifiedCoverage": {
+    "mappedCodePoints": 12398,
+    "cssAccessibleCodePoints": 12398,
+    "hangulSyllables": 11172,
+    "hangulTotal": 11172,
+    "latinAscii": true,
+    "sampleText": "마루 부리 함렟 AI 자기소개서 면접 2026",
+    "sampleTextCovered": true,
+    "sampleMissingCodePoints": []
+  },
+  "verifiedFontMetadata": [
+    {
+      "file": "MaruBuri-ExtraLight.woff2",
+      "os2Weight": 300,
+      "version": [
+        "Version 2.000;hotconv 1.1.0;makeotfexe 2.6.0"
+      ],
+      "axes": [],
+      "mappedCodePoints": 12398,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "MaruBuri-Light.woff2",
+      "os2Weight": 300,
+      "version": [
+        "Version 2.000;hotconv 1.1.0;makeotfexe 2.6.0"
+      ],
+      "axes": [],
+      "mappedCodePoints": 12398,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "MaruBuri-Regular.woff2",
+      "os2Weight": 400,
+      "version": [
+        "Version 2.000;hotconv 1.1.0;makeotfexe 2.6.0"
+      ],
+      "axes": [],
+      "mappedCodePoints": 12398,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "MaruBuri-SemiBold.woff2",
+      "os2Weight": 600,
+      "version": [
+        "Version 2.000;hotconv 1.1.0;makeotfexe 2.6.0"
+      ],
+      "axes": [],
+      "mappedCodePoints": 12398,
+      "hangulSyllables": 11172
+    },
+    {
+      "file": "MaruBuri-Bold.woff2",
+      "os2Weight": 700,
+      "version": [
+        "Version 2.000;hotconv 1.0.118;makeotfexe 2.5.65603"
+      ],
+      "axes": [],
+      "mappedCodePoints": 12398,
+      "hangulSyllables": 11172
+    }
+  ],
+  "weightMetadataNote": "The official ExtraLight binary identifies its subfamily as ExtraLight but its OS/2 usWeightClass is 300 (also used by Light). CSS maps the named ExtraLight face to 200; original binaries are not changed.",
+  "licenseFile": {
+    "file": "LICENSE",
+    "bytes": 11548,
+    "sha256": "9d83e9f4a1cc0108083e1db0da5ed9eca9c13d60a8791ab2229d05bba2251ac8"
+  }
+}

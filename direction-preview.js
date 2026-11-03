@@ -183,7 +183,7 @@ export async function applyDirection(doc,profile,theme='light'){
   if(!profile?.id)throw new Error('디자인 설정을 확인해 주세요.');
   const font=profile.font||'pretendard';
   const headingFont=profile.headingFont||font;
-  const families={suite:'DDS SUITE',plex:'DDS Plex KR',serif:'DDS Noto Serif KR',wanted:'DDS Wanted Sans',paperlogy:'DDS Paperlogy'};
+  const families={suite:'DDS SUITE',plex:'DDS Plex KR',serif:'DDS Noto Serif KR',wanted:'DDS Wanted Sans',paperlogy:'DDS Paperlogy',maruburi:'DDS MaruBuri',hahmlet:'DDS Hahmlet'};
   if(![font,headingFont].every(value=>['pretendard',...Object.keys(families)].includes(value)))throw new Error('지원하지 않는 서체입니다.');
   remember(doc);
   const root=doc.documentElement;
@@ -203,7 +203,8 @@ export async function applyDirection(doc,profile,theme='light'){
   root.dataset.directionFeatureColors=String(colorsEnabled&&Boolean(profile.featureColors));
   await loadSheet(doc);
   if(doc.fonts){
-    await Promise.all([...new Set([font,headingFont])].filter(value=>value!=='pretendard').flatMap(value=>[400,500,600,700].map(weight=>doc.fonts.load(`${weight} 16px "${families[value]}"`,'지원자 경험을 새로운 기회로 0123456789'))));
+    const loaded=await Promise.all([...new Set([font,headingFont])].filter(value=>value!=='pretendard').flatMap(value=>[400,500,600,700].map(weight=>doc.fonts.load(`${weight} 16px "${families[value]}"`,'지원자 경험을 새로운 기회로 0123456789'))));
+    if(loaded.some(faces=>!faces.length||faces.some(face=>face.status!=='loaded')))throw new Error('선택한 서체를 불러오지 못했습니다.');
   }
   return ()=>removeDirection(doc);
 }

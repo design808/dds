@@ -12,12 +12,14 @@ export const DEFAULT_SETTINGS=Object.freeze({
 });
 
 export const FONT_OPTIONS=Object.freeze([
-  Object.freeze({value:'pretendard',label:'Pretendard',family:"'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
+  Object.freeze({value:'pretendard',label:'프리텐다드 · Pretendard',family:"'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
   Object.freeze({value:'wanted',label:'원티드 산스 · Wanted Sans',family:"'DDS Wanted Sans','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
   Object.freeze({value:'paperlogy',label:'페이퍼로지 · Paperlogy',family:"'DDS Paperlogy','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
-  Object.freeze({value:'plex',label:'IBM Plex Sans KR',family:"'DDS Plex KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
-  Object.freeze({value:'suite',label:'SUITE',family:"'DDS SUITE','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
-  Object.freeze({value:'serif',label:'Noto Serif KR',family:"'DDS Noto Serif KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,serif"})
+  Object.freeze({value:'plex',label:'아이비엠 플렉스 산스 · IBM Plex Sans KR',family:"'DDS Plex KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
+  Object.freeze({value:'suite',label:'스위트 · SUITE',family:"'DDS SUITE','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
+  Object.freeze({value:'serif',label:'노토 세리프 KR · Noto Serif KR',family:"'DDS Noto Serif KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,serif"}),
+  Object.freeze({value:'maruburi',label:'마루 부리 · MaruBuri',family:"'DDS MaruBuri','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,serif"}),
+  Object.freeze({value:'hahmlet',label:'함렡 · Hahmlet',family:"'DDS Hahmlet','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,serif"})
 ]);
 
 export const PRIMARY_PRESETS=Object.freeze([
