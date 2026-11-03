@@ -1,0 +1,80 @@
+/* Block composition only. Shared DDS components provide their own appearance. */
+.dds-block-example .df-scene {width:100%; min-width:0; color:var(--text-primary); font-family:var(--font-sans);}
+.dds-block-example .df-scene :is(form,section,header,fieldset,div) {min-width:0;}
+.dds-block-example .df-scene :is(h2,h3,p,fieldset) {margin:0;}
+.dds-block-example .df-scene fieldset {border:0; padding:0;}
+.dds-block-example .df-scene .df-heading {gap:var(--space-2);}
+.dds-block-example .df-scene .df-field {display:grid; gap:var(--space-2); width:100%; min-width:0; max-width:none; margin:0;}
+.dds-block-example .df-scene .df-field > label,
+.dds-block-example .df-scene .df-label {display:block; margin:0; color:var(--text-primary); font:500 var(--type-label-1-size)/var(--type-label-1-line-height) var(--font-sans); letter-spacing:var(--type-label-1-tracking);}
+.dds-block-example .df-scene .df-field > :is(input,textarea),
+.dds-block-example .df-scene .df-field > .dds-input-group {width:100%; min-width:0; max-width:100%;}
+.dds-block-example .df-scene .df-field textarea {min-height:140px; font:400 var(--type-body-1-reading-size)/var(--type-body-1-reading-line-height) var(--font-sans); letter-spacing:var(--type-body-1-reading-tracking);}
+.dds-block-example .df-scene .df-error {color:var(--destructive); font:400 var(--type-caption-1-size)/var(--type-caption-1-line-height) var(--font-sans);}
+.dds-block-example .df-scene .df-field input[aria-invalid=true]:not(:focus-visible),
+.dds-block-example .df-scene .df-field textarea[aria-invalid=true]:not(:focus-visible),
+.dds-block-example .df-scene .dds-input-group:has(input[aria-invalid=true]):not(:focus-within) {border-color:var(--destructive);}
+.dds-block-example .df-scene .df-feedback:empty {display:none;}
+.dds-block-example .df-scene .df-actions {display:flex; justify-content:flex-end; flex-wrap:wrap; gap:var(--space-2);}
+.dds-block-example .df-login-layout {display:grid; place-items:center; width:100%; padding-block:var(--space-4);}
+.dds-block-example .df-login-card {width:100%; max-width:400px;}
+.dds-block-example .df-password {padding-inline-start:var(--control-padding-inline); padding-inline-end:4px;}
+.dds-block-example .df-password input {padding-inline:0;}
+.dds-block-example .df-password-toggle {display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; min-width:36px; padding:0; border:0; border-radius:var(--radius-sm); background:transparent; color:var(--text-secondary);}
+.dds-block-example .df-password-toggle svg {width:18px; height:18px;}
+.dds-block-example .df-password-toggle:hover,
+.dds-block-example .df-password-toggle:focus-visible {background:var(--surface); color:var(--text-primary);}
+.dds-block-example .df-checkbox {display:flex; align-items:center; gap:var(--space-2); color:var(--text-primary); font:400 var(--type-body-2-normal-size)/var(--type-body-2-normal-line-height) var(--font-sans); cursor:pointer;}
+.dds-block-example .df-checkbox input {flex-shrink:0; margin:0;}
+.dds-block-example .df-profile-avatar {width:44px; height:44px; flex-shrink:0; background:var(--surface); color:var(--text-primary); font:600 var(--type-body-1-normal-size)/var(--type-body-1-normal-line-height) var(--font-sans);}
+.dds-block-example .df-preference-list {display:grid; gap:var(--space-5);}
+.dds-block-example .df-preference {display:flex; align-items:center; justify-content:space-between; gap:var(--space-4); margin:0; cursor:pointer;}
+.dds-block-example .df-preference-copy {display:grid; gap:var(--space-1); flex:1; color:var(--text-primary); font:500 var(--type-label-1-size)/var(--type-label-1-line-height) var(--font-sans);}
+.dds-block-example .df-preference .switch-track {flex-shrink:0; margin:0;}
+.dds-block-example .df-summary {padding-top:var(--space-6); border-top:1px solid var(--border); outline:none;}
+.dds-block-example .df-summary-list {display:grid; gap:var(--space-3); margin:0;}
+.dds-block-example .df-summary-list > div {display:grid; grid-template-columns:100px minmax(0,1fr); gap:var(--space-4);}
+.dds-block-example .df-summary-list dt {color:var(--text-secondary); font:400 var(--type-body-2-normal-size)/var(--type-body-2-normal-line-height) var(--font-sans);}
+.dds-block-example .df-summary-list dd {margin:0; color:var(--text-primary); font:500 var(--type-body-2-normal-size)/var(--type-body-2-normal-line-height) var(--font-sans); white-space:pre-wrap; overflow-wrap:anywhere;}
+.dds-block-example .df-progress-block {gap:var(--space-2);}
+.dds-block-example .df-progress-block progress {display:block; width:100%; height:6px; margin:0; border:0; border-radius:var(--radius-sm); overflow:hidden; accent-color:var(--primary); background:var(--surface);}
+.dds-block-example .df-progress-block progress::-webkit-progress-bar {background:var(--surface); border-radius:var(--radius-sm);}
+.dds-block-example .df-progress-block progress::-webkit-progress-value {background:var(--primary); border-radius:var(--radius-sm); transition:width var(--duration-normal) var(--ease-standard);}
+.dds-block-example .df-progress-block progress::-moz-progress-bar {background:var(--primary); border-radius:var(--radius-sm);}
+.dds-block-example .df-choices legend {margin-bottom:var(--space-3);}
+.dds-block-example .df-chip-list {display:flex; flex-wrap:wrap; gap:var(--space-2);}
+.dds-block-example .df-chip-list .chip {font:500 var(--type-label-2-size)/var(--type-label-2-line-height) var(--font-sans);}
+.dds-block-example .df-character-count {display:flex; justify-content:flex-end; gap:2px; margin-top:calc(-1 * var(--space-2))!important; font-variant-numeric:tabular-nums;}
+.dds-block-example .df-document-toolbar {display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-4);}
+.dds-block-example .df-document-filters {max-width:100%;}
+.dds-block-example .df-document-filters .dds-segmented {width:max-content; max-width:100%;}
+.dds-block-example .df-document-filters .dds-choice {flex:0 0 auto; min-width:0; font:500 var(--type-label-1-size)/var(--type-label-1-line-height) var(--font-sans);}
+.dds-block-example .df-document-search {flex:0 1 240px; width:240px; max-width:100%;}
+.dds-block-example .df-document-search .search-field {width:100%; margin:0;}
+.dds-block-example .df-document-search .search-field > input,
+.dds-block-example .df-document-search .custom-search {min-width:0; flex:1; width:100%;}
+.dds-block-example .df-document-grid {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-4);}
+.dds-block-example .df-document-card {box-shadow:none;}
+.dds-block-example .df-document-card .dds-card-title {margin-top:var(--space-2);}
+.dds-block-example .df-document-open {display:inline; padding:0; border:0; background:none; color:inherit; font:inherit; text-align:start; letter-spacing:inherit; overflow-wrap:anywhere; cursor:pointer;}
+.dds-block-example .df-document-open::after {content:''; position:absolute; inset:0; z-index:1; border-radius:var(--radius-lg);}
+.dds-block-example .df-document-open:focus-visible {outline:none;}
+.dds-block-example .df-document-card:has(.df-document-open:focus-visible) {border-color:var(--primary); outline:1px solid var(--primary); outline-offset:0;}
+.dds-block-example .df-document-card:has(.df-document-open) {transition:border-color var(--duration-normal) var(--ease-standard),box-shadow var(--duration-normal) var(--ease-standard);}
+.dds-block-example .df-document-card:has(.df-document-open):hover {border-color:var(--control-border); box-shadow:var(--shadow-sm);}
+.dds-block-example .df-document-empty {justify-items:center; padding:var(--space-8) var(--space-4); text-align:center;}
+.dds-block-example .df-document-editor .df-field textarea {min-height:240px;}
+@container (max-width:700px) {
+  .dds-block-example .df-document-toolbar {align-items:stretch;}
+  .dds-block-example .df-document-search {flex:1 1 100%; width:100%;}
+}
+@container (max-width:520px) {
+  .dds-block-example .df-login-layout {padding-block:0;}
+  .dds-block-example .df-login-card {padding:var(--space-5);}
+  .dds-block-example .df-document-grid {grid-template-columns:minmax(0,1fr);}
+  .dds-block-example .df-document-card {padding:var(--space-5);}
+  .dds-block-example .df-summary-list > div {grid-template-columns:minmax(0,1fr); gap:var(--space-1);}
+  .dds-block-example .df-profile > .db-header {align-items:flex-start;}
+  .dds-block-example .df-preference {gap:var(--space-3);}
+  .dds-block-example .df-title-row {flex-wrap:wrap;}
+}

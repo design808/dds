@@ -1,0 +1,70 @@
+/* Block gallery and composition examples belong to the documentation site. */
+.dds-blocks-page .workspace {margin-left:0;}
+@media (min-width:768px) {.dds-blocks-page #sidebar {display:none;}}
+.dds-blocks-page-content {min-width:0;}
+.dds-blocks-toolbar {display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px;}
+.dds-blocks-filters {width:max-content;max-width:100%;overflow-x:auto;}
+.dds-blocks-filters button {flex:0 0 auto;white-space:nowrap;}
+.dds-blocks-search {width:240px;max-width:100%;}
+.dds-blocks-search .search-field {width:100%;}
+.dds-blocks-results-heading {display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:600;}
+.dds-blocks-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px;}
+.dds-block-card {position:relative;min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--background);transition:border-color var(--duration-fast) var(--ease-standard),box-shadow var(--duration-fast) var(--ease-standard);}
+.dds-block-card:has(.dds-block-card-trigger:is(:hover,:focus-visible)) {border-color:var(--primary);box-shadow:var(--shadow-sm);}
+.dds-block-thumbnail {position:relative;height:340px;overflow:hidden;border-bottom:1px solid var(--border);background:var(--background);}
+.dds-block-scene {position:absolute;top:var(--block-preview-top,16px);left:50%;width:760px;padding:24px;transform:translateX(-50%) scale(var(--block-preview-scale,.5));transform-origin:top center;pointer-events:none;}
+.dds-block-card-caption {display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px 0;}
+.dds-block-category {display:block;margin-bottom:4px;font-size:var(--type-caption-1-size);line-height:var(--type-caption-1-line-height);color:var(--text-secondary);}
+.dds-block-card-caption h2 {margin:0;color:var(--text-strong);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:600;letter-spacing:var(--type-body-1-normal-tracking);}
+.dds-block-expand {display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;color:var(--text-secondary);border-radius:var(--radius-md);}
+.dds-block-expand .icon {width:20px;height:20px;}
+.dds-block-card-description {margin:8px 24px 24px;font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);color:var(--text-secondary);overflow-wrap:anywhere;}
+.dds-block-card-trigger {position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;border-radius:inherit;background:transparent;}
+.dds-block-card-trigger:focus-visible {outline:1px solid var(--primary);outline-offset:-1px;}
+.dds-block-card:has(.dds-block-card-trigger:hover) .dds-block-expand {background:var(--surface);color:var(--foreground);}
+.dds-blocks-empty {grid-column:1/-1;padding:64px 24px;text-align:center;}
+.dds-blocks-empty h2 {font-size:var(--type-heading-2-size);line-height:var(--type-heading-2-line-height);}
+.dds-blocks-empty p {margin:0;color:var(--text-secondary);}
+
+.dds-block-dialog {flex-direction:column;width:min(1280px,calc(100vw - 48px));max-width:calc(100vw - 48px);height:min(900px,calc(100dvh - 48px));max-height:calc(100dvh - 48px);padding:0;border:1px solid var(--border);border-radius:var(--radius-xl);background:var(--background);color:var(--foreground);overflow:hidden;}
+.dds-block-dialog[open] {display:flex;}
+.dds-block-dialog-header {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 24px;padding:20px 24px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.dds-block-dialog-header h2 {flex:1;min-width:0;margin:0;font-size:var(--type-heading-2-size);line-height:var(--type-heading-2-line-height);font-weight:600;overflow-wrap:anywhere;}
+.dds-block-dialog-close {display:grid;place-items:center;flex-shrink:0;width:40px;height:40px;padding:8px;border:0;border-radius:var(--radius-md);color:var(--text-secondary);background:transparent;}
+.dds-block-dialog-close .icon {width:22px;height:22px;}
+.dds-block-dialog-close:is(:hover,:focus-visible) {background:var(--muted);color:var(--foreground);}
+.dds-block-dialog-close:focus-visible {outline:1px solid var(--primary);outline-offset:0;}
+.dds-block-device-tabs {width:max-content;max-width:100%;}
+.dds-block-device-tabs button {min-width:64px;white-space:nowrap;}
+.dds-block-dialog-body {flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:24px;background:var(--background);}
+.dds-block-viewport {width:100%;max-width:100%;margin-inline:auto;}
+.dds-block-dialog[data-device=mobile] .dds-block-viewport {width:390px;}
+.dds-block-dialog-footer {display:flex;align-items:flex-start;gap:12px 20px;flex-wrap:wrap;padding:16px 24px;border-top:1px solid var(--border);flex-shrink:0;font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);color:var(--text-secondary);}
+.dds-block-dialog-footer>span {padding-top:6px;}
+.dds-block-dialog-footer>div {display:flex;flex-wrap:wrap;gap:8px;min-width:0;}
+.dds-block-dialog-footer .chip {font-size:var(--type-label-2-size);line-height:var(--type-label-2-line-height);}
+
+/* Shared example typography and layout use DDS roles and existing controls. */
+.dds-block-example {container-type:inline-size;container-name:dds-block;min-width:0;width:100%;font-family:var(--font-sans);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);font-weight:400;letter-spacing:var(--type-body-2-normal-tracking);color:var(--text-primary);}
+.dds-block-example :is(h1,h2,h3,h4,p) {margin-top:0;}
+.dds-block-example :is(h1,h2,h3,h4) {color:var(--text-strong);}
+.dds-block-example .db-title {margin:0;font-family:var(--font-sans);font-size:var(--type-heading-2-size);line-height:var(--type-heading-2-line-height);font-weight:600;letter-spacing:var(--type-heading-2-tracking);}
+.dds-block-example .db-section-title {margin:0;font-family:var(--font-sans);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:600;letter-spacing:var(--type-body-1-normal-tracking);}
+.dds-block-example .db-muted {color:var(--text-secondary);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);font-weight:400;letter-spacing:var(--type-body-2-normal-tracking);}
+.dds-block-example .db-header {display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0;}
+.dds-block-example .db-stack {display:grid;gap:16px;min-width:0;}
+.dds-block-example .db-inline {display:flex;align-items:center;flex-wrap:wrap;gap:8px;min-width:0;}
+.dds-block-example .db-fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;min-width:0;}
+.dds-block-example .db-rule {height:1px;border:0;background:var(--border);margin:8px 0;}
+.dds-block-example :is(.field,.custom-select) {width:100%;max-width:100%;min-width:0;}
+.dds-block-example .field label {font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:500;}
+.dds-block-example .helper {font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);}
+@container dds-block (max-width:520px) {.dds-block-example .db-fields {grid-template-columns:minmax(0,1fr);}.dds-block-example .db-header {flex-wrap:wrap;}}
+@media(max-width:900px) {.dds-blocks-grid {grid-template-columns:minmax(0,1fr);}}
+@media(max-width:560px) {
+  .dds-blocks-toolbar {gap:16px;}.dds-blocks-search {width:100%;}.dds-blocks-filters {width:100%;}.dds-blocks-filters button {padding-inline:12px;}
+  .dds-block-thumbnail {height:280px;}.dds-block-card-caption {padding:16px 20px 0;}.dds-block-card-description {margin:8px 20px 20px;}
+  .dds-block-scene {width:390px;}
+  .dds-block-dialog {width:calc(100vw - 24px);max-width:calc(100vw - 24px);height:calc(100dvh - 24px);max-height:calc(100dvh - 24px);}
+  .dds-block-dialog-header {display:grid;grid-template-columns:minmax(0,1fr) auto;padding:16px;gap:12px;}.dds-block-device-tabs {grid-column:1/-1;grid-row:2;justify-self:center;}.dds-block-dialog-body {padding:16px;}.dds-block-dialog-footer {padding:12px 16px;max-height:144px;overflow:auto;}
+}
