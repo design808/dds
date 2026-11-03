@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=15f438262618eb87';
-import {collectionCount,statusBadge} from './visibility.js?v=15f438262618eb87';
+import {icon} from './icons.js?v=d05621b267929a20';
+import {collectionCount,statusBadge} from './visibility.js?v=d05621b267929a20';
 const button=(text,attrs='',cls='')=>`<button type="button" class="btn ${cls}" ${attrs}>${text}</button>`;
 const ic=(name,label,attrs='')=>`<button type="button" class="icon-btn" aria-label="${label}" ${attrs}>${icon(name)}</button>`;
 const link=(text,route,current=false)=>`<a class="dds-nav-link dds-nav-control" href="#${route}" ${current?'aria-current="page"':''}>${text}</a>`;
