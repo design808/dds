@@ -1,4 +1,4 @@
-import {chartComponents, chartPresentation} from './chart-catalog.js?v=26f36082a2ea895b';
+import {chartComponents, chartPresentation} from './chart-catalog.js?v=4255094fac65093f';
 
 // SVG examples use local data. Service adapters keep their existing chart engine,
 // data requests, permissions and export behavior.
@@ -29,7 +29,8 @@ const svgText = (x,y,text,extra='') => `<text x="${x}" y="${y}" ${extra}>${esc(t
 const line = (x1,y1,x2,y2,cls='dds-chart-grid') => `<line class="${cls}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
 function datum(markup, label, value, unit, series = 0) {
   const content = value == null ? `${label} · 기록 없음` : `${label} · ${num(value)}${unit}`;
-  return `<g class="dds-chart-datum" tabindex="0" role="img" aria-label="${esc(content)}" data-chart-point="${esc(content)}" data-chart-label="${esc(label.split(' · ')[0])}" data-chart-series="${series}">${markup}</g>`;
+  const [item, ...name] = label.split(' · ');
+  return `<g class="dds-chart-datum" tabindex="0" role="img" aria-label="${esc(content)}" data-chart-point="${esc(content)}" data-chart-label="${esc(item)}" data-chart-name="${esc(name.join(' · '))}" data-chart-value="${value == null ? '' : esc(num(value))}" data-chart-unit="${esc(unit)}" data-chart-missing="${value == null}" data-chart-series="${series}">${markup}</g>`;
 }
 function svgWrap(content, title, width=600, height=300, shape='cartesian') {
   return `<svg class="dds-chart-svg dds-chart-svg--${shape}" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="group" aria-label="${esc(title)}">${content}</svg>`;
@@ -56,6 +57,13 @@ function segmentedPath(points, mode='linear') {
   }
   return d;
 }
+function roundedBar(x,y,width,height,end='top',radius=4) {
+  const r=Math.max(0,Math.min(radius,width/2,height/2));
+  if(end==='top')return `M ${x} ${y+height} V ${y+r} Q ${x} ${y} ${x+r} ${y} H ${x+width-r} Q ${x+width} ${y} ${x+width} ${y+r} V ${y+height} Z`;
+  if(end==='bottom')return `M ${x} ${y} H ${x+width} V ${y+height-r} Q ${x+width} ${y+height} ${x+width-r} ${y+height} H ${x+r} Q ${x} ${y+height} ${x} ${y+height-r} Z`;
+  if(end==='right')return `M ${x} ${y} H ${x+width-r} Q ${x+width} ${y} ${x+width} ${y+r} V ${y+height-r} Q ${x+width} ${y+height} ${x+width-r} ${y+height} H ${x} Z`;
+  return `M ${x} ${y} H ${x+width} V ${y+height} H ${x} Z`;
+}
 function cartesian(id, variant, data, hidden) {
   const visible=data.series.map((s,index)=>({...s,index})).filter(s=>!hidden.has(s.index));
   const isArea=id==='area-chart', isLine=id==='line-chart', stacked=['stacked','percent'].includes(variant);
@@ -65,8 +73,8 @@ function cartesian(id, variant, data, hidden) {
   let plot=axes(data,min,max,data.labels,!isLine&&!isArea);
   if (variant==='horizontal') {
     plot=svgText(576,16,'점','text-anchor="end"');
-    for(let n=0;n<=100;n+=25){const gx=140+n*4.1;plot+=line(gx,25,gx,245)+svgText(gx,277,n,'text-anchor="middle"');}
-    if (!hidden.has(0)) data.labels.forEach((label,i)=>{const value=data.series[0].values[i],cy=50+i*55;plot+=svgText(128,cy+5,label,'text-anchor="end"')+datum(`<rect x="140" y="${cy-13}" width="${value*4.1}" height="26" rx="4" fill="${color(0)}"/>${svgText(150+value*4.1,cy+5,value,'class="dds-chart-value"')}`,label,value,'점');});
+    for(let n=0;n<=100;n+=25){const gx=140+n*4.1;plot+=line(gx,25,gx,245,n===0?'dds-chart-baseline':'dds-chart-grid')+svgText(gx,277,n,'text-anchor="middle"');}
+    if (!hidden.has(0)) data.labels.forEach((label,i)=>{const value=data.series[0].values[i],cy=50+i*55;plot+=svgText(128,cy+5,label,'text-anchor="end"')+datum(`<path class="dds-chart-bar dds-chart-bar--horizontal" d="${roundedBar(140,cy-10,value*4.1,20,'right')}" fill="${color(0)}"/>${svgText(150+value*4.1,cy+5,value,'class="dds-chart-value"')}`,label,value,'점');});
     return svgWrap(plot,data.title);
   }
   if (isLine || isArea) {
@@ -80,25 +88,27 @@ function cartesian(id, variant, data, hidden) {
       if (isArea) {
         const lower=data.labels.map((_,i)=>[x(i),y(stacked?lows[i]:0)]).reverse();
         const fillPath=d+lower.map(([px,py])=>` L ${px} ${py}`).join('')+' Z';
-        if(variant==='gradient')plot+=`<defs><linearGradient id="${data.uid}-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${color(s.index)}" stop-opacity=".45"/><stop offset="1" stop-color="${color(s.index)}" stop-opacity=".04"/></linearGradient></defs>`;
-        plot+=`<path d="${fillPath}" fill="${variant==='gradient'?`url(#${data.uid}-fill)`:color(s.index)}" opacity="${variant==='gradient'?1:stacked?.32:.16}"/>`;
+        if(variant==='gradient')plot+=`<defs><linearGradient id="${data.uid}-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${color(s.index)}" style="stop-opacity:var(--chart-gradient-start,.24)"/><stop offset="1" stop-color="${color(s.index)}" style="stop-opacity:var(--chart-gradient-end,.02)"/></linearGradient></defs>`;
+        plot+=`<path class="dds-chart-area${stacked?' dds-chart-area--stacked':''}${variant==='gradient'?' dds-chart-area--gradient':''}" d="${fillPath}" fill="${variant==='gradient'?`url(#${data.uid}-fill)`:color(s.index)}" style="fill-opacity:${variant==='gradient'?'1':stacked?'var(--chart-area-stacked-opacity,.14)':'var(--chart-area-opacity,.1)'}"/>`;
       }
-      plot+=`<path d="${d}" fill="none" stroke="${color(s.index)}" stroke-width="3" ${s.index?'stroke-dasharray="7 5"':''}/>`;
+      plot+=`<path class="dds-chart-series-line" data-series="${s.index}" d="${d}" fill="none" stroke="${color(s.index)}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
       points.forEach((point,i)=>{
         if(!point)return;
-        plot+=datum(`<circle class="dds-chart-point-hit" cx="${point[0]}" cy="${point[1]}" r="13"/><circle cx="${point[0]}" cy="${point[1]}" r="${variant==='dots'?5:3.5}" fill="${color(s.index)}" stroke="var(--background)" stroke-width="2"/>`,`${data.labels[i]} · ${s.name}`,s.values[i],data.unit==='%'?`회 (${num(values[i])}%)`:data.unit,s.index);
+        plot+=datum(`<circle class="dds-chart-point-hit" cx="${point[0]}" cy="${point[1]}" r="13"/><circle class="dds-chart-point${variant==='dots'?' is-always-visible':''}" cx="${point[0]}" cy="${point[1]}" r="4" fill="${color(s.index)}" stroke="var(--background)" stroke-width="2"/>`,`${data.labels[i]} · ${s.name}`,s.values[i],data.unit==='%'?`회 (${num(values[i])}%)`:data.unit,s.index);
       });
       if(stacked)cumulative=cumulative.map((v,i)=>v+(values[i]??0));
     });
   } else {
-    const groupWidth=Math.min(64,400/data.labels.length), seriesCount=Math.max(visible.length,1);
+    const groupWidth=Math.min(48,400/data.labels.length), seriesCount=Math.max(visible.length,1);
     data.labels.forEach((label,i)=>{
       let sum=0;
+      const lastNonzero=visible.filter(s=>s.values[i]!==0).at(-1)?.index;
       visible.forEach((s,j)=>{
-        const v=s.values[i],width=stacked?groupWidth:groupWidth/seriesCount-4;
-        const bx=x(i)-groupWidth/2+(stacked?0:j*groupWidth/seriesCount);
+        const v=s.values[i],gap=seriesCount>1?4:0,width=stacked?groupWidth:groupWidth/seriesCount-gap;
+        const bx=x(i)-groupWidth/2+(stacked?0:j*groupWidth/seriesCount+gap/2);
         const by=y(v+(stacked?sum:0)),bottom=y(stacked?sum:0);
-        plot+=datum(`<rect x="${bx}" y="${Math.min(by,bottom)}" width="${width}" height="${Math.abs(bottom-by)}" rx="${stacked?0:4}" fill="${color(s.index)}" ${s.index?'stroke="var(--background)" stroke-width="1"':''}/>${variant==='labels'||variant==='negative'?svgText(bx+width/2,v<0?by+20:by-10,(v>0&&variant==='negative'?'+':'')+v,'text-anchor="middle" class="dds-chart-value"'):''}`,`${label} · ${s.name}`,v,data.unit,s.index);
+        const end=stacked&&s.index!==lastNonzero?'none':v<0?'bottom':'top';
+        plot+=datum(`<path class="dds-chart-bar${stacked?' dds-chart-bar--stacked':''}" d="${roundedBar(bx,Math.min(by,bottom),width,Math.abs(bottom-by),end)}" fill="${color(s.index)}"/>${variant==='labels'||variant==='negative'?svgText(bx+width/2,v<0?by+20:by-10,(v>0&&variant==='negative'?'+':'')+v,'text-anchor="middle" class="dds-chart-value"'):''}`,`${label} · ${s.name}`,v,data.unit,s.index);
         sum+=v;
       });
     });
@@ -114,12 +124,12 @@ function circular(id,variant,data,hidden) {
   let plot='',angle=0;
   for(const s of visible){
     const portion=s.value/total, end=angle+portion*359.9999;
-    let mark=id==='pie-chart'?`<path d="M 180 150 L ${circlePoint(180,150,108,angle).join(' ')} ${arcPath(180,150,108,angle,end).replace(/^M [^A]+/,'')} Z" fill="${color(s.index)}" stroke="var(--background)" stroke-width="3"/>`:`<path d="${arcPath(180,150,96,angle+1,end-1)}" fill="none" stroke="${color(s.index)}" stroke-width="36"/>`;
+    let mark=id==='pie-chart'?`<path class="dds-chart-slice" d="M 180 150 L ${circlePoint(180,150,108,angle).join(' ')} ${arcPath(180,150,108,angle,end).replace(/^M [^A]+/,'')} Z" fill="${color(s.index)}" stroke="var(--background)" stroke-width="2"/>`:`<path class="dds-chart-donut-segment" d="${arcPath(180,150,96,angle+1,end-1)}" fill="none" stroke="${color(s.index)}" stroke-width="24"/>`;
     if(variant==='labels') {const p=circlePoint(180,150,134,angle+(end-angle)/2);mark+=svgText(p[0],p[1]+5,Math.round(portion*100)+'%','text-anchor="middle" class="dds-chart-value"');}
     plot+=datum(mark,s.label,s.value,`개 (${num(portion*100)}%)`,s.index);
     angle=end;
   }
-  if(id==='donut-chart'&&variant==='total')plot+=svgText(180,145,total,'text-anchor="middle" class="dds-chart-total"')+svgText(180,172,'문서 합계 · 개','text-anchor="middle"');
+  if(id==='donut-chart'&&variant==='total')plot+=svgText(180,148,total,'text-anchor="middle" class="dds-chart-total"')+svgText(180,173,'문서 합계 · 개','text-anchor="middle" class="dds-chart-center-caption"');
   return svgWrap(plot,data.title,360,300,'circular');
 }
 function radar(variant,data,hidden) {
@@ -127,29 +137,29 @@ function radar(variant,data,hidden) {
   let plot='';
   for(let step=1;step<=4;step++)plot+=`<polygon class="dds-chart-grid" fill="none" points="${data.labels.map((_,i)=>circlePoint(cx,cy,r*step/4,i*360/n).join(',')).join(' ')}"/>`;
   data.labels.forEach((label,i)=>{const p=circlePoint(cx,cy,r,i*360/n),t=circlePoint(cx,cy,r+28,i*360/n);plot+=line(cx,cy,...p)+svgText(t[0],t[1]+5,label,`text-anchor="${i===0||i===3?'middle':i<3?'start':'end'}"`);});
-  [25,50,75,100].forEach(value=>{plot+=svgText(cx+7,cy-r*value/100+4,value);});
+  [50,100].forEach(value=>{plot+=svgText(cx+8,cy-r*value/100+4,value,'class="dds-chart-axis-tick"');});
   data.series.forEach((s,j)=>{
     if(hidden.has(j))return;
     const points=s.values.map((v,i)=>circlePoint(cx,cy,r*v/100,i*360/n));
-    plot+=`<polygon points="${points.map(p=>p.join(',')).join(' ')}" fill="${color(j)}" fill-opacity=".1" stroke="${color(j)}" stroke-width="2.5" ${j?'stroke-dasharray="6 4"':''}/>`;
-    points.forEach((p,i)=>{plot+=datum(`<circle class="dds-chart-point-hit" cx="${p[0]}" cy="${p[1]}" r="12"/><circle cx="${p[0]}" cy="${p[1]}" r="4" fill="${color(j)}" stroke="var(--background)" stroke-width="2"/>`,`${data.labels[i]} · ${s.name}`,s.values[i],'점',j);});
+    plot+=`<polygon class="dds-chart-radar-area" data-series="${j}" points="${points.map(p=>p.join(',')).join(' ')}" fill="${color(j)}" style="fill-opacity:var(--chart-radar-opacity,.06)" stroke="${color(j)}" stroke-width="2" ${j?'stroke-dasharray="4 4"':''}/>`;
+    points.forEach((p,i)=>{plot+=datum(`<circle class="dds-chart-point-hit" cx="${p[0]}" cy="${p[1]}" r="12"/><circle class="dds-chart-point" cx="${p[0]}" cy="${p[1]}" r="3.5" fill="${color(j)}" stroke="var(--background)" stroke-width="2"/>`,`${data.labels[i]} · ${s.name}`,s.values[i],'점',j);});
   });
   return svgWrap(plot,data.title,600,320,'radar');
 }
 function radial(variant,data,hidden) {
   let plot='';
   data.labels.forEach((label,i)=>{
-    const r=112-i*30,value=data.series[0].values[i],goal=data.goals[i];
+    const r=112-i*28,value=data.series[0].values[i],goal=data.goals[i];
     if(hidden.has(i))return;
-    plot+=`<circle cx="170" cy="150" r="${r}" fill="none" stroke="var(--surface)" stroke-width="19"/>`;
-    plot+=datum(`<path d="${arcPath(170,150,r,0,value/goal*359.9999)}" fill="none" stroke="${color(i)}" stroke-width="19" stroke-linecap="round"/>`,label,value,`회 / 목표 ${goal}회 (${Math.round(value/goal*100)}%)`,i);
+    plot+=`<circle class="dds-chart-radial-track" cx="170" cy="150" r="${r}" fill="none" stroke="var(--surface)" stroke-width="14"/>`;
+    plot+=datum(`<path class="dds-chart-radial-arc" d="${arcPath(170,150,r,0,value/goal*359.9999)}" fill="none" stroke="${color(i)}" stroke-width="14" stroke-linecap="round"/>`,label,value,`회 / 목표 ${goal}회 (${Math.round(value/goal*100)}%)`,i);
   });
-  if(data.labels.length===1&&!hidden.has(0))plot+=svgText(170,152,Math.round(data.series[0].values[0]/data.goals[0]*100)+'%','text-anchor="middle" class="dds-chart-total"')+svgText(170,180,'목표 달성','text-anchor="middle"');
+  if(data.labels.length===1&&!hidden.has(0))plot+=svgText(170,152,Math.round(data.series[0].values[0]/data.goals[0]*100)+'%','text-anchor="middle" class="dds-chart-total"')+svgText(170,180,'목표 달성','text-anchor="middle" class="dds-chart-center-caption"');
   return svgWrap(plot,data.title,340,300,'circular');
 }
 function scatter(data,hidden) {
   let plot=axes({...data,labels:['0분','15분','30분','45분','60분']},0,100);
-  if(!hidden.has(0))data.x.forEach((v,i)=>{const x=78+v/60*476,y=250-data.series[0].values[i]/100*220;plot+=datum(`<circle class="dds-chart-point-hit" cx="${x}" cy="${y}" r="15"/><circle cx="${x}" cy="${y}" r="7" fill="${color(0)}" fill-opacity=".75" stroke="var(--background)" stroke-width="2"/>`,`${data.labels[i]} · ${v}분`,data.series[0].values[i],'점');});
+  if(!hidden.has(0))data.x.forEach((v,i)=>{const x=78+v/60*476,y=250-data.series[0].values[i]/100*220;plot+=datum(`<circle class="dds-chart-point-hit" cx="${x}" cy="${y}" r="15"/><circle class="dds-chart-point is-always-visible dds-chart-scatter-point" cx="${x}" cy="${y}" r="5" fill="${color(0)}" fill-opacity=".85" stroke="var(--background)" stroke-width="2"/>`,`${data.labels[i]} · ${v}분`,data.series[0].values[i],'점');});
   return svgWrap(plot,data.title);
 }
 function heatmap(data) {
@@ -171,7 +181,7 @@ function legendItems(id,data) {
   return data.series.map((s,index)=>({name:s.name,index}));
 }
 function legend(id,data,hidden) {
-  return `<div class="dds-chart-legend" role="group" aria-label="표시할 데이터">${legendItems(id,data).map(s=>`<button type="button" data-chart-legend="${s.index}" aria-pressed="${!hidden.has(s.index)}"><span class="dds-chart-key" style="--series:${color(s.index)}" data-series="${s.index}" aria-hidden="true"></span><span>${esc(s.name)}</span>${s.value!=null?`<strong>${s.value}${data.unit}${s.goal?` / ${s.goal}${data.unit} · ${Math.round(s.value/s.goal*100)}%`:''}</strong>`:''}</button>`).join('')}</div>`;
+  return `<div class="dds-chart-legend${['pie-chart','donut-chart','radial-chart'].includes(id)?' dds-chart-legend--values':''}" role="group" aria-label="표시할 데이터">${legendItems(id,data).map(s=>`<button type="button" data-chart-legend="${s.index}" aria-pressed="${!hidden.has(s.index)}"><span class="dds-chart-key" style="--series:${color(s.index)}" data-series="${s.index}" aria-hidden="true"></span><span class="dds-chart-legend-label">${esc(s.name)}</span>${s.value!=null?`<strong class="dds-chart-legend-value">${s.value}${data.unit}${s.goal?` / ${s.goal}${data.unit} · ${Math.round(s.value/s.goal*100)}%`:''}</strong>`:''}</button>`).join('')}</div>`;
 }
 function tableHTML(id,data) {
   const headings=['항목',...(data.x?['연습 시간(분)']:[]),...data.series.map(s=>s.name+`(${data.unit==='%'?'회':data.unit})`),...(data.goals?['목표(회)','달성률']:[]),...(['pie-chart','donut-chart'].includes(id)?['비율']:[])];
@@ -216,24 +226,35 @@ export function bindCharts(root=document) {
     function showTip(point){
       if(!point)return;
       clearTimeout(tooltipTimer);
-      function row(text,series){
+      function row(name,value,unit,series,missing=false){
         const wrapper=document.createElement('span');
         wrapper.className='dds-chart-tooltip-row';
         const marker=document.createElement('span');
-        marker.className='dds-chart-key';
+        marker.className='dds-chart-key dds-chart-tooltip-marker';
         marker.style.setProperty('--series',color(series));
         marker.setAttribute('aria-hidden','true');
         const label=document.createElement('span');
-        label.textContent=text;
-        wrapper.append(marker,label);
+        label.className='dds-chart-tooltip-label';
+        label.textContent=name;
+        const number=document.createElement('strong');
+        number.className='dds-chart-tooltip-value';
+        number.textContent=missing?'기록 없음':`${value}${unit}`;
+        wrapper.append(marker,label,number);
         return wrapper;
       }
+      const data=chartData(id,variant);
+      const heading=document.createElement('strong');
+      heading.className='dds-chart-tooltip-title';
+      heading.textContent=point.dataset.chartLabel;
       if(id==='chart-tooltip'){
-        const data=chartData(id,variant),index=data.labels.indexOf(point.dataset.chartLabel);
-        const heading=document.createElement('strong');
-        heading.textContent=point.dataset.chartLabel;
-        tooltip.replaceChildren(heading,...data.series.flatMap((series,i)=>hidden.has(i)?[]:[row(`${series.name} · ${series.values[index]}${data.unit}`,i)]));
-      }else tooltip.replaceChildren(row(point.dataset.chartPoint,Number(point.dataset.chartSeries)));
+        const index=data.labels.indexOf(point.dataset.chartLabel);
+        tooltip.replaceChildren(heading,...data.series.flatMap((series,i)=>hidden.has(i)?[]:[row(series.name,series.values[index]==null?'':num(series.values[index]),data.unit,i,series.values[index]==null)]));
+      }else{
+        const series=Number(point.dataset.chartSeries);
+        const name=id==='scatter-chart'?'평가 점수':point.dataset.chartName||data.series[series]?.name||data.series[0].name;
+        if(id==='scatter-chart')heading.textContent+=` · 연습 ${point.dataset.chartName}`;
+        tooltip.replaceChildren(heading,row(name,point.dataset.chartValue,point.dataset.chartUnit,series,point.dataset.chartMissing==='true'));
+      }
       tooltip.hidden=false;
       const rect=point.getBoundingClientRect(),parent=example.getBoundingClientRect();
       const x=Math.max(8,Math.min(parent.width-tooltip.offsetWidth-8,rect.left-parent.left+rect.width/2-tooltip.offsetWidth/2));
