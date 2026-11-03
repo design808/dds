@@ -1,3 +1,24 @@
+/* The documentation canvas is separate from navigation and card surfaces. */
+.workspace {
+  min-height: calc(100dvh - 72px);
+  background: #fdfdfd;
+}
+[data-theme=dark] .workspace {
+  background: var(--background);
+}
+.workspace > #main :is(.entry-card, .dds-loading-entry, .principle,
+  .type-family-panel, .elevation, .anatomy-list > div, .table-wrap,
+  .icon-gallery, .checklist, .color-detail, .color-state-demo, .contrast-example,
+  .content-fit-examples) {
+  background: var(--background);
+}
+.workspace > #main .lucide-card:not(:hover) {
+  background: var(--background);
+}
+@media (max-width: 767px) {
+  .workspace {min-height: calc(100dvh - 64px);}
+}
+
 /* First paint mirrors the document shell while modules load. */
 .dds-loading .skeleton,
 .dds-loading-nav .skeleton {

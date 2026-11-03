@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=a49367cf015dc736';
+import {icon} from './icons.js?v=15f438262618eb87';
 document.querySelectorAll('[data-glyph]').forEach(el=>{el.innerHTML=icon(el.dataset.glyph);});
 document.querySelectorAll('.sample-chips button').forEach(button=>button.addEventListener('click',()=>{const selected=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',selected);button.classList.toggle('selected',selected);}));
 document.querySelectorAll('.sample-tabs button').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.sample-tabs button').forEach(b=>b.setAttribute('aria-pressed',b===button));}));
