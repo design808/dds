@@ -1,4 +1,4 @@
-import {chartComponents, chartVariants} from './chart-catalog.js?v=3b17dba0a951b53f';
+import {chartComponents, chartPresentation} from './chart-catalog.js?v=26f36082a2ea895b';
 
 // SVG examples use local data. Service adapters keep their existing chart engine,
 // data requests, permissions and export behavior.
@@ -19,7 +19,8 @@ export function chartData(id, variant) {
     return {title:'면접 연습 기록',unit:'회',labels,series:[{name:'연습 횟수',values}],note:'2026.09.07–11.01 · 0회와 기록 없음은 구분합니다.'};
   }
   if (id === 'area-chart' || (id === 'bar-chart' && variant === 'stacked')) return {title:'주별 학습 활동',unit:variant === 'percent' ? '%' : '회',labels:['1주','2주','3주','4주','5주','6주'],series:[{name:'자기소개서 검토',values:[6,10,8,14,12,18]}, ...(['stacked','percent'].includes(variant) ? [{name:'면접 연습',values:[3,4,6,5,8,10]}] : [])],note:variant === 'percent' ? '각 주의 활동 합계를 100%로 계산 · 원본 표에는 횟수 표시' : '주 단위 활동 횟수 · 0회부터 동일한 척도'};
-  if (id === 'line-chart' || id === 'chart-tooltip') return {title:'면접 평가 추이',unit:'점',labels:dates,series:[{name:'종합 평가',values:[62,68,null,76,82,86]}, ...(['multiple'].includes(variant) ? [{name:'직무 이해',values:[58,64,69,70,75,80]}] : [])],note:'0–100점 · 3회 종합 평가 미수집 · 없는 구간은 연결하지 않습니다.'};
+  if (id === 'chart-tooltip') return {title:'주별 학습 활동 비교',unit:'회',labels:['1주','2주','3주','4주','5주','6주'],series:[{name:'자기소개서 검토',values:[6,10,8,14,12,18]},{name:'면접 연습',values:[3,4,6,5,8,10]}],note:'같은 주의 두 계열을 함께 확인 · 0회부터 동일한 척도'};
+  if (id === 'line-chart') return {title:'면접 평가 추이',unit:'점',labels:dates,series:[{name:'종합 평가',values:[62,68,null,76,82,86]}, ...(['multiple'].includes(variant) ? [{name:'직무 이해',values:[58,64,69,70,75,80]}] : [])],note:'0–100점 · 3회 종합 평가 미수집 · 없는 구간은 연결하지 않습니다.'};
   if (variant === 'negative') return {title:'이전 평가 대비 변화',unit:'점',labels:scoreLabels,series:[{name:'점수 차이',values:[-4,8,-2,12]}],note:'이전 점수 대비 증감 · 0점을 기준으로 양수와 음수 표시'};
   return {title:'평가 항목별 점수',unit:'점',labels:scoreLabels,series:[{name:'이번 평가',values:[78,86,64,82]}, ...(variant === 'grouped' ? [{name:'이전 평가',values:[68,74,60,70]}] : [])],note:'각 항목 0–100점 · 예제 데이터'};
 }
@@ -28,7 +29,7 @@ const svgText = (x,y,text,extra='') => `<text x="${x}" y="${y}" ${extra}>${esc(t
 const line = (x1,y1,x2,y2,cls='dds-chart-grid') => `<line class="${cls}" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`;
 function datum(markup, label, value, unit, series = 0) {
   const content = value == null ? `${label} · 기록 없음` : `${label} · ${num(value)}${unit}`;
-  return `<g class="dds-chart-datum" tabindex="0" role="img" aria-label="${esc(content)}" data-chart-point="${esc(content)}" data-chart-series="${series}">${markup}</g>`;
+  return `<g class="dds-chart-datum" tabindex="0" role="img" aria-label="${esc(content)}" data-chart-point="${esc(content)}" data-chart-label="${esc(label.split(' · ')[0])}" data-chart-series="${series}">${markup}</g>`;
 }
 function svgWrap(content, title, width=600, height=300, shape='cartesian') {
   return `<svg class="dds-chart-svg dds-chart-svg--${shape}" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="group" aria-label="${esc(title)}">${content}</svg>`;
@@ -57,8 +58,8 @@ function segmentedPath(points, mode='linear') {
 }
 function cartesian(id, variant, data, hidden) {
   const visible=data.series.map((s,index)=>({...s,index})).filter(s=>!hidden.has(s.index));
-  const isArea=id==='area-chart', isLine=id==='line-chart'||id==='chart-tooltip', stacked=['stacked','percent'].includes(variant);
-  const min=variant==='negative'?-20:0, max=variant==='negative'?20:(isArea||stacked ? variant==='percent'?100:40 :100);
+  const isArea=id==='area-chart', isLine=id==='line-chart', stacked=['stacked','percent'].includes(variant);
+  const min=variant==='negative'?-20:0, max=variant==='negative'||id==='chart-tooltip'?20:(isArea||stacked ? variant==='percent'?100:40 :100);
   const y=value=>250-(value-min)/(max-min)*220;
   const x=i=>(isLine||isArea?78:94)+i*(isLine||isArea?476:444)/Math.max(1,data.labels.length-1);
   let plot=axes(data,min,max,data.labels,!isLine&&!isArea);
@@ -187,14 +188,15 @@ function chartMarkup(id,variant,uid,hidden=new Set(),mini=false) {
 }
 
 export function chartDemo(id,uid,mini=false) {
-  if(id!=='chart'&&!chartVariants[id])return null;
+  const presentation=chartPresentation(id);
+  if(id!=='chart'&&!presentation)return null;
   if(id==='chart'){
     if(mini)return `<div class="dds-chart-example dds-chart-example--mini">${chartMarkup('bar-chart','horizontal',uid,new Set(),true)}</div>`;
     return `<div class="dds-chart-overview"><div class="dds-chart-type-grid">${chartComponents.map(c=>`<a href="#/components/${c.id}"><strong>${esc(c.name)}</strong><span>${esc(c.ko)}</span></a>`).join('')}</div>${chartDemo('bar-chart',uid+'-example')}<div class="dds-chart-guidance"><h3>차트 선택</h3><p>크기는 막대, 변화는 선·영역, 구성 비율은 파이·도넛, 평가 항목은 레이더, 목표 달성은 방사형으로 표시합니다. 두 수치의 관계는 산점도, 날짜별 활동은 히트맵을 사용합니다.</p><p>숫자 0, 데이터 없음, 불러오는 중, 요청 실패는 서로 다른 상태입니다. 제목·기간·단위와 수치 표를 함께 제공합니다.</p></div></div>`;
   }
-  const variants=chartVariants[id],variant=variants[0][0];
-  if(mini)return `<div class="dds-chart-example dds-chart-example--mini">${chartMarkup(id,variant,uid,new Set(),true)}</div>`;
-  return `<div class="dds-chart-example" data-chart-example="${id}" data-chart-variant="${variant}" data-chart-uid="${uid}">${variants.length>1?`<div class="dds-chart-variants" role="group" aria-label="차트 표시 방식">${variants.map(([key,name],i)=>`<button type="button" class="chip${i===0?' selected':''}" data-chart-variant-button="${key}" aria-pressed="${i===0}">${name}</button>`).join('')}</div>`:''}<div data-chart-content>${chartMarkup(id,variant,uid)}</div><div class="dds-chart-tooltip" id="${uid}-tooltip" role="tooltip" hidden></div><details class="dds-chart-data"><summary>원본 데이터 보기</summary><div data-chart-table>${tableHTML(id,chartData(id,variant))}</div></details>${id==='chart-tooltip'?'<p class="dds-chart-note">데이터 점에 마우스를 올리거나 Tab으로 이동해 보세요. 터치로 눌러도 수치를 확인할 수 있습니다.</p>':''}</div>`;
+  const {family,variant}=presentation;
+  if(mini)return `<div class="dds-chart-example dds-chart-example--mini">${chartMarkup(family,variant,uid,new Set(),true)}</div>`;
+  return `<div class="dds-chart-example" data-chart-component="${presentation.component.id}" data-chart-example="${family}" data-chart-variant="${variant}" data-chart-uid="${uid}"><div data-chart-content>${chartMarkup(family,variant,uid)}</div><div class="dds-chart-tooltip" id="${uid}-tooltip" role="tooltip" hidden></div><details class="dds-chart-data"><summary>원본 데이터 보기</summary><div data-chart-table>${tableHTML(family,chartData(family,variant))}</div></details>${family==='chart-tooltip'?'<p class="dds-chart-note">막대에 마우스를 올리거나 Tab으로 이동해 보세요. 터치로 눌러도 같은 항목의 계열별 수치를 확인할 수 있습니다.</p>':''}</div>`;
 }
 
 export function bindCharts(root=document) {
@@ -202,7 +204,7 @@ export function bindCharts(root=document) {
     if(example.dataset.chartBound)return;
     example.dataset.chartBound='true';
     const id=example.dataset.chartExample,uid=example.dataset.chartUid,hidden=new Set();
-    let variant=example.dataset.chartVariant;
+    const variant=example.dataset.chartVariant;
     let tooltipTimer=0;
     const tooltip=example.querySelector('.dds-chart-tooltip');
     function closeTip(){clearTimeout(tooltipTimer);tooltip.hidden=true;}
@@ -210,18 +212,28 @@ export function bindCharts(root=document) {
       closeTip();
       example.querySelector('[data-chart-content]').innerHTML=chartMarkup(id,variant,uid,hidden);
       example.querySelector('[data-chart-table]').innerHTML=tableHTML(id,chartData(id,variant));
-      example.querySelectorAll('[data-chart-variant-button]').forEach(b=>{const active=b.dataset.chartVariantButton===variant;b.setAttribute('aria-pressed',String(active));b.classList.toggle('selected',active);});
     }
     function showTip(point){
       if(!point)return;
       clearTimeout(tooltipTimer);
-      const marker=document.createElement('span');
-      marker.className='dds-chart-key';
-      marker.style.setProperty('--series',color(Number(point.dataset.chartSeries)));
-      marker.setAttribute('aria-hidden','true');
-      const label=document.createElement('span');
-      label.textContent=point.dataset.chartPoint;
-      tooltip.replaceChildren(marker,label);
+      function row(text,series){
+        const wrapper=document.createElement('span');
+        wrapper.className='dds-chart-tooltip-row';
+        const marker=document.createElement('span');
+        marker.className='dds-chart-key';
+        marker.style.setProperty('--series',color(series));
+        marker.setAttribute('aria-hidden','true');
+        const label=document.createElement('span');
+        label.textContent=text;
+        wrapper.append(marker,label);
+        return wrapper;
+      }
+      if(id==='chart-tooltip'){
+        const data=chartData(id,variant),index=data.labels.indexOf(point.dataset.chartLabel);
+        const heading=document.createElement('strong');
+        heading.textContent=point.dataset.chartLabel;
+        tooltip.replaceChildren(heading,...data.series.flatMap((series,i)=>hidden.has(i)?[]:[row(`${series.name} · ${series.values[index]}${data.unit}`,i)]));
+      }else tooltip.replaceChildren(row(point.dataset.chartPoint,Number(point.dataset.chartSeries)));
       tooltip.hidden=false;
       const rect=point.getBoundingClientRect(),parent=example.getBoundingClientRect();
       const x=Math.max(8,Math.min(parent.width-tooltip.offsetWidth-8,rect.left-parent.left+rect.width/2-tooltip.offsetWidth/2));
@@ -230,8 +242,6 @@ export function bindCharts(root=document) {
       tooltip.style.top=(top<0?rect.bottom-parent.top+10:top)+'px';
     }
     example.addEventListener('click',event=>{
-      const choice=event.target.closest('[data-chart-variant-button]');
-      if(choice){variant=choice.dataset.chartVariantButton;example.dataset.chartVariant=variant;hidden.clear();update();return;}
       const key=event.target.closest('[data-chart-legend]');
       if(key){const index=Number(key.dataset.chartLegend);hidden.has(index)?hidden.delete(index):hidden.add(index);update();example.querySelector(`[data-chart-legend="${index}"]`).focus({preventScroll:true});return;}
       showTip(event.target.closest('[data-chart-point]'));

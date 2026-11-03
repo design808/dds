@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=3b17dba0a951b53f';
+import {icon} from './icons.js?v=26f36082a2ea895b';
 const button=(text,attrs='',cls='')=>`<button type="button" class="btn ${cls}" ${attrs}>${text}</button>`;
 const ic=(name,label,attrs='')=>`<button type="button" class="icon-btn" aria-label="${label}" ${attrs}>${icon(name)}</button>`;
 const link=(text,route)=>`<a href="#${route}">${text}</a>`;

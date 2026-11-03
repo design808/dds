@@ -1,17 +1,18 @@
-import {handoffPage} from './developer-guide.js?v=3b17dba0a951b53f';
-import {getDesignSettings} from './design-settings.js?v=3b17dba0a951b53f';
-import {textColorSection} from './text-colors.js?v=3b17dba0a951b53f';
-import {setupPage,ddsRelease} from './adoption-content.js?v=3b17dba0a951b53f';
-import {typographyPage,bindTypography} from './typography-system.js?v=3b17dba0a951b53f';
-import {formValidationSpec,contentBehaviorSpec,bindServiceGuidelines} from './service-guidelines.js?v=3b17dba0a951b53f';
-import {sidebarContent,overviewContent,componentContent,renderPattern,searchableDocuments} from './document-shell.js?v=3b17dba0a951b53f';
-import {principlesContent,processContent} from './document-content.js?v=3b17dba0a951b53f';
-import {icon,iconGallery,bindIconGallery} from './icons.js?v=3b17dba0a951b53f';
-import './interactions.js?v=3b17dba0a951b53f';
-import {extensionDemo,bindExtensions} from './extension-demos.js?v=3b17dba0a951b53f';
-import {chartDemo,bindCharts} from './chart-system.js?v=3b17dba0a951b53f';
-import {colorPage} from './color-system.js?v=3b17dba0a951b53f';
-import {components,groups,patterns,foundations} from './catalog.js?v=3b17dba0a951b53f';
+import {handoffPage} from './developer-guide.js?v=26f36082a2ea895b';
+import {getDesignSettings} from './design-settings.js?v=26f36082a2ea895b';
+import {textColorSection} from './text-colors.js?v=26f36082a2ea895b';
+import {setupPage,ddsRelease} from './adoption-content.js?v=26f36082a2ea895b';
+import {typographyPage,bindTypography} from './typography-system.js?v=26f36082a2ea895b';
+import {formValidationSpec,contentBehaviorSpec,bindServiceGuidelines} from './service-guidelines.js?v=26f36082a2ea895b';
+import {sidebarContent,overviewContent,componentContent,renderPattern,searchableDocuments} from './document-shell.js?v=26f36082a2ea895b';
+import {principlesContent,processContent} from './document-content.js?v=26f36082a2ea895b';
+import {icon,iconGallery,bindIconGallery} from './icons.js?v=26f36082a2ea895b';
+import './interactions.js?v=26f36082a2ea895b';
+import {extensionDemo,bindExtensions} from './extension-demos.js?v=26f36082a2ea895b';
+import {chartDemo,bindCharts} from './chart-system.js?v=26f36082a2ea895b';
+import {chartRouteAliases} from './chart-catalog.js?v=26f36082a2ea895b';
+import {colorPage} from './color-system.js?v=26f36082a2ea895b';
+import {components,groups,patterns,foundations} from './catalog.js?v=26f36082a2ea895b';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const releaseBadge=document.querySelector('[data-dds-release]');
 if(releaseBadge){releaseBadge.textContent='v'+ddsRelease;releaseBadge.setAttribute('aria-label','DDS 버전 '+ddsRelease);}
@@ -83,7 +84,7 @@ function componentList(){return head('COMPONENTS','Components','컴포넌트별 
 const fieldControlIds=['input','select','combobox','date-picker','search','input-group','time-picker','field','input-otp'];
 function controlSizingSpec(){return `<div class="guideline"><b>입력 크기와 콘텐츠 대응</b><p>크기는 높이·글자·패딩·아이콘을 함께 바꿉니다. Small은 도구 모음의 짧은 입력·선택에, Medium은 일반 폼에, Large는 문서 제목처럼 강조하는 입력에 사용합니다. 화면이 좁다는 이유만으로 Small로 바꾸지 않습니다.</p><p>높이는 한 줄일 때의 테두리 포함 기준입니다. 선택값이 길면 Select는 줄바꿈하며 높이가 늘어납니다. 직접 입력하는 한 줄 텍스트는 내부에서 스크롤하고, 긴 작성 본문은 Textarea를 사용합니다.</p></div>
 <div class="table-wrap"><table><thead><tr><th>크기</th><th>한 줄 높이</th><th>입력·선택 값</th><th>좌우 여백 / 아이콘</th></tr></thead><tbody><tr><td>Small</td><td>36px</td><td>Body 2 Normal · 14 / 22</td><td>10px / 16px</td></tr><tr><td>Medium · 기본</td><td>44px</td><td>Body 1 Normal · 16 / 24</td><td>12px / 18px</td></tr><tr><td>Large</td><td>52px</td><td>Body 1 Normal · 16 / 24</td><td>16px / 20px</td></tr></tbody></table></div>
-<p><code>data-control-size="sm|md|lg"</code>를 필드 또는 부모에 지정합니다. 펼친 선택 목록도 같은 글자 크기를 사용합니다. Small 버튼은 Label 2(13 / 18)와 최소 높이 36px를 사용합니다. <a href="./control-sizing.css?v=3b17dba0a951b53f" download>control-sizing.css</a>를 컴포넌트·화면 스타일 뒤에 로드합니다.</p>
+<p><code>data-control-size="sm|md|lg"</code>를 필드 또는 부모에 지정합니다. 펼친 선택 목록도 같은 글자 크기를 사용합니다. Small 버튼은 Label 2(13 / 18)와 최소 높이 36px를 사용합니다. <a href="./control-sizing.css?v=26f36082a2ea895b" download>control-sizing.css</a>를 컴포넌트·화면 스타일 뒤에 로드합니다.</p>
 <div class="control-size-examples">${[['sm','Small · 36px / 14px'],['md','Medium · 44px / 16px'],['lg','Large · 52px / 16px']].map(([size,label])=>`<div class="control-size-row" data-control-size="${size}"><p>${label}</p><div><div class="field"><label for="sizing-${size}-text">텍스트 입력</label><input id="sizing-${size}-text" placeholder="내용을 입력해 주세요"></div><div class="field"><label for="sizing-${size}-select">선택 상자</label><select id="sizing-${size}-select"><option>선택해 주세요</option><option>디자인</option><option>개발</option></select></div><div class="field"><label for="sizing-${size}-date">날짜 입력</label><input id="sizing-${size}-date" type="date"></div></div></div>`).join('')}</div>
 <h3>내용에 맞는 너비와 줄바꿈</h3><p>폼은 가용 너비를 채우고, 짧은 도구 모음은 <code>data-control-width="content"</code>로 가장 긴 옵션의 너비를 확보합니다. 선택값이 바뀌어도 버튼 위치가 흔들리지 않습니다. 가용 공간보다 긴 값은 줄임표 대신 줄바꿈합니다. 버튼·칩·상태·도움말도 내용에 따라 높이가 늘어나며 아이콘은 줄어들지 않습니다.</p>
 <div class="content-fit-examples"><div class="fit-toolbar" data-control-size="sm"><select aria-label="콘텐츠 너비 번역 언어" data-control-width="content"><option>한국어</option><option>English</option><option>日本語</option><option>简体中文</option><option>Español (Latinoamérica)</option></select><button class="btn sm">번역 결과를 확인하고 적용하기</button></div><div class="field"><label for="fit-long-selection">긴 선택값</label><select id="fit-long-selection"><option>서비스 기획·사용자 경험 설계와 프로덕트 디자인을 함께 담당하는 직무</option><option>짧은 항목</option></select></div><div class="fit-toolbar"><button class="btn">작성한 자기소개서를 저장하고 다음 단계로 이동하기</button><span class="badge">담당 컨설턴트의 상세 검토와 피드백 작성을 기다리고 있습니다</span><button class="chip">사용자 리서치와 서비스 경험을 개선한 프로젝트</button></div><div class="alert info">${icon('info')}<div><b>긴 안내 문장도 생략하지 않습니다.</b><p>첨부 파일: DeepResume_Application_DesignResearch_ProjectPortfolio_FinalReview_2026.pdf</p></div></div></div>`;}
@@ -97,14 +98,14 @@ else if(id==='motion'){body=`<div class="two-col"><div class="guideline"><b>120m
 else if(id==='accessibility'){body=`<div class="alert info">${icon('info')}<p>목표는 WCAG 2.2 AA입니다. 아래는 설계·검토 기준이며 제품 전체의 적합성 인증을 의미하지 않습니다.</p></div><div class="checklist">${['일반 텍스트 대비 4.5:1 이상, 큰 텍스트 3:1 이상','UI 경계·상태 표현은 필요한 곳에 3:1 이상의 대비','모든 행동을 키보드로 사용, 눈에 보이는 포커스 유지','입력 라벨과 오류를 연결하고 오류 요약 제공','200% 확대와 좁은 화면에서 읽기·조작 가능','모달 초점 관리, Escape 닫기, 닫은 후 트리거 복귀','녹화 권한·남은 시간·업로드 실패를 명확하게 안내','차트의 수치 대안과 영상의 자막·텍스트 대안 검토'].map(t=>`<div>${icon('check')}<span>${t}</span></div>`).join('')}</div><p>터치 영역은 가급적 44×44px를 권장합니다. WCAG 2.2 AA의 Target Size (Minimum)는 24×24 CSS px 또는 정해진 예외 조건을 기준으로 검토합니다.</p><a class="btn" href="https://www.w3.org/WAI/WCAG22/quickref/" target="_blank" rel="noreferrer">W3C 공식 기준 ${icon('arrow')}</a>`;}
 else{body=`<h2>차분하고 구체적인 안내</h2><p>사용자가 지금 할 수 있는 행동을 중심으로 씁니다. 기술적 원인보다 이해할 수 있는 상태와 해결 방법을 먼저 전합니다.</p><div class="table-wrap"><table><thead><tr><th>상황</th><th>권장 문구</th><th>피할 문구</th></tr></thead><tbody><tr><td>저장 성공</td><td>자기소개서를 저장했어요.</td><td>성공!</td></tr><tr><td>필수 입력</td><td>지원 직무를 입력해 주세요.</td><td>잘못된 입력입니다.</td></tr><tr><td>AI 생성 실패</td><td>문장을 생성하지 못했어요. 입력 내용은 유지됩니다. 다시 시도해 주세요.</td><td>API Error 500</td></tr><tr><td>접근 제한</td><td>이 기능은 일반회원 계정에서 이용할 수 있어요.</td><td>권한 없음</td></tr></tbody></table></div><h2>용어 사전</h2><div class="state-list">${['자기소개서','이력서','임시저장','저장 완료','승인 대기','컨설팅 중','컨설팅 완료','반려'].map(s=>badge(s)).join('')}</div><p>본문에는 ‘자기소개서’를 사용하고, 공간이 제한된 내비게이션에서는 승인된 축약어 ‘자소서’를 사용할 수 있습니다.</p>`;}
 return head('FOUNDATIONS',f[1],f[2]+'의 공통 기준과 적용 방법.')+`<div class="reading">${body}${id==='accessibility'?formValidationSpec():id==='content'?contentBehaviorSpec():''}</div>`;}
-function patternPage(p){const sample=p.id==='account-access'?demo('field')+demo('input-group'):p.id==='public-home'?demo('top-navigation')+demo('carousel'):p.id==='order-history'?demo('item')+demo('badge'):p.id==='document-list'?`<div class="two-col">${documentCard()}${documentCard('서비스 기획자 이력서','저장 완료')}</div>`:p.id==='ai-writing'?demo('stepper')+demo('editor'):p.id==='interview-report'?demo('radar-chart')+demo('line-chart')+demo('accordion'):p.id==='interview'?demo('stepper')+demo('video'):p.id==='consultant-workspace'?demo('table'):p.id==='analysis'?demo('alert')+demo('accordion'):p.id==='swot'?`<div class="two-col">${['강점 S','약점 W','기회 O','위협 T'].map(s=>`<div class="guideline"><b>${s}</b><p>나의 경험을 구체적으로 정리해 보세요.</p></div>`).join('')}</div>`:p.id==='resume-builder'?demo('input')+demo('date-picker'):p.id==='community'?demo('search')+demo('textarea'):demo('card')+demo('badge');return renderPattern(p,sample);}
+function patternPage(p){const sample=p.id==='account-access'?demo('field')+demo('input-group'):p.id==='public-home'?demo('top-navigation')+demo('carousel'):p.id==='order-history'?demo('item')+demo('badge'):p.id==='document-list'?`<div class="two-col">${documentCard()}${documentCard('서비스 기획자 이력서','저장 완료')}</div>`:p.id==='ai-writing'?demo('stepper')+demo('editor'):p.id==='interview-report'?demo('radar-chart-multiple')+demo('line-chart-multiple')+demo('accordion'):p.id==='interview'?demo('stepper')+demo('video'):p.id==='consultant-workspace'?demo('table'):p.id==='analysis'?demo('alert')+demo('accordion'):p.id==='swot'?`<div class="two-col">${['강점 S','약점 W','기회 O','위협 T'].map(s=>`<div class="guideline"><b>${s}</b><p>나의 경험을 구체적으로 정리해 보세요.</p></div>`).join('')}</div>`:p.id==='resume-builder'?demo('input')+demo('date-picker'):p.id==='community'?demo('search')+demo('textarea'):demo('card')+demo('badge');return renderPattern(p,sample);}
 
 function principles(){return head('시작하기','디자인 원칙','화면을 설계하고 구현할 때 적용하는 기준.')+principlesContent();}
 
 function processPage(){return head('시작하기','디자인 프로세스','기존 화면에 DDS를 적용하는 순서.')+processContent();}
 
 function render(){
- view=location.hash.slice(1)||'/';if(view.split('?')[0]==='/directions'){history.replaceState(null,'','#/');view='/';}const route=view.split('?')[0];let html;
+ view=location.hash.slice(1)||'/';if(view.split('?')[0]==='/directions'){history.replaceState(null,'','#/');view='/';}const chartAlias=chartRouteAliases[view.split('?')[0].replace('/components/','')];if(view.startsWith('/components/')&&chartAlias){view='/components/'+chartAlias;history.replaceState(null,'','#'+view);}const route=view.split('?')[0];let html;
  if(route==='/')html=overview();
  else if(route==='/components')html=componentList();
  else if(route.startsWith('/components/')){const c=components.find(c=>c.id===route.split('/')[2]);html=c?componentDetail(c):notFound();}

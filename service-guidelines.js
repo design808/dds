@@ -1,3 +1,5 @@
+import {chartComponents} from './chart-catalog.js?v=26f36082a2ea895b';
+
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const table = (caption, headings, rows) => `<div class="table-wrap"><table class="dds-rules-table"><caption class="sr-only">${esc(caption)}</caption><thead><tr>${headings.map(h => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((cell, i) => i === 0 ? `<th scope="row">${esc(cell)}</th>` : `<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 
@@ -45,12 +47,12 @@ export const exampleScopes = {
   'line-chart': ['고정 데이터의 변화 표시·범례 선택·수치 확인·데이터 표', '서비스 데이터·기간 필터·로딩·오류 연결'],
   'area-chart': ['고정 데이터의 영역 표시·범례 선택·수치 확인·데이터 표', '서비스 데이터·누적 집계·로딩·오류 연결'],
   'pie-chart': ['고정 데이터의 비중 표시·범례 선택·수치 확인·데이터 표', '서비스 데이터·전체 집계·로딩·오류 연결'],
-  'donut-chart': ['고정 데이터의 비중·합계·범례 선택·수치 확인·데이터 표', '서비스 데이터·전체 집계·로딩·오류 연결'],
+  'donut-chart': ['고정 데이터의 구성비·범례 선택·수치 확인·데이터 표', '서비스 데이터·전체 집계·로딩·오류 연결'],
   'radar-chart': ['고정 데이터의 역량 비교·범례 선택·수치 확인·데이터 표', '실제 평가 점수·척도·로딩·오류 연결'],
   'radial-chart': ['고정 데이터의 달성률·범례 선택·수치 확인·데이터 표', '실제 목표·현재 값·로딩·오류 연결'],
   'scatter-chart': ['고정 데이터의 분포·범례 선택·수치 확인·데이터 표', '실제 관측값·집계·로딩·오류 연결'],
   'heatmap-chart': ['고정 데이터의 명도 분포·수치 확인·데이터 표', '서비스 데이터·범위·로딩·오류 연결'],
-  'chart-tooltip': ['고정 데이터의 hover·focus·터치 수치 확인과 데이터 표', '실제 차트 데이터·선택 지점·툴팁 연결'],
+  'chart-tooltip': ['다중 막대의 같은 항목에 대한 계열별 점 표식·수치 확인·데이터 표', '실제 차트 데이터·선택 항목·계열별 툴팁 연결'],
   editor: ['여러 줄 텍스트 입력·글자 수', '서식 편집기·문서 저장·AI 생성'],
   video: ['장치 권한 안내', '카메라·마이크 요청·녹화·업로드'],
   upload: ['로컬 PDF 선택·형식·용량 확인', '서버 업로드·진행률·재시도'],
@@ -59,7 +61,8 @@ export const exampleScopes = {
 };
 
 export function exampleScope(id) {
-  const scope = exampleScopes[id];
+  const chart = chartComponents.find(component => component.id === id);
+  const scope = exampleScopes[chart?.chartFamily || id];
   return scope ? `<p class="helper"><b>이 예제:</b> ${esc(scope[0])}. <b>별도 구현:</b> ${esc(scope[1])}.</p>` : '<p class="helper">상태 목록은 적용 시 확인할 범위입니다. 예제에서 재현되지 않는 상태는 실제 화면에서 별도로 검수합니다.</p>';
 }
 
