@@ -1,4 +1,4 @@
-import {chartComponents} from './chart-catalog.js?v=290ae5b55d51e164';
+import {chartComponents} from './chart-catalog.js?v=25f3c2e2c9757209';
 
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const table = (caption, headings, rows) => `<div class="table-wrap"><table class="dds-rules-table"><caption class="sr-only">${esc(caption)}</caption><thead><tr>${headings.map(h => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((cell, i) => i === 0 ? `<th scope="row">${esc(cell)}</th>` : `<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
@@ -32,19 +32,23 @@ export const localizationRules = [
 ];
 
 export const implementationRules = [
-  ['기준 파일', '색·간격·컨트롤 값은 tokens.css, 글자 역할은 typography-system.js, 서비스 사용처는 service-typography.js를 읽습니다. 문서 예제를 새 값의 근거로 삼지 않습니다.'],
+  ['UI 원본', 'ui/registry.json과 ui/README.md에서 컴포넌트·파트·의존성을 확인합니다. ui/templates의 HTML 또는 ui/index.js의 createComponent를 사용하고 ui/tokens-scoped.css·ui/dds.css·.dds-ui 범위를 유지합니다. 문서와 같은 원본을 재사용하며 모양이 비슷한 UI를 따로 만들지 않습니다.'],
+  ['토큰과 글자', '색·간격·컨트롤 값의 원본은 tokens.css, 글자 역할은 typography-system.js입니다. service-typography.js는 현재 적용 예시의 매핑이므로 대상 서비스의 사용처에 맞춰 연결합니다. UI 원본의 크기·패딩·모서리·경계를 임의로 바꾸지 않습니다.'],
   ['적용 범위', '대상 URL·템플릿·기존 선택자·상태 클래스·필드 id/name·연결 이벤트를 먼저 기록합니다. CSS 변경과 HTML 보완을 구분합니다.'],
+  ['콘텐츠 연결', 'createComponent의 text·attributes·slots 또는 기존 템플릿 바인딩으로 문구·링크·이름·입력값·개수·상태를 실제 데이터로 바꿉니다. 반복 인스턴스의 id와 for·aria 참조는 고유하게 유지합니다. 텍스트를 HTML로 실행하지 않습니다.'],
+  ['UI 동작', 'mountDDS는 선택·탭·열기와 닫기·초점 등 UI 상태를 연결합니다. 저장·AI·결제·업로드·권한은 dds:action이나 onAction에서 서비스의 기존 처리 함수와 연결합니다. 성공 상태는 실제 처리 결과를 받은 뒤 표시합니다.'],
+  ['초기화와 해제', '현재 위젯이 있는 곳은 controls:false로 시작해 중복 초기화를 막습니다. 컨트롤 향상이 필요하면 명시한 root에 연결하고, 화면을 제거할 때 cleanup을 호출해 이벤트·관찰자·포털을 정리합니다. custom-controls.js의 문서 전체 자동 변환은 서비스에 연결하지 않습니다.'],
   ['상태 보존', '권한·hidden·disabled·로딩·오류는 기존 로직에서 결정합니다. CSS로 숨겨진 기능을 강제로 노출하거나 데이터를 만들어 채우지 않습니다.'],
   ['정보 위계', '카드 제목 16/24/600은 --text-strong, 기업·직무 14/22/500은 --text-primary, 보조 설명 14/22는 --text-secondary, 날짜 12/18은 --text-tertiary로 연결합니다.'],
   ['카드 행동', '대표 이동은 실제 href가 있는 카드 전체 링크로 연결하고 보조 행동은 대표 링크 바깥에 둡니다. 정적 카드에 클릭을 암시하는 hover를 넣지 않습니다.'],
   ['탐색 표현', '.dds-nav-link는 글자·색·포커스만 적용하고 배경을 자동 추가하지 않습니다. 배경이 필요한 메뉴에는 .dds-nav-control을 사용해 글자·아이콘 전체에 패딩과 클릭 영역을 확보합니다. 부모 여백은 항목 내부 패딩을 대신하지 않습니다.'],
   ['탐색 상태', '메뉴 컨트롤은 최소 높이 40px·패딩 10px 12px·간격 8px을 기본으로 합니다. 현재 서비스 적용 예시의 GNB는 1180px 이하에서 최소 높이 44px·패딩 12px 12px을 사용합니다. 현재 위치는 aria-current로 전달하며 hover·현재·focus에서 크기와 굵기를 유지합니다.'],
-  ['공통 스타일', '목록 셀·섹션 헤더·하단 탐색·명령 검색·오류 대체 화면·표는 content-primitives.css의 해당 클래스를 재사용합니다. 문서의 축소 미리보기 크기를 운영 크기로 복사하지 않습니다. 상태·라우팅·검색·재시도는 서비스 로직에 연결합니다.'],
+  ['공통 스타일', '목록 셀·섹션 헤더·하단 탐색·명령 검색·오류 대체 화면·표도 ui/dds.css와 원본 HTML의 클래스를 그대로 사용합니다. 문서의 축소 미리보기 크기는 복사하지 않습니다. 라우팅·검색·재시도 등 실제 처리는 서비스 로직에 연결합니다.'],
   ['반응형 배치', '페이지뿐 아니라 실제 컴포넌트 컨테이너의 320px·390px·전환 경계에서 확인합니다. flex/grid의 본문은 min-width:0, 아이콘·스위치·아바타는 수축하지 않게 하고 긴 제목·행동은 줄바꿈합니다. 표·차트·칸반의 필요한 가로 스크롤만 해당 영역 안에 둡니다.'],
   ['간격과 팝업', '제목과 개수는 8px, 오류 설명과 복구 행동은 20px을 둡니다. 검색 아이콘·입력·지우기는 한 외곽 안에 정렬합니다. 펼친 메뉴는 화면 가장자리에서 위치를 조정하고, 문서 프레임이나 서비스 래퍼가 잘라내지 않는지 확인합니다.'],
   ['상태·개수', '처리 상태는 실제 문구와 의미 아이콘, 목록 개수는 실제 데이터의 배지로 표시합니다. 항목 추가·삭제·필터 변경 시 개수도 갱신합니다.'],
   ['섹션 구성', '섹션 제목에 장식 아이콘을 넣거나 섹션마다 회색 바탕의 틀을 추가하지 않습니다. 배경 캔버스가 필요하면 페이지·body 수준에서 정합니다.'],
-  ['검수', 'PC·모바일, 라이트·다크, 긴 제목·빈 값·오류·대기·동적 항목에서 확인합니다. 메뉴의 hover·현재 위치·focus와 좁은 너비에서 배경·내부 패딩·클릭 영역을 확인하고, 키보드 순서와 실제 제출 값을 변경 전과 대조합니다.'],
+  ['검수', 'PC·모바일, 라이트·다크, 긴 제목·빈 값·오류·대기·동적 항목에서 확인합니다. 계산된 폰트·색·경계·패딩·높이를 UI 원본과 대조하고 기존 CSS의 덮어쓰기를 해결합니다. 메뉴의 hover·현재 위치·focus, 키보드 순서와 실제 제출 값을 변경 전과 대조합니다.'],
   ['완료 보고', '수정 파일·선택자 매핑·화면별 검수 결과·미검증 항목을 남깁니다. 예제 표시와 실서비스 검증 완료를 구분합니다.']
 ];
 
@@ -72,7 +76,7 @@ export const exampleScopes = {
 export function exampleScope(id) {
   const chart = chartComponents.find(component => component.id === id);
   const scope = exampleScopes[chart?.chartFamily || id];
-  return scope ? `<p class="helper"><b>이 예제:</b> ${esc(scope[0])}. <b>별도 구현:</b> ${esc(scope[1])}.</p>` : '<p class="helper">상태 목록은 적용 시 확인할 범위입니다. 예제에서 재현되지 않는 상태는 실제 화면에서 별도로 검수합니다.</p>';
+  return scope ? `<p class="helper"><b>공통 UI:</b> ${esc(scope[0])}. <b>서비스 연결:</b> ${esc(scope[1])}.</p>` : '<p class="helper">원본의 상태·조작 규칙을 재사용하고 실제 데이터·이벤트를 연결한 화면에서 함께 검수합니다.</p>';
 }
 
 export const patternContracts = {

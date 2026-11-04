@@ -1,19 +1,21 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=290ae5b55d51e164';
-import {icon} from './icons.js?v=290ae5b55d51e164';
-import {formatHTML} from './format-html.js?v=290ae5b55d51e164';
-import {componentContract} from './component-contracts.js?v=290ae5b55d51e164';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=290ae5b55d51e164';
-import {blocks} from './blocks.js?v=290ae5b55d51e164';
+import {components, groups, patterns, foundations} from './catalog.js?v=25f3c2e2c9757209';
+import {icon} from './icons.js?v=25f3c2e2c9757209';
+import {formatHTML} from './format-html.js?v=25f3c2e2c9757209';
+import {componentContract} from './component-contracts.js?v=25f3c2e2c9757209';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=25f3c2e2c9757209';
+import {blocks} from './blocks.js?v=25f3c2e2c9757209';
+import {renderComponentSource,serviceMarkup} from './ui/source.js?v=25f3c2e2c9757209';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
 const assetReferences = groups => [
-  ['service','서비스 기준'],['adapter','서비스 연결 검토'],['documentation','문서 예제 전용']
+  ['service','UI 원본과 서비스 기준'],['adapter','개별 연결 검토'],['documentation','문서 예제 전용']
 ].filter(([key])=>groups[key]?.length).map(([key,label])=>`<div class="asset-reference-group"><h3>${label}</h3><ul>${groups[key].map(file=>`<li><a href="./${esc(file)}" download>${esc(file)}</a></li>`).join('')}</ul></div>`).join('');
 const section = (id, title, content) => `<section id="${id}"><div class="section-heading"><h2>${title}</h2></div>${content}</section>`;
 const header = (category, title, description = '') => `<div class="breadcrumbs"><a href="#/">DDS</a><span>/</span><span>${esc(category)}</span></div><div class="page-heading"><div><h1>${esc(title)}</h1>${description ? `<p class="lead">${esc(description)}</p>` : ''}</div></div>`;
 
 export const screenExamples = [
+  {name:'랜딩페이지 · 모아', url:'./examples/team-workspace.html', description:'팀의 업무와 문서를 정리하는 서비스'},
   {name:'메인화면 · 독립안', url:'./prototypes/home-independent.html', description:'다른 구성의 메인화면'},
   {name:'자기소개서 · 지원정보', url:'./prototypes/coverletter-info.html', description:'제목과 지원정보 입력'},
   {name:'자기소개서 · 문항 작성', url:'./prototypes/coverletter-write.html', description:'문항·경험 입력과 AI 작성'},
@@ -48,6 +50,7 @@ export function overviewContent(card) {
 
 export function componentContent(c, html, {previewHTML, previewToc} = {}) {
   const contract = componentContract(c);
+  const sourceHTML = `<div class="dds-ui" data-dds-component="${c.id}">${serviceMarkup(renderComponentSource(c.id,'dds-instance',false))}</div>`;
   const toc = [...(previewToc || [['preview','예제']]),['anatomy','구성'],['guidelines','사용 기준'],['specification','규격'],['states','상태'],['keyboard','조작'],['checks','검수']];
   const usage = `<div class="table-wrap"><table class="dds-rules-table"><tbody><tr><th scope="row">사용할 때</th><td>${esc(contract.usage.when)}</td></tr><tr><th scope="row">다른 선택</th><td>${esc(contract.usage.alternative)}</td></tr></tbody></table></div>${list(contract.rules)}`;
   const spec = `<div class="table-wrap"><table class="dds-rules-table"><thead><tr><th scope="col">항목</th><th scope="col">규격</th></tr></thead><tbody>${contract.specification.map(([name, value]) => `<tr><th scope="row">${esc(name)}</th><td>${esc(value)}</td></tr>`).join('')}</tbody></table></div>`;
@@ -62,9 +65,10 @@ export function componentContent(c, html, {previewHTML, previewToc} = {}) {
       ${section('keyboard','조작', list(contract.keyboard))}
       ${section('checks','검수', list(contract.checks))}
     </div>
-    <div data-doc-panel="code" hidden><h2>HTML</h2><p>${c.id === 'button' ? '<code>tokens.css</code> 다음에 <code>button-system.css</code>를 연결합니다. 아래 마크업을 사용하고 실행·저장·로딩 해제는 서비스의 처리 결과와 연결합니다.' : '문서 예제의 마크업입니다. 기존 서비스의 이벤트 연결은 <a href="#/handoff">개발 적용 안내</a>에 따라 확인합니다.'}</p>
-      <button class="btn sm copy-code">${icon('copy')} 코드 복사</button><pre class="html-example" tabindex="0" aria-label="HTML 코드 예제"><code>${esc(formatHTML(html))}</code></pre>
-      <details><summary>예제 참조 파일</summary><p>문서 예제 전용 파일은 운영 화면에 연결하지 않습니다. 서비스 연결 검토 파일은 대상 선택자·데이터·이벤트에 맞춰 적용합니다.</p>${contract.assets.includes('service-typography.css')?'<p>service-typography.css는 현재 적용 예시의 매핑입니다. 대상 서비스에 맞게 다시 생성합니다.</p>':''}${assetReferences(contract.assetGroups)}</details>
+    <div data-doc-panel="code" hidden><h2>HTML</h2><p>미리보기와 같은 UI 원본입니다. <code>ui/tokens-scoped.css</code>와 <code>ui/dds.css</code>를 연결하고 <code>.dds-ui</code> 범위를 유지합니다. 문구·링크·입력값·상태는 서비스 데이터로 바꾸고 기존 id·name·이벤트·제출값을 보존합니다.${c.group==='Charts'?' 차트는 실제 항목·계열·단위를 createComponent의 data로 전달합니다.':''}</p>
+      <button class="btn sm copy-code">${icon('copy')} 코드 복사</button><pre class="html-example" tabindex="0" aria-label="서비스용 HTML 원본"><code>${esc(formatHTML(sourceHTML))}</code></pre>
+      <p><a href="./${esc(contract.source.template)}" download>HTML 템플릿</a> · <a href="./ui/README.md">연결 방법</a> · <a href="./ui/registry.json">컴포넌트 레지스트리</a> · <a href="./ui/index.js?v=25f3c2e2c9757209">생성·동작 API</a> · <a href="./ui/source.js?v=25f3c2e2c9757209">HTML 원본 API</a> · <a href="./ui/tokens-scoped.css?v=25f3c2e2c9757209">토큰 CSS</a> · <a href="./ui/dds.css?v=25f3c2e2c9757209">UI CSS</a></p>
+      <details><summary>연결 파일</summary><p>HTML은 renderComponentSource와 serviceMarkup으로 생성하며 ui/templates에도 같은 원본을 제공합니다. UI 폴더와 registry에 기록된 의존성을 함께 유지합니다. 선택·탭·열기와 닫기는 mountDDS를 연결하고, 저장·AI·업로드·권한은 기존 서비스 함수와 연결합니다. 문서 셸과 문서 예제 전용 파일은 서비스에 연결하지 않습니다.</p>${contract.assets.includes('service-typography.css')?'<p>service-typography.css는 현재 적용 예시의 매핑입니다. 대상 서비스에 맞게 다시 생성합니다.</p>':''}${assetReferences(contract.assetGroups)}</details>
     </div></article><aside class="toc"><span>이 페이지</span>${toc.map(([id, label]) => `<button data-scroll="${id}">${label}</button>`).join('')}</aside></div>`;
 }
 

@@ -1,0 +1,68 @@
+# DDS UI 원본 사용
+
+DDS 컴포넌트 페이지와 서비스가 같은 `core.js`, `extended.js`, `button.js`, `charts.js`를 사용한다. `registry.json`의 115개 항목과 `templates/`의 HTML은 이 렌더러에서 생성된다. `dds.css`는 현재 컴포넌트 스타일에서 문서 레이아웃과 축소 미리보기를 제외한 결과다.
+
+## 연결
+
+묶음의 폴더 구조를 유지해 서비스가 제공하는 정적 자산 경로에 연결한다. 폰트·아이콘 마스크·JS 상대 경로를 함께 유지한다.
+
+```html
+<link rel="stylesheet" href="/vendor/dds/tokens.css">
+<link rel="stylesheet" href="/vendor/dds/ui/dds.css">
+<div id="workspace"></div>
+```
+
+```js
+import {createComponent, mountDDS} from '/vendor/dds/ui/index.js';
+
+const root = document.querySelector('#workspace');
+const search = createComponent('search', {
+  idPrefix: 'document-search',
+  text: {label: '문서 검색', hint: '제목으로 검색하세요.'},
+  attributes: {
+    control: {name: 'query', placeholder: '문서 제목', 'aria-label': '문서 검색'}
+  }
+});
+const save = createComponent('button', {
+  props: {label: '저장', before: 'Save', size: 'md'}
+});
+root.append(search, save);
+const cleanup = mountDDS(root, {
+  controls: true,
+  onAction(detail) {
+    // detail.action과 서비스의 기존 기능을 연결한다.
+  }
+});
+// 화면을 제거할 때 cleanup()을 호출한다.
+```
+
+기존 서비스에서 사용하는 선택기·달력·편집기 이벤트를 먼저 확인한다. 이미 위젯이 연결된 곳은 `controls:false`로 시작해 이중 초기화를 막는다. UI의 ID·name·값·CSRF·서버 조건·제출·권한은 유지한다. `mountControls`를 직접 사용할 때도 명시한 root 안에서만 동작한다.
+
+기존 서비스의 전역 토큰과 충돌을 피하려면 위 예제의 `tokens.css` 대신 `ui/tokens-scoped.css`를 연결한다. 둘 중 하나만 사용한다. 범위 토큰은 `.dds-ui` 밖에 영향을 주지 않으며 중첩된 DDS 영역은 바깥 값을 상속한다. 기본 토큰값과 라이트/다크값은 전역 버전과 동일하다. 호스트가 다크인 상태에서 DDS 일부만 라이트로 강제하는 별도 reset은 제공하지 않는다.
+
+## 콘텐츠 변경
+
+- `text`: registry의 `kind:text` 파트에 일반 문자열을 넣는다. HTML로 해석하지 않는다.
+- `attributes`: `kind:attributes` 파트의 name·value·href·disabled·aria 등 허용된 속성을 바꾼다. class·style·실행 속성은 받지 않는다.
+- `slots`: `kind:slot` 파트에 DOM 노드·Fragment·일반 문자열을 넣는다. 노드는 서비스가 안전하게 생성한 콘텐츠여야 한다.
+- `props`: Button의 공식 variant·color·size·아이콘·loading 속성이다. 등록된 조합만 사용한다.
+- `data`: 차트의 실제 제목·항목·계열·단위다. 서비스 생성 API는 차트에 명시적인 data를 요구한다.
+- `tabs`: `{label, content}` 배열로 탭과 연결 패널을 함께 만들 수 있다.
+
+파트 이름과 선택자는 `registry.json`의 해당 컴포넌트에 있다. 기본 문구·개수·상태·링크·날짜는 원본을 확인하기 위한 값이므로 실제 서비스 데이터로 교체한다. 본문의 배치와 페이지 그리드는 서비스에서 정하되 컴포넌트의 글자·패딩·경계·모서리·상태 CSS를 다시 만들지 않는다.
+
+## 프레임워크와 기존 템플릿
+
+React·Vue 등에서는 현재 프레임워크를 유지한다. 클라이언트 root를 만들어 위 API를 연결하거나, `templates/<id>.html`의 같은 클래스·구조를 해당 프레임워크의 문법으로 옮기고 `dds.css`를 그대로 쓴다. 상태·이벤트만 서비스 구현에 연결한다. 표시값을 바꾼다는 이유로 원본 레이아웃을 재구성하지 않는다.
+
+Django 등 서버 템플릿도 같은 HTML을 사용한다. `dds-instance`로 시작하는 ID와 `for`·`aria-*` 참조를 인스턴스마다 고유하게 치환하고 값은 템플릿 엔진의 escaping을 유지한다. 실제 서비스의 기존 ID가 필요하면 그 ID와 연결 관계를 보존한다. 자산의 src/href는 서비스의 정적 경로로 연결한다.
+
+`.dds-ui`는 UI 스타일의 명시적인 범위다. `createComponent`가 이 래퍼를 만든다. 서버 템플릿을 사용할 때도 유지한다. 페이지 제목에 `.dds-type-*` 역할을 쓰려면 그 텍스트도 DDS 범위 안에 둔다. 문서의 폭 제한·축소 비율은 서비스에 복사하지 않는다. 컴포넌트 root의 `display:contents`는 조합을 위한 래퍼이며 실제 UI 요소의 경계·배치는 내부에 있다.
+
+## 동작과 검수
+
+`mountDDS`는 선택·탭·열기/닫기·포커스·로컬 표시 등 UI 동작을 맡는다. 저장·AI·결제·업로드·계정 변경은 실행하지 않는다. `dds:action` 이벤트 또는 `onAction`에서 기존 서비스의 처리 함수를 연결하고 실제 결과에 따라 상태를 갱신한다. 기본 예제의 성공 문구를 처리 결과로 사용하지 않는다.
+
+320px·390px·PC, 라이트·다크, 긴 문구·빈 값·오류·대기, Tab·방향키·Escape, 폼 reset과 실제 제출 값을 확인한다. CSS를 연결했어도 기존 프로젝트의 선택자나 `!important`가 덮으면 같게 보이지 않을 수 있으므로 계산된 폰트·색·경계·패딩·높이를 원본과 대조한다. 차이가 있으면 연결과 우선순위를 해결한다.
+
+컴포넌트 디자인을 바꾸는 DDS 유지보수는 `ui:build`로 원본·CSS·registry·HTML을 갱신한 뒤 새 버전을 발행한다. 기존 고정 버전은 덮어쓰지 않는다. 앱에 이미 등록된 버전을 자동으로 바꾸지 않는다.

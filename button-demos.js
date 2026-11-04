@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=290ae5b55d51e164';
-import {formatHTML} from './format-html.js?v=290ae5b55d51e164';
+import {renderButton as buttonMarkup} from './ui/button.js?v=25f3c2e2c9757209';
+import {formatHTML} from './format-html.js?v=25f3c2e2c9757209';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -12,26 +12,6 @@ const combinations = [
   {variant: 'outlined', color: 'primary', name: 'Primary', label: '작성 시작'},
   {variant: 'outlined', color: 'assistive', name: 'Assistive', label: '임시저장'}
 ];
-
-function buttonMarkup({variant = 'solid', color = 'primary', size = 'md', label = '작성 시작',
-  before = '', after = '', iconOnly = false, busy = false, loading = false,
-  disabled = false, fullWidth = false, attributes = {}} = {}) {
-  const props = {
-    type: 'button', class: 'dds-button', 'data-variant': variant,
-    'data-color': color, 'data-control-size': size,
-    ...(iconOnly ? {'data-icon-only': 'true', 'aria-label': label, 'data-tooltip': label} : {}),
-    ...(busy || loading ? {'aria-label': label} : {}),
-    ...(fullWidth ? {'data-full-width': 'true'} : {}),
-    ...(busy ? {'aria-busy': 'true'} : {}),
-    ...((disabled || busy) ? {disabled: true} : {}),
-    ...attributes
-  };
-  const attrs = Object.entries(props).map(([key, value]) => value === true ? key : `${key}="${escapeHTML(value)}"`).join(' ');
-  const loadingContents = loading || busy ? `<span class="dds-button-loading"><span class="dds-button-spinner" aria-hidden="true"></span>${iconOnly ? '' : '<span>처리 중</span>'}</span>` : '';
-  const labelContents = iconOnly ? icon(before || 'Plus') : `${before ? icon(before) : ''}<span>${escapeHTML(label)}</span>${after ? icon(after) : ''}`;
-  const contents = `<span class="dds-button-label">${labelContents}</span>${loadingContents}`;
-  return `<button ${attrs}>${contents}</button>`;
-}
 
 function sampleButtons(items, options = {}) {
   return items.map(item => buttonMarkup({...item, ...options})).join('\n');

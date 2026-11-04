@@ -1,0 +1,3970 @@
+{
+  "schemaVersion": 1,
+  "kind": "DDSComponentSourceRegistry",
+  "version": "0.3.0",
+  "scopeClass": "dds-ui",
+  "componentCount": 115,
+  "styles": [
+    "tokens.css",
+    "ui/dds.css"
+  ],
+  "scopedStyles": [
+    "ui/tokens-scoped.css",
+    "ui/dds.css"
+  ],
+  "tokenModes": {
+    "global": "tokens.css",
+    "scoped": "ui/tokens-scoped.css",
+    "chooseOne": true
+  },
+  "runtime": "ui/index.js",
+  "sourceHashes": {
+    "ui/version.js": "341c321f423d9e6eec328501fdee61ed17955f5458a98e8494e254d6d2e421f3",
+    "ui/core.js": "271091835547317777a5091bc62b50d214090e2523c49099692c0cbadae1a65a",
+    "ui/button.js": "77203e48e765b412d35b9311e56a78ef3a76e614ef7d1b05d0b4e76c5bb202d9",
+    "ui/extended.js": "549ca08af63b96666f625fd3f042f5eda94127ac1bf1d9152895c5e2c570e391",
+    "ui/charts.js": "8d31ad06fdd0ce62739b33214faede36608bd8e0a2cc65f1da1cb0dcab781dda",
+    "ui/source.js": "57dc30231d98ccff6a35074638fdc494c67746f619c0eb3b8470567321d88534",
+    "ui/index.js": "9cd527a9582c57d27245ec927cc97592fc1690340e3f0e29eeff78c11ce581f7",
+    "ui/icons.js": "cc970b5f99f6dc2d2dcc7c485f40094fdb99165de05521dedaf8d5394e993e8c",
+    "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
+    "ui/controls.js": "2407b2e08f6db26c517d789833532fa3c80b58a1c50936d5dc85b9d66ca0e9a3",
+    "ui/dds.css": "2c63e49b8370ccc6a534baabf6009994ca94e74fc20ecab4b74f24d20fb33c0e",
+    "ui/tokens-scoped.css": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713",
+    "tokens.css": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
+    "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
+    "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
+    "visibility.js": "668039c6c4d07bce088d24225a377bff4fe24b0d9a322f8039205a44f39d13cb"
+  },
+  "components": {
+    "button": {
+      "id": "button",
+      "name": "Button",
+      "group": "Actions",
+      "template": "ui/templates/button.html",
+      "idPrefix": "dds-instance",
+      "sha256": "d5138cb60e315cdc40c62271ff4239cc85e7827a29938a0b2974d8faaeeb34d3",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": ".dds-button-label > span",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-button",
+          "kind": "attributes",
+          "attributes": [
+            "id",
+            "name",
+            "value",
+            "type",
+            "disabled",
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "icon-button": {
+      "id": "icon-button",
+      "name": "Icon button",
+      "group": "Actions",
+      "template": "ui/templates/icon-button.html",
+      "idPrefix": "dds-instance",
+      "sha256": "8557de65761614246598fad49a241ecf7b0e648a7c1a99f6eb0d023c63e7d243",
+      "renderer": "ui/core.js",
+      "parts": {
+        "add": {
+          "selector": "button:nth-child(1)",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "data-tooltip",
+            "disabled"
+          ]
+        },
+        "copy": {
+          "selector": "button:nth-child(2)",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "data-tooltip",
+            "disabled"
+          ]
+        },
+        "more": {
+          "selector": "button:nth-child(3)",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "data-tooltip",
+            "disabled"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "chip": {
+      "id": "chip",
+      "name": "Chip",
+      "group": "Actions",
+      "template": "ui/templates/chip.html",
+      "idPrefix": "dds-instance",
+      "sha256": "ebf010e37508dfc1d566119af8774db07273ff3d0eb1c0da02b2f54f71cc2737",
+      "renderer": "ui/core.js",
+      "parts": {
+        "items": {
+          "selector": ".demo-row",
+          "kind": "slot"
+        },
+        "firstLabel": {
+          "selector": "button:nth-child(1)",
+          "kind": "text"
+        },
+        "secondLabel": {
+          "selector": "button:nth-child(2)",
+          "kind": "text"
+        },
+        "thirdLabel": {
+          "selector": "button:nth-child(3)",
+          "kind": "text"
+        },
+        "firstControl": {
+          "selector": "button:nth-child(1)",
+          "kind": "attributes",
+          "attributes": [
+            "aria-pressed",
+            "disabled",
+            "value"
+          ]
+        },
+        "secondControl": {
+          "selector": "button:nth-child(2)",
+          "kind": "attributes",
+          "attributes": [
+            "aria-pressed",
+            "disabled",
+            "value"
+          ]
+        },
+        "thirdControl": {
+          "selector": "button:nth-child(3)",
+          "kind": "attributes",
+          "attributes": [
+            "aria-pressed",
+            "disabled",
+            "value"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "input": {
+      "id": "input",
+      "name": "Input",
+      "group": "Inputs",
+      "template": "ui/templates/input.html",
+      "idPrefix": "dds-instance",
+      "sha256": "271dd6d1099514bc6bb55a44239bb9dd4eab04ff48b240539994b4c9a700cb41",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "placeholder",
+            "required",
+            "disabled",
+            "readonly",
+            "autocomplete",
+            "aria-label",
+            "aria-describedby"
+          ]
+        },
+        "hint": {
+          "selector": ".helper",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "textarea": {
+      "id": "textarea",
+      "name": "Textarea",
+      "group": "Inputs",
+      "template": "ui/templates/textarea.html",
+      "idPrefix": "dds-instance",
+      "sha256": "5a561cf6d0088076ed54ec8d7fea33045cb87c82602d9b11eeeda40a674967bd",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "body": {
+          "selector": "textarea",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "textarea",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "placeholder",
+            "maxlength",
+            "minlength",
+            "required",
+            "disabled",
+            "readonly",
+            "aria-label"
+          ]
+        },
+        "counter": {
+          "selector": "[data-count]",
+          "kind": "text"
+        },
+        "limit": {
+          "selector": ".row-between > span:first-child",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "select": {
+      "id": "select",
+      "name": "Select",
+      "group": "Inputs",
+      "template": "ui/templates/select.html",
+      "idPrefix": "dds-instance",
+      "sha256": "91698448eb281b16332ba6c00554295d11e5792f6b2fd31fe68ac1315023cf3c",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "options": {
+          "selector": "select",
+          "kind": "slot"
+        },
+        "control": {
+          "selector": "select",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "required",
+            "disabled",
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "combobox": {
+      "id": "combobox",
+      "name": "Combobox",
+      "group": "Inputs",
+      "template": "ui/templates/combobox.html",
+      "idPrefix": "dds-instance",
+      "sha256": "3bb58284bee12276a76b3c7a8fc5ed3f165c295aac1572f0ec45b4337ac81166",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "placeholder",
+            "required",
+            "disabled",
+            "readonly",
+            "autocomplete",
+            "aria-label",
+            "aria-describedby"
+          ]
+        },
+        "hint": {
+          "selector": ".helper",
+          "kind": "text"
+        },
+        "options": {
+          "selector": "datalist",
+          "kind": "slot"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "checkbox": {
+      "id": "checkbox",
+      "name": "Checkbox",
+      "group": "Inputs",
+      "template": "ui/templates/checkbox.html",
+      "idPrefix": "dds-instance",
+      "sha256": "18f20fbb9072337d640b05a4fbf94acc9c440a8c9bc37b03944368f886fcea88",
+      "renderer": "ui/core.js",
+      "parts": {
+        "items": {
+          "selector": ".stack",
+          "kind": "slot"
+        },
+        "firstLabel": {
+          "selector": "label:nth-child(1) [data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "secondLabel": {
+          "selector": "label:nth-child(2) [data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "thirdLabel": {
+          "selector": "label:nth-child(3) [data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "firstControl": {
+          "selector": "label:nth-child(1) input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "checked",
+            "disabled",
+            "required",
+            "aria-label"
+          ]
+        },
+        "secondControl": {
+          "selector": "label:nth-child(2) input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "checked",
+            "disabled",
+            "required",
+            "aria-label"
+          ]
+        },
+        "thirdControl": {
+          "selector": "label:nth-child(3) input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "checked",
+            "disabled",
+            "required",
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "radio": {
+      "id": "radio",
+      "name": "Radio group",
+      "group": "Inputs",
+      "template": "ui/templates/radio.html",
+      "idPrefix": "dds-instance",
+      "sha256": "2bced94134a1118544340b41fcd67615a5b93f22a00056197daf35fddaa109cd",
+      "renderer": "ui/core.js",
+      "parts": {
+        "legend": {
+          "selector": "legend",
+          "kind": "text"
+        },
+        "firstLabel": {
+          "selector": "label:nth-of-type(1) [data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "secondLabel": {
+          "selector": "label:nth-of-type(2) [data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "firstControl": {
+          "selector": "label:nth-of-type(1) input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "checked",
+            "disabled",
+            "required",
+            "aria-label"
+          ]
+        },
+        "secondControl": {
+          "selector": "label:nth-of-type(2) input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "checked",
+            "disabled",
+            "required",
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "switch": {
+      "id": "switch",
+      "name": "Switch",
+      "group": "Inputs",
+      "template": "ui/templates/switch.html",
+      "idPrefix": "dds-instance",
+      "sha256": "60ee8bbdeea25df99643adc488bf2dcb17411eb5aef27f8304efce6c6a9d7893",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "checked",
+            "disabled",
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "date-picker": {
+      "id": "date-picker",
+      "name": "Date picker",
+      "group": "Inputs",
+      "template": "ui/templates/date-picker.html",
+      "idPrefix": "dds-instance",
+      "sha256": "a51f350896c77b8b3abd58925c44713ebc7c9515a9044286a2b8c82ec7d68db8",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "min",
+            "max",
+            "required",
+            "disabled",
+            "readonly",
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "upload": {
+      "id": "upload",
+      "name": "File upload",
+      "group": "Inputs",
+      "template": "ui/templates/upload.html",
+      "idPrefix": "dds-instance",
+      "sha256": "45fed3c0b35bcb923961bc5c990edefdcb2f2934e04c4a465d17564da1b27ecf",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "hint": {
+          "selector": ".helper:not(.file-state)",
+          "kind": "text"
+        },
+        "state": {
+          "selector": ".file-state",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "accept",
+            "multiple",
+            "disabled",
+            "required",
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "search": {
+      "id": "search",
+      "name": "Search field",
+      "group": "Inputs",
+      "template": "ui/templates/search.html",
+      "idPrefix": "dds-instance",
+      "sha256": "8cff22e7a72a92c40a8434957250977551fd60d33c367e68827aea5a81fcd007",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "input",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "placeholder",
+            "required",
+            "disabled",
+            "readonly",
+            "autocomplete",
+            "aria-label",
+            "aria-describedby"
+          ]
+        },
+        "hint": {
+          "selector": ".helper",
+          "kind": "text"
+        },
+        "result": {
+          "selector": "[data-search-count]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "tabs": {
+      "id": "tabs",
+      "name": "Tabs",
+      "group": "Navigation",
+      "template": "ui/templates/tabs.html",
+      "idPrefix": "dds-instance",
+      "sha256": "84cea3e5caa9d847deef24075147b98731c38178e335385eddc3f39ba913fd12",
+      "renderer": "ui/core.js",
+      "parts": {
+        "firstLabel": {
+          "selector": "[role=\"tab\"]:nth-child(1)",
+          "kind": "text"
+        },
+        "secondLabel": {
+          "selector": "[role=\"tab\"]:nth-child(2)",
+          "kind": "text"
+        },
+        "thirdLabel": {
+          "selector": "[role=\"tab\"]:nth-child(3)",
+          "kind": "text"
+        },
+        "panel": {
+          "selector": "[role=\"tabpanel\"]",
+          "kind": "text"
+        },
+        "panelContent": {
+          "selector": "[role=\"tabpanel\"]",
+          "kind": "slot"
+        },
+        "group": {
+          "selector": "[role=\"tablist\"]",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        },
+        "firstControl": {
+          "selector": "[role=\"tab\"]:nth-child(1)",
+          "kind": "attributes",
+          "attributes": [
+            "aria-selected",
+            "disabled"
+          ]
+        },
+        "secondControl": {
+          "selector": "[role=\"tab\"]:nth-child(2)",
+          "kind": "attributes",
+          "attributes": [
+            "aria-selected",
+            "disabled"
+          ]
+        },
+        "thirdControl": {
+          "selector": "[role=\"tab\"]:nth-child(3)",
+          "kind": "attributes",
+          "attributes": [
+            "aria-selected",
+            "disabled"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "breadcrumb": {
+      "id": "breadcrumb",
+      "name": "Breadcrumb",
+      "group": "Navigation",
+      "template": "ui/templates/breadcrumb.html",
+      "idPrefix": "dds-instance",
+      "sha256": "be936c5c3e0049195e10554907eb07c7be79e728add6cecee89903d5000c4208",
+      "renderer": "ui/core.js",
+      "parts": {
+        "home": {
+          "selector": "a:nth-of-type(1)",
+          "kind": "text"
+        },
+        "parent": {
+          "selector": "a:nth-of-type(2)",
+          "kind": "text"
+        },
+        "current": {
+          "selector": "[aria-current=\"page\"]",
+          "kind": "text"
+        },
+        "homeLink": {
+          "selector": "a:nth-of-type(1)",
+          "kind": "attributes",
+          "attributes": [
+            "href"
+          ]
+        },
+        "parentLink": {
+          "selector": "a:nth-of-type(2)",
+          "kind": "attributes",
+          "attributes": [
+            "href"
+          ]
+        },
+        "group": {
+          "selector": "nav",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "pagination": {
+      "id": "pagination",
+      "name": "Pagination",
+      "group": "Navigation",
+      "template": "ui/templates/pagination.html",
+      "idPrefix": "dds-instance",
+      "sha256": "a09334ba3ec1dfb3cdfacf2d9877f64514e8d57006e615aca031d4d2a79544eb",
+      "renderer": "ui/core.js",
+      "parts": {
+        "pages": {
+          "selector": ".pagination",
+          "kind": "slot"
+        },
+        "state": {
+          "selector": "[data-dds-page-state]",
+          "kind": "text"
+        },
+        "group": {
+          "selector": "nav",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "stepper": {
+      "id": "stepper",
+      "name": "Stepper",
+      "group": "Navigation",
+      "template": "ui/templates/stepper.html",
+      "idPrefix": "dds-instance",
+      "sha256": "1125a7d626dda7c9294f16abcb2d715b8818d202e14a2effdf84f515e551bed2",
+      "renderer": "ui/core.js",
+      "parts": {
+        "steps": {
+          "selector": ".stepper",
+          "kind": "slot"
+        },
+        "firstLabel": {
+          "selector": "li:nth-child(1) b",
+          "kind": "text"
+        },
+        "secondLabel": {
+          "selector": "li:nth-child(2) b",
+          "kind": "text"
+        },
+        "thirdLabel": {
+          "selector": "li:nth-child(3) b",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "sidebar": {
+      "id": "sidebar",
+      "name": "Sidebar",
+      "group": "Navigation",
+      "template": "ui/templates/sidebar.html",
+      "idPrefix": "dds-instance",
+      "sha256": "1f9cbe7c68f98dac07fac78afaa5412806cc7cc9fb98edf6b7c33b7387b46fef",
+      "renderer": "ui/core.js",
+      "parts": {
+        "title": {
+          "selector": ".sample-sidebar > b",
+          "kind": "text"
+        },
+        "firstLabel": {
+          "selector": "[data-dds-part=\"item-label\"]",
+          "kind": "text"
+        },
+        "secondLabel": {
+          "selector": "a:nth-of-type(2)",
+          "kind": "text"
+        },
+        "thirdLabel": {
+          "selector": "a:nth-of-type(3)",
+          "kind": "text"
+        },
+        "firstLink": {
+          "selector": "a:nth-of-type(1)",
+          "kind": "attributes",
+          "attributes": [
+            "href",
+            "aria-current"
+          ]
+        },
+        "secondLink": {
+          "selector": "a:nth-of-type(2)",
+          "kind": "attributes",
+          "attributes": [
+            "href",
+            "aria-current"
+          ]
+        },
+        "thirdLink": {
+          "selector": "a:nth-of-type(3)",
+          "kind": "attributes",
+          "attributes": [
+            "href",
+            "aria-current"
+          ]
+        },
+        "count": {
+          "selector": ".dds-collection-count",
+          "kind": "text"
+        },
+        "countControl": {
+          "selector": ".dds-collection-count",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "dropdown": {
+      "id": "dropdown",
+      "name": "Dropdown menu",
+      "group": "Navigation",
+      "template": "ui/templates/dropdown.html",
+      "idPrefix": "dds-instance",
+      "sha256": "06a9d54532566638e6a9ec1b6a6bb07cf34cf211c5b7784a2a958c55fa699b31",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "items": {
+          "selector": ".sample-dropdown > div",
+          "kind": "slot"
+        },
+        "firstLabel": {
+          "selector": ".sample-dropdown > div > button:nth-child(1)",
+          "kind": "text"
+        },
+        "secondLabel": {
+          "selector": ".sample-dropdown > div > button:nth-child(2)",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "dialog": {
+      "id": "dialog",
+      "name": "Dialog",
+      "group": "Feedback",
+      "template": "ui/templates/dialog.html",
+      "idPrefix": "dds-instance",
+      "sha256": "bb4f2025208b3151bb9141f17276d586bc06bc26f16c7342246fa083ad81b972",
+      "renderer": "ui/core.js",
+      "parts": {
+        "trigger": {
+          "selector": "[data-dds-part=\"trigger-label\"]",
+          "kind": "text"
+        },
+        "title": {
+          "selector": ".dialog-heading > h2",
+          "kind": "text"
+        },
+        "body": {
+          "selector": ".dds-dialog > p",
+          "kind": "text"
+        },
+        "content": {
+          "selector": ".sample-document",
+          "kind": "slot"
+        },
+        "documentTitle": {
+          "selector": ".sample-document > h3",
+          "kind": "text"
+        },
+        "documentBody": {
+          "selector": ".sample-document > p",
+          "kind": "text"
+        },
+        "confirm": {
+          "selector": ".dds-dialog > button",
+          "kind": "text"
+        },
+        "close": {
+          "selector": ".dialog-heading > button",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        },
+        "control": {
+          "selector": "[data-dds-dialog]",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "disabled",
+            "hidden"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "alert": {
+      "id": "alert",
+      "name": "Alert",
+      "group": "Feedback",
+      "template": "ui/templates/alert.html",
+      "idPrefix": "dds-instance",
+      "sha256": "0f405e24976edc59c6cacc8eb0a766fb6271cbdeb3cfb99597c5af0328ce6a0e",
+      "renderer": "ui/core.js",
+      "parts": {
+        "title": {
+          "selector": ".alert b",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".alert p",
+          "kind": "text"
+        },
+        "content": {
+          "selector": ".alert > div",
+          "kind": "slot"
+        },
+        "control": {
+          "selector": ".alert",
+          "kind": "attributes",
+          "attributes": [
+            "role",
+            "aria-live"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "toast": {
+      "id": "toast",
+      "name": "Toast",
+      "group": "Feedback",
+      "template": "ui/templates/toast.html",
+      "idPrefix": "dds-instance",
+      "sha256": "6dc3eb27550f43ed25c3df3d1a173a932933aca962f91e5c02c3516af0e2d72e",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-toast]",
+          "kind": "text"
+        },
+        "message": {
+          "selector": "[data-dds-toast]",
+          "kind": "attributes",
+          "attributes": [
+            "data-dds-message"
+          ]
+        },
+        "content": {
+          "selector": ".dds-toast",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "[data-dds-toast]",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "disabled"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "tooltip": {
+      "id": "tooltip",
+      "name": "Tooltip",
+      "group": "Feedback",
+      "template": "ui/templates/tooltip.html",
+      "idPrefix": "dds-instance",
+      "sha256": "7ced3e3319339255d17ee5bf90709e91ba241aababd912ee0c193ae3dfb98f08",
+      "renderer": "ui/core.js",
+      "parts": {
+        "control": {
+          "selector": "button",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "data-tooltip",
+            "disabled"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "progress": {
+      "id": "progress",
+      "name": "Progress",
+      "group": "Feedback",
+      "template": "ui/templates/progress.html",
+      "idPrefix": "dds-instance",
+      "sha256": "93ed88d239c66ac4784953060d06e1ede7869db34673bb4139769ad89bedad8f",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": "[data-dds-part=\"label\"]",
+          "kind": "text"
+        },
+        "value": {
+          "selector": ".row-between > span",
+          "kind": "text"
+        },
+        "hint": {
+          "selector": ".helper",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "progress",
+          "kind": "attributes",
+          "attributes": [
+            "value",
+            "max",
+            "aria-label",
+            "aria-valuetext"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "skeleton": {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "group": "Feedback",
+      "template": "ui/templates/skeleton.html",
+      "idPrefix": "dds-instance",
+      "sha256": "3550389dfd5bb4f9786f425c9af0d079f913ce382e19d7130ebe3cf8c6cc9264",
+      "renderer": "ui/core.js",
+      "parts": {
+        "label": {
+          "selector": ".sr-only",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".skeleton-card",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "aria-busy"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "empty": {
+      "id": "empty",
+      "name": "Empty state",
+      "group": "Feedback",
+      "template": "ui/templates/empty.html",
+      "idPrefix": "dds-instance",
+      "sha256": "d9bef2149c7a05062a70e196d691f38bc6ba4cdf9f8dbb867db5c19d055b63ef",
+      "renderer": "ui/core.js",
+      "parts": {
+        "title": {
+          "selector": "h3",
+          "kind": "text"
+        },
+        "description": {
+          "selector": "p",
+          "kind": "text"
+        },
+        "action": {
+          "selector": "[data-dds-part=\"action-label\"]",
+          "kind": "text"
+        },
+        "actionControl": {
+          "selector": "a",
+          "kind": "attributes",
+          "attributes": [
+            "href",
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "badge": {
+      "id": "badge",
+      "name": "Badge",
+      "group": "Data display",
+      "template": "ui/templates/badge.html",
+      "idPrefix": "dds-instance",
+      "sha256": "6ac7757e15f23045d0bf84b03ae6d73f0ff7f167c6fba5befa7316642b189275",
+      "renderer": "ui/core.js",
+      "parts": {
+        "statuses": {
+          "selector": ".badge-demo > .demo-row",
+          "kind": "slot"
+        },
+        "countLabel": {
+          "selector": ".badge-count-example > .dds-meta-primary",
+          "kind": "text"
+        },
+        "count": {
+          "selector": ".dds-collection-count",
+          "kind": "text"
+        },
+        "countControl": {
+          "selector": ".dds-collection-count",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "avatar": {
+      "id": "avatar",
+      "name": "Avatar",
+      "group": "Data display",
+      "template": "ui/templates/avatar.html",
+      "idPrefix": "dds-instance",
+      "sha256": "135f947345764b78152462564a971ec120783c2fd4a3ec7b341d06bb8adb3f99",
+      "renderer": "ui/core.js",
+      "parts": {
+        "firstInitial": {
+          "selector": ".avatar:nth-child(1)",
+          "kind": "text"
+        },
+        "secondInitial": {
+          "selector": ".avatar:nth-child(2)",
+          "kind": "text"
+        },
+        "thirdInitial": {
+          "selector": ".avatar:nth-child(3)",
+          "kind": "text"
+        },
+        "name": {
+          "selector": ".demo-row > div > b",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".helper",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "card": {
+      "id": "card",
+      "name": "Card",
+      "group": "Data display",
+      "template": "ui/templates/card.html",
+      "idPrefix": "dds-instance",
+      "sha256": "e83811be7ec9490f2dfea682bfc0db6452daf946b0b2a630bf062e02345d2f22",
+      "renderer": "ui/core.js",
+      "parts": {
+        "content": {
+          "selector": ".dds-document-card",
+          "kind": "slot"
+        },
+        "container": {
+          "selector": ".dds-document-card",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "role"
+          ]
+        },
+        "title": {
+          "selector": ".dds-card-link",
+          "kind": "text"
+        },
+        "link": {
+          "selector": ".dds-card-link",
+          "kind": "attributes",
+          "attributes": [
+            "href",
+            "aria-label"
+          ]
+        },
+        "status": {
+          "selector": ".dds-status > span",
+          "kind": "text"
+        },
+        "primary": {
+          "selector": ".dds-meta-primary",
+          "kind": "text"
+        },
+        "secondary": {
+          "selector": ".dds-meta-secondary",
+          "kind": "text"
+        },
+        "date": {
+          "selector": ".dds-meta-date",
+          "kind": "text"
+        },
+        "dateControl": {
+          "selector": ".dds-meta-date",
+          "kind": "attributes",
+          "attributes": [
+            "datetime"
+          ]
+        },
+        "action": {
+          "selector": ".dds-card-tools",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "disabled"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "table": {
+      "id": "table",
+      "name": "Data table",
+      "group": "Data display",
+      "template": "ui/templates/table.html",
+      "idPrefix": "dds-instance",
+      "sha256": "44230a58a8f9d9e2aad9a98f18aa29fddfb7d5f5f7fef1c8308deb3ebe4c4734",
+      "renderer": "ui/core.js",
+      "parts": {
+        "caption": {
+          "selector": "caption",
+          "kind": "text"
+        },
+        "head": {
+          "selector": "thead",
+          "kind": "slot"
+        },
+        "rows": {
+          "selector": "tbody",
+          "kind": "slot"
+        },
+        "region": {
+          "selector": ".dds-table-scroll",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        },
+        "firstTitle": {
+          "selector": "tbody tr:nth-child(1) td:nth-child(1)",
+          "kind": "text"
+        },
+        "secondTitle": {
+          "selector": "tbody tr:nth-child(2) td:nth-child(1)",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "accordion": {
+      "id": "accordion",
+      "name": "Accordion",
+      "group": "Data display",
+      "template": "ui/templates/accordion.html",
+      "idPrefix": "dds-instance",
+      "sha256": "a96cfb6ecd45d8cc2bbd17a61d6bb4e9a25081f3dc091fdb9e51bddc0367ebca",
+      "renderer": "ui/core.js",
+      "parts": {
+        "firstTitle": {
+          "selector": "details:nth-child(1) summary",
+          "kind": "text"
+        },
+        "firstBody": {
+          "selector": "details:nth-child(1) p",
+          "kind": "text"
+        },
+        "secondTitle": {
+          "selector": "details:nth-child(2) summary",
+          "kind": "text"
+        },
+        "secondBody": {
+          "selector": "details:nth-child(2) p",
+          "kind": "text"
+        },
+        "firstControl": {
+          "selector": "details:nth-child(1)",
+          "kind": "attributes",
+          "attributes": [
+            "open"
+          ]
+        },
+        "secondControl": {
+          "selector": "details:nth-child(2)",
+          "kind": "attributes",
+          "attributes": [
+            "open"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "chart": {
+      "id": "chart",
+      "name": "Chart",
+      "group": "Charts",
+      "template": "ui/templates/chart.html",
+      "idPrefix": "dds-instance",
+      "sha256": "6ba40ea57fc48b9fc91f81aa05b763f6599a5ff1fb5be400a9a57e3bb2b9b923",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "editor": {
+      "id": "editor",
+      "name": "Rich editor",
+      "group": "Data display",
+      "template": "ui/templates/editor.html",
+      "idPrefix": "dds-instance",
+      "sha256": "f65e46842f514acef0d1c64decafd01bceaf91755e86d739bc43a867a959b22b",
+      "renderer": "ui/core.js",
+      "parts": {
+        "title": {
+          "selector": ".row-between > b",
+          "kind": "text"
+        },
+        "status": {
+          "selector": ".badge",
+          "kind": "text"
+        },
+        "label": {
+          "selector": "label",
+          "kind": "text"
+        },
+        "body": {
+          "selector": "textarea",
+          "kind": "text"
+        },
+        "control": {
+          "selector": "textarea",
+          "kind": "attributes",
+          "attributes": [
+            "name",
+            "value",
+            "placeholder",
+            "maxlength",
+            "required",
+            "disabled",
+            "readonly",
+            "aria-label"
+          ]
+        },
+        "counter": {
+          "selector": "[data-count]",
+          "kind": "text"
+        },
+        "action": {
+          "selector": "button",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "video": {
+      "id": "video",
+      "name": "Media frame",
+      "group": "Data display",
+      "template": "ui/templates/video.html",
+      "idPrefix": "dds-instance",
+      "sha256": "794819266bb6496c6bb699f3fd38aede4a85f8162ede3062f49293fc31911b1b",
+      "renderer": "ui/core.js",
+      "parts": {
+        "title": {
+          "selector": ".media-demo > b",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".media-demo > p",
+          "kind": "text"
+        },
+        "action": {
+          "selector": "button",
+          "kind": "text"
+        },
+        "media": {
+          "selector": ".media-demo",
+          "kind": "slot"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "action-area": {
+      "id": "action-area",
+      "name": "Action area",
+      "group": "Actions",
+      "template": "ui/templates/action-area.html",
+      "idPrefix": "dds-instance",
+      "sha256": "5c354678d0bbe2a43c09f27678d3f999c1b8a3abc78efd30bc6217a90b5ce4be",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "description": {
+          "selector": ".dds-component > .helper",
+          "kind": "text"
+        },
+        "actions": {
+          "selector": ".dds-action-area",
+          "kind": "slot"
+        },
+        "cancelLabel": {
+          "selector": ".dds-action-area > button:first-child",
+          "kind": "text"
+        },
+        "confirmLabel": {
+          "selector": ".dds-action-area > button:last-child",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "text-button": {
+      "id": "text-button",
+      "name": "Text button",
+      "group": "Actions",
+      "template": "ui/templates/text-button.html",
+      "idPrefix": "dds-instance",
+      "sha256": "e537c1c329a3144224fb44707342b3a18080fb5864c96c9af90934308c937e8c",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "button": {
+          "selector": ".dds-component > .btn",
+          "kind": "attributes"
+        },
+        "content": {
+          "selector": ".dds-component > .btn",
+          "kind": "slot"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "button-group": {
+      "id": "button-group",
+      "name": "Button group",
+      "group": "Actions",
+      "template": "ui/templates/button-group.html",
+      "idPrefix": "dds-instance",
+      "sha256": "b1604bb05f511b03d88db871cd03349d0aec059deea67c3f99e037c3c92288a4",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "group": {
+          "selector": ".dds-button-group",
+          "kind": "attributes"
+        },
+        "actions": {
+          "selector": ".dds-button-group",
+          "kind": "slot"
+        },
+        "firstLabel": {
+          "selector": ".dds-button-group > button:first-child",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "toggle": {
+      "id": "toggle",
+      "name": "Toggle",
+      "group": "Actions",
+      "template": "ui/templates/toggle.html",
+      "idPrefix": "dds-instance",
+      "sha256": "659d8a9c7d97d441dbf09d4892942120d7307f1bf9ca8fb886bce9dffa4ec1ce",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "button": {
+          "selector": "[data-dds-toggle]",
+          "kind": "attributes"
+        },
+        "content": {
+          "selector": "[data-dds-toggle]",
+          "kind": "slot"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "toggle-group": {
+      "id": "toggle-group",
+      "name": "Toggle group",
+      "group": "Actions",
+      "template": "ui/templates/toggle-group.html",
+      "idPrefix": "dds-instance",
+      "sha256": "6033b3754fffade0b7ca42cefd5e026992f29f2f28dc153d2ca50ad8448bcdc4",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "group": {
+          "selector": ".dds-button-group",
+          "kind": "attributes"
+        },
+        "options": {
+          "selector": ".dds-button-group",
+          "kind": "slot"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "filter-button": {
+      "id": "filter-button",
+      "name": "Filter button",
+      "group": "Actions",
+      "template": "ui/templates/filter-button.html",
+      "idPrefix": "dds-instance",
+      "sha256": "0ee32212def83cfde2740d11e8cbb7155c43dbb7925ea516b510b8025c23d207",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "button": {
+          "selector": "[data-ext-filter]",
+          "kind": "attributes"
+        },
+        "label": {
+          "selector": "[data-filter-label]",
+          "kind": "text"
+        },
+        "resetLabel": {
+          "selector": "[data-ext-filter-reset]",
+          "kind": "text"
+        },
+        "result": {
+          "selector": "[data-dds-filter-result]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "calendar": {
+      "id": "calendar",
+      "name": "Calendar",
+      "group": "Inputs",
+      "template": "ui/templates/calendar.html",
+      "idPrefix": "dds-instance",
+      "sha256": "303dad8fb9689073abe247448e642a5ddbc10fc1e2cf644c790b992be9e1efe0",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "calendar": {
+          "selector": "[data-dds-calendar]",
+          "kind": "attributes"
+        },
+        "month": {
+          "selector": "[data-month-label]",
+          "kind": "text"
+        },
+        "days": {
+          "selector": "[data-calendar-grid]",
+          "kind": "slot"
+        },
+        "selectedDate": {
+          "selector": "[data-date-result]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "field": {
+      "id": "field",
+      "name": "Field / Form",
+      "group": "Inputs",
+      "template": "ui/templates/field.html",
+      "idPrefix": "dds-instance",
+      "sha256": "1c72d14e9b877fa4a2fc9931661ff61a01e7d1ac68cdd353ae9ef938823e89ef",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "form": {
+          "selector": "[data-dds-form]",
+          "kind": "attributes"
+        },
+        "legend": {
+          "selector": "legend",
+          "kind": "text"
+        },
+        "label": {
+          "selector": "label",
+          "kind": "slot"
+        },
+        "input": {
+          "selector": "input",
+          "kind": "attributes"
+        },
+        "description": {
+          "selector": ".helper[id]",
+          "kind": "text"
+        },
+        "error": {
+          "selector": "[data-field-error]",
+          "kind": "text"
+        },
+        "buttonLabel": {
+          "selector": "[data-dds-validate]",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "input-group": {
+      "id": "input-group",
+      "name": "Input group",
+      "group": "Inputs",
+      "template": "ui/templates/input-group.html",
+      "idPrefix": "dds-instance",
+      "sha256": "e5334790ea2fd3cd5770dcfbc17ed7293ad403be9cecbc3e3b9d9d00429cdd85",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "label": {
+          "selector": "label",
+          "kind": "text"
+        },
+        "input": {
+          "selector": ".dds-input-group > input",
+          "kind": "attributes"
+        },
+        "visibilityButton": {
+          "selector": "[data-dds-password]",
+          "kind": "attributes"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "input-otp": {
+      "id": "input-otp",
+      "name": "Input OTP",
+      "group": "Inputs",
+      "template": "ui/templates/input-otp.html",
+      "idPrefix": "dds-instance",
+      "sha256": "f889e68b4e940ac1172438d641bc529009d67bbd6caec278daec1d4c5bcb809b",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "label": {
+          "selector": "label",
+          "kind": "text"
+        },
+        "input": {
+          "selector": "[data-dds-otp]",
+          "kind": "attributes"
+        },
+        "description": {
+          "selector": "[data-otp-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "label": {
+      "id": "label",
+      "name": "Label",
+      "group": "Inputs",
+      "template": "ui/templates/label.html",
+      "idPrefix": "dds-instance",
+      "sha256": "bfc3cea9efe1af20c78ef76bbd50c76dc234a42a1983e87d83d28273eca5ed6e",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "label": {
+          "selector": "label",
+          "kind": "slot"
+        },
+        "input": {
+          "selector": "input",
+          "kind": "attributes"
+        },
+        "description": {
+          "selector": ".helper",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "slider": {
+      "id": "slider",
+      "name": "Slider",
+      "group": "Inputs",
+      "template": "ui/templates/slider.html",
+      "idPrefix": "dds-instance",
+      "sha256": "9a234030dce628ad04a770fb70ad482b3def0a3e6ef5b6a55bb75d070d149f28",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "label": {
+          "selector": "label",
+          "kind": "slot"
+        },
+        "input": {
+          "selector": "[data-dds-slider]",
+          "kind": "attributes"
+        },
+        "value": {
+          "selector": "[data-slider-output]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "segmented-control": {
+      "id": "segmented-control",
+      "name": "Segmented control",
+      "group": "Inputs",
+      "template": "ui/templates/segmented-control.html",
+      "idPrefix": "dds-instance",
+      "sha256": "6cdcbf5815680869a4e061de80c94a601450099daf8db65a3fb22b056ec62cb8",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "legend": {
+          "selector": "legend",
+          "kind": "text"
+        },
+        "group": {
+          "selector": ".dds-segmented",
+          "kind": "attributes"
+        },
+        "options": {
+          "selector": ".dds-segmented",
+          "kind": "slot"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "framed-style": {
+      "id": "framed-style",
+      "name": "Framed choice",
+      "group": "Inputs",
+      "template": "ui/templates/framed-style.html",
+      "idPrefix": "dds-instance",
+      "sha256": "a74286482346bc427ce393599e4c1cc6dd5e5e51698cd0ad9fd1a770753b3e80",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "legend": {
+          "selector": "legend",
+          "kind": "text"
+        },
+        "group": {
+          "selector": ".dds-framed",
+          "kind": "attributes"
+        },
+        "options": {
+          "selector": ".dds-framed",
+          "kind": "slot"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "time-picker": {
+      "id": "time-picker",
+      "name": "Time picker",
+      "group": "Inputs",
+      "template": "ui/templates/time-picker.html",
+      "idPrefix": "dds-instance",
+      "sha256": "eda54bcd73194f6613beff22f0dc30adfccca86c9353d9dab80386ab8ae8e304",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "legend": {
+          "selector": "legend",
+          "kind": "text"
+        },
+        "hours": {
+          "selector": "select[aria-label=\"시\"]",
+          "kind": "attributes"
+        },
+        "minutes": {
+          "selector": "select[aria-label=\"분\"]",
+          "kind": "attributes"
+        },
+        "result": {
+          "selector": "[data-time-result]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "questionnaire": {
+      "id": "questionnaire",
+      "name": "Questionnaire",
+      "group": "Inputs",
+      "template": "ui/templates/questionnaire.html",
+      "idPrefix": "dds-instance",
+      "sha256": "d72a26977f11120125a79f25e38d014661a76116458538595632c006f35c3107",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "form": {
+          "selector": "[data-dds-questionnaire]",
+          "kind": "attributes"
+        },
+        "progress": {
+          "selector": "[data-question-progress]",
+          "kind": "text"
+        },
+        "firstQuestion": {
+          "selector": "[data-question=\"0\"] > legend",
+          "kind": "text"
+        },
+        "firstChoices": {
+          "selector": "[data-question=\"0\"]",
+          "kind": "slot"
+        },
+        "secondQuestion": {
+          "selector": "[data-question=\"1\"] > legend",
+          "kind": "text"
+        },
+        "secondChoices": {
+          "selector": "[data-question=\"1\"]",
+          "kind": "slot"
+        },
+        "thirdQuestion": {
+          "selector": "[data-question=\"2\"] > legend",
+          "kind": "text"
+        },
+        "answer": {
+          "selector": "textarea",
+          "kind": "attributes"
+        },
+        "previousLabel": {
+          "selector": "[data-dds-question-back]",
+          "kind": "text"
+        },
+        "nextLabel": {
+          "selector": "[data-dds-question-next]",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "navigation-menu": {
+      "id": "navigation-menu",
+      "name": "Navigation menu",
+      "group": "Navigation",
+      "template": "ui/templates/navigation-menu.html",
+      "idPrefix": "dds-instance",
+      "sha256": "230d8af7db082f9835d2dea63fc3528ed50db7696aa34f67ec409a3054f0c919",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "navigation": {
+          "selector": "nav",
+          "kind": "attributes"
+        },
+        "trigger": {
+          "selector": "summary",
+          "kind": "attributes"
+        },
+        "links": {
+          "selector": ".dds-nav-details > div",
+          "kind": "slot"
+        },
+        "firstLink": {
+          "selector": ".dds-nav-details > div > a:first-child",
+          "kind": "attributes"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "top-navigation": {
+      "id": "top-navigation",
+      "name": "Top navigation",
+      "group": "Navigation",
+      "template": "ui/templates/top-navigation.html",
+      "idPrefix": "dds-instance",
+      "sha256": "6b59002541b377bcb27c8333c6b444601e9a1d925c44398154e0a4647c591df0",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "header": {
+          "selector": "[data-dds-topnav]",
+          "kind": "attributes"
+        },
+        "brand": {
+          "selector": ".dds-topnav-brand",
+          "kind": "text"
+        },
+        "brandLink": {
+          "selector": ".dds-topnav-brand",
+          "kind": "attributes"
+        },
+        "menuButton": {
+          "selector": "[data-dds-topnav-toggle]",
+          "kind": "attributes"
+        },
+        "links": {
+          "selector": ".dds-topnav-links",
+          "kind": "slot"
+        },
+        "tools": {
+          "selector": ".dds-topnav-tools",
+          "kind": "slot"
+        },
+        "language": {
+          "selector": ".dds-topnav-language select",
+          "kind": "attributes"
+        },
+        "accountLabel": {
+          "selector": ".dds-topnav-tools > a",
+          "kind": "text"
+        },
+        "accountLink": {
+          "selector": ".dds-topnav-tools > a",
+          "kind": "attributes"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "bottom-navigation": {
+      "id": "bottom-navigation",
+      "name": "Bottom navigation",
+      "group": "Navigation",
+      "template": "ui/templates/bottom-navigation.html",
+      "idPrefix": "dds-instance",
+      "sha256": "5565da8b51787b342919b6c6ca554121c3f876150b240bc17037c66edfa4bf8b",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "navigation": {
+          "selector": ".dds-bottomnav",
+          "kind": "attributes"
+        },
+        "links": {
+          "selector": ".dds-bottomnav",
+          "kind": "slot"
+        },
+        "firstLink": {
+          "selector": ".dds-bottomnav-link:first-child",
+          "kind": "attributes"
+        },
+        "firstLabel": {
+          "selector": ".dds-bottomnav-link:first-child > span",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "category": {
+      "id": "category",
+      "name": "Category",
+      "group": "Navigation",
+      "template": "ui/templates/category.html",
+      "idPrefix": "dds-instance",
+      "sha256": "42198b591501cfd3cba4fd76a517eb4fb0a35f10565e018a61bf49868146315e",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "group": {
+          "selector": "[role=\"group\"]",
+          "kind": "attributes"
+        },
+        "options": {
+          "selector": "[role=\"group\"]",
+          "kind": "slot"
+        },
+        "result": {
+          "selector": "[data-category-result]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "page-counter": {
+      "id": "page-counter",
+      "name": "Page counter",
+      "group": "Navigation",
+      "template": "ui/templates/page-counter.html",
+      "idPrefix": "dds-instance",
+      "sha256": "d1f860c74e281aca9f007923495a30eeffc72b62a6a78b9d3ac2fb912fa30525",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "counter": {
+          "selector": "[data-dds-pager]",
+          "kind": "attributes"
+        },
+        "value": {
+          "selector": "[data-dds-pager-output]",
+          "kind": "text"
+        },
+        "previous": {
+          "selector": "[data-dds-page-shift=\"-1\"]",
+          "kind": "attributes"
+        },
+        "next": {
+          "selector": "[data-dds-page-shift=\"1\"]",
+          "kind": "attributes"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "pagination-dots": {
+      "id": "pagination-dots",
+      "name": "Pagination dots",
+      "group": "Navigation",
+      "template": "ui/templates/pagination-dots.html",
+      "idPrefix": "dds-instance",
+      "sha256": "4d1cc2e6cf8b8be257c41bd0dcc65b30f7843a23f5741efbed9325a86c5eb778",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "navigation": {
+          "selector": ".dds-dots",
+          "kind": "attributes"
+        },
+        "dots": {
+          "selector": ".dds-dots",
+          "kind": "slot"
+        },
+        "result": {
+          "selector": "[data-dot-result]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "menubar": {
+      "id": "menubar",
+      "name": "Menubar",
+      "group": "Navigation",
+      "template": "ui/templates/menubar.html",
+      "idPrefix": "dds-instance",
+      "sha256": "0d02e07479e4b600ab3ab834eec452cd6797078585c3dbab5e592dd9fdc104ee",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "bar": {
+          "selector": ".dds-menubar",
+          "kind": "attributes"
+        },
+        "menus": {
+          "selector": ".dds-menubar",
+          "kind": "slot"
+        },
+        "firstLabel": {
+          "selector": ".dds-menu-unit:first-child > [data-dds-menu]",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "command": {
+      "id": "command",
+      "name": "Command",
+      "group": "Navigation",
+      "template": "ui/templates/command.html",
+      "idPrefix": "dds-instance",
+      "sha256": "be5dd5b9369ba54995f890aae157ca81830d8ed7a08be78b4073c7434f720367",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "search": {
+          "selector": "[data-dds-command-search]",
+          "kind": "attributes"
+        },
+        "commands": {
+          "selector": ".dds-command-results",
+          "kind": "slot"
+        },
+        "firstLabel": {
+          "selector": ".dds-command-option:first-child > span",
+          "kind": "text"
+        },
+        "empty": {
+          "selector": "[data-command-empty]",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "context-menu": {
+      "id": "context-menu",
+      "name": "Context menu",
+      "group": "Navigation",
+      "template": "ui/templates/context-menu.html",
+      "idPrefix": "dds-instance",
+      "sha256": "7b9049ac25d03af48b032553f8c8898c5568d0575be76370a9b5c5b0ac1d3f41",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "target": {
+          "selector": "[data-dds-context]",
+          "kind": "attributes"
+        },
+        "title": {
+          "selector": ".dds-context > p",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".dds-context > .helper",
+          "kind": "text"
+        },
+        "triggerLabel": {
+          "selector": "[data-dds-menu]",
+          "kind": "text"
+        },
+        "commands": {
+          "selector": "[role=\"menu\"]",
+          "kind": "slot"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "alert-dialog": {
+      "id": "alert-dialog",
+      "name": "Alert dialog",
+      "group": "Feedback",
+      "template": "ui/templates/alert-dialog.html",
+      "idPrefix": "dds-instance",
+      "sha256": "0a56163029449007c2e50485d9b463ebdb536cd4fdc7af573a2924ed1605b710",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "triggerLabel": {
+          "selector": ".dds-component > button",
+          "kind": "text"
+        },
+        "dialog": {
+          "selector": ".dds-overlay",
+          "kind": "attributes"
+        },
+        "title": {
+          "selector": ".dialog-heading > h2",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".dds-overlay > p",
+          "kind": "text"
+        },
+        "actions": {
+          "selector": ".dds-action-area",
+          "kind": "slot"
+        },
+        "cancelLabel": {
+          "selector": ".dds-action-area > button:first-child",
+          "kind": "text"
+        },
+        "confirmLabel": {
+          "selector": "[data-dds-confirm]",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "sheet": {
+      "id": "sheet",
+      "name": "Sheet",
+      "group": "Feedback",
+      "template": "ui/templates/sheet.html",
+      "idPrefix": "dds-instance",
+      "sha256": "cc5072a24f2c0525d466305940de2b816831bcef83b5531f3e33745878474676",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "triggerLabel": {
+          "selector": ".dds-component > button",
+          "kind": "text"
+        },
+        "dialog": {
+          "selector": ".dds-overlay",
+          "kind": "attributes"
+        },
+        "title": {
+          "selector": ".dialog-heading > h2",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".dds-overlay > p",
+          "kind": "text"
+        },
+        "actions": {
+          "selector": ".dds-action-area",
+          "kind": "slot"
+        },
+        "cancelLabel": {
+          "selector": ".dds-action-area > button:first-child",
+          "kind": "text"
+        },
+        "confirmLabel": {
+          "selector": "[data-dds-confirm]",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "drawer": {
+      "id": "drawer",
+      "name": "Drawer / Bottom sheet",
+      "group": "Feedback",
+      "template": "ui/templates/drawer.html",
+      "idPrefix": "dds-instance",
+      "sha256": "2b17de7c43c87eed802dae26d9efde811a991d119a0b51e556143a2a79ded7c8",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "triggerLabel": {
+          "selector": ".dds-component > button",
+          "kind": "text"
+        },
+        "dialog": {
+          "selector": ".dds-overlay",
+          "kind": "attributes"
+        },
+        "title": {
+          "selector": ".dialog-heading > h2",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".dds-overlay > p",
+          "kind": "text"
+        },
+        "actions": {
+          "selector": ".dds-action-area",
+          "kind": "slot"
+        },
+        "cancelLabel": {
+          "selector": ".dds-action-area > button:first-child",
+          "kind": "text"
+        },
+        "confirmLabel": {
+          "selector": "[data-dds-confirm]",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "popover": {
+      "id": "popover",
+      "name": "Popover",
+      "group": "Feedback",
+      "template": "ui/templates/popover.html",
+      "idPrefix": "dds-instance",
+      "sha256": "8c932ea2aee0beb70e24b0fec8da634f0ed64ec7247cb77acbb3743b142d486d",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "triggerLabel": {
+          "selector": ".dds-popover-host > button",
+          "kind": "text"
+        },
+        "trigger": {
+          "selector": ".dds-popover-host > button",
+          "kind": "attributes"
+        },
+        "panel": {
+          "selector": ".dds-popover",
+          "kind": "attributes"
+        },
+        "title": {
+          "selector": ".dds-popover .row-between > b",
+          "kind": "text"
+        },
+        "choice": {
+          "selector": ".dds-popover > .dds-choice",
+          "kind": "slot"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "hover-card": {
+      "id": "hover-card",
+      "name": "Hover card",
+      "group": "Feedback",
+      "template": "ui/templates/hover-card.html",
+      "idPrefix": "dds-instance",
+      "sha256": "19658dc1bcbb84699ac13d5e4815fa5a5d5a6180ed7234d82aaf83f2a4b2be02",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "triggerLabel": {
+          "selector": ".dds-popover-host > button",
+          "kind": "text"
+        },
+        "trigger": {
+          "selector": ".dds-popover-host > button",
+          "kind": "attributes"
+        },
+        "panel": {
+          "selector": ".dds-popover",
+          "kind": "attributes"
+        },
+        "title": {
+          "selector": ".dds-popover .row-between > b",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".dds-popover > p:not(.helper)",
+          "kind": "text"
+        },
+        "metadata": {
+          "selector": ".dds-popover > .helper",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "snackbar": {
+      "id": "snackbar",
+      "name": "Snackbar",
+      "group": "Feedback",
+      "template": "ui/templates/snackbar.html",
+      "idPrefix": "dds-instance",
+      "sha256": "00888bb7ad7886482cdf23bc33e321e80a427d7a25d58d80dff85f27f880b13a",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "message": {
+          "selector": "[data-snack-message]",
+          "kind": "text"
+        },
+        "undoLabel": {
+          "selector": "[data-dds-snack-undo]",
+          "kind": "text"
+        },
+        "dismiss": {
+          "selector": "[data-dds-snack-close]",
+          "kind": "attributes"
+        },
+        "showLabel": {
+          "selector": "[data-dds-snack-show]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "spinner": {
+      "id": "spinner",
+      "name": "Spinner / Loading",
+      "group": "Feedback",
+      "template": "ui/templates/spinner.html",
+      "idPrefix": "dds-instance",
+      "sha256": "dd9d1ae8e0d98f5db019ad34783a87dad4670ade15d5e1c07d6ee8060eb0e3ce",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "status": {
+          "selector": "[role=\"status\"]",
+          "kind": "attributes"
+        },
+        "label": {
+          "selector": ".demo-row > span:last-child",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "fallback-view": {
+      "id": "fallback-view",
+      "name": "Fallback view",
+      "group": "Feedback",
+      "template": "ui/templates/fallback-view.html",
+      "idPrefix": "dds-instance",
+      "sha256": "7f32ab3ba04a82a6e24a8b7c21261f0444d0c6b9818c2dbf818ff0dba69af398",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "title": {
+          "selector": "[data-fallback-title]",
+          "kind": "text"
+        },
+        "description": {
+          "selector": "[data-fallback-copy]",
+          "kind": "text"
+        },
+        "retryLabel": {
+          "selector": "[data-ext-retry]",
+          "kind": "text"
+        },
+        "retry": {
+          "selector": "[data-ext-retry]",
+          "kind": "attributes"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "push-badge": {
+      "id": "push-badge",
+      "name": "Push badge",
+      "group": "Feedback",
+      "template": "ui/templates/push-badge.html",
+      "idPrefix": "dds-instance",
+      "sha256": "b5876b425e3abccedd70b05da42302ceb64264027a59753b1160389eb64aa487",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "button": {
+          "selector": ".dds-push",
+          "kind": "attributes"
+        },
+        "count": {
+          "selector": ".dds-push > span",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "aspect-ratio": {
+      "id": "aspect-ratio",
+      "name": "Aspect ratio",
+      "group": "Data display",
+      "template": "ui/templates/aspect-ratio.html",
+      "idPrefix": "dds-instance",
+      "sha256": "04ebf9584c8dcd8b452f3ffecf8b8b3ce5824980b85a18c89f05b6a2b8b70bcd",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "media": {
+          "selector": ".dds-ratio",
+          "kind": "attributes"
+        },
+        "label": {
+          "selector": ".dds-ratio > span",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "thumbnail": {
+      "id": "thumbnail",
+      "name": "Thumbnail",
+      "group": "Data display",
+      "template": "ui/templates/thumbnail.html",
+      "idPrefix": "dds-instance",
+      "sha256": "b00de2178d2798c3d10b7c94d878ac05847006ac7f980150e579f1f2e69df3c3",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "image": {
+          "selector": ".dds-thumbnail > img",
+          "kind": "attributes"
+        },
+        "content": {
+          "selector": ".dds-thumbnail",
+          "kind": "slot"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "play-badge": {
+      "id": "play-badge",
+      "name": "Play badge",
+      "group": "Data display",
+      "template": "ui/templates/play-badge.html",
+      "idPrefix": "dds-instance",
+      "sha256": "6ab21842699af069fb452e316237526113a531df9fb7703e79034913edc38b0d",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "button": {
+          "selector": ".dds-play",
+          "kind": "attributes"
+        },
+        "content": {
+          "selector": ".dds-play",
+          "kind": "slot"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "avatar-group": {
+      "id": "avatar-group",
+      "name": "Avatar group",
+      "group": "Data display",
+      "template": "ui/templates/avatar-group.html",
+      "idPrefix": "dds-instance",
+      "sha256": "cf69018a148d975b1da62bd321e82599bb7126c4bfe9bacbf52ed6f27f7e5029",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "group": {
+          "selector": ".dds-avatar-group",
+          "kind": "attributes"
+        },
+        "avatars": {
+          "selector": ".dds-avatar-group",
+          "kind": "slot"
+        },
+        "description": {
+          "selector": ".helper",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "list-card": {
+      "id": "list-card",
+      "name": "List card",
+      "group": "Data display",
+      "template": "ui/templates/list-card.html",
+      "idPrefix": "dds-instance",
+      "sha256": "52be0e7a216c09405881481154179fa5d1793a65d3d8ee31932d3f7b387ab85c",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "card": {
+          "selector": ".dds-list-card",
+          "kind": "attributes"
+        },
+        "image": {
+          "selector": ".dds-mini-image",
+          "kind": "slot"
+        },
+        "title": {
+          "selector": ".dds-card-link",
+          "kind": "text"
+        },
+        "link": {
+          "selector": ".dds-card-link",
+          "kind": "attributes"
+        },
+        "metadata": {
+          "selector": ".dds-meta-secondary",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "item": {
+      "id": "item",
+      "name": "Item / List cell",
+      "group": "Data display",
+      "template": "ui/templates/item.html",
+      "idPrefix": "dds-instance",
+      "sha256": "bb2eedece9c93e67a67ee26aad1178165f54ee017803dc8a2d587b337feab725",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "list": {
+          "selector": ".dds-items",
+          "kind": "attributes"
+        },
+        "items": {
+          "selector": ".dds-items",
+          "kind": "slot"
+        },
+        "firstLink": {
+          "selector": ".dds-items > li:first-child a",
+          "kind": "attributes"
+        },
+        "firstTitle": {
+          "selector": ".dds-items > li:first-child .dds-card-title",
+          "kind": "text"
+        },
+        "firstMetadata": {
+          "selector": ".dds-items > li:first-child .dds-meta-secondary",
+          "kind": "text"
+        },
+        "firstStatus": {
+          "selector": ".dds-items > li:first-child .dds-status > span",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "section-header": {
+      "id": "section-header",
+      "name": "Section header",
+      "group": "Data display",
+      "template": "ui/templates/section-header.html",
+      "idPrefix": "dds-instance",
+      "sha256": "2efdb52be4e95aa02d50330b1975b771d482ac7f96c5ab5c72b572e5f1e9af26",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "title": {
+          "selector": ".dds-section-heading > span:first-child",
+          "kind": "text"
+        },
+        "count": {
+          "selector": ".dds-collection-count",
+          "kind": "text"
+        },
+        "countAttributes": {
+          "selector": ".dds-collection-count",
+          "kind": "attributes"
+        },
+        "description": {
+          "selector": ".dds-section-header-content > p",
+          "kind": "text"
+        },
+        "actionLabel": {
+          "selector": ".dds-section-header-action",
+          "kind": "text"
+        },
+        "action": {
+          "selector": ".dds-section-header-action",
+          "kind": "attributes"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "attachment": {
+      "id": "attachment",
+      "name": "Attachment",
+      "group": "Data display",
+      "template": "ui/templates/attachment.html",
+      "idPrefix": "dds-instance",
+      "sha256": "b3a9af2d615d3ee05d840f84b5d701238a236a1674350ba843248d908d15837d",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "filename": {
+          "selector": ".dds-attachment > div > b",
+          "kind": "text"
+        },
+        "metadata": {
+          "selector": ".dds-attachment .helper",
+          "kind": "text"
+        },
+        "remove": {
+          "selector": "[data-attachment-remove]",
+          "kind": "attributes"
+        },
+        "restoreLabel": {
+          "selector": "[data-attachment-restore]",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "carousel": {
+      "id": "carousel",
+      "name": "Carousel",
+      "group": "Data display",
+      "template": "ui/templates/carousel.html",
+      "idPrefix": "dds-instance",
+      "sha256": "d35e5f2bd51ebd55f998120bb1820fcad03b04f1fb0de5f4f771f6212ac36b36",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "carousel": {
+          "selector": ".dds-carousel",
+          "kind": "attributes"
+        },
+        "slide": {
+          "selector": "[data-carousel-slide]",
+          "kind": "slot"
+        },
+        "label": {
+          "selector": "[data-carousel-slide] > span",
+          "kind": "text"
+        },
+        "title": {
+          "selector": "[data-carousel-slide] > b",
+          "kind": "text"
+        },
+        "counter": {
+          "selector": "[data-carousel-count]",
+          "kind": "text"
+        },
+        "previous": {
+          "selector": "[data-carousel-shift=\"-1\"]",
+          "kind": "attributes"
+        },
+        "next": {
+          "selector": "[data-carousel-shift=\"1\"]",
+          "kind": "attributes"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "collapsible": {
+      "id": "collapsible",
+      "name": "Collapsible",
+      "group": "Data display",
+      "template": "ui/templates/collapsible.html",
+      "idPrefix": "dds-instance",
+      "sha256": "534ed1013c8a391f79f855538ddf18a8b5001b726d5308ec23cc455019c8a607",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "details": {
+          "selector": ".dds-collapsible",
+          "kind": "attributes"
+        },
+        "trigger": {
+          "selector": ".dds-collapsible > summary",
+          "kind": "attributes"
+        },
+        "firstDescription": {
+          "selector": ".dds-collapsible > p:first-of-type",
+          "kind": "text"
+        },
+        "secondDescription": {
+          "selector": ".dds-collapsible > p:last-of-type",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "separator": {
+      "id": "separator",
+      "name": "Separator / Divider",
+      "group": "Data display",
+      "template": "ui/templates/separator.html",
+      "idPrefix": "dds-instance",
+      "sha256": "d2c76bbf733333457488908e67569bd8d8300ebd5b511672b8c7ebcf34871842",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "before": {
+          "selector": ".dds-component > p:first-of-type",
+          "kind": "text"
+        },
+        "after": {
+          "selector": ".dds-component > p:last-of-type",
+          "kind": "text"
+        },
+        "rule": {
+          "selector": "hr",
+          "kind": "attributes"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "kbd": {
+      "id": "kbd",
+      "name": "Kbd",
+      "group": "Data display",
+      "template": "ui/templates/kbd.html",
+      "idPrefix": "dds-instance",
+      "sha256": "5da86ffa107e65fdc65fb3c6e15e993887e34f640df38bf205449852b7c6f7a0",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "firstKey": {
+          "selector": "kbd:first-of-type",
+          "kind": "text"
+        },
+        "lastKey": {
+          "selector": "kbd:last-of-type",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".helper",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "scroll-area": {
+      "id": "scroll-area",
+      "name": "Scroll area",
+      "group": "Data display",
+      "template": "ui/templates/scroll-area.html",
+      "idPrefix": "dds-instance",
+      "sha256": "be7aaad238efbd7fea28f6729e1e34d273d72ad5f0fc4777dcc6ab401a6f7cc6",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "region": {
+          "selector": ".dds-scroll",
+          "kind": "attributes"
+        },
+        "items": {
+          "selector": ".dds-scroll > ul",
+          "kind": "slot"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "resizable": {
+      "id": "resizable",
+      "name": "Resizable",
+      "group": "Data display",
+      "template": "ui/templates/resizable.html",
+      "idPrefix": "dds-instance",
+      "sha256": "991dbf884a3a3aca25380b9565c71bbb0e56650234d2d7ef7f40dc02c6a3e20e",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "panels": {
+          "selector": ".dds-resizable",
+          "kind": "attributes"
+        },
+        "firstTitle": {
+          "selector": ".dds-resizable > section:first-of-type > b",
+          "kind": "text"
+        },
+        "firstContent": {
+          "selector": ".dds-resizable > section:first-of-type > p",
+          "kind": "text"
+        },
+        "secondTitle": {
+          "selector": ".dds-resizable > section:last-of-type > b",
+          "kind": "text"
+        },
+        "secondContent": {
+          "selector": ".dds-resizable > section:last-of-type > p",
+          "kind": "text"
+        },
+        "handle": {
+          "selector": ".dds-resize-handle",
+          "kind": "attributes"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "direction": {
+      "id": "direction",
+      "name": "Direction",
+      "group": "Data display",
+      "template": "ui/templates/direction.html",
+      "idPrefix": "dds-instance",
+      "sha256": "3dda3a02711029f4efe0db7cdaee78b7fd0e323ba1f2212bb07125910e455e85",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "forward": {
+          "selector": ".dds-direction[dir=\"ltr\"]",
+          "kind": "attributes"
+        },
+        "forwardLabel": {
+          "selector": ".dds-direction[dir=\"ltr\"] > span",
+          "kind": "text"
+        },
+        "forwardBrand": {
+          "selector": ".dds-direction[dir=\"ltr\"] > b",
+          "kind": "text"
+        },
+        "reverse": {
+          "selector": ".dds-direction[dir=\"rtl\"]",
+          "kind": "attributes"
+        },
+        "reverseLabel": {
+          "selector": ".dds-direction[dir=\"rtl\"] > span",
+          "kind": "text"
+        },
+        "reverseBrand": {
+          "selector": ".dds-direction[dir=\"rtl\"] > b",
+          "kind": "text"
+        },
+        "description": {
+          "selector": ".helper",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "bubble": {
+      "id": "bubble",
+      "name": "Bubble",
+      "group": "Data display",
+      "template": "ui/templates/bubble.html",
+      "idPrefix": "dds-instance",
+      "sha256": "c9a76406a39e42aa4b7aaf880a4f760264c1b5769fe907545f51ac877a800793",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "outgoing": {
+          "selector": ".dds-bubble.outgoing",
+          "kind": "text"
+        },
+        "incoming": {
+          "selector": ".dds-bubble:not(.outgoing)",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "message": {
+      "id": "message",
+      "name": "Message",
+      "group": "Data display",
+      "template": "ui/templates/message.html",
+      "idPrefix": "dds-instance",
+      "sha256": "98bbbb4f6e3e30c917079f5631756bddcd041438842903ae4f868860e97a6db0",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "message": {
+          "selector": ".dds-message",
+          "kind": "attributes"
+        },
+        "avatar": {
+          "selector": ".dds-message > .avatar",
+          "kind": "slot"
+        },
+        "author": {
+          "selector": ".dds-message-meta > b",
+          "kind": "text"
+        },
+        "time": {
+          "selector": ".dds-message-meta > time",
+          "kind": "text"
+        },
+        "timeAttributes": {
+          "selector": ".dds-message-meta > time",
+          "kind": "attributes"
+        },
+        "body": {
+          "selector": ".dds-message .dds-bubble",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-dds-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "marker": {
+      "id": "marker",
+      "name": "Marker",
+      "group": "Data display",
+      "template": "ui/templates/marker.html",
+      "idPrefix": "dds-instance",
+      "sha256": "e83172f8093f3472e79f2dfe40e798e2b6d7cc5e664ee5e7a79a079f51f37fcf",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "label": {
+          "selector": ".dds-marker > b",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "message-scroller": {
+      "id": "message-scroller",
+      "name": "Message scroller",
+      "group": "Data display",
+      "template": "ui/templates/message-scroller.html",
+      "idPrefix": "dds-instance",
+      "sha256": "5637a8573f8f28fba0218c22b3ba288e89b3e6616921e2f6c516a91b463c6529",
+      "renderer": "ui/extended.js",
+      "parts": {
+        "root": {
+          "selector": ".dds-component",
+          "kind": "attributes"
+        },
+        "region": {
+          "selector": "[data-thread-log]",
+          "kind": "attributes"
+        },
+        "messages": {
+          "selector": "[data-thread-log]",
+          "kind": "slot"
+        },
+        "addLabel": {
+          "selector": "[data-thread-add]",
+          "kind": "text"
+        },
+        "latestLabel": {
+          "selector": "[data-dds-thread-bottom]",
+          "kind": "text"
+        },
+        "status": {
+          "selector": "[data-thread-status]",
+          "kind": "text"
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+    },
+    "area-chart": {
+      "id": "area-chart",
+      "name": "Area · Default",
+      "group": "Charts",
+      "template": "ui/templates/area-chart.html",
+      "idPrefix": "dds-instance",
+      "sha256": "b1514003f6ef302fd10d37081e056eb747edc2d3c7a655b64d5a035e53661a55",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "area-chart-linear": {
+      "id": "area-chart-linear",
+      "name": "Area · Linear",
+      "group": "Charts",
+      "template": "ui/templates/area-chart-linear.html",
+      "idPrefix": "dds-instance",
+      "sha256": "0330f9b6a4583114e9e4e2175fe9dccf2e6878c8ada04d8e86d6b21fe4d228eb",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "area-chart-step": {
+      "id": "area-chart-step",
+      "name": "Area · Step",
+      "group": "Charts",
+      "template": "ui/templates/area-chart-step.html",
+      "idPrefix": "dds-instance",
+      "sha256": "d39e4cc4c846765c648bf1d6c3258d78abe2c48c738320c1384665dc414f4fd3",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "area-chart-stacked": {
+      "id": "area-chart-stacked",
+      "name": "Area · Stacked",
+      "group": "Charts",
+      "template": "ui/templates/area-chart-stacked.html",
+      "idPrefix": "dds-instance",
+      "sha256": "a4b4fc523135d3f4ee1e579dc20e7dc7216a55bf2e7557ea8a0c1425151764a0",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "area-chart-normalized": {
+      "id": "area-chart-normalized",
+      "name": "Area · 100% Stacked",
+      "group": "Charts",
+      "template": "ui/templates/area-chart-normalized.html",
+      "idPrefix": "dds-instance",
+      "sha256": "2983d7fb8b7d7a7e4001c8f0d7164547b098609ec81672ffa21ed0e3e19ddfc1",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "area-chart-gradient": {
+      "id": "area-chart-gradient",
+      "name": "Area · Gradient",
+      "group": "Charts",
+      "template": "ui/templates/area-chart-gradient.html",
+      "idPrefix": "dds-instance",
+      "sha256": "071f64e950d7e0670d190cf3f2c0e0aa2c38b75c6533794f09779d2edb3d4c83",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "bar-chart": {
+      "id": "bar-chart",
+      "name": "Bar · Default",
+      "group": "Charts",
+      "template": "ui/templates/bar-chart.html",
+      "idPrefix": "dds-instance",
+      "sha256": "bf01c08fa214bc8f603ec51bcbadf7a95dde66a535571bd32082f91c22b9bcf4",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "bar-chart-horizontal": {
+      "id": "bar-chart-horizontal",
+      "name": "Bar · Horizontal",
+      "group": "Charts",
+      "template": "ui/templates/bar-chart-horizontal.html",
+      "idPrefix": "dds-instance",
+      "sha256": "ae0adac1ebb3c91a218bb3ed59613a5043aef35eeb235c11c4a7e9582d21158c",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "bar-chart-multiple": {
+      "id": "bar-chart-multiple",
+      "name": "Bar · Multiple",
+      "group": "Charts",
+      "template": "ui/templates/bar-chart-multiple.html",
+      "idPrefix": "dds-instance",
+      "sha256": "aca149d6511faf1e2a1f676b9585dcb4db48477f6beb61711791cc0c287bf9ac",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "bar-chart-stacked": {
+      "id": "bar-chart-stacked",
+      "name": "Bar · Stacked",
+      "group": "Charts",
+      "template": "ui/templates/bar-chart-stacked.html",
+      "idPrefix": "dds-instance",
+      "sha256": "7b27c53312b41773757d7faeb69e1df06e1257df033d6d9f6556740947d5dd74",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "bar-chart-labels": {
+      "id": "bar-chart-labels",
+      "name": "Bar · Labels",
+      "group": "Charts",
+      "template": "ui/templates/bar-chart-labels.html",
+      "idPrefix": "dds-instance",
+      "sha256": "1d76a0f07b849509a21f73ff40e6e8d3120b6ea335ddabde216e30c96dca7b0e",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "bar-chart-negative": {
+      "id": "bar-chart-negative",
+      "name": "Bar · Negative",
+      "group": "Charts",
+      "template": "ui/templates/bar-chart-negative.html",
+      "idPrefix": "dds-instance",
+      "sha256": "819afa87d8eacbf7005fe9d1d3fe8918b1e336520298fb74b42d7a10949255df",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "line-chart": {
+      "id": "line-chart",
+      "name": "Line · Linear",
+      "group": "Charts",
+      "template": "ui/templates/line-chart.html",
+      "idPrefix": "dds-instance",
+      "sha256": "277d03c5d4c22b22c0a37005868563a765798d77fa8192b0b58f9c637cf988da",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "line-chart-smooth": {
+      "id": "line-chart-smooth",
+      "name": "Line · Smooth",
+      "group": "Charts",
+      "template": "ui/templates/line-chart-smooth.html",
+      "idPrefix": "dds-instance",
+      "sha256": "a4041ab9e0f644bbca62813a390f27ba6d29db82f028e181a5d7fba22153aef0",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "line-chart-step": {
+      "id": "line-chart-step",
+      "name": "Line · Step",
+      "group": "Charts",
+      "template": "ui/templates/line-chart-step.html",
+      "idPrefix": "dds-instance",
+      "sha256": "370b30fca89e268012079a6c66764aa3885946c498991313e65c7293ff2cb890",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "line-chart-dots": {
+      "id": "line-chart-dots",
+      "name": "Line · Dots",
+      "group": "Charts",
+      "template": "ui/templates/line-chart-dots.html",
+      "idPrefix": "dds-instance",
+      "sha256": "6d1577e1559e8f9c5b58f209d282a01adf86eda2f03b92e8a1e643179eedca3f",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "line-chart-multiple": {
+      "id": "line-chart-multiple",
+      "name": "Line · Multiple",
+      "group": "Charts",
+      "template": "ui/templates/line-chart-multiple.html",
+      "idPrefix": "dds-instance",
+      "sha256": "c3f97da619f50512e6d4d0cc815ed944bd43a7041eea3708572b936ee29b6e26",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "pie-chart": {
+      "id": "pie-chart",
+      "name": "Pie · Default",
+      "group": "Charts",
+      "template": "ui/templates/pie-chart.html",
+      "idPrefix": "dds-instance",
+      "sha256": "3ee309d4f4f532438fe95aee17868de2785533aa2e2052d3ad18040b0714586b",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "pie-chart-labels": {
+      "id": "pie-chart-labels",
+      "name": "Pie · Labels",
+      "group": "Charts",
+      "template": "ui/templates/pie-chart-labels.html",
+      "idPrefix": "dds-instance",
+      "sha256": "f2b0157512ddde819676ddf58745ffbae48842509e031799c6a6310bb152428e",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "donut-chart-basic": {
+      "id": "donut-chart-basic",
+      "name": "Donut · Default",
+      "group": "Charts",
+      "template": "ui/templates/donut-chart-basic.html",
+      "idPrefix": "dds-instance",
+      "sha256": "40f0a023fa37a70e1c70c4081cded0958874aba7ec467604aa0545cc03e138df",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "donut-chart": {
+      "id": "donut-chart",
+      "name": "Donut · Total",
+      "group": "Charts",
+      "template": "ui/templates/donut-chart.html",
+      "idPrefix": "dds-instance",
+      "sha256": "c777b264e2a8d4fdec124ecb792e6bdef7e51ff76f1024181f3e7fe1f9b8e08b",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "radar-chart": {
+      "id": "radar-chart",
+      "name": "Radar · Default",
+      "group": "Charts",
+      "template": "ui/templates/radar-chart.html",
+      "idPrefix": "dds-instance",
+      "sha256": "09ad36ac56219d0626f3965ac29c81847f4a5c7228d639565a7bc2ec124bb92e",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "radar-chart-multiple": {
+      "id": "radar-chart-multiple",
+      "name": "Radar · Multiple",
+      "group": "Charts",
+      "template": "ui/templates/radar-chart-multiple.html",
+      "idPrefix": "dds-instance",
+      "sha256": "fd9accdc0787e35fd2ac22393f94f893bd04e2925b85feb3b0f45ea615b7a2da",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "radial-chart": {
+      "id": "radial-chart",
+      "name": "Radial · Single",
+      "group": "Charts",
+      "template": "ui/templates/radial-chart.html",
+      "idPrefix": "dds-instance",
+      "sha256": "0e03f0bdfa1cd6671bc52d432d526727a584216e33ee029d712812ac8b90e944",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "radial-chart-multiple": {
+      "id": "radial-chart-multiple",
+      "name": "Radial · Multiple",
+      "group": "Charts",
+      "template": "ui/templates/radial-chart-multiple.html",
+      "idPrefix": "dds-instance",
+      "sha256": "feb679ffbd49976122c98fc0fe530d7d26a443198037a610a430bfc65a572862",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "chart-tooltip-dot": {
+      "id": "chart-tooltip-dot",
+      "name": "Tooltip · Dot",
+      "group": "Charts",
+      "template": "ui/templates/chart-tooltip-dot.html",
+      "idPrefix": "dds-instance",
+      "sha256": "bce87142629b91a8291bed45354daf2ee748a69c0c3f4f1de7346a6dd843c499",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "contributions": {
+      "id": "contributions",
+      "name": "Activity Heatmap",
+      "group": "Data display",
+      "template": "ui/templates/contributions.html",
+      "idPrefix": "dds-instance",
+      "sha256": "d9483f6a67883db366c1a87dce4d8f4b67bf33ee4b9fe5fb59d7b0858d1122a1",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    },
+    "scatter-chart": {
+      "id": "scatter-chart",
+      "name": "Scatter chart",
+      "group": "Data display",
+      "template": "ui/templates/scatter-chart.html",
+      "idPrefix": "dds-instance",
+      "sha256": "4028b8ecb5b8c5cf9ee4a873ade8927d1fb7a07b0136561009c6653f7a3a1f25",
+      "renderer": "ui/charts.js",
+      "parts": {
+        "title": {
+          "selector": ".dds-chart-heading h3",
+          "kind": "text"
+        },
+        "note": {
+          "selector": ".dds-chart-note",
+          "kind": "text"
+        },
+        "control": {
+          "selector": ".dds-chart-example",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        }
+      },
+      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "dataRequired": true,
+      "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
+    }
+  },
+  "distribution": {
+    "kind": "github-pages",
+    "assetRevision": "25f3c2e2c9757209",
+    "canonicalBundle": "../releases/0.3.0/bundle.json"
+  }
+}

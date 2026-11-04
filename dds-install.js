@@ -1,6 +1,6 @@
-/* DDS reference preparation tool. Node.js 18+, built-in modules only.
-   This unpacks verified design references; it does not install runtime UI,
-   edit application files, register AI rules, or connect production styles. */
+/* DDS source preparation tool. Node.js 18+, built-in modules only.
+   Releases may include canonical runtime UI sources. Unpacking prepares those
+   files; it does not connect application styles, events, frameworks or AI rules. */
 (async () => {
   const fs = await import('node:fs');
   const path = await import('node:path');
@@ -11,7 +11,7 @@
   for (let index=0; index<args.length; index++) {
     const flag = args[index];
     if (flag === '--dry-run') {if (options.dryRun) throw new Error('Duplicate --dry-run.'); options.dryRun=true; continue;}
-    if (!['--version','--bundle','--manifest','--target'].includes(flag) || options[flag] || !args[index+1] || args[index+1].startsWith('--')) throw new Error('Usage: node dds-install.js --version <version> --bundle bundle.json --manifest manifest.json --target docs/dds/0.2.0 [--dry-run]');
+    if (!['--version','--bundle','--manifest','--target'].includes(flag) || options[flag] || !args[index+1] || args[index+1].startsWith('--')) throw new Error('Usage: node dds-install.js --version <version> --bundle bundle.json --manifest manifest.json --target docs/dds/<version> [--dry-run]');
     options[flag] = args[++index];
   }
   for (const flag of ['--version','--bundle','--manifest','--target']) if (!options[flag]) throw new Error('Missing ' + flag + '.');
@@ -45,6 +45,7 @@
   if (manifest.installer?.file !== 'dds-install.js' || manifest.installer.bytes !== installerBytes.length || manifest.installer.sha256 !== sha256(installerBytes)) throw new Error('Run the installer supplied by the same frozen DDS release.');
   const bundle = JSON.parse(bundleBytes);
   if (bundle.schemaVersion !== 1 || bundle.kind !== 'DDSReferenceBundle' || bundle.designSystem !== 'DDS' || bundle.packageType !== 'reference' || bundle.runtimeIntegrated !== false || bundle.version !== options['--version'] || !Array.isArray(bundle.files) || !Array.isArray(manifest.files) || bundle.files.length === 0 || bundle.files.length > 250) throw new Error('Invalid DDS reference bundle.');
+  if (bundle.uiSourcesIncluded !== manifest.uiSourcesIncluded || bundle.componentCount !== manifest.componentCount) throw new Error('DDS UI source metadata differs between the bundle and manifest.');
 
   const seen = new Set();
   const entries = [];
@@ -75,6 +76,7 @@
   const marker = Buffer.from(JSON.stringify({
     schemaVersion:1, designSystem:'DDS', version:bundle.version, packageType:'reference',
     referencePrepared:true, runtimeIntegrated:false, rulesRegistered:false,
+    ...(bundle.uiSourcesIncluded?{uiSourcesIncluded:true,componentCount:bundle.componentCount}:{}),
     manifestSha256:sha256(manifestBytes), bundleSha256:manifest.bundle.sha256,
     files:manifest.files
   }, null, 2) + '\n');
@@ -137,5 +139,5 @@
     if (fs.existsSync(target)) throw new Error('DDS target appeared during preparation; staged references were preserved at ' + staging);
     fs.renameSync(staging,target);
   }
-  console.log('Prepared DDS ' + bundle.version + ' reference at ' + target + '. No application CSS, dependencies, templates, or AI rules were changed. Read dds-setup.md before integration.');
+  console.log('Prepared DDS ' + bundle.version + ' reference at ' + target + '. No application CSS, dependencies, templates, or AI rules were changed.' + (bundle.uiSourcesIncluded?' Canonical UI source files are included; application integration is still required. Read ui/README.md and dds-setup.md before integration.':' Read dds-setup.md before integration.'));
 })().catch(error => {console.error(error.message); process.exitCode=1;});

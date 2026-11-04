@@ -15,7 +15,7 @@
 .dds-document-card .dds-card-title {margin:var(--space-2) 0 0}
 .dds-document-card :is(p,time) {margin:0}
 .dds-document-card .dds-meta-date {margin-top:var(--space-2)}
-.dds-content-card:has(.dds-card-link),
+.dds-content-card:has(> .dds-card-title > .dds-card-link, > div > .dds-card-title > .dds-card-link),
 .dds-content-card[data-interactive=true] {
   transition:border-color var(--duration-normal) var(--ease-standard),
     box-shadow var(--duration-normal) var(--ease-standard),
@@ -34,7 +34,7 @@
   border-radius:var(--radius-lg);
 }
 .dds-card-link:focus-visible {outline:none;outline-offset:0;box-shadow:none}
-.dds-content-card:has(.dds-card-link:focus-visible),
+.dds-content-card:has(> .dds-card-title > .dds-card-link:focus-visible, > div > .dds-card-title > .dds-card-link:focus-visible),
 .dds-content-card[data-interactive=true]:focus-visible {
   border-color:var(--primary);
   outline:none;
@@ -137,13 +137,13 @@
 .dds-nav-control[aria-expanded=true] {background:var(--surface)}
 .dds-nav-control[aria-current]:not([aria-current=false]) {background:var(--accent)}
 @media(hover:hover) and (pointer:fine) {
-  .dds-content-card:has(.dds-card-link):hover,
+  .dds-content-card:has(> .dds-card-title > .dds-card-link, > div > .dds-card-title > .dds-card-link):hover,
   .dds-content-card[data-interactive=true]:hover {
     border-color:var(--control-border);
     box-shadow:0 6px 18px color-mix(in srgb,var(--text-strong) 8%,transparent);
     transform:translateY(-2px);
   }
-  .dds-content-card:has(.dds-card-link:focus-visible):hover {border-color:var(--primary)}
+  .dds-content-card:has(> .dds-card-title > .dds-card-link:focus-visible, > div > .dds-card-title > .dds-card-link:focus-visible):hover {border-color:var(--primary)}
   .dds-nav-link:hover {color:var(--text-strong)}
   .dds-nav-control:hover {color:var(--text-strong);background:var(--surface)}
   .dds-nav-link[aria-current]:not([aria-current=false]):hover,

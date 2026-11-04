@@ -1,0 +1,3190 @@
+{
+  "schemaVersion": 1,
+  "entry": "ui/dds.css",
+  "requires": [
+    "tokens.css"
+  ],
+  "tokenModes": {
+    "global": "tokens.css",
+    "scoped": "ui/tokens-scoped.css"
+  },
+  "scopedTokens": {
+    "entry": "ui/tokens-scoped.css",
+    "scope": ".dds-ui:not(.dds-ui .dds-ui)",
+    "source": "tokens.css",
+    "sourceSha256": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
+    "sha256": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713"
+  },
+  "scope": ".dds-ui",
+  "wrapperDisplay": "contents",
+  "sha256": "2c63e49b8370ccc6a534baabf6009994ca94e74fc20ecab4b74f24d20fb33c0e",
+  "canonicalComponentCount": 115,
+  "canonicalMarkupClasses": [
+    "accordion",
+    "alert",
+    "alert-dialog",
+    "avatar",
+    "badge",
+    "badge-count-example",
+    "badge-demo",
+    "bordered",
+    "breadcrumbs",
+    "btn",
+    "check-label",
+    "chip",
+    "circle",
+    "current",
+    "dark",
+    "dds-action-area",
+    "dds-attachment",
+    "dds-avatar-group",
+    "dds-badge",
+    "dds-bottomnav",
+    "dds-bottomnav-link",
+    "dds-bubble",
+    "dds-button",
+    "dds-button-group",
+    "dds-button-label",
+    "dds-calendar",
+    "dds-calendar-grid",
+    "dds-calendar-week",
+    "dds-card-header",
+    "dds-card-link",
+    "dds-card-title",
+    "dds-card-tools",
+    "dds-carousel",
+    "dds-chart-area",
+    "dds-chart-area--stacked",
+    "dds-chart-axis-tick",
+    "dds-chart-bar",
+    "dds-chart-bar--horizontal",
+    "dds-chart-bar--stacked",
+    "dds-chart-baseline",
+    "dds-chart-center-caption",
+    "dds-chart-data",
+    "dds-chart-datum",
+    "dds-chart-donut-segment",
+    "dds-chart-example",
+    "dds-chart-grid",
+    "dds-chart-heading",
+    "dds-chart-heat-cell",
+    "dds-chart-key",
+    "dds-chart-legend",
+    "dds-chart-legend--values",
+    "dds-chart-legend-label",
+    "dds-chart-legend-value",
+    "dds-chart-missing",
+    "dds-chart-note",
+    "dds-chart-plot",
+    "dds-chart-point",
+    "dds-chart-point-hit",
+    "dds-chart-radar-area",
+    "dds-chart-radial-arc",
+    "dds-chart-radial-track",
+    "dds-chart-scatter-point",
+    "dds-chart-series-line",
+    "dds-chart-slice",
+    "dds-chart-svg",
+    "dds-chart-svg--cartesian",
+    "dds-chart-svg--circular",
+    "dds-chart-svg--heatmap",
+    "dds-chart-svg--horizontal",
+    "dds-chart-svg--radar",
+    "dds-chart-tooltip",
+    "dds-chart-total",
+    "dds-chart-value",
+    "dds-choice",
+    "dds-collapsible",
+    "dds-collection-count",
+    "dds-command",
+    "dds-command-field",
+    "dds-command-option",
+    "dds-command-results",
+    "dds-content-card",
+    "dds-context",
+    "dds-data-table",
+    "dds-demo",
+    "dds-demo--centered",
+    "dds-dialog",
+    "dds-direction",
+    "dds-document-card",
+    "dds-dots",
+    "dds-error",
+    "dds-fallback",
+    "dds-fallback-actions",
+    "dds-framed",
+    "dds-input-group",
+    "dds-items",
+    "dds-list-card",
+    "dds-list-content",
+    "dds-list-link",
+    "dds-list-meta",
+    "dds-marker",
+    "dds-menu",
+    "dds-menu-unit",
+    "dds-menubar",
+    "dds-message",
+    "dds-message-meta",
+    "dds-meta-date",
+    "dds-meta-primary",
+    "dds-meta-secondary",
+    "dds-mini-image",
+    "dds-nav-control",
+    "dds-nav-details",
+    "dds-nav-link",
+    "dds-otp",
+    "dds-overlay",
+    "dds-pager",
+    "dds-play",
+    "dds-popover",
+    "dds-popover-host",
+    "dds-push",
+    "dds-ratio",
+    "dds-resizable",
+    "dds-resize-handle",
+    "dds-scroll",
+    "dds-section-header",
+    "dds-section-header-action",
+    "dds-section-header-content",
+    "dds-section-heading",
+    "dds-segmented",
+    "dds-slider",
+    "dds-snackbar",
+    "dds-spinner",
+    "dds-stable-label",
+    "dds-status",
+    "dds-table-scroll",
+    "dds-thread",
+    "dds-thumbnail",
+    "dds-time",
+    "dds-toast",
+    "dds-topnav",
+    "dds-topnav-brand",
+    "dds-topnav-demo",
+    "dds-topnav-language",
+    "dds-topnav-links",
+    "dds-topnav-panel",
+    "dds-topnav-toggle",
+    "dds-topnav-tools",
+    "demo-row",
+    "dialog-heading",
+    "done",
+    "drawer",
+    "editor-demo",
+    "empty-state",
+    "eyebrow",
+    "field",
+    "file-state",
+    "ghost",
+    "helper",
+    "icon",
+    "icon-btn",
+    "info",
+    "is-always-visible",
+    "lucide",
+    "lucide-ArrowUpRight",
+    "lucide-Bell",
+    "lucide-Bold",
+    "lucide-Bookmark",
+    "lucide-ChartColumn",
+    "lucide-Check",
+    "lucide-ChevronDown",
+    "lucide-ChevronLeft",
+    "lucide-ChevronRight",
+    "lucide-CircleAlert",
+    "lucide-Clock",
+    "lucide-Clock3",
+    "lucide-CloudOff",
+    "lucide-Copy",
+    "lucide-Ellipsis",
+    "lucide-Eye",
+    "lucide-FilePlus",
+    "lucide-FileText",
+    "lucide-GripVertical",
+    "lucide-House",
+    "lucide-Image",
+    "lucide-Info",
+    "lucide-Italic",
+    "lucide-LockKeyhole",
+    "lucide-Menu",
+    "lucide-PencilLine",
+    "lucide-Play",
+    "lucide-Plus",
+    "lucide-Search",
+    "lucide-SlidersHorizontal",
+    "lucide-Underline",
+    "lucide-Users",
+    "lucide-X",
+    "media-demo",
+    "muted",
+    "orange",
+    "outgoing",
+    "pagination",
+    "primary",
+    "radio-set",
+    "required",
+    "row-between",
+    "sample-document",
+    "sample-dropdown",
+    "sample-sidebar",
+    "search-field",
+    "segmented",
+    "selected",
+    "sheet",
+    "short",
+    "skeleton",
+    "skeleton-card",
+    "sm",
+    "sr-only",
+    "stack",
+    "stepper",
+    "switch-label",
+    "switch-track",
+    "tab-body",
+    "tab-demo",
+    "table-wrap",
+    "upload-zone"
+  ],
+  "hookMappings": {
+    "data-demo-tab": "data-dds-tab",
+    "data-chip": "data-dds-toggle",
+    "data-page": "data-dds-page",
+    "data-counter": "data-dds-counter",
+    "data-file": "data-dds-file",
+    "data-demo-search": "data-dds-search",
+    "data-ext-toggle": "data-dds-toggle",
+    "data-ext-password": "data-dds-password",
+    "data-ext-menu": "data-dds-menu",
+    "data-ext-command-search": "data-dds-command-search",
+    "data-ext-popover": "data-dds-popover",
+    "data-ext-hover": "data-dds-hover",
+    "data-ext-dialog": "data-dds-dialog",
+    "data-ext-close": "data-dds-close",
+    "data-ext-confirm": "data-dds-confirm",
+    "data-popover-close": "data-dds-popover-close",
+    "data-ext-slider": "data-dds-slider",
+    "data-ext-otp": "data-dds-otp",
+    "data-calendar-date": "data-dds-calendar-date",
+    "data-month-shift": "data-dds-month-shift",
+    "data-ext-calendar": "data-dds-calendar",
+    "data-page-shift": "data-dds-page-shift",
+    "data-ext-dot": "data-dds-dot",
+    "data-ext-topnav-toggle": "data-dds-topnav-toggle",
+    "data-ext-topnav-panel": "data-dds-topnav-panel",
+    "data-ext-topnav": "data-dds-topnav",
+    "data-thread-bottom": "data-dds-thread-bottom",
+    "data-ext-status": "data-dds-status",
+    "data-ext-context": "data-dds-context",
+    "data-ext-time": "data-dds-time",
+    "data-ext-filter-result": "data-dds-filter-result",
+    "data-ext-thread": "data-dds-thread",
+    "data-ext-pager": "data-dds-pager",
+    "data-ext-questionnaire": "data-dds-questionnaire",
+    "data-ext-form": "data-dds-form",
+    "data-ext-validate": "data-dds-validate",
+    "data-question-next": "data-dds-question-next",
+    "data-question-back": "data-dds-question-back",
+    "data-ext-category": "data-dds-category",
+    "data-snack-undo": "data-dds-snack-undo",
+    "data-snack-close": "data-dds-snack-close",
+    "data-snack-show": "data-dds-snack-show"
+  },
+  "classMappings": {
+    "dds-demo": "dds-component"
+  },
+  "typographyRoles": [
+    "display-1",
+    "display-2",
+    "title-1",
+    "title-2",
+    "heading-1",
+    "heading-2",
+    "headline-1",
+    "body-1-normal",
+    "body-1-reading",
+    "body-2-normal",
+    "body-2-reading",
+    "label-1",
+    "label-2",
+    "caption-1",
+    "caption-2",
+    "code"
+  ],
+  "sources": [
+    {
+      "file": "style.css",
+      "sha256": "83a9d4b65e00320e26690a3ca881a6a676907f017f23c4d2b81957b555a5bed8",
+      "retainedRules": 162,
+      "excludedSelectors": 429
+    },
+    {
+      "file": "custom-controls.css",
+      "sha256": "3dedf797dfb9dcfa86a7909718b7fbcb2ea69b1fbe74442c0c1cf400d1388f31",
+      "retainedRules": 67,
+      "excludedSelectors": 3
+    },
+    {
+      "file": "brand-refinement.css",
+      "sha256": "9d75bd9a02d85adc2c00cbe127959ba4912e25f77533f5892febaf26731a1656",
+      "retainedRules": 10,
+      "excludedSelectors": 26
+    },
+    {
+      "file": "layout-focus.css",
+      "sha256": "67120cad8fbdb4881d8eab09fad4201bd8515bfd3579c74e72afb835131d8454",
+      "retainedRules": 27,
+      "excludedSelectors": 49
+    },
+    {
+      "file": "extensions.css",
+      "sha256": "e69181195f8f4f47671fe3b27b1c29c9b3064ec1b97ccfe940800ecfa9731c2a",
+      "retainedRules": 156,
+      "excludedSelectors": 36
+    },
+    {
+      "file": "chart-system.css",
+      "sha256": "64351460f94e63d206bc637fbe9045d4925964bda2c2a77808a479fbce73352a",
+      "retainedRules": 89,
+      "excludedSelectors": 6
+    },
+    {
+      "file": "document-layout.css",
+      "sha256": "32a2aac88d6bd6d0a824273dfeaf8c8835eea75a82a044293b6ba0a6eae91b95",
+      "retainedRules": 4,
+      "excludedSelectors": 119
+    },
+    {
+      "file": "interactions.css",
+      "sha256": "a90516f8ef4dd7dac2dfb8bc18b7f0c848844eb01e46703bf70488177384c9e5",
+      "retainedRules": 28,
+      "excludedSelectors": 3
+    },
+    {
+      "file": "control-sizing.css",
+      "sha256": "a7dbcb33f110975a56c0a67a0469fc435c10997ba4e49585938d7d4facb38358",
+      "retainedRules": 34,
+      "excludedSelectors": 19
+    },
+    {
+      "file": "visibility.css",
+      "sha256": "b3ce5dcf20fb9600eda770070ac37d475ee10ac2ef9e845ca74eee678b72a43a",
+      "retainedRules": 39,
+      "excludedSelectors": 0
+    },
+    {
+      "file": "content-primitives.css",
+      "sha256": "d81095035ac0675f4f564ebdcfed6d76a36a0e0c2c9f82f354e86b74b5a4de72",
+      "retainedRules": 50,
+      "excludedSelectors": 0
+    },
+    {
+      "file": "button-system.css",
+      "sha256": "d94816b753c31dfd55f17b38892027c09fed477a2421fbba0a4746ca56f0bea0",
+      "retainedRules": 30,
+      "excludedSelectors": 0
+    }
+  ],
+  "assetReferences": [
+    {
+      "source": "tokens.css",
+      "url": "./assets/fonts/pretendard/PretendardVariable.woff2",
+      "output": "../assets/fonts/pretendard/PretendardVariable.woff2",
+      "file": "assets/fonts/pretendard/PretendardVariable.woff2"
+    },
+    {
+      "source": "brand-refinement.css",
+      "url": "/assets/icons/check.svg",
+      "output": "../assets/icons/check.svg",
+      "file": "assets/icons/check.svg"
+    },
+    {
+      "source": "brand-refinement.css",
+      "url": "/assets/icons/minus.svg",
+      "output": "../assets/icons/minus.svg",
+      "file": "assets/icons/minus.svg"
+    }
+  ],
+  "animationNames": {
+    "pulse": "dds-ui-pulse",
+    "dds-spin": "dds-ui-spin",
+    "dds-dialog-enter": "dds-ui-dialog-enter",
+    "dds-fade-in": "dds-ui-fade-in",
+    "dds-panel-enter": "dds-ui-panel-enter",
+    "dds-button-spin": "dds-ui-button-spin"
+  },
+  "excludedSelectors": [
+    {
+      "source": "style.css",
+      "selector": "html"
+    },
+    {
+      "source": "style.css",
+      "selector": "pre"
+    },
+    {
+      "source": "style.css",
+      "selector": "pre"
+    },
+    {
+      "source": "style.css",
+      "selector": ".skip"
+    },
+    {
+      "source": "style.css",
+      "selector": ".skip:focus"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand b"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand-dot"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand-mark"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand-caption"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar nav"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar nav a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar nav a.active"
+    },
+    {
+      "source": "style.css",
+      "selector": ".top-actions"
+    },
+    {
+      "source": "style.css",
+      "selector": ".search-trigger"
+    },
+    {
+      "source": "style.css",
+      "selector": ".search-trigger kbd"
+    },
+    {
+      "source": "style.css",
+      "selector": ".mobile-menu"
+    },
+    {
+      "source": "style.css",
+      "selector": "#sidebar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".sidebar-intro"
+    },
+    {
+      "source": "style.css",
+      "selector": ".sidebar-title"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-section"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-section a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-section a:hover"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-section a.active"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-section a span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-label"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-section details summary"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-section details summary:after"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-section details[open] summary:after"
+    },
+    {
+      "source": "style.css",
+      "selector": ".nav-section details a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".workspace"
+    },
+    {
+      "source": "style.css",
+      "selector": "main"
+    },
+    {
+      "source": "style.css",
+      "selector": "main:focus"
+    },
+    {
+      "source": "style.css",
+      "selector": ".site-footer"
+    },
+    {
+      "source": "style.css",
+      "selector": ".page-heading"
+    },
+    {
+      "source": "style.css",
+      "selector": ".page-heading>.badge"
+    },
+    {
+      "source": "style.css",
+      "selector": ".page-heading>.btn"
+    },
+    {
+      "source": "style.css",
+      "selector": ".lead"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-kicker"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-kicker span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading h1"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading h1 span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-left"
+    },
+    {
+      "source": "style.css",
+      "selector": ".specimen-label"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-left .badge"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-type"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-type span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".palette-strip"
+    },
+    {
+      "source": "style.css",
+      "selector": ".palette-strip i"
+    },
+    {
+      "source": "style.css",
+      "selector": ".specimen-bottom"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-right"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row:last-child"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row .field"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row .helper"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row .btn"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row .chip"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics a:first-child"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics a:last-child"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics strong"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics .icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".section-heading"
+    },
+    {
+      "source": "style.css",
+      "selector": ".section-heading h2"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card:hover"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-number"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card .eyebrow"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card h3"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card>.icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-card"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-card:hover .component-preview"
+    },
+    {
+      "source": "style.css",
+      "selector": ".preview-inner"
+    },
+    {
+      "source": "style.css",
+      "selector": ".inert-preview"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .btn"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .demo-row"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .chip"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .field label"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .field input"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .field textarea"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .field textarea"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .field textarea"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .helper"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .dds-document-card"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .segmented button"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .tab-body"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .alert"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .empty-state"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .empty-state h3"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .check-label"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .anatomy-list"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .stepper"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .stepper li b"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .stepper li span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .avatar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .sample-chart"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .table-wrap"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .table-wrap th"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .table-wrap td"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .editor-demo textarea"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .media-demo"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .media-demo p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .sample-sidebar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .sample-sidebar a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .accordion"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .accordion summary"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview .accordion p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".card-caption"
+    },
+    {
+      "source": "style.css",
+      "selector": ".card-caption h3"
+    },
+    {
+      "source": "style.css",
+      "selector": ".card-caption p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".card-caption>.icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".research-note"
+    },
+    {
+      "source": "style.css",
+      "selector": ".research-note>.icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".research-note b"
+    },
+    {
+      "source": "style.css",
+      "selector": ".research-note p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".research-note>a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".filter-bar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pill-tabs"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pill-tabs .btn"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pill-tabs .btn.selected"
+    },
+    {
+      "source": "style.css",
+      "selector": ".filter-bar .search-field"
+    },
+    {
+      "source": "style.css",
+      "selector": ".filter-bar select"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-layout"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-layout article"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-tabs"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-tabs button"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-tabs button[aria-selected=true]"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-tabs button span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-layout section"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-layout section>p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".playground"
+    },
+    {
+      "source": "style.css",
+      "selector": ".playground-inner"
+    },
+    {
+      "source": "style.css",
+      "selector": ".playground-inner>.field"
+    },
+    {
+      "source": "style.css",
+      "selector": ".playground-inner>.editor-demo"
+    },
+    {
+      "source": "style.css",
+      "selector": ".playground-inner>.dds-document-card"
+    },
+    {
+      "source": "style.css",
+      "selector": ".preview-footer"
+    },
+    {
+      "source": "style.css",
+      "selector": ".toc"
+    },
+    {
+      "source": "style.css",
+      "selector": ".toc>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".toc button"
+    },
+    {
+      "source": "style.css",
+      "selector": ".toc button:hover"
+    },
+    {
+      "source": "style.css",
+      "selector": ".toc p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".toc a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".toc .icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".anatomy-list"
+    },
+    {
+      "source": "style.css",
+      "selector": ".anatomy-list>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".anatomy-list span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".state-list"
+    },
+    {
+      "source": "style.css",
+      "selector": ".guideline"
+    },
+    {
+      "source": "style.css",
+      "selector": ".guideline p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".good-label"
+    },
+    {
+      "source": "style.css",
+      "selector": ".bad-label"
+    },
+    {
+      "source": "style.css",
+      "selector": ".good-label"
+    },
+    {
+      "source": "style.css",
+      "selector": ".bad-label"
+    },
+    {
+      "source": "style.css",
+      "selector": ".source-list"
+    },
+    {
+      "source": "style.css",
+      "selector": ".source-link"
+    },
+    {
+      "source": "style.css",
+      "selector": ".source-link code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".source-link>.icon:first-child"
+    },
+    {
+      "source": "style.css",
+      "selector": ".source-link>.icon:last-child"
+    },
+    {
+      "source": "style.css",
+      "selector": ".reading"
+    },
+    {
+      "source": "style.css",
+      "selector": ".reading.wide"
+    },
+    {
+      "source": "style.css",
+      "selector": ".reading>h2"
+    },
+    {
+      "source": "style.css",
+      "selector": ".reading>p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".color-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".swatch"
+    },
+    {
+      "source": "style.css",
+      "selector": ".swatch i"
+    },
+    {
+      "source": "style.css",
+      "selector": ".swatch b"
+    },
+    {
+      "source": "style.css",
+      "selector": ".swatch span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".swatch code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".token-chain"
+    },
+    {
+      "source": "style.css",
+      "selector": ".token-chain code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-specimen"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-specimen>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-specimen strong"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-specimen p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale>div>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale small"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".spacing-list>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".spacing-list code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".spacing-list>div>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".shape-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".shape-grid>div>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".shape-grid code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".elevation"
+    },
+    {
+      "source": "style.css",
+      "selector": ".elevation p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".icon-gallery"
+    },
+    {
+      "source": "style.css",
+      "selector": ".icon-gallery .icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".checklist"
+    },
+    {
+      "source": "style.css",
+      "selector": ".checklist>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".checklist>div:last-child"
+    },
+    {
+      "source": "style.css",
+      "selector": ".checklist .icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-flow"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-flow>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-flow>span:last-child"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-flow small"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-preview"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-preview .two-col"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-preview>.field"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-summary"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-summary>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-summary strong"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-summary span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".results-heading"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-list"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-item"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-item>summary"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-name"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-name code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-name small"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-item summary>.icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-item[open] summary>.icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-detail"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-detail>b"
+    },
+    {
+      "source": "style.css",
+      "selector": ".detail-meta"
+    },
+    {
+      "source": "style.css",
+      "selector": ".detail-meta b"
+    },
+    {
+      "source": "style.css",
+      "selector": ".detail-meta code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".architecture"
+    },
+    {
+      "source": "style.css",
+      "selector": ".architecture .icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".architecture>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-search"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-item"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-item>summary"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-item summary>code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-item summary>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-item>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-ref"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-ref>code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-ref>.source-link"
+    },
+    {
+      "source": "style.css",
+      "selector": ".principles-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".principle"
+    },
+    {
+      "source": "style.css",
+      "selector": ".principle>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".principle h2"
+    },
+    {
+      "source": "style.css",
+      "selector": ".principle p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".principle small"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-list article"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-number"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-list article>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-list p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-list h2"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-list .two-col"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-list small"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-list .two-col p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".finding"
+    },
+    {
+      "source": "style.css",
+      "selector": ".finding h2"
+    },
+    {
+      "source": "style.css",
+      "selector": ".finding p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".finding p b"
+    },
+    {
+      "source": "style.css",
+      "selector": ".finding p:last-child"
+    },
+    {
+      "source": "style.css",
+      "selector": ".plain-list"
+    },
+    {
+      "source": "style.css",
+      "selector": ".plain-list li"
+    },
+    {
+      "source": "style.css",
+      "selector": ".reference-links"
+    },
+    {
+      "source": "style.css",
+      "selector": ".reference-links a"
+    },
+    {
+      "source": "style.css",
+      "selector": "#global-search"
+    },
+    {
+      "source": "style.css",
+      "selector": "#search-results"
+    },
+    {
+      "source": "style.css",
+      "selector": "#search-results>a"
+    },
+    {
+      "source": "style.css",
+      "selector": "#search-results>a:hover"
+    },
+    {
+      "source": "style.css",
+      "selector": "#search-results>a>span"
+    },
+    {
+      "source": "style.css",
+      "selector": "#search-results b"
+    },
+    {
+      "source": "style.css",
+      "selector": "#search-results small"
+    },
+    {
+      "source": "style.css",
+      "selector": "main"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand-caption"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar nav"
+    },
+    {
+      "source": "style.css",
+      "selector": ".search-trigger"
+    },
+    {
+      "source": "style.css",
+      "selector": "main"
+    },
+    {
+      "source": "style.css",
+      "selector": ".site-footer"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-layout"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-type"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-type span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-left"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-right"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-summary"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-summary>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".filter-bar .search-field"
+    },
+    {
+      "source": "style.css",
+      "selector": ".filter-bar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".filter-bar .pill-tabs"
+    },
+    {
+      "source": "style.css",
+      "selector": "#sidebar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".workspace"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar nav"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar nav a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".search-trigger"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand b"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand-mark"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-layout"
+    },
+    {
+      "source": "style.css",
+      "selector": ".toc"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-type"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-type span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-left"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-right"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row .chip"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics .icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card .eyebrow"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card h3"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-number"
+    },
+    {
+      "source": "style.css",
+      "selector": ".entry-card>.icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".research-note>a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading h1"
+    },
+    {
+      "source": "style.css",
+      "selector": ".color-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-flow"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-flow>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".principles-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".mobile-menu"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar nav"
+    },
+    {
+      "source": "style.css",
+      "selector": ".top-actions"
+    },
+    {
+      "source": "style.css",
+      "selector": ".search-trigger"
+    },
+    {
+      "source": "style.css",
+      "selector": ".search-trigger>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".search-trigger kbd"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand-caption"
+    },
+    {
+      "source": "style.css",
+      "selector": ".topbar .brand"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand-mark"
+    },
+    {
+      "source": "style.css",
+      "selector": ".brand b"
+    },
+    {
+      "source": "style.css",
+      "selector": ".top-actions .icon-btn"
+    },
+    {
+      "source": "style.css",
+      "selector": "#sidebar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".menu-open #sidebar"
+    },
+    {
+      "source": "style.css",
+      "selector": ".workspace"
+    },
+    {
+      "source": "style.css",
+      "selector": "main"
+    },
+    {
+      "source": "style.css",
+      "selector": ".site-footer"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-kicker"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading h1"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading p br"
+    },
+    {
+      "source": "style.css",
+      "selector": ".overview-heading .btn"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-left"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-type"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-type span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".specimen-bottom"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-right"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row .btn"
+    },
+    {
+      "source": "style.css",
+      "selector": ".showcase-row .chip"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics a"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics a:nth-child(3)"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics a:nth-child(2)"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics strong"
+    },
+    {
+      "source": "style.css",
+      "selector": ".metrics span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".section-heading .small"
+    },
+    {
+      "source": "style.css",
+      "selector": ".section-heading h2"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".component-preview"
+    },
+    {
+      "source": "style.css",
+      "selector": ".preview-inner"
+    },
+    {
+      "source": "style.css",
+      "selector": ".card-caption h3"
+    },
+    {
+      "source": "style.css",
+      "selector": ".card-caption p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".card-caption>.icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".research-note"
+    },
+    {
+      "source": "style.css",
+      "selector": ".research-note p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".page-heading"
+    },
+    {
+      "source": "style.css",
+      "selector": ".page-heading>.badge"
+    },
+    {
+      "source": "style.css",
+      "selector": ".page-heading>.btn"
+    },
+    {
+      "source": "style.css",
+      "selector": ".page-heading h1"
+    },
+    {
+      "source": "style.css",
+      "selector": ".lead"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pill-tabs .btn"
+    },
+    {
+      "source": "style.css",
+      "selector": ".filter-bar .search-field"
+    },
+    {
+      "source": "style.css",
+      "selector": ".filter-bar select"
+    },
+    {
+      "source": "style.css",
+      "selector": ".playground-inner"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-layout .section-heading h2"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-tabs"
+    },
+    {
+      "source": "style.css",
+      "selector": ".doc-tabs button"
+    },
+    {
+      "source": "style.css",
+      "selector": ".color-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".swatch i"
+    },
+    {
+      "source": "style.css",
+      "selector": ".swatch code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-specimen"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-specimen strong"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale>div>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale small"
+    },
+    {
+      "source": "style.css",
+      "selector": ".type-scale p"
+    },
+    {
+      "source": "style.css",
+      "selector": ".shape-grid"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-preview"
+    },
+    {
+      "source": "style.css",
+      "selector": ".pattern-flow>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-summary"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-summary strong"
+    },
+    {
+      "source": "style.css",
+      "selector": ".audit-summary span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-item>summary"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-name code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-item summary>.badge"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-name small"
+    },
+    {
+      "source": "style.css",
+      "selector": ".route-detail"
+    },
+    {
+      "source": "style.css",
+      "selector": ".architecture"
+    },
+    {
+      "source": "style.css",
+      "selector": ".architecture>span"
+    },
+    {
+      "source": "style.css",
+      "selector": ".architecture>.icon"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-item>summary"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-item summary>code"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-item>div"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-ref"
+    },
+    {
+      "source": "style.css",
+      "selector": ".template-ref>.source-link"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-list article"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-number"
+    },
+    {
+      "source": "style.css",
+      "selector": ".process-list .two-col"
+    },
+    {
+      "source": "style.css",
+      "selector": ".principle"
+    },
+    {
+      "source": "style.css",
+      "selector": ".principle h2"
+    },
+    {
+      "source": "style.css",
+      "selector": ".finding"
+    },
+    {
+      "source": "style.css",
+      "selector": ".finding h2"
+    },
+    {
+      "source": "style.css",
+      "selector": ".plain-list"
+    },
+    {
+      "source": "style.css",
+      "selector": ".playground .tooltip-wrap [role=tooltip]"
+    },
+    {
+      "source": "style.css",
+      "selector": ".shape-grid>div>div"
+    },
+    {
+      "source": "style.css",
+      "selector": "pre.html-example"
+    },
+    {
+      "source": "style.css",
+      "selector": "pre.html-example:focus-visible"
+    },
+    {
+      "source": "style.css",
+      "selector": ".dds-rules-table th[scope=row]"
+    },
+    {
+      "source": "style.css",
+      "selector": ".dds-rules-table thead th:first-child"
+    },
+    {
+      "source": "style.css",
+      "selector": ".dds-rules-table td"
+    },
+    {
+      "source": "custom-controls.css",
+      "selector": "#search-dialog>.custom-search"
+    },
+    {
+      "source": "custom-controls.css",
+      "selector": ".filter-bar>.custom-select"
+    },
+    {
+      "source": "custom-controls.css",
+      "selector": ".filter-bar>.custom-select"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".brand-logo"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".brand-caption"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".brand:hover"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".brand-anchor"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".component-card:hover .component-preview"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".entry-card:hover"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".shape-grid>div>div"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".ramp-swatch"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".ramp-swatch.anchor"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".nav-section details summary:after"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".nav-section details[open] summary:after"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".icon-search"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".lucide-grid"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".lucide-card"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".lucide-card:hover"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".lucide-card>.icon"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".lucide-card>span"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".lucide-grid"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".brand-logo"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".topbar"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".brand-logo"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".lucide-grid"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".lucide-card"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".topbar"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".search-trigger>.icon"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".topbar .icon-btn>.icon"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-card"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview>.preview-inner"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview>.preview-link"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".playground-inner"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".playground-inner>*"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".card-caption>div"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".card-caption :is(h3,p)"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .dds-demo:not(.dds-demo--centered)"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .dds-demo>:first-child"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .dds-demo>:last-child"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .dds-demo>:has(+[data-ext-status]:empty)"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .dds-demo--centered"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .dds-demo--centered>.helper"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .dds-demo--centered>.dds-avatar-group"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .preview-inner>.demo-row"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".playground-inner>.demo-row"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .dds-demo>.demo-row"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .tab-demo"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ":is(.component-preview,.playground-inner) .tab-demo>.tab-body"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .stepper"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".playground-inner>.stepper"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .breadcrumbs"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .sample-sidebar"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .sample-sidebar>b"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .sample-sidebar a"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .empty-state"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .empty-state h3"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .empty-state p"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .upload-zone"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .upload-zone>svg"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .upload-zone .helper"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .custom-trigger"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .control-icon"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .control-icon svg"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .avatar+div b"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .accordion p"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .stepper"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .stepper li"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .pagination"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview .field"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-grid"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".card-caption h3"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".card-caption p"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview>.preview-inner"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".doc-tabs button"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": "#global-search"
+    },
+    {
+      "source": "layout-focus.css",
+      "selector": ".component-preview>.preview-link:focus-visible"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-demo"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-demo .btn"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-demo h3"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-demo .helper"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-calendar"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-calendar-grid button"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-calendar .icon-btn"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-action-area"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-demo input:not([type=checkbox],[type=radio],[type=range])"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-demo .dds-input-group input"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-resizable section"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-snackbar"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-ratio"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".component-preview .dds-scroll"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-comparison"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-comparison td"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-comparison a"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-comparison small"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-stat-grid"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-stat-grid>div"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-stat-grid strong"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-stat-grid span"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-coverage"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-coverage article"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-coverage article>p"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-coverage .state-list"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-report-nav"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-evidence"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-utility-sample"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-layout-grid"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-layout-grid>div"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-source-note"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-layout-grid"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-stat-grid"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-coverage article"
+    },
+    {
+      "source": "extensions.css",
+      "selector": ".dds-report-nav .btn"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".playground:has(>.playground-inner .dds-chart-example)"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".playground:has(.dds-chart-example)>.playground-inner"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-example--mini"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-example--mini .dds-chart-svg"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-example--mini .dds-chart-plot"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-example--mini[data-chart-dense=true] .dds-chart-svg"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "[data-theme=dark] .workspace"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.entry-card, .dds-loading-entry, .principle,\n  .type-family-panel, .elevation, .anatomy-list > div, .table-wrap,\n  .icon-gallery, .checklist, .color-detail, .color-state-demo, .contrast-example,\n  .content-fit-examples)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .lucide-card:not(:hover)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading .skeleton"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-nav .skeleton"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-heading"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-title"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-description"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-entries"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-grid"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-entries"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-entry"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-entry .skeleton:first-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-section"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-preview"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-caption"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-nav-title"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-nav-group"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-nav-group .skeleton"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-nav-group .skeleton.short"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-nav-label"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-preview"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-entries"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-grid"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-card:last-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-heading"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-title"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-preview"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".dds-loading-entry"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar .brand-caption"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar .brand-version"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar nav"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar nav a"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar nav a:hover"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar nav a.active"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar nav a.active:hover"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar .top-actions"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#sidebar .sidebar-title"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#sidebar .nav-label"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#sidebar .nav-section :is(a, summary)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#sidebar .nav-section summary"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#sidebar .nav-section :is(a, summary):hover"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#sidebar .nav-section a.active"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .section-heading > .section-link"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .section-heading > .section-link:hover"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar nav"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar .search-trigger"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar .search-trigger kbd"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar .brand"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar .brand-logo"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar .mobile-menu"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".topbar .top-actions"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".overview-heading .overview-guide-link"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".overview-heading .overview-guide-link:is(:hover,:focus-visible,:active)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.reading, .doc-layout, .doc-layout > article, .doc-section,\n  .two-col > *, .principles-grid > *, .process-list article > div)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main > h2"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .reading > h2"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main > .section-heading"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .reading > h3"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .reading > :first-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .reading > .section-heading:first-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-section + .doc-section"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-section > h2"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-section > h3"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-section > h3:first-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.reading, .doc-section) > :is(.table-wrap, .two-col,\n  .shape-grid, .icon-gallery, .token-chain)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.reading, .doc-section) > :is(h2, h3, .section-heading)\n  + :is(.table-wrap, .two-col, .shape-grid, .icon-gallery, .token-chain)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.reading, .doc-section) > .two-col > .guideline"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.reading, .doc-section) > .two-col > .elevation"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.reading, .doc-section) > :last-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .typography-docs > section"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .typography-docs > section + section"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .typography-docs > section > h2"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.typography-docs > section, .color-subsection,\n  .text-color-section, .text-scale-section, .color-doc-section) > h3"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.typography-docs > section, .color-subsection,\n  .text-color-section, .text-scale-section, .color-doc-section) > h3:not(:first-child)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .color-doc-section > .color-section-heading + h3"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .color-doc-section > :is(.color-subsection,\n  .text-color-section, .text-scale-section)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .color-doc-section\n  > :is(.color-subsection, .text-color-section, .text-scale-section, .color-detail)\n  + :is(.color-subsection, .text-color-section, .text-scale-section)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.typography-docs > section, .color-subsection,\n  .text-color-section) > :last-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .text-color-section > .helper + .guideline"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout section"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout [data-doc-panel] > section + section"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout [data-doc-panel] > section > .section-heading"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout [data-doc-panel] > section > h3"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout [data-doc-panel] > section > .section-heading + h3"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout [data-doc-panel] > section > :last-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout [data-doc-panel=\"code\"] > details"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout [data-doc-panel=\"code\"] > details > summary"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout [data-doc-panel=\"code\"] > details > ul"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-tabs"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .anatomy-list > div"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .anatomy-list span"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .playground-inner > .breadcrumbs"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.reading, .doc-section, .doc-layout section) > .plain-list"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout [data-doc-panel] > section > .table-wrap + .plain-list"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .plain-list li:last-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .process-list + h2"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .process-list + .doc-section"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .process-list article:first-child"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .process-list .two-col"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .table-wrap"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.reading, .doc-section, .doc-layout [data-doc-panel] > section)\n  > .table-wrap + :is(p, .helper)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main :is(.dds-rules-table, .dds-contract-table) th[scope=\"row\"]"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .pattern-flow > span"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .type-family-panel > code"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".component-preview .sample-sidebar a.dds-nav-link"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .section-heading"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-tabs"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .spacing-list > div"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .spacing-list code"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .spacing-list > div > div"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .spacing-list > div > span"
+    },
+    {
+      "source": "interactions.css",
+      "selector": ".gnb-submenu:not([hidden])"
+    },
+    {
+      "source": "interactions.css",
+      "selector": "#preview-status:not(:empty)"
+    },
+    {
+      "source": "interactions.css",
+      "selector": ".theme-tooltip"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".component-preview"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".resume-title"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".title-field"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".write-document-title"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".resume-title"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".title-field"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".write-document-title"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ":root .page-heading>.btn"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".control-size-examples"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".control-size-row>p"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".control-size-row>div"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".control-size-row .field"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".control-size-row .custom-select"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".control-size-row input"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".control-size-row>div"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".content-fit-examples"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".fit-toolbar"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".content-fit-examples .field"
+    },
+    {
+      "source": "control-sizing.css",
+      "selector": ".content-fit-examples .alert"
+    }
+  ],
+  "notes": [
+    "Generated from canonical DDS component rules; source stylesheets are not rewritten.",
+    "Tokens, light/dark values and fonts remain in tokens.css and are inherited.",
+    "Document shells, prose, inventories, gallery frames and scaled preview overrides are excluded.",
+    "Example-only centering, wrappers and margins remain with document frames rather than service components.",
+    ":root selectors preserve their original specificity plus the scope through .dds-ui.dds-ui.",
+    "Body rules become scope typography only. #toast becomes the scoped .dds-toast runtime host.",
+    "Animation identifiers are namespaced to prevent host-animation collisions; timing and frames are unchanged.",
+    "Popups and tooltips must remain descendants of a .dds-ui or .dds-ui.dds-ui-portal wrapper.",
+    "Canonical document hooks and the service hook aliases exported by ui/source.js share each state rule.",
+    "The plain specimen root is aliased to .dds-component for services; its width can fill its host, while centered intrinsic components keep their source sizing.",
+    "Choose tokens.css or ui/tokens-scoped.css once. Scoped tokens belong only to outermost DDS boundaries, inherit through nested components, and leave host variables unchanged."
+  ]
+}

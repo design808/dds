@@ -1,8 +1,9 @@
-// Component guidance describes the target behavior; it is not a production API.
-// Only confirmed shared CSS measurements are listed as fixed specifications.
+// Component contracts link the shared UI source and describe host-service checks.
+// Business data, permissions and requests remain with the host service.
 const baseAssets = ['tokens.css', 'style.css', 'brand-refinement.css', 'layout-focus.css', 'interactions.css'];
 const visibilityAssets = ['visibility.css', 'visibility.js', 'service-typography.css'];
-const serviceAssets = new Set(['tokens.css', 'visibility.css', 'visibility.js', 'button-system.css', 'content-primitives.css']);
+const uiAssets = ['ui/dds.css','ui/tokens-scoped.css','ui/index.js','ui/source.js','ui/registry.json','ui/README.md'];
+const serviceAssets = new Set(['tokens.css', 'visibility.css', 'visibility.js', 'button-system.css', 'content-primitives.css',...uiAssets]);
 const documentationAssets = new Set(['style.css', 'brand-refinement.css', 'layout-focus.css', 'extensions.css', 'extension-demos.js', 'button-demos.js', 'button-docs.css']);
 const fieldSizes = [
   ['Small', '--control-height-sm: 36px · Body 2 Normal 14/22 · 좌우 10px · 아이콘 16px'],
@@ -450,9 +451,26 @@ const responsiveSpecifications = {
 export function componentContract(c = {}) {
   const family = families[c.group] || families['Data display'];
   const custom = overrides[c.chartFamily || c.id] || {};
+  const source = c.id ? {
+    componentId:c.id,
+    renderer:c.group==='Charts'?'ui/charts.js':c.added?'ui/extended.js':'ui/core.js',
+    api:'ui/index.js',
+    sourceAPI:'ui/source.js',
+    renderFunction:'renderComponentSource',
+    serviceTransform:'serviceMarkup',
+    partsFunction:'componentParts',
+    registry:'ui/registry.json',
+    registryEntry:'components.'+c.id,
+    template:'ui/templates/'+c.id+'.html',
+    scopeClass:'dds-ui',
+    styles:['ui/tokens-scoped.css','ui/dds.css'],
+    ...(c.id==='button'?{buttonRenderer:'ui/button.js'}:{}),
+  } : null;
+  const canonicalAssets=source?[...uiAssets,source.template,source.renderer,...(source.buttonRenderer?[source.buttonRenderer]:[])]:[];
   const assets = [...baseAssets, ...(family.assets || [])];
   if (c.added) assets.push('extensions.css', 'extension-demos.js');
   assets.push(...(custom.assets || []));
+  assets.push(...canonicalAssets);
   const rules = [...(custom.rules || [c.rule || '이 요소의 역할과 사용처를 먼저 정하고 기존 동작에 맞춰 적용합니다.'])];
   if (c.chartNote && !rules.includes(c.chartNote)) rules.push(c.chartNote);
   const specification = (custom.specification || family.specification)
@@ -466,11 +484,13 @@ export function componentContract(c = {}) {
     keyboard: [...(custom.keyboard || family.keyboard)],
     checks: [...(custom.checks || family.checks || defaultChecks)],
     specification,
+    source,
+    serviceAssets:[...new Set(canonicalAssets)],
     assets: [...new Set(assets)],
     assetGroups: {
-      service: [...new Set(assets.filter(file => serviceAssets.has(file)))],
+      service: [...new Set([...canonicalAssets,...assets.filter(file => serviceAssets.has(file))])],
       documentation: [...new Set(assets.filter(file => documentationAssets.has(file)))],
-      adapter: [...new Set(assets.filter(file => !serviceAssets.has(file) && !documentationAssets.has(file)))],
+      adapter: [...new Set(assets.filter(file => !serviceAssets.has(file) && !canonicalAssets.includes(file) && !documentationAssets.has(file)))],
     },
   };
 }
