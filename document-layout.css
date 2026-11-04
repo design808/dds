@@ -208,11 +208,11 @@
   gap: var(--space-8);
 }
 .topbar .brand-caption {
-  font-size: var(--type-label-1-size);
-  line-height: var(--type-label-1-line-height);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--type-label-1-tracking);
-  color: var(--text-secondary);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--type-body-1-normal-tracking);
+  color: var(--text-primary);
 }
 .topbar .brand-version {
   flex-shrink: 0;

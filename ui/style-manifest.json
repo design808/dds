@@ -367,7 +367,7 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "56e8b8a757704f3d2b1555d21c84c6a328f9563970bde1480ecb229c49e8d4da",
+      "sha256": "a39f9d5f57767c3d7dbb9fa95fbafd67b41b27a80a84de507b1981b7769aeb83",
       "retainedRules": 4,
       "excludedSelectors": 143
     },
