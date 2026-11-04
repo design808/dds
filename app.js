@@ -1,24 +1,24 @@
-import {handoffPage} from './developer-guide.js?v=25f3c2e2c9757209';
-import {getDesignSettings} from './design-settings.js?v=25f3c2e2c9757209';
-import {textColorSection} from './text-colors.js?v=25f3c2e2c9757209';
-import {setupPage,ddsRelease} from './adoption-content.js?v=25f3c2e2c9757209';
-import {typographyPage,bindTypography} from './typography-system.js?v=25f3c2e2c9757209';
-import {formValidationSpec,contentBehaviorSpec,bindServiceGuidelines} from './service-guidelines.js?v=25f3c2e2c9757209';
-import {sidebarContent,overviewContent,componentContent,renderPattern,searchableDocuments} from './document-shell.js?v=25f3c2e2c9757209';
-import {principlesContent,processContent} from './document-content.js?v=25f3c2e2c9757209';
-import {icon,iconGallery,bindIconGallery} from './icons.js?v=25f3c2e2c9757209';
-import {collectionCount,statusBadge} from './visibility.js?v=25f3c2e2c9757209';
-import {renderComponentSource} from './ui/source.js?v=25f3c2e2c9757209';
-import {renderDocumentCard} from './ui/core.js?v=25f3c2e2c9757209';
-import {mountDDS} from './ui/index.js?v=25f3c2e2c9757209';
-import './interactions.js?v=25f3c2e2c9757209';
-import {extensionDemo,bindExtensions} from './extension-demos.js?v=25f3c2e2c9757209';
-import {chartDemo,bindCharts} from './chart-system.js?v=25f3c2e2c9757209';
-import {buttonDemo,buttonCodeExample,bindButtonDemos} from './button-demos.js?v=25f3c2e2c9757209';
-import {blocksPage,bindBlocks} from './blocks.js?v=25f3c2e2c9757209';
-import {chartRouteAliases} from './chart-catalog.js?v=25f3c2e2c9757209';
-import {colorPage} from './color-system.js?v=25f3c2e2c9757209';
-import {components,groups,patterns,foundations} from './catalog.js?v=25f3c2e2c9757209';
+import {handoffPage} from './developer-guide.js?v=fe0196f67fe7cf68';
+import {getDesignSettings} from './design-settings.js?v=fe0196f67fe7cf68';
+import {textColorSection} from './text-colors.js?v=fe0196f67fe7cf68';
+import {setupPage,ddsRelease} from './adoption-content.js?v=fe0196f67fe7cf68';
+import {typographyPage,bindTypography} from './typography-system.js?v=fe0196f67fe7cf68';
+import {formValidationSpec,contentBehaviorSpec,bindServiceGuidelines} from './service-guidelines.js?v=fe0196f67fe7cf68';
+import {sidebarContent,overviewContent,componentContent,renderPattern,searchableDocuments} from './document-shell.js?v=fe0196f67fe7cf68';
+import {principlesContent,processContent} from './document-content.js?v=fe0196f67fe7cf68';
+import {icon,iconGallery,bindIconGallery} from './icons.js?v=fe0196f67fe7cf68';
+import {collectionCount,statusBadge} from './visibility.js?v=fe0196f67fe7cf68';
+import {renderComponentSource} from './ui/source.js?v=fe0196f67fe7cf68';
+import {renderDocumentCard} from './ui/core.js?v=fe0196f67fe7cf68';
+import {mountDDS} from './ui/index.js?v=fe0196f67fe7cf68';
+import './interactions.js?v=fe0196f67fe7cf68';
+import {extensionDemo,bindExtensions} from './extension-demos.js?v=fe0196f67fe7cf68';
+import {chartDemo,bindCharts} from './chart-system.js?v=fe0196f67fe7cf68';
+import {buttonDemo,buttonCodeExample,bindButtonDemos} from './button-demos.js?v=fe0196f67fe7cf68';
+import {blocksPage,bindBlocks} from './blocks.js?v=fe0196f67fe7cf68';
+import {chartRouteAliases} from './chart-catalog.js?v=fe0196f67fe7cf68';
+import {colorPage} from './color-system.js?v=fe0196f67fe7cf68';
+import {components,groups,patterns,foundations} from './catalog.js?v=fe0196f67fe7cf68';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const releaseBadge=document.querySelector('[data-dds-release]');
 if(releaseBadge){releaseBadge.textContent='v'+ddsRelease;releaseBadge.setAttribute('aria-label','DDS 버전 '+ddsRelease);}
@@ -50,24 +50,25 @@ function nav(){
 }
 
 function documentCard(...args){return renderDocumentCard(...args);}
-function demo(id,mini=false){
- const uid='demo-'+id+(mini?'-mini-'+(++demoSequence):'');
+function demo(id,mini=false,instanceSuffix=''){
+ const uid='demo-'+id+(mini?'-mini-'+(++demoSequence):'')+instanceSuffix;
  const markup=id==='button'?buttonDemo(mini,uid):id==='chart'?chartDemo(id,uid,mini):renderComponentSource(id,uid,mini);
  const resolved=markup.replace(/(\bsrc=["'])\/assets\//g,(_,prefix)=>prefix+new URL('./assets/',import.meta.url).href);
  return `<div class="dds-ui" data-dds-component="${id}">${resolved}</div>`;
 }
-function card(c){return `<article class="component-card" data-component="${c.id}"><div class="component-preview"><div class="preview-inner inert-preview" inert aria-hidden="true">${demo(c.id,true)}</div><a class="preview-link" href="#/components/${c.id}" tabindex="-1" aria-hidden="true"></a></div><a class="card-caption" href="#/components/${c.id}"><div><h3>${c.name}</h3><p>${c.ko}</p></div>${icon('arrow')}</a></article>`;}
+function card(c){return `<article class="component-card" data-component="${c.id}"><div class="component-preview"><div class="preview-inner inert-preview" inert aria-hidden="true">${demo(c.id,true)}</div></div><div class="card-caption"><div><h3><a class="component-card-link" href="#/components/${c.id}" aria-label="${esc(c.name)} · ${esc(c.ko)} 컴포넌트 보기">${esc(c.name)}</a></h3><p>${esc(c.ko)}</p></div><span class="component-card-arrow" aria-hidden="true">${icon('arrow')}</span></div></article>`;}
 function overview(){return overviewContent(card);}
 
 function componentList(){return head('COMPONENTS','Components','컴포넌트별 구조, 상태, 사용법과 코드 예제.',badge(`${components.length} components`))+`<div class="filter-bar"><div class="pill-tabs" role="group" aria-label="컴포넌트 분류">${['All',...groups].map(g=>btn(g,g===selectedGroup?'selected':'',`data-group="${g}" aria-pressed="${g===selectedGroup}"`)).join('')}</div><label class="search-field">${icon('search')}<input type="search" id="component-search" placeholder="컴포넌트 검색" aria-label="컴포넌트 검색"></label></div><div id="component-results" class="component-grid">${components.filter(c=>selectedGroup==='All'||c.group===selectedGroup).map(card).join('')}</div>`;}
 const fieldControlIds=['input','select','combobox','date-picker','search','input-group','time-picker','field','input-otp'];
 function controlSizingSpec(){return `<div class="guideline"><b>입력 크기와 콘텐츠 대응</b><p>크기는 높이·글자·패딩·아이콘을 함께 바꿉니다. Small은 도구 모음의 짧은 입력·선택에, Medium은 일반 폼에, Large는 문서 제목처럼 강조하는 입력에 사용합니다. 화면이 좁다는 이유만으로 Small로 바꾸지 않습니다.</p><p>높이는 한 줄일 때의 테두리 포함 기준입니다. 선택값이 길면 Select는 줄바꿈하며 높이가 늘어납니다. 직접 입력하는 한 줄 텍스트는 내부에서 스크롤하고, 긴 작성 본문은 Textarea를 사용합니다.</p></div>
 <div class="table-wrap"><table><thead><tr><th>크기</th><th>한 줄 높이</th><th>입력·선택 값</th><th>좌우 여백 / 아이콘</th></tr></thead><tbody><tr><td>Small</td><td>36px</td><td>Body 2 Normal · 14 / 22</td><td>10px / 16px</td></tr><tr><td>Medium · 기본</td><td>44px</td><td>Body 1 Normal · 16 / 24</td><td>12px / 18px</td></tr><tr><td>Large</td><td>52px</td><td>Body 1 Normal · 16 / 24</td><td>16px / 20px</td></tr></tbody></table></div>
-<p><code>data-control-size="sm|md|lg"</code>를 필드 또는 부모에 지정합니다. 펼친 선택 목록도 같은 글자 크기를 사용합니다. Small 버튼은 Label 2(13 / 18)와 최소 높이 36px를 사용합니다. <a href="./control-sizing.css?v=25f3c2e2c9757209" download>control-sizing.css</a>를 컴포넌트·화면 스타일 뒤에 로드합니다.</p>
+<p><code>data-control-size="sm|md|lg"</code>를 필드 또는 부모에 지정합니다. 펼친 선택 목록도 같은 글자 크기를 사용합니다. Small 버튼은 Label 2(13 / 18)와 최소 높이 36px를 사용합니다. <a href="./control-sizing.css?v=fe0196f67fe7cf68" download>control-sizing.css</a>를 컴포넌트·화면 스타일 뒤에 로드합니다.</p>
 <div class="control-size-examples">${[['sm','Small · 36px / 14px'],['md','Medium · 44px / 16px'],['lg','Large · 52px / 16px']].map(([size,label])=>`<div class="control-size-row" data-control-size="${size}"><p>${label}</p><div><div class="field"><label for="sizing-${size}-text">텍스트 입력</label><input id="sizing-${size}-text" placeholder="내용을 입력해 주세요"></div><div class="field"><label for="sizing-${size}-select">선택 상자</label><select id="sizing-${size}-select"><option>선택해 주세요</option><option>디자인</option><option>개발</option></select></div><div class="field"><label for="sizing-${size}-date">날짜 입력</label><input id="sizing-${size}-date" type="date"></div></div></div>`).join('')}</div>
 <h3>내용에 맞는 너비와 줄바꿈</h3><p>폼은 가용 너비를 채우고, 짧은 도구 모음은 <code>data-control-width="content"</code>로 가장 긴 옵션의 너비를 확보합니다. 선택값이 바뀌어도 버튼 위치가 흔들리지 않습니다. 가용 공간보다 긴 값은 줄임표 대신 줄바꿈합니다. 버튼·칩·상태·도움말도 내용에 따라 높이가 늘어나며 아이콘은 줄어들지 않습니다.</p>
 <div class="content-fit-examples"><div class="fit-toolbar" data-control-size="sm"><select aria-label="콘텐츠 너비 번역 언어" data-control-width="content"><option>한국어</option><option>English</option><option>日本語</option><option>简体中文</option><option>Español (Latinoamérica)</option></select><button class="btn sm">번역 결과를 확인하고 적용하기</button></div><div class="field"><label for="fit-long-selection">긴 선택값</label><select id="fit-long-selection"><option>서비스 기획·사용자 경험 설계와 프로덕트 디자인을 함께 담당하는 직무</option><option>짧은 항목</option></select></div><div class="fit-toolbar"><button class="btn">작성한 자기소개서를 저장하고 다음 단계로 이동하기</button><span class="badge">담당 컨설턴트의 상세 검토와 피드백 작성을 기다리고 있습니다</span><button class="chip">사용자 리서치와 서비스 경험을 개선한 프로젝트</button></div><div class="alert info">${icon('info')}<div><b>긴 안내 문장도 생략하지 않습니다.</b><p>첨부 파일: DeepResume_Application_DesignResearch_ProjectPortfolio_FinalReview_2026.pdf</p></div></div></div>`;}
 function componentDetail(c){
+ if(c.id==='top-navigation')return componentContent(c,`<div class="doc-header-preview-set">${demo(c.id)}<details class="doc-header-desktop-details"><summary>데스크톱 헤더 보기</summary><div class="doc-header-scroll" role="region" aria-label="데스크톱 헤더" tabindex="0"><div class="doc-header-desktop">${demo(c.id,false,'-desktop')}</div></div></details></div>`);
  if(c.id==='button')return componentContent(c,buttonCodeExample(),{
    previewHTML:buttonDemo(),
    previewToc:[['button-variants','Variants'],['button-icons','아이콘'],['button-sizes','크기'],['button-disabled','비활성'],['button-loading','로딩'],['button-width','너비']]

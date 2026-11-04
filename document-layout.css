@@ -3,6 +3,102 @@
   min-height: calc(100dvh - 72px);
   background: #fdfdfd;
 }
+
+/* Gallery cards keep the preview and its name inside one document-only surface. */
+.workspace > #main .component-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+.workspace > #main .component-card > .component-preview {
+  flex-shrink: 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+}
+.workspace > #main .component-card > .card-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: var(--space-4);
+  min-width: 0;
+  padding: var(--space-5) var(--space-6);
+}
+.workspace > #main .component-card .card-caption > div {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.workspace > #main .component-card .card-caption h3 {
+  margin: 0;
+  color: var(--text-strong);
+  font-family: var(--font-sans);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--type-body-1-normal-tracking);
+  overflow-wrap: anywhere;
+}
+.workspace > #main .component-card .card-caption p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--type-label-2-size);
+  line-height: var(--type-label-2-line-height);
+  font-weight: var(--type-label-2-weight);
+  letter-spacing: var(--type-label-2-tracking);
+  overflow-wrap: anywhere;
+}
+.workspace > #main .component-card-link,
+.workspace > #main .component-card-link:is(:hover,:focus-visible) {
+  color: var(--text-strong);
+  text-decoration: none;
+}
+.workspace > #main .component-card-link::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  content: '';
+}
+.workspace > #main .component-card-link:focus-visible {outline: none;}
+.workspace > #main .component-card-link:focus-visible::after {
+  outline: 1px solid var(--primary);
+  outline-offset: -1px;
+}
+.workspace > #main .component-card-arrow {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+}
+.workspace > #main .component-card-arrow .icon {width: 20px;height: 20px;}
+.workspace > #main .component-card:has(.component-card-link:is(:hover,:focus-visible)) {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+.workspace > #main .component-card:has(.component-card-link:is(:hover,:focus-visible)) > .component-preview {
+  border-color: var(--border);
+}
+.workspace > #main .component-card:has(.component-card-link:hover) .component-card-arrow {
+  background: var(--surface);
+  color: var(--foreground);
+}
+@media (max-width: 560px) {
+  .workspace > #main .component-card > .card-caption {padding: var(--space-4) var(--space-5);}
+}
 [data-theme=dark] .workspace {
   background: var(--background);
 }
@@ -434,6 +530,15 @@
 .sample-sidebar a.dds-nav-link {font-size:var(--type-label-1-size);color:var(--text-primary);gap:var(--space-3);align-items:center}
 .sample-sidebar a.dds-nav-link[aria-current] {color:var(--brand-ink)}
 .component-preview .sample-sidebar a.dds-nav-link {font-size:var(--type-label-1-size)}
+
+/* Wide service navigation can be inspected without changing its breakpoint. */
+.workspace > #main .component-card[data-component="top-navigation"] .preview-inner {width:1100px;max-width:none;}
+.workspace > #main .doc-header-preview-set {display:grid;gap:var(--space-6);width:100%;min-width:0;}
+.workspace > #main .doc-header-desktop-details {min-width:0;text-align:start;}
+.workspace > #main .doc-header-desktop-details > summary {cursor:pointer;min-height:44px;padding-block:var(--space-3);color:var(--text-primary);font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:var(--font-weight-semibold);}
+.workspace > #main .doc-header-scroll {width:100%;max-width:100%;overflow:auto;overscroll-behavior-inline:contain;}
+.workspace > #main .doc-header-scroll:focus-visible {outline:1px solid var(--primary);outline-offset:0;}
+.workspace > #main .doc-header-desktop {width:1100px;min-width:1100px;min-height:320px;text-align:start;}
 
 @media (max-width: 767px) {
   .workspace > #main {

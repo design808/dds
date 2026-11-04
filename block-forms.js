@@ -1,5 +1,7 @@
-import {icon} from './icons.js?v=25f3c2e2c9757209';
-import {collectionCount,statusBadge} from './visibility.js?v=25f3c2e2c9757209';
+import {icon} from './icons.js?v=fe0196f67fe7cf68';
+import {collectionCount,statusBadge} from './visibility.js?v=fe0196f67fe7cf68';
+import {renderExtended} from './ui/extended.js?v=fe0196f67fe7cf68';
+import {mountDDS} from './ui/index.js?v=fe0196f67fe7cf68';
 
 export const formBlocks = [
   {id:'login',title:'로그인',category:'account',description:'소셜 계정 또는 이메일 로그인과 비밀번호 찾기.',components:['input','button']},
@@ -84,7 +86,7 @@ const noticeSeeds=[
   {id:'comment',title:'피드백 확인',description:'박지수님이 남긴 의견을 확인했어요.',time:'어제',avatar:'지',read:true}
 ];
 const settingsTabs=[['general','일반','Settings2'],['profile','프로필','UserRound'],['notifications','알림','Bell'],['security','보안','ShieldCheck'],['billing','결제','CreditCard']];
-const initialState=id=>({view:id==='signup'?'signup':'login',email:'',provider:'',notificationFilter:'all',notices:noticeSeeds.map(item=>({...item})),settingsTab:'profile',photo:'',settings:{name:'김민서',job:'프로덕트 디자이너',email:'minseo@example.com',workspace:'디자인팀',workspaceUrl:'design-team',language:'ko',timezone:'seoul',week:'monday',emailNotice:true,weeklyNotice:false,productNotice:true,newDevice:true,billingEmail:'billing@example.com',currency:'USD'},headerOpen:'',headerMobile:false,headerLanguage:'ko'});
+const initialState=id=>({view:id==='signup'?'signup':'login',email:'',provider:'',notificationFilter:'all',notices:noticeSeeds.map(item=>({...item})),settingsTab:'profile',photo:'',settings:{name:'김민서',job:'프로덕트 디자이너',email:'minseo@example.com',workspace:'디자인팀',workspaceUrl:'design-team',language:'ko',timezone:'seoul',week:'monday',emailNotice:true,weeklyNotice:false,productNotice:true,newDevice:true,billingEmail:'billing@example.com',currency:'USD'}});
 
 function notifications(prefix,state) {
   const unread=state.notices.filter(item=>!item.read).length,items=state.notices.filter(item=>state.notificationFilter==='all'||!item.read);
@@ -116,15 +118,7 @@ function settings(prefix,state) {
   return `<section class="df-settings-layout"><nav class="df-settings-nav" aria-label="설정 메뉴">${settingsTabs.map(([id,label,glyph])=>`<button type="button" class="dds-nav-link dds-nav-control" id="${prefix}-nav-${id}" data-df-settings-tab="${id}" aria-controls="${prefix}-settings-panel" ${state.settingsTab===id?'aria-current="page"':''}>${icon(glyph)}<span>${label}</span></button>`).join('')}</nav><section class="df-settings-content" id="${prefix}-settings-panel" aria-labelledby="${prefix}-nav-${state.settingsTab}"><h3 class="db-section-title" tabindex="-1">${current[1]}</h3>${settingsContent(prefix,state)}${feedback()}</section></section>`;
 }
 
-const headerMenus=[
-  ['brand','브랜드',[['Palette','색상과 서체','화면의 기본 규칙','#/foundations/color']]],
-  ['components','컴포넌트',[['Layers','컴포넌트','화면을 구성하는 기본 요소','#/components'],['Sparkles','모션','조작에 응답하는 움직임','#/foundations/motion']]],
-  ['blocks','블록',[['LayoutGrid','블록 갤러리','컴포넌트를 조합한 화면','#/blocks']]],
-  ['docs','문서',[['BookOpen','개발 적용 안내','서비스에 연결하는 방법','#/handoff']]]
-];
-function headerBlock(prefix,state) {
-  return `<header class="df-product-header"><div class="df-header-bar"><a class="df-header-brand" href="#/" aria-label="DDS 살펴보기"><img src="./assets/deepresume-logo.png" width="174" height="29" alt="딥레쥬메"></a><button type="button" class="df-header-icon df-header-mobile-toggle" data-df-header-mobile aria-label="${state.headerMobile?'메뉴 닫기':'메뉴 열기'}" aria-expanded="${state.headerMobile}" aria-controls="${prefix}-navigation">${icon(state.headerMobile?'X':'Menu')}</button><div class="df-header-navigation" id="${prefix}-navigation" data-mobile-open="${state.headerMobile}"><nav class="df-header-nav" aria-label="주 메뉴">${headerMenus.map(([id,label,links])=>`<div class="df-header-menu"><button type="button" class="dds-nav-link dds-nav-control" data-df-header-menu="${id}" aria-controls="${prefix}-menu-${id}" aria-expanded="${state.headerOpen===id}" ${id==='blocks'?'aria-current="page"':''}>${label}${icon('ChevronDown')}</button><div class="df-header-dropdown" id="${prefix}-menu-${id}" ${state.headerOpen===id?'':'hidden'}>${links.map(([glyph,title,description,href])=>`<a href="${href}"><span class="df-header-link-icon" aria-hidden="true">${icon(glyph)}</span><span><strong>${title}</strong><span>${description}</span></span></a>`).join('')}</div></div>`).join('')}<a class="dds-nav-link dds-nav-control" href="#/setup">AI로 적용</a></nav><div class="df-header-tools"><div class="df-header-menu"><button type="button" class="df-header-icon df-header-language" data-df-header-menu="language" aria-label="언어 선택" aria-expanded="${state.headerOpen==='language'}" aria-controls="${prefix}-menu-language">${icon('Languages')}<span class="df-header-tool-label"><span>언어 선택</span><span class="df-header-tool-value">${state.headerLanguage==='ko'?'한국어':'English'}</span></span><span class="df-header-tool-chevron" aria-hidden="true">${icon('ChevronDown')}</span></button><div class="df-header-dropdown df-header-small-dropdown" id="${prefix}-menu-language" ${state.headerOpen==='language'?'':'hidden'}>${[['ko','한국어'],['en','English']].map(([value,label])=>`<button type="button" data-df-header-language="${value}" aria-pressed="${state.headerLanguage===value}">${label}${state.headerLanguage===value?icon('Check'):''}</button>`).join('')}</div></div><div class="df-header-menu"><button type="button" class="df-header-profile" data-df-header-menu="profile" aria-label="프로필 메뉴" aria-expanded="${state.headerOpen==='profile'}" aria-controls="${prefix}-menu-profile"><span class="avatar df-header-avatar" aria-hidden="true">민</span><span class="df-header-tool-label"><span>프로필</span><span class="df-header-tool-value">김민서</span></span><span class="df-header-tool-chevron" aria-hidden="true">${icon('ChevronDown')}</span></button><div class="df-header-dropdown df-header-small-dropdown" id="${prefix}-menu-profile" ${state.headerOpen==='profile'?'':'hidden'}><strong>김민서</strong><a href="#/blocks">계정 블록</a><a href="#/setup">설정과 적용 방법</a></div></div></div></div></div><span class="sr-only" data-df-header-status role="status"></span></header>`;
-}
+function headerBlock(prefix){return '<div class="dds-ui" data-dds-component="top-navigation">'+renderExtended('top-navigation',prefix)+'</div>';}
 const footerGroups=[
   ['둘러보기',[['살펴보기','#/'],['색상','#/foundations/color'],['컴포넌트','#/components'],['블록','#/blocks']]],
   ['리소스',[['타이포그래피','#/foundations/typography'],['아이콘','#/foundations/icons'],['AI로 적용하기','#/setup'],['개발 적용 안내','#/handoff']]],
@@ -154,49 +148,8 @@ export function bindFormBlocks(root) {
     scene.innerHTML=renderScene(scene.dataset.formBlock,scene.dataset.formBlockUid,stateOf(scene));
     if(focusSelector)scene.querySelector(focusSelector)?.focus({preventScroll:true});
   };
-  const headerModes=new WeakMap(),headerContainers=new Map(),headerFocus=new WeakMap();
-  const syncHeaderMode=(scene,width)=>{
-    const mobile=width<=900,previous=headerModes.get(scene);headerModes.set(scene,mobile);
-    if(previous===undefined||previous===mobile)return;
-    const state=stateOf(scene),document=scene.ownerDocument,current=document.activeElement,recent=headerFocus.get(scene);
-    const active=scene.contains(current)?current:current===document.body&&recent?.isConnected&&scene.contains(recent)?recent:null;
-    const panel=scene.querySelector('.df-header-navigation'),toggle=scene.querySelector('[data-df-header-mobile]');
-    const activeDropdown=scene.contains(active)?active.closest('.df-header-dropdown'):null;
-    const dropdownTrigger=activeDropdown?.closest('.df-header-menu')?.querySelector('[data-df-header-menu]');
-    const focusToggle=mobile&&panel.contains(active),focusBrand=!mobile&&active===toggle;
-    state.headerMobile=false;state.headerOpen='';
-    panel.dataset.mobileOpen='false';
-    toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','메뉴 열기');toggle.innerHTML=icon('Menu');
-    panel.querySelectorAll('[data-df-header-menu]').forEach(button=>button.setAttribute('aria-expanded','false'));
-    panel.querySelectorAll('.df-header-dropdown').forEach(dropdown=>{dropdown.hidden=true;});
-    if(focusToggle)toggle.focus({preventScroll:true});
-    else if(focusBrand)scene.querySelector('.df-header-brand').focus({preventScroll:true});
-    else if(activeDropdown)dropdownTrigger?.focus({preventScroll:true});
-  };
-  const headerResize=new ResizeObserver(entries=>{
-    for(const entry of entries){
-      const width=entry.contentBoxSize?.[0]?.inlineSize??entry.contentBoxSize?.inlineSize??entry.contentRect.width;
-      for(const scene of headerContainers.get(entry.target)||[])syncHeaderMode(scene,width);
-    }
-  });
   const headerScenes=[...(root.matches?.('[data-form-block="header"]')?[root]:[]),...root.querySelectorAll('[data-form-block="header"]')];
-  if(headerScenes.length){
-    const document=root.ownerDocument;
-    document.addEventListener('focusin',event=>{
-      if(event.target===document.body)return;
-      for(const scene of headerScenes){if(scene.contains(event.target))headerFocus.set(scene,event.target);else headerFocus.delete(scene);}
-    },options);
-    document.addEventListener('pointerdown',event=>{
-      for(const scene of headerScenes)if(!scene.contains(event.target))headerFocus.delete(scene);
-    },options);
-  }
-  for(const scene of headerScenes){
-    const container=scene.closest('.dds-block-example');if(!container)continue;
-    if(!headerContainers.has(container)){headerContainers.set(container,new Set());headerResize.observe(container);}
-    headerContainers.get(container).add(scene);
-    const style=getComputedStyle(container),width=container.clientWidth-parseFloat(style.paddingLeft||0)-parseFloat(style.paddingRight||0);
-    syncHeaderMode(scene,width);
-  }
+  const headerControllers=headerScenes.map(scene=>mountDDS(scene,{controls:false,charts:false,tooltips:false}));
   const fieldMessage=field=>{
     const value=field.value.trim();
     if(!value){
@@ -222,14 +175,7 @@ export function bindFormBlocks(root) {
   };
   root.addEventListener('click',event=>{
     const scene=sceneOf(event.target),control=event.target.closest?.('button');
-    if(!scene){
-      for(const headerScene of root.querySelectorAll('[data-form-block="header"]'))if(stateOf(headerScene).headerOpen){const menu=stateOf(headerScene).headerOpen;stateOf(headerScene).headerOpen='';redraw(headerScene,`[data-df-header-menu="${menu}"]`);}
-      return;
-    }
-    if(!control||control.disabled){
-      if(scene.dataset.formBlock==='header'&&stateOf(scene).headerOpen&&!event.target.closest('.df-header-menu,a')){const menu=stateOf(scene).headerOpen;stateOf(scene).headerOpen='';redraw(scene,`[data-df-header-menu="${menu}"]`);}
-      return;
-    }
+    if(!scene||!control||control.disabled)return;
     const state=stateOf(scene);
     if(control.hasAttribute('data-df-view'))changeView(scene,control.dataset.dfView);
     else if(control.hasAttribute('data-df-provider'))changeView(scene,'social',control.dataset.dfProvider);
@@ -245,12 +191,6 @@ export function bindFormBlocks(root) {
     }else if(control.hasAttribute('data-df-photo-pick'))scene.querySelector('[data-df-photo]').click();
     else if(control.hasAttribute('data-df-photo-remove')){
       if(state.photo){URL.revokeObjectURL(state.photo);photoURLs.delete(state.photo);state.photo='';}redraw(scene,'[data-df-photo-pick]');
-    }else if(control.hasAttribute('data-df-header-menu')){
-      const menu=control.dataset.dfHeaderMenu;state.headerOpen=state.headerOpen===menu?'':menu;redraw(scene,`[data-df-header-menu="${menu}"]`);
-    }else if(control.hasAttribute('data-df-header-mobile')){
-      state.headerMobile=!state.headerMobile;if(!state.headerMobile)state.headerOpen='';redraw(scene,'[data-df-header-mobile]');
-    }else if(control.hasAttribute('data-df-header-language')){
-      state.headerLanguage=control.dataset.dfHeaderLanguage;state.headerOpen='';redraw(scene,'[data-df-header-menu="language"]');scene.querySelector('[data-df-header-status]').textContent=(state.headerLanguage==='ko'?'한국어':'English')+' 선택';
     }
   },options);
   const update=event=>{
@@ -283,15 +223,6 @@ export function bindFormBlocks(root) {
     if(tab&&['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){
       event.preventDefault();event.stopPropagation();const next=event.key==='Home'?'all':event.key==='End'?'unread':tab.dataset.dfNotificationFilter==='all'?'unread':'all';stateOf(scene).notificationFilter=next;redraw(scene,`[data-df-notification-filter="${next}"]`);return;
     }
-    if(scene.dataset.formBlock!=='header')return;
-    const state=stateOf(scene),trigger=event.target.closest('[data-df-header-menu]');
-    if(event.key==='Escape'&&(state.headerOpen||(state.headerMobile&&headerModes.get(scene)))){
-      event.preventDefault();event.stopPropagation();
-      if(state.headerOpen){const menu=state.headerOpen;state.headerOpen='';redraw(scene,`[data-df-header-menu="${menu}"]`);}
-      else{state.headerMobile=false;redraw(scene,'[data-df-header-mobile]');}
-    }else if(event.key==='ArrowDown'&&trigger){
-      event.preventDefault();state.headerOpen=trigger.dataset.dfHeaderMenu;redraw(scene,'.df-header-dropdown:not([hidden]) :is(a,button)');
-    }
   },options);
   root.addEventListener('submit',event=>{
     const form=event.target.closest('[data-df-form]'),scene=sceneOf(form);if(!form||!scene)return;
@@ -306,7 +237,7 @@ export function bindFormBlocks(root) {
     else if(form.dataset.dfForm==='signup')result.textContent='이름·이메일·비밀번호의 입력 형식이 올바릅니다.';
     else result.textContent=`사용할 이메일로 ${state.email} 주소를 선택했습니다.`;
   },options);
-  const cleanup=()=>{controller.abort();headerResize.disconnect();headerContainers.clear();for(const url of photoURLs)URL.revokeObjectURL(url);photoURLs.clear();if(bindings.get(root)===cleanup)bindings.delete(root);};
+  const cleanup=()=>{controller.abort();for(const stop of headerControllers)stop();for(const url of photoURLs)URL.revokeObjectURL(url);photoURLs.clear();if(bindings.get(root)===cleanup)bindings.delete(root);};
   bindings.set(root,cleanup);
   return cleanup;
 }

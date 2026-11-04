@@ -1,4 +1,4 @@
-import {UI_VERSION} from './ui/version.js?v=25f3c2e2c9757209';
+import {UI_VERSION} from './ui/version.js?v=fe0196f67fe7cf68';
 export const ddsRelease=UI_VERSION;
 export const ddsSite='https://design808.github.io/dds/';
 export const ddsReleaseURL=`${ddsSite}releases/${ddsRelease}/`;

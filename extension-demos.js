@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=25f3c2e2c9757209';
-import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=25f3c2e2c9757209';
+import {icon} from './icons.js?v=fe0196f67fe7cf68';
+import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=fe0196f67fe7cf68';
 export {renderExtended as extensionDemo};
 const pad=n=>String(n).padStart(2,'0');
 function renderCalendar(c,focusDate){const y=+c.dataset.year,m=+c.dataset.month;c.querySelector('[data-month-label]').textContent=`${y}년 ${m+1}월`;c.querySelector('[data-calendar-grid]').innerHTML=calendarDays(y,m,c.dataset.selected);if(focusDate){const b=c.querySelector(`[data-calendar-date="${focusDate}"]`);c.querySelectorAll('[data-calendar-date]').forEach(x=>x.tabIndex=x===b?0:-1);b?.focus();}}
@@ -26,61 +26,8 @@ function dismissMenusOnLayoutChange(){
 }
 window.addEventListener('resize',dismissMenusOnLayoutChange);
 document.addEventListener('scroll',e=>{if(!e.target.closest?.('.dds-menu'))dismissMenusOnLayoutChange();},true);
-const topnavStates=new Map();
-let topnavResize,topnavMutation,topnavScanPending=false;
-const topnavWidth=element=>{const style=getComputedStyle(element);return element.clientWidth-parseFloat(style.paddingLeft||0)-parseFloat(style.paddingRight||0);};
-function closeTopnavSelect(panel){
- for(const trigger of panel.querySelectorAll('.custom-trigger[aria-expanded="true"][aria-controls]')){
-  const popup=panel.ownerDocument.getElementById(trigger.getAttribute('aria-controls'));
-  if(popup?.classList.contains('control-popup')){trigger.dispatchEvent(new panel.ownerDocument.defaultView.KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true}));return true;}
- }
- return false;
-}
-function syncTopnav(wrapper,width=topnavWidth(wrapper)){
- const state=topnavStates.get(wrapper);if(!state)return;
- const header=wrapper.querySelector('[data-ext-topnav]'),toggle=header?.querySelector('[data-ext-topnav-toggle]'),panel=header?.querySelector('[data-ext-topnav-panel]');if(!toggle||!panel)return;
- const doc=wrapper.ownerDocument,current=doc.activeElement,active=(current===doc.body||!current)&&state.lastFocused&&header.contains(state.lastFocused)?state.lastFocused:current,mobile=width<=640,changed=state.mobile!==null&&state.mobile!==mobile;
- const popupClosed=changed&&closeTopnavSelect(panel);
- if(changed||!mobile)state.open=false;
- state.mobile=mobile;state.width=width;
- header.dataset.topnavMode=mobile?'mobile':'desktop';
- toggle.hidden=!mobile;
- const expanded=mobile&&state.open,label=expanded?'메뉴 닫기':'메뉴 열기';
- toggle.setAttribute('aria-expanded',String(expanded));
- if(toggle.getAttribute('aria-label')!==label){toggle.setAttribute('aria-label',label);toggle.setAttribute('data-tooltip',label);toggle.querySelector('.dds-button-label').innerHTML=icon(expanded?'X':'Menu');}
- const canRestore=typeof doc.hasFocus!=='function'||doc.hasFocus();
- if(canRestore&&mobile&&!expanded&&(panel.contains(active)||popupClosed))toggle.focus({preventScroll:true});
- if(canRestore&&!mobile&&active===toggle)header.querySelector('.dds-topnav-brand').focus({preventScroll:true});
- panel.hidden=mobile&&!expanded;
- panel.inert=mobile&&!expanded;
-}
-function scanTopnavs(){
- for(const [wrapper] of topnavStates)if(!wrapper.isConnected){topnavResize?.unobserve(wrapper);topnavStates.delete(wrapper);}
- document.querySelectorAll('.dds-topnav-demo').forEach(wrapper=>{
-  if(topnavStates.has(wrapper))return;
-  topnavStates.set(wrapper,{mobile:null,open:false,width:0,lastFocused:null});
-  syncTopnav(wrapper);
-  topnavResize?.observe(wrapper);
- });
-}
-function prepareTopnavs(){
- if(!topnavResize&&typeof ResizeObserver==='function')topnavResize=new ResizeObserver(entries=>{for(const entry of entries)if(topnavStates.has(entry.target))syncTopnav(entry.target,entry.contentRect.width);});
- if(!topnavMutation&&typeof MutationObserver==='function'){
-  topnavMutation=new MutationObserver(()=>{if(topnavScanPending)return;topnavScanPending=true;queueMicrotask(()=>{topnavScanPending=false;scanTopnavs();});});
-  topnavMutation.observe(document.body,{childList:true,subtree:true});
- }
- scanTopnavs();
-}
-function setTopnavOpen(header,open,restore=false){
- const wrapper=header.closest('.dds-topnav-demo'),state=topnavStates.get(wrapper);if(!state)return;
- state.open=state.mobile&&open;
- if(!state.open)closeTopnavSelect(header.querySelector('[data-ext-topnav-panel]'));
- syncTopnav(wrapper,state.width);
- if(restore&&state.mobile)header.querySelector('[data-ext-topnav-toggle]').focus({preventScroll:true});
-}
 const dialogOrigins=new WeakMap();
 export function bindExtensions(){
- prepareTopnavs();
  document.querySelectorAll('.dds-overlay').forEach(d=>{if(d.dataset.bound)return;d.dataset.bound='true';d.addEventListener('close',()=>dialogOrigins.get(d)?.focus());});
  document.querySelectorAll('[data-ext-form]').forEach(f=>{f.onsubmit=e=>{e.preventDefault();validate(f);};});
  document.querySelectorAll('[data-ext-questionnaire]').forEach(f=>f.onsubmit=e=>e.preventDefault());
@@ -93,10 +40,8 @@ function validate(f){const i=f.querySelector('input'),ok=i.validity.valid;f.quer
 function resize(h,n){n=Math.max(25,Math.min(75,Math.round(n)));h.setAttribute('aria-valuenow',n);h.parentElement.style.setProperty('--panel',n+'%');}
 function showPopover(t,focus){const p=document.getElementById(t.dataset.extPopover);if(p.matches(':popover-open')){if(focus)p.querySelector('button,input')?.focus();return;}p.showPopover();const r=t.getBoundingClientRect(),w=p.offsetWidth,h=p.offsetHeight;p.style.left=Math.max(8,Math.min(r.left,innerWidth-w-8))+'px';p.style.top=Math.max(8,r.bottom+h+8>innerHeight?r.top-h-8:r.bottom+8)+'px';t.setAttribute('aria-expanded','true');if(focus)p.querySelector('button,input')?.focus();}
 document.addEventListener('click',e=>{
- const topnavLink=e.target.closest('.dds-topnav-panel a[href]');if(topnavLink)setTopnavOpen(topnavLink.closest('[data-ext-topnav]'),false);
  if(!e.target.closest('.dds-menu-unit'))closeMenus();
  const t=e.target.closest('button');if(!t)return;
- if(t.hasAttribute('data-ext-topnav-toggle')){const header=t.closest('[data-ext-topnav]');setTopnavOpen(header,t.getAttribute('aria-expanded')!=='true');}
  if(t.hasAttribute('data-ext-notice'))announce(t,t.dataset.extNotice);
  if(t.hasAttribute('data-ext-toggle')){const on=t.getAttribute('aria-pressed')!=='true';t.setAttribute('aria-pressed',on);announce(t,(t.getAttribute('aria-label')||t.textContent.trim())+(on?' 켜짐':' 꺼짐'));}
  if(t.hasAttribute('data-ext-filter')||t.hasAttribute('data-ext-filter-reset')){const p=t.closest('.dds-demo'),b=p.querySelector('[data-ext-filter]'),on=t.hasAttribute('data-ext-filter');b.querySelector('[data-filter-label]').textContent=on?'경력 3년 이상 · 1':'경력 전체';b.classList.toggle('dds-applied',on);p.querySelector('[data-ext-filter-result]').textContent=on?'경력 3년 이상 조건 적용':'전체 경력을 표시합니다.';}
@@ -125,22 +70,12 @@ document.addEventListener('click',e=>{
  if(t.hasAttribute('data-thread-bottom')){const p=t.closest('[data-ext-thread]'),log=p.querySelector('[data-thread-log]');log.scrollTop=log.scrollHeight;p.querySelector('[data-thread-status]').textContent='최신 메시지';}
 });
 
-// CSS may hide a focused control before ResizeObserver runs. Keep only the
-// latest in-header focus; any real outside focus or pointer action clears it.
-document.addEventListener('focusin',e=>{
- if(e.target===document.body){for(const state of topnavStates.values())if(state.lastFocused?.getClientRects().length)state.lastFocused=null;return;}
- for(const [wrapper,state] of topnavStates)state.lastFocused=wrapper.contains(e.target)?e.target:null;
-});
-document.addEventListener('pointerdown',e=>{
- for(const [wrapper,state] of topnavStates)if(!wrapper.contains(e.target))state.lastFocused=null;
-},true);
 document.addEventListener('input',e=>{const t=e.target;if(t.matches('[data-ext-slider]')){t.style.setProperty('--value',t.value+'%');t.closest('.dds-demo').querySelector('output').textContent=t.value+'%';}if(t.matches('[data-ext-otp]')){t.value=t.value.replace(/\D/g,'').slice(0,6);t.closest('.dds-demo').querySelector('[data-otp-status]').textContent=t.value.length===6?'6자리 입력 완료 · 인증 요청 전':`${t.value.length} / 6자리 입력`;}if(t.matches('[data-ext-command-search]')){const p=t.closest('.dds-command');let count=0;p.querySelectorAll('[data-ext-command]').forEach(b=>{b.hidden=!b.textContent.includes(t.value);if(!b.hidden)count++;});p.querySelector('[data-command-empty]').hidden=count!==0;}});
 document.addEventListener('change',e=>{const p=e.target.closest('[data-ext-time]');if(p){const values=[...p.querySelectorAll('select')].map(s=>s.value);p.querySelector('[data-time-result]').textContent=values.join(':')+' · Asia/Seoul (KST)';}});
 document.addEventListener('contextmenu',e=>{const p=e.target.closest('[data-ext-context]');if(p){e.preventDefault();openMenu(p.querySelector('[data-ext-menu]'));}});
 document.addEventListener('keydown',e=>{
  const t=e.target;
- if(e.key==='Escape'){const header=t.closest('[data-ext-topnav]');if(header?.querySelector('[data-ext-topnav-toggle]')?.getAttribute('aria-expanded')==='true'){e.preventDefault();e.stopPropagation();setTopnavOpen(header,false,true);return;}}
- if(e.key==='Escape'){const m=t.closest('.dds-menu-unit');closeMenus();m?.querySelector('[data-ext-menu]')?.focus();const d=t.closest('.dds-nav-details');if(d){d.open=false;d.querySelector('summary').focus();}}
+ if(e.key==='Escape'){const m=t.closest('.dds-menu-unit');closeMenus();m?.querySelector('[data-ext-menu]')?.focus();const d=t.closest('.dds-nav-details');if(d&&!d.closest('[data-dds-topnav]')){d.open=false;d.querySelector('summary').focus();}}
  if(e.shiftKey&&e.key==='F10'&&t.closest('[data-ext-context]')){e.preventDefault();openMenu(t.closest('[data-ext-context]').querySelector('[data-ext-menu]'));}
  if(t.matches('.dds-resize-handle')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();resize(t,e.key==='Home'?25:e.key==='End'?75:+t.getAttribute('aria-valuenow')+(e.key==='ArrowRight'?5:-5));}
  if(t.matches('[data-calendar-date]')&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End','PageUp','PageDown'].includes(e.key)){e.preventDefault();const c=t.closest('[data-ext-calendar]'),d=new Date(t.dataset.calendarDate+'T12:00:00');if(e.key==='PageUp'||e.key==='PageDown')d.setMonth(d.getMonth()+(e.key==='PageUp'?-1:1),1);else d.setDate(d.getDate()+({ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7,Home:-d.getDay(),End:6-d.getDay()}[e.key]));c.dataset.year=d.getFullYear();c.dataset.month=d.getMonth();renderCalendar(c,`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`);}

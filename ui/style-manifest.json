@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "2c63e49b8370ccc6a534baabf6009994ca94e74fc20ecab4b74f24d20fb33c0e",
+  "sha256": "896f820c5908e802bf676cf420afe472523967211f1460722092a0110576dfa7",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -159,12 +159,24 @@
     "dds-time",
     "dds-toast",
     "dds-topnav",
+    "dds-topnav-avatar",
+    "dds-topnav-bar",
     "dds-topnav-brand",
     "dds-topnav-demo",
+    "dds-topnav-dropdown",
+    "dds-topnav-dropdown--compact",
+    "dds-topnav-icon",
     "dds-topnav-language",
+    "dds-topnav-link-icon",
     "dds-topnav-links",
+    "dds-topnav-menu",
     "dds-topnav-panel",
+    "dds-topnav-profile",
+    "dds-topnav-profile-panel",
     "dds-topnav-toggle",
+    "dds-topnav-tool-chevron",
+    "dds-topnav-tool-label",
+    "dds-topnav-tool-value",
     "dds-topnav-tools",
     "demo-row",
     "dialog-heading",
@@ -185,6 +197,7 @@
     "lucide-ArrowUpRight",
     "lucide-Bell",
     "lucide-Bold",
+    "lucide-BookOpen",
     "lucide-Bookmark",
     "lucide-ChartColumn",
     "lucide-Check",
@@ -205,13 +218,18 @@
     "lucide-Image",
     "lucide-Info",
     "lucide-Italic",
+    "lucide-Languages",
+    "lucide-Layers",
+    "lucide-LayoutGrid",
     "lucide-LockKeyhole",
     "lucide-Menu",
+    "lucide-Palette",
     "lucide-PencilLine",
     "lucide-Play",
     "lucide-Plus",
     "lucide-Search",
     "lucide-SlidersHorizontal",
+    "lucide-Sparkles",
     "lucide-Underline",
     "lucide-Users",
     "lucide-X",
@@ -325,9 +343,9 @@
     },
     {
       "file": "brand-refinement.css",
-      "sha256": "9d75bd9a02d85adc2c00cbe127959ba4912e25f77533f5892febaf26731a1656",
+      "sha256": "4f6fee5876754d5ffe91933439482ea2ed16079d65d8a57d8d5aa15393e0810e",
       "retainedRules": 10,
-      "excludedSelectors": 26
+      "excludedSelectors": 28
     },
     {
       "file": "layout-focus.css",
@@ -337,8 +355,8 @@
     },
     {
       "file": "extensions.css",
-      "sha256": "e69181195f8f4f47671fe3b27b1c29c9b3064ec1b97ccfe940800ecfa9731c2a",
-      "retainedRules": 156,
+      "sha256": "f1bf37cce3bee4c1fc19d3007298cf74490c373d37c7ca32b2d5478e998bc150",
+      "retainedRules": 190,
       "excludedSelectors": 36
     },
     {
@@ -349,9 +367,9 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "32a2aac88d6bd6d0a824273dfeaf8c8835eea75a82a044293b6ba0a6eae91b95",
+      "sha256": "56e8b8a757704f3d2b1555d21c84c6a328f9563970bde1480ecb229c49e8d4da",
       "retainedRules": 4,
-      "excludedSelectors": 119
+      "excludedSelectors": 143
     },
     {
       "file": "interactions.css",
@@ -2246,6 +2264,14 @@
       "selector": ".topbar .icon-btn>.icon"
     },
     {
+      "source": "brand-refinement.css",
+      "selector": ".topbar .brand-logo.brand-symbol"
+    },
+    {
+      "source": "brand-refinement.css",
+      "selector": ".topbar .brand-caption"
+    },
+    {
       "source": "layout-focus.css",
       "selector": ".component-card"
     },
@@ -2612,6 +2638,74 @@
     {
       "source": "document-layout.css",
       "selector": ".workspace"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card > .component-preview"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card > .card-caption"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card .card-caption > div"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card .card-caption h3"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card .card-caption p"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card-link"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card-link:is(:hover,:focus-visible)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card-link::after"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card-link:focus-visible"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card-link:focus-visible::after"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card-arrow"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card-arrow .icon"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card:has(.component-card-link:is(:hover,:focus-visible))"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card:has(.component-card-link:is(:hover,:focus-visible)) > .component-preview"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card:has(.component-card-link:hover) .component-card-arrow"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card > .card-caption"
     },
     {
       "source": "document-layout.css",
@@ -3056,6 +3150,34 @@
     {
       "source": "document-layout.css",
       "selector": ".component-preview .sample-sidebar a.dds-nav-link"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-card[data-component=\"top-navigation\"] .preview-inner"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-preview-set"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-desktop-details"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-desktop-details > summary"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-scroll"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-scroll:focus-visible"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-desktop"
     },
     {
       "source": "document-layout.css",

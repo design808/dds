@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "styles": [
@@ -19,17 +19,17 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "341c321f423d9e6eec328501fdee61ed17955f5458a98e8494e254d6d2e421f3",
-    "ui/core.js": "271091835547317777a5091bc62b50d214090e2523c49099692c0cbadae1a65a",
-    "ui/button.js": "77203e48e765b412d35b9311e56a78ef3a76e614ef7d1b05d0b4e76c5bb202d9",
-    "ui/extended.js": "549ca08af63b96666f625fd3f042f5eda94127ac1bf1d9152895c5e2c570e391",
-    "ui/charts.js": "8d31ad06fdd0ce62739b33214faede36608bd8e0a2cc65f1da1cb0dcab781dda",
-    "ui/source.js": "57dc30231d98ccff6a35074638fdc494c67746f619c0eb3b8470567321d88534",
-    "ui/index.js": "9cd527a9582c57d27245ec927cc97592fc1690340e3f0e29eeff78c11ce581f7",
-    "ui/icons.js": "cc970b5f99f6dc2d2dcc7c485f40094fdb99165de05521dedaf8d5394e993e8c",
+    "ui/version.js": "a6e01934b0269ef4070d2abdbc90d546bbbc1efd2f44fce4291f92c6bed591f3",
+    "ui/core.js": "dd756335af1e70d8744cb3357e8724925827c700d62a34e87b13a9a2cd785dbb",
+    "ui/button.js": "350d7594d53317bdaaf96ed372c08e6416556e6a0c55632ed17c938cb9e72494",
+    "ui/extended.js": "ac1459669f4c219de742d5f0a7c34ac5b6d5ce352dbdbe6c88e8ca08e5c04822",
+    "ui/charts.js": "a4c65329ba24644bf6986b6a18e239829416fdc5f5c7a2ca9e10d15a69a98f9a",
+    "ui/source.js": "4b20d7c41190d26a3cd2766ae13f34a29b4dd5cadbddece7c7d4e3d4147b0555",
+    "ui/index.js": "8b6fde03935aa610812dcc22f2872a674184ecd6e5a1a77bd054ac9a08cb2934",
+    "ui/icons.js": "757802f28714f177c1f9af4649ed9116d330e8180b51670fa037f808d850777b",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "2407b2e08f6db26c517d789833532fa3c80b58a1c50936d5dc85b9d66ca0e9a3",
-    "ui/dds.css": "2c63e49b8370ccc6a534baabf6009994ca94e74fc20ecab4b74f24d20fb33c0e",
+    "ui/controls.js": "ed70c6bfaa0802f9ef9bd74dd8609cacc3ea9a674100aee63585242a58bc9211",
+    "ui/dds.css": "896f820c5908e802bf676cf420afe472523967211f1460722092a0110576dfa7",
     "ui/tokens-scoped.css": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713",
     "tokens.css": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
@@ -1919,7 +1919,7 @@
       "group": "Navigation",
       "template": "ui/templates/top-navigation.html",
       "idPrefix": "dds-instance",
-      "sha256": "6b59002541b377bcb27c8333c6b444601e9a1d925c44398154e0a4647c591df0",
+      "sha256": "1c2535ef38f2313b33e1373c410d75afce0a040f03527ae561dab6fa2fcfd2e3",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -1933,6 +1933,14 @@
         "brand": {
           "selector": ".dds-topnav-brand",
           "kind": "text"
+        },
+        "brandContent": {
+          "selector": ".dds-topnav-brand",
+          "kind": "slot"
+        },
+        "brandImage": {
+          "selector": ".dds-topnav-brand > img",
+          "kind": "attributes"
         },
         "brandLink": {
           "selector": ".dds-topnav-brand",
@@ -1951,15 +1959,51 @@
           "kind": "slot"
         },
         "language": {
-          "selector": ".dds-topnav-language select",
+          "selector": "[data-dds-nav-language-trigger]",
           "kind": "attributes"
         },
+        "languageTrigger": {
+          "selector": "[data-dds-nav-language-trigger]",
+          "kind": "attributes"
+        },
+        "languageLabel": {
+          "selector": "[data-dds-part=\"language-value\"]",
+          "kind": "text"
+        },
+        "languageOptions": {
+          "selector": "[aria-label=\"언어 선택\"][role=\"group\"]",
+          "kind": "slot"
+        },
+        "korean": {
+          "selector": "[data-dds-nav-language=\"ko\"]",
+          "kind": "attributes"
+        },
+        "english": {
+          "selector": "[data-dds-nav-language=\"en\"]",
+          "kind": "attributes"
+        },
+        "profileTrigger": {
+          "selector": ".dds-topnav-profile",
+          "kind": "attributes"
+        },
+        "profileLabel": {
+          "selector": "[data-dds-part=\"profile-value\"]",
+          "kind": "text"
+        },
+        "profileName": {
+          "selector": ".dds-topnav-profile-panel > strong",
+          "kind": "text"
+        },
+        "profileContent": {
+          "selector": ".dds-topnav-profile-panel",
+          "kind": "slot"
+        },
         "accountLabel": {
-          "selector": ".dds-topnav-tools > a",
+          "selector": ".dds-topnav-profile-panel > a:first-of-type",
           "kind": "text"
         },
         "accountLink": {
-          "selector": ".dds-topnav-tools > a",
+          "selector": ".dds-topnav-profile-panel > a:first-of-type",
           "kind": "attributes"
         }
       },
@@ -3964,7 +4008,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "25f3c2e2c9757209",
-    "canonicalBundle": "../releases/0.3.0/bundle.json"
+    "assetRevision": "fe0196f67fe7cf68",
+    "canonicalBundle": "../releases/0.3.1/bundle.json"
   }
 }

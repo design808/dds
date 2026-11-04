@@ -1,10 +1,10 @@
-import {icon} from './icons.js?v=25f3c2e2c9757209';
-import {components} from './catalog.js?v=25f3c2e2c9757209';
-import {bindCharts} from './chart-system.js?v=25f3c2e2c9757209';
-import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=25f3c2e2c9757209';
-import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=25f3c2e2c9757209';
-import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=25f3c2e2c9757209';
-import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=25f3c2e2c9757209';
+import {icon} from './icons.js?v=fe0196f67fe7cf68';
+import {components} from './catalog.js?v=fe0196f67fe7cf68';
+import {bindCharts} from './chart-system.js?v=fe0196f67fe7cf68';
+import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=fe0196f67fe7cf68';
+import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=fe0196f67fe7cf68';
+import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=fe0196f67fe7cf68';
+import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=fe0196f67fe7cf68';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const blockCategories=[
@@ -24,7 +24,8 @@ const matchingBlocks=()=>blocks.filter(block=>selectedCategory==='all'||block.ca
 function scene(block,prefix){
   const uid=`${prefix}-${block.id}-${++sceneSequence}`;
   const html=formIds.has(block.id)?renderFormBlock(block.id,uid):tableIds.has(block.id)?renderTableBlock(block.id,uid):workspaceIds.has(block.id)?renderWorkspaceBlock(block.id,uid):renderContentBlock(block.id,uid);
-  return `<div class="dds-block-example">${html}</div>`;
+  const resolved=html.replace(/(\bsrc=["'])\/assets\//g,(_,before)=>before+new URL('./assets/',import.meta.url).href);
+  return `<div class="dds-block-example">${resolved}</div>`;
 }
 
 function cards(items){

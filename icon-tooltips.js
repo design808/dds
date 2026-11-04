@@ -62,8 +62,15 @@ document.addEventListener('pointerout',event=>{
 document.addEventListener('focusin',event=>{focused=targetOf(event.target);if(focused?.matches(':focus-visible')){dismissed=null;show(focused);}else focused=null;});
 document.addEventListener('focusout',()=>{focused=null;scheduleHide();});
 document.addEventListener('pointerdown',()=>{dismissed=active;hide();},true);
-// Capture first so Escape dismisses the tooltip before closing its parent dialog.
-window.addEventListener('keydown',event=>{if(event.key==='Escape'&&tip){event.preventDefault();event.stopImmediatePropagation();dismissed=active;hide();}},true);
+// An open header layer closes on the same Escape that dismisses its tooltip.
+// Other tooltips retain priority over a containing dialog's native cancellation.
+window.addEventListener('keydown',event=>{
+ if(event.key!=='Escape'||!tip)return;
+ const header=event.target.closest?.('[data-dds-topnav]');
+ const headerLayer=header?.querySelector('.dds-topnav-menu[open],[data-dds-topnav-toggle][aria-expanded="true"]');
+ dismissed=active;hide();
+ if(!headerLayer){event.preventDefault();event.stopImmediatePropagation();}
+},true);
 document.addEventListener('close',hide,true);
 window.addEventListener('scroll',()=>{if(tip)position();},true);
 window.addEventListener('resize',()=>{if(tip)position();});

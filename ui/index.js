@@ -1,12 +1,12 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart} from './source.js?v=25f3c2e2c9757209';
-import {renderButton} from './button.js?v=25f3c2e2c9757209';
-import {icon} from './icons.js?v=25f3c2e2c9757209';
-import {mountControls} from './controls.js?v=25f3c2e2c9757209';
-import {bindCharts,chartDemo} from './charts.js?v=25f3c2e2c9757209';
-import {calendarDays} from './extended.js?v=25f3c2e2c9757209';
-import {UI_VERSION} from './version.js?v=25f3c2e2c9757209';
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart} from './source.js?v=fe0196f67fe7cf68';
+import {renderButton} from './button.js?v=fe0196f67fe7cf68';
+import {icon} from './icons.js?v=fe0196f67fe7cf68';
+import {mountControls} from './controls.js?v=fe0196f67fe7cf68';
+import {bindCharts,chartDemo} from './charts.js?v=fe0196f67fe7cf68';
+import {calendarDays} from './extended.js?v=fe0196f67fe7cf68';
+import {UI_VERSION} from './version.js?v=fe0196f67fe7cf68';
 export {renderButton,icon,componentIds,componentParts,renderComponentSource};
-export {collectionCount,statusBadge} from '../visibility.js?v=25f3c2e2c9757209';
+export {collectionCount,statusBadge} from '../visibility.js?v=fe0196f67fe7cf68';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -144,16 +144,28 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   for(const panel of panels){panel.hidden=panel.id!==selectedPanel;if(!panel.hidden)panel.setAttribute('aria-labelledby',tab.id);}notify(tab,'tab',tab.id);
  };
  function closeNestedControl(panel){const trigger=panel.querySelector('.custom-trigger[aria-expanded="true"],.control-icon[aria-expanded="true"]');if(!trigger)return false;trigger.dispatchEvent(new view.KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true}));return true;}
+ function positionNavDropdowns(header){
+  const state=navs.get(header),bar=header.querySelector('.dds-topnav-bar');if(!state||!bar)return;
+  for(const details of header.querySelectorAll('.dds-topnav-menu')){
+   if(state.mobile||!details.open){details.style.removeProperty('--dds-topnav-dropdown-y');continue;}
+   details.style.setProperty('--dds-topnav-dropdown-y',bar.getBoundingClientRect().bottom-details.getBoundingClientRect().top+12+'px');
+  }
+ }
  function setNav(header,open,restoreFocus=false,width){
   const state=navs.get(header),toggle=header.querySelector('[data-dds-topnav-toggle]'),panel=header.querySelector('[data-dds-topnav-panel]');if(!state||!toggle||!panel)return;
   const current=doc.activeElement,remembered=(current===doc.body||!current)&&state.lastFocused&&!state.lastFocused.getClientRects().length?state.lastFocused:current;
-  const mobile=(width??state.wrapper.clientWidth)<=640,changed=state.mobile!==null&&state.mobile!==mobile,expanded=mobile&&!changed&&(open??state.open);
+  const mobile=(width??state.wrapper.clientWidth)<=900,changed=state.mobile!==null&&state.mobile!==mobile,expanded=mobile&&!changed&&(open??state.open);
+  const activeMenu=remembered?.closest?.('.dds-topnav-menu[open]'),menuSummary=activeMenu?.querySelector('summary');
+  let floatingClosed=false;
+  if(changed||mobile&&!expanded){for(const details of header.querySelectorAll('.dds-topnav-menu[open]'))details.open=false;for(const record of [...floating.values()])if(header.contains(record.trigger)){floatingClosed=floatingClosed||record.panel.contains(current);restore(record);}}
   const controlClosed=(changed||mobile&&!expanded)&&closeNestedControl(panel);state.mobile=mobile;state.open=!!expanded;
   const label=expanded?'메뉴 닫기':'메뉴 열기';toggle.hidden=!mobile;toggle.setAttribute('aria-expanded',String(!!expanded));toggle.setAttribute('aria-label',label);toggle.setAttribute('data-tooltip',label);
   const labelNode=toggle.querySelector('.dds-button-label');if(labelNode)labelNode.innerHTML=icon(expanded?'X':'Menu');
-  if(mobile&&!expanded&&(restoreFocus||panel.contains(remembered)||controlClosed)&&doc.hasFocus())focus(toggle);
+  if(mobile&&!expanded&&(restoreFocus||panel.contains(remembered)||controlClosed||floatingClosed)&&doc.hasFocus())focus(toggle);
   if(!mobile&&remembered===toggle&&doc.hasFocus())focus(header.querySelector('.dds-topnav-brand'));
+  else if(!mobile&&changed&&activeMenu&&doc.hasFocus())focus(menuSummary);
   panel.hidden=mobile&&!expanded;panel.inert=panel.hidden;header.dataset.ddsMobile=String(mobile);
+  positionNavDropdowns(header);
  }
  const resize=new view.ResizeObserver(entries=>{for(const entry of entries){const header=entry.target.querySelector('[data-dds-topnav]');if(header)setNav(header,undefined,false,entry.contentRect.width);}});
  function syncCounter(input){const output=input.closest('.field,.editor-demo')?.querySelector('[data-count]'),text=input.value.length+(input.maxLength>0?' / '+input.maxLength:'');if(output&&output.textContent!==text)output.textContent=text;}
@@ -202,6 +214,12 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   if(target.hasAttribute('data-dds-popover'))openPopover(target,{takeFocus:true,toggle:!target.hasAttribute('data-dds-hover')});
   if(target.hasAttribute('data-dds-popover-close'))restore(floating.get(byId(target,target.dataset.ddsPopoverClose)),true);
   if(target.hasAttribute('data-dds-topnav-toggle'))setNav(target.closest('[data-dds-topnav]'),target.getAttribute('aria-expanded')!=='true');
+  if(target.hasAttribute('data-dds-nav-language')){
+   const header=target.closest('[data-dds-topnav]'),value=target.dataset.ddsNavLanguage,label=target.querySelector('span')?.textContent||target.textContent.trim();
+   for(const button of header.querySelectorAll('[data-dds-nav-language]')){const selected=button===target;button.setAttribute('aria-pressed',String(selected));button.querySelector(':scope > svg')?.remove();if(selected){const template=doc.createElement('template');template.innerHTML=icon('Check');button.append(template.content);}}
+   header.dataset.ddsLanguage=value;const visible=header.querySelector('[data-dds-part="language-value"]');if(visible)visible.textContent=label;
+   const details=target.closest('details');details.open=false;focus(details.querySelector('summary'));const status=header.querySelector('[data-dds-nav-status]');if(status)status.textContent=label+' 선택';notify(target,'language',value);
+  }
   if(target.matches('.dds-topnav-panel a'))setNav(target.closest('[data-dds-topnav]'),false);
   if(target.hasAttribute('data-dds-page')){const nav=target.closest('nav');for(const button of nav.querySelectorAll('[data-dds-page]')){button.classList.toggle('primary',button===target);button===target?button.setAttribute('aria-current','page'):button.removeAttribute('aria-current');}const out=nav.querySelector('[data-page-state]');if(out)out.textContent=target.textContent+' / '+nav.querySelectorAll('[data-dds-page]').length+' 페이지';notify(target,'page',Number(target.textContent));}
   if(target.hasAttribute('data-dds-page-shift')){
@@ -248,6 +266,9 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
    calendar.dataset.year=String(date.getFullYear());calendar.dataset.month=String(date.getMonth());renderCalendar(calendar,iso(date));
   }
   const menu=target.closest('.dds-menu,.dds-command');
+  const headerMenu=target.closest('.dds-topnav-menu'),headerDropdown=target.closest('.dds-topnav-dropdown');
+  if(target.matches('.dds-topnav-menu > summary')&&['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();headerMenu.open=true;const items=[...headerMenu.querySelectorAll('.dds-topnav-dropdown a,.dds-topnav-dropdown button')].filter(item=>!item.disabled&&!item.hidden);focus(event.key==='ArrowUp'?items.at(-1):items[0]);}
+  else if(headerDropdown&&['ArrowDown','ArrowUp','Home','End'].includes(event.key)){event.preventDefault();const items=[...headerDropdown.querySelectorAll('a,button')].filter(item=>!item.disabled&&!item.hidden),index=items.indexOf(target),next=event.key==='Home'?0:event.key==='End'?items.length-1:(index+(event.key==='ArrowUp'?-1:1)+items.length)%items.length;focus(items[next]);}
   if(menu&&['ArrowDown','ArrowUp','Home','End'].includes(event.key)&&!(target.matches('input')&&['Home','End'].includes(event.key))){const selector=menu.classList.contains('dds-command')?'.dds-command-option:not([hidden]):not(:disabled)':'button:not([hidden]):not(:disabled),a[href]:not([hidden])',items=[...menu.querySelectorAll(selector)],index=items.indexOf(target);if(items.length){event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?items.length-1:index<0?(event.key==='ArrowUp'?items.length-1:0):(index+(event.key==='ArrowUp'?-1:1)+items.length)%items.length;focus(items[next]);}}
   if(target.hasAttribute('data-dds-menu')&&['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();openMenu(target,{last:event.key==='ArrowUp'});}
   if(target.matches('.dds-menubar [data-dds-menu]')&&['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();closeMenus();const items=[...target.closest('.dds-menubar').querySelectorAll('[data-dds-menu]')],index=items.indexOf(target),next=event.key==='Home'?0:event.key==='End'?items.length-1:(index+(event.key==='ArrowRight'?1:-1)+items.length)%items.length;focus(items[next]);}
@@ -261,6 +282,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  },{signal});
  doc.addEventListener('pointerdown',event=>{
   const element=asElement(event.target);for(const [header,state]of navs)if(!header.contains(element))state.lastFocused=null;
+  for(const details of all('.dds-topnav-menu[open]'))if(!details.contains(element))details.open=false;
   for(const record of [...floating.values()])if(record.kind==='menu'&&!record.panel.contains(element)&&!record.trigger.contains(element))restore(record);
   if(!owns(element))return;const handle=element.closest('.dds-resize-handle');if(handle&&(event.button===0||event.pointerType==='touch')){event.preventDefault();dragging.set(handle,event.pointerId);try{handle.setPointerCapture(event.pointerId);}catch{}}
  },{capture:true,signal});
@@ -280,7 +302,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   const panel=element.closest('.dds-popover');if(panel&&floating.has(panel))cancel(floating.get(panel).hoverTimer);
  },{signal});
  doc.addEventListener('pointerout',event=>{if(!owns(event.target))return;const element=asElement(event.target),related=asElement(event.relatedTarget);for(const record of floating.values())if(record.kind==='popover'&&record.trigger.hasAttribute('data-dds-hover')&&(record.trigger.contains(element)||record.panel.contains(element))&&!record.trigger.contains(related)&&!record.panel.contains(related))closeHoverLater(record);},{signal});
- doc.addEventListener('toggle',event=>{const record=floating.get(event.target);if(record?.kind==='popover'&&event.newState==='closed')restore(record);},{capture:true,signal});
+ doc.addEventListener('toggle',event=>{const record=floating.get(event.target);if(record?.kind==='popover'&&event.newState==='closed')restore(record);if(owns(event.target)&&event.target.matches('.dds-topnav-menu'))positionNavDropdowns(event.target.closest('[data-dds-topnav]'));},{capture:true,signal});
  doc.addEventListener('close',event=>{if(!owns(event.target)||event.target.tagName!=='DIALOG')return;for(const record of [...floating.values()])if(event.target.contains(record.trigger))restore(record);},{capture:true,signal});
  const dismissMenus=()=>closeMenus(true);
  view.addEventListener('resize',()=>{dismissMenus();for(const record of [...floating.values()])if(record.kind==='popover')positionFloating(record);},{signal});
@@ -290,6 +312,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   if(disposed)return;disposed=true;abort.abort();for(const timer of timers)view.clearTimeout(timer);timers.clear();
   for(const record of [...floating.values()])restore(record);for(const [handle,pointer]of dragging)try{handle.releasePointerCapture(pointer);}catch{}dragging.clear();
   for(const host of toastTimers.keys()){host.hidden=true;host.classList.remove('show');}
+  for(const header of navs.keys())for(const details of header.querySelectorAll('.dds-topnav-menu'))details.style.removeProperty('--dds-topnav-dropdown-y');
   for(const stop of stops)stop();for(const scope of [...portals])removePortal(scope);navs.clear();toastTimers.clear();if(bindings.get(root)===cleanup)bindings.delete(root);
  };
  bindings.set(root,cleanup);return cleanup;
