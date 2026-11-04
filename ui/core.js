@@ -1,7 +1,7 @@
 /** Canonical core markup. No DOM access, listeners, storage, or document UI. */
-import {icon} from './icons.js?v=8d17f0c317923929';
-import {renderButton} from './button.js?v=8d17f0c317923929';
-import {collectionCount,statusBadge} from '../visibility.js?v=8d17f0c317923929';
+import {icon} from './icons.js?v=99539125b4014e6b';
+import {renderButton} from './button.js?v=99539125b4014e6b';
+import {collectionCount,statusBadge} from '../visibility.js?v=99539125b4014e6b';
 
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=(value,id)=>String(value||'dds-'+id).replace(/[^a-zA-Z0-9_-]/g,'-');

@@ -1,4 +1,4 @@
-import {ddsRelease,ddsSetupPrompt} from './ui-setup-content.js?v=8d17f0c317923929';
+import {ddsRelease,ddsSetupPrompt} from './ui-setup-content.js?v=99539125b4014e6b';
 const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const section=(title,body)=>`<section class="doc-section"><h2>${title}</h2>${body}</section>`;
 export function setupPage(){

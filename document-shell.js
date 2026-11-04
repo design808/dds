@@ -1,10 +1,10 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=8d17f0c317923929';
-import {icon} from './icons.js?v=8d17f0c317923929';
-import {formatHTML} from './format-html.js?v=8d17f0c317923929';
-import {componentContract} from './component-contracts.js?v=8d17f0c317923929';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=8d17f0c317923929';
-import {blocks} from './blocks.js?v=8d17f0c317923929';
-import {renderComponentSource,serviceMarkup} from './ui/source.js?v=8d17f0c317923929';
+import {components, groups, patterns, foundations} from './catalog.js?v=99539125b4014e6b';
+import {icon} from './icons.js?v=99539125b4014e6b';
+import {formatHTML} from './format-html.js?v=99539125b4014e6b';
+import {componentContract} from './component-contracts.js?v=99539125b4014e6b';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=99539125b4014e6b';
+import {blocks} from './blocks.js?v=99539125b4014e6b';
+import {renderComponentSource,serviceMarkup} from './ui/source.js?v=99539125b4014e6b';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -66,7 +66,7 @@ export function componentContent(c, html, {previewHTML, previewToc} = {}) {
     </div>
     <div data-doc-panel="code" hidden><h2>HTML</h2><p>미리보기와 같은 UI 원본입니다. <code>ui/tokens-scoped.css</code>와 <code>ui/dds.css</code>를 연결하고 <code>.dds-ui</code> 범위를 유지합니다. 문구·링크·입력값·상태는 서비스 데이터로 바꾸고 기존 id·name·이벤트·제출값을 보존합니다.${c.group==='Charts'?' 차트는 실제 항목·계열·단위를 createComponent의 data로 전달합니다.':''}</p>
       <button class="btn sm copy-code">${icon('copy')} 코드 복사</button><pre class="html-example" tabindex="0" aria-label="서비스용 HTML 원본"><code>${esc(formatHTML(sourceHTML))}</code></pre>
-      <p><a href="./${esc(contract.source.template)}" download>HTML 템플릿</a> · <a href="./ui/README.md">연결 방법</a> · <a href="./ui/registry.json">컴포넌트 레지스트리</a> · <a href="./ui/index.js?v=8d17f0c317923929">생성·동작 API</a> · <a href="./ui/source.js?v=8d17f0c317923929">HTML 원본 API</a> · <a href="./ui/tokens-scoped.css?v=8d17f0c317923929">토큰 CSS</a> · <a href="./ui/dds.css?v=8d17f0c317923929">UI CSS</a></p>
+      <p><a href="./${esc(contract.source.template)}" download>HTML 템플릿</a> · <a href="./ui/README.md">연결 방법</a> · <a href="./ui/registry.json">컴포넌트 레지스트리</a> · <a href="./ui/index.js?v=99539125b4014e6b">생성·동작 API</a> · <a href="./ui/source.js?v=99539125b4014e6b">HTML 원본 API</a> · <a href="./ui/tokens-scoped.css?v=99539125b4014e6b">토큰 CSS</a> · <a href="./ui/dds.css?v=99539125b4014e6b">UI CSS</a></p>
       <details><summary>연결 파일</summary><p>HTML은 renderComponentSource와 serviceMarkup으로 생성하며 ui/templates에도 같은 원본을 제공합니다. UI 폴더와 registry에 기록된 의존성을 함께 유지합니다. 선택·탭·열기와 닫기는 mountDDS를 연결하고, 저장·AI·업로드·권한은 기존 서비스 함수와 연결합니다. 문서 셸과 문서 예제 전용 파일은 서비스에 연결하지 않습니다.</p>${contract.assets.includes('service-typography.css')?'<p>service-typography.css는 현재 적용 예시의 매핑입니다. 대상 서비스에 맞게 다시 생성합니다.</p>':''}${assetReferences(contract.assetGroups)}</details>
     </div></article><aside class="toc"><span>이 페이지</span>${toc.map(([id, label]) => `<button data-scroll="${id}">${label}</button>`).join('')}</aside></div>`;
 }
