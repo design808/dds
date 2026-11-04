@@ -1,0 +1,8 @@
+/* SUITE, SIL Open Font License 1.1. See LICENSE in this directory. */
+@font-face {
+  font-family: 'DDS SUITE';
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url('./SUITE-Variable.woff2') format('woff2');
+}

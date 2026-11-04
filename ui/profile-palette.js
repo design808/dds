@@ -1,0 +1,136 @@
+/** Shared color derivation for the settings preview and installed projects. */
+const hex = value => {
+  if (typeof value !== 'string' || !/^#[0-9a-f]{6}$/i.test(value)) throw new Error('색상은 6자리 HEX 값이어야 합니다.');
+  return value.toLowerCase();
+};
+const rgb = value => [1,3,5].map(index => parseInt(value.slice(index,index+2),16));
+const mix = (first, second, ratio) => '#'+rgb(first).map((value,index) => Math.round(value*(1-ratio)+rgb(second)[index]*ratio).toString(16).padStart(2,'0')).join('');
+const luminance = value => rgb(value).map(channel => channel/255).map(channel => channel<=.04045 ? channel/12.92 : ((channel+.055)/1.055)**2.4).reduce((sum,value,index) => sum+value*[.2126,.7152,.0722][index],0);
+const contrast = (first,second) => (Math.max(luminance(first),luminance(second))+.05)/(Math.min(luminance(first),luminance(second))+.05);
+const ink = (seed,background,dark) => {
+  const surfaces=Array.isArray(background)?background:[background];
+  for(let step=0;step<=20;step++){
+    const candidate=mix(seed,dark?'#ffffff':'#17212f',step/20);
+    if(surfaces.every(surface=>contrast(candidate,surface)>=4.5))return candidate;
+  }
+  return dark?'#f7f8fa':'#17212f';
+};
+const filledStates = (seed,dark) => {
+  if(!dark)return {hover:mix(seed,'#000000',.08),active:mix(seed,'#000000',.15)};
+  // Keep white labels readable while preserving the dark-theme brightening order.
+  // A seed below 4.5 is retained for review rather than silently recolored.
+  if(contrast(seed,'#ffffff')<4.5)return {hover:seed,active:seed};
+  for(let step=40;step>=0;step--){
+    const activeRatio=.18*step/40;
+    const active=mix(seed,'#ffffff',activeRatio);
+    if(contrast(active,'#ffffff')>=4.5)return {hover:mix(seed,'#ffffff',activeRatio*.10/.18),active};
+  }
+  return {hover:seed,active:seed};
+};
+const functionalForeground = fill => {
+  if(contrast(fill,'#ffffff')>=4.5)return '#ffffff';
+  if(contrast(fill,'#17212f')>=4.5)return '#17212f';
+  return '#000000';
+};
+const functionalStates = (seed,dark) => {
+  const foreground=functionalForeground(seed),activeRatio=dark?.18:.15,hoverRatio=dark?.10:.08;
+  // Keep the label stable across states; switch the shading direction only if
+  // the preferred direction cannot produce two distinct, readable colors.
+  for(const target of (dark?['#ffffff','#000000']:['#000000','#ffffff'])){
+    for(let step=100;step>0;step--){
+      const active=mix(seed,target,activeRatio*step/100);
+      const hover=mix(seed,target,hoverRatio*step/100);
+      if(hover!==seed&&active!==hover&&contrast(hover,foreground)>=4.5&&contrast(active,foreground)>=4.5)return {hover,active};
+    }
+  }
+  return {hover:seed,active:seed};
+};
+const functionalSoft = (seed,background,dark) => {
+  // Bright colors retain their hue instead of being diluted to near white.
+  const ratio=dark?.19:.075+Math.min(1,Math.max(0,(luminance(seed)-.25)/.45))*.225;
+  return mix(background,seed,ratio);
+};
+const functionalStroke = (seed,surfaces,dark) => {
+  for(let step=0;step<=100;step++){
+    const candidate=mix(seed,dark?'#ffffff':'#17212f',step/100);
+    if(surfaces.every(surface=>contrast(candidate,surface)>=3))return candidate;
+  }
+  return dark?'#ffffff':'#000000';
+};
+
+export function palette(profile,dark){
+  const background=dark?'#17191c':'#ffffff';
+  const muted=dark?'#292d33':'#f1f2f4';
+  const primary=hex(profile.colors?.primary||'#ffad31');
+  const secondary=hex(profile.colors?.secondary||primary);
+  const accent=hex(profile.colors?.accent||secondary);
+  const positive=hex(profile.colors?.positive||'#18734b');
+  const sameOrange=primary==='#ffad31';
+  const primarySoft=sameOrange?(dark?'#3c251d':'#fff9ef'):mix(background,primary,dark?.18:.07);
+  const primaryStates=sameOrange
+    ? {hover:dark?'#ffbe5c':'#ff941a',active:dark?'#ffca7a':'#e8750a'}
+    : filledStates(primary,dark);
+  const roles={};
+  if(!sameOrange){
+    for(const [step,ratio] of [[50,.96],[100,.90],[200,.75],[300,.55],[400,.30]])roles[`--brand-${step}`]=mix(primary,'#ffffff',ratio);
+    roles['--brand-500']=primary;
+    for(const [step,ratio] of [[600,.10],[700,.23],[800,.38],[900,.53],[950,.67]])roles[`--brand-${step}`]=mix(primary,'#000000',ratio);
+  }
+  for(const [name,value] of Object.entries({primary,secondary,accent,positive})){
+    const soft=name==='primary'?mix(background,value,dark?.19:.075):functionalSoft(value,background,dark);
+    const aiTint=mix(background,value,dark?.20:.12);
+    const states=name==='primary'?primaryStates:functionalStates(value,dark);
+    roles[`--direction-${name}`]=value;
+    roles[`--direction-${name}-ink`]=ink(value,[background,muted,soft,aiTint],dark);
+    roles[`--direction-${name}-soft`]=soft;
+    roles[`--direction-${name}-border`]=mix(background,value,dark?.42:.24);
+    roles[`--direction-${name}-hover`]=states.hover;
+    roles[`--direction-${name}-active`]=states.active;
+    if(name!=='primary'){
+      roles[`--direction-${name}-foreground`]=functionalForeground(value);
+      roles[`--direction-${name}-hover-foreground`]=functionalForeground(states.hover);
+      roles[`--direction-${name}-active-foreground`]=functionalForeground(states.active);
+      roles[`--direction-${name}-stroke`]=functionalStroke(value,[background,muted,soft,aiTint],dark);
+    }
+  }
+  Object.assign(roles,{
+    '--primary':primary,
+    '--primary-hover':primaryStates.hover,
+    '--primary-active':primaryStates.active,
+    '--primary-foreground':'#ffffff',
+    '--primary-border':'transparent',
+    '--brand-ink':roles['--direction-primary-ink'],
+    '--accent':primarySoft,
+    '--accent-foreground':ink(primary,[background,muted,primarySoft],dark),
+    '--accent-border':sameOrange?(dark?'#554022':'#fff0d6'):mix(background,primary,dark?.40:.22),
+    '--ring':primary,
+    '--text-link':ink(primary,background,dark),
+    '--direction-glow':mix(background,primary,dark?.16:.13)
+  });
+  const ai=profile.multicolor?accent:primary;
+  Object.assign(roles,{
+    '--ai-input-border':mix(background,ai,dark?.30:.20),
+    '--ai-input-background':[
+      `radial-gradient(ellipse 100% 160% at 5% 15%, ${mix(background,ai,dark?.15:.055)} 0%, transparent 85%)`,
+      `radial-gradient(ellipse 110% 160% at 100% 20%, ${mix(background,secondary,dark?.12:.035)} 0%, transparent 90%)`,
+      `radial-gradient(ellipse 110% 150% at 55% 100%, ${mix(background,positive,dark?.09:.025)} 0%, transparent 90%)`,
+      `linear-gradient(110deg,${mix(background,ai,dark?.08:.025)},${mix(background,secondary,dark?.07:.02)})`
+    ].join(',')
+  });
+  if(profile.multicolor){
+    const successBg=roles['--direction-positive-soft'];
+    const infoBg=roles['--direction-secondary-soft'];
+    const successInk=ink(positive,[background,successBg],dark);
+    const infoInk=ink(secondary,[background,infoBg],dark);
+    Object.assign(roles,{
+      '--success':successInk,
+      '--success-bg':successBg,
+      '--text-success':successInk,
+      '--info':infoInk,
+      '--info-bg':infoBg,
+      '--text-info':infoInk
+    });
+  }
+  return roles;
+}
+

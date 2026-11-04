@@ -1,5 +1,5 @@
-import {createComponent,mountDDS,icon,collectionCount,statusBadge} from '../ui/index.js?v=99539125b4014e6b';
-import {jobs,categories,filterOptions,sortOptions,filterJobs,sortJobs,getJobById,getCompanyById} from './careers-data.js?v=99539125b4014e6b';
+import {createComponent,mountDDS,icon,collectionCount,statusBadge} from '../ui/index.js?v=1ea07ad08c5dd4c5';
+import {jobs,categories,filterOptions,sortOptions,filterJobs,sortJobs,getJobById,getCompanyById} from './careers-data.js?v=1ea07ad08c5dd4c5';
 
 const $=selector=>document.querySelector(selector);
 const main=$('[data-co-main]');
@@ -92,11 +92,10 @@ function renderBrowse(){
  const hero=node('section','co-hero dds-ui');hero.setAttribute('aria-labelledby','careeron-title');
  const heading=node('div','co-heading');heading.append(node('h1','dds-type-title-1','다음 커리어를 만나는 곳.'),copy('원하는 일과 일하는 방식을 찾아보세요.','dds-type-body-1-normal co-secondary'));heading.querySelector('h1').id='careeron-title';
  const form=node('form','co-search-form');form.setAttribute('role','search');
- const search=component('search',{idPrefix:'careeron-search',text:{label:'어떤 일을 찾고 있나요?',hint:'직무, 기업명, 기술이나 관심 키워드로 검색하세요.'},attributes:{control:{name:'query',value:filters.query,placeholder:'직무, 기업명 또는 키워드','aria-label':'채용공고 검색',autocomplete:'off'}}});
+ const search=component('search',{idPrefix:'careeron-search',text:{label:'어떤 일을 찾고 있나요?'},attributes:{control:{name:'query',value:filters.query,placeholder:'직무, 기업명 또는 키워드','aria-label':'채용공고 검색',autocomplete:'off'}}});
  searchInput=search.querySelector('input');
  const submit=node('div','co-search-submit');submit.append(button('공고 검색',{before:'Search',attributes:{type:'submit'}}));form.append(search,submit);
  form.addEventListener('submit',event=>{event.preventDefault();filters.query=searchInput.value;updateResults();resultTitle.focus();resultTitle.scrollIntoView({block:'nearest',behavior:'smooth'});});
- searchInput.addEventListener('input',()=>{filters.query=searchInput.value;updateResults();});
  hero.append(heading,form);
  const category=node('section','co-categories dds-ui');category.setAttribute('aria-labelledby','category-title');const categoryHeading=node('div','co-category-heading');categoryHeading.append(node('h2','dds-type-body-1-normal','어떤 직무를 찾으세요?'));categoryHeading.querySelector('h2').id='category-title';category.append(categoryHeading,categoryControls());
  const filterBar=node('div','co-filter-bar');
@@ -111,7 +110,9 @@ function updateResults(){
  const values=sortJobs(filterJobs(jobs,filters),filters.sort);
  const row=resultTitle.parentElement;row.lastElementChild.replaceWith(count(values.length));
  resultsHost.replaceChildren(values.length?jobGrid(values):empty('조건에 맞는 공고가 없어요','검색어를 바꾸거나 선택한 조건을 줄여보세요.','검색 조건 초기화','#/jobs',true));
- if(searchInput){const hint=searchInput.closest('.field').querySelector('[data-search-count]'),filtered=filters.category||filters.location||filters.experience||filters.workMode;hint.textContent=filters.query?`“${filters.query}” 검색 결과 ${values.length}개`:filtered?`선택한 조건의 공고 ${values.length}개`:'직무, 기업명, 기술이나 관심 키워드로 검색하세요.';hint.setAttribute('role','status');hint.setAttribute('aria-live','polite');}
+ // The result heading owns the live count; no specimen helper is duplicated here.
+ resultTitle.parentElement.lastElementChild.setAttribute('role','status');
+ resultTitle.parentElement.lastElementChild.setAttribute('aria-live','polite');
 }
 function resetFilters(){Object.assign(filters,{query:'',category:'',location:'',experience:'',workMode:'',sort:'latest'});renderRoute(false);const input=main.querySelector('input[type=search]');input?.focus();}
 
@@ -185,9 +186,8 @@ function toggleBookmark(id,trigger){
 }
 
 function applicationField(label,name,value,placeholder,required=false){
- const field=component('input',{text:{label,hint:''},attributes:{control:{name,value,placeholder,required,'aria-label':label,autocomplete:name==='name'?'name':'email'}}});
- const input=field.querySelector('input');input.type=name==='email'?'email':'text';input.maxLength=name==='email'?160:80;
- if(!required)field.querySelector('.required')?.remove();field.querySelector('.helper')?.remove();return field;
+ const field=component('input',{text:{label},attributes:{control:{name,value,placeholder,required,type:name==='email'?'email':'text',maxlength:name==='email'?160:80,'aria-label':label,autocomplete:name==='name'?'name':'email'}}});
+ return field;
 }
 function refreshApplicationLabel(jobId){
  if(route.view!=='detail')return;
@@ -205,8 +205,6 @@ function openApplication(jobId,trigger){
  const saveStatus=copy(draft.updatedAt?`마지막 저장: ${draftDate(draft.updatedAt)}`:'이름, 이메일, 지원 동기를 작성하고 나중에 이어갈 수 있어요.');saveStatus.setAttribute('role','status');
  form.append(pair,motivation,note,saveStatus);
  const source=component('dialog',{idPrefix:'careeron-application',text:{title:'지원서 작성',body:`${job.company} · ${job.title}`,confirm:'임시저장'},slots:{content:form},attributes:{control:{hidden:true},close:{'aria-label':'지원서 작성 닫기'}}});
- // The supplied content is a form, so omit the default document-preview frame.
- source.querySelector('.sample-document').replaceWith(form);
  const dialog=source.querySelector('dialog'),defaultConfirm=dialog.querySelector(':scope>button');
  defaultConfirm.replaceWith(button('임시저장',{fullWidth:true,attributes:{type:'submit',form:form.id}}));
  const originalClose=dialog.querySelector('[data-dds-close]');originalClose.dataset.tooltip='지원서 작성 닫기';

@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "896f820c5908e802bf676cf420afe472523967211f1460722092a0110576dfa7",
+  "sha256": "23cca445564656e7247f13ef064b929201b00ec393532cfdf0a52b8abc80efd7",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -112,6 +112,9 @@
     "dds-error",
     "dds-fallback",
     "dds-fallback-actions",
+    "dds-feedback-actions",
+    "dds-feedback-content",
+    "dds-feedback-icon",
     "dds-framed",
     "dds-input-group",
     "dds-items",
@@ -399,6 +402,12 @@
       "file": "button-system.css",
       "sha256": "d94816b753c31dfd55f17b38892027c09fed477a2421fbba0a4746ca56f0bea0",
       "retainedRules": 30,
+      "excludedSelectors": 0
+    },
+    {
+      "file": "variant-system.css",
+      "sha256": "a2af181f7e9243d4d9e2b493291c5894cb76ea65021d997cf2f0141bc0870698",
+      "retainedRules": 122,
       "excludedSelectors": 0
     }
   ],

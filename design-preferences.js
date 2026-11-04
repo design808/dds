@@ -1,3 +1,5 @@
+import {PROFILE_STORAGE_KEY,createDesignProfile,parseDesignProfile,settingsEqual} from './design-profile.js?v=1ea07ad08c5dd4c5';
+
 // Local display preferences. These values never change the authored DDS tokens.
 const STORAGE_KEY='dds-design-settings-v1';
 
@@ -110,10 +112,13 @@ function parseSettings(serialized){
  */
 export function createSettingsStore(targetWindow){
   const listeners=new Set();
+  const profileListeners=new Set();
   let disposed=false;
   const storage=()=>{try{return targetWindow?.localStorage;}catch{return undefined;}};
   let settings;
   try{settings=parseSettings(storage()?.getItem(STORAGE_KEY));}catch{settings=DEFAULT_SETTINGS;}
+  let savedProfile;
+  try{savedProfile=parseDesignProfile(storage()?.getItem(PROFILE_STORAGE_KEY));}catch{savedProfile=null;}
 
   function replace(next){
     if(fields.every(key=>settings[key]===next[key]))return false;
@@ -127,15 +132,47 @@ export function createSettingsStore(targetWindow){
   }
 
   function onStorage(event){
-    if(disposed||(event.key!==STORAGE_KEY&&event.key!==null))return;
+    if(disposed||(event.key!==STORAGE_KEY&&event.key!==PROFILE_STORAGE_KEY&&event.key!==null))return;
     const local=storage();
     if(event.storageArea&&event.storageArea!==local)return;
-    replace(parseSettings(event.key===null?null:event.newValue));
+    // Inactive tabs can receive an older event after a newer local write.
+    // Read the latest shared value, including writes that followed a clear.
+    const latest=(key)=>{
+      try{if(local)return local.getItem(key);}catch{}
+      return event.key===null?null:event.newValue;
+    };
+    if(event.key===STORAGE_KEY||event.key===null)replace(parseSettings(latest(STORAGE_KEY)));
+    if(event.key===PROFILE_STORAGE_KEY||event.key===null)replaceProfile(parseDesignProfile(latest(PROFILE_STORAGE_KEY)));
+  }
+
+  function replaceProfile(next){
+    if(JSON.stringify(savedProfile)===JSON.stringify(next))return false;
+    savedProfile=next;
+    for(const callback of [...profileListeners]){
+      if(!profileListeners.has(callback))continue;
+      try{callback(savedProfile);}catch{}
+    }
+    return true;
   }
   targetWindow?.addEventListener?.('storage',onStorage);
 
   return {
     getSettings(){return settings;},
+    getSavedProfile(){return savedProfile;},
+    hasUnsavedChanges(){return !savedProfile||!settingsEqual(settings,savedProfile.settings);},
+    saveProfile(){
+      if(disposed)return {ok:false,profile:savedProfile,error:'disposed'};
+      const next=createDesignProfile(settings);
+      try{
+        const local=storage();
+        if(!local)throw new Error('Storage is unavailable.');
+        local.setItem(PROFILE_STORAGE_KEY,JSON.stringify(next));
+        // Some restricted storage implementations silently ignore writes.
+        if(local.getItem(PROFILE_STORAGE_KEY)!==JSON.stringify(next))throw new Error('Storage did not retain the profile.');
+      }catch{return {ok:false,profile:savedProfile,error:'storage'};}
+      replaceProfile(next);
+      return {ok:true,profile:savedProfile};
+    },
     updateSettings(patch){
       if(disposed)return settings;
       const next=normalizeWithFallback(patch,settings);
@@ -156,10 +193,16 @@ export function createSettingsStore(targetWindow){
       if(!disposed)listeners.add(callback);
       return ()=>listeners.delete(callback);
     },
+    subscribeProfile(callback){
+      if(typeof callback!=='function')throw new TypeError('A profile subscriber must be a function.');
+      if(!disposed)profileListeners.add(callback);
+      return ()=>profileListeners.delete(callback);
+    },
     dispose(){
       if(disposed)return;
       disposed=true;
       listeners.clear();
+      profileListeners.clear();
       targetWindow?.removeEventListener?.('storage',onStorage);
     }
   };

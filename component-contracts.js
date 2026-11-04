@@ -2,7 +2,7 @@
 // Business data, permissions and requests remain with the host service.
 const baseAssets = ['tokens.css', 'style.css', 'brand-refinement.css', 'layout-focus.css', 'interactions.css'];
 const visibilityAssets = ['visibility.css', 'visibility.js', 'service-typography.css'];
-const uiAssets = ['ui/dds.css','ui/tokens-scoped.css','ui/index.js','ui/source.js','ui/registry.json','ui/README.md'];
+const uiAssets = ['ui/dds.css','ui/tokens-scoped.css','ui/index.js','ui/source.js','ui/registry.json','ui/README.md','ui/variants.js','ui/content.js','ui/composition.md'];
 const serviceAssets = new Set(['tokens.css', 'visibility.css', 'visibility.js', 'button-system.css', 'content-primitives.css',...uiAssets]);
 const documentationAssets = new Set(['style.css', 'brand-refinement.css', 'layout-focus.css', 'extensions.css', 'extension-demos.js', 'button-demos.js', 'button-docs.css']);
 const fieldSizes = [
@@ -464,6 +464,10 @@ export function componentContract(c = {}) {
     registryEntry:'components.'+c.id,
     template:'ui/templates/'+c.id+'.html',
     scopeClass:'dds-ui',
+    templatePurpose:'specimen; example text, helper copy, counts and item groups are optional service content',
+    variants:'ui/registry.json#components.'+c.id+'.variants',
+    optionalParts:'ui/registry.json#components.'+c.id+'.optionalParts',
+    compositionGuide:'ui/composition.md',
     styles:['ui/tokens-scoped.css','ui/dds.css'],
     ...(c.id==='button'?{buttonRenderer:'ui/button.js'}:{}),
   } : null;
@@ -473,6 +477,7 @@ export function componentContract(c = {}) {
   assets.push(...(custom.assets || []));
   assets.push(...canonicalAssets);
   const rules = [...(custom.rules || [c.rule || '이 요소의 역할과 사용처를 먼저 정하고 기존 동작에 맞춰 적용합니다.'])];
+  rules.push('견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.');
   if (c.chartNote && !rules.includes(c.chartNote)) rules.push(c.chartNote);
   const specification = (custom.specification || family.specification)
     .filter(([label]) => !c.chartFamily || label !== '종류')

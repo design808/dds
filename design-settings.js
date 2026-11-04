@@ -1,9 +1,9 @@
-import {createSettingsStore} from './design-preferences.js?v=99539125b4014e6b';
-import {applyDirection} from './direction-preview.js?v=99539125b4014e6b';
-import {mountDesignSettings} from './design-settings-panel.js?v=99539125b4014e6b';
-import {createBrandLogoSync} from './brand-logo.js?v=99539125b4014e6b';
-import './custom-controls.js?v=99539125b4014e6b';
-import './icon-tooltips.js?v=99539125b4014e6b';
+import {createSettingsStore} from './design-preferences.js?v=1ea07ad08c5dd4c5';
+import {applyDirection} from './direction-preview.js?v=1ea07ad08c5dd4c5';
+import {mountDesignSettings} from './design-settings-panel.js?v=1ea07ad08c5dd4c5';
+import {createBrandLogoSync} from './brand-logo.js?v=1ea07ad08c5dd4c5';
+import './custom-controls.js?v=1ea07ad08c5dd4c5';
+import './icon-tooltips.js?v=1ea07ad08c5dd4c5';
 
 const store=createSettingsStore(window);
 const root=document.documentElement;
@@ -22,8 +22,15 @@ function stylesheet(url){
 }
 stylesheet(new URL('./custom-controls.css',import.meta.url));
 stylesheet(new URL('./design-settings-panel.css',import.meta.url));
+stylesheet(new URL('./button-system.css',import.meta.url));
 
 export const getDesignSettings=()=>store.getSettings();
+export const getSavedDesignProfile=()=>store.getSavedProfile();
+export const hasUnsavedDesignChanges=()=>store.hasUnsavedChanges();
+
+store.subscribeProfile(savedProfile=>{
+  window.dispatchEvent(new CustomEvent('dds-design-profile-change',{detail:{profile:savedProfile}}));
+});
 
 function profile(settings){
   const functional=settings.colorMode==='functional';
@@ -83,6 +90,10 @@ if(window.self===window.top)mountDesignSettings({
   getSettings:store.getSettings,
   updateSettings:store.updateSettings,
   resetSettings:store.resetSettings,
-  subscribe:store.subscribe
+  subscribe:store.subscribe,
+  getSavedProfile:store.getSavedProfile,
+  saveProfile:store.saveProfile,
+  hasUnsavedChanges:store.hasUnsavedChanges,
+  subscribeProfile:store.subscribeProfile
 });
 apply();

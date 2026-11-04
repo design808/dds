@@ -1,0 +1,20 @@
+/* Document composition only; variant visuals are provided by variant-system.css. */
+.dds-variant-docs {min-width:0}
+.dds-variant-controls {display:flex;align-items:flex-end;flex-wrap:wrap;gap:16px 20px;margin-bottom:24px;min-width:0}
+.dds-variant-controls>.field {flex:1 1 150px;max-width:220px}
+.dds-variant-controls>.check-label {min-height:36px;margin:0}
+.dds-variant-preview {display:flex;align-items:center;justify-content:center;min-height:200px;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;min-width:0;background:var(--background)}
+.dds-variant-preview>[data-dds-component] {width:100%;min-width:0}
+.dds-variant-preview[data-variant-preview=separator] .dds-component {display:flex;align-items:center;gap:16px;width:100%}
+.dds-variant-preview[data-variant-preview=separator] .dds-component>p {margin:0}
+.dds-variant-toolbar {display:flex;justify-content:flex-end;margin-top:12px}
+.dds-variant-docs>[data-variant-status]:empty {display:none}
+.dds-variant-code {margin-top:20px}
+.dds-variant-code>summary {cursor:pointer;font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);font-weight:600;color:var(--text-primary)}
+.dds-variant-code-tools {display:flex;justify-content:flex-end;margin-block:12px}
+.dds-variant-code pre {margin:0}
+@media(max-width:480px) {
+ .dds-variant-preview {padding:16px;min-height:180px}
+ .dds-variant-controls {gap:12px}
+ .dds-variant-controls>.field {flex-basis:calc(50% - 6px);max-width:none;min-width:0}
+}

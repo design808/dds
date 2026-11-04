@@ -1,20 +1,24 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart} from './source.js?v=99539125b4014e6b';
-import {renderButton} from './button.js?v=99539125b4014e6b';
-import {icon} from './icons.js?v=99539125b4014e6b';
-import {mountControls} from './controls.js?v=99539125b4014e6b';
-import {bindCharts,chartDemo} from './charts.js?v=99539125b4014e6b';
-import {calendarDays} from './extended.js?v=99539125b4014e6b';
-import {UI_VERSION} from './version.js?v=99539125b4014e6b';
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart} from './source.js?v=1ea07ad08c5dd4c5';
+import {renderButton} from './button.js?v=1ea07ad08c5dd4c5';
+import {icon} from './icons.js?v=1ea07ad08c5dd4c5';
+import {mountControls} from './controls.js?v=1ea07ad08c5dd4c5';
+import {bindCharts,chartDemo} from './charts.js?v=1ea07ad08c5dd4c5';
+import {calendarDays} from './extended.js?v=1ea07ad08c5dd4c5';
+import {UI_VERSION} from './version.js?v=1ea07ad08c5dd4c5';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,optionalContent} from './content.js?v=1ea07ad08c5dd4c5';
+import {applyComponentVariants,componentVariants} from './variants.js?v=1ea07ad08c5dd4c5';
 export {renderButton,icon,componentIds,componentParts,renderComponentSource};
-export {collectionCount,statusBadge} from '../visibility.js?v=99539125b4014e6b';
+export {componentVariants,optionalContent};
+export {collectionCount,statusBadge} from '../visibility.js?v=1ea07ad08c5dd4c5';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
-const safeAttributes=new Set(['id','name','value','placeholder','type','min','max','step','pattern','maxlength','minlength','accept','autocomplete','inputmode','tabindex','title','role','href','src','alt','target','rel','datetime','download','for','dir','lang','translate','width','height','colspan','rowspan',...booleans]);
+const safeAttributes=new Set(['id','name','value','placeholder','type','min','max','step','pattern','maxlength','minlength','rows','accept','autocomplete','inputmode','tabindex','title','role','href','src','alt','target','rel','datetime','download','for','dir','lang','translate','width','height','colspan','rowspan',...booleans]);
 function safeAttribute(node,name,value,definition){
  if(!/^[a-zA-Z][a-zA-Z0-9_.:-]*$/.test(name)||/^on/i.test(name)||['class','style','srcdoc','innerHTML'].includes(name))throw new TypeError('DDS design or executable attribute is not configurable: '+name);
  if(!safeAttributes.has(name)&&! /^(aria|data)-[a-z0-9_.:-]+$/.test(name))throw new TypeError('Unsupported DDS attribute: '+name);
  if(definition.attributes&&!definition.attributes.includes(name)&&name!=='id'&&! /^(aria|data)-/.test(name))throw new TypeError('Attribute '+name+' is not part of this DDS component part.');
+ if(name==='type'&&node.matches('input')&&value!=null&&!['text','email','url','tel','password','search','number','date','checkbox','radio','range','file'].includes(String(value)))throw new TypeError('Unsupported DDS input type: '+value);
  if(['href','src'].includes(name)&&value!=null){const url=String(value).replace(/[\u0000-\u0020\u007f]/g,'');if(/^[a-z][a-z0-9+.-]*:/i.test(url)&&! /^(https?|mailto|tel):/i.test(url))throw new TypeError('Unsupported DDS URL protocol.');}
  if(booleans.has(name)){const on=value!==false&&value!==null&&value!==undefined;node.toggleAttribute(name,on);const property=name==='readonly'?'readOnly':name;if(property in node)node[property]=on;return;}
  if(value===null||value===undefined){node.removeAttribute(name);return;}
@@ -25,21 +29,27 @@ function safeAttribute(node,name,value,definition){
 function partNode(root,parts,name,kind){const part=parts[name];if(!part)throw new TypeError('Unknown DDS part: '+name);if(part.kind!==kind)throw new TypeError('DDS part '+name+' expects '+part.kind);const node=root.querySelector(part.selector);if(!node)throw new Error('DDS part is absent: '+name+' ('+part.selector+')');return [node,part];}
 function resolveAssets(root){for(const node of root.querySelectorAll('[src]')){const src=node.getAttribute('src');if(src?.startsWith('/assets/'))node.setAttribute('src',new URL('..'+src,import.meta.url).href);}}
 
-/** Create canonical DOM; content changes do not replace component CSS or layout. */
+/** Create canonical UI with service-owned content, optional copy, and variants. */
 export function createComponent(id,options={},doc=globalThis.document){
  if(!doc?.createElement)throw new Error('createComponent requires a DOM. Server templates use the canonical HTML in ui/registry.json or renderComponentSource().');
  if(!componentIds.includes(id))throw new TypeError('Unknown DDS component: '+id);
  if(isChart(id)&&options.data===undefined)throw new TypeError('A DDS chart requires explicit service data; reference data is not a service default.');
  const uid=String(options.idPrefix||'dds-'+id+'-'+(++serial)).replace(/[^a-zA-Z0-9_-]/g,'-');
  const wrapper=doc.createElement('div');wrapper.className='dds-ui';wrapper.dataset.ddsComponent=id;
+ wrapper.dataset.ddsInstance=uid;
  const markup=id==='button'&&options.props?renderButton(options.props):renderComponentSource(id,uid,false,options.data);
  wrapper.innerHTML=serviceMarkup(markup);resolveAssets(wrapper);
+ prepareServiceContent(wrapper,id);
+ const variants={...(id==='dialog'&&Object.hasOwn(options.slots||{},'content')?{content:'plain'}:{}),...(options.variants||{})};
+ applyComponentVariants(wrapper,id,variants);
  const parts=componentParts(id);
  for(const [name,value] of Object.entries(options.text||{})){const [node]=partNode(wrapper,parts,name,'text');node.textContent=String(value??'');if(node.matches('textarea'))node.value=String(value??'');}
  for(const [name,value] of Object.entries(options.slots||{})){const [node]=partNode(wrapper,parts,name,'slot');const items=Array.isArray(value)?value:[value];if(items.some(item=>item!=null&&typeof item!=='string'&&!item.nodeType))throw new TypeError('DDS slots accept DOM nodes or plain text, not HTML objects.');node.replaceChildren(...items.filter(x=>x!=null));}
  for(const [name,attributes] of Object.entries(options.attributes||{})){const [node,part]=partNode(wrapper,parts,name,'attributes');for(const [key,value] of Object.entries(attributes))safeAttribute(node,key,value,part);}
- for(const progress of wrapper.querySelectorAll('progress'))progress.textContent=Math.round(progress.value/progress.max*100)+'%';
+ for(const progress of wrapper.querySelectorAll('progress'))progress.textContent=progress.hasAttribute('value')?Math.round(progress.value/progress.max*100)+'%':'진행 중';
  if(options.tabs)configureTabs(wrapper,options.tabs,uid);
+ configureServiceItems(wrapper,id,options,uid);
+ finalizeServiceContent(wrapper,id,options,parts);
  return wrapper;
 }
 function configureTabs(wrapper,items,uid){
@@ -50,7 +60,7 @@ function configureTabs(wrapper,items,uid){
  items.forEach((item,index)=>{const tab=button.cloneNode(true),content=panel.cloneNode(false),key=uid+'-'+index;tab.textContent=String(item.label);tab.id=key+'-tab';tab.setAttribute('aria-controls',key+'-panel');tab.setAttribute('aria-selected',String(index===0));tab.tabIndex=index===0?0:-1;tab.removeAttribute('data-demo-tab');tab.setAttribute('data-dds-tab','');content.id=key+'-panel';content.setAttribute('aria-labelledby',tab.id);content.hidden=index!==0;content.replaceChildren(item.content?.nodeType?item.content:String(item.content??''));list.append(tab);parent.append(content);});
 }
 export function componentHTML(id,options={}){return createComponent(id,options).outerHTML;}
-export function componentSource(id,{idPrefix='dds-instance',data}={}){return {id,version,markup:serviceMarkup(renderComponentSource(id,idPrefix,false,data)),parts:componentParts(id),styles:['tokens.css','ui/dds.css']};}
+export function componentSource(id,{idPrefix='dds-instance',data}={}){return {id,version,markup:serviceMarkup(renderComponentSource(id,idPrefix,false,data)),parts:componentParts(id),variants:componentVariants[id]||{},optionalParts:optionalContent[id]||{},templatePurpose:'specimen',styles:['tokens.css','ui/dds.css']};}
 
 const bindings=new WeakMap();
 const asElement=target=>target?.nodeType===1?target:target?.parentElement;
@@ -91,6 +101,13 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   (root.contains(target)?target:root).dispatchEvent(new view.CustomEvent('dds:action',{bubbles:true,detail}));onAction?.(detail);
  };
  const focus=node=>{if(node?.isConnected)node.focus({preventScroll:true});};
+ const focusAfterDismiss=host=>{
+  // Host-authored controls are valid focus destinations even though mountDDS
+  // deliberately does not bind their events or enhance their native behavior.
+  const context=host.closest('dialog[open]')||(root.matches('[data-dds-component]')?root.parentElement?.closest('form,section,article,main,[role="main"]'):root)||root;
+  const candidates=[...context.querySelectorAll('button,a[href],input,select,textarea,[tabindex]')].filter(node=>!host.contains(node)&&!node.disabled&&node.tabIndex>=0&&!node.closest('[hidden],[inert]')&&node.getClientRects().length);
+  return candidates.find(node=>host.compareDocumentPosition(node)&view.Node.DOCUMENT_POSITION_FOLLOWING)||candidates.at(-1);
+ };
  const createPortal=trigger=>{const scope=portalFor(trigger);portals.add(scope);return scope;};
  const removePortal=scope=>{scope.remove();portals.delete(scope);};
  if(controls)stops.push(mountControls(root,{onlyDDS:true}));if(charts)stops.push(bindCharts(root));
@@ -210,7 +227,8 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   if(target.hasAttribute('data-dds-menu')){const panel=byId(target,target.dataset.ddsMenu);floating.has(panel)?restore(floating.get(panel)):openMenu(target);}
   if(target.hasAttribute('data-dds-dialog')){const dialog=byId(target,target.dataset.ddsDialog);if(dialog){dialog.showModal();dialog.addEventListener('close',()=>focus(target),{once:true,signal});}}
   if(target.hasAttribute('data-dds-close')||target.hasAttribute('data-dds-confirm')){target.closest('dialog')?.close();if(target.hasAttribute('data-dds-confirm'))notify(target,'confirm');}
-  if(target.hasAttribute('data-dds-toast')){const host=byId(target,target.dataset.ddsToast);if(host){cancel(toastTimers.get(host));host.textContent=target.dataset.ddsMessage||host.textContent;host.hidden=false;host.classList.add('show');toastTimers.set(host,later(()=>{host.hidden=true;host.classList.remove('show');toastTimers.delete(host);},3500));}}
+  if(target.hasAttribute('data-dds-toast')){const host=byId(target,target.dataset.ddsToast);if(host){cancel(toastTimers.get(host));const message=host.querySelector('[data-dds-toast-message]')||host;message.textContent=target.dataset.ddsMessage||message.textContent;host.hidden=false;host.classList.add('show');toastTimers.set(host,later(()=>{host.hidden=true;host.classList.remove('show');toastTimers.delete(host);},3500));}}
+  if(target.hasAttribute('data-dds-dismiss')){const host=target.closest('.alert,.dds-toast,.dds-snackbar');if(host){const restore=host.contains(doc.activeElement),destination=all('[data-dds-toast]').find(node=>node.dataset.ddsToast===host.id&&!node.hidden)||focusAfterDismiss(host);host.hidden=true;host.classList.remove('show');notify(target,'dismiss');if(restore)focus(destination);}}
   if(target.hasAttribute('data-dds-popover'))openPopover(target,{takeFocus:true,toggle:!target.hasAttribute('data-dds-hover')});
   if(target.hasAttribute('data-dds-popover-close'))restore(floating.get(byId(target,target.dataset.ddsPopoverClose)),true);
   if(target.hasAttribute('data-dds-topnav-toggle'))setNav(target.closest('[data-dds-topnav]'),target.getAttribute('aria-expanded')!=='true');

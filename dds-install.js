@@ -44,7 +44,7 @@
   const installerBytes = readFile(process.argv[1]);
   if (manifest.installer?.file !== 'dds-install.js' || manifest.installer.bytes !== installerBytes.length || manifest.installer.sha256 !== sha256(installerBytes)) throw new Error('Run the installer supplied by the same frozen DDS release.');
   const bundle = JSON.parse(bundleBytes);
-  if (bundle.schemaVersion !== 1 || bundle.kind !== 'DDSReferenceBundle' || bundle.designSystem !== 'DDS' || bundle.packageType !== 'reference' || bundle.runtimeIntegrated !== false || bundle.version !== options['--version'] || !Array.isArray(bundle.files) || !Array.isArray(manifest.files) || bundle.files.length === 0 || bundle.files.length > 250) throw new Error('Invalid DDS reference bundle.');
+  if (bundle.schemaVersion !== 1 || bundle.kind !== 'DDSReferenceBundle' || bundle.designSystem !== 'DDS' || bundle.packageType !== 'reference' || bundle.runtimeIntegrated !== false || bundle.version !== options['--version'] || !Array.isArray(bundle.files) || !Array.isArray(manifest.files) || bundle.files.length === 0 || bundle.files.length > 600) throw new Error('Invalid DDS reference bundle.');
   if (bundle.uiSourcesIncluded !== manifest.uiSourcesIncluded || bundle.componentCount !== manifest.componentCount) throw new Error('DDS UI source metadata differs between the bundle and manifest.');
 
   const seen = new Set();

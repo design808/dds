@@ -1,9 +1,9 @@
-import {UI_VERSION} from './ui/version.js?v=99539125b4014e6b';
+import {UI_VERSION} from './ui/version.js?v=1ea07ad08c5dd4c5';
 export const ddsRelease=UI_VERSION;
 export const ddsSite='https://design808.github.io/dds/';
 export const ddsReleaseURL=`${ddsSite}releases/${ddsRelease}/`;
 
-export const ddsProjectRule=`사용자가 'DDS 써', '디자인 시스템 써', 'use DDS', 'use the design system'이라고 하면 이 프로젝트에 등록된 DDS ${ddsRelease}의 실제 UI 원본을 사용한다. 회사의 기존·신규 서비스에 공통 적용하며 프로젝트의 프레임워크와 기능을 유지한다. 먼저 docs/dds-adoption.md에 기록한 설치 위치의 ui/README.md, ui/registry.json, ui/templates/<component-id>.html, ui/dds.css와 data/dds-contracts.json을 읽는다. 토큰·설명만 보고 컴포넌트를 새로 그리지 않는다. 컴포넌트 페이지와 같은 렌더러·HTML·CSS를 재사용하고 콘텐츠·허용 속성·서비스 이벤트만 연결한다. 페이지 그리드와 섹션 간격은 구성할 수 있지만 컴포넌트의 패딩·글자·경계·모서리·상태 스타일을 임의로 덮지 않는다. ui/index.js의 createComponent/mountDDS 또는 동일한 원본 HTML의 프레임워크 어댑터를 사용한다. 기존 위젯은 이중 초기화하지 않고 ID/name/value/CSRF/이벤트/권한/제출값을 보존한다. 문서용 app.js·style.css·예제 동작은 운영에 연결하지 않는다. 등록 버전·원본 해시·실제 스타일 연결과 검수 결과를 기록하고 버전을 자동 업그레이드하지 않는다.`;
+export const ddsProjectRule=`사용자가 'DDS 써', '디자인 시스템 써', 'use DDS', 'use the design system'이라고 하면 이 프로젝트에 등록된 DDS ${ddsRelease}의 실제 UI 원본을 사용한다. 회사의 기존·신규 서비스에 공통 적용하며 프로젝트의 프레임워크와 기능을 유지한다. 먼저 docs/dds-adoption.md에 기록한 설치 위치의 ui/README.md, ui/composition.md, ui/registry.json, ui/templates/<component-id>.html, ui/dds.css와 data/dds-contracts.json을 읽는다. docs/dds-profile.json이 있으면 저장한 색상·제목/본문 서체·기능 색상과 생성 CSS를 재사용한다. 토큰·설명만 보고 컴포넌트를 새로 그리지 않는다. 같은 렌더러·CSS와 공식 variants를 사용하되 견본의 예제 문구·도움말·개수·묶음 배치는 복사하지 않는다. 필요한 내용은 text/attributes/slots/items/tabs/data로 연결하고 optional로 보조 항목을 선택한다. 사용자의 핵심 작업과 실제 콘텐츠를 먼저 정하고 목록·편집·상세의 화면 구조와 밀도를 설계한다. 페이지 그리드·정보 배치는 서비스가 정하고 컴포넌트의 패딩·글자·경계·모서리·상태 규격은 유지한다. ui/index.js의 createComponent/mountDDS 또는 같은 원본의 프레임워크 어댑터를 사용한다. 기존 위젯을 이중 초기화하지 않고 ID/name/value/CSRF/이벤트/권한/제출값을 보존한다. 문서용 app.js·style.css·예제 동작은 운영에 연결하지 않는다. 등록 버전·원본 해시·저장 프로필·실제 연결과 검수 결과를 기록하고 자동 업그레이드하지 않는다.`;
 
 export const ddsSetupPrompt=`이 프로젝트의 기본 디자인 시스템을 DDS(Deep Design System) ${ddsRelease}로 설정해줘. DDS는 딥레쥬메·딥인터뷰와 향후 신규 서비스를 포함해 회사 서비스 전반에서 사용하는 공통 시스템이야. 이후 신규 서비스 구축이나 기존 서비스 개선에서 컴포넌트 페이지의 최종 디자인과 같은 실제 UI 원본을 사용하게 해줘.
 
@@ -21,9 +21,9 @@ node dds-install.js --version ${ddsRelease} --bundle bundle.json --manifest mani
 node dds-install.js --version ${ddsRelease} --bundle bundle.json --manifest manifest.json --target docs/dds/${ddsRelease}
 기존 파일이 다르면 덮어쓰지 마. 이 도구는 UI 원본과 기준 파일을 준비하며 앱 연결·AI 규칙 등록·기능 통합까지 자동 완료하지는 않아.
 
-3. 설치 위치의 ui/README.md, ui/registry.json, 필요한 ui/templates/<id>.html, 해당 renderer, ui/dds.css를 읽어줘. registry의 115종은 컴포넌트 페이지와 같은 core.js·extended.js·button.js·charts.js에서 생성돼. 비슷한 모양을 다시 만들거나 설명만 보고 재구성하지 마. 원본의 클래스·구조·CSS와 공식 variant를 재사용하고 실제 콘텐츠·href·ID/name·값·개수·상태만 연결해줘. 기본 문구·차트 데이터·날짜·상태는 참조 값이므로 서비스 데이터로 바꿔줘.
+3. 설치 위치의 ui/README.md, ui/composition.md, ui/registry.json, 필요한 ui/templates/<id>.html, 해당 renderer, ui/dds.css를 읽어줘. registry의 115종은 컴포넌트 페이지와 같은 core.js·extended.js·button.js·charts.js에서 생성돼. 원본 클래스·CSS와 공식 variants를 재사용해줘. 템플릿은 모든 구성을 보여주는 견본이므로 예제 문구·도움말·날짜·개수·여러 항목을 묶은 배치는 서비스의 필수 구성이 아니야. 검색창 밑의 설명, 카드의 상태·날짜, 모달의 문서 미리보기는 필요한 경우에만 넣어줘. 실제 콘텐츠·링크·ID/name·값·개수·상태를 연결하고 참조 데이터나 가짜 완료 상태를 남기지 마.
 
-4. 프로젝트의 기존 정적 자산/번들 처리에 UI 모듈과 폰트·라이선스·마스크 자산을 같은 상대 경로로 연결해줘. 신규 시스템은 tokens.css 다음 ui/dds.css를 로드하고, 기존 서비스의 CSS 변수와 충돌하면 동일한 값을 DDS 범위에 제공하는 ui/tokens-scoped.css를 대신 사용해줘. .dds-ui 범위를 유지하고 기존 테마 값을 해당 범위에 연결해줘. createComponent(id, {text, attributes, slots, props, data})와 mountDDS(root)를 쓰거나 같은 원본 HTML을 현재 프레임워크 문법으로 연결해줘. 서버 템플릿도 ui/templates/<id>.html의 구조·클래스를 유지하고 고유 ID와 라벨/aria 참조를 함께 바꿔줘. React/Vue 등은 현재 프레임워크의 수명주기에 맞춰 초기화·cleanup을 연결해줘. 문서용 style.css/app.js/extension-demos.js를 운영에 복사하지 마.
+4. 프로젝트의 기존 정적 자산/번들 처리에 UI 모듈과 폰트·라이선스·마스크 자산을 같은 상대 경로로 연결해줘. 신규 시스템은 tokens.css 다음 ui/dds.css를 로드하고, 기존 서비스의 CSS 변수와 충돌하면 ui/tokens-scoped.css를 대신 사용해줘. .dds-ui 범위를 유지하고 기존 테마를 연결해줘. createComponent(id, {variants, optional, text, attributes, slots, props, items, tabs, data})와 mountDDS(root)를 쓰거나 같은 원본을 현재 프레임워크 문법으로 연결해줘. 도움말은 text.hint를 전달할 때만 표시하고, 필요 없는 보조 항목은 optional:{hint:false}처럼 해당 파트의 false로 생략해줘. 일반 모달은 slots.content에 서비스 본문을 넣어줘. 문서 미리보기용 프레임이 필수는 아니야. 서버 템플릿에서도 optional 파트를 조건부 출력하되 선택한 변형의 구조·클래스·고유 ID와 라벨/aria 참조를 유지해줘. React/Vue 등은 수명주기에 맞춰 초기화·cleanup을 연결해줘. 문서용 style.css/app.js/extension-demos.js를 운영에 복사하지 마.
 
 5. mountDDS는 UI 상태만 처리하고 저장·AI·업로드·결제·인증을 수행하지 않아. onAction 또는 dds:action에서 서비스의 기존 함수를 연결해줘. 이미 달력/select/편집기가 있으면 controls:false로 시작해 이중 초기화를 막고 기존 위젯과 DDS 외형의 어댑터를 확인해줘. id/name/value/data-*·form·CSRF·이벤트·DOM 관계·동적 속성·권한·제출 payload를 보존해줘. 날짜 min/max의 초기값과 이후 갱신, reset/required/input/change/disabled/readonly도 확인해줘. 기능 연결 전에 성공 상태나 가짜 데이터를 넣지 마.
 
@@ -33,7 +33,7 @@ node dds-install.js --version ${ddsRelease} --bundle bundle.json --manifest mani
 
 7. docs/dds-adoption.md에 버전·매니페스트/묶음 해시·원본 경로·정적 자산 URL·CSS/테마/폰트/모듈 연결·AI 지침 위치·컴포넌트별 어댑터·검수 결과를 기록해줘. DDS-REFERENCE.json의 referencePrepared와 runtimeIntegrated/rulesRegistered를 구분해줘. 원본 파일 준비, 앱 연결, 규칙 등록, 실제 화면 적용, 기능 검증을 각각 기록해줘. 기준 설정만 요청받았으면 기존 화면을 임의로 리디자인하지 말고 원본 연결과 재사용 준비를 확인한 뒤 마무리해줘.
 
-8. 화면을 만들거나 리디자인하라는 요청을 받으면 registry의 실제 컴포넌트로 구성해줘. 페이지 레이아웃 CSS와 컴포넌트 CSS를 분리하고 컴포넌트 선택자에 임의의 새 글자 크기·padding·border·radius를 추가하지 마. 간격이 안 맞으면 사용한 variant/size·컨테이너·기존 CSS 충돌부터 해결해줘. 섹션 제목 장식 아이콘이나 회색 섹션 틀을 임의로 추가하지 마. Primary #FFAD31/채움 글자 흰색700, 일반 최대 굵기700, 입력 크기36/44/52px, 1px Primary 포커스/offset0, 모달24px 등 고정 기준을 유지해줘. 아이콘은 제공된 Lucide 원본과 기능명/hover·focus 툴팁을 사용해줘. 라이트·다크·Pretendard를 유지하고 번역이 있다면 브랜드·언어 원문을 translate=no로 보호해줘.
+8. 화면을 만들거나 리디자인할 때는 먼저 핵심 작업, 우선할 정보, 실제 콘텐츠 길이와 필요한 상태를 정해줘. 목록은 검색·필터·정렬·결과를 한 흐름으로 구성하고, 편집은 관련 필드를 묶고 작성 후 행동을 배치하며, 상세는 본문과 의사결정 정보를 구분해줘. 입력즉시 필터와 제출검색 중 하나를 고르고 중복 안내를 줄여줘. 모든 내용을 같은 카드로 감싸거나 견본을 나열하지 마. 페이지 레이아웃 CSS와 컴포넌트 CSS는 분리하고 공식 variant/size를 사용해줘. 컴포넌트 내부의 글자·padding·border·radius를 임의로 덮지 마. 섹션 제목 장식 아이콘이나 회색 섹션 틀을 추가하지 마. 저장 프로필이 없으면 기본 Primary #FFAD31/흰색700·Pretendard를, 있으면 저장한 색상·제목/본문 서체를 사용해줘. 일반 최대 굵기700, 입력36/44/52px, 1px Primary 포커스/offset0, 모달24px은 유지해줘. 아이콘은 제공된 원본과 기능명/hover·focus 툴팁을 사용하고 라이트·다크·긴 콘텐츠를 검수해줘. 번역이 있다면 브랜드·언어 원문을 translate=no로 보호해줘.
 
 9. 연결한 UI와 ui/templates의 원본에서 계산된 글자 역할·높이·패딩·색·경계·모서리·아이콘을 대조해줘. 320px·390px·PC, 라이트·다크, 긴 문구·빈 값·오류·대기, 키보드·열기/닫기·초점 복귀·폼의 실제 제출 값과 서비스 주요 작업을 검수해줘. 표·차트·칸반의 필요한 스크롤은 내부에 두고 페이지 overflow:hidden으로 잘림을 숨기지 마. 프로젝트의 의존성·타입·빌드 검사와 요구사항과 API 계약에 맞는 기능 검증을 실행해줘. 기존 CSS가 덮는 값이 있으면 원본을 바꾸지 말고 연결 범위와 우선순위를 해결해줘. Primary 흰색 대비1.86:1과 OS 동작 줄이기를 따르지 않는 모션은 확정 예외이며 접근성 충족으로 보고하지 마. 실제 브라우저/기능을 확인하지 못했으면 미검증으로 남겨줘. 운영 배포는 승인된 범위에 따라줘.
 

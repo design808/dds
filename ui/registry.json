@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "styles": [
@@ -19,22 +19,29 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "a6e01934b0269ef4070d2abdbc90d546bbbc1efd2f44fce4291f92c6bed591f3",
-    "ui/core.js": "1c91bc92795a11feef168ec322fee9f7dc8ed5847bf8c66fe9d0d8b2bf0095fc",
-    "ui/button.js": "217f00fed732f391874f3d94f695954b67d939665140490b5c08d0c7562fc959",
-    "ui/extended.js": "d452e457efde51bc5836589a599dff5744c2f36a5bb7aebadd6c70d61e303816",
-    "ui/charts.js": "1f6d8f980893a35f5ce25a7cf39ea8bbcc298de3d2051eb36712f01c7ca55ede",
-    "ui/source.js": "d69880f5292b2622c0ca25cb6aa47cd672b963d6999441a1b5b5e0309be66b2e",
-    "ui/index.js": "ae856493e4e4a196203de8355d4042f7422dfdb7f11de68b92ba9324664b5ec7",
-    "ui/icons.js": "e57e6793b7e7118320fd4e6871c03c85c5f21df2a8e340f4b421708619c96d8b",
+    "ui/version.js": "567986ec59ef89bee0f15cb78ef956268166feca4604628c1b08373ec4ea9ea9",
+    "ui/core.js": "a60eb3608c55deda55203fba5c4cf241dd8118dcdd4a227b7648578c4985b14b",
+    "ui/button.js": "2558d5cfb5fedd967cffd03a3739d7e65401c1bd0952cae9bc0731d891d275d5",
+    "ui/extended.js": "e4d20811b059d658956ab825650791a61338b6f495d23282337773374f1c55e8",
+    "ui/charts.js": "065f16de305cc24f38fa3a8d9c622a501e3775b47ea2106a0d4177503a170dec",
+    "ui/source.js": "47b184c530959d68b68e656d924103fe68c2c6b2d49c47e0ef1bd83d3f2d658b",
+    "ui/index.js": "5ce7b5d9199562ec889b1b03a12484dfd42edda64dc0ef91f913c7d6a4678dd2",
+    "ui/content.js": "f44d8ebc923f54f1b98b0c1c0045b125caabd859a62f3c31c6098b039f298ad3",
+    "ui/variants.js": "cdaa424f8ebbc585c78beeba6822e63995f5bd976d1ab02f798e0421ff5c157c",
+    "ui/profile.js": "07af010f9c0bc2620e8299e48daac7f4f4651e112c8ccfc910449a0ebf0d8717",
+    "ui/profile-palette.js": "10a29ff6c24ef3c9acf40e619b4e2836a5760a3154eb980a92323df9096acb88",
+    "ui/icons.js": "c2f9de49bc37fbcfc0bd9a0b7a1d20f05e700c49771eb93ada913ec5b0cc2386",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "d4152b8fe2a400ec4450b1de8a0f9c8642937f5e5d1226de7ef23c97201a731a",
-    "ui/dds.css": "896f820c5908e802bf676cf420afe472523967211f1460722092a0110576dfa7",
+    "ui/controls.js": "18576a9943de16d48a65463d67f08c7deb83fa3ce0c5bf74d750c1a5da65dca8",
+    "ui/dds.css": "23cca445564656e7247f13ef064b929201b00ec393532cfdf0a52b8abc80efd7",
     "ui/tokens-scoped.css": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713",
     "tokens.css": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
-    "visibility.js": "668039c6c4d07bce088d24225a377bff4fe24b0d9a322f8039205a44f39d13cb"
+    "visibility.js": "668039c6c4d07bce088d24225a377bff4fe24b0d9a322f8039205a44f39d13cb",
+    "design-preferences.js": "4c403c753dcbc56380fda6c536d8d4f53463b8791fa1fe5991d040be329b4703",
+    "design-profile.js": "6015049e9b626b617fa5f060d86a3e2213b859d95c3248d61280f4883a5a9202",
+    "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "components": {
     "button": {
@@ -63,7 +70,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "icon-button": {
       "id": "icon-button",
@@ -102,7 +112,44 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "appearance": {
+          "label": "형태",
+          "type": "enum",
+          "values": [
+            "ghost",
+            "outlined"
+          ],
+          "default": "outlined",
+          "labels": {
+            "ghost": "배경 없음",
+            "outlined": "경계선"
+          }
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "chip": {
       "id": "chip",
@@ -157,7 +204,47 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium"
+          }
+        },
+        "appearance": {
+          "label": "형태",
+          "type": "enum",
+          "values": [
+            "outlined",
+            "soft"
+          ],
+          "default": "outlined",
+          "labels": {
+            "outlined": "경계선",
+            "soft": "연한 배경"
+          }
+        },
+        "selected": {
+          "label": "선택",
+          "type": "boolean",
+          "default": false
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "input": {
       "id": "input",
@@ -178,13 +265,22 @@
           "attributes": [
             "name",
             "value",
+            "type",
             "placeholder",
+            "maxlength",
+            "minlength",
+            "pattern",
+            "inputmode",
+            "min",
+            "max",
+            "step",
             "required",
             "disabled",
             "readonly",
             "autocomplete",
             "aria-label",
-            "aria-describedby"
+            "aria-describedby",
+            "aria-invalid"
           ]
         },
         "hint": {
@@ -192,7 +288,47 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {
+        "hint": ".helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "textarea": {
       "id": "textarea",
@@ -220,10 +356,12 @@
             "placeholder",
             "maxlength",
             "minlength",
+            "rows",
             "required",
             "disabled",
             "readonly",
-            "aria-label"
+            "aria-label",
+            "aria-invalid"
           ]
         },
         "counter": {
@@ -235,7 +373,48 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {
+        "limit": ".row-between.helper > span:first-child",
+        "counter": "[data-count]"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "select": {
       "id": "select",
@@ -266,7 +445,44 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "combobox": {
       "id": "combobox",
@@ -287,13 +503,22 @@
           "attributes": [
             "name",
             "value",
+            "type",
             "placeholder",
+            "maxlength",
+            "minlength",
+            "pattern",
+            "inputmode",
+            "min",
+            "max",
+            "step",
             "required",
             "disabled",
             "readonly",
             "autocomplete",
             "aria-label",
-            "aria-describedby"
+            "aria-describedby",
+            "aria-invalid"
           ]
         },
         "hint": {
@@ -305,7 +530,47 @@
           "kind": "slot"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {
+        "hint": ".helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "checkbox": {
       "id": "checkbox",
@@ -369,7 +634,36 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        },
+        "invalid": {
+          "label": "오류",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "radio": {
       "id": "radio",
@@ -417,7 +711,36 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        },
+        "invalid": {
+          "label": "오류",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "switch": {
       "id": "switch",
@@ -444,7 +767,31 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "date-picker": {
       "id": "date-picker",
@@ -474,7 +821,45 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "upload": {
       "id": "upload",
@@ -510,7 +895,31 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {
+        "hint": ".helper:not(.file-state)"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "search": {
       "id": "search",
@@ -531,13 +940,22 @@
           "attributes": [
             "name",
             "value",
+            "type",
             "placeholder",
+            "maxlength",
+            "minlength",
+            "pattern",
+            "inputmode",
+            "min",
+            "max",
+            "step",
             "required",
             "disabled",
             "readonly",
             "autocomplete",
             "aria-label",
-            "aria-describedby"
+            "aria-describedby",
+            "aria-invalid"
           ]
         },
         "hint": {
@@ -549,7 +967,48 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {
+        "hint": ".helper",
+        "result": "[data-search-count]"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "tabs": {
       "id": "tabs",
@@ -612,7 +1071,37 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "appearance": {
+          "label": "형태",
+          "type": "enum",
+          "values": [
+            "segmented",
+            "underline"
+          ],
+          "default": "segmented",
+          "labels": {
+            "segmented": "분할형",
+            "underline": "밑줄형"
+          }
+        },
+        "width": {
+          "label": "너비",
+          "type": "enum",
+          "values": [
+            "content",
+            "stretch"
+          ],
+          "default": "content",
+          "labels": {
+            "content": "내용에 맞춤",
+            "stretch": "영역 채우기"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "breadcrumb": {
       "id": "breadcrumb",
@@ -657,7 +1146,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "pagination": {
       "id": "pagination",
@@ -684,7 +1176,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "stepper": {
       "id": "stepper",
@@ -712,7 +1207,24 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "orientation": {
+          "label": "방향",
+          "type": "enum",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal",
+          "labels": {
+            "horizontal": "가로",
+            "vertical": "세로"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "sidebar": {
       "id": "sidebar",
@@ -775,7 +1287,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "dropdown": {
       "id": "dropdown",
@@ -803,7 +1318,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "dialog": {
       "id": "dialog",
@@ -811,7 +1329,7 @@
       "group": "Feedback",
       "template": "ui/templates/dialog.html",
       "idPrefix": "dds-instance",
-      "sha256": "bb4f2025208b3151bb9141f17276d586bc06bc26f16c7342246fa083ad81b972",
+      "sha256": "a151bbee8dc2527e78cb400ef28dc3a30dcbee3bce3324b321655bc7393b11ef",
       "renderer": "ui/core.js",
       "parts": {
         "trigger": {
@@ -859,7 +1377,56 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "content": {
+          "label": "본문",
+          "type": "enum",
+          "values": [
+            "document",
+            "plain",
+            "form"
+          ],
+          "default": "document",
+          "labels": {
+            "document": "문서 미리보기",
+            "plain": "일반 본문",
+            "form": "입력 폼"
+          }
+        },
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "closeButton": {
+          "label": "닫기 버튼",
+          "type": "boolean",
+          "default": true
+        },
+        "actions": {
+          "label": "하단 행동",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {
+        "trigger": "[data-dds-dialog]",
+        "body": ".dds-dialog > p",
+        "content": ".sample-document,.dds-dialog-content",
+        "confirm": ".dds-dialog > button"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "alert": {
       "id": "alert",
@@ -867,20 +1434,44 @@
       "group": "Feedback",
       "template": "ui/templates/alert.html",
       "idPrefix": "dds-instance",
-      "sha256": "0f405e24976edc59c6cacc8eb0a766fb6271cbdeb3cfb99597c5af0328ce6a0e",
+      "sha256": "39aef15f56c018f0f0821598320093cc01936037cabfbf9c24e77720b359bd0c",
       "renderer": "ui/core.js",
       "parts": {
         "title": {
-          "selector": ".alert b",
+          "selector": "[data-dds-alert-title]",
           "kind": "text"
         },
         "description": {
-          "selector": ".alert p",
+          "selector": "[data-dds-alert-description]",
           "kind": "text"
         },
         "content": {
-          "selector": ".alert > div",
+          "selector": ".alert > .dds-feedback-content",
           "kind": "slot"
+        },
+        "actions": {
+          "selector": "[data-dds-feedback-actions]",
+          "kind": "slot"
+        },
+        "actionLabel": {
+          "selector": "[data-dds-action=\"alert-action\"] .dds-button-label > span",
+          "kind": "text"
+        },
+        "action": {
+          "selector": "[data-dds-action=\"alert-action\"]",
+          "kind": "attributes",
+          "attributes": [
+            "disabled",
+            "aria-label"
+          ]
+        },
+        "close": {
+          "selector": "[data-dds-dismiss]",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "disabled"
+          ]
         },
         "control": {
           "selector": ".alert",
@@ -891,7 +1482,58 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "tone": {
+          "label": "의미",
+          "type": "enum",
+          "values": [
+            "neutral",
+            "info",
+            "success",
+            "warning",
+            "error"
+          ],
+          "default": "neutral",
+          "labels": {
+            "neutral": "중립",
+            "primary": "브랜드",
+            "info": "안내",
+            "success": "성공",
+            "warning": "주의",
+            "error": "오류"
+          }
+        },
+        "icon": {
+          "label": "상태 아이콘",
+          "type": "boolean",
+          "default": true
+        },
+        "title": {
+          "label": "제목",
+          "type": "boolean",
+          "default": true
+        },
+        "description": {
+          "label": "설명",
+          "type": "boolean",
+          "default": true
+        },
+        "actions": {
+          "label": "행동",
+          "type": "boolean",
+          "default": false
+        },
+        "closeButton": {
+          "label": "닫기 버튼",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {
+        "description": ".alert p"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "toast": {
       "id": "toast",
@@ -899,7 +1541,7 @@
       "group": "Feedback",
       "template": "ui/templates/toast.html",
       "idPrefix": "dds-instance",
-      "sha256": "6dc3eb27550f43ed25c3df3d1a173a932933aca962f91e5c02c3516af0e2d72e",
+      "sha256": "bc87423d051cc28a910f96c8164e9126f5ed25fb7155626626d9c37930eb9146",
       "renderer": "ui/core.js",
       "parts": {
         "label": {
@@ -914,8 +1556,32 @@
           ]
         },
         "content": {
-          "selector": ".dds-toast",
+          "selector": "[data-dds-toast-message]",
           "kind": "text"
+        },
+        "actions": {
+          "selector": "[data-dds-feedback-actions]",
+          "kind": "slot"
+        },
+        "actionLabel": {
+          "selector": "[data-dds-action=\"toast-action\"] .dds-button-label > span",
+          "kind": "text"
+        },
+        "action": {
+          "selector": "[data-dds-action=\"toast-action\"]",
+          "kind": "attributes",
+          "attributes": [
+            "disabled",
+            "aria-label"
+          ]
+        },
+        "close": {
+          "selector": "[data-dds-dismiss]",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label",
+            "disabled"
+          ]
         },
         "control": {
           "selector": "[data-dds-toast]",
@@ -926,7 +1592,48 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "tone": {
+          "label": "의미",
+          "type": "enum",
+          "values": [
+            "neutral",
+            "info",
+            "success",
+            "warning",
+            "error"
+          ],
+          "default": "neutral",
+          "labels": {
+            "neutral": "중립",
+            "primary": "브랜드",
+            "info": "안내",
+            "success": "성공",
+            "warning": "주의",
+            "error": "오류"
+          }
+        },
+        "icon": {
+          "label": "상태 아이콘",
+          "type": "boolean",
+          "default": false
+        },
+        "actions": {
+          "label": "행동",
+          "type": "boolean",
+          "default": false
+        },
+        "closeButton": {
+          "label": "닫기 버튼",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {
+        "label": "[data-dds-toast]"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "tooltip": {
       "id": "tooltip",
@@ -947,7 +1654,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "progress": {
       "id": "progress",
@@ -981,7 +1691,18 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "indeterminate": {
+          "label": "진행률 미정",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {
+        "hint": ".helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "skeleton": {
       "id": "skeleton",
@@ -1005,7 +1726,26 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "shape": {
+          "label": "구성",
+          "type": "enum",
+          "values": [
+            "card",
+            "text",
+            "avatar"
+          ],
+          "default": "card",
+          "labels": {
+            "card": "카드",
+            "text": "본문",
+            "avatar": "아바타"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "empty": {
       "id": "empty",
@@ -1037,7 +1777,34 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "reason": {
+          "label": "상황",
+          "type": "enum",
+          "values": [
+            "empty",
+            "search",
+            "error"
+          ],
+          "default": "empty",
+          "labels": {
+            "empty": "비어 있음",
+            "search": "검색 결과 없음",
+            "error": "문제 발생"
+          }
+        },
+        "actions": {
+          "label": "행동",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {
+        "description": ".empty-state > p",
+        "action": ".empty-state > a"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "badge": {
       "id": "badge",
@@ -1068,7 +1835,62 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "tone": {
+          "label": "의미",
+          "type": "enum",
+          "values": [
+            "neutral",
+            "primary",
+            "info",
+            "success",
+            "warning",
+            "error"
+          ],
+          "default": "neutral",
+          "labels": {
+            "neutral": "중립",
+            "primary": "브랜드",
+            "info": "안내",
+            "success": "성공",
+            "warning": "주의",
+            "error": "오류"
+          }
+        },
+        "appearance": {
+          "label": "형태",
+          "type": "enum",
+          "values": [
+            "soft",
+            "outlined",
+            "solid"
+          ],
+          "default": "soft",
+          "labels": {
+            "soft": "연한 배경",
+            "outlined": "경계선",
+            "solid": "채움"
+          }
+        },
+        "kind": {
+          "label": "용도",
+          "type": "enum",
+          "values": [
+            "status",
+            "label",
+            "count"
+          ],
+          "default": "status",
+          "labels": {
+            "status": "상태",
+            "label": "분류",
+            "count": "개수"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "avatar": {
       "id": "avatar",
@@ -1100,7 +1922,45 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "default": "md",
+          "labels": {
+            "xs": "Extra small",
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large",
+            "xl": "Extra large"
+          }
+        },
+        "shape": {
+          "label": "모양",
+          "type": "enum",
+          "values": [
+            "circle",
+            "rounded"
+          ],
+          "default": "circle",
+          "labels": {
+            "circle": "원형",
+            "rounded": "둥근 사각형"
+          }
+        }
+      },
+      "optionalParts": {
+        "description": ".helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "card": {
       "id": "card",
@@ -1167,7 +2027,50 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "appearance": {
+          "label": "표면",
+          "type": "enum",
+          "values": [
+            "outlined",
+            "plain"
+          ],
+          "default": "outlined",
+          "labels": {
+            "outlined": "카드",
+            "plain": "내용만"
+          }
+        },
+        "status": {
+          "label": "상태",
+          "type": "boolean",
+          "default": true
+        },
+        "metadata": {
+          "label": "보조정보",
+          "type": "boolean",
+          "default": true
+        },
+        "date": {
+          "label": "날짜",
+          "type": "boolean",
+          "default": true
+        },
+        "tools": {
+          "label": "보조 행동",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {
+        "status": ".dds-status",
+        "primary": ".dds-meta-primary",
+        "secondary": ".dds-meta-secondary",
+        "date": ".dds-meta-date",
+        "action": ".dds-card-tools"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "table": {
       "id": "table",
@@ -1206,7 +2109,34 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "density": {
+          "label": "밀도",
+          "type": "enum",
+          "values": [
+            "comfortable",
+            "compact"
+          ],
+          "default": "comfortable",
+          "labels": {
+            "comfortable": "기본",
+            "compact": "조밀하게"
+          }
+        },
+        "striped": {
+          "label": "교차 행 배경",
+          "type": "boolean",
+          "default": false
+        },
+        "stickyHeader": {
+          "label": "고정 헤더",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "accordion": {
       "id": "accordion",
@@ -1214,7 +2144,7 @@
       "group": "Data display",
       "template": "ui/templates/accordion.html",
       "idPrefix": "dds-instance",
-      "sha256": "a96cfb6ecd45d8cc2bbd17a61d6bb4e9a25081f3dc091fdb9e51bddc0367ebca",
+      "sha256": "e3a1e68b88f91d76973af099a209684128410be1aa6cf604b8606e675e46f6f6",
       "renderer": "ui/core.js",
       "parts": {
         "firstTitle": {
@@ -1248,7 +2178,24 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "selection": {
+          "label": "펼침",
+          "type": "enum",
+          "values": [
+            "multiple",
+            "single"
+          ],
+          "default": "multiple",
+          "labels": {
+            "multiple": "여러 항목",
+            "single": "한 항목"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "chart": {
       "id": "chart",
@@ -1275,7 +2222,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -1327,7 +2277,45 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "video": {
       "id": "video",
@@ -1355,7 +2343,10 @@
           "kind": "slot"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "action-area": {
       "id": "action-area",
@@ -1391,7 +2382,41 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "align": {
+          "label": "정렬",
+          "type": "enum",
+          "values": [
+            "start",
+            "end",
+            "between"
+          ],
+          "default": "end",
+          "labels": {
+            "start": "왼쪽",
+            "end": "오른쪽",
+            "between": "양쪽"
+          }
+        },
+        "layout": {
+          "label": "배치",
+          "type": "enum",
+          "values": [
+            "inline",
+            "stack"
+          ],
+          "default": "inline",
+          "labels": {
+            "inline": "가로",
+            "stack": "세로"
+          }
+        }
+      },
+      "optionalParts": {
+        "description": ".dds-component > .helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "text-button": {
       "id": "text-button",
@@ -1419,7 +2444,46 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "tone": {
+          "label": "의미",
+          "type": "enum",
+          "values": [
+            "primary",
+            "assistive",
+            "negative"
+          ],
+          "default": "assistive",
+          "labels": {
+            "primary": "주요 행동",
+            "assistive": "보조 행동",
+            "negative": "주의 행동"
+          }
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "button-group": {
       "id": "button-group",
@@ -1451,7 +2515,39 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "orientation": {
+          "label": "방향",
+          "type": "enum",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal",
+          "labels": {
+            "horizontal": "가로",
+            "vertical": "세로"
+          }
+        },
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "toggle": {
       "id": "toggle",
@@ -1479,7 +2575,36 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "selected": {
+          "label": "선택",
+          "type": "boolean",
+          "default": false
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "toggle-group": {
       "id": "toggle-group",
@@ -1507,7 +2632,31 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "filter-button": {
       "id": "filter-button",
@@ -1539,7 +2688,36 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "selected": {
+          "label": "조건 적용",
+          "type": "boolean",
+          "default": false
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "calendar": {
       "id": "calendar",
@@ -1571,7 +2749,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "field": {
       "id": "field",
@@ -1619,7 +2800,47 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {
+        "description": ".helper[id]"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "input-group": {
       "id": "input-group",
@@ -1647,7 +2868,45 @@
           "kind": "attributes"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "input-otp": {
       "id": "input-otp",
@@ -1675,7 +2934,47 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {
+        "description": "[data-otp-status]"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "label": {
       "id": "label",
@@ -1703,7 +3002,47 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "readOnly",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {
+        "description": ".helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "slider": {
       "id": "slider",
@@ -1731,7 +3070,16 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "segmented-control": {
       "id": "segmented-control",
@@ -1759,7 +3107,31 @@
           "kind": "slot"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "framed-style": {
       "id": "framed-style",
@@ -1787,7 +3159,16 @@
           "kind": "slot"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "time-picker": {
       "id": "time-picker",
@@ -1819,7 +3200,44 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "state": {
+          "label": "상태",
+          "type": "enum",
+          "values": [
+            "default",
+            "disabled",
+            "error",
+            "success"
+          ],
+          "default": "default",
+          "labels": {
+            "default": "기본",
+            "disabled": "비활성",
+            "readOnly": "읽기 전용",
+            "error": "오류",
+            "success": "확인 완료"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "questionnaire": {
       "id": "questionnaire",
@@ -1879,7 +3297,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "navigation-menu": {
       "id": "navigation-menu",
@@ -1911,7 +3332,10 @@
           "kind": "attributes"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "top-navigation": {
       "id": "top-navigation",
@@ -2007,7 +3431,10 @@
           "kind": "attributes"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "bottom-navigation": {
       "id": "bottom-navigation",
@@ -2039,7 +3466,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "category": {
       "id": "category",
@@ -2067,7 +3497,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "page-counter": {
       "id": "page-counter",
@@ -2099,7 +3532,10 @@
           "kind": "attributes"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "pagination-dots": {
       "id": "pagination-dots",
@@ -2127,7 +3563,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "menubar": {
       "id": "menubar",
@@ -2159,7 +3598,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "command": {
       "id": "command",
@@ -2195,7 +3637,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "context-menu": {
       "id": "context-menu",
@@ -2235,7 +3680,12 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {
+        "description": ".dds-context > .helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "alert-dialog": {
       "id": "alert-dialog",
@@ -2283,7 +3733,33 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "closeButton": {
+          "label": "닫기 버튼",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {
+        "description": ".dds-overlay > p"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "sheet": {
       "id": "sheet",
@@ -2331,7 +3807,46 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "edge": {
+          "label": "위치",
+          "type": "enum",
+          "values": [
+            "right",
+            "left"
+          ],
+          "default": "right",
+          "labels": {
+            "right": "오른쪽",
+            "left": "왼쪽"
+          }
+        },
+        "closeButton": {
+          "label": "닫기 버튼",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {
+        "description": ".dds-overlay > p"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "drawer": {
       "id": "drawer",
@@ -2379,7 +3894,46 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "edge": {
+          "label": "위치",
+          "type": "enum",
+          "values": [
+            "bottom",
+            "top"
+          ],
+          "default": "bottom",
+          "labels": {
+            "bottom": "아래",
+            "top": "위"
+          }
+        },
+        "closeButton": {
+          "label": "닫기 버튼",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {
+        "description": ".dds-overlay > p"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "popover": {
       "id": "popover",
@@ -2415,7 +3969,10 @@
           "kind": "slot"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "hover-card": {
       "id": "hover-card",
@@ -2455,7 +4012,13 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {
+        "description": ".dds-popover > p:not(.helper)",
+        "metadata": ".dds-popover > .helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "snackbar": {
       "id": "snackbar",
@@ -2487,7 +4050,41 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "tone": {
+          "label": "의미",
+          "type": "enum",
+          "values": [
+            "neutral",
+            "info",
+            "success",
+            "warning",
+            "error"
+          ],
+          "default": "neutral",
+          "labels": {
+            "neutral": "중립",
+            "primary": "브랜드",
+            "info": "안내",
+            "success": "성공",
+            "warning": "주의",
+            "error": "오류"
+          }
+        },
+        "actions": {
+          "label": "되돌리기 행동",
+          "type": "boolean",
+          "default": true
+        },
+        "closeButton": {
+          "label": "닫기 버튼",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "spinner": {
       "id": "spinner",
@@ -2511,7 +4108,31 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        },
+        "label": {
+          "label": "상태 문구",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "fallback-view": {
       "id": "fallback-view",
@@ -2543,7 +4164,33 @@
           "kind": "attributes"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "reason": {
+          "label": "원인",
+          "type": "enum",
+          "values": [
+            "network",
+            "error",
+            "permission"
+          ],
+          "default": "network",
+          "labels": {
+            "network": "네트워크",
+            "error": "오류",
+            "permission": "접근 권한"
+          }
+        },
+        "actions": {
+          "label": "복구 행동",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {
+        "description": "[data-fallback-copy]"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "push-badge": {
       "id": "push-badge",
@@ -2571,7 +4218,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "aspect-ratio": {
       "id": "aspect-ratio",
@@ -2595,7 +4245,26 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "ratio": {
+          "label": "비율",
+          "type": "enum",
+          "values": [
+            "16:9",
+            "4:3",
+            "1:1"
+          ],
+          "default": "16:9",
+          "labels": {
+            "16:9": "16:9",
+            "4:3": "4:3",
+            "1:1": "1:1"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "thumbnail": {
       "id": "thumbnail",
@@ -2619,7 +4288,41 @@
           "kind": "slot"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "ratio": {
+          "label": "비율",
+          "type": "enum",
+          "values": [
+            "intrinsic",
+            "16:9",
+            "4:3",
+            "1:1"
+          ],
+          "default": "intrinsic",
+          "labels": {
+            "intrinsic": "원본",
+            "16:9": "16:9",
+            "4:3": "4:3",
+            "1:1": "1:1"
+          }
+        },
+        "fit": {
+          "label": "이미지 맞춤",
+          "type": "enum",
+          "values": [
+            "contain",
+            "cover"
+          ],
+          "default": "contain",
+          "labels": {
+            "contain": "전체 표시",
+            "cover": "영역 채우기"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "play-badge": {
       "id": "play-badge",
@@ -2647,7 +4350,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "avatar-group": {
       "id": "avatar-group",
@@ -2675,7 +4381,30 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "size": {
+          "label": "크기",
+          "type": "enum",
+          "values": [
+            "xs",
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md",
+          "labels": {
+            "xs": "Extra small",
+            "sm": "Small",
+            "md": "Medium",
+            "lg": "Large"
+          }
+        }
+      },
+      "optionalParts": {
+        "description": ".helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "list-card": {
       "id": "list-card",
@@ -2711,7 +4440,21 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "image": {
+          "label": "미디어",
+          "type": "boolean",
+          "default": true
+        },
+        "metadata": {
+          "label": "보조정보",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "item": {
       "id": "item",
@@ -2751,7 +4494,31 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "icon": {
+          "label": "앞 아이콘",
+          "type": "boolean",
+          "default": true
+        },
+        "metadata": {
+          "label": "보조정보",
+          "type": "boolean",
+          "default": true
+        },
+        "status": {
+          "label": "상태",
+          "type": "boolean",
+          "default": true
+        },
+        "chevron": {
+          "label": "이동 표시",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "section-header": {
       "id": "section-header",
@@ -2791,7 +4558,30 @@
           "kind": "attributes"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "description": {
+          "label": "설명",
+          "type": "boolean",
+          "default": true
+        },
+        "count": {
+          "label": "개수",
+          "type": "boolean",
+          "default": true
+        },
+        "actions": {
+          "label": "행동",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {
+        "description": ".dds-section-header-content > p",
+        "count": ".dds-collection-count",
+        "actionLabel": ".dds-section-header-action"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "attachment": {
       "id": "attachment",
@@ -2827,7 +4617,16 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "disabled": {
+          "label": "비활성",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "carousel": {
       "id": "carousel",
@@ -2871,7 +4670,10 @@
           "kind": "attributes"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "collapsible": {
       "id": "collapsible",
@@ -2903,7 +4705,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "separator": {
       "id": "separator",
@@ -2931,7 +4736,24 @@
           "kind": "attributes"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "orientation": {
+          "label": "방향",
+          "type": "enum",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal",
+          "labels": {
+            "horizontal": "가로",
+            "vertical": "세로"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "kbd": {
       "id": "kbd",
@@ -2959,7 +4781,12 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {
+        "description": ".helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "scroll-area": {
       "id": "scroll-area",
@@ -2983,7 +4810,10 @@
           "kind": "slot"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "resizable": {
       "id": "resizable",
@@ -3023,7 +4853,10 @@
           "kind": "attributes"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "direction": {
       "id": "direction",
@@ -3067,7 +4900,12 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {
+        "description": ".helper"
+      },
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "bubble": {
       "id": "bubble",
@@ -3091,7 +4929,24 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "direction": {
+          "label": "방향",
+          "type": "enum",
+          "values": [
+            "incoming",
+            "outgoing"
+          ],
+          "default": "incoming",
+          "labels": {
+            "incoming": "받은 메시지",
+            "outgoing": "보낸 메시지"
+          }
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "message": {
       "id": "message",
@@ -3135,7 +4990,39 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {
+        "direction": {
+          "label": "방향",
+          "type": "enum",
+          "values": [
+            "incoming",
+            "outgoing"
+          ],
+          "default": "incoming",
+          "labels": {
+            "incoming": "받은 메시지",
+            "outgoing": "보낸 메시지"
+          }
+        },
+        "avatar": {
+          "label": "아바타",
+          "type": "boolean",
+          "default": true
+        },
+        "author": {
+          "label": "보낸 사람",
+          "type": "boolean",
+          "default": true
+        },
+        "time": {
+          "label": "시간",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "marker": {
       "id": "marker",
@@ -3155,7 +5042,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "message-scroller": {
       "id": "message-scroller",
@@ -3191,7 +5081,10 @@
           "kind": "text"
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure."
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
     "area-chart": {
       "id": "area-chart",
@@ -3218,7 +5111,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3247,7 +5143,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3276,7 +5175,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3305,7 +5207,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3334,7 +5239,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3363,7 +5271,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3392,7 +5303,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3421,7 +5335,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3450,7 +5367,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3479,7 +5399,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3508,7 +5431,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3537,7 +5463,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3566,7 +5495,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3595,7 +5527,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3624,7 +5559,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3653,7 +5591,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3682,7 +5623,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3711,7 +5655,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3740,7 +5687,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3769,7 +5719,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3798,7 +5751,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3827,7 +5783,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3856,7 +5815,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3885,7 +5847,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3914,7 +5879,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3943,7 +5911,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -3972,7 +5943,10 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     },
@@ -4001,14 +5975,17 @@
           ]
         }
       },
-      "content": "Reference content only. Replace service text, links, names, values, counts and state; preserve the canonical classes and structure.",
+      "variants": {},
+      "optionalParts": {},
+      "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
+      "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md.",
       "dataRequired": true,
       "dataSource": "Pass explicit labels/series and units to createComponent; never use reference chart data as service data."
     }
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "99539125b4014e6b",
-    "canonicalBundle": "../releases/0.3.1/bundle.json"
+    "assetRevision": "1ea07ad08c5dd4c5",
+    "canonicalBundle": "../releases/0.4.0/bundle.json"
   }
 }

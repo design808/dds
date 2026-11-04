@@ -18,7 +18,7 @@ import {createComponent, mountDDS} from '/vendor/dds/ui/index.js';
 const root = document.querySelector('#workspace');
 const search = createComponent('search', {
   idPrefix: 'document-search',
-  text: {label: '문서 검색', hint: '제목으로 검색하세요.'},
+  text: {label: '문서 검색'},
   attributes: {
     control: {name: 'query', placeholder: '문서 제목', 'aria-label': '문서 검색'}
   }
@@ -42,22 +42,33 @@ const cleanup = mountDDS(root, {
 
 ## 콘텐츠 변경
 
+디자인 규격과 견본 콘텐츠를 구분한다. 검색창의 도움말, 카드의 상태·날짜, 모달의 문서 예시는 필수 요소가 아니다. 생략해도 버튼·입력의 최종 디자인은 같다. 화면 구조와 정보 밀도는 [페이지 구성 기준](./composition.md)을 함께 따른다.
+
 - `text`: registry의 `kind:text` 파트에 일반 문자열을 넣는다. HTML로 해석하지 않는다.
 - `attributes`: `kind:attributes` 파트의 name·value·href·disabled·aria 등 허용된 속성을 바꾼다. class·style·실행 속성은 받지 않는다.
 - `slots`: `kind:slot` 파트에 DOM 노드·Fragment·일반 문자열을 넣는다. 노드는 서비스가 안전하게 생성한 콘텐츠여야 한다.
 - `props`: Button의 공식 variant·color·size·아이콘·loading 속성이다. 등록된 조합만 사용한다.
 - `data`: 차트의 실제 제목·항목·계열·단위다. 서비스 생성 API는 차트에 명시적인 data를 요구한다.
 - `tabs`: `{label, content}` 배열로 탭과 연결 패널을 함께 만들 수 있다.
+- `variants`: `registry.json`에 등록된 유형·크기·상태·표현을 선택한다. 지원하지 않는 값은 오류로 처리한다. 버튼은 기존 `props`, 차트는 `data`를 사용한다.
+- `optional`: 선택 콘텐츠 파트별 `true|false`다. 예: `{hint:false}`. 설명은 `text.hint`처럼 실제 내용을 전달하면 나타나고, 생략하면 숨겨진다. 빈 설명 영역을 남기기 위해 공백 문구를 넣지 않는다.
+- `items`: Chip·Checkbox·Radio의 `{label,value,selected,disabled}` 배열이다. 견본의 세 항목을 서비스 기본 목록으로 사용하지 않는다. 개별 Chip·Avatar·Icon button·Badge는 기본 한 개부터 생성한다.
 
 파트 이름과 선택자는 `registry.json`의 해당 컴포넌트에 있다. 기본 문구·개수·상태·링크·날짜는 원본을 확인하기 위한 값이므로 실제 서비스 데이터로 교체한다. 본문의 배치와 페이지 그리드는 서비스에서 정하되 컴포넌트의 글자·패딩·경계·모서리·상태 CSS를 다시 만들지 않는다.
 
 ## 프레임워크와 기존 템플릿
 
-React·Vue 등에서는 현재 프레임워크를 유지한다. 클라이언트 root를 만들어 위 API를 연결하거나, `templates/<id>.html`의 같은 클래스·구조를 해당 프레임워크의 문법으로 옮기고 `dds.css`를 그대로 쓴다. 상태·이벤트만 서비스 구현에 연결한다. 표시값을 바꾼다는 이유로 원본 레이아웃을 재구성하지 않는다.
+React·Vue 등에서는 현재 프레임워크를 유지한다. 클라이언트 root를 만들어 위 API를 연결하거나, `templates/<id>.html`을 해당 프레임워크 문법으로 옮기고 `dds.css`를 그대로 쓴다. 선택한 variant의 필수 구조와 라벨·aria 관계를 유지하고 보조 콘텐츠는 조건부 출력한다. 모든 견본 요소를 강제로 남기지 않는다.
 
 Django 등 서버 템플릿도 같은 HTML을 사용한다. `dds-instance`로 시작하는 ID와 `for`·`aria-*` 참조를 인스턴스마다 고유하게 치환하고 값은 템플릿 엔진의 escaping을 유지한다. 실제 서비스의 기존 ID가 필요하면 그 ID와 연결 관계를 보존한다. 자산의 src/href는 서비스의 정적 경로로 연결한다.
 
 `.dds-ui`는 UI 스타일의 명시적인 범위다. `createComponent`가 이 래퍼를 만든다. 서버 템플릿을 사용할 때도 유지한다. 페이지 제목에 `.dds-type-*` 역할을 쓰려면 그 텍스트도 DDS 범위 안에 둔다. 문서의 폭 제한·축소 비율은 서비스에 복사하지 않는다. 컴포넌트 root의 `display:contents`는 조합을 위한 래퍼이며 실제 UI 요소의 경계·배치는 내부에 있다.
+
+## 저장한 디자인 설정
+
+디자인 설정 패널에서 저장한 값은 프로젝트 설정 프롬프트에 JSON으로 포함된다. 미저장 미리보기는 포함되지 않는다. 프로젝트에 `docs/dds-profile.json`으로 기록하고, 설치한 `ui/profile.js`의 `createProfileCSS(profile,{scoped:false})`로 `ui/project-profile.css`를 생성해 토큰과 `ui/dds.css` 다음에 연결한다. 범위 토큰을 사용하면 `scoped:true`를 선택한다. 다른 위치에 저장하면 `assetBase`를 실제 폰트 디렉터리의 상대 경로로 맞춘다.
+
+선택한 제목·본문 서체의 `assets/fonts/<서체>/fontfaces.css`와 연결된 WOFF2·라이선스도 함께 배포한다. 기본 토큰이나 고정 릴리스는 수정하지 않는다. 같은 저장 설정에서 라이트·다크·hover·active 색상을 생성하며 기능 색상은 의미가 있는 표면에 `data-dds-color-role="secondary|accent|positive"`로 연결한다.
 
 ## 동작과 검수
 
