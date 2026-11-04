@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=47ee6a6f0d5f3ea2';
-import {collectionCount,statusBadge} from './visibility.js?v=47ee6a6f0d5f3ea2';
+import {icon} from './icons.js?v=290ae5b55d51e164';
+import {collectionCount,statusBadge} from './visibility.js?v=290ae5b55d51e164';
 
 export const formBlocks = [
   {id:'login',title:'로그인',category:'account',description:'소셜 계정 또는 이메일 로그인과 비밀번호 찾기.',components:['input','button']},

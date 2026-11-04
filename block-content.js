@@ -1,6 +1,6 @@
-import {icon} from './icons.js?v=47ee6a6f0d5f3ea2';
-import {statusBadge, collectionCount} from './visibility.js?v=47ee6a6f0d5f3ea2';
-import {chartData, chartDemo} from './chart-system.js?v=47ee6a6f0d5f3ea2';
+import {icon} from './icons.js?v=290ae5b55d51e164';
+import {statusBadge, collectionCount} from './visibility.js?v=290ae5b55d51e164';
+import {chartData, chartDemo} from './chart-system.js?v=290ae5b55d51e164';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[character]));
 let renderSequence = 0;
