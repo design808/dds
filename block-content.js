@@ -1,6 +1,6 @@
-import {icon} from './icons.js?v=594c4a56f8f4fbab';
-import {statusBadge, collectionCount} from './visibility.js?v=594c4a56f8f4fbab';
-import {chartData, chartDemo} from './chart-system.js?v=594c4a56f8f4fbab';
+import {icon} from './icons.js?v=47ee6a6f0d5f3ea2';
+import {statusBadge, collectionCount} from './visibility.js?v=47ee6a6f0d5f3ea2';
+import {chartData, chartDemo} from './chart-system.js?v=47ee6a6f0d5f3ea2';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[character]));
 let renderSequence = 0;
@@ -77,7 +77,7 @@ function tabs(prefix, label, items, hook, separate = false) {
 function taskList(prefix) {
   const tasks = ['요구사항 정리', '정보 구조 검토', '화면 구성', '사용성 확인'];
   const done = 2;
-  return `<section class="dbc-task-group db-stack" data-dbc-task-group><div class="db-header"><h3 class="db-section-title">출시 준비</h3><output data-dbc-task-count>${done}/${tasks.length}</output></div><progress max="${tasks.length}" value="${done}" data-dbc-task-progress aria-label="준비 완료 비율"></progress>${tabs(prefix, '준비 작업 보기', [['all', '전체'], ['unfinished', '진행 중']], 'data-dbc-task-filter')}<div id="${prefix}-panel" role="tabpanel" aria-labelledby="${prefix}-tab-all"><ul class="dbc-task-list">${tasks.map((task, index) => `<li data-dbc-task-row><label><input type="checkbox" id="${prefix}-task-${index}" data-dbc-task ${index < done ? 'checked' : ''}><span>${task}</span></label></li>`).join('')}</ul></div></section>`;
+  return `<section class="dbc-task-group db-stack" data-dbc-task-group><div class="db-header"><h3 class="db-section-title">출시 준비</h3><output data-dbc-task-count>${done}/${tasks.length}</output></div><progress max="${tasks.length}" value="${done}" data-dbc-task-progress aria-label="준비 완료 비율"></progress>${tabs(prefix, '준비 작업 보기', [['all', '전체'], ['unfinished', '진행 중']], 'data-dbc-task-filter')}<div id="${prefix}-panel" role="tabpanel" aria-labelledby="${prefix}-tab-all"><ul class="dbc-task-list">${tasks.map((task, index) => `<li data-dbc-task-row><label><input type="checkbox" id="${prefix}-task-${index}" data-dbc-task ${index < done ? 'checked' : ''}><span>${task}</span></label></li>`).join('')}</ul><p class="db-muted" data-dbc-task-empty role="status" hidden>진행 중인 작업이 없습니다.</p></div></section>`;
 }
 function activityCard(prefix) {
   const data = chartData('area-chart', 'basic'), values = data.series[0].values;
@@ -167,10 +167,17 @@ export function bindContentBlocks(root = document) {
   }
   function updateTasks(group) {
     const fields = [...group.querySelectorAll('[data-dbc-task]')], done = fields.filter(field => field.checked).length;
+    const active = group.ownerDocument.activeElement, activeIndex = fields.indexOf(active);
     group.querySelector('[data-dbc-task-count]').textContent = `${done}/${fields.length}`;
     const progress = group.querySelector('[data-dbc-task-progress]'); if (progress) progress.value = done;
     const unfinished = group.querySelector('[data-dbc-task-filter][aria-selected="true"]')?.dataset.dbcTaskFilter === 'unfinished';
     fields.forEach(field => {field.closest('[data-dbc-task-row]').hidden = unfinished && field.checked;});
+    const empty = unfinished && done === fields.length;
+    group.querySelector('[data-dbc-task-empty]').hidden = !empty;
+    if (activeIndex >= 0 && active.closest('[data-dbc-task-row]').hidden) {
+      const next = fields.slice(activeIndex + 1).find(field => !field.closest('[data-dbc-task-row]').hidden) || fields.slice(0, activeIndex).reverse().find(field => !field.closest('[data-dbc-task-row]').hidden);
+      (next || group.querySelector('[data-dbc-task-filter][aria-selected="true"]')).focus({preventScroll: true});
+    }
   }
   function updateProjects(block) {
     const scene = block.querySelector('[data-dbc-projects]'), query = scene.querySelector('[data-dbc-project-search]').value.trim().toLocaleLowerCase();

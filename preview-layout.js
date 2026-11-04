@@ -18,5 +18,9 @@ function fit(){
 function schedule(){if(!scheduled){scheduled=true;requestAnimationFrame(fit);}}
 const observer=new ResizeObserver(schedule);
 function discover(){for(const box of document.querySelectorAll('.component-preview'))if(!observed.has(box)){observed.add(box);observer.observe(box);const scene=box.querySelector('.preview-inner');if(scene)observer.observe(scene);}schedule();}
-new MutationObserver(discover).observe(document.getElementById('main'),{childList:true,subtree:true});
+new MutationObserver(discover).observe(document.getElementById('main'),{childList:true,characterData:true,subtree:true});
+// A different webfont can change the intrinsic scene width without resizing its
+// fixed-width wrapper. Refit after both the preference change and font arrival.
+window.addEventListener('dds-design-settings-change',schedule);
+document.fonts.addEventListener('loadingdone',schedule);
 document.fonts.ready.then(schedule);discover();

@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "kind": "DDSReferenceRelease",
+  "designSystem": "DDS",
+  "version": "0.2.7",
+  "releasedAt": "2026-11-04",
+  "packageType": "reference",
+  "runtimeIntegrated": false,
+  "description": "Version-pinned DDS design references. No application code, component runtime installation, or project rule registration is performed by unpacking this package.",
+  "entrypoints": {
+    "setup": "dds-setup.md",
+    "adoption": "dds-adoption.md",
+    "index": "llms.txt",
+    "fullReference": "llms-full.txt",
+    "contracts": "data/dds-contracts.json",
+    "visibility": "visibility.css",
+    "visibilityHelpers": "visibility.js",
+    "charts": "chart-system.js",
+    "chartLayout": "chart-layout.js",
+    "buttons": "button-system.css",
+    "content": "content-primitives.css"
+  },
+  "files": [
+    {
+      "path": "assets/fonts/pretendard/LICENSE",
+      "bytes": 4418,
+      "sha256": "d31ddd9f2bed32fd7e302a205cf2380ba0de6529152d239ef99cfb6f261bfc04",
+      "encoding": "base64"
+    },
+    {
+      "path": "assets/fonts/pretendard/PretendardVariable.woff2",
+      "bytes": 2057688,
+      "sha256": "9599f12fd42fc0bce1cd50b47a0c022e108d7aa64dd0d1bb0ed44f3282d900b4",
+      "encoding": "base64"
+    },
+    {
+      "path": "assets/fonts/pretendard/metadata.json",
+      "bytes": 349,
+      "sha256": "49fe76ab543f71c77c838ca2dd7cf5abbc217bdc532de726e446cf31ae3798de",
+      "encoding": "base64"
+    },
+    {
+      "path": "button-system.css",
+      "bytes": 7622,
+      "sha256": "d94816b753c31dfd55f17b38892027c09fed477a2421fbba0a4746ca56f0bea0",
+      "encoding": "base64"
+    },
+    {
+      "path": "catalog.js",
+      "bytes": 25427,
+      "sha256": "939f38be16d2073bf87e49daabc0d6aaebd4334a10e4939068963b886380bdef",
+      "encoding": "base64"
+    },
+    {
+      "path": "chart-catalog.js",
+      "bytes": 9812,
+      "sha256": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
+      "encoding": "base64"
+    },
+    {
+      "path": "chart-layout.js",
+      "bytes": 6549,
+      "sha256": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
+      "encoding": "base64"
+    },
+    {
+      "path": "chart-system.css",
+      "bytes": 11447,
+      "sha256": "64351460f94e63d206bc637fbe9045d4925964bda2c2a77808a479fbce73352a",
+      "encoding": "base64"
+    },
+    {
+      "path": "chart-system.js",
+      "bytes": 42271,
+      "sha256": "a521f470d160d5fd2d9efb77ea3ddc6acd09e80f1c4f7e1ea147bbb02aef06d6",
+      "encoding": "base64"
+    },
+    {
+      "path": "component-contracts.js",
+      "bytes": 67747,
+      "sha256": "e7d2aa7942da05e8c054bfed2f661b24b09e0183b82b87d856438b542c129d5f",
+      "encoding": "base64"
+    },
+    {
+      "path": "content-primitives.css",
+      "bytes": 8050,
+      "sha256": "d81095035ac0675f4f564ebdcfed6d76a36a0e0c2c9f82f354e86b74b5a4de72",
+      "encoding": "base64"
+    },
+    {
+      "path": "data/dds-contracts.json",
+      "bytes": 434566,
+      "sha256": "e8e80d97bb552c8041b872a7367e732eff610adce8ee75fcb114d294ef1a092a",
+      "encoding": "base64"
+    },
+    {
+      "path": "dds-adoption.md",
+      "bytes": 21735,
+      "sha256": "a12342af108be6d47456d546d3d1bb01837956a37e0ed8837ef318bd537b8e68",
+      "encoding": "base64"
+    },
+    {
+      "path": "dds-install.js",
+      "bytes": 9674,
+      "sha256": "e93a3a0df05ce56f14b486354e418221b233354512893aff0e8ba7b30e215a86",
+      "encoding": "base64"
+    },
+    {
+      "path": "dds-setup.md",
+      "bytes": 14920,
+      "sha256": "909a1a3dbe4a74c8c8fe17f5040af6b193b4c92dc52f7283b97c743d381cdaba",
+      "encoding": "base64"
+    },
+    {
+      "path": "extension-catalog.js",
+      "bytes": 22100,
+      "sha256": "26cf6f59b409319ac307a1ff23ae6fd84ad1cf582cea023f5879b0b9eea29370",
+      "encoding": "base64"
+    },
+    {
+      "path": "handoff.md",
+      "bytes": 10530,
+      "sha256": "57a5b0c13fad44e2097f73d6df8644ed46f96e938704ae95f1bd04197ae29e7b",
+      "encoding": "base64"
+    },
+    {
+      "path": "icons.js",
+      "bytes": 4195,
+      "sha256": "3757e38c3a358dd966821ee7a07caaa5f98b89796bd9ec76290ecad2e8b3c78e",
+      "encoding": "base64"
+    },
+    {
+      "path": "llms-full.txt",
+      "bytes": 48594,
+      "sha256": "4b84c95b6345155c0f967a662366baad1328c0bc0537d9478fa3f5151b6d0736",
+      "encoding": "base64"
+    },
+    {
+      "path": "llms.txt",
+      "bytes": 1391,
+      "sha256": "df459a95942182eebbbba3c3785895325d47498a6dff13cf2d0976421233df0b",
+      "encoding": "base64"
+    },
+    {
+      "path": "service-guidelines.js",
+      "bytes": 18898,
+      "sha256": "b3682fedf97a6cccaf729a87d658e7a26742274997819d42b4af0aeba6fb19ea",
+      "encoding": "base64"
+    },
+    {
+      "path": "service-typography.css",
+      "bytes": 35125,
+      "sha256": "be43b46cd0a1bd2e171f5519252a523d6a2485288619d935a162dc2871c2bd22",
+      "encoding": "base64"
+    },
+    {
+      "path": "service-typography.js",
+      "bytes": 10501,
+      "sha256": "8751725a1bc807817f9eb0c8d60146ee40d79b8fcf7c4874386996e65bc36863",
+      "encoding": "base64"
+    },
+    {
+      "path": "tokens.css",
+      "bytes": 12271,
+      "sha256": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
+      "encoding": "base64"
+    },
+    {
+      "path": "typography-system.js",
+      "bytes": 16050,
+      "sha256": "ca84f696bd513a6da2094f80cbfb9b2e6ce92fbd4bcdb595fbc5f555b3d7c5cb",
+      "encoding": "base64"
+    },
+    {
+      "path": "vendor/lucide/LICENSE",
+      "bytes": 3208,
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+      "encoding": "base64"
+    },
+    {
+      "path": "vendor/lucide/lucide.min.js",
+      "bytes": 439465,
+      "sha256": "621aebb75317335da861ecaaf91faca006e60cdf6230d094804e12dfa8260301",
+      "encoding": "base64"
+    },
+    {
+      "path": "vendor/lucide/package.json",
+      "bytes": 1740,
+      "sha256": "60df54ff581b59d9d1d2a698fe7f41b38189acb77a9dca58ee914e90f3e27c0a",
+      "encoding": "base64"
+    },
+    {
+      "path": "visibility.css",
+      "bytes": 5925,
+      "sha256": "c5ddc867752a6d5b5daa444225302926da9876b2afb0d097579edd16663b5d1c",
+      "encoding": "base64"
+    },
+    {
+      "path": "visibility.js",
+      "bytes": 1358,
+      "sha256": "668039c6c4d07bce088d24225a377bff4fe24b0d9a322f8039205a44f39d13cb",
+      "encoding": "base64"
+    }
+  ],
+  "bundle": {
+    "file": "bundle.json",
+    "bytes": 4477836,
+    "sha256": "d88c290f0b744bb56f9ede0608b613fcf29088d8640d3129d7adabc5a1746b80"
+  },
+  "installer": {
+    "file": "dds-install.js",
+    "bytes": 9674,
+    "sha256": "e93a3a0df05ce56f14b486354e418221b233354512893aff0e8ba7b30e215a86"
+  }
+}

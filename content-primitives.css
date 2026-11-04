@@ -1,0 +1,152 @@
+/* Opt-in content and navigation primitives. No document-page resets or data handlers.
+   Load with tokens.css, visibility.css and button-system.css in the service scope. */
+.dds-bottomnav {
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:minmax(0,1fr);
+  gap:var(--space-1);
+  min-width:0;
+  padding:var(--space-2);
+  padding-bottom:max(var(--space-2),env(safe-area-inset-bottom,0px));
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  background:var(--background);
+}
+.dds-bottomnav > .dds-bottomnav-link {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:var(--space-1);
+  box-sizing:border-box;
+  min-width:0;
+  min-height:56px;
+  padding:var(--space-2) var(--space-1);
+  border-radius:var(--radius-md);
+  color:var(--text-secondary);
+  background:transparent;
+  font-family:var(--font-sans);
+  font-size:var(--type-label-2-size);
+  line-height:var(--type-label-2-line-height);
+  font-weight:var(--font-weight-semibold);
+  letter-spacing:var(--type-label-2-tracking);
+  text-align:center;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+}
+.dds-bottomnav > .dds-bottomnav-link > svg {width:22px;height:22px;flex-shrink:0}
+.dds-bottomnav > .dds-bottomnav-link[aria-current=page] {color:var(--brand-ink)}
+.dds-bottomnav > .dds-bottomnav-link:focus-visible {outline:1px solid var(--primary);outline-offset:0}
+
+.dds-command {
+  box-sizing:border-box;
+  min-width:0;
+  padding:var(--space-2);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  background:var(--background);
+}
+.dds-command .dds-command-field {
+  display:flex;
+  align-items:center;
+  gap:var(--space-2);
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  height:var(--control-height,var(--control-height-md));
+  min-height:var(--control-height,var(--control-height-md));
+  margin:0;
+  padding:0 var(--space-3);
+  border:1px solid var(--control-border);
+  border-radius:var(--radius-md);
+  background:var(--background);
+  color:var(--text-secondary);
+}
+.dds-command-field > svg {width:18px;height:18px;flex-shrink:0}
+.dds-command .dds-command-field > input,
+.dds-command .dds-command-field > .custom-search {flex:1;min-width:0;width:0;max-width:100%}
+.dds-command .dds-command-field > .custom-search {height:100%;border:0;background:transparent}
+.dds-command .dds-command-field input {
+  box-sizing:border-box;
+  min-height:0;
+  height:100%;
+  padding-block:0;
+  padding-inline-start:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:var(--text-primary);
+  font-family:var(--font-sans);
+  font-size:var(--control-font-size,var(--type-body-1-normal-size));
+  line-height:var(--control-line-height,var(--type-body-1-normal-line-height));
+  font-weight:var(--font-weight-regular);
+  letter-spacing:var(--control-tracking,var(--type-body-1-normal-tracking));
+}
+.dds-command .dds-command-field:focus-within {border-color:var(--primary)}
+.dds-command .dds-command-field input:focus-visible {outline:none;outline-offset:0;box-shadow:none}
+.dds-command-results {display:grid;gap:var(--space-1);min-width:0;margin-top:var(--space-2)}
+.dds-command-option {
+  display:flex;
+  align-items:center;
+  gap:var(--space-3);
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  min-height:44px;
+  padding:10px var(--space-3);
+  border:0;
+  border-radius:var(--radius-md);
+  background:transparent;
+  color:var(--text-primary);
+  font-family:var(--font-sans);
+  font-size:var(--type-label-1-size);
+  line-height:var(--type-label-1-line-height);
+  font-weight:var(--font-weight-medium);
+  letter-spacing:var(--type-label-1-tracking);
+  text-align:start;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  cursor:pointer;
+}
+.dds-command-option > svg {width:18px;height:18px;flex-shrink:0;color:var(--text-secondary)}
+.dds-command-option > span {min-width:0}
+.dds-command-option[hidden] {display:none}
+.dds-command-option:focus-visible {outline:1px solid var(--primary);outline-offset:0;background:var(--surface)}
+.dds-command [data-command-empty] {margin:0;padding:var(--space-6) var(--space-3);color:var(--text-secondary);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);text-align:center}
+
+.dds-items {list-style:none;min-width:0;margin:0;padding:0;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--background)}
+.dds-items > li {margin:0;padding:0;min-width:0;list-style:none}
+.dds-items > li + li {border-top:1px solid var(--border)}
+.dds-list-link {display:flex;align-items:center;gap:var(--space-3);box-sizing:border-box;min-width:0;padding:var(--space-3);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none}
+.dds-list-link > svg {width:18px;height:18px;flex-shrink:0}
+.dds-list-link > .dds-list-content {flex:1;min-width:0}
+.dds-list-link .dds-card-title {display:block}
+.dds-list-meta {display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-1) var(--space-2);min-width:0;margin-top:var(--space-1)}
+.dds-list-link:focus-visible {outline:1px solid var(--primary);outline-offset:0}
+
+.dds-section-header {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);min-width:0}
+.dds-section-header-content {flex:1 1 180px;min-width:0}
+.dds-section-header .dds-section-heading {display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-2);margin:0;color:var(--text-strong);font-family:var(--font-sans);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:var(--font-weight-semibold);letter-spacing:var(--type-body-1-normal-tracking)}
+.dds-section-heading > span:first-child {min-width:0;overflow-wrap:anywhere}
+.dds-section-header-content > p {margin:var(--space-1) 0 0}
+.dds-section-header-action {flex-shrink:0;padding-block:var(--space-2)}
+
+.dds-fallback {box-sizing:border-box;min-width:0;padding:var(--space-4);text-align:center}
+.dds-fallback > svg {display:block;width:32px;height:32px;margin:0 auto var(--space-4);color:var(--text-secondary)}
+.dds-fallback > h3 {margin:0;color:var(--text-strong);font-family:var(--font-sans);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:var(--font-weight-semibold);letter-spacing:var(--type-body-1-normal-tracking);overflow-wrap:anywhere}
+.dds-fallback > p {margin:var(--space-2) 0 0;color:var(--text-secondary);font-family:var(--font-sans);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);letter-spacing:var(--type-body-2-normal-tracking);overflow-wrap:anywhere}
+.dds-fallback-actions {display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-5)}
+
+.dds-table-scroll {box-sizing:border-box;min-width:0;max-width:100%;overflow:auto;overscroll-behavior-inline:contain;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--background)}
+.dds-table-scroll:focus-visible {outline:1px solid var(--primary);outline-offset:0}
+.dds-data-table {width:100%;min-width:420px;border-collapse:collapse;font-family:var(--font-sans);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);letter-spacing:var(--type-body-2-normal-tracking);text-align:start;color:var(--text-primary)}
+.dds-data-table th,.dds-data-table td {padding:12px 16px;border-bottom:1px solid var(--border);text-align:start;vertical-align:middle;overflow-wrap:anywhere}
+.dds-data-table th {background:var(--surface);color:var(--text-primary);font-size:inherit;line-height:inherit;letter-spacing:inherit;font-weight:var(--font-weight-semibold)}
+.dds-data-table tbody > tr:last-child > td {border-bottom:0}
+
+@media(hover:hover) and (pointer:fine) {
+  .dds-bottomnav > .dds-bottomnav-link:hover {color:var(--text-strong)}
+  .dds-bottomnav > .dds-bottomnav-link[aria-current=page]:hover {color:var(--brand-ink)}
+  .dds-command-option:hover,.dds-list-link:hover {background:var(--surface)}
+  .dds-section-header-action:hover {text-decoration:underline;text-underline-offset:3px}
+}

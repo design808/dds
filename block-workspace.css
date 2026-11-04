@@ -18,6 +18,7 @@
 .dds-block-example .bws-chart-card,.dds-block-example .bws-two-tables>section{display:flex;flex-direction:column;gap:var(--space-4);min-width:0}
 .dds-block-example .bws-chart{position:relative;min-width:0;max-width:100%}
 .dds-block-example .bws-chart-scroll{overflow:auto;max-width:100%;min-width:0;overscroll-behavior-x:contain;padding:var(--space-1);box-sizing:border-box}
+.dds-block-example :is(.bws-chart-scroll,.bws-table-wrap,.bws-flow-scroll,.bws-board-wrap,.bws-invoice-table-wrap):focus-visible{outline:1px solid var(--primary);outline-offset:0}
 .dds-block-example .bws-line-svg{display:block;width:100%;min-width:600px;height:auto;max-height:320px}
 .dds-block-example .bws-line-svg text{fill:var(--text-secondary);font-family:var(--font-sans);font-size:var(--type-caption-1-size);font-weight:var(--font-weight-regular)}
 .dds-block-example .bws-chart-legend{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-2) var(--space-4);margin-bottom:var(--space-3);color:var(--text-secondary);font-size:var(--type-label-2-size);line-height:var(--type-label-2-line-height)}
@@ -27,6 +28,7 @@
 .dds-block-example .bws-chart-point{outline:none;cursor:default}
 .dds-block-example .bws-chart-point:focus-visible{outline:1px solid var(--primary);outline-offset:0}
 .dds-block-example .bws-chart-dot{opacity:0}
+.dds-block-example .bws-chart-dot.is-single{opacity:1}
 .dds-block-example .bws-chart-point:is(:hover,:focus-visible) .bws-chart-dot{opacity:1}
 .dds-block-example .bws-sparkline{display:block;width:100%;height:42px;overflow:visible;margin-top:var(--space-2)}
 .dds-block-example .bws-tooltip[hidden]{display:none}
@@ -56,7 +58,7 @@
 .dds-block-example .bws-flow-transform{position:absolute;left:41%;top:calc(50% - 32px);width:18%;display:flex;flex-direction:column;align-items:center;gap:var(--space-2)}
 .dds-block-example .bws-flow-transform .dds-button{min-width:88px;min-height:64px}
 .dds-block-example .bws-journey{padding:var(--space-4)}
-.dds-block-example .bws-sankey{display:block;min-width:840px;width:100%;height:auto;max-height:none;font-family:var(--font-sans)}
+.dds-block-example .bws-sankey{display:block;min-width:840px;width:100%;height:auto;max-height:530px;font-family:var(--font-sans)}
 .dds-block-example .bws-sankey text{fill:var(--text-primary);font-size:var(--type-label-2-size);font-weight:var(--font-weight-medium)}
 .dds-block-example .bws-sankey .bws-flow-number{fill:var(--text-secondary);font-size:var(--type-caption-1-size);font-weight:var(--font-weight-regular)}
 .dds-block-example .bws-cohort-toolbar{gap:var(--space-3)}
@@ -84,7 +86,7 @@
 .dds-block-example .bws-side-shell.is-collapsed :is(.bws-workspace-name,.bws-nav-group,.bws-side-item>span){display:none}
 .dds-block-example .bws-side-shell.is-collapsed .bws-side-item{justify-content:center;padding-inline:8px}
 .dds-block-example .bws-board-wrap{max-width:100%;min-width:0;overflow:auto;overscroll-behavior-x:contain}
-.dds-block-example .bws-board{display:grid;grid-template-columns:repeat(4,minmax(154px,1fr));gap:var(--space-3);min-width:652px}
+.dds-block-example .bws-board{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:var(--space-3);min-width:916px}
 .dds-block-example .bws-column{display:flex;flex-direction:column;gap:var(--space-3);min-height:380px;min-width:0;padding:var(--space-3);border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);box-sizing:border-box}
 [data-theme=dark] .dds-block-example .bws-column{background:var(--background)}
 .dds-block-example .bws-column .bws-column-heading{gap:var(--space-2);flex-wrap:nowrap}
@@ -114,11 +116,11 @@
 .dds-block-example .bws-invoice-table{min-width:620px;width:100%;table-layout:fixed;border-collapse:collapse;font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height)}
 .dds-block-example .bws-invoice-table :is(th,td){padding:var(--space-2);border-bottom:1px solid var(--border);vertical-align:middle;text-align:left}
 .dds-block-example .bws-invoice-table th{font-weight:var(--font-weight-medium);color:var(--text-secondary)}
-.dds-block-example .bws-invoice-table th:first-child{width:42%}
+.dds-block-example .bws-invoice-table th:first-child{width:41%}
 .dds-block-example .bws-invoice-table th:nth-child(2){width:12%}
 .dds-block-example .bws-invoice-table th:nth-child(3){width:16%}
 .dds-block-example .bws-invoice-table th:nth-child(4){width:22%;text-align:right}
-.dds-block-example .bws-invoice-table th:last-child{width:8%}
+.dds-block-example .bws-invoice-table th:last-child{width:9%}
 .dds-block-example .bws-invoice-table input{width:100%;min-width:0}
 .dds-block-example .bws-invoice-table .bws-line-amount{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 .dds-block-example .bws-invoice-studio input[type=number]{appearance:textfield;-moz-appearance:textfield}
@@ -134,3 +136,11 @@
 .dds-block-example .bws-grand-total dt{color:var(--text-strong)}
 @container(max-width:620px){.dds-block-example .bws-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dds-block-example .bws-side-shell{grid-template-columns:156px minmax(0,1fr)}.dds-block-example .bws-side-nav{padding:var(--space-2)}.dds-block-example .bws-side-main{padding:var(--space-4)}}
 @container(max-width:520px){.dds-block-example .bws-block>header{align-items:flex-start}.dds-block-example .bws-block>header>.db-inline{flex-wrap:wrap}.dds-block-example .bws-two-tables{grid-template-columns:minmax(0,1fr)}.dds-block-example .bws-metric>strong{font-size:var(--type-heading-2-size);line-height:var(--type-heading-2-line-height)}.dds-block-example .bws-invoice-totals{min-width:0;width:100%}.dds-block-example .bws-invoice-issuer dl{width:100%}.dds-block-example .bws-invoice-issuer dl>div{justify-content:flex-start}.dds-block-example .bws-cohort-toolbar{align-items:flex-start}.dds-block-example .bws-side-heading{flex-wrap:wrap}.dds-block-example .bws-side-item{padding-inline:var(--space-2)}}
+@container(max-width:360px){
+ .dds-block-example .bws-metric-explorer .bws-metric-grid{grid-template-columns:minmax(0,1fr)}
+ .dds-block-example .bws-metric-explorer .bws-metric{display:grid;grid-template-columns:minmax(0,1fr) 88px;column-gap:var(--space-3);align-items:center}
+ .dds-block-example .bws-metric-explorer .bws-metric>.dds-meta-secondary{grid-column:1/-1}
+ .dds-block-example .bws-metric-explorer .bws-metric>strong{grid-column:1/-1;grid-row:2;min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+ .dds-block-example .bws-metric-explorer .bws-metric>:is(.bws-positive,.bws-negative){grid-column:1;grid-row:3}
+ .dds-block-example .bws-metric-explorer .bws-sparkline{grid-column:2;grid-row:3;width:88px;height:28px;margin-top:0;justify-self:end}
+}

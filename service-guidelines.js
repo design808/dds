@@ -1,4 +1,4 @@
-import {chartComponents} from './chart-catalog.js?v=594c4a56f8f4fbab';
+import {chartComponents} from './chart-catalog.js?v=47ee6a6f0d5f3ea2';
 
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const table = (caption, headings, rows) => `<div class="table-wrap"><table class="dds-rules-table"><caption class="sr-only">${esc(caption)}</caption><thead><tr>${headings.map(h => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((cell, i) => i === 0 ? `<th scope="row">${esc(cell)}</th>` : `<td>${esc(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
@@ -39,6 +39,9 @@ export const implementationRules = [
   ['카드 행동', '대표 이동은 실제 href가 있는 카드 전체 링크로 연결하고 보조 행동은 대표 링크 바깥에 둡니다. 정적 카드에 클릭을 암시하는 hover를 넣지 않습니다.'],
   ['탐색 표현', '.dds-nav-link는 글자·색·포커스만 적용하고 배경을 자동 추가하지 않습니다. 배경이 필요한 메뉴에는 .dds-nav-control을 사용해 글자·아이콘 전체에 패딩과 클릭 영역을 확보합니다. 부모 여백은 항목 내부 패딩을 대신하지 않습니다.'],
   ['탐색 상태', '메뉴 컨트롤은 최소 높이 40px·패딩 10px 12px·간격 8px을 기본으로 합니다. 현재 서비스 적용 예시의 GNB는 1180px 이하에서 최소 높이 44px·패딩 12px 12px을 사용합니다. 현재 위치는 aria-current로 전달하며 hover·현재·focus에서 크기와 굵기를 유지합니다.'],
+  ['공통 스타일', '목록 셀·섹션 헤더·하단 탐색·명령 검색·오류 대체 화면·표는 content-primitives.css의 해당 클래스를 재사용합니다. 문서의 축소 미리보기 크기를 운영 크기로 복사하지 않습니다. 상태·라우팅·검색·재시도는 서비스 로직에 연결합니다.'],
+  ['반응형 배치', '페이지뿐 아니라 실제 컴포넌트 컨테이너의 320px·390px·전환 경계에서 확인합니다. flex/grid의 본문은 min-width:0, 아이콘·스위치·아바타는 수축하지 않게 하고 긴 제목·행동은 줄바꿈합니다. 표·차트·칸반의 필요한 가로 스크롤만 해당 영역 안에 둡니다.'],
+  ['간격과 팝업', '제목과 개수는 8px, 오류 설명과 복구 행동은 20px을 둡니다. 검색 아이콘·입력·지우기는 한 외곽 안에 정렬합니다. 펼친 메뉴는 화면 가장자리에서 위치를 조정하고, 문서 프레임이나 서비스 래퍼가 잘라내지 않는지 확인합니다.'],
   ['상태·개수', '처리 상태는 실제 문구와 의미 아이콘, 목록 개수는 실제 데이터의 배지로 표시합니다. 항목 추가·삭제·필터 변경 시 개수도 갱신합니다.'],
   ['섹션 구성', '섹션 제목에 장식 아이콘을 넣거나 섹션마다 회색 바탕의 틀을 추가하지 않습니다. 배경 캔버스가 필요하면 페이지·body 수준에서 정합니다.'],
   ['검수', 'PC·모바일, 라이트·다크, 긴 제목·빈 값·오류·대기·동적 항목에서 확인합니다. 메뉴의 hover·현재 위치·focus와 좁은 너비에서 배경·내부 패딩·클릭 영역을 확인하고, 키보드 순서와 실제 제출 값을 변경 전과 대조합니다.'],

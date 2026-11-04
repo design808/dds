@@ -29,12 +29,13 @@
 .dds-block-example .dbt-footer-controls {display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:var(--space-4);min-width:0;max-width:100%;margin-left:auto}
 .dds-block-example .dbt-pagination {display:flex;align-items:center;gap:var(--space-1);min-width:0;max-width:100%}
 .dds-block-example .dbt-pagination .dds-button {flex-shrink:0}
-.dds-block-example .dbt-page-position {display:inline-flex;align-items:center;gap:var(--space-1);min-width:0;color:var(--text-secondary);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);font-variant-numeric:tabular-nums}
+.dds-block-example .dbt-page-position {display:inline-flex;align-items:center;gap:var(--space-1);flex-shrink:0;min-width:0;color:var(--text-secondary);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);font-variant-numeric:tabular-nums}
 .dds-block-example .dbt-page-position .dbt-page-input {width:40px;min-width:40px;max-width:40px;text-align:center;padding-inline:var(--space-1)}
 .dds-block-example .dbt-page-total {white-space:nowrap}
 .dds-block-example .dbt-empty {display:flex;flex-direction:column;align-items:center;gap:var(--space-4);padding:var(--space-8) var(--space-4);text-align:center;color:var(--text-secondary)}
 .dds-block-example .dbt-empty>p {margin:0}
 @container(max-width:520px) {
+  .dds-block-example .dbt-address-book {padding:var(--space-4)}
   .dds-block-example .dbt-toolbar {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
   .dds-block-example .dbt-filter {width:100%}
   .dds-block-example .dbt-filter>select,.dds-block-example .dbt-filter>.custom-select[data-control-width=content] {width:100%;max-width:100%}
@@ -44,4 +45,9 @@
   .dds-block-example .dbt-footer {align-items:flex-start}
   .dds-block-example .dbt-footer-controls {width:100%;justify-content:space-between;gap:var(--space-3)}
   .dds-block-example .dbt-pagination {margin-left:auto}
+}
+@container(max-width:300px) {
+  .dds-block-example .dbt-toolbar {grid-template-columns:minmax(0,1fr)}
+  .dds-block-example .dbt-filter:nth-child(3),.dds-block-example .dbt-export,.dds-block-example .dbt-search {grid-column:auto;grid-row:auto}
+  .dds-block-example .dbt-pagination,.dds-block-example .dbt-page-position {gap:2px}
 }

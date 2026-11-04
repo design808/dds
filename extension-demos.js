@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=594c4a56f8f4fbab';
-import {collectionCount,statusBadge} from './visibility.js?v=594c4a56f8f4fbab';
+import {icon} from './icons.js?v=47ee6a6f0d5f3ea2';
+import {collectionCount,statusBadge} from './visibility.js?v=47ee6a6f0d5f3ea2';
 const button=(text,attrs='',cls='')=>`<button type="button" class="btn ${cls}" ${attrs}>${text}</button>`;
 const ic=(name,label,attrs='')=>`<button type="button" class="icon-btn" aria-label="${label}" ${attrs}>${icon(name)}</button>`;
 const link=(text,route,current=false)=>`<a class="dds-nav-link dds-nav-control" href="#${route}" ${current?'aria-current="page"':''}>${text}</a>`;
@@ -37,26 +37,26 @@ export function extensionDemo(id,uid,mini=false){
  case 'questionnaire':return box(`<form data-ext-questionnaire><p class="helper" data-question-progress>1 / 3 질문</p><fieldset data-question="0"><legend>지원 단계는 무엇인가요?</legend>${choices(uid+'-stage',['첫 지원','지원 경험 있음'])}</fieldset><fieldset data-question="1" hidden><legend>도움이 필요한 항목 (선택)</legend>${choices(uid+'-help',['지원 동기','직무 경험'],'checkbox')}</fieldset><fieldset data-question="2" hidden><legend>추가로 전달할 내용 (선택)</legend><textarea aria-label="추가로 전달할 내용" placeholder="자유롭게 작성해 주세요."></textarea></fieldset><div class="dds-action-area">${button('이전','data-question-back disabled')}${button('다음','data-question-next','primary')}</div>${status}</form>`);
  case 'navigation-menu':return box(`<nav aria-label="서비스 탐색"><details class="dds-nav-details"><summary class="dds-nav-link dds-nav-control">자기소개서 ${icon('down')}</summary><div>${link('내 문서','/patterns/document-list')}${link('AI 작성','/patterns/ai-writing')}${link('검사와 피드백','/patterns/analysis')}</div></details></nav>`);
  case 'top-navigation':return topNavigation(uid);
- case 'bottom-navigation':return box(`<nav class="dds-bottomnav" aria-label="모바일 주요 메뉴">${[['House','홈','/'],['FileText','문서','/patterns/document-list'],['Users','컨설팅','/patterns/consulting']].map(([i,t,r],n)=>`<a class="dds-nav-link dds-nav-control" href="#${r}" ${n===0?'aria-current="page"':''}>${icon(i)}<span>${t}</span></a>`).join('')}</nav>`);
+ case 'bottom-navigation':return box(`<nav class="dds-bottomnav" aria-label="모바일 주요 메뉴">${[['House','홈','/'],['FileText','문서','/patterns/document-list'],['Users','컨설팅','/patterns/consulting']].map(([i,t,r],n)=>`<a class="dds-bottomnav-link" href="#${r}" ${n===0?'aria-current="page"':''}>${icon(i)}<span>${t}</span></a>`).join('')}</nav>`);
  case 'category':return box(`<div class="demo-row" role="group" aria-label="콘텐츠 분류">${['전체','자기소개서','면접'].map((t,i)=>button(t,`data-ext-category aria-pressed="${i===0}"`,i===0?'selected':'')).join('')}</div><p class="helper" data-category-result>전체 콘텐츠</p>`);
  case 'page-counter':return box(`<div class="dds-pager" data-ext-pager>${ic('left','이전 페이지','data-page-shift="-1" disabled')}<output aria-live="polite" data-pager-output>1 / 5</output>${ic('right','다음 페이지','data-page-shift="1"')}</div>`);
  case 'pagination-dots':return box(`<nav class="dds-dots" aria-label="슬라이드 이동">${Array.from({length:4},(_,i)=>`<button type="button" data-ext-dot aria-label="슬라이드 ${i+1}" ${i===0?'aria-current="true"':''}></button>`).join('')}</nav><p class="helper" data-dot-result>슬라이드 1</p>`);
  case 'menubar':return box(`<div class="dds-menubar" role="menubar" aria-label="문서 편집">${menu(uid+'-file','파일')}${menu(uid+'-edit','편집',['실행 취소','다시 실행'])}</div>${status}`);
- case 'command':return box(`<div class="dds-command"><label class="search-field">${icon('search')}<input type="search" aria-label="명령 검색" placeholder="명령 검색…" data-ext-command-search></label><div class="dds-command-results" role="group" aria-label="명령 목록">${['새 자기소개서','이력서 열기','면접 결과 보기'].map(t=>button(t,`data-ext-command="${t}"`,'ghost')).join('')}</div><p data-command-empty hidden>일치하는 명령이 없습니다.</p></div>${status}`);
+ case 'command':return box(`<div class="dds-command"><div class="search-field dds-command-field">${icon('Search')}<input type="search" aria-label="명령 검색" placeholder="명령 검색…" data-ext-command-search></div><div class="dds-command-results" role="group" aria-label="명령 목록">${[['FilePlus','새 자기소개서'],['FileText','이력서 열기'],['ChartColumn','면접 결과 보기']].map(([glyph,t])=>`<button type="button" class="dds-command-option" data-ext-command="${t}">${icon(glyph)}<span>${t}</span></button>`).join('')}</div><p data-command-empty hidden>일치하는 명령이 없습니다.</p></div>${status}`);
  case 'context-menu':return box(`<div class="dds-context" tabindex="0" data-ext-context><p>자기소개서 예제</p><span class="helper">우클릭 또는 Shift+F10</span>${menu(uid,'문서 메뉴',['문서 복사','이름 변경','내보내기'])}</div>${status}`);
  case 'alert-dialog':case 'sheet':case 'drawer':{const title=id==='alert-dialog'?'예제 문서를 삭제할까요?':id==='sheet'?'문서 상세':'컨설팅 방식 선택';const content=id==='alert-dialog'?'<p>이 동작은 확인 UI 예제이며 실제 문서를 삭제하지 않습니다.</p>':`<p>현재 작업을 유지하며 추가 정보를 확인합니다.</p>${choices(uid,['문서 첨삭','화상 상담'])}`;return box(button(id==='alert-dialog'?'삭제 확인 열기':id==='sheet'?'사이드 시트 열기':'하단 시트 열기',`data-ext-dialog="${uid}"`)+`<dialog id="${uid}" class="dds-overlay ${id}" ${id==='alert-dialog'?'role="alertdialog"':''} aria-labelledby="${uid}-title"><div class="dialog-heading"><h2 id="${uid}-title">${title}</h2>${ic('close','닫기','data-ext-close')}</div>${content}<div class="dds-action-area">${button('취소','data-ext-close autofocus')}${button('확인','data-ext-confirm','primary')}</div></dialog>`+status);}
  case 'popover':case 'hover-card':return box(`<span class="dds-popover-host">${button(id==='popover'?'표시 설정':'DDS 코치 프로필',`data-ext-popover="${uid}" ${id==='hover-card'?'data-ext-hover':''} aria-expanded="false" aria-controls="${uid}"`)}<div id="${uid}" class="dds-popover" popover="auto" role="dialog" aria-label="${id==='popover'?'표시 설정':'코치 프로필'}"><div class="row-between"><b>${id==='popover'?'표시 설정':'DDS 코치'}</b>${ic('close','닫기',`data-popover-close="${uid}"`)}</div>${id==='popover'?choices(uid,['완료 문서도 표시'],'checkbox'):'<p>프로덕트 디자인 · 경력 상담</p><p class="helper">합성 예제 프로필</p>'}</div></span>`);
  case 'snackbar':return box(`<div class="dds-snackbar"><span data-snack-message role="status">문서를 보관했습니다.</span>${button('되돌리기','data-snack-undo','ghost')}${ic('close','알림 닫기','data-snack-close')}</div>${button('알림 다시 보기','data-snack-show','ghost')}`);
  case 'spinner':return box(`<div class="demo-row" role="status"><span class="dds-spinner" aria-hidden="true"></span><span>문서를 준비하고 있어요</span></div>`);
- case 'fallback-view':return box(`<div class="dds-fallback">${icon('CloudOff')}<h3 data-fallback-title>연결을 확인해 주세요</h3><p class="helper" data-fallback-copy>잠시 후 다시 시도할 수 있습니다.</p>${button('다시 시도','data-ext-retry','primary')}</div>`);
+ case 'fallback-view':return box(`<div class="dds-fallback">${icon('CloudOff')}<h3 data-fallback-title>연결을 확인해 주세요</h3><p data-fallback-copy>잠시 후 다시 시도할 수 있습니다.</p><div class="dds-fallback-actions"><button type="button" class="dds-button" data-ext-retry>다시 시도</button></div></div>`);
  case 'push-badge':return box(`<button class="icon-btn dds-push" aria-label="읽지 않은 알림 3개" data-ext-notice="읽지 않은 예제 알림 3개">${icon('Bell')}<span aria-hidden="true">3</span></button>${status}`);
  case 'aspect-ratio':return box(`<div class="dds-ratio" role="img" aria-label="16대9 미디어 영역 예제">${icon('Image')}<span>16 : 9</span></div>`);
  case 'thumbnail':return box(`<div class="dds-thumbnail"><img src="./assets/deepresume-logo.png" alt="DeepResume 브랜드 이미지" width="240" height="40"></div>`);
  case 'play-badge':return box(`<div class="dds-ratio">${button(icon('Play')+' 02:34','data-ext-notice="재생 표시 예제입니다. 실제 영상은 연결하지 않았습니다."','dds-play')}</div>${status}`);
  case 'avatar-group':return box(`<div class="dds-avatar-group" role="img" aria-label="예제 참여자: 가람, 나래, 다온 외 2명">${['가','나','다','+2'].map(t=>`<span class="avatar">${t}</span>`).join('')}</div><p class="helper">참여자 5명</p>`);
  case 'list-card':return box(`<article class="dds-list-card dds-content-card"><div class="dds-mini-image">${icon('FileText')}</div><div><h3 class="dds-card-title"><a class="dds-card-link" href="#/patterns/interview">면접 준비 가이드</a></h3><p class="dds-meta-secondary">3분 읽기 · 커리어 가이드</p></div></article>`);
- case 'item':return box(`<ul class="dds-items">${['프로덕트 디자이너','서비스 기획자'].map(t=>`<li><a class="dds-list-link" href="./prototypes/coverletter-write.html">${icon('file')}<span><b class="dds-card-title">${t}</b><span class="dds-meta-secondary">자기소개서</span></span>${statusBadge('draft','임시저장',icon)}${icon('right')}</a></li>`).join('')}</ul>`);
- case 'section-header':return box(`<div class="dds-section-header"><div><h3>내 자기소개서 ${collectionCount(3,{label:'자기소개서'})}</h3><p class="dds-meta-secondary">최근 작성한 문서</p></div><a class="btn ghost sm" href="#/patterns/document-list">전체 보기</a></div>`);
+ case 'item':return box(`<ul class="dds-items">${['프로덕트 디자이너','서비스 기획자'].map(t=>`<li><a class="dds-list-link" href="./prototypes/coverletter-write.html">${icon('file')}<span class="dds-list-content"><b class="dds-card-title">${t}</b><span class="dds-list-meta"><span class="dds-meta-secondary">자기소개서</span>${statusBadge('draft','임시저장',icon)}</span></span>${icon('right')}</a></li>`).join('')}</ul>`);
+ case 'section-header':return box(`<div class="dds-section-header"><div class="dds-section-header-content"><h3 class="dds-section-heading"><span>내 자기소개서</span>${collectionCount(3,{label:'자기소개서'})}</h3><p class="dds-meta-secondary">최근 작성한 문서</p></div><a class="dds-nav-link dds-section-header-action" href="#/patterns/document-list">전체 보기</a></div>`);
  case 'attachment':return box(`<div class="dds-attachment">${icon('FileText')}<div><b>포트폴리오.pdf</b><p class="helper">PDF · 2.4 MB · 선택됨</p></div>${ic('close','포트폴리오.pdf 제거','data-attachment-remove')}</div>${button('첨부 예제 복원','data-attachment-restore','ghost')}${status}`);
  case 'carousel':return box(`<section class="dds-carousel" aria-roledescription="캐러셀" aria-label="커리어 가이드"><div data-carousel-slide class="dds-ratio"><span class="eyebrow">CAREER GUIDE 01</span><b>나의 경험을 발견하기</b></div><div class="row-between">${ic('left','이전 슬라이드','data-carousel-shift="-1" disabled')}<output data-carousel-count aria-live="polite">1 / 3</output>${ic('right','다음 슬라이드','data-carousel-shift="1"')}</div></section>`);
  case 'collapsible':return box(`<details class="dds-collapsible"><summary>지원 정보 상세 ${icon('down')}</summary><p>지원 직무: 프로덕트 디자이너</p><p>고용 형태: 정규직</p></details>`);
@@ -77,7 +77,27 @@ function calendarDays(y,m,selected){const start=new Date(y,m,1).getDay(),count=n
 function renderCalendar(c,focusDate){const y=+c.dataset.year,m=+c.dataset.month;c.querySelector('[data-month-label]').textContent=`${y}년 ${m+1}월`;c.querySelector('[data-calendar-grid]').innerHTML=calendarDays(y,m,c.dataset.selected);if(focusDate){const b=c.querySelector(`[data-calendar-date="${focusDate}"]`);c.querySelectorAll('[data-calendar-date]').forEach(x=>x.tabIndex=x===b?0:-1);b?.focus();}}
 function announce(node,text){const out=node.closest('.dds-demo')?.querySelector('[data-ext-status]');if(out)out.textContent=text;}
 function closeMenus(){document.querySelectorAll('[data-ext-menu][aria-expanded=true]').forEach(t=>{t.setAttribute('aria-expanded','false');document.getElementById(t.dataset.extMenu).hidden=true;});}
-function openMenu(t){closeMenus();const p=document.getElementById(t.dataset.extMenu);p.hidden=false;t.setAttribute('aria-expanded','true');p.querySelector('button')?.focus();}
+function openMenu(t){
+ closeMenus();const p=document.getElementById(t.dataset.extMenu);p.hidden=false;t.setAttribute('aria-expanded','true');
+ const bounds=t.getBoundingClientRect(),edge=8;
+ p.style.position='fixed';p.style.inset='auto';p.style.width=`${Math.min(180,innerWidth-edge*2)}px`;
+ p.style.maxHeight=`${Math.max(44,innerHeight-edge*2)}px`;p.style.overflowY='auto';
+ const menuBounds=p.getBoundingClientRect(),roomBelow=innerHeight-bounds.bottom-edge-6,roomAbove=bounds.top-edge-6;
+ const below=roomBelow>=menuBounds.height||roomBelow>=roomAbove;
+ const available=Math.max(44,below?roomBelow:roomAbove);
+ p.style.maxHeight=`${Math.min(innerHeight-edge*2,available)}px`;
+ const height=Math.min(menuBounds.height,available);
+ p.style.left=`${Math.max(edge,Math.min(bounds.left,innerWidth-menuBounds.width-edge))}px`;
+ p.style.top=`${Math.max(edge,Math.min(below?bounds.bottom+6:bounds.top-height-6,innerHeight-height-edge))}px`;
+ p.querySelector('button')?.focus({preventScroll:true});
+}
+function dismissMenusOnLayoutChange(){
+ const active=document.activeElement,unit=active?.closest('.dds-menu');
+ const trigger=unit?.closest('.dds-menu-unit')?.querySelector('[data-ext-menu]');
+ closeMenus();trigger?.focus({preventScroll:true});
+}
+window.addEventListener('resize',dismissMenusOnLayoutChange);
+document.addEventListener('scroll',e=>{if(!e.target.closest?.('.dds-menu'))dismissMenusOnLayoutChange();},true);
 const topnavStates=new Map();
 let topnavResize,topnavMutation,topnavScanPending=false;
 const topnavWidth=element=>{const style=getComputedStyle(element);return element.clientWidth-parseFloat(style.paddingLeft||0)-parseFloat(style.paddingRight||0);};
@@ -146,9 +166,9 @@ function resize(h,n){n=Math.max(25,Math.min(75,Math.round(n)));h.setAttribute('a
 function showPopover(t,focus){const p=document.getElementById(t.dataset.extPopover);if(p.matches(':popover-open')){if(focus)p.querySelector('button,input')?.focus();return;}p.showPopover();const r=t.getBoundingClientRect(),w=p.offsetWidth,h=p.offsetHeight;p.style.left=Math.max(8,Math.min(r.left,innerWidth-w-8))+'px';p.style.top=Math.max(8,r.bottom+h+8>innerHeight?r.top-h-8:r.bottom+8)+'px';t.setAttribute('aria-expanded','true');if(focus)p.querySelector('button,input')?.focus();}
 document.addEventListener('click',e=>{
  const topnavLink=e.target.closest('.dds-topnav-panel a[href]');if(topnavLink)setTopnavOpen(topnavLink.closest('[data-ext-topnav]'),false);
+ if(!e.target.closest('.dds-menu-unit'))closeMenus();
  const t=e.target.closest('button');if(!t)return;
  if(t.hasAttribute('data-ext-topnav-toggle')){const header=t.closest('[data-ext-topnav]');setTopnavOpen(header,t.getAttribute('aria-expanded')!=='true');}
- if(!t.closest('.dds-menu-unit'))closeMenus();
  if(t.hasAttribute('data-ext-notice'))announce(t,t.dataset.extNotice);
  if(t.hasAttribute('data-ext-toggle')){const on=t.getAttribute('aria-pressed')!=='true';t.setAttribute('aria-pressed',on);announce(t,(t.getAttribute('aria-label')||t.textContent.trim())+(on?' 켜짐':' 꺼짐'));}
  if(t.hasAttribute('data-ext-filter')||t.hasAttribute('data-ext-filter-reset')){const p=t.closest('.dds-demo'),b=p.querySelector('[data-ext-filter]'),on=t.hasAttribute('data-ext-filter');b.querySelector('[data-filter-label]').textContent=on?'경력 3년 이상 · 1':'경력 전체';b.classList.toggle('dds-applied',on);p.querySelector('[data-ext-filter-result]').textContent=on?'경력 3년 이상 조건 적용':'전체 경력을 표시합니다.';}
@@ -196,7 +216,11 @@ document.addEventListener('keydown',e=>{
  if(e.shiftKey&&e.key==='F10'&&t.closest('[data-ext-context]')){e.preventDefault();openMenu(t.closest('[data-ext-context]').querySelector('[data-ext-menu]'));}
  if(t.matches('.dds-resize-handle')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();resize(t,e.key==='Home'?25:e.key==='End'?75:+t.getAttribute('aria-valuenow')+(e.key==='ArrowRight'?5:-5));}
  if(t.matches('[data-calendar-date]')&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End','PageUp','PageDown'].includes(e.key)){e.preventDefault();const c=t.closest('[data-ext-calendar]'),d=new Date(t.dataset.calendarDate+'T12:00:00');if(e.key==='PageUp'||e.key==='PageDown')d.setMonth(d.getMonth()+(e.key==='PageUp'?-1:1),1);else d.setDate(d.getDate()+({ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7,Home:-d.getDay(),End:6-d.getDay()}[e.key]));c.dataset.year=d.getFullYear();c.dataset.month=d.getMonth();renderCalendar(c,`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`);}
- const menuRoot=t.closest('[role=menu],.dds-command');if(menuRoot&&['ArrowUp','ArrowDown','Home','End'].includes(e.key)){e.preventDefault();const buttons=[...menuRoot.querySelectorAll(menuRoot.classList.contains('dds-command')?'[data-ext-command]:not([hidden])':'button:not([hidden])')],i=buttons.indexOf(t),next=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowUp'?-1:1)+buttons.length)%buttons.length;buttons[next]?.focus();}
+ const menuRoot=t.closest('[role=menu],.dds-command');
+ if(menuRoot&&['ArrowUp','ArrowDown','Home','End'].includes(e.key)&&!(t.matches('input')&&['Home','End'].includes(e.key))){
+  const buttons=[...menuRoot.querySelectorAll(menuRoot.classList.contains('dds-command')?'[data-ext-command]:not([hidden])':'button:not([hidden])')];
+  if(buttons.length){e.preventDefault();const i=buttons.indexOf(t),next=e.key==='Home'?0:e.key==='End'?buttons.length-1:i<0?(e.key==='ArrowUp'?buttons.length-1:0):(i+(e.key==='ArrowUp'?-1:1)+buttons.length)%buttons.length;buttons[next].focus();}
+ }
  if(e.key==='Escape'&&t.closest('.dds-command'))t.closest('.dds-command').querySelector('input').focus();
  if(t.matches('[data-ext-menu]')&&['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();openMenu(t);}
  if(t.matches('.dds-menubar [data-ext-menu]')&&['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();const all=[...t.closest('.dds-menubar').querySelectorAll('[data-ext-menu]')];all[(all.indexOf(t)+(e.key==='ArrowRight'?1:-1)+all.length)%all.length].focus();}

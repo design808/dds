@@ -125,6 +125,7 @@
 .dds-block-example :is(.df-footer-groups a,.df-footer-contact):focus-visible {outline:1px solid var(--primary);outline-offset:0;}
 
 @container dds-block (max-width:900px) {
+  .dds-block-example .df-product-header {padding-bottom:0;}
   .dds-block-example .df-header-bar {display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--space-3);row-gap:0;padding-block:var(--space-3);}
   .dds-block-example .df-header-brand {grid-column:1;grid-row:1;justify-self:start;min-width:0;max-width:100%;}
   .dds-block-example .df-header-mobile-toggle {display:grid;grid-column:2;grid-row:1;justify-self:end;width:44px;height:44px;}

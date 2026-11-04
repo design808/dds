@@ -2,7 +2,7 @@
 // Only confirmed shared CSS measurements are listed as fixed specifications.
 const baseAssets = ['tokens.css', 'style.css', 'brand-refinement.css', 'layout-focus.css', 'interactions.css'];
 const visibilityAssets = ['visibility.css', 'visibility.js', 'service-typography.css'];
-const serviceAssets = new Set(['tokens.css', 'visibility.css', 'visibility.js', 'button-system.css']);
+const serviceAssets = new Set(['tokens.css', 'visibility.css', 'visibility.js', 'button-system.css', 'content-primitives.css']);
 const documentationAssets = new Set(['style.css', 'brand-refinement.css', 'layout-focus.css', 'extensions.css', 'extension-demos.js', 'button-demos.js', 'button-docs.css']);
 const fieldSizes = [
   ['Small', '--control-height-sm: 36px · Body 2 Normal 14/22 · 좌우 10px · 아이콘 16px'],
@@ -17,7 +17,7 @@ const dialogSpecs = [
   ['닫기 버튼', '아이콘 22px · 클릭 영역 40×40px · hover/focus 배경 --muted'],
   ['전환', '--duration-normal: 180ms · 초점 표시는 즉시 반영'],
 ];
-const defaultChecks = ['긴 한글·영문과 200% 확대에서 내용과 행동이 잘리지 않는지 확인합니다.', 'Light/Dark에서 의미·선택 상태·포커스를 확인합니다.'];
+const defaultChecks = ['긴 한글·영문과 200% 확대에서 내용과 행동이 잘리지 않는지 확인합니다.', 'Light/Dark에서 의미·선택 상태·포커스를 확인합니다.', '320px·390px와 전환 경계의 실제 컨테이너에서 겹침·잘림·불필요한 페이지 가로 스크롤을 확인합니다.'];
 const chartKeyboard = ['범례와 데이터 표 열기에 Tab으로 이동하고 Enter/Space로 실행합니다.', '데이터 지점은 마우스 hover와 키보드 focus에서 같은 항목명·수치를 제공합니다. 터치로도 수치를 확인할 수 있어야 합니다.'];
 const chartChecks = ['원본 데이터와 차트의 지점·툴팁·표의 수치 및 단위가 일치하는지 확인합니다.', '0개·1개·90개·365개, 값 0·누락·전체 누락, 긴 한글 항목명과 많은 계열을 확인합니다.', '첫·끝 날짜 눈금과 인접 눈금이 겹치지 않고, 범례가 줄바꿈 후에도 항목명·색·값을 구분하는지 확인합니다.', '라이트·다크·좁은 화면·200% 확대와 웹폰트 로딩·서체 변경 후 축·범례·값의 간격과 내부 스크롤을 확인합니다.'];
 const chartSpecification = [['표시 정보', '제목 · 항목명 · 단위 · 필요한 기간과 비교 기준'], ['타이포그래피', '제목 Body 1 Normal / 600 · 축 눈금 Caption 1 · 범례·툴팁 Label 2 · 원형 중앙 Title 2 / 700'], ['계열 색상', '주 계열 --primary · 보조 중립 slate · 기능별 색상 설정에서는 기존 기능 팔레트 사용'], ['너비', '부모 너비에 맞춤 · 범주별 최소 폭·행 높이 확보 · 필요한 스크롤은 해당 차트 안에 배치'], ['날짜 눈금', '실제 서체·글자 폭·표시 너비로 간격 계산 · 첫·끝 포함 충돌 금지 · 글자 축소·회전으로 해결하지 않음'], ['범례', '계열 수와 항목명에 맞춰 줄바꿈 · 인접 범례·차트와 간격 확보'], ['데이터 대안', '눈금 생략과 별개로 전체 지점·정확한 툴팁·같은 항목명·수치·단위의 HTML 표 유지']];
@@ -71,6 +71,42 @@ const families = {
   },
 };
 const overrides = {
+  'bottom-navigation': {
+    usage: {when:'모바일에서 자주 이동하는 3–5개 최상위 목적지를 제공할 때 사용합니다.',alternative:'한 화면의 콘텐츠 전환은 Tabs, 보조 기능은 메뉴 안에 둡니다.'},
+    rules: ['항목을 같은 너비로 나누고 아이콘과 라벨을 함께 표시합니다. 긴 라벨은 항목 안에서 줄바꿈하되 항목 자체가 다음 행으로 밀려나지 않게 합니다.', '현재 위치는 aria-current="page"와 강조 색으로 표시합니다. 선택한 항목에만 별도 배경 상자나 다른 패딩·굵기를 추가하지 않습니다.', '서비스에 고정 배치한다면 본문 하단 여백과 safe-area를 확보해 마지막 콘텐츠와 행동을 가리지 않게 합니다.'],
+    specification: [['공통 스타일','content-primitives.css · .dds-bottomnav / .dds-bottomnav-link'],['항목','동일 너비 · 최소 높이 56px · 아이콘 22px · 아이콘/라벨 간격 4px'],['텍스트','Label 2 13/18 / 600 · 기본 Secondary / 현재 brand-ink · 상태별 크기 유지']],
+    checks: [...defaultChecks,'320px·390px, 3개·5개 목적지와 긴 라벨에서 같은 행·같은 너비와 본문 하단 노출을 확인합니다.'],
+    assets:['content-primitives.css'],
+  },
+  command: {
+    usage:{when:'검색으로 명령을 찾아 실행할 때 사용합니다.',alternative:'문서나 상품을 찾는 일반 검색은 Search를 사용합니다.'},
+    rules:['검색 아이콘·입력·지우기 버튼을 같은 복합 입력 안에 정렬하고 포커스는 외곽 전체에 표시합니다. 폼 라벨 스타일이 입력 컨테이너의 flex 배치를 덮지 않게 합니다.', '결과 행은 아이콘·명령명의 클릭 영역을 함께 제공하고 긴 명령명은 행 높이를 늘려 표시합니다.', '필터로 숨긴 결과는 초점 순서에서도 제외하고 0개 결과에는 빈 상태를 표시합니다.'],
+    keyboard:['검색창에서 ↓/↑로 첫/마지막 결과에 이동합니다. 결과 사이에서는 방향키와 Home/End를 사용하고 Enter로 실행합니다.', '검색창의 Home/End는 원래 커서 이동을 유지합니다. Escape는 검색창으로 초점을 돌립니다.'],
+    specification:[['공통 스타일','content-primitives.css · .dds-command / .dds-command-field / .dds-command-option'],fieldFocus,['결과 행','최소 높이 44px · 좌우 12px · 아이콘 18px · 간격 12px · Label 1 14/20/500'],['결과 간격','검색창/결과 8px · 결과 행 사이 4px']],
+    checks:[...defaultChecks,'아이콘/입력 정렬, 긴 명령, 결과 0개·1개·다수, 방향키·Enter·Escape와 검색 지우기를 확인합니다.'],
+    assets:['content-primitives.css','custom-controls.css','custom-controls.js'],
+  },
+  item: {
+    usage:{when:'반복 항목의 제목·보조정보·상태·이동을 한 행에 묶을 때 사용합니다.',alternative:'열별 비교는 Table, 여러 행동과 긴 내용은 Card를 사용합니다.'},
+    rules:['전체 행을 하나의 네이티브 링크로 연결하고 독립적인 버튼을 링크 안에 넣지 않습니다.', '앞뒤 아이콘은 수축하지 않으며 제목 영역이 남은 공간을 차지합니다. 상태 배지는 보조정보 행에 배치해 제목 너비를 불필요하게 줄이지 않습니다.', '긴 제목·보조정보는 내용에 맞춰 줄바꿈합니다. 글자 축소나 강제 말줄임으로 항목을 맞추지 않습니다.'],
+    specification:[['공통 스타일','content-primitives.css + visibility.css · .dds-items / .dds-list-link / .dds-list-content / .dds-list-meta'],['제목','Body 1 Normal 16/24/600 · Strong'],['배치','행 패딩 12px · 아이콘 18px · 본문과 간격 12px · 보조정보 위 4px · 상태와 간격 8px']],
+    checks:[...defaultChecks,'미리보기의 보통 길이 제목은 한 줄인지, 실제 좁은 화면의 긴 제목과 배지가 겹치지 않고 높이가 늘어나는지 확인합니다.'],
+    assets:['content-primitives.css',...visibilityAssets],
+  },
+  'section-header': {
+    usage:{when:'섹션의 제목·실제 개수·보조 설명·전체 보기 행동을 제공할 때 사용합니다.',alternative:'화면 전체의 제목은 페이지 헤더를 사용합니다.'},
+    rules:['제목과 개수 배지를 별도 요소로 배치하고 8px 간격을 둡니다. 공백 문자로 간격을 만들지 않습니다.', '좁은 화면에서는 보조 행동을 다음 줄에 배치하고 제목이나 배지 너비를 강제로 줄이지 않습니다.', '장식 아이콘을 제목 앞에 추가하지 않고 개수는 실제 목록 데이터에 연결합니다.'],
+    specification:[['공통 스타일','content-primitives.css + visibility.css · .dds-section-header / .dds-section-heading'],['제목/배지','간격 8px · 제목 Body 1 Normal 16/24/600 · 배지 Label 2 13/18/600'],['행동/설명','그룹 간격 12px · 설명 위 4px · 부족한 너비에서 줄바꿈']],
+    checks:[...defaultChecks,'0개·여러 자리 개수, 긴 제목·보조 행동과 320px에서 간격과 줄바꿈을 확인합니다.'],
+    assets:['content-primitives.css',...visibilityAssets],
+  },
+  'fallback-view': {
+    usage:{when:'연결이나 처리에 실패해 복구 경로가 필요할 때 사용합니다.',alternative:'정상적으로 데이터가 없는 경우 Empty state를 사용합니다.'},
+    rules:['제목·설명과 복구 행동을 별도 그룹으로 나누고 설명 아래 20px 간격을 둡니다.', '입력값을 유지하며 실제 요청의 진행·성공·실패에 연결합니다. 재시도 중에는 중복 실행을 막습니다.'],
+    specification:[['공통 스타일','content-primitives.css + button-system.css · .dds-fallback / .dds-fallback-actions'],['간격','아이콘/제목 16px · 제목/설명 8px · 설명/행동 20px'],['텍스트','제목 Body 1 Normal 16/24/600 · 설명 Body 2 Normal 14/22']],
+    checks:[...defaultChecks,'긴 오류 설명·다수 복구 행동, 재시도 중·재실패·복구 완료 상태와 초점 유지를 확인합니다.'],
+    assets:['content-primitives.css','button-system.css'],
+  },
   'top-navigation': {
     usage: {when:'서비스의 로고·주 메뉴·언어와 계정 메뉴를 제공할 때 사용합니다.', alternative:'페이지 내부의 동등한 콘텐츠 전환은 Tabs를 사용합니다.'},
     rules: ['데스크톱은 로고·주 메뉴·보조 메뉴를 한 줄에 배치합니다. 모바일 첫 줄은 왼쪽 로고와 맨 오른쪽 메뉴 버튼으로 구성합니다.', '언어 변경·프로필·로그아웃 등 보조 메뉴는 모바일에서 햄버거가 여는 같은 패널 안에 배치합니다. 닫힌 상태로 첫 줄에 남기지 않습니다.', '전환 너비는 로고·메뉴 수·서체에 맞춰 정하고 CSS와 JS에서 같은 화면 또는 컨테이너 너비를 사용합니다. 640px 예제나 기존 서비스의 1180px를 모든 서비스에 강제하지 않습니다.', '펼침 패널의 같은 컨트롤을 재사용하고 ID·이벤트·언어와 계정 상태를 유지합니다. 접힌 패널은 display:none 또는 hidden으로 숨겨 키보드 초점에서도 제외합니다.', '화면 크기가 전환되면 메뉴의 열림 상태를 정리합니다. 현재 초점이 숨겨질 때만 보이는 로고·메뉴 버튼으로 옮깁니다.'],
@@ -354,7 +390,8 @@ const overrides = {
     rules: ['제목·열 헤더·데이터 셀 관계를 유지합니다. 정렬 가능 여부와 현재 정렬 상태를 전달합니다.', '빈 결과·로딩·오류를 구분합니다. 모바일에서 핵심 열 또는 가로 스크롤을 제공합니다.', '열 선택·전체 선택·페이지 이동 시 기존 대상 범위를 보존합니다.'],
     keyboard: ['일반 표 셀을 임의의 Tab 정지점으로 만들지 않습니다. 정렬·선택·행동 버튼에 접근할 수 있어야 합니다.'],
     checks: ['긴 값·빈 결과·정렬·선택·페이지 이동·좁은 화면의 열 대응을 확인합니다.'],
-    specification: [['너비', '비교할 정보에 맞춰 열 너비 결정 · 좁은 화면의 가로 스크롤 허용'], ['텍스트', '열의 역할에 따라 타이포그래피 지정 · 표 전체를 임의로 축소하지 않음']],
+    specification: [['공통 스타일','content-primitives.css · .dds-table-scroll / .dds-data-table'], ['너비', '예제의 3열 표 최소 너비 420px · 실제 열과 콘텐츠에 맞춰 조정 · 가로 스크롤은 표 안에 격리'], ['텍스트', '열의 역할에 따라 타이포그래피 지정 · 표 전체를 임의로 축소하지 않음']],
+    assets:['content-primitives.css'],
   },
   empty: {
     usage: {when: '아직 만든 문서가 없거나 검색 조건에 맞는 결과가 없을 때 사용합니다.', alternative: '통신·서버 실패는 Fallback view, 권한 제한은 제한 이유와 가능한 경로를 안내합니다.'},
@@ -396,6 +433,20 @@ const overrides = {
   },
 };
 
+const responsiveSpecifications = {
+  checkbox:[['라벨 배치','min-width:0 · 긴 문구 줄바꿈 · 체크 표시 영역 수축 금지']],
+  radio:[['그룹 배치','min-width:0 / max-width:100% · flex-wrap · 행/열 간격 14px / 22px · 긴 라벨 줄바꿈']],
+  switch:[['형태 유지','트랙 flex:0 0 38px · 긴 라벨은 별도 줄바꿈 · 트랙 폭을 글자에 양보하지 않음']],
+  avatar:[['형태 유지','flex-shrink:0 · aspect-ratio:1 · 긴 이름 옆에서도 원형·정사각 비율 유지']],
+  sidebar:[['너비','기본 260px · max-width:100% / min-width:0 · 긴 메뉴명 줄바꿈']],
+  skeleton:[['너비','예제 260px · max-width:100% / min-width:0 · 부모 너비를 초과하지 않음']],
+  empty:[['좁은 화면','min-width:0 / max-width:100% · 제목·설명 줄바꿈 · 복구 행동 노출']],
+  editor:[['좁은 화면','min-width:0 / max-width:100% · 내용과 도구·보조정보 행 줄바꿈']],
+  accordion:[['제목 행','제목 min-width:0 / 줄바꿈 · 펼침 표시 수축 금지 · 간격 14px']],
+  menubar:[['펼친 메뉴','실제 화면 경계에서 좌우·위아래 위치 조정 · 높이 초과 시 메뉴 안에서 스크롤 · 바깥 래퍼의 clipping 금지']],
+  'context-menu':[['펼친 메뉴','실제 화면 경계에서 좌우·위아래 위치 조정 · 닫힐 때 필요 시 트리거 초점 복귀']],
+};
+
 export function componentContract(c = {}) {
   const family = families[c.group] || families['Data display'];
   const custom = overrides[c.chartFamily || c.id] || {};
@@ -408,6 +459,7 @@ export function componentContract(c = {}) {
     .filter(([label]) => !c.chartFamily || label !== '종류')
     .map(row => [...row]);
   if (c.chartFamily) specification.push(['표시 방식', c.ko]);
+  specification.push(...(responsiveSpecifications[c.id]||[]).map(row=>[...row]));
   return {
     usage: {...{when: family.when, alternative: family.alternative}, ...custom.usage},
     rules,
