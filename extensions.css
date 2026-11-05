@@ -17,7 +17,7 @@
 
 /* Shared flat service header. The Header block uses this same source. */
 .dds-demo.dds-topnav-demo{container-type:inline-size;container-name:dds-topnav;width:100%;max-width:none;min-width:0;padding:0}
-.dds-topnav-demo .dds-topnav{position:relative;min-width:0;background:var(--background);display:block;border:0;border-radius:0;padding:0;gap:0}
+.dds-topnav-demo .dds-topnav{position:relative;width:100%;min-width:0;background:var(--background);display:block;border:0;border-bottom:1px solid var(--border);border-radius:0;padding:0;gap:0}
 .dds-topnav-demo .dds-topnav-brand{align-items:center;min-width:0;max-width:100%;color:var(--text-strong);font-family:var(--font-sans);font-size:var(--type-heading-2-size);line-height:var(--type-heading-2-line-height);font-weight:700;letter-spacing:var(--type-heading-2-tracking);text-decoration:none}
 .dds-topnav-demo .dds-topnav-menu{border:0;border-radius:0;background:transparent}
 .dds-topnav-demo .dds-topnav-menu>summary{list-style:none;cursor:pointer;margin:0}
@@ -29,7 +29,7 @@
 
 
 
-.dds-topnav-demo .dds-topnav-bar {display:flex;align-items:center;gap:var(--space-5);min-height:72px;min-width:0;border-bottom:1px solid var(--border);}
+.dds-topnav-demo .dds-topnav-bar {display:flex;align-items:center;gap:var(--space-5);width:100%;max-width:var(--dds-topnav-content-width,none);min-height:72px;min-width:0;margin-inline:auto;padding-inline:var(--dds-topnav-gutter,0);}
 .dds-topnav-demo .dds-topnav-brand {display:flex;flex-shrink:0;}
 .dds-topnav-demo .dds-topnav-brand img {display:block;width:174px;max-width:100%;height:auto;}
 .dds-topnav-demo .dds-topnav-panel {display:flex;align-items:center;gap:var(--space-5);flex:1;min-width:0;}

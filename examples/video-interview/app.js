@@ -1,4 +1,4 @@
-import {createComponent, mountDDS, icon} from '../../ui/index.js?v=2f0a2393132f45ea';
+import {createComponent, mountDDS, icon} from '../../ui/index.js?v=f202618082b57775';
 
 const $ = (selector, root=document) => root.querySelector(selector);
 const storeKey = 'maju-dds-050-v1';
@@ -72,8 +72,9 @@ const themeButton=button('다크 모드로 보기',()=>{
 },{before:state.theme==='dark'?'Sun':'Moon',variant:'outlined',color:'assistive',iconOnly:true});
 function updateThemeLabel(){const control=buttonControl(themeButton);const label=state.theme==='dark'?'라이트 모드로 보기':'다크 모드로 보기';control.setAttribute('aria-label',label);control.dataset.tooltip=label;$('.dds-button-label',control).replaceChildren(ico(state.theme==='dark'?'Sun':'Moon'));}
 updateThemeLabel();
-const nav=createComponent('top-navigation',{slots:{brandContent:brand,links,tools:fragment(themeButton,button('일정 추가',()=>openSchedule(),{before:'Plus',size:'sm'}))},attributes:{brandLink:{href:'#main','aria-label':'마주 홈'}}});
+const nav=createComponent('top-navigation',{slots:{brandContent:brand,links,tools:button('일정 추가',()=>openSchedule(),{before:'Plus',size:'sm'})},attributes:{brandLink:{href:'#main','aria-label':'마주 홈'}}});
 $('#navigation').append(nav);
+$('#footer-theme').append(themeButton);
 $('#intro-symbol').append(ico('MessagesSquare'));
 $('#intro-actions').append(button('준비실 열기',()=>scrollToSection('studio'),{before:'Video',size:'lg'}),button('인터뷰 일정 추가',()=>openSchedule(),{before:'Plus',variant:'outlined',color:'assistive',size:'lg'}));
 $('#privacy-note').append(ico('LockKeyhole'),text('span','caption-1','일정과 노트는 이 브라우저에만 저장돼요. 카메라 영상과 음성은 녹화하거나 전송하지 않습니다.'));

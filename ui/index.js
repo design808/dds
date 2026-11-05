@@ -1,15 +1,16 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=2f0a2393132f45ea';
-import {renderButton} from './button.js?v=2f0a2393132f45ea';
-import {icon} from './icons.js?v=2f0a2393132f45ea';
-import {mountControls} from './controls.js?v=2f0a2393132f45ea';
-import {bindCharts,chartDemo} from './charts.js?v=2f0a2393132f45ea';
-import {calendarDays} from './extended.js?v=2f0a2393132f45ea';
-import {UI_VERSION} from './version.js?v=2f0a2393132f45ea';
-import {prepareServiceContent,finalizeServiceContent,configureServiceItems,optionalContent} from './content.js?v=2f0a2393132f45ea';
-import {applyComponentVariants,componentVariants} from './variants.js?v=2f0a2393132f45ea';
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=f202618082b57775';
+import {renderButton} from './button.js?v=f202618082b57775';
+import {icon} from './icons.js?v=f202618082b57775';
+import {mountControls} from './controls.js?v=f202618082b57775';
+import {mountTooltips} from './tooltips.js?v=f202618082b57775';
+import {bindCharts,chartDemo} from './charts.js?v=f202618082b57775';
+import {calendarDays} from './extended.js?v=f202618082b57775';
+import {UI_VERSION} from './version.js?v=f202618082b57775';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,optionalContent} from './content.js?v=f202618082b57775';
+import {applyComponentVariants,componentVariants} from './variants.js?v=f202618082b57775';
 export {renderButton,icon,componentIds,componentParts,renderComponentSource,layoutContract};
 export {componentVariants,optionalContent};
-export {collectionCount,statusBadge} from '../visibility.js?v=2f0a2393132f45ea';
+export {collectionCount,statusBadge} from '../visibility.js?v=f202618082b57775';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -325,7 +326,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  const dismissMenus=()=>closeMenus(true);
  view.addEventListener('resize',()=>{dismissMenus();for(const record of [...floating.values()])if(record.kind==='popover')positionFloating(record);},{signal});
  doc.addEventListener('scroll',event=>{for(const record of floating.values())if(record.panel.contains(event.target))return;dismissMenus();for(const record of [...floating.values()])if(record.kind==='popover')positionFloating(record);},{capture:true,signal});
- if(tooltips)stops.push(mountTooltips(root,{signal,owns,createPortal,removePortal}));
+ if(tooltips)stops.push(mountTooltips(root,{signal,owns,priority:1,createPortal,removePortal,refreshPortal}));
  const cleanup=()=>{
   if(disposed)return;disposed=true;abort.abort();for(const timer of timers)view.clearTimeout(timer);timers.clear();
   for(const record of [...floating.values()])restore(record);for(const [handle,pointer]of dragging)try{handle.releasePointerCapture(pointer);}catch{}dragging.clear();
@@ -336,43 +337,3 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  bindings.set(root,cleanup);return cleanup;
 }
 
-function mountTooltips(root,{signal,owns,createPortal,removePortal}){
- const doc=root.ownerDocument,view=doc.defaultView;let current,scope,tip,timer,lastAria,lastTooltip;
- const cancel=()=>{view.clearTimeout(timer);timer=undefined;};
- const observer=new view.MutationObserver(()=>update());
- const tree=new view.MutationObserver(()=>{if(current&&!current.isConnected)hide();});
- tree.observe(root,{childList:true,subtree:true});
- const hide=()=>{
-  cancel();observer.disconnect();
-  if(current&&tip){const ids=(current.getAttribute('aria-describedby')||'').split(/\s+/).filter(id=>id&&id!==tip.id);ids.length?current.setAttribute('aria-describedby',ids.join(' ')):current.removeAttribute('aria-describedby');}
-  if(scope)removePortal(scope);current=scope=tip=null;
- };
- const position=()=>{
-  if(!current?.isConnected)return hide();refreshPortal(scope,current);
-  const anchor=current.getBoundingClientRect(),bounds=tip.getBoundingClientRect();tip.style.left=Math.max(12,Math.min(anchor.left+(anchor.width-bounds.width)/2,view.innerWidth-bounds.width-12))+'px';
-  tip.style.top=Math.max(12,Math.min(anchor.top-bounds.height-8>=12?anchor.top-bounds.height-8:anchor.bottom+8,view.innerHeight-bounds.height-12))+'px';
- };
- function update(){
-  if(!current||!owns(current)||!current.isConnected||current.hasAttribute('data-tooltip-disabled'))return hide();
-  const aria=current.getAttribute('aria-label')||'',explicit=current.getAttribute('data-tooltip')||'';let label=explicit||aria;
-  if(aria!==lastAria&&explicit===lastTooltip&&(!lastTooltip||lastTooltip===lastAria)){label=aria;if(explicit)current.setAttribute('data-tooltip',aria);}
-  lastAria=aria;lastTooltip=current.getAttribute('data-tooltip')||'';if(!label)return hide();tip.textContent=label;position();
- }
- const show=target=>{
-  const button=asElement(target)?.closest('button,a,summary');if(!button||!owns(button)||button.hasAttribute('data-tooltip-disabled'))return;
-  if(current===button){cancel();return update();}
-  const copy=button.cloneNode(true);copy.querySelectorAll('svg,.sr-only,[hidden]').forEach(node=>node.remove());if(!button.hasAttribute('data-tooltip')&&copy.textContent.trim())return;
-  const label=button.dataset.tooltip||button.getAttribute('aria-label');if(!label)return;
-  hide();current=button;lastAria=button.getAttribute('aria-label')||'';lastTooltip=button.getAttribute('data-tooltip')||'';
-  scope=createPortal(button);tip=doc.createElement('div');tip.className='dds-icon-tooltip';tip.id='dds-ui-tooltip-'+(++serial);tip.setAttribute('role','tooltip');tip.textContent=label;scope.append(tip);
-  button.setAttribute('aria-describedby',((button.getAttribute('aria-describedby')||'')+' '+tip.id).trim());observer.observe(button,{attributes:true,attributeFilter:['aria-label','data-tooltip','data-tooltip-disabled'],childList:true,subtree:true});position();
- };
- const delayHide=()=>{cancel();timer=view.setTimeout(()=>{if(!current?.contains(doc.activeElement))hide();},120);};
- doc.addEventListener('pointerover',event=>{if(event.pointerType==='touch')return;if(scope?.contains(event.target))return cancel();show(event.target);},{signal});
- doc.addEventListener('pointerout',event=>{if(!current)return;const related=asElement(event.relatedTarget);if(current.contains(related)||scope?.contains(related))return;if(current.contains(asElement(event.target))||scope?.contains(event.target))delayHide();},{signal});
- doc.addEventListener('focusin',event=>show(event.target),{signal});
- doc.addEventListener('focusout',event=>{if(current?.contains(asElement(event.target))&&!current.contains(asElement(event.relatedTarget)))hide();},{signal});
- doc.addEventListener('keydown',event=>{if(event.key==='Escape'&&owns(event.target))hide();},{signal});
- view.addEventListener('resize',()=>{if(current)position();},{signal});doc.addEventListener('scroll',()=>{if(current)position();},{capture:true,signal});
- doc.fonts?.addEventListener('loadingdone',()=>{if(current)position();},{signal});return ()=>{tree.disconnect();hide();};
-}

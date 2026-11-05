@@ -535,7 +535,7 @@
 .dds-ui .dds-list-card .dds-meta-secondary{margin:8px 0 0}
 .dds-ui .dds-demo.dds-topnav-demo,
 .dds-ui .dds-component.dds-topnav-demo{container-type:inline-size;container-name:dds-topnav;width:100%;max-width:none;min-width:0;padding:0}
-.dds-ui .dds-topnav-demo .dds-topnav{position:relative;min-width:0;background:var(--background);display:block;border:0;border-radius:0;padding:0;gap:0}
+.dds-ui .dds-topnav-demo .dds-topnav{position:relative;width:100%;min-width:0;background:var(--background);display:block;border:0;border-bottom:1px solid var(--border);border-radius:0;padding:0;gap:0}
 .dds-ui .dds-topnav-demo .dds-topnav-brand{align-items:center;min-width:0;max-width:100%;color:var(--text-strong);font-family:var(--font-sans);font-size:var(--type-heading-2-size);line-height:var(--type-heading-2-line-height);font-weight:700;letter-spacing:var(--type-heading-2-tracking);text-decoration:none}
 .dds-ui .dds-topnav-demo .dds-topnav-menu{border:0;border-radius:0;background:transparent}
 .dds-ui .dds-topnav-demo .dds-topnav-menu>summary{list-style:none;cursor:pointer;margin:0}
@@ -545,7 +545,7 @@
 .dds-ui .dds-topnav-demo .dds-topnav-menu[open]>summary .dds-topnav-tool-chevron>.icon{transform:rotate(180deg)}
 .dds-ui .dds-topnav-demo .dds-topnav-panel[hidden],
 .dds-ui .dds-topnav-demo .dds-topnav-toggle[hidden]{display:none}
-.dds-ui .dds-topnav-demo .dds-topnav-bar {display:flex;align-items:center;gap:var(--space-5);min-height:72px;min-width:0;border-bottom:1px solid var(--border);}
+.dds-ui .dds-topnav-demo .dds-topnav-bar {display:flex;align-items:center;gap:var(--space-5);width:100%;max-width:var(--dds-topnav-content-width,none);min-height:72px;min-width:0;margin-inline:auto;padding-inline:var(--dds-topnav-gutter,0);}
 .dds-ui .dds-topnav-demo .dds-topnav-brand {display:flex;flex-shrink:0;}
 .dds-ui .dds-topnav-demo .dds-topnav-brand img {display:block;width:174px;max-width:100%;height:auto;}
 .dds-ui .dds-topnav-demo .dds-topnav-panel {display:flex;align-items:center;gap:var(--space-5);flex:1;min-width:0;}
@@ -1504,7 +1504,7 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .dds-variant-overlay[data-dds-size=sm] {max-width:440px}
 .dds-ui .dds-variant-overlay[data-dds-size=md] {max-width:560px}
 .dds-ui .dds-variant-overlay[data-dds-size=lg] {max-width:800px}
-.dds-ui .dds-variant-overlay .sample-document:is([data-dds-content=plain],[data-dds-content=form]) {padding:0;border:0;border-radius:0;background:transparent;margin:var(--space-5) 0}
+.dds-ui .dds-variant-overlay .sample-document:is([data-dds-content=plain],[data-dds-content=form]) {padding:0;border:0;border-radius:0;background:transparent;margin:0}
 .dds-ui .dds-variant-overlay.sheet[data-dds-size=sm] {max-width:320px}
 .dds-ui .dds-variant-overlay.sheet[data-dds-size=md] {max-width:440px}
 .dds-ui .dds-variant-overlay.sheet[data-dds-size=lg] {max-width:640px}
@@ -1557,8 +1557,11 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui :is(h1,h2,h3,p){margin:0}
 .dds-ui .empty-state > h3{margin:0 0 12px}
 .dds-ui .empty-state > p{margin:0 0 20px}
-.dds-ui .dds-dialog > p,
 .dds-ui .dds-overlay > p{margin:0 0 20px}
+.dds-ui .dds-dialog[open]{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.dds-ui .dds-dialog > :is(.dialog-heading,p,.sample-document){margin:0}
+.dds-ui .dds-dialog > button{justify-self:start}
+.dds-ui .dds-ui-portal{display:contents}
 .dds-ui .sample-document:not([data-dds-content=plain],[data-dds-content=form]) > h3{margin:18px 0 12px}
 .dds-ui .sample-document:not([data-dds-content=plain],[data-dds-content=form]) > p{margin:0 0 20px}
 .dds-ui .dds-demo.dds-size-content,

@@ -1,7 +1,7 @@
-import {createComponent as component,mountDDS,icon,statusBadge} from '../../ui/index.js?v=2f0a2393132f45ea';
-import {STORAGE_KEY,CHECK_LABELS,LIMIT,questionsFor,createSession,restoreSession,charCount,canSubmit,metrics,formatTime} from './app-model.js?v=2f0a2393132f45ea';
+import {createComponent as component,mountDDS,icon,statusBadge} from '../../ui/index.js?v=f202618082b57775';
+import {STORAGE_KEY,CHECK_LABELS,LIMIT,questionsFor,createSession,restoreSession,charCount,canSubmit,metrics,formatTime} from './app-model.js?v=f202618082b57775';
 
-import {prepareNavigation} from './app-lifecycle.js?v=2f0a2393132f45ea';
+import {prepareNavigation} from './app-lifecycle.js?v=f202618082b57775';
 
 const app=document.querySelector('#app');
 let session=null,storageAvailable=true;
@@ -26,14 +26,14 @@ function startClock(){if(session?.status==='active'&&clockStart===null)clockStar
 function pauseClock(){checkpoint();clockStart=null;}
 function answerSeconds(){return Math.floor(((session?.answers[session.index].elapsed||0)+(clockStart===null?0:Date.now()-clockStart))/1000);}
 function go(next,{focus=true}={}){route=next;if(location.hash!=='#/'+next)history.pushState({},'','#/'+next);render({focus});}
-function header(){const brand=make('span','page-inline-icon');const mark=make('span','page-brand-mark');mark.innerHTML=icon('Video');brand.append(mark,document.createTextNode('인터뷰 스튜디오'));const links=document.createDocumentFragment();links.append(actionLink('인터뷰 연습','home'),actionLink('진행 안내','guide'),actionLink('내 결과표','report'));const tools=button(document.documentElement.dataset.theme==='dark'?'라이트 모드로 전환':'다크 모드로 전환','theme',{variant:'outlined',color:'assistive',before:document.documentElement.dataset.theme==='dark'?'Sun':'Moon',iconOnly:true});const nav=component('top-navigation',{slots:{brandContent:brand,links,tools},attributes:{brandLink:{href:'#/home','aria-label':'인터뷰 스튜디오 홈','data-app-nav':'home'}}});const shell=make('div','page-header-shell'),inner=make('div','page-header');inner.append(nav);shell.append(inner);return shell;}
+function header(){const brand=make('span','page-inline-icon');const mark=make('span','page-brand-mark');mark.innerHTML=icon('Video');brand.append(mark,document.createTextNode('인터뷰 스튜디오'));const links=document.createDocumentFragment();links.append(actionLink('인터뷰 연습','home'),actionLink('진행 안내','guide'),actionLink('내 결과표','report'));const nav=component('top-navigation',{slots:{brandContent:brand,links,tools:document.createDocumentFragment()},attributes:{brandLink:{href:'#/home','aria-label':'인터뷰 스튜디오 홈','data-app-nav':'home'}}});nav.querySelector('.dds-topnav-tools').hidden=true;const shell=make('div','page-header-shell');shell.append(nav);return shell;}
 function render({focus=true}={}){
  const active=document.activeElement,activeId=active?.id,activeAction=active?.dataset?.appAction;
  cleanup();
  const main=make('main','page-main');main.id='main';main.tabIndex=-1;
  const content=route==='home'?home():route==='guide'?guide():route==='interview'?interview():route==='complete'?complete():route==='report'?report():empty('화면을 찾을 수 없어요','메인 화면에서 연습을 시작해 주세요.');main.append(content);
  if(!storageAvailable)main.append(notice('브라우저 임시 저장을 사용할 수 없어요. 이 페이지를 닫으면 답변 기록이 사라집니다.','warning'));
- const footer=make('footer','page-footer');footer.append(text('인터뷰 스튜디오','label-1'),text('한 번의 연습을, 다음 답변의 출발점으로.','label-2'));
+ const footer=make('footer','page-footer');const theme=make('div','page-footer-theme');theme.append(button(document.documentElement.dataset.theme==='dark'?'라이트 모드로 전환':'다크 모드로 전환','theme',{variant:'outlined',color:'assistive',before:document.documentElement.dataset.theme==='dark'?'Sun':'Moon',iconOnly:true}));footer.append(text('인터뷰 스튜디오','label-1'),text('한 번의 연습을, 다음 답변의 출발점으로.','label-2'),theme);
  app.replaceChildren(header(),main,footer);cleanup=mountDDS(app,{controls:true,charts:false});
  for(const video of app.querySelectorAll('[data-live-video]')){video.srcObject=stream;if(stream)video.play().catch(()=>{});}
  document.title=({home:'나의 속도로 준비하는 면접',guide:'인터뷰 진행 안내',interview:'인터뷰 진행 중',complete:'인터뷰 완료',report:'내 인터뷰 결과표'}[route]||'인터뷰 스튜디오')+' · 인터뷰 스튜디오';

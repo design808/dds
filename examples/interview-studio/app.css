@@ -1,10 +1,10 @@
 /* Page-owned structure and content only. Canonical DDS internals are not restyled. */
 body{margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-sans)}
-.page-header-shell{border-bottom:1px solid var(--border)}
-.page-header{max-width:1256px;margin-inline:auto;padding-inline:16px}
+.page-header-shell{--dds-topnav-content-width:1256px;--dds-topnav-gutter:16px}
 .page-main{max-width:1200px;margin-inline:auto;padding:48px 32px 72px;min-height:calc(100vh - 180px)}
 .page-main>*{min-width:0}
-.page-footer{max-width:1200px;margin:auto;padding:24px 32px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--text-tertiary)}
+.page-footer{max-width:1200px;margin:auto;padding:24px 32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--text-tertiary)}
+.page-footer-theme{margin-left:auto}
 .page-stack{display:flex;flex-direction:column;gap:24px;min-width:0}
 .page-stack-tight{display:flex;flex-direction:column;gap:12px;min-width:0}
 .page-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-width:0}
@@ -60,7 +60,7 @@ body{margin:0;background:var(--background);color:var(--foreground);font-family:v
 }
 @media(max-width:760px){
  .page-main{padding:24px 20px 48px}
- .page-header{padding-inline:0}
+ .page-header-shell{--dds-topnav-gutter:20px}
  .page-footer{padding:24px 20px}
  .page-hero{grid-template-columns:1fr;gap:40px;padding-block:24px 40px}
  .page-grid-3,.page-grid-2,.page-layout,.page-room{grid-template-columns:1fr}

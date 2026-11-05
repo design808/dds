@@ -1,5 +1,5 @@
 // Documentation-only entry point. Services import mountControls and choose a root.
-import {mountControls} from './ui/controls.js?v=2f0a2393132f45ea';
+import {mountControls} from './ui/controls.js?v=f202618082b57775';
 
-export {mountControls} from './ui/controls.js?v=2f0a2393132f45ea';
+export {mountControls} from './ui/controls.js?v=f202618082b57775';
 export const cleanupControls=mountControls(document.body);

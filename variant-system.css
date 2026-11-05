@@ -85,7 +85,7 @@
 .dds-variant-overlay[data-dds-size=sm] {max-width:440px}
 .dds-variant-overlay[data-dds-size=md] {max-width:560px}
 .dds-variant-overlay[data-dds-size=lg] {max-width:800px}
-.dds-variant-overlay .sample-document:is([data-dds-content=plain],[data-dds-content=form]) {padding:0;border:0;border-radius:0;background:transparent;margin:var(--space-5) 0}
+.dds-variant-overlay .sample-document:is([data-dds-content=plain],[data-dds-content=form]) {padding:0;border:0;border-radius:0;background:transparent;margin:0}
 .dds-variant-overlay.sheet[data-dds-size=sm] {max-width:320px}
 .dds-variant-overlay.sheet[data-dds-size=md] {max-width:440px}
 .dds-variant-overlay.sheet[data-dds-size=lg] {max-width:640px}

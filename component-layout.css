@@ -11,7 +11,16 @@
 :is(h1,h2,h3,p){margin:0}
 .empty-state > h3{margin:0 0 12px}
 .empty-state > p{margin:0 0 20px}
-.dds-dialog > p,.dds-overlay > p{margin:0 0 20px}
+.dds-overlay > p{margin:0 0 20px}
+/* The dialog owns space between its heading, body and actions. A supplied body
+   has no outer margin; its content controls its own internal layout. Keep the
+   display rule limited to [open] so a closed native dialog stays hidden. */
+.dds-dialog[open]{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.dds-dialog > :is(.dialog-heading,p,.sample-document){margin:0}
+.dds-dialog > button{justify-self:start}
+/* Floating runtime UI inherits tokens through a portal without adding a layout
+   row or section gap to the containing dialog. */
+.dds-ui-portal{display:contents}
 .sample-document:not([data-dds-content=plain],[data-dds-content=form]) > h3{margin:18px 0 12px}
 .sample-document:not([data-dds-content=plain],[data-dds-content=form]) > p{margin:0 0 20px}
 

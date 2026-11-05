@@ -2,7 +2,7 @@
 html { scroll-behavior:smooth; }
 body { margin:0; background:var(--workspace-background); }
 .shell { width:min(1240px,calc(100% - 80px)); margin-inline:auto; }
-.site-header { background:var(--background); }
+.site-header { background:var(--background); --dds-topnav-content-width:1320px; --dds-topnav-gutter:40px; }
 .skip-link { position:fixed; top:-80px; left:16px; z-index:100; background:var(--background); padding:12px; }
 .skip-link:focus { top:12px; }
 .brand-content { display:flex; align-items:center; gap:10px; }
@@ -60,7 +60,8 @@ body { margin:0; background:var(--workspace-background); }
 .privacy-note > .icon { width:16px; height:16px; flex-shrink:0; margin-top:3px; }
 .site-footer { display:flex; flex-wrap:wrap; align-items:center; gap:var(--space-3); border-top:1px solid var(--border); padding-block:28px; margin-top:52px; }
 .site-footer p { margin:0; }
-.site-footer > p:last-child { margin-left:auto; }
+.site-footer > p:last-of-type { margin-left:auto; }
+#footer-theme { margin-left:auto; }
 .form-stack { display:grid; gap:var(--space-5); }
 .form-row { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-4); align-items:start; }
 .dialog-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:var(--space-3); }
@@ -73,11 +74,12 @@ body { margin:0; background:var(--workspace-background); }
 #studio,#practice,#schedule,#checklist { scroll-margin-top:24px; min-width:0; }
 [hidden] { display:none !important; }
 @media (max-width:1100px) {
+ .site-header { --dds-topnav-gutter:24px; }
  .shell { width:calc(100% - 48px); }
  .intro { gap:32px; grid-template-columns:minmax(0,1fr) 330px; }
  .intro-note { padding-left:24px; gap:16px; }
  .intro-symbol { width:64px; height:84px; }
- .site-footer > p:last-child { margin-left:0; width:100%; }
+ .site-footer > p:last-of-type { margin-left:0; width:100%; }
 }
 @media (max-width:800px) {
  .intro { grid-template-columns:1fr; padding-block:40px 36px; }
@@ -88,6 +90,7 @@ body { margin:0; background:var(--workspace-background); }
  .site-footer { margin-top:36px; }
 }
 @media (max-width:580px) {
+ .site-header { --dds-topnav-gutter:16px; }
  .shell { width:calc(100% - 32px); }
  .intro { padding-block:32px; }
  .intro-copy h1 { font-size:var(--type-title-1-size); line-height:var(--type-title-1-line-height); }
