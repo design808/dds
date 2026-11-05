@@ -12,6 +12,7 @@ export const optionalContent=Object.freeze({
  empty:{description:'.empty-state > p',action:'.empty-state > a'},
  avatar:{description:'.helper'},
  card:{status:'.dds-status',primary:'.dds-meta-primary',secondary:'.dds-meta-secondary',date:'.dds-meta-date',action:'.dds-card-tools'},
+ item:{firstTrailingInfo:'.dds-items > li:first-child .dds-list-trailing-info',firstActions:'.dds-items > li:first-child .dds-list-actions'},
  field:{description:'.helper[id]'},
  label:{description:'.helper'},
  'input-otp':{description:'[data-otp-status]'},

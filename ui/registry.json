@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.5.3",
+  "version": "0.5.5",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "layout": {
@@ -43,30 +43,30 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "32dbeff034c430834be7b99e40fcc8b226bc33f2d89090cba34ba4d6c804be3d",
-    "ui/core.js": "e569ebc24574225fcdf180ca9e6ac673c2bd61e46773f2774335448ec71d2dd2",
-    "ui/button.js": "dfbccc694cba042b82de07800ea5b8e84d74e6252cb88d50f5870c47f178fbd8",
-    "ui/extended.js": "3c80f82c0a8f7d7726ac29688323baf0f5ad3946c2cac1a7cf25521cb7034491",
-    "ui/charts.js": "d760cdc68656855208333eb6ff93ec0301ca76388a773e753f9b96d75c116f08",
-    "ui/source.js": "4f80f97c74e9118faaee8f7245797d15bfd998370ca45ef450830cd7c665e156",
-    "ui/index.js": "e9ea36dac0cbdb4304154849a7881928b765d45ac32b585391074eea4bec8bb6",
-    "ui/content.js": "ec71b8dd3e88d67e86f91f4ae1a417bdcfb6fe9aeac06996c1187aba03a6b9fd",
-    "ui/variants.js": "8d3e2070a48922fc29d7eab9abd1fd533a92e8881fb5057d840cee7afeaf5a3c",
-    "ui/profile.js": "ca5e02a4eb12128a320f713d140695db21d4eaa315cc159044ba57c941e488af",
+    "ui/version.js": "2fef061fdc2e3ee2da7c3752dff035b259b15d1f2f604cbc583f0e864067b274",
+    "ui/core.js": "2bddfc1c2209a3d30752ec5b78a107634fbaee19367bbf22bad50f8c06409450",
+    "ui/button.js": "a37e4ead665bd08098870ca83ecad0aa4ce881f992cf3d583f5754048f5d75d1",
+    "ui/extended.js": "4efbd3fa33e65c9d02ee2a8fac3fee777569b81b821f17f21e43e66a0efeb2d2",
+    "ui/charts.js": "fba1e2a59d3e86f8d059c4692f27954926cb2eec6f0db5986c183fd46db6eed3",
+    "ui/source.js": "0d3f8c5d4950e8ecf9dbd1d1b53ceca0b412880375a5d9d7d18fbac7a276cb29",
+    "ui/index.js": "321244d3d7c0c0a7a62482284742b02b6a7cfe58f73414c3d3b1c8d88020720a",
+    "ui/content.js": "62bc19606ff3874910d542471971151d5d200e808bc782d22f950c4ff454dd9b",
+    "ui/variants.js": "a6e17fd4bb87d0b4c6c52582733679cd3148c8f282ea7123d3890e24ff6d2819",
+    "ui/profile.js": "50713a76eed4cdc4ad010ddb5f96a50677dfe3650460eb05aa5b750ef38fd2e1",
     "ui/profile-palette.js": "10a29ff6c24ef3c9acf40e619b4e2836a5760a3154eb980a92323df9096acb88",
-    "ui/icons.js": "6ed64c98fc70efa60382efcef4c165b9601bb681e12bcc3a71cd68c7f38ae3ac",
+    "ui/icons.js": "0a83a58ffe7a32eada37b6cddc23713be5138aadfafaaca3411ce4c0cfd1b2b3",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "2e4b604376d58c65999cac553d425d8d7bb60dc59883a7b95cba5e9b58fdfc62",
+    "ui/controls.js": "9d591a21fee65b894ba0afb429ec0db9e8c272a7fc2c058da8f6318ad7951a90",
     "ui/tooltips.js": "1791700822254b400b0af547bc303a0c8eef56e1cc1d720e6ce7df0390bf862b",
-    "ui/dds.css": "d831cea0ffc1a3598e005f01ff61626890688885823bf3daf5352af74461b5ab",
+    "ui/dds.css": "033876330ff9a8a8f3b3a94e6225b044d9f9104720d6eb677af92ba64ed4227c",
     "ui/tokens-scoped.css": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713",
     "tokens.css": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
     "component-layout.css": "e86132f179ced0c3c3084d461dede435383e426413e8e770f219a36a6d636d56",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "668039c6c4d07bce088d24225a377bff4fe24b0d9a322f8039205a44f39d13cb",
-    "design-preferences.js": "822338b719a440f223472498d3142b84489efaf533707d9e7480189724ca2b0b",
-    "design-profile.js": "16721b77a2430310c75bf44bd1a5775e4764b95b06a7f1dbf001dddd8870df5f",
+    "design-preferences.js": "315a4c2654c3926b46185744027700c2d7c40d7e1f3ccb2266362a0f98abd365",
+    "design-profile.js": "32f81004fbbe1eff985678de08cdafd15fa5a8e217812cd1b24c5ecbed0c43b3",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "components": {
@@ -4496,7 +4496,7 @@
       "group": "Data display",
       "template": "ui/templates/item.html",
       "idPrefix": "dds-instance",
-      "sha256": "f490f8d34fce7fa82008b17c3c19bb850d6fa2f789ffe9ccf144f4a2c97c7bac",
+      "sha256": "e50dfdf1795bf3dd127e057c763a24e1d35dc3da64f048855d6f9ac67ed864a1",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4512,7 +4512,7 @@
           "kind": "slot"
         },
         "firstLink": {
-          "selector": ".dds-items > li:first-child a",
+          "selector": ".dds-items > li:first-child .dds-list-link",
           "kind": "attributes"
         },
         "firstTitle": {
@@ -4526,9 +4526,38 @@
         "firstStatus": {
           "selector": ".dds-items > li:first-child .dds-status > span",
           "kind": "text"
+        },
+        "firstLeading": {
+          "selector": ".dds-items > li:first-child .dds-list-leading",
+          "kind": "slot"
+        },
+        "firstMetadataContent": {
+          "selector": ".dds-items > li:first-child .dds-list-meta",
+          "kind": "slot"
+        },
+        "firstTrailingInfo": {
+          "selector": ".dds-items > li:first-child .dds-list-trailing-info",
+          "kind": "slot"
+        },
+        "firstActions": {
+          "selector": ".dds-items > li:first-child .dds-list-actions",
+          "kind": "slot"
         }
       },
       "variants": {
+        "appearance": {
+          "label": "형태",
+          "type": "enum",
+          "values": [
+            "outlined",
+            "divided"
+          ],
+          "default": "outlined",
+          "labels": {
+            "outlined": "외곽선",
+            "divided": "행 구분선"
+          }
+        },
         "icon": {
           "label": "앞 아이콘",
           "type": "boolean",
@@ -4550,7 +4579,10 @@
           "default": true
         }
       },
-      "optionalParts": {},
+      "optionalParts": {
+        "firstTrailingInfo": ".dds-items > li:first-child .dds-list-trailing-info",
+        "firstActions": ".dds-items > li:first-child .dds-list-actions"
+      },
       "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
       "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
     },
@@ -6019,7 +6051,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "8eb0841135cc71ad",
-    "canonicalBundle": "../releases/0.5.3/bundle.json"
+    "assetRevision": "a996fa47ec4a3cf0",
+    "canonicalBundle": "../releases/0.5.5/bundle.json"
   }
 }

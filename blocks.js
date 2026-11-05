@@ -1,21 +1,23 @@
-import {icon} from './icons.js?v=8eb0841135cc71ad';
-import {components} from './catalog.js?v=8eb0841135cc71ad';
-import {bindCharts} from './chart-system.js?v=8eb0841135cc71ad';
-import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=8eb0841135cc71ad';
-import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=8eb0841135cc71ad';
-import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=8eb0841135cc71ad';
-import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=8eb0841135cc71ad';
+import {icon} from './icons.js?v=a996fa47ec4a3cf0';
+import {components} from './catalog.js?v=a996fa47ec4a3cf0';
+import {bindCharts} from './chart-system.js?v=a996fa47ec4a3cf0';
+import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=a996fa47ec4a3cf0';
+import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=a996fa47ec4a3cf0';
+import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=a996fa47ec4a3cf0';
+import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=a996fa47ec4a3cf0';
+import {listBlocks,renderListBlock,bindListBlocks} from './block-list.js?v=a996fa47ec4a3cf0';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const blockCategories=[
   {id:'all',name:'전체'}, {id:'marketing',name:'랜딩'},
   {id:'account',name:'계정'}, {id:'workspace',name:'업무'}
 ];
-const blockOrder=['social-proof','feature-navigation','basic-table','login','signup','dashboard','data-flow','journey-flow','cohort-retention','sidebar','notifications','settings','kanban','metric-explorer','invoice-studio','hero','content-gallery','how-it-works','pricing','faq','header','footer'];
-export const blocks=[...contentBlocks,...tableBlocks,...formBlocks,...workspaceBlocks].sort((a,b)=>blockOrder.indexOf(a.id)-blockOrder.indexOf(b.id));
+const blockOrder=['social-proof','feature-navigation','basic-table','job-list','login','signup','dashboard','data-flow','journey-flow','cohort-retention','sidebar','notifications','settings','kanban','metric-explorer','invoice-studio','hero','content-gallery','how-it-works','pricing','faq','header','footer'];
+export const blocks=[...contentBlocks,...tableBlocks,...formBlocks,...workspaceBlocks,...listBlocks].sort((a,b)=>blockOrder.indexOf(a.id)-blockOrder.indexOf(b.id));
 const formIds=new Set(formBlocks.map(block=>block.id));
 const tableIds=new Set(tableBlocks.map(block=>block.id));
 const workspaceIds=new Set(workspaceBlocks.map(block=>block.id));
+const listIds=new Set(listBlocks.map(block=>block.id));
 let selectedCategory='all';
 let sceneSequence=0;
 const componentName=id=>components.find(component=>component.id===id)?.name||id;
@@ -23,7 +25,7 @@ const matchingBlocks=()=>blocks.filter(block=>selectedCategory==='all'||block.ca
 
 function scene(block,prefix){
   const uid=`${prefix}-${block.id}-${++sceneSequence}`;
-  const html=formIds.has(block.id)?renderFormBlock(block.id,uid):tableIds.has(block.id)?renderTableBlock(block.id,uid):workspaceIds.has(block.id)?renderWorkspaceBlock(block.id,uid):renderContentBlock(block.id,uid);
+  const html=formIds.has(block.id)?renderFormBlock(block.id,uid):tableIds.has(block.id)?renderTableBlock(block.id,uid):workspaceIds.has(block.id)?renderWorkspaceBlock(block.id,uid):listIds.has(block.id)?renderListBlock(block.id,uid):renderContentBlock(block.id,uid);
   const resolved=html.replace(/(\bsrc=["'])\/assets\//g,(_,before)=>before+new URL('./assets/',import.meta.url).href);
   return `<div class="dds-block-example">${resolved}</div>`;
 }
@@ -38,6 +40,8 @@ function cards(items){
 }
 
 export function blocksPage(){
+  const requested=new URLSearchParams(globalThis.location?.hash.split('?')[1]||'').get('block');
+  if(requested&&blocks.some(block=>block.id===requested)&&!matchingBlocks().some(block=>block.id===requested))selectedCategory='all';
   const matches=matchingBlocks();
   return `<div class="dds-blocks-page-content">
     <h1 class="sr-only">블록</h1>
@@ -114,9 +118,9 @@ export function bindBlocks(root){
     dialog.querySelector('h2').textContent=block.title;
     expanded.innerHTML=scene(block,'expanded');
     root.querySelector('[data-block-components]').innerHTML=block.components.map(id=>`<a class="chip" href="#/components/${esc(id)}">${esc(componentName(id))}</a>`).join('');
-    const stopForms=bindFormBlocks(expanded),stopContent=bindContentBlocks(expanded),stopTable=bindTableBlocks(expanded),stopWorkspace=bindWorkspaceBlocks(expanded);
+    const stopForms=bindFormBlocks(expanded),stopContent=bindContentBlocks(expanded),stopTable=bindTableBlocks(expanded),stopWorkspace=bindWorkspaceBlocks(expanded),stopLists=bindListBlocks(expanded);
     const stopCharts=bindCharts(expanded);
-    cleanupExample=()=>{stopForms?.();stopContent?.();stopTable?.();stopWorkspace?.();stopCharts?.();};
+    cleanupExample=()=>{stopForms?.();stopContent?.();stopTable?.();stopWorkspace?.();stopLists?.();stopCharts?.();};
     setDevice('desktop');
     if(!dialog.open)dialog.showModal();
     root.querySelector('[data-block-close]').focus({preventScroll:true});
@@ -145,6 +149,8 @@ export function bindBlocks(root){
     closingTimer=setTimeout(()=>{if(!dialog.open)expanded.replaceChildren();},220);
   },{signal});
   discover();document.fonts?.ready.then(scheduleFit);
+  const requested=new URLSearchParams(window.location.hash.split('?')[1]||'').get('block');
+  if(requested&&blocks.some(block=>block.id===requested))open(requested,results.querySelector('[data-block-open="'+requested+'"]'));
   window.addEventListener('dds-design-settings-change',scheduleFit,{signal});
   return ()=>{
     disposed=true;controller.abort();cleanupExample();cleanupGalleryCharts?.();clearTimeout(closingTimer);

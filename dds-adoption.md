@@ -84,6 +84,8 @@ React·Vue·Django 등에서는 원본 HTML을 해당 템플릿 문법으로 옮
 
 `app.js`, `style.css`, `component-specimens.css`, `document-*`, `button-demos.js`, `button-docs.css`, 블록·미리보기 스크립트는 서비스에 연결하지 않는다. `component-specimens.css`는 문서용 폭과 배치를 맡으며 SDK 묶음에 포함하지 않는다. `custom-controls.js`는 문서의 전체 자동 변환 진입점이다. 서비스에서는 명시적 루트의 `ui/index.js` 또는 `ui/controls.js` API를 사용한다. 적용 예시의 임시 저장·AI 처리도 실제 백엔드를 대신하지 않는다.
 
+새 화면을 구성할 때는 설치한 `ui/composition.md`의 블록 선택 기준과 [공개 블록](https://design808.github.io/dds/#/blocks)을 참고한다. 블록의 정보 순서·컴포넌트 조합·모바일 전환을 확인하고 설치 버전의 UI 원본으로 구현한다. [채용 공고 목록](https://design808.github.io/dds/#/blocks?block=job-list)은 Item의 구분선형·후행 정보·독립 행동을 조합한 예시다. 웹을 볼 수 없으면 설치한 구성 기준으로 진행하고, 블록을 확인했다고 보고하지 않는다.
+
 ## 검수와 기록
 
 프로젝트의 실제 빌드·타입·테스트 명령을 확인해 실행한다. DDS 저장소의 검사 통과가 대상 서비스 검증을 대신하지 않는다. 정적 검사만으로 화면 일치를 완료했다고 판단하지 않는다.

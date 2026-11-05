@@ -1,5 +1,5 @@
-import {createComponent,mountDDS,icon,collectionCount,statusBadge} from '../ui/index.js?v=8eb0841135cc71ad';
-import {jobs,categories,filterOptions,sortOptions,filterJobs,sortJobs,getJobById,getCompanyById} from './careers-data.js?v=8eb0841135cc71ad';
+import {createComponent,mountDDS,icon,collectionCount,statusBadge} from '../ui/index.js?v=a996fa47ec4a3cf0';
+import {jobs,categories,filterOptions,sortOptions,filterJobs,sortJobs,getJobById,getCompanyById} from './careers-data.js?v=a996fa47ec4a3cf0';
 
 const $=selector=>document.querySelector(selector);
 const main=$('[data-co-main]');

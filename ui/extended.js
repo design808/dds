@@ -1,6 +1,6 @@
 // Canonical extended-component markup. No document listeners or automatic mounting.
-import {icon} from './icons.js?v=8eb0841135cc71ad';
-import {collectionCount,statusBadge} from '../visibility.js?v=8eb0841135cc71ad';
+import {icon} from './icons.js?v=a996fa47ec4a3cf0';
+import {collectionCount,statusBadge} from '../visibility.js?v=a996fa47ec4a3cf0';
 const button=(text,attrs='',cls='')=>`<button type="button" class="btn ${cls}" ${attrs}>${text}</button>`;
 const ic=(name,label,attrs='')=>`<button type="button" class="icon-btn" aria-label="${label}" ${attrs}>${icon(name)}</button>`;
 const link=(text,route,current=false)=>`<a class="dds-nav-link dds-nav-control" href="#${route}" ${current?'aria-current="page"':''}>${text}</a>`;
@@ -12,6 +12,30 @@ const menu=(uid,title,items=['새 문서','문서 복사','내보내기'])=>`<di
 const contentSizedComponents=new Set(['text-button','button-group','toggle','toggle-group','alert-dialog','sheet','drawer','popover','hover-card','push-badge','avatar-group','spinner','play-badge']);
 const bubble=(text,out=false)=>`<div class="dds-bubble ${out?'outgoing':''}">${text}</div>`;
 const message=(text,who='DDS 코치',out=false)=>`<article class="dds-message ${out?'outgoing':''}"><span class="avatar">${out?'나':'D'}</span><div><div class="dds-message-meta"><b>${who}</b><time>09:30</time></div>${bubble(text,out)}</div></article>`;
+const escapeItemText=value=>String(value??'').replace(/[&<>"']/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+function itemHref(value){
+ const href=String(value??'#').trim(),protocol=href.replace(/[\u0000-\u0020\u007f]/g,'');
+ if(/^[a-z][a-z0-9+.-]*:/i.test(protocol)&&!/^(https?|mailto|tel):/i.test(protocol))throw new TypeError('Unsupported DDS Item link protocol.');
+ return escapeItemText(href);
+}
+/** Shared Item anatomy for service templates and document blocks.
+ * title/href/metadata/label are escaped. slots contain trusted, authored DDS HTML;
+ * never pass user-provided HTML into a slot. DOM callers use the registered slots.
+ */
+export function renderItemList(items,{appearance='outlined',label}={}){
+ if(!Array.isArray(items))throw new TypeError('DDS Item requires an array.');
+ if(!['outlined','divided'].includes(appearance))throw new TypeError('Unsupported DDS Item appearance.');
+ const rows=items.map(item=>{
+  if(!item||typeof item!=='object'||!String(item.title??'').trim())throw new TypeError('DDS Item requires a title.');
+  const slots=item.slots||{};
+  for(const [name,value]of Object.entries(slots))if(!['leading','metadata','trailingInfo','actions'].includes(name)||value!=null&&typeof value!=='string')throw new TypeError('DDS Item slots require authored HTML strings.');
+  const leading=Object.hasOwn(slots,'leading')?slots.leading||'':icon('file');
+  const metadata=Object.hasOwn(slots,'metadata')?slots.metadata||'':item.metadata?`<span class="dds-meta-secondary">${escapeItemText(item.metadata)}</span>`:'';
+  const trailingInfo=slots.trailingInfo||'',actions=slots.actions||'';
+  return `<li class="dds-list-item"><a class="dds-list-link" href="${itemHref(item.href)}"><span class="dds-list-leading" aria-hidden="true"${leading?'':' hidden'}>${leading}</span><span class="dds-list-content"><b class="dds-card-title">${escapeItemText(item.title)}</b><span class="dds-list-meta"${metadata?'':' hidden'}>${metadata}</span></span><span class="dds-list-trailing-info"${trailingInfo?'':' hidden'}>${trailingInfo}</span>${icon('right','dds-list-chevron').replace('<svg ','<svg '+(item.chevron===false?'hidden ':''))}</a><div class="dds-list-actions"${actions?'':' hidden'}>${actions}</div></li>`;
+ }).join('');
+ return `<ul class="dds-items" data-dds-appearance="${appearance}"${label?' aria-label="'+escapeItemText(label)+'"':''}>${rows}</ul>`;
+}
 const topnavMenus=[
  ['brand','브랜드',[['Palette','색상과 서체','화면의 기본 규칙','#/foundations/color']]],
  ['components','컴포넌트',[['Layers','컴포넌트','화면을 구성하는 기본 요소','#/components'],['Sparkles','모션','조작에 응답하는 움직임','#/foundations/motion']]],
@@ -62,7 +86,7 @@ export function renderExtended(id,uid,mini=false){
  case 'play-badge':return box(button(icon('Play')+' 02:34','data-ext-notice="재생 표시 예제입니다. 실제 영상은 연결하지 않았습니다."','dds-play')+status);
  case 'avatar-group':return box(`<div class="dds-avatar-group" role="img" aria-label="예제 참여자: 가람, 나래, 다온 외 2명">${['가','나','다','+2'].map(t=>`<span class="avatar">${t}</span>`).join('')}</div><p class="helper">참여자 5명</p>`);
  case 'list-card':return box(`<article class="dds-list-card dds-content-card"><div class="dds-mini-image">${icon('FileText')}</div><div><h3 class="dds-card-title"><a class="dds-card-link" href="#/patterns/interview">면접 준비 가이드</a></h3><p class="dds-meta-secondary">3분 읽기 · 커리어 가이드</p></div></article>`);
- case 'item':return box(`<ul class="dds-items">${['프로덕트 디자이너','서비스 기획자'].map(t=>`<li><a class="dds-list-link" href="/prototypes/coverletter-write.html">${icon('file')}<span class="dds-list-content"><b class="dds-card-title">${t}</b><span class="dds-list-meta"><span class="dds-meta-secondary">자기소개서</span>${statusBadge('draft','임시저장',icon)}</span></span>${icon('right')}</a></li>`).join('')}</ul>`);
+ case 'item':return box(renderItemList(['프로덕트 디자이너','서비스 기획자'].map(title=>({title,href:'/prototypes/coverletter-write.html',slots:{metadata:`<span class="dds-meta-secondary">자기소개서</span>${statusBadge('draft','임시저장',icon)}`}}))));
  case 'section-header':return box(`<div class="dds-section-header"><div class="dds-section-header-content"><h3 class="dds-section-heading"><span>내 자기소개서</span>${collectionCount(3,{label:'자기소개서'})}</h3><p class="dds-meta-secondary">최근 작성한 문서</p></div><a class="dds-nav-link dds-section-header-action" href="#/patterns/document-list">전체 보기</a></div>`);
  case 'attachment':return box(`<div class="dds-attachment">${icon('FileText')}<div><b>포트폴리오.pdf</b><p class="helper">PDF · 2.4 MB · 선택됨</p></div>${ic('close','포트폴리오.pdf 제거','data-attachment-remove')}</div>${button('첨부 예제 복원','data-attachment-restore','ghost')}${status}`);
  case 'carousel':return box(`<section class="dds-carousel" aria-roledescription="캐러셀" aria-label="커리어 가이드"><div data-carousel-slide class="dds-ratio"><div class="dds-ratio-placeholder"><span class="eyebrow">CAREER GUIDE 01</span><b>나의 경험을 발견하기</b></div></div><div class="row-between">${ic('left','이전 슬라이드','data-carousel-shift="-1" disabled')}<output data-carousel-count aria-live="polite">1 / 3</output>${ic('right','다음 슬라이드','data-carousel-shift="1"')}</div></section>`);
@@ -127,7 +151,7 @@ const parts={
  'play-badge':{button:attributes('.dds-play'),content:slot('.dds-play'),status:text('[data-ext-status]')},
  'avatar-group':{group:attributes('.dds-avatar-group'),avatars:slot('.dds-avatar-group'),description:text('.helper')},
  'list-card':{card:attributes('.dds-list-card'),image:slot('.dds-mini-image'),title:text('.dds-card-link'),link:attributes('.dds-card-link'),metadata:text('.dds-meta-secondary')},
- item:{list:attributes('.dds-items'),items:slot('.dds-items'),firstLink:attributes('.dds-items > li:first-child a'),firstTitle:text('.dds-items > li:first-child .dds-card-title'),firstMetadata:text('.dds-items > li:first-child .dds-meta-secondary'),firstStatus:text('.dds-items > li:first-child .dds-status > span')},
+ item:{list:attributes('.dds-items'),items:slot('.dds-items'),firstLink:attributes('.dds-items > li:first-child .dds-list-link'),firstTitle:text('.dds-items > li:first-child .dds-card-title'),firstMetadata:text('.dds-items > li:first-child .dds-meta-secondary'),firstStatus:text('.dds-items > li:first-child .dds-status > span'),firstLeading:slot('.dds-items > li:first-child .dds-list-leading'),firstMetadataContent:slot('.dds-items > li:first-child .dds-list-meta'),firstTrailingInfo:slot('.dds-items > li:first-child .dds-list-trailing-info'),firstActions:slot('.dds-items > li:first-child .dds-list-actions')},
  'section-header':{title:text('.dds-section-heading > span:first-child'),count:text('.dds-collection-count'),countAttributes:attributes('.dds-collection-count'),description:text('.dds-section-header-content > p'),actionLabel:text('.dds-section-header-action'),action:attributes('.dds-section-header-action')},
  attachment:{filename:text('.dds-attachment > div > b'),metadata:text('.dds-attachment .helper'),remove:attributes('[data-attachment-remove]'),restoreLabel:text('[data-attachment-restore]'),status:text('[data-ext-status]')},
  carousel:{carousel:attributes('.dds-carousel'),slide:slot('[data-carousel-slide]'),label:text('[data-carousel-slide] > .dds-ratio-placeholder > span'),title:text('[data-carousel-slide] > .dds-ratio-placeholder > b'),counter:text('[data-carousel-count]'),previous:attributes('[data-carousel-shift="-1"]'),next:attributes('[data-carousel-shift="1"]')},

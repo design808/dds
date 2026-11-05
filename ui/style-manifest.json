@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "d831cea0ffc1a3598e005f01ff61626890688885823bf3daf5352af74461b5ab",
+  "sha256": "033876330ff9a8a8f3b3a94e6225b044d9f9104720d6eb677af92ba64ed4227c",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -118,10 +118,15 @@
     "dds-framed",
     "dds-input-group",
     "dds-items",
+    "dds-list-actions",
     "dds-list-card",
+    "dds-list-chevron",
     "dds-list-content",
+    "dds-list-item",
+    "dds-list-leading",
     "dds-list-link",
     "dds-list-meta",
+    "dds-list-trailing-info",
     "dds-marker",
     "dds-media-placeholder",
     "dds-menu",
@@ -397,8 +402,8 @@
     },
     {
       "file": "content-primitives.css",
-      "sha256": "d81095035ac0675f4f564ebdcfed6d76a36a0e0c2c9f82f354e86b74b5a4de72",
-      "retainedRules": 50,
+      "sha256": "366d7403070cc13f05737266d34cb89acb790c783feb61d0b48980a8d1ea1e0d",
+      "retainedRules": 67,
       "excludedSelectors": 0
     },
     {

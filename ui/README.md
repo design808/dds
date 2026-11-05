@@ -58,6 +58,12 @@ const cleanup = mountDDS(root, {
 
 파트 이름과 선택자는 `registry.json`의 해당 컴포넌트에 있다. 기본 문구·개수·상태·링크·날짜는 원본을 확인하기 위한 값이므로 실제 서비스 데이터로 교체한다. 컴포넌트의 내부 규격과 페이지 배치는 아래 기준으로 구분한다.
 
+## 구분선형 목록
+
+Item은 `variants: {appearance: 'divided'}`로 외곽 경계 없이 행 사이를 나눈다. 기본값은 `outlined`다. `firstLeading`·`firstMetadataContent`·`firstTrailingInfo`·`firstActions` 슬롯으로 첫 행의 앞 요소·보조정보·후행 정보·독립 행동을 연결한다. 후행 정보와 행동은 제공할 때만 표시된다. 북마크·메뉴 버튼은 링크 바깥의 `firstActions`에 둔다.
+
+여러 행은 `slots.items`에 실제 `<li>` 노드를 전달하거나 `ui/index.js`의 `renderItemList(items, {appearance, label})`로 같은 구조를 생성한다. 각 항목의 `title`·`href`·`metadata`는 이 helper가 이스케이프한다. `slots.leading`·`metadata`·`trailingInfo`·`actions`는 개발자가 작성한 안전한 DDS HTML 전용이며 사용자 입력 HTML을 넣지 않는다. 사용자 문자열·DOM을 직접 연결할 때는 `createComponent`의 슬롯을 사용한다. 이 helper는 마크업만 생성하며 실제 이동·북마크 저장은 서비스에서 연결한다. [페이지 구성 기준](./composition.md)의 목록·블록 사용 방법을 함께 따른다.
+
 ## 크기와 배치
 
 컨트롤 높이·글자·내부 패딩·색·경계·모서리·상태는 DDS 규격을 유지한다. 가용 폭, 페이지 그리드, 컴포넌트 바깥 여백과 필요한 영역 높이는 서비스에서 정한다.

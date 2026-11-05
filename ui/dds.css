@@ -1158,15 +1158,37 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .dds-command-option[hidden] {display:none}
 .dds-ui .dds-command-option:focus-visible {outline:1px solid var(--primary);outline-offset:0;background:var(--surface)}
 .dds-ui .dds-command [data-command-empty] {margin:0;padding:var(--space-6) var(--space-3);color:var(--text-secondary);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);text-align:center}
-.dds-ui .dds-items {list-style:none;min-width:0;margin:0;padding:0;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--background)}
+.dds-ui .dds-items {container:dds-items / inline-size;list-style:none;width:100%;min-width:0;margin:0;padding:0;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--background)}
 .dds-ui .dds-items > li {margin:0;padding:0;min-width:0;list-style:none}
 .dds-ui .dds-items > li + li {border-top:1px solid var(--border)}
-.dds-ui .dds-list-link {display:flex;align-items:center;gap:var(--space-3);box-sizing:border-box;min-width:0;padding:var(--space-3);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none}
+.dds-ui .dds-list-item {position:relative;isolation:isolate;display:flex;align-items:center;min-width:0}
+.dds-ui .dds-list-link {display:flex;align-items:center;gap:var(--space-3);box-sizing:border-box;flex:1;min-width:0;padding:var(--space-3);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none}
+.dds-ui .dds-list-item > .dds-list-link::after {content:'';position:absolute;inset:0;z-index:1;border-radius:inherit}
 .dds-ui .dds-list-link > svg {width:18px;height:18px;flex-shrink:0}
-.dds-ui .dds-list-link > .dds-list-content {flex:1;min-width:0}
+.dds-ui .dds-list-leading {display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:0;max-width:25%}
+.dds-ui .dds-list-leading>.icon {width:18px;height:18px;flex-shrink:0}
+.dds-ui .dds-list-leading>img {display:block;max-width:100%;height:auto;object-fit:contain}
+.dds-ui .dds-list-link > .dds-list-content {flex:1;min-width:0;word-break:keep-all;overflow-wrap:anywhere}
 .dds-ui .dds-list-link .dds-card-title {display:block}
 .dds-ui .dds-list-meta {display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-1) var(--space-2);min-width:0;margin-top:var(--space-1)}
+.dds-ui .dds-list-trailing-info {display:flex;flex:0 1 auto;flex-direction:column;align-items:flex-end;gap:var(--space-1);min-width:0;max-width:40%;color:var(--text-secondary);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);text-align:end;overflow-wrap:anywhere}
+.dds-ui .dds-list-actions {position:relative;z-index:2;display:flex;align-items:center;flex:0 0 auto;flex-wrap:wrap;gap:var(--space-2);max-width:40%;padding-inline-end:var(--space-3)}
+.dds-ui .dds-list-leading:empty,
+.dds-ui .dds-list-meta:empty,
+.dds-ui .dds-list-trailing-info:empty,
+.dds-ui .dds-list-actions:empty {display:none}
 .dds-ui .dds-list-link:focus-visible {outline:1px solid var(--primary);outline-offset:0}
+.dds-ui .dds-list-item:has(> .dds-list-link:focus-visible) {outline:1px solid var(--primary);outline-offset:0;border-radius:var(--radius-md)}
+.dds-ui .dds-list-item > .dds-list-link:focus-visible {outline:none}
+.dds-ui .dds-items[data-dds-appearance=divided] {border:0;border-radius:0;background:transparent}
+.dds-ui .dds-items[data-dds-appearance=divided] :is(.dds-list-item,.dds-list-link) {border-radius:0}
+@container dds-items (max-width:480px) {
+.dds-ui .dds-list-link {flex-wrap:wrap;row-gap:var(--space-1)}
+.dds-ui .dds-list-leading {order:0}
+.dds-ui .dds-list-content {order:1}
+.dds-ui .dds-list-chevron {order:2}
+.dds-ui .dds-list-trailing-info {order:3;flex-basis:100%;max-width:none;align-items:flex-start;text-align:start}
+}
 .dds-ui .dds-section-header {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);min-width:0}
 .dds-ui .dds-section-header-content {flex:1 1 180px;min-width:0}
 .dds-ui .dds-section-header .dds-section-heading {display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-2);margin:0;color:var(--text-strong);font-family:var(--font-sans);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:var(--font-weight-semibold);letter-spacing:var(--type-body-1-normal-tracking)}

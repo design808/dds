@@ -39,7 +39,7 @@ const entries = [
 ['play-badge','Play badge','재생 표시','Data display','영상 콘텐츠의 재생 가능 여부와 길이를 표시합니다.','Play icon · Duration · Accessible name','Ready · Focus · Unavailable','실제 플레이어와 연결될 때만 재생 동작으로 제공합니다. DDS에서는 안내 예제입니다.'],
 ['avatar-group','Avatar group','아바타 그룹','Data display','참여자의 프로필을 겹쳐서 요약합니다.','Avatars · Overflow count · Group label','One · Multiple · Overflow','이름 전체에 접근할 수 있는 경로를 제공하며 겹침 때문에 이름이 가려지지 않게 합니다.'],
 ['list-card','List card','목록 카드','Data display','이미지·제목·메타데이터를 수평으로 묶습니다.','Thumbnail · Title · Metadata · Action','Default · Hover · Loading','제목 링크와 보조 행동을 중첩하지 않습니다.'],
-['item','Item / List cell','목록 항목','Data display','반복 목록의 제목·설명·보조 행동을 정렬합니다.','Leading · Content · Trailing','Default · Selected · Disabled','표보다 단순한 정보를 목록 구조로 표현하며 반복 항목의 높이 규칙을 유지합니다.'],
+['item','Item / List cell','목록 항목','Data display','외곽선형·구분선형 목록에서 제목·조건·후행 정보와 독립 행동을 정렬합니다.','Leading · Content · Metadata · Trailing information · Action','Default · Hover · Focus · With action','전체 행의 이동과 별도 행동을 분리하고 긴 내용은 행 높이를 늘려 표시합니다.'],
 ['section-header','Section header','섹션 헤더','Data display','정보 묶음의 제목과 보조 행동을 정의합니다.','Heading · Count · Description · Action','Default · With action · With count','문서의 제목 계층을 따르며 제목 자체를 버튼으로 만들지 않습니다.'],
 ['attachment','Attachment','첨부파일 항목','Data display','파일명·형식·처리 상태와 제거 행동을 묶습니다.','Media · Filename · Metadata · Action','Selected · Processing · Done · Removed · Error','파일 선택과 업로드 완료를 구분하고 제거 버튼에 파일명을 포함합니다.'],
 ['carousel','Carousel','캐러셀','Data display','콘텐츠를 한 장씩 탐색합니다.','Viewport · Slide · Previous / Next · Counter','First · Middle · Last','자동 재생 없이 시작합니다. 탐색 후 새 슬라이드 제목과 위치를 전달합니다.'],

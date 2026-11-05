@@ -1,0 +1,10 @@
+/* Composition spacing only. Item rows, dividers, metadata and actions use DDS. */
+.dds-block-example .dbl-job-block {min-width:0;}
+.dds-block-example .dbl-job-detail {display:grid;gap:var(--space-6);min-width:0;}
+.dds-block-example .dbl-job-detail :is(h3,p,dl) {margin:0;}
+.dds-block-example .dbl-job-detail .db-header {align-items:flex-start;}
+.dds-block-example .dbl-job-detail .db-stack {gap:var(--space-2);}
+.dds-block-example .dbl-job-facts {display:grid;min-width:0;}
+.dds-block-example .dbl-job-facts>div {display:grid;grid-template-columns:minmax(88px,.4fr) minmax(0,1fr);gap:var(--space-4);padding-block:var(--space-4);border-bottom:1px solid var(--border);}
+.dds-block-example .dbl-job-facts dt {color:var(--text-secondary);}
+.dds-block-example .dbl-job-facts dd {margin:0;color:var(--text-primary);overflow-wrap:anywhere;}

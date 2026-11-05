@@ -1,7 +1,9 @@
-import {componentVariants} from './ui/variants.js?v=8eb0841135cc71ad';
-import {createComponent} from './ui/index.js?v=8eb0841135cc71ad';
-import {renderButton} from './ui/button.js?v=8eb0841135cc71ad';
-import {optionalContent} from './ui/content.js?v=8eb0841135cc71ad';
+import {componentVariants} from './ui/variants.js?v=a996fa47ec4a3cf0';
+import {createComponent,icon} from './ui/index.js?v=a996fa47ec4a3cf0';
+import {renderItemList} from './ui/extended.js?v=a996fa47ec4a3cf0';
+import {statusBadge} from './visibility.js?v=a996fa47ec4a3cf0';
+import {renderButton} from './ui/button.js?v=a996fa47ec4a3cf0';
+import {optionalContent} from './ui/content.js?v=a996fa47ec4a3cf0';
 
 const escape=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'component-variants').replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -45,6 +47,15 @@ export function variantPreviewOptions(id,selected,doc=globalThis.document,idPref
    selected.content==='plain'?'<p>작성한 내용을 확인한 후 저장해 주세요.</p>':'<span class="badge">저장 완료</span><h3>프로덕트 디자이너 자기소개서</h3><p>사용자의 문제를 발견하고 더 나은 경험을 설계합니다.</p>';
   options.slots={content:content.content};
   options.text={title:'자기소개서 미리보기',body:'작성한 문서의 내용을 확인하세요.',confirm:'확인'};
+ }
+ if(id==='item'&&selected.appearance==='divided'){
+  const template=doc.createElement('template');
+  template.innerHTML=renderItemList([
+   {title:'백엔드 엔지니어',href:'#/blocks?block=job-list',slots:{metadata:`<span class="dds-meta-secondary">개발팀 · 서울 · 경력 3년 이상</span>${statusBadge('pending','접수 중',icon)}`,trailingInfo:'D-9',actions:renderButton({label:'관심 공고',before:'Bookmark',iconOnly:true,variant:'outlined',color:'assistive',size:'md',attributes:{'aria-pressed':'false','data-dds-toggle':''}})}},
+   {title:'프로덕트 디자이너',metadata:'디자인팀 · 서울 · 경력 2년 이상',href:'#/blocks?block=job-list',slots:{trailingInfo:'D-14'}}
+  ],{appearance:'divided'});
+  const rows=doc.createDocumentFragment();rows.append(...template.content.querySelector('.dds-items').children);
+  options.slots={items:rows};
  }
  return options;
 }

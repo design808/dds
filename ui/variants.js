@@ -1,5 +1,5 @@
 /** Official, opt-in presentation axes. Content, items and business logic stay with the host. */
-import {icon} from './icons.js?v=8eb0841135cc71ad';
+import {icon} from './icons.js?v=a996fa47ec4a3cf0';
 
 const choice=(label,values,defaultValue,labels)=>Object.freeze({label,type:'enum',values:Object.freeze(values),default:defaultValue,labels:Object.freeze(labels||Object.fromEntries(values.map(value=>[value,value])))});
 const flag=(label,defaultValue=false)=>Object.freeze({label,type:'boolean',default:defaultValue});
@@ -46,7 +46,7 @@ const schemas={
  thumbnail:{ratio:choice('비율',['intrinsic','16:9','4:3','1:1'],'intrinsic',{intrinsic:'원본','16:9':'16:9','4:3':'4:3','1:1':'1:1'}),fit:choice('이미지 맞춤',['contain','cover'],'contain',{contain:'전체 표시',cover:'영역 채우기'})},
  'avatar-group':{size:choice('크기',['xs','sm','md','lg'],'md',{xs:'Extra small',sm:'Small',md:'Medium',lg:'Large'})},
  'list-card':{image:flag('미디어',true),metadata:flag('보조정보',true)},
- item:{icon:flag('앞 아이콘',true),metadata:flag('보조정보',true),status:flag('상태',true),chevron:flag('이동 표시',true)},
+ item:{appearance:choice('형태',['outlined','divided'],'outlined',{outlined:'외곽선',divided:'행 구분선'}),icon:flag('앞 아이콘',true),metadata:flag('보조정보',true),status:flag('상태',true),chevron:flag('이동 표시',true)},
  'section-header':{description:flag('설명',true),count:flag('개수',true),actions:flag('행동',true)},
  attachment:{disabled:flag('비활성')},
  separator:{orientation:choice('방향',['horizontal','vertical'],'horizontal',{horizontal:'가로',vertical:'세로'})},
@@ -176,7 +176,7 @@ export function applyComponentVariants(root,id,options={}){
  }
  if(id==='list-card'){if(Object.hasOwn(selected,'image'))show(host,'.dds-mini-image',selected.image);if(Object.hasOwn(selected,'metadata'))show(host,'.dds-meta-secondary',selected.metadata);}
  if(id==='item'){
-  for(const [key,selector]of Object.entries({icon:'.dds-list-link>.icon:first-child',chevron:'.dds-list-link>.icon:last-child',metadata:'.dds-meta-secondary',status:'.dds-status'}))if(Object.hasOwn(selected,key))show(root,selector,selected[key]);
+  for(const [key,selector]of Object.entries({icon:'.dds-list-leading',chevron:'.dds-list-chevron',metadata:'.dds-list-meta>:not(.dds-status)',status:'.dds-list-meta>.dds-status'}))if(Object.hasOwn(selected,key))show(root,selector,selected[key]);
   collapseEmptyGroups(root,'.dds-list-meta');
  }
  if(id==='section-header')for(const [key,selector]of Object.entries({description:'.dds-section-header-content>p',count:'.dds-collection-count',actions:'.dds-section-header-action'}))if(Object.hasOwn(selected,key))show(root,selector,selected[key]);

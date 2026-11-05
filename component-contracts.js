@@ -88,10 +88,11 @@ const overrides = {
     assets:['content-primitives.css','custom-controls.css','custom-controls.js'],
   },
   item: {
-    usage:{when:'반복 항목의 제목·보조정보·상태·이동을 한 행에 묶을 때 사용합니다.',alternative:'열별 비교는 Table, 여러 행동과 긴 내용은 Card를 사용합니다.'},
-    rules:['전체 행을 하나의 네이티브 링크로 연결하고 독립적인 버튼을 링크 안에 넣지 않습니다.', '앞뒤 아이콘은 수축하지 않으며 제목 영역이 남은 공간을 차지합니다. 상태 배지는 보조정보 행에 배치해 제목 너비를 불필요하게 줄이지 않습니다.', '긴 제목·보조정보는 내용에 맞춰 줄바꿈합니다. 글자 축소나 강제 말줄임으로 항목을 맞추지 않습니다.'],
-    specification:[['공통 스타일','content-primitives.css + visibility.css · .dds-items / .dds-list-link / .dds-list-content / .dds-list-meta'],['제목','Body 1 Normal 16/24/600 · Strong'],['배치','행 패딩 12px · 아이콘 18px · 본문과 간격 12px · 보조정보 위 4px · 상태와 간격 8px']],
-    checks:[...defaultChecks,'미리보기의 보통 길이 제목은 한 줄인지, 실제 좁은 화면의 긴 제목과 배지가 겹치지 않고 높이가 늘어나는지 확인합니다.'],
+    usage:{when:'공고·문서처럼 제목·보조정보·후행 정보와 행동이 반복되는 목록에 사용합니다.',alternative:'열별 비교는 Table, 이미지 중심 목록은 List card, 독립된 정보 묶음은 Card를 사용합니다.'},
+    rules:['기본 outlined는 목록 전체의 외곽 경계를 표시합니다. divided는 외곽 테두리·모서리·배경을 없애고 행 사이 구분선만 표시합니다. 별도 컴포넌트로 다시 그리지 않습니다.', '행의 대표 이동은 네이티브 링크로 연결합니다. 북마크·메뉴 같은 독립 행동은 링크 바깥의 행동 슬롯에 두며 버튼을 링크 안에 중첩하지 않습니다.', '제목·조건은 본문, 마감일 같은 짧은 값은 후행 정보에 배치합니다. 앞뒤 아이콘은 수축하지 않으며 제목 영역이 남은 공간을 차지합니다.', '목록 컨테이너 480px 이하에서는 후행 정보를 다음 줄로 보내 제목·조건의 읽기 폭을 확보합니다. 별도 행동은 오른쪽에 유지합니다.', '긴 제목·보조정보는 내용에 맞춰 줄바꿈합니다. 글자 축소나 강제 말줄임으로 항목을 맞추지 않습니다.'],
+    specification:[['공통 스타일','content-primitives.css + visibility.css · .dds-items / .dds-list-item / .dds-list-link / .dds-list-content / .dds-list-meta'],['표면','outlined: 기본 외곽 경계 · divided: 외곽 경계 0 / radius 0 / 배경 투명 / 행 사이 구분선'],['제목','Body 1 Normal 16/24/600 · Strong'],['배치','기본 행 패딩 12px · 아이콘 18px · 본문과 간격 12px · 보조정보 위 4px · 상태와 간격 8px']],
+    keyboard:['Tab으로 대표 링크와 별도 행동에 각각 이동합니다. Enter는 상세 이동, Enter/Space는 버튼의 행동을 실행합니다. 북마크를 누르면 상세로 이동하지 않습니다.'],
+    checks:[...defaultChecks,'outlined/divided 전환·첫/마지막 행·1개 항목·긴 제목·보조정보 없음·후행 정보와 독립 행동 조합을 확인합니다.', '320px·390px에서 내용과 마감·버튼이 겹치지 않고 높이가 늘어나는지 확인합니다. 대표 링크와 보조 버튼의 초점·클릭 결과가 분리되는지 확인합니다.'],
     assets:['content-primitives.css',...visibilityAssets],
   },
   'section-header': {
