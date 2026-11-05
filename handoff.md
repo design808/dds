@@ -9,7 +9,7 @@ DDS는 딥레쥬메·딥인터뷰와 향후 신규 서비스를 포함한 회사
 ## 프로젝트 설정
 
 AI 설정 프롬프트는 https://design808.github.io/dds/#/setup 에서 제공합니다.
-DDS 0.5.6의 고정 참조 묶음은 releases/0.5.6/manifest.json과 bundle.json을 기준으로 확인합니다.
+DDS 0.5.7의 고정 참조 묶음은 releases/0.5.7/manifest.json과 bundle.json을 기준으로 확인합니다.
 기준 파일 준비·프로젝트 규칙 등록·서비스 화면 적용·기능 검증은 각각 기록합니다.
 자세한 연결 방법은 dds-adoption.md를 읽습니다. 기준 설정만 요청한 작업에서 기존 서비스 파일을 수정하지 않습니다.
 

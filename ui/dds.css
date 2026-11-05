@@ -1443,7 +1443,10 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .dds-feedback-icon {display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;margin-top:2px}
 .dds-ui .dds-feedback-icon>.icon {width:18px;height:18px}
 .dds-ui .dds-feedback-content {flex:1;min-width:0}
-.dds-ui .dds-feedback-actions {display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-3)}
+.dds-ui .alert .dds-feedback-content>[data-dds-alert-description] {margin:0;color:inherit}
+.dds-ui .alert .dds-feedback-content>[data-dds-alert-title]:not([hidden]):not(:empty)~[data-dds-alert-description]:not([hidden]):not(:empty) {margin-block-start:4px}
+.dds-ui .dds-feedback-actions {display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-2);margin:0}
+.dds-ui .dds-feedback-content>:is([data-dds-alert-title],[data-dds-alert-description]):not([hidden]):not(:empty)~.dds-feedback-actions:not([hidden]) {margin-block-start:var(--space-3)}
 .dds-ui .dds-badge[data-status=draft] {--dds-tone-ink:var(--text-primary);--dds-tone-fill:var(--text-primary);--dds-tone-soft:var(--surface);--dds-tone-edge:var(--border)}
 .dds-ui .dds-badge[data-status=pending] {--dds-tone-ink:var(--info);--dds-tone-fill:var(--info);--dds-tone-soft:var(--info-bg);--dds-tone-edge:color-mix(in srgb,var(--info) 22%,var(--border))}
 .dds-ui .dds-badge[data-status=complete] {--dds-tone-ink:var(--success);--dds-tone-fill:var(--success);--dds-tone-soft:var(--success-bg);--dds-tone-edge:color-mix(in srgb,var(--success) 22%,var(--border))}
@@ -1457,8 +1460,7 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui :is(.dds-variant,.dds-badge)[data-dds-tone=warning] {--dds-tone-ink:var(--warning);--dds-tone-fill:var(--warning);--dds-tone-soft:var(--warning-bg);--dds-tone-edge:color-mix(in srgb,var(--warning) 22%,var(--border))}
 .dds-ui :is(.dds-variant,.dds-badge)[data-dds-tone=error] {--dds-tone-ink:var(--destructive);--dds-tone-fill:var(--destructive);--dds-tone-soft:var(--destructive-bg);--dds-tone-edge:color-mix(in srgb,var(--destructive) 22%,var(--border))}
 .dds-ui .alert.dds-variant-feedback {color:var(--dds-tone-ink,var(--info));background:var(--dds-tone-soft,var(--info-bg));border:1px solid var(--dds-tone-edge,transparent)}
-.dds-ui .alert.dds-variant-feedback .dds-feedback-content {color:var(--text-primary)}
-.dds-ui .alert.dds-variant-feedback .dds-feedback-content>p {color:var(--text-secondary)}
+.dds-ui .alert.dds-variant-feedback .dds-feedback-content {color:inherit}
 .dds-ui .alert.dds-variant-feedback>.dds-button {flex:0 0 auto}
 .dds-ui .dds-toast.dds-variant-feedback {display:flex;align-items:center;gap:var(--space-3);color:var(--dds-tone-ink,var(--foreground));background:var(--dds-tone-soft,var(--background));border-color:var(--dds-tone-edge,var(--border));pointer-events:auto}
 .dds-ui .dds-toast.dds-variant-feedback [data-dds-toast-message] {min-width:0;overflow-wrap:anywhere;flex:1}
@@ -1466,6 +1468,7 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .dds-toast.dds-variant-feedback .dds-feedback-icon {margin:0}
 .dds-ui .dds-variant-feedback [data-dds-dismiss] {flex:0 0 auto}
 .dds-ui .dds-snackbar.dds-variant[data-dds-tone] {background:var(--dds-tone-soft);color:var(--dds-tone-ink);border:1px solid var(--dds-tone-edge)}
+.dds-ui .dds-snackbar.dds-variant[data-dds-tone] .btn:hover:not(:disabled) {background:color-mix(in srgb,var(--dds-tone-ink) 10%,var(--dds-tone-soft));color:inherit}
 .dds-ui .dds-variant-field[data-dds-state=error] :is(input:not([type=checkbox],[type=radio]),select,textarea,.custom-trigger,.custom-date,.custom-combo,.search-field,.dds-input-group) {border-color:var(--destructive)}
 .dds-ui .dds-variant-field[data-dds-state=success] :is(input:not([type=checkbox],[type=radio]),select,textarea,.custom-trigger,.custom-date,.custom-combo,.search-field,.dds-input-group) {border-color:var(--success)}
 .dds-ui .dds-variant-field[data-dds-state=error] :is(.helper,.dds-error) {color:var(--destructive)}
@@ -1548,6 +1551,9 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .skeleton-card.dds-variant[data-dds-shape=text],
 .dds-ui .skeleton-card.dds-variant[data-dds-shape=avatar] {padding:0;border:0;border-radius:0;background:transparent}
 .dds-ui .skeleton-card.dds-variant[data-dds-shape=avatar] {width:max-content}
+.dds-ui .skeleton-card.dds-variant[data-dds-shape=text]>.skeleton:not([hidden]) {margin-block:0}
+.dds-ui .skeleton-card.dds-variant[data-dds-shape=text]>.skeleton:not([hidden])~.skeleton:not([hidden]) {margin-block-start:12px}
+.dds-ui .skeleton-card.dds-variant[data-dds-shape=avatar]>.skeleton.circle {margin:0}
 .dds-ui .dds-content-card.dds-variant[data-dds-appearance=plain] {padding:0;border:0;border-radius:0;box-shadow:none;background:transparent}
 .dds-ui .dds-content-card.dds-variant[data-dds-appearance=plain]:is(:hover,:focus-within) {box-shadow:none;transform:none}
 .dds-ui .dds-variant[data-dds-density=compact] :is(th,td) {padding:8px 12px}
@@ -1578,6 +1584,8 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui hr.dds-variant[data-dds-orientation=vertical] {height:40px;width:1px;border:0;background:var(--border);margin:0 var(--space-4);flex:0 0 1px}
 .dds-ui .dds-message.dds-variant[data-dds-direction=outgoing] {flex-direction:row-reverse}
 .dds-ui .dds-message.dds-variant[data-dds-direction=outgoing] .dds-message-meta {justify-content:flex-end}
+.dds-ui .dds-message .dds-bubble {margin-block-start:0}
+.dds-ui .dds-message .dds-message-meta:not([hidden]):not(:empty)+.dds-bubble {margin-block-start:6px}
 .dds-ui .dds-message.dds-variant[data-dds-direction=outgoing] .dds-bubble {margin-inline-start:auto;background:var(--primary);color:var(--primary-foreground);font-weight:700;border-radius:12px 12px 3px 12px}
 @media(max-width:480px) {
 .dds-ui .dds-toast.dds-variant-feedback {flex-wrap:wrap}
@@ -1592,13 +1600,19 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
   max-width:none;
 }
 .dds-ui :is(h1,h2,h3,p){margin:0}
-.dds-ui .empty-state > h3{margin:0 0 12px}
-.dds-ui .empty-state > p{margin:0 0 20px}
+.dds-ui .empty-state > :is(h3,p){margin:0}
+.dds-ui .empty-state > h3:not([hidden]):not(:empty) ~ p:not([hidden]):not(:empty){margin-block-start:12px}
+.dds-ui .empty-state > :is(h3,p):not([hidden]):not(:empty) ~ :is(a,button):not([hidden]){margin-block-start:20px}
 .dds-ui .dds-overlay > p{margin:0 0 20px}
 .dds-ui .dds-dialog[open]{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
 .dds-ui .dds-dialog > :is(.dialog-heading,p,.sample-document){margin:0}
 .dds-ui .dds-dialog > button{justify-self:start}
 .dds-ui .dds-ui-portal{display:contents}
+.dds-ui .dds-component > .dds-action-area{margin-block-start:0}
+.dds-ui .dds-component > .helper:not([hidden]):not(:empty) ~ .dds-action-area{margin-block-start:18px}
+.dds-ui .dds-popover > :is(.row-between,p){margin:0}
+.dds-ui .dds-popover > .row-between:has(~ p:not([hidden])){margin-block-end:12px}
+.dds-ui .dds-popover > p:has(~ p:not([hidden])){margin-block-end:8px}
 .dds-ui .sample-document:not([data-dds-content=plain],[data-dds-content=form]) > h3{margin:18px 0 12px}
 .dds-ui .sample-document:not([data-dds-content=plain],[data-dds-content=form]) > p{margin:0 0 20px}
 .dds-ui .dds-demo.dds-size-content,

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "layout": {
@@ -43,30 +43,30 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "ee2c7af1e3e16f7723aea08f610aef2b2784f78f4117bc93f12139a61900d084",
-    "ui/core.js": "ad2c34c82dd4c9d0650923e8804f5190436b31f9c28f8d5307c00f2be560c9b4",
-    "ui/button.js": "919793465ace8d9c659a09082ef370c2d72e08ecca2b250b9100aa46a5f71335",
-    "ui/extended.js": "eb70836e237088f4070ed05ca3d470e1f3f5d34d8baa89dfc921a80e6af0d217",
-    "ui/charts.js": "8cde8713ac26e5325a3ca831e7ad2c33f6746ef3e82ff58e82e7b9b3c6cbb692",
-    "ui/source.js": "9ab2ca298c85cb6e5a84f0206382fec3a6f5471760ee996a19357cfaa87fe119",
-    "ui/index.js": "940be520bb99637718533e2cdb92116de2cbc98d59c62d017aa457c276dc12b3",
-    "ui/content.js": "62bc19606ff3874910d542471971151d5d200e808bc782d22f950c4ff454dd9b",
-    "ui/variants.js": "4003ef68e3d49fe0192b9f60927cfd9d31878ab8153422c29dd90a6614920797",
-    "ui/profile.js": "8ddca9a2c017b96e63651c68ba22c563db0191a134bc3d1d78efa4e5db9cacea",
+    "ui/version.js": "78fa6934e3c4419a55f3c5aeb024772b5d8cf80552cbcb85e74f56d2b0ae53b9",
+    "ui/core.js": "e894c7a2df6b43d052924ace1dcb265b7caac2aa5319058c4c46eca226a4b681",
+    "ui/button.js": "fefbfb3ab4a63492e7d58d331c507f6317dc6b537333354a8fa0cf9f3204e4bc",
+    "ui/extended.js": "539a79cb1096f2111d686d4c58377dc7c45a3b1886c9b1ade84e53cf82adf45d",
+    "ui/charts.js": "e1f432699fc30f7a3f909cdf609cfe6bd8dcc6f472a602b0ed3261a0342faae8",
+    "ui/source.js": "0b3ea9c1e07b8b1a3403c901ae3b446c370a334416469a4ebaa442c94e27c651",
+    "ui/index.js": "585f7b60e52131199e7cab7a8a9f91e0098f95e7fb6124bc9a9e0a325d3f7ab6",
+    "ui/content.js": "446f637ce1056cdfa87674b6b1d0bb1e9fd622fd293c208095b8cfff3cd3d25a",
+    "ui/variants.js": "22b5ea5f8c4aa9db8a3e179138e688f039a428ce9d42c6cc7c2d237b2e01ac58",
+    "ui/profile.js": "3eccfa7c1f5db189cf0d7153100753d123b5ee9064893dc8cae04cffbf8af83b",
     "ui/profile-palette.js": "10a29ff6c24ef3c9acf40e619b4e2836a5760a3154eb980a92323df9096acb88",
-    "ui/icons.js": "469e4c2af16c1897966b19d04f227e68ae0aa4243a61e198c4254624c611a73d",
+    "ui/icons.js": "8f0e2c347ed79118fe9db10e5cd1295327b12746287d755140db51777fcc8395",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "a326a017d86d2c0ea83493a2416dec73402e9ec7797c344f7f368c2d74953a08",
+    "ui/controls.js": "c4093125b9f4c68e15d198445631b84f64b5a99dcfb40ed3ea069c88e88c1a85",
     "ui/tooltips.js": "1791700822254b400b0af547bc303a0c8eef56e1cc1d720e6ce7df0390bf862b",
-    "ui/dds.css": "6c4eada5163be2dbb2208da5454e57961f890b391ad1a25fb6443de750270b18",
+    "ui/dds.css": "7872f2477ea6bc4db594e928772b4c7db2a14c22b057a91a4267fb0e2e6f8873",
     "ui/tokens-scoped.css": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713",
     "tokens.css": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
-    "component-layout.css": "e86132f179ced0c3c3084d461dede435383e426413e8e770f219a36a6d636d56",
+    "component-layout.css": "5a048f639ee500cb90997d3d4214f73d50484b72e5275d56cddfb24080a6cc3e",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "668039c6c4d07bce088d24225a377bff4fe24b0d9a322f8039205a44f39d13cb",
-    "design-preferences.js": "3f24c3f419fbb4a1444e9d746c33573c4c4060809eed1eaaf9d56e35e6e1621b",
-    "design-profile.js": "7d595ecb7c35e7fcbd488e67f4a95e5442704ab702eb84b28e848d9904c117fc",
+    "design-preferences.js": "113ac74af99f6a11b74f9cb706008ef5ad925a239dcd413c050cc9749b371ab2",
+    "design-profile.js": "f1d89c5b139a8f737e4080c78d7003c8e4e7fefda7c5599f1a72435768ed9360",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "components": {
@@ -1556,6 +1556,7 @@
         }
       },
       "optionalParts": {
+        "title": "[data-dds-alert-title]",
         "description": ".alert p"
       },
       "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
@@ -6051,7 +6052,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "5ea18bdc1c6e31ff",
-    "canonicalBundle": "../releases/0.5.6/bundle.json"
+    "assetRevision": "cbfddd8310a75f76",
+    "canonicalBundle": "../releases/0.5.7/bundle.json"
   }
 }

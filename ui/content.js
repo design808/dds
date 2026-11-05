@@ -7,7 +7,7 @@ export const optionalContent=Object.freeze({
  upload:{hint:'.helper:not(.file-state)'},
  progress:{hint:'.helper'},
  dialog:{trigger:'[data-dds-dialog]',body:'.dds-dialog > p',content:'.sample-document,.dds-dialog-content',confirm:'.dds-dialog > button'},
- alert:{description:'.alert p'},
+ alert:{title:'[data-dds-alert-title]',description:'.alert p'},
  toast:{label:'[data-dds-toast]'},
  empty:{description:'.empty-state > p',action:'.empty-state > a'},
  avatar:{description:'.helper'},

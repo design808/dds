@@ -9,8 +9,9 @@
 /* A component's content slot does not inherit document-prose block margins.
    Specific anatomy selectors below and in component sources keep their spacing. */
 :is(h1,h2,h3,p){margin:0}
-.empty-state > h3{margin:0 0 12px}
-.empty-state > p{margin:0 0 20px}
+.empty-state > :is(h3,p){margin:0}
+.empty-state > h3:not([hidden]):not(:empty) ~ p:not([hidden]):not(:empty){margin-block-start:12px}
+.empty-state > :is(h3,p):not([hidden]):not(:empty) ~ :is(a,button):not([hidden]){margin-block-start:20px}
 .dds-overlay > p{margin:0 0 20px}
 /* The dialog owns space between its heading, body and actions. A supplied body
    has no outer margin; its content controls its own internal layout. Keep the
@@ -21,6 +22,11 @@
 /* Floating runtime UI inherits tokens through a portal without adding a layout
    row or section gap to the containing dialog. */
 .dds-ui-portal{display:contents}
+.dds-component > .dds-action-area{margin-block-start:0}
+.dds-component > .helper:not([hidden]):not(:empty) ~ .dds-action-area{margin-block-start:18px}
+.dds-popover > :is(.row-between,p){margin:0}
+.dds-popover > .row-between:has(~ p:not([hidden])){margin-block-end:12px}
+.dds-popover > p:has(~ p:not([hidden])){margin-block-end:8px}
 .sample-document:not([data-dds-content=plain],[data-dds-content=form]) > h3{margin:18px 0 12px}
 .sample-document:not([data-dds-content=plain],[data-dds-content=form]) > p{margin:0 0 20px}
 

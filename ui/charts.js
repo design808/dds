@@ -1,5 +1,5 @@
-import {chartComponents, chartPresentation} from '../chart-catalog.js?v=5ea18bdc1c6e31ff';
-import {bindChartLayout} from '../chart-layout.js?v=5ea18bdc1c6e31ff';
+import {chartComponents, chartPresentation} from '../chart-catalog.js?v=cbfddd8310a75f76';
+import {bindChartLayout} from '../chart-layout.js?v=cbfddd8310a75f76';
 
 // SVG examples use local data. Service adapters keep their existing chart engine,
 // data requests, permissions and export behavior.
@@ -285,8 +285,8 @@ function chartMarkup(id,variant,uid,hidden=new Set(),mini=false,source) {
   else if(empty)plot='<div class="dds-chart-no-series"><p>표시할 데이터를 선택해 주세요.</p></div>';
   else if(variant==='percent'&&negative)plot='<div class="dds-chart-no-series"><p>100% 누적에는 0 이상의 값을 사용해 주세요. 원본 값은 표에서 확인할 수 있습니다.</p></div>';
   else plot=circularChart?circular(id,variant,data,hidden):id==='radar-chart'?radar(variant,data,hidden):id==='radial-chart'?radial(variant,data,hidden):id==='scatter-chart'?scatter(data,hidden):id==='heatmap-chart'?data.series.length===1?heatmap(data):`<div class="dds-chart-heatmap-series">${data.series.map((series,index)=>hidden.has(index)?'':`<section><h4>${esc(series.name)}</h4>${heatmap({...data,series:[series]},index)}</section>`).join('')}</div>`:cartesian(id,variant,data,hidden);
-  const note=[data.note,...warnings].filter(Boolean).join(' · ');
-  return `${!mini?`<div class="dds-chart-heading"><h3>${esc(data.title)}</h3>${data._supplied?'':'<span>예제 데이터</span>'}</div>`:''}<div class="dds-chart-plot" ${mini?'':`aria-describedby="${uid}-note"`}>${plot}</div>${!mini?`${legend(id,data,hidden)}<p class="dds-chart-note" id="${uid}-note">${esc(note)}</p>`:''}`;
+  const note=[data.note,...warnings].filter(text=>String(text??'').trim()).join(' · ');
+  return `${!mini?`<div class="dds-chart-heading"><h3>${esc(data.title)}</h3>${data._supplied?'':'<span>예제 데이터</span>'}</div>`:''}<div class="dds-chart-plot" ${!mini&&note?`aria-describedby="${uid}-note"`:''}>${plot}</div>${!mini?`${legend(id,data,hidden)}${note?`<p class="dds-chart-note" id="${uid}-note">${esc(note)}</p>`:''}`:''}`;
 }
 
 /** Optional suppliedData uses the same shape as chartData(); every view shares it. */

@@ -355,8 +355,8 @@ const overrides = {
   alert: {
     usage: {when: '현재 화면에서 계속 확인해야 할 상태·제약·오류를 안내할 때 사용합니다.', alternative: '짧은 완료 알림은 Toast, 개별 입력 오류는 해당 Field에 표시합니다.'},
     rules: ['상태에 맞는 문구와 다음 행동을 제공합니다. 색상만으로 의미를 전달하지 않습니다.', '반드시 알아야 하는 안내를 자동으로 사라지게 하지 않습니다.'],
-    checks: ['본문과 아이콘의 의미가 일치하고 긴 안내·링크가 잘리지 않는지 확인합니다.'],
-    specification: [['상태', '--info / --success / --warning / --destructive와 각 배경 토큰'], ['글자', '일반 안내 --text-primary/--text-secondary · 상태 문구는 해당 의미 토큰']],
+    checks: ['본문과 아이콘의 의미가 일치하고 긴 안내·링크가 잘리지 않는지 확인합니다.', '제목만, 설명만, 제목과 설명을 함께 표시하는 경우의 여백과 상태별 글자색을 확인합니다.'],
+    specification: [['상태', '--info / --success / --warning / --destructive와 각 배경 토큰'], ['글자', '중립은 --text-primary · 안내/성공/주의/오류의 제목·설명은 해당 의미 토큰'], ['내부 간격', '제목과 설명을 함께 표시할 때 4px · 설명만 표시하면 상단 여백 0']],
   },
   toast: {
     usage: {when: '저장·복사 등 현재 작업을 막지 않는 짧은 결과를 알릴 때 사용합니다.', alternative: '수정해야 하는 오류는 Field/Alert, 행동이 필요한 알림은 Snackbar를 사용합니다.'},
