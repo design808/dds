@@ -1,15 +1,15 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart} from './source.js?v=07d93ae023b5f009';
-import {renderButton} from './button.js?v=07d93ae023b5f009';
-import {icon} from './icons.js?v=07d93ae023b5f009';
-import {mountControls} from './controls.js?v=07d93ae023b5f009';
-import {bindCharts,chartDemo} from './charts.js?v=07d93ae023b5f009';
-import {calendarDays} from './extended.js?v=07d93ae023b5f009';
-import {UI_VERSION} from './version.js?v=07d93ae023b5f009';
-import {prepareServiceContent,finalizeServiceContent,configureServiceItems,optionalContent} from './content.js?v=07d93ae023b5f009';
-import {applyComponentVariants,componentVariants} from './variants.js?v=07d93ae023b5f009';
-export {renderButton,icon,componentIds,componentParts,renderComponentSource};
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=ec6f1fc7745acd41';
+import {renderButton} from './button.js?v=ec6f1fc7745acd41';
+import {icon} from './icons.js?v=ec6f1fc7745acd41';
+import {mountControls} from './controls.js?v=ec6f1fc7745acd41';
+import {bindCharts,chartDemo} from './charts.js?v=ec6f1fc7745acd41';
+import {calendarDays} from './extended.js?v=ec6f1fc7745acd41';
+import {UI_VERSION} from './version.js?v=ec6f1fc7745acd41';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,optionalContent} from './content.js?v=ec6f1fc7745acd41';
+import {applyComponentVariants,componentVariants} from './variants.js?v=ec6f1fc7745acd41';
+export {renderButton,icon,componentIds,componentParts,renderComponentSource,layoutContract};
 export {componentVariants,optionalContent};
-export {collectionCount,statusBadge} from '../visibility.js?v=07d93ae023b5f009';
+export {collectionCount,statusBadge} from '../visibility.js?v=ec6f1fc7745acd41';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -60,7 +60,7 @@ function configureTabs(wrapper,items,uid){
  items.forEach((item,index)=>{const tab=button.cloneNode(true),content=panel.cloneNode(false),key=uid+'-'+index;tab.textContent=String(item.label);tab.id=key+'-tab';tab.setAttribute('aria-controls',key+'-panel');tab.setAttribute('aria-selected',String(index===0));tab.tabIndex=index===0?0:-1;tab.removeAttribute('data-demo-tab');tab.setAttribute('data-dds-tab','');content.id=key+'-panel';content.setAttribute('aria-labelledby',tab.id);content.hidden=index!==0;content.replaceChildren(item.content?.nodeType?item.content:String(item.content??''));list.append(tab);parent.append(content);});
 }
 export function componentHTML(id,options={}){return createComponent(id,options).outerHTML;}
-export function componentSource(id,{idPrefix='dds-instance',data}={}){return {id,version,markup:serviceMarkup(renderComponentSource(id,idPrefix,false,data)),parts:componentParts(id),variants:componentVariants[id]||{},optionalParts:optionalContent[id]||{},templatePurpose:'specimen',styles:['tokens.css','ui/dds.css']};}
+export function componentSource(id,{idPrefix='dds-instance',data}={}){return {id,version,markup:serviceMarkup(renderComponentSource(id,idPrefix,false,data)),parts:componentParts(id),variants:componentVariants[id]||{},optionalParts:optionalContent[id]||{},templatePurpose:'specimen',layout:layoutContract,styles:['tokens.css','ui/dds.css']};}
 
 const bindings=new WeakMap();
 const asElement=target=>target?.nodeType===1?target:target?.parentElement;

@@ -440,8 +440,8 @@ const responsiveSpecifications = {
   radio:[['그룹 배치','min-width:0 / max-width:100% · flex-wrap · 행/열 간격 14px / 22px · 긴 라벨 줄바꿈']],
   switch:[['형태 유지','트랙 flex:0 0 38px · 긴 라벨은 별도 줄바꿈 · 트랙 폭을 글자에 양보하지 않음']],
   avatar:[['형태 유지','flex-shrink:0 · aspect-ratio:1 · 긴 이름 옆에서도 원형·정사각 비율 유지']],
-  sidebar:[['너비','기본 260px · max-width:100% / min-width:0 · 긴 메뉴명 줄바꿈']],
-  skeleton:[['너비','예제 260px · max-width:100% / min-width:0 · 부모 너비를 초과하지 않음']],
+  sidebar:[['너비','부모가 지정한 열의 가용 너비 · min-width:0 · 긴 메뉴명 줄바꿈']],
+  skeleton:[['너비','로딩 후 표시할 콘텐츠의 부모 너비 · 문서 견본의 260px은 고정 규격이 아님']],
   empty:[['좁은 화면','min-width:0 / max-width:100% · 제목·설명 줄바꿈 · 복구 행동 노출']],
   editor:[['좁은 화면','min-width:0 / max-width:100% · 내용과 도구·보조정보 행 줄바꿈']],
   accordion:[['제목 행','제목 min-width:0 / 줄바꿈 · 펼침 표시 수축 금지 · 간격 14px']],
@@ -468,6 +468,7 @@ export function componentContract(c = {}) {
     variants:'ui/registry.json#components.'+c.id+'.variants',
     optionalParts:'ui/registry.json#components.'+c.id+'.optionalParts',
     compositionGuide:'ui/composition.md',
+    layoutContract:'ui/registry.json#layout',
     styles:['ui/tokens-scoped.css','ui/dds.css'],
     ...(c.id==='button'?{buttonRenderer:'ui/button.js'}:{}),
   } : null;
@@ -477,7 +478,7 @@ export function componentContract(c = {}) {
   assets.push(...(custom.assets || []));
   assets.push(...canonicalAssets);
   const rules = [...(custom.rules || [c.rule || '이 요소의 역할과 사용처를 먼저 정하고 기존 동작에 맞춰 적용합니다.'])];
-  rules.push('견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.');
+  rules.push('견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.');
   if (c.chartNote && !rules.includes(c.chartNote)) rules.push(c.chartNote);
   const specification = (custom.specification || family.specification)
     .filter(([label]) => !c.chartFamily || label !== '종류')

@@ -1,7 +1,7 @@
 /** Canonical core markup. No DOM access, listeners, storage, or document UI. */
-import {icon} from './icons.js?v=07d93ae023b5f009';
-import {renderButton} from './button.js?v=07d93ae023b5f009';
-import {collectionCount,statusBadge} from '../visibility.js?v=07d93ae023b5f009';
+import {icon} from './icons.js?v=ec6f1fc7745acd41';
+import {renderButton} from './button.js?v=ec6f1fc7745acd41';
+import {collectionCount,statusBadge} from '../visibility.js?v=ec6f1fc7745acd41';
 
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=(value,id)=>String(value||'dds-'+id).replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -59,7 +59,7 @@ case 'card':return renderDocumentCard();
 case 'table':return `<div class="table-wrap dds-table-scroll" role="region" aria-label="컨설팅 신청 목록" tabindex="0"><table class="dds-data-table"><caption class="sr-only">컨설팅 신청 예제</caption><thead><tr><th>문서</th><th>상태</th><th>신청일</th></tr></thead><tbody><tr><td>프로덕트 디자이너</td><td>${badge('검토 중','info')}</td><td>09.16</td></tr><tr><td>서비스 기획자</td><td>${badge('완료','success')}</td><td>09.12</td></tr></tbody></table></div>`;
 case 'accordion':return `<div class="accordion" data-dds-accordion-group="${uid}"><details open><summary>어떤 경험을 작성하면 좋을까요?</summary><p>지원 직무와 연결되는 프로젝트에서 나의 역할과 결과를 구체적으로 정리해 주세요.</p></details><details><summary>자소서는 언제 저장되나요?</summary><p>실서비스의 저장 정책을 확인한 뒤 자동 저장과 직접 저장 상태를 구분해 안내합니다.</p></details></div>`;
 case 'editor':return `<div class="editor-demo"><div class="row-between"><b>지원 동기</b>${badge('예제 편집')}</div><label class="sr-only" for="${uid}">자기소개서 본문</label><textarea id="${uid}" data-counter maxlength="500">사용자의 문제를 발견하고 팀과 함께 더 나은 경험을 설계합니다.</textarea><div class="row-between"><span class="helper" data-count>36 / 500</span>${btn('미리보기','sm','data-dialog')}</div></div>`;
-case 'video':return `<div class="media-demo">${icon('file')}<b>면접 영상 영역</b><p>카메라·마이크 권한을 요청하기 전 상태</p>${btn('권한 안내 보기','sm','data-toast="실제 서비스에서 면접 시작 전에 카메라와 마이크 권한을 요청합니다."')}</div>`;
+case 'video':return `<div class="media-demo"><div class="dds-media-placeholder">${icon('file')}<b>면접 영상 영역</b><p>카메라·마이크 권한을 요청하기 전 상태</p>${btn('권한 안내 보기','sm','data-toast="실제 서비스에서 면접 시작 전에 카메라와 마이크 권한을 요청합니다."')}</div></div>`;
 default:return null;
  }
 }
@@ -136,7 +136,7 @@ export const coreParts=Object.freeze({
  table:{caption:text('caption'),head:slot('thead'),rows:slot('tbody'),region:attrs('.dds-table-scroll','aria-label'),firstTitle:text('tbody tr:nth-child(1) td:nth-child(1)'),secondTitle:text('tbody tr:nth-child(2) td:nth-child(1)')},
  accordion:{firstTitle:text('details:nth-child(1) summary'),firstBody:text('details:nth-child(1) p'),secondTitle:text('details:nth-child(2) summary'),secondBody:text('details:nth-child(2) p'),firstControl:attrs('details:nth-child(1)','open'),secondControl:attrs('details:nth-child(2)','open')},
  editor:{title:text('.row-between > b'),status:text('.badge'),label:text('label'),body:text('textarea'),control:attrs('textarea','name','value','placeholder','maxlength','required','disabled','readonly','aria-label'),counter:text('[data-count]'),action:text('button')},
- video:{title:text('.media-demo > b'),description:text('.media-demo > p'),action:text('button'),media:slot('.media-demo')}
+ video:{title:text('.dds-media-placeholder > b'),description:text('.dds-media-placeholder > p'),action:text('button'),media:slot('.media-demo')}
 });
 
 export const coreIds=Object.freeze(Object.keys(coreParts));

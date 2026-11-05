@@ -1,0 +1,56 @@
+/* Shared component placement contract. Visual anatomy remains in its source.
+   The host owns column width and surrounding space; specimens own no page cap. */
+:is(.field,.tab-demo,.upload-zone,.skeleton-card,.sample-sidebar,.sample-chart,.dds-demo,.dds-thumbnail,.dds-document-card,.dds-table-scroll,.empty-state,.editor-demo,.accordion,.alert,.stepper){
+  width:100%;
+  min-width:0;
+  max-width:none;
+}
+
+/* A component's content slot does not inherit document-prose block margins.
+   Specific anatomy selectors below and in component sources keep their spacing. */
+:is(h1,h2,h3,p){margin:0}
+.empty-state > h3{margin:0 0 12px}
+.empty-state > p{margin:0 0 20px}
+.dds-dialog > p,.dds-overlay > p{margin:0 0 20px}
+.sample-document:not([data-dds-content=plain],[data-dds-content=form]) > h3{margin:18px 0 12px}
+.sample-document:not([data-dds-content=plain],[data-dds-content=form]) > p{margin:0 0 20px}
+
+/* Compact actions measure their own content. This does not center the control. */
+.dds-demo.dds-size-content{
+  width:fit-content;
+  max-width:100%;
+}
+
+/* These roots have no surrounding page spacing. Internal anatomy is unchanged. */
+:is(.breadcrumbs,.stepper,.alert){margin:0}
+.pagination{margin:0;padding:0}
+
+/* A supplied media slot is a neutral container. Its empty/permission placeholder
+   is the distinct .dds-media-placeholder child defined in the shared source. */
+.media-demo{
+  display:block;
+  width:100%;
+  min-width:0;
+  min-height:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  text-align:start;
+}
+
+/* Images retain their native aspect ratio unless an official ratio is chosen. */
+.dds-thumbnail{aspect-ratio:auto;padding:0;background:transparent}
+.dds-thumbnail img{display:block;width:100%;height:auto}
+
+/* Ratio and context behavior do not paint a demonstration canvas around content. */
+.dds-ratio{position:relative;width:100%;min-width:0;overflow:hidden;padding:0;border:0;background:transparent}
+.dds-carousel .dds-ratio{border-radius:10px}
+.dds-context,.dds-context-content{min-width:0}
+.dds-direction{min-width:0}
+
+/* A scroll region gets its block size from its host, not from an example list. */
+.dds-scroll{
+  height:var(--dds-scroll-height,auto);
+  max-height:var(--dds-scroll-max-height,none);
+}

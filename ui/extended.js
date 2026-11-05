@@ -1,15 +1,15 @@
 // Canonical extended-component markup. No document listeners or automatic mounting.
-import {icon} from './icons.js?v=07d93ae023b5f009';
-import {collectionCount,statusBadge} from '../visibility.js?v=07d93ae023b5f009';
+import {icon} from './icons.js?v=ec6f1fc7745acd41';
+import {collectionCount,statusBadge} from '../visibility.js?v=ec6f1fc7745acd41';
 const button=(text,attrs='',cls='')=>`<button type="button" class="btn ${cls}" ${attrs}>${text}</button>`;
 const ic=(name,label,attrs='')=>`<button type="button" class="icon-btn" aria-label="${label}" ${attrs}>${icon(name)}</button>`;
 const link=(text,route,current=false)=>`<a class="dds-nav-link dds-nav-control" href="#${route}" ${current?'aria-current="page"':''}>${text}</a>`;
 const status='<p class="helper" data-ext-status role="status"></p>';
 const choices=(name,values,type='radio')=>values.map((t,i)=>`<label class="dds-choice"><input type="${type}" name="${name}" value="${t}" ${i===0?'checked':''}><span>${t}</span></label>`).join('');
 const menu=(uid,title,items=['새 문서','문서 복사','내보내기'])=>`<div class="dds-menu-unit">${button(title,`data-ext-menu="${uid}" aria-haspopup="menu" aria-expanded="false" aria-controls="${uid}"`)}<div id="${uid}" class="dds-menu" role="menu" aria-label="${title}" hidden>${items.map(t=>`<button type="button" role="menuitem" data-ext-command="${t}">${t}</button>`).join('')}</div></div>`;
-// Compact examples are centered as a whole; form and navigation examples keep
-// their natural full-width layout and internal text alignment.
-const centeredExamples=new Set(['text-button','button-group','toggle','toggle-group','alert-dialog','sheet','drawer','popover','hover-card','push-badge','avatar-group','spinner']);
+// Intrinsic controls use their content width. Their placement and alignment
+// belong to the page or document container, not the component itself.
+const contentSizedComponents=new Set(['text-button','button-group','toggle','toggle-group','alert-dialog','sheet','drawer','popover','hover-card','push-badge','avatar-group','spinner','play-badge']);
 const bubble=(text,out=false)=>`<div class="dds-bubble ${out?'outgoing':''}">${text}</div>`;
 const message=(text,who='DDS 코치',out=false)=>`<article class="dds-message ${out?'outgoing':''}"><span class="avatar">${out?'나':'D'}</span><div><div class="dds-message-meta"><b>${who}</b><time>09:30</time></div>${bubble(text,out)}</div></article>`;
 const topnavMenus=[
@@ -24,7 +24,7 @@ function topNavigation(uid){
 }
 export function renderExtended(id,uid,mini=false){
  uid=String(uid||'dds-'+id).replace(/[^a-zA-Z0-9_-]/g,'-');
- const box=(html,extra='')=>`<div class="dds-demo${centeredExamples.has(id)?' dds-demo--centered':''}" ${extra}>${html}</div>`;
+ const box=(html,extra='')=>`<div class="dds-demo${contentSizedComponents.has(id)?' dds-size-content':''}" ${extra}>${html}</div>`;
  switch(id){
  case 'action-area':return box(`<p class="helper">변경사항을 확인한 뒤 저장해 주세요.</p><div class="dds-action-area">${button('취소','data-ext-notice="편집을 계속합니다."')}${button('저장','data-ext-notice="예제 내용이 저장되었습니다."','primary')}</div>${status}`);
  case 'text-button':return box(button('전체 보기 '+icon('right'),'data-ext-notice="전체 목록 보기 예제입니다."','ghost')+status);
@@ -50,22 +50,22 @@ export function renderExtended(id,uid,mini=false){
  case 'pagination-dots':return box(`<nav class="dds-dots" aria-label="슬라이드 이동">${Array.from({length:4},(_,i)=>`<button type="button" data-ext-dot aria-label="슬라이드 ${i+1}" ${i===0?'aria-current="true"':''}></button>`).join('')}</nav><p class="helper" data-dot-result>슬라이드 1</p>`);
  case 'menubar':return box(`<div class="dds-menubar" role="menubar" aria-label="문서 편집">${menu(uid+'-file','파일')}${menu(uid+'-edit','편집',['실행 취소','다시 실행'])}</div>${status}`);
  case 'command':return box(`<div class="dds-command"><div class="search-field dds-command-field">${icon('Search')}<input type="search" aria-label="명령 검색" placeholder="명령 검색…" data-ext-command-search></div><div class="dds-command-results" role="group" aria-label="명령 목록">${[['FilePlus','새 자기소개서'],['FileText','이력서 열기'],['ChartColumn','면접 결과 보기']].map(([glyph,t])=>`<button type="button" class="dds-command-option" data-ext-command="${t}">${icon(glyph)}<span>${t}</span></button>`).join('')}</div><p data-command-empty hidden>일치하는 명령이 없습니다.</p></div>${status}`);
- case 'context-menu':return box(`<div class="dds-context" tabindex="0" data-ext-context><p>자기소개서 예제</p><span class="helper">우클릭 또는 Shift+F10</span>${menu(uid,'문서 메뉴',['문서 복사','이름 변경','내보내기'])}</div>${status}`);
+ case 'context-menu':return box(`<div class="dds-context" tabindex="0" data-ext-context><div class="dds-context-content"><p>자기소개서 예제</p><span class="helper">우클릭 또는 Shift+F10</span></div>${menu(uid,'문서 메뉴',['문서 복사','이름 변경','내보내기'])}</div>${status}`);
  case 'alert-dialog':case 'sheet':case 'drawer':{const title=id==='alert-dialog'?'예제 문서를 삭제할까요?':id==='sheet'?'문서 상세':'컨설팅 방식 선택';const content=id==='alert-dialog'?'<p>이 동작은 확인 UI 예제이며 실제 문서를 삭제하지 않습니다.</p>':`<p>현재 작업을 유지하며 추가 정보를 확인합니다.</p>${choices(uid,['문서 첨삭','화상 상담'])}`;return box(button(id==='alert-dialog'?'삭제 확인 열기':id==='sheet'?'사이드 시트 열기':'하단 시트 열기',`data-ext-dialog="${uid}"`)+`<dialog id="${uid}" class="dds-overlay ${id}" ${id==='alert-dialog'?'role="alertdialog"':''} aria-labelledby="${uid}-title"><div class="dialog-heading"><h2 id="${uid}-title">${title}</h2>${ic('close','닫기','data-ext-close')}</div>${content}<div class="dds-action-area">${button('취소','data-ext-close autofocus')}${button('확인','data-ext-confirm','primary')}</div></dialog>`+status);}
  case 'popover':case 'hover-card':return box(`<span class="dds-popover-host">${button(id==='popover'?'표시 설정':'DDS 코치 프로필',`data-ext-popover="${uid}" ${id==='hover-card'?'data-ext-hover':''} aria-expanded="false" aria-controls="${uid}"`)}<div id="${uid}" class="dds-popover" popover="auto" role="dialog" aria-label="${id==='popover'?'표시 설정':'코치 프로필'}"><div class="row-between"><b>${id==='popover'?'표시 설정':'DDS 코치'}</b>${ic('close','닫기',`data-popover-close="${uid}"`)}</div>${id==='popover'?choices(uid,['완료 문서도 표시'],'checkbox'):'<p>프로덕트 디자인 · 경력 상담</p><p class="helper">합성 예제 프로필</p>'}</div></span>`);
  case 'snackbar':return box(`<div class="dds-snackbar"><span data-snack-message role="status">문서를 보관했습니다.</span>${button('되돌리기','data-snack-undo','ghost')}${ic('close','알림 닫기','data-snack-close')}</div>${button('알림 다시 보기','data-snack-show','ghost')}`);
  case 'spinner':return box(`<div class="demo-row" role="status"><span class="dds-spinner" aria-hidden="true"></span><span>문서를 준비하고 있어요</span></div>`);
  case 'fallback-view':return box(`<div class="dds-fallback">${icon('CloudOff')}<h3 data-fallback-title>연결을 확인해 주세요</h3><p data-fallback-copy>잠시 후 다시 시도할 수 있습니다.</p><div class="dds-fallback-actions"><button type="button" class="dds-button" data-ext-retry>다시 시도</button></div></div>`);
  case 'push-badge':return box(`<button class="icon-btn dds-push" aria-label="읽지 않은 알림 3개" data-ext-notice="읽지 않은 예제 알림 3개">${icon('Bell')}<span aria-hidden="true">3</span></button>${status}`);
- case 'aspect-ratio':return box(`<div class="dds-ratio" role="img" aria-label="16대9 미디어 영역 예제">${icon('Image')}<span>16 : 9</span></div>`);
+ case 'aspect-ratio':return box(`<div class="dds-ratio" role="img" aria-label="16대9 미디어 영역 예제"><div class="dds-ratio-placeholder">${icon('Image')}<span>16 : 9</span></div></div>`);
  case 'thumbnail':return box(`<div class="dds-thumbnail"><img src="/assets/deepresume-logo.png" alt="DeepResume 브랜드 이미지" width="240" height="40"></div>`);
- case 'play-badge':return box(`<div class="dds-ratio">${button(icon('Play')+' 02:34','data-ext-notice="재생 표시 예제입니다. 실제 영상은 연결하지 않았습니다."','dds-play')}</div>${status}`);
+ case 'play-badge':return box(button(icon('Play')+' 02:34','data-ext-notice="재생 표시 예제입니다. 실제 영상은 연결하지 않았습니다."','dds-play')+status);
  case 'avatar-group':return box(`<div class="dds-avatar-group" role="img" aria-label="예제 참여자: 가람, 나래, 다온 외 2명">${['가','나','다','+2'].map(t=>`<span class="avatar">${t}</span>`).join('')}</div><p class="helper">참여자 5명</p>`);
  case 'list-card':return box(`<article class="dds-list-card dds-content-card"><div class="dds-mini-image">${icon('FileText')}</div><div><h3 class="dds-card-title"><a class="dds-card-link" href="#/patterns/interview">면접 준비 가이드</a></h3><p class="dds-meta-secondary">3분 읽기 · 커리어 가이드</p></div></article>`);
  case 'item':return box(`<ul class="dds-items">${['프로덕트 디자이너','서비스 기획자'].map(t=>`<li><a class="dds-list-link" href="/prototypes/coverletter-write.html">${icon('file')}<span class="dds-list-content"><b class="dds-card-title">${t}</b><span class="dds-list-meta"><span class="dds-meta-secondary">자기소개서</span>${statusBadge('draft','임시저장',icon)}</span></span>${icon('right')}</a></li>`).join('')}</ul>`);
  case 'section-header':return box(`<div class="dds-section-header"><div class="dds-section-header-content"><h3 class="dds-section-heading"><span>내 자기소개서</span>${collectionCount(3,{label:'자기소개서'})}</h3><p class="dds-meta-secondary">최근 작성한 문서</p></div><a class="dds-nav-link dds-section-header-action" href="#/patterns/document-list">전체 보기</a></div>`);
  case 'attachment':return box(`<div class="dds-attachment">${icon('FileText')}<div><b>포트폴리오.pdf</b><p class="helper">PDF · 2.4 MB · 선택됨</p></div>${ic('close','포트폴리오.pdf 제거','data-attachment-remove')}</div>${button('첨부 예제 복원','data-attachment-restore','ghost')}${status}`);
- case 'carousel':return box(`<section class="dds-carousel" aria-roledescription="캐러셀" aria-label="커리어 가이드"><div data-carousel-slide class="dds-ratio"><span class="eyebrow">CAREER GUIDE 01</span><b>나의 경험을 발견하기</b></div><div class="row-between">${ic('left','이전 슬라이드','data-carousel-shift="-1" disabled')}<output data-carousel-count aria-live="polite">1 / 3</output>${ic('right','다음 슬라이드','data-carousel-shift="1"')}</div></section>`);
+ case 'carousel':return box(`<section class="dds-carousel" aria-roledescription="캐러셀" aria-label="커리어 가이드"><div data-carousel-slide class="dds-ratio"><div class="dds-ratio-placeholder"><span class="eyebrow">CAREER GUIDE 01</span><b>나의 경험을 발견하기</b></div></div><div class="row-between">${ic('left','이전 슬라이드','data-carousel-shift="-1" disabled')}<output data-carousel-count aria-live="polite">1 / 3</output>${ic('right','다음 슬라이드','data-carousel-shift="1"')}</div></section>`);
  case 'collapsible':return box(`<details class="dds-collapsible"><summary>지원 정보 상세 ${icon('down')}</summary><p>지원 직무: 프로덕트 디자이너</p><p>고용 형태: 정규직</p></details>`);
  case 'separator':return box(`<p>지원 정보</p><hr><p>문항 작성</p>`);
  case 'kbd':return box(`<div class="demo-row"><kbd>Ctrl</kbd><span>+</span><kbd>K</kbd><span class="helper">문서 검색</span></div>`);
@@ -112,7 +112,7 @@ const parts={
  'pagination-dots':{navigation:attributes('.dds-dots'),dots:slot('.dds-dots'),result:text('[data-dot-result]')},
  menubar:{bar:attributes('.dds-menubar'),menus:slot('.dds-menubar'),firstLabel:text('.dds-menu-unit:first-child > [data-ext-menu]'),status:text('[data-ext-status]')},
  command:{search:attributes('[data-ext-command-search]'),commands:slot('.dds-command-results'),firstLabel:text('.dds-command-option:first-child > span'),empty:text('[data-command-empty]'),status:text('[data-ext-status]')},
- 'context-menu':{target:attributes('[data-ext-context]'),title:text('.dds-context > p'),description:text('.dds-context > .helper'),triggerLabel:text('[data-ext-menu]'),commands:slot('[role="menu"]'),status:text('[data-ext-status]')},
+ 'context-menu':{target:attributes('[data-ext-context]'),content:slot('.dds-context-content'),title:text('.dds-context-content > p'),description:text('.dds-context-content > .helper'),triggerLabel:text('[data-ext-menu]'),commands:slot('[role="menu"]'),status:text('[data-ext-status]')},
  'alert-dialog':{triggerLabel:text('.dds-demo > button'),dialog:attributes('.dds-overlay'),title:text('.dialog-heading > h2'),description:text('.dds-overlay > p'),actions:slot('.dds-action-area'),cancelLabel:text('.dds-action-area > button:first-child'),confirmLabel:text('[data-ext-confirm]'),status:text('[data-ext-status]')},
  sheet:{triggerLabel:text('.dds-demo > button'),dialog:attributes('.dds-overlay'),title:text('.dialog-heading > h2'),description:text('.dds-overlay > p'),actions:slot('.dds-action-area'),cancelLabel:text('.dds-action-area > button:first-child'),confirmLabel:text('[data-ext-confirm]'),status:text('[data-ext-status]')},
  drawer:{triggerLabel:text('.dds-demo > button'),dialog:attributes('.dds-overlay'),title:text('.dialog-heading > h2'),description:text('.dds-overlay > p'),actions:slot('.dds-action-area'),cancelLabel:text('.dds-action-area > button:first-child'),confirmLabel:text('[data-ext-confirm]'),status:text('[data-ext-status]')},
@@ -122,7 +122,7 @@ const parts={
  spinner:{status:attributes('[role="status"]'),label:text('.demo-row > span:last-child')},
  'fallback-view':{title:text('[data-fallback-title]'),description:text('[data-fallback-copy]'),retryLabel:text('[data-ext-retry]'),retry:attributes('[data-ext-retry]')},
  'push-badge':{button:attributes('.dds-push'),count:text('.dds-push > span'),status:text('[data-ext-status]')},
- 'aspect-ratio':{media:attributes('.dds-ratio'),label:text('.dds-ratio > span')},
+ 'aspect-ratio':{media:attributes('.dds-ratio'),content:slot('.dds-ratio'),label:text('.dds-ratio-placeholder > span')},
  thumbnail:{image:attributes('.dds-thumbnail > img'),content:slot('.dds-thumbnail')},
  'play-badge':{button:attributes('.dds-play'),content:slot('.dds-play'),status:text('[data-ext-status]')},
  'avatar-group':{group:attributes('.dds-avatar-group'),avatars:slot('.dds-avatar-group'),description:text('.helper')},
@@ -130,7 +130,7 @@ const parts={
  item:{list:attributes('.dds-items'),items:slot('.dds-items'),firstLink:attributes('.dds-items > li:first-child a'),firstTitle:text('.dds-items > li:first-child .dds-card-title'),firstMetadata:text('.dds-items > li:first-child .dds-meta-secondary'),firstStatus:text('.dds-items > li:first-child .dds-status > span')},
  'section-header':{title:text('.dds-section-heading > span:first-child'),count:text('.dds-collection-count'),countAttributes:attributes('.dds-collection-count'),description:text('.dds-section-header-content > p'),actionLabel:text('.dds-section-header-action'),action:attributes('.dds-section-header-action')},
  attachment:{filename:text('.dds-attachment > div > b'),metadata:text('.dds-attachment .helper'),remove:attributes('[data-attachment-remove]'),restoreLabel:text('[data-attachment-restore]'),status:text('[data-ext-status]')},
- carousel:{carousel:attributes('.dds-carousel'),slide:slot('[data-carousel-slide]'),label:text('[data-carousel-slide] > span'),title:text('[data-carousel-slide] > b'),counter:text('[data-carousel-count]'),previous:attributes('[data-carousel-shift="-1"]'),next:attributes('[data-carousel-shift="1"]')},
+ carousel:{carousel:attributes('.dds-carousel'),slide:slot('[data-carousel-slide]'),label:text('[data-carousel-slide] > .dds-ratio-placeholder > span'),title:text('[data-carousel-slide] > .dds-ratio-placeholder > b'),counter:text('[data-carousel-count]'),previous:attributes('[data-carousel-shift="-1"]'),next:attributes('[data-carousel-shift="1"]')},
  collapsible:{details:attributes('.dds-collapsible'),trigger:attributes('.dds-collapsible > summary'),firstDescription:text('.dds-collapsible > p:first-of-type'),secondDescription:text('.dds-collapsible > p:last-of-type')},
  separator:{before:text('.dds-demo > p:first-of-type'),after:text('.dds-demo > p:last-of-type'),rule:attributes('hr')},
  kbd:{firstKey:text('kbd:first-of-type'),lastKey:text('kbd:last-of-type'),description:text('.helper')},

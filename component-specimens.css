@@ -1,0 +1,94 @@
+/* Documentation only. Caps and presentation apply only to the specimen directly
+   inside a preview frame, never to components nested inside a real page/block. */
+:where(.playground-inner,.preview-inner) > :is(.field,.tab-demo),
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.field,.tab-demo){max-width:440px}
+
+:where(.playground-inner,.preview-inner) > .upload-zone,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .upload-zone{max-width:410px}
+
+:where(.playground-inner,.preview-inner) > .skeleton-card,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .skeleton-card{max-width:260px}
+
+:where(.playground-inner,.preview-inner) > .sample-sidebar,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .sample-sidebar{max-width:260px}
+
+:where(.playground-inner,.preview-inner) > .sample-chart,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .sample-chart{max-width:420px}
+
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component):not(.dds-size-content):not(.dds-topnav-demo),
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component):not(.dds-size-content):not(.dds-topnav-demo){display:flow-root;max-width:440px}
+
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component).dds-size-content,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component).dds-size-content{display:flex;flex-direction:column;align-items:center;gap:0}
+
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component) > :first-child,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component) > :first-child{margin-block-start:0}
+
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component) > :last-child,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component) > :last-child,
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component) > :has(+[data-ext-status]:empty),
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component) > :has(+[data-ext-status]:empty){margin-block-end:0}
+
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component).dds-size-content > .helper,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component).dds-size-content > .helper{text-align:center}
+
+:where(.playground-inner,.preview-inner) > .demo-row,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .demo-row,
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component) > .demo-row,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component) > .demo-row{justify-content:center}
+
+:where(.playground-inner,.preview-inner) > .tab-demo,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .tab-demo{display:grid;justify-items:center}
+:where(.playground-inner,.preview-inner) > .tab-demo > .tab-body,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .tab-demo > .tab-body{width:100%;text-align:center}
+
+/* Calendar's compact grid is intrinsic; only the specimen is centered. */
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component) > .dds-calendar,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component) > .dds-calendar{margin-inline:auto}
+
+/* The logo fixture has a 4:3 frame. Real Thumbnail media has its own ratio. */
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component):has(> .dds-thumbnail),
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component):has(> .dds-thumbnail){max-width:280px}
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component) > .dds-thumbnail,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > :is(.dds-demo,.dds-component) > .dds-thumbnail{aspect-ratio:4/3;padding:24px;background:#fff}
+
+/* Bounded example viewports demonstrate scrolling without defining product size. */
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component):has(> .dds-scroll),
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component="scroll-area"] > :is(.dds-demo,.dds-component){--dds-scroll-max-height:180px}
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component):has(> .dds-thread),
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component="message-scroller"] > :is(.dds-demo,.dds-component){--dds-scroll-max-height:220px}
+
+/* Headers always use the complete preview stage, including the desktop menu. */
+:where(.playground-inner,.preview-inner) > .dds-topnav-demo,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .dds-topnav-demo{width:100%;max-width:none}
+
+/* A play control is shown on an example stage only in its own document frame. */
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component):has(> .dds-play),
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component="play-badge"] > :is(.dds-demo,.dds-component){
+  width:100%;
+  max-width:440px;
+  aspect-ratio:16/9;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:16px;
+  background:var(--accent);
+  border-radius:10px;
+  color:var(--brand-ink);
+  text-align:center;
+}
+
+/* The context menu's demonstration target is not its service-owned content. */
+:where(.playground-inner,.preview-inner) > .dds-context,
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component) > .dds-context,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component="context-menu"] > :is(.dds-demo,.dds-component) > .dds-context{padding:18px;border:1px dashed var(--border);border-radius:10px}
+:where(.playground-inner,.preview-inner) > .dds-context > .dds-context-content > p,
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component) > .dds-context > .dds-context-content > p,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component="context-menu"] > :is(.dds-demo,.dds-component) > .dds-context > .dds-context-content > p{margin-bottom:0}
+
+/* Direction examples have separate presentation surfaces; dir itself adds none. */
+:where(.playground-inner,.preview-inner) > .dds-direction,
+:where(.playground-inner,.preview-inner) > :is(.dds-demo,.dds-component) > .dds-direction,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component="direction"] > :is(.dds-demo,.dds-component) > .dds-direction{padding:12px;border:1px solid var(--border);border-radius:8px;margin-bottom:10px}

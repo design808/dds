@@ -1,9 +1,33 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "scopeClass": "dds-ui",
   "componentCount": 115,
+  "layout": {
+    "hostOwns": [
+      "available-width",
+      "grid-placement",
+      "outer-spacing",
+      "allocated-scroll-height"
+    ],
+    "componentOwns": [
+      "control-size",
+      "typography",
+      "internal-padding",
+      "border",
+      "radius",
+      "state",
+      "intrinsic-parts"
+    ],
+    "sizingSource": "component-layout.css",
+    "compiledInto": "ui/dds.css",
+    "specimenStylesIncluded": false,
+    "scrollVariables": {
+      "height": "--dds-scroll-height",
+      "maxHeight": "--dds-scroll-max-height"
+    }
+  },
   "styles": [
     "tokens.css",
     "ui/dds.css"
@@ -19,28 +43,29 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "dacd58e8708039dd231dcccd208fc0d24c4cce0690d5d731aa9a34a81f2cda46",
-    "ui/core.js": "5b73d6ef7069948e425face8f2a39459df8938786ad813bcf9bfd026bd4b3fe2",
-    "ui/button.js": "988ee74bce86661145e3c003ddf7e1f73fa861f5702fb515cfb2c99402f02a82",
-    "ui/extended.js": "3065b405b1e04112ce9465af54ab01eff4abbe730a2220fa696f85d1dd74e650",
-    "ui/charts.js": "7cbd9892bb60cf8c1e6c1ee0eef0155214bf9e6b6f109e38c9e3c3c6e4c2a466",
-    "ui/source.js": "b23b2ea69ad3848c017ade48d34bd35458faff3854efdd331d744c552d24ed46",
-    "ui/index.js": "d1297cf138845542b82d9b00e1a6e9a56307257a454d405c20d999c6f761f004",
-    "ui/content.js": "f44d8ebc923f54f1b98b0c1c0045b125caabd859a62f3c31c6098b039f298ad3",
-    "ui/variants.js": "aa80179ffb5b2125e3b7386d7e2597c8660b163bf58d2875e7aaaae4ea7c2b7c",
-    "ui/profile.js": "5bf25ece1bc89751df5704b38d87ce3bfea845415013492a49e2c2da927b2c2f",
+    "ui/version.js": "141dc584e6a180543a602597da5df907547f1ef0a5df5a72ac9b404913d39360",
+    "ui/core.js": "748281c5c7306b108f86948cb126a0ce82aae62f65ead867a6ec17407eab4a29",
+    "ui/button.js": "9b21cd8a4586507eee2365c2ec943ea3105c5f64fab6e20c1fc08ffb4623382b",
+    "ui/extended.js": "5409e867e0ab4831c02e35b66ac7698ca48e3db24023dd128fcb6cb81422858a",
+    "ui/charts.js": "c2c2f361fba16e5cb3384afc516749acafaf9404e5dc1bffc58dab56a79b5020",
+    "ui/source.js": "f8a96f3f941002a4ea8ee2ab6aa131b4f4b9c748d658925a8b83147bf93328d5",
+    "ui/index.js": "cf9ee954e22cd20fa49e560d12f7affeeb0719b0249d6da8fdd93b0526fdcc94",
+    "ui/content.js": "dff56fb0f29460ff88699d2aed65eb297409645b9dd192dd1b3f565d19199fed",
+    "ui/variants.js": "c5c4f45c48f13536b6ca71bd0cf3842f09f23b4807f9a643e77d5988d5cd6ec1",
+    "ui/profile.js": "5ed5424c33a2d15140bb7a36d0eba0416b841e7708f87011d2f48eb15b1fabe8",
     "ui/profile-palette.js": "10a29ff6c24ef3c9acf40e619b4e2836a5760a3154eb980a92323df9096acb88",
-    "ui/icons.js": "d01b9c4a285912fa4b401db8cf25a6a8233b6033f18c7a513e66b3b1dc54ef38",
+    "ui/icons.js": "961be28fcdc2fb1a10221422bfda7847995a22be086546d21c94e2bc2288b109",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "b1819da5854c5c2d6878cbde6ec144c80a32381d40b8a2976ec9ddcec8ebaa31",
-    "ui/dds.css": "23cca445564656e7247f13ef064b929201b00ec393532cfdf0a52b8abc80efd7",
+    "ui/controls.js": "395b8faa64c88065c644234f0a8a7536c131bca9433be03ebb336a82bccae865",
+    "ui/dds.css": "c51059b8974fb0717753224258905a771d0dfbf8300651c611924d802611f6da",
     "ui/tokens-scoped.css": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713",
     "tokens.css": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
+    "component-layout.css": "686890242a322f2724942ac5c5b378458b7368014cad9c4836b02ec38782ce11",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "668039c6c4d07bce088d24225a377bff4fe24b0d9a322f8039205a44f39d13cb",
-    "design-preferences.js": "216949c6c2001e9fe4ae3b8d0fe5e8408989a84bc0c3fdccd7e5d9241064b245",
-    "design-profile.js": "c5178fdbe3a8fac4a76ae1c9b61b936c241805e9ef708d5d9286dc1b28797851",
+    "design-preferences.js": "3f9484ad19c48b538a36120aa555ef1900eb89bf1837277071e1e07ef113f6f7",
+    "design-profile.js": "2d15454bc4ef5875b5841806b2f26b9b35edceba3a5a3fbb78a65abb12991215",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "components": {
@@ -81,7 +106,7 @@
       "group": "Actions",
       "template": "ui/templates/icon-button.html",
       "idPrefix": "dds-instance",
-      "sha256": "8557de65761614246598fad49a241ecf7b0e648a7c1a99f6eb0d023c63e7d243",
+      "sha256": "9ac855bd740a765a0dc708140df53b21b14046f7b145a4adfed80fc2acf0d41f",
       "renderer": "ui/core.js",
       "parts": {
         "add": {
@@ -867,7 +892,7 @@
       "group": "Inputs",
       "template": "ui/templates/upload.html",
       "idPrefix": "dds-instance",
-      "sha256": "45fed3c0b35bcb923961bc5c990edefdcb2f2934e04c4a465d17564da1b27ecf",
+      "sha256": "9e3c0ea653d923ca423dbce7e6e8c74021ac910c6f8d7487b178ffe4623ed709",
       "renderer": "ui/core.js",
       "parts": {
         "label": {
@@ -927,7 +952,7 @@
       "group": "Inputs",
       "template": "ui/templates/search.html",
       "idPrefix": "dds-instance",
-      "sha256": "8cff22e7a72a92c40a8434957250977551fd60d33c367e68827aea5a81fcd007",
+      "sha256": "3e66a3c23b6d8f36bad0c09c46151478aafcee290c25b9b63a6b5f83eb11fc01",
       "renderer": "ui/core.js",
       "parts": {
         "label": {
@@ -1157,7 +1182,7 @@
       "group": "Navigation",
       "template": "ui/templates/pagination.html",
       "idPrefix": "dds-instance",
-      "sha256": "a09334ba3ec1dfb3cdfacf2d9877f64514e8d57006e615aca031d4d2a79544eb",
+      "sha256": "5683391d85fd8d5fe070a2e0561cbc4bcdf1da3eeadcaa36e66915733b03b44e",
       "renderer": "ui/core.js",
       "parts": {
         "pages": {
@@ -1187,7 +1212,7 @@
       "group": "Navigation",
       "template": "ui/templates/stepper.html",
       "idPrefix": "dds-instance",
-      "sha256": "1125a7d626dda7c9294f16abcb2d715b8818d202e14a2effdf84f515e551bed2",
+      "sha256": "682ece28940122d6c763b5364f800183d58baa7947bd0563e725211bab1eefb1",
       "renderer": "ui/core.js",
       "parts": {
         "steps": {
@@ -1298,7 +1323,7 @@
       "group": "Navigation",
       "template": "ui/templates/dropdown.html",
       "idPrefix": "dds-instance",
-      "sha256": "06a9d54532566638e6a9ec1b6a6bb07cf34cf211c5b7784a2a958c55fa699b31",
+      "sha256": "66ca5d9059903741e0496a88d059e0ba61fa8de0a3d52e5fd009fe5329d77f21",
       "renderer": "ui/core.js",
       "parts": {
         "label": {
@@ -1329,7 +1354,7 @@
       "group": "Feedback",
       "template": "ui/templates/dialog.html",
       "idPrefix": "dds-instance",
-      "sha256": "a151bbee8dc2527e78cb400ef28dc3a30dcbee3bce3324b321655bc7393b11ef",
+      "sha256": "f52be0204dcc0c8136cf7c703d712560b0e1c780aa71af2a314524acfcb95a47",
       "renderer": "ui/core.js",
       "parts": {
         "trigger": {
@@ -1434,7 +1459,7 @@
       "group": "Feedback",
       "template": "ui/templates/alert.html",
       "idPrefix": "dds-instance",
-      "sha256": "39aef15f56c018f0f0821598320093cc01936037cabfbf9c24e77720b359bd0c",
+      "sha256": "c54b5475dd16a28b043cd9668c1d779859a19d8403c379e38d604a4ef4f57fa5",
       "renderer": "ui/core.js",
       "parts": {
         "title": {
@@ -1541,7 +1566,7 @@
       "group": "Feedback",
       "template": "ui/templates/toast.html",
       "idPrefix": "dds-instance",
-      "sha256": "bc87423d051cc28a910f96c8164e9126f5ed25fb7155626626d9c37930eb9146",
+      "sha256": "fb6c53d5415950b1cedcdd866433a18fbc53ccb2a66305ffbc70dbcd12ccc783",
       "renderer": "ui/core.js",
       "parts": {
         "label": {
@@ -1641,7 +1666,7 @@
       "group": "Feedback",
       "template": "ui/templates/tooltip.html",
       "idPrefix": "dds-instance",
-      "sha256": "7ced3e3319339255d17ee5bf90709e91ba241aababd912ee0c193ae3dfb98f08",
+      "sha256": "f75704f4a286eb64f80aed42f7f7e9e701e25b31d874bdd54eda96064a17755f",
       "renderer": "ui/core.js",
       "parts": {
         "control": {
@@ -1753,7 +1778,7 @@
       "group": "Feedback",
       "template": "ui/templates/empty.html",
       "idPrefix": "dds-instance",
-      "sha256": "d9bef2149c7a05062a70e196d691f38bc6ba4cdf9f8dbb867db5c19d055b63ef",
+      "sha256": "d938b6a842243f2c7db2aa6d1e400bc53a90feb82aa051f0dfa0849eee787365",
       "renderer": "ui/core.js",
       "parts": {
         "title": {
@@ -1812,7 +1837,7 @@
       "group": "Data display",
       "template": "ui/templates/badge.html",
       "idPrefix": "dds-instance",
-      "sha256": "6ac7757e15f23045d0bf84b03ae6d73f0ff7f167c6fba5befa7316642b189275",
+      "sha256": "82793124119ce1cf424694e76b912d920cc3c5212107667363a8f7f63850abf3",
       "renderer": "ui/core.js",
       "parts": {
         "statuses": {
@@ -1968,7 +1993,7 @@
       "group": "Data display",
       "template": "ui/templates/card.html",
       "idPrefix": "dds-instance",
-      "sha256": "e83811be7ec9490f2dfea682bfc0db6452daf946b0b2a630bf062e02345d2f22",
+      "sha256": "f684444a7e23a70a088e144063b3b1a0a2967c67e698360873d52ca12480653f",
       "renderer": "ui/core.js",
       "parts": {
         "content": {
@@ -2078,7 +2103,7 @@
       "group": "Data display",
       "template": "ui/templates/table.html",
       "idPrefix": "dds-instance",
-      "sha256": "44230a58a8f9d9e2aad9a98f18aa29fddfb7d5f5f7fef1c8308deb3ebe4c4734",
+      "sha256": "2956ffe2024a8f32c2b4e49555d8ac8b1ae878f34cfe5c1bf14592411995cc94",
       "renderer": "ui/core.js",
       "parts": {
         "caption": {
@@ -2235,7 +2260,7 @@
       "group": "Data display",
       "template": "ui/templates/editor.html",
       "idPrefix": "dds-instance",
-      "sha256": "f65e46842f514acef0d1c64decafd01bceaf91755e86d739bc43a867a959b22b",
+      "sha256": "fb537f85988d266fe1bd5b86933592974d083cb13b95e54622d7c32df91f7904",
       "renderer": "ui/core.js",
       "parts": {
         "title": {
@@ -2323,15 +2348,15 @@
       "group": "Data display",
       "template": "ui/templates/video.html",
       "idPrefix": "dds-instance",
-      "sha256": "794819266bb6496c6bb699f3fd38aede4a85f8162ede3062f49293fc31911b1b",
+      "sha256": "35b5c5310e11718f1a4952f7ead5fa7797fc9fc1e8be9a1d6baaa5c2d4a58b71",
       "renderer": "ui/core.js",
       "parts": {
         "title": {
-          "selector": ".media-demo > b",
+          "selector": ".dds-media-placeholder > b",
           "kind": "text"
         },
         "description": {
-          "selector": ".media-demo > p",
+          "selector": ".dds-media-placeholder > p",
           "kind": "text"
         },
         "action": {
@@ -2354,7 +2379,7 @@
       "group": "Actions",
       "template": "ui/templates/action-area.html",
       "idPrefix": "dds-instance",
-      "sha256": "5c354678d0bbe2a43c09f27678d3f999c1b8a3abc78efd30bc6217a90b5ce4be",
+      "sha256": "0b6e7be0c549052ec0dfcca86de94ab591b021f4ef1a8ef1fc741d12c2948d15",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -2424,7 +2449,7 @@
       "group": "Actions",
       "template": "ui/templates/text-button.html",
       "idPrefix": "dds-instance",
-      "sha256": "e537c1c329a3144224fb44707342b3a18080fb5864c96c9af90934308c937e8c",
+      "sha256": "ed9bdafcd82ae64755af7273f3a484af764a30b3c96bb0576adfb4b1f7aa5a76",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -2491,7 +2516,7 @@
       "group": "Actions",
       "template": "ui/templates/button-group.html",
       "idPrefix": "dds-instance",
-      "sha256": "b1604bb05f511b03d88db871cd03349d0aec059deea67c3f99e037c3c92288a4",
+      "sha256": "a47d05d4aaa96b0d96c29e8ffa6e76f44ec4a652018c1148e627c98b6a9579a5",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -2555,7 +2580,7 @@
       "group": "Actions",
       "template": "ui/templates/toggle.html",
       "idPrefix": "dds-instance",
-      "sha256": "659d8a9c7d97d441dbf09d4892942120d7307f1bf9ca8fb886bce9dffa4ec1ce",
+      "sha256": "d3456e29edb44ce800ad63bd7cee0c4427b6c9ff14ecc12f352b69fd2a1c4356",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -2612,7 +2637,7 @@
       "group": "Actions",
       "template": "ui/templates/toggle-group.html",
       "idPrefix": "dds-instance",
-      "sha256": "6033b3754fffade0b7ca42cefd5e026992f29f2f28dc153d2ca50ad8448bcdc4",
+      "sha256": "e22ac61a80a2d8eb6def7447f1ff5ba96e2be6ed0edb12e551cbf82665afbcf4",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -2664,7 +2689,7 @@
       "group": "Actions",
       "template": "ui/templates/filter-button.html",
       "idPrefix": "dds-instance",
-      "sha256": "0ee32212def83cfde2740d11e8cbb7155c43dbb7925ea516b510b8025c23d207",
+      "sha256": "e27641e16107ae23843f5c9882b9eacc54129d4e97f610afe9be9c6341e030e0",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -2725,7 +2750,7 @@
       "group": "Inputs",
       "template": "ui/templates/calendar.html",
       "idPrefix": "dds-instance",
-      "sha256": "303dad8fb9689073abe247448e642a5ddbc10fc1e2cf644c790b992be9e1efe0",
+      "sha256": "86a94b15337c06307974ac472f1faf47c4a816ae448961b99043c3a38bff23a1",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -2848,7 +2873,7 @@
       "group": "Inputs",
       "template": "ui/templates/input-group.html",
       "idPrefix": "dds-instance",
-      "sha256": "e5334790ea2fd3cd5770dcfbc17ed7293ad403be9cecbc3e3b9d9d00429cdd85",
+      "sha256": "39a34082e673dad33b3f2acf2622518e33c2447c0dc6c31813c6255a71f3ab6a",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3176,7 +3201,7 @@
       "group": "Inputs",
       "template": "ui/templates/time-picker.html",
       "idPrefix": "dds-instance",
-      "sha256": "eda54bcd73194f6613beff22f0dc30adfccca86c9353d9dab80386ab8ae8e304",
+      "sha256": "53b25e522c0ce32a71027b351de4efc1e746c277465195f7af18da5d5fade0cd",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3245,7 +3270,7 @@
       "group": "Inputs",
       "template": "ui/templates/questionnaire.html",
       "idPrefix": "dds-instance",
-      "sha256": "d72a26977f11120125a79f25e38d014661a76116458538595632c006f35c3107",
+      "sha256": "267f8a1ff17e7c79cce03af2c2634c861bcb7751995665af5630332f526c24c1",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3308,7 +3333,7 @@
       "group": "Navigation",
       "template": "ui/templates/navigation-menu.html",
       "idPrefix": "dds-instance",
-      "sha256": "230d8af7db082f9835d2dea63fc3528ed50db7696aa34f67ec409a3054f0c919",
+      "sha256": "9689c6c811acf2e51ade6fa986d0a9e3150001b9b7a376bde47e2c500d76e1bb",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3343,7 +3368,7 @@
       "group": "Navigation",
       "template": "ui/templates/top-navigation.html",
       "idPrefix": "dds-instance",
-      "sha256": "1c2535ef38f2313b33e1373c410d75afce0a040f03527ae561dab6fa2fcfd2e3",
+      "sha256": "863c85063346086ed512f177a596b6a1b57864678f703de83f019dc184aba081",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3442,7 +3467,7 @@
       "group": "Navigation",
       "template": "ui/templates/bottom-navigation.html",
       "idPrefix": "dds-instance",
-      "sha256": "5565da8b51787b342919b6c6ca554121c3f876150b240bc17037c66edfa4bf8b",
+      "sha256": "6b9444a601133797d4c104201955704de76cf44c5c629ba6dfcadf6a0ec39b3d",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3477,7 +3502,7 @@
       "group": "Navigation",
       "template": "ui/templates/category.html",
       "idPrefix": "dds-instance",
-      "sha256": "42198b591501cfd3cba4fd76a517eb4fb0a35f10565e018a61bf49868146315e",
+      "sha256": "0098fa13379515a286a079a743ca7fd4bd0f7317b3e98c6350c73c051c469696",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3508,7 +3533,7 @@
       "group": "Navigation",
       "template": "ui/templates/page-counter.html",
       "idPrefix": "dds-instance",
-      "sha256": "d1f860c74e281aca9f007923495a30eeffc72b62a6a78b9d3ac2fb912fa30525",
+      "sha256": "0d13d775830c8c71f553490bc5c716c59d9c7827a897828c5f01f3e11a4e3777",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3574,7 +3599,7 @@
       "group": "Navigation",
       "template": "ui/templates/menubar.html",
       "idPrefix": "dds-instance",
-      "sha256": "0d02e07479e4b600ab3ab834eec452cd6797078585c3dbab5e592dd9fdc104ee",
+      "sha256": "a31a5488c0995adb310e0dcc1b86088af7bc859ce941919f4c0d4cf866f6d344",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3609,7 +3634,7 @@
       "group": "Navigation",
       "template": "ui/templates/command.html",
       "idPrefix": "dds-instance",
-      "sha256": "be5dd5b9369ba54995f890aae157ca81830d8ed7a08be78b4073c7434f720367",
+      "sha256": "32cf10d39ed5cd82c8ccd9c93c9f8c1ae4c7b86ef1e02368b6012f529e233d1b",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3648,7 +3673,7 @@
       "group": "Navigation",
       "template": "ui/templates/context-menu.html",
       "idPrefix": "dds-instance",
-      "sha256": "7b9049ac25d03af48b032553f8c8898c5568d0575be76370a9b5c5b0ac1d3f41",
+      "sha256": "d8c6d0f7639edfed365eaf37ef715b0bd4a49aabbfea0d987c0e839a9d73ce2b",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3659,12 +3684,16 @@
           "selector": "[data-dds-context]",
           "kind": "attributes"
         },
+        "content": {
+          "selector": ".dds-context-content",
+          "kind": "slot"
+        },
         "title": {
-          "selector": ".dds-context > p",
+          "selector": ".dds-context-content > p",
           "kind": "text"
         },
         "description": {
-          "selector": ".dds-context > .helper",
+          "selector": ".dds-context-content > .helper",
           "kind": "text"
         },
         "triggerLabel": {
@@ -3682,7 +3711,7 @@
       },
       "variants": {},
       "optionalParts": {
-        "description": ".dds-context > .helper"
+        "description": ".dds-context-content > .helper"
       },
       "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
       "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
@@ -3693,7 +3722,7 @@
       "group": "Feedback",
       "template": "ui/templates/alert-dialog.html",
       "idPrefix": "dds-instance",
-      "sha256": "0a56163029449007c2e50485d9b463ebdb536cd4fdc7af573a2924ed1605b710",
+      "sha256": "ac1a420af7bb3d9a6321d72dcff1822fbfda15977e465f6515e305f7dc671a64",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3767,7 +3796,7 @@
       "group": "Feedback",
       "template": "ui/templates/sheet.html",
       "idPrefix": "dds-instance",
-      "sha256": "cc5072a24f2c0525d466305940de2b816831bcef83b5531f3e33745878474676",
+      "sha256": "51ce6912f93de06576f9b46fbff239dc540389b83389c38a8574c67ef9262674",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3854,7 +3883,7 @@
       "group": "Feedback",
       "template": "ui/templates/drawer.html",
       "idPrefix": "dds-instance",
-      "sha256": "2b17de7c43c87eed802dae26d9efde811a991d119a0b51e556143a2a79ded7c8",
+      "sha256": "3e05cf79c79db0524823c02d4713f2aefb056383ef5fc935403613e09f3ce800",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3941,7 +3970,7 @@
       "group": "Feedback",
       "template": "ui/templates/popover.html",
       "idPrefix": "dds-instance",
-      "sha256": "8c932ea2aee0beb70e24b0fec8da634f0ed64ec7247cb77acbb3743b142d486d",
+      "sha256": "c499daf761736bfca9eddc61665d206d37d082ef1fa342cce536eab355902bfd",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -3980,7 +4009,7 @@
       "group": "Feedback",
       "template": "ui/templates/hover-card.html",
       "idPrefix": "dds-instance",
-      "sha256": "19658dc1bcbb84699ac13d5e4815fa5a5d5a6180ed7234d82aaf83f2a4b2be02",
+      "sha256": "c00e7a2f05913ea1c828b597699fed38b73b3a7bf155a75535dab68749a5899c",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4026,7 +4055,7 @@
       "group": "Feedback",
       "template": "ui/templates/snackbar.html",
       "idPrefix": "dds-instance",
-      "sha256": "00888bb7ad7886482cdf23bc33e321e80a427d7a25d58d80dff85f27f880b13a",
+      "sha256": "e696d5e3b4323fabde577989e52fd47b136cacfc62823cf56f06ecb2d6abe467",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4092,7 +4121,7 @@
       "group": "Feedback",
       "template": "ui/templates/spinner.html",
       "idPrefix": "dds-instance",
-      "sha256": "dd9d1ae8e0d98f5db019ad34783a87dad4670ade15d5e1c07d6ee8060eb0e3ce",
+      "sha256": "62644e2ef72d75fe5a8ad04d2dee66bba97c6c591cc227ea1e33fdf86378872b",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4140,7 +4169,7 @@
       "group": "Feedback",
       "template": "ui/templates/fallback-view.html",
       "idPrefix": "dds-instance",
-      "sha256": "7f32ab3ba04a82a6e24a8b7c21261f0444d0c6b9818c2dbf818ff0dba69af398",
+      "sha256": "513c717578806e429b7fdb485c62d40fe6b68130af207971385ef4c2cc4e3b98",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4198,7 +4227,7 @@
       "group": "Feedback",
       "template": "ui/templates/push-badge.html",
       "idPrefix": "dds-instance",
-      "sha256": "b5876b425e3abccedd70b05da42302ceb64264027a59753b1160389eb64aa487",
+      "sha256": "c078adbb6e170d9fe402eb83dece01c0a80f11a907531ba6ab37ef67c5e4d2d4",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4229,7 +4258,7 @@
       "group": "Data display",
       "template": "ui/templates/aspect-ratio.html",
       "idPrefix": "dds-instance",
-      "sha256": "04ebf9584c8dcd8b452f3ffecf8b8b3ce5824980b85a18c89f05b6a2b8b70bcd",
+      "sha256": "684ee0bb353d5c519c8496ce255fd3abdf06c3eafaabdd2653fe82c92de21322",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4240,8 +4269,12 @@
           "selector": ".dds-ratio",
           "kind": "attributes"
         },
+        "content": {
+          "selector": ".dds-ratio",
+          "kind": "slot"
+        },
         "label": {
-          "selector": ".dds-ratio > span",
+          "selector": ".dds-ratio-placeholder > span",
           "kind": "text"
         }
       },
@@ -4330,7 +4363,7 @@
       "group": "Data display",
       "template": "ui/templates/play-badge.html",
       "idPrefix": "dds-instance",
-      "sha256": "6ab21842699af069fb452e316237526113a531df9fb7703e79034913edc38b0d",
+      "sha256": "b002a3d66945fe382baa1e70a30ac5099789c087c8fff35cb9fa09d2c1b13ae6",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4361,7 +4394,7 @@
       "group": "Data display",
       "template": "ui/templates/avatar-group.html",
       "idPrefix": "dds-instance",
-      "sha256": "cf69018a148d975b1da62bd321e82599bb7126c4bfe9bacbf52ed6f27f7e5029",
+      "sha256": "6be320a97ac4f5ae6d9d9428c45c36e9e2501f4b2a3717b3f2a2b8595ed14f10",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4412,7 +4445,7 @@
       "group": "Data display",
       "template": "ui/templates/list-card.html",
       "idPrefix": "dds-instance",
-      "sha256": "52be0e7a216c09405881481154179fa5d1793a65d3d8ee31932d3f7b387ab85c",
+      "sha256": "041591c000e7459a5e4096a61c0380822b2272348ca1b21b04bb3294bafd265b",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4462,7 +4495,7 @@
       "group": "Data display",
       "template": "ui/templates/item.html",
       "idPrefix": "dds-instance",
-      "sha256": "bb2eedece9c93e67a67ee26aad1178165f54ee017803dc8a2d587b337feab725",
+      "sha256": "f490f8d34fce7fa82008b17c3c19bb850d6fa2f789ffe9ccf144f4a2c97c7bac",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4589,7 +4622,7 @@
       "group": "Data display",
       "template": "ui/templates/attachment.html",
       "idPrefix": "dds-instance",
-      "sha256": "b3a9af2d615d3ee05d840f84b5d701238a236a1674350ba843248d908d15837d",
+      "sha256": "ab7ac94e30510cf1881e593cacd3fd5dbd77f0c8c276c59f69201fad19bd8cbf",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4634,7 +4667,7 @@
       "group": "Data display",
       "template": "ui/templates/carousel.html",
       "idPrefix": "dds-instance",
-      "sha256": "d35e5f2bd51ebd55f998120bb1820fcad03b04f1fb0de5f4f771f6212ac36b36",
+      "sha256": "fda5d00247fcb55bc79591bec8a6ef989d20bb258568a38baead1bc00e6663f5",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4650,11 +4683,11 @@
           "kind": "slot"
         },
         "label": {
-          "selector": "[data-carousel-slide] > span",
+          "selector": "[data-carousel-slide] > .dds-ratio-placeholder > span",
           "kind": "text"
         },
         "title": {
-          "selector": "[data-carousel-slide] > b",
+          "selector": "[data-carousel-slide] > .dds-ratio-placeholder > b",
           "kind": "text"
         },
         "counter": {
@@ -4681,7 +4714,7 @@
       "group": "Data display",
       "template": "ui/templates/collapsible.html",
       "idPrefix": "dds-instance",
-      "sha256": "534ed1013c8a391f79f855538ddf18a8b5001b726d5308ec23cc455019c8a607",
+      "sha256": "8b50121d4f429be9b4c4e7394ea06c74f51d9c3dde9da5a1e028df8a051ffc17",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4821,7 +4854,7 @@
       "group": "Data display",
       "template": "ui/templates/resizable.html",
       "idPrefix": "dds-instance",
-      "sha256": "991dbf884a3a3aca25380b9565c71bbb0e56650234d2d7ef7f40dc02c6a3e20e",
+      "sha256": "8b5f0a5065ddc9730746553c441e6563fa9eec7916bfbc6971d7f5edd4d134f1",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4864,7 +4897,7 @@
       "group": "Data display",
       "template": "ui/templates/direction.html",
       "idPrefix": "dds-instance",
-      "sha256": "3dda3a02711029f4efe0db7cdaee78b7fd0e323ba1f2212bb07125910e455e85",
+      "sha256": "4796eb171d4b2faffebfcea10abbd6787b211457d321e6e7367511783fb87ffc",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4913,7 +4946,7 @@
       "group": "Data display",
       "template": "ui/templates/bubble.html",
       "idPrefix": "dds-instance",
-      "sha256": "c9a76406a39e42aa4b7aaf880a4f760264c1b5769fe907545f51ac877a800793",
+      "sha256": "321a9a3ac2b9e061156327088ed070f0edd1259db8ba570b03a2fa2fea3b2892",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4954,7 +4987,7 @@
       "group": "Data display",
       "template": "ui/templates/message.html",
       "idPrefix": "dds-instance",
-      "sha256": "98bbbb4f6e3e30c917079f5631756bddcd041438842903ae4f868860e97a6db0",
+      "sha256": "eca3aee9d72a04a35946e41b6b974d39e3d2ed91126a7ed003618684c3b81a9d",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -5030,7 +5063,7 @@
       "group": "Data display",
       "template": "ui/templates/marker.html",
       "idPrefix": "dds-instance",
-      "sha256": "e83172f8093f3472e79f2dfe40e798e2b6d7cc5e664ee5e7a79a079f51f37fcf",
+      "sha256": "950446661dab2590bbbbde7c5c30f8abf8ce46163849a8e6fef38ede72c75a31",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -5053,7 +5086,7 @@
       "group": "Data display",
       "template": "ui/templates/message-scroller.html",
       "idPrefix": "dds-instance",
-      "sha256": "5637a8573f8f28fba0218c22b3ba288e89b3e6616921e2f6c516a91b463c6529",
+      "sha256": "3ae7947027be2d5ce59419db3d47708b584bc30ed85e7bc3046c58a77c89c515",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -5985,7 +6018,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "07d93ae023b5f009",
-    "canonicalBundle": "../releases/0.5.0/bundle.json"
+    "assetRevision": "ec6f1fc7745acd41",
+    "canonicalBundle": "../releases/0.5.1/bundle.json"
   }
 }

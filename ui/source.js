@@ -1,7 +1,7 @@
-import {renderCore,coreParts,coreIds} from './core.js?v=07d93ae023b5f009';
-import {renderExtended,extendedParts} from './extended.js?v=07d93ae023b5f009';
-import {chartDemo} from './charts.js?v=07d93ae023b5f009';
-import {chartComponents,chartPresentation} from '../chart-catalog.js?v=07d93ae023b5f009';
+import {renderCore,coreParts,coreIds} from './core.js?v=ec6f1fc7745acd41';
+import {renderExtended,extendedParts} from './extended.js?v=ec6f1fc7745acd41';
+import {chartDemo} from './charts.js?v=ec6f1fc7745acd41';
+import {chartComponents,chartPresentation} from '../chart-catalog.js?v=ec6f1fc7745acd41';
 
 export const componentIds=Object.freeze([...coreIds,...Object.keys(extendedParts),'chart',...chartComponents.map(c=>c.id)]);
 export const isChart=id=>id==='chart'||!!chartPresentation(id);
@@ -34,12 +34,24 @@ export const hookMappings={
  'data-snack-undo':'data-dds-snack-undo','data-snack-close':'data-dds-snack-close','data-snack-show':'data-dds-snack-show'
 };
 export const classMappings={'dds-demo':'dds-component'};
+export const layoutContract=Object.freeze({
+ hostOwns:['available-width','grid-placement','outer-spacing','allocated-scroll-height'],
+ componentOwns:['control-size','typography','internal-padding','border','radius','state','intrinsic-parts'],
+ sizingSource:'component-layout.css',
+ compiledInto:'ui/dds.css',
+ specimenStylesIncluded:false,
+ scrollVariables:{height:'--dds-scroll-height',maxHeight:'--dds-scroll-max-height'}
+});
+const documentOnlyClasses=new Set(['dds-demo--centered']);
 const hooks=hookMappings;
 const actions=new Set(['data-toast','data-dialog','data-copy','data-ext-notice','data-ext-command','data-ext-retry','data-ext-filter','data-ext-filter-reset','data-attachment-remove','data-attachment-restore','data-thread-add','data-question-next','data-question-back','data-carousel-shift','data-ext-category','data-snack-undo','data-snack-close','data-snack-show']);
 export function serviceMarkup(markup){
  return markup.replace(/<[^>]+>/g,tag=>tag.replace(/\s([a-zA-Z_:][a-zA-Z0-9_:.-]*)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g,(whole,name,double,single,bare)=>{
   const value=double??single??bare;
-  if(name==='class')return ` class="${value.split(/\s+/).map(token=>classMappings[token]||token).join(' ')}"`;
+  if(name==='class'){
+   const classes=value.split(/\s+/).filter(token=>token&&!documentOnlyClasses.has(token)).map(token=>classMappings[token]||token);
+   return classes.length?` class="${classes.join(' ')}"`:'';
+  }
   if(hooks[name])return ' '+hooks[name]+(value===undefined?'':`="${value}"`);
   if(actions.has(name))return ` data-dds-action="${name.slice(5)}"`+(value?` data-dds-action-value="${value}"`:'');
   if(/^data-button-(?:doc|loading)/.test(name))return '';

@@ -17,7 +17,7 @@ export const optionalContent=Object.freeze({
  'input-otp':{description:'[data-otp-status]'},
  'action-area':{description:'.dds-component > .helper'},
  'section-header':{description:'.dds-section-header-content > p',count:'.dds-collection-count',actionLabel:'.dds-section-header-action'},
- 'context-menu':{description:'.dds-context > .helper'},
+ 'context-menu':{description:'.dds-context-content > .helper'},
  'alert-dialog':{description:'.dds-overlay > p'},
  sheet:{description:'.dds-overlay > p'},
  drawer:{description:'.dds-overlay > p'},

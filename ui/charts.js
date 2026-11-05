@@ -1,5 +1,5 @@
-import {chartComponents, chartPresentation} from '../chart-catalog.js?v=07d93ae023b5f009';
-import {bindChartLayout} from '../chart-layout.js?v=07d93ae023b5f009';
+import {chartComponents, chartPresentation} from '../chart-catalog.js?v=ec6f1fc7745acd41';
+import {bindChartLayout} from '../chart-layout.js?v=ec6f1fc7745acd41';
 
 // SVG examples use local data. Service adapters keep their existing chart engine,
 // data requests, permissions and export behavior.

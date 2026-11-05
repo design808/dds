@@ -10,19 +10,7 @@
 .playground-inner>*{min-width:0;max-width:100%}
 .card-caption>div{min-width:0}
 .card-caption :is(h3,p){overflow-wrap:anywhere}
-:is(.component-preview,.playground-inner) .dds-demo:not(.dds-demo--centered){display:flow-root}
-:is(.component-preview,.playground-inner) .dds-demo>:first-child{margin-block-start:0}
-:is(.component-preview,.playground-inner) .dds-demo>:last-child,
-:is(.component-preview,.playground-inner) .dds-demo>:has(+[data-ext-status]:empty){margin-block-end:0}
-:is(.component-preview,.playground-inner) .dds-demo--centered{width:max-content;max-width:100%;display:flex;flex-direction:column;align-items:center;gap:0}
-:is(.component-preview,.playground-inner) .dds-demo--centered>.helper{text-align:center}
-:is(.component-preview,.playground-inner) .dds-demo--centered>.dds-avatar-group{width:max-content;max-width:100%}
-.component-preview .preview-inner>.demo-row,.playground-inner>.demo-row,
-:is(.component-preview,.playground-inner) .dds-demo>.demo-row{justify-content:center}
-:is(.component-preview,.playground-inner) .tab-demo{display:grid;justify-items:center}
-:is(.component-preview,.playground-inner) .tab-demo>.tab-body{width:100%;text-align:center}
 .component-preview .stepper{margin:0;justify-content:center}
-.playground-inner>.stepper{margin:0}
 .component-preview .breadcrumbs{margin:0;gap:8px;justify-content:center;font-size:11px}
 .component-preview .sample-sidebar{width:240px;padding:14px}
 .component-preview .sample-sidebar>b{display:block;margin-bottom:10px;font-size:12px}
@@ -47,7 +35,7 @@
 
 /* Content panels use the available container width, not the active text length.
    The compact tab list measures its own labels and scrolls at narrow widths. */
-.tab-demo{width:100%;max-width:440px;min-width:0}
+.tab-demo{width:100%;min-width:0}
 .tab-demo>.segmented{width:max-content;max-width:100%;overflow-x:auto}
 .tab-demo>.segmented>[role=tab]{flex:0 0 auto;white-space:nowrap}
 .tab-body{min-width:0;overflow-wrap:anywhere}

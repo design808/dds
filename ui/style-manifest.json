@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "23cca445564656e7247f13ef064b929201b00ec393532cfdf0a52b8abc80efd7",
+  "sha256": "c51059b8974fb0717753224258905a771d0dfbf8300651c611924d802611f6da",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -102,9 +102,9 @@
     "dds-command-results",
     "dds-content-card",
     "dds-context",
+    "dds-context-content",
     "dds-data-table",
     "dds-demo",
-    "dds-demo--centered",
     "dds-dialog",
     "dds-direction",
     "dds-document-card",
@@ -123,6 +123,7 @@
     "dds-list-link",
     "dds-list-meta",
     "dds-marker",
+    "dds-media-placeholder",
     "dds-menu",
     "dds-menu-unit",
     "dds-menubar",
@@ -143,6 +144,7 @@
     "dds-popover-host",
     "dds-push",
     "dds-ratio",
+    "dds-ratio-placeholder",
     "dds-resizable",
     "dds-resize-handle",
     "dds-scroll",
@@ -151,6 +153,7 @@
     "dds-section-header-content",
     "dds-section-heading",
     "dds-segmented",
+    "dds-size-content",
     "dds-slider",
     "dds-snackbar",
     "dds-spinner",
@@ -334,9 +337,9 @@
   "sources": [
     {
       "file": "style.css",
-      "sha256": "83a9d4b65e00320e26690a3ca881a6a676907f017f23c4d2b81957b555a5bed8",
+      "sha256": "05004dd7165f7b7584d3f9ac90064c82af0a3d3a003287bdf972081ccf89314a",
       "retainedRules": 162,
-      "excludedSelectors": 429
+      "excludedSelectors": 431
     },
     {
       "file": "custom-controls.css",
@@ -352,21 +355,21 @@
     },
     {
       "file": "layout-focus.css",
-      "sha256": "67120cad8fbdb4881d8eab09fad4201bd8515bfd3579c74e72afb835131d8454",
+      "sha256": "0ecf9d1e52fa5a35b424d072d92af292641fcd214c3c93e52027c63bf3252a26",
       "retainedRules": 27,
-      "excludedSelectors": 49
+      "excludedSelectors": 36
     },
     {
       "file": "extensions.css",
-      "sha256": "f1bf37cce3bee4c1fc19d3007298cf74490c373d37c7ca32b2d5478e998bc150",
-      "retainedRules": 190,
+      "sha256": "500ffa382c8c6d7e54768b81fd438df541a970074c06c37eb98fbdb9b580e840",
+      "retainedRules": 186,
       "excludedSelectors": 36
     },
     {
       "file": "chart-system.css",
       "sha256": "64351460f94e63d206bc637fbe9045d4925964bda2c2a77808a479fbce73352a",
-      "retainedRules": 89,
-      "excludedSelectors": 6
+      "retainedRules": 79,
+      "excludedSelectors": 16
     },
     {
       "file": "document-layout.css",
@@ -408,6 +411,12 @@
       "file": "variant-system.css",
       "sha256": "a2af181f7e9243d4d9e2b493291c5894cb76ea65021d997cf2f0141bc0870698",
       "retainedRules": 122,
+      "excludedSelectors": 0
+    },
+    {
+      "file": "component-layout.css",
+      "sha256": "686890242a322f2724942ac5c5b378458b7368014cad9c4836b02ec38782ce11",
+      "retainedRules": 18,
       "excludedSelectors": 0
     }
   ],
@@ -2157,6 +2166,14 @@
       "selector": ".dds-rules-table td"
     },
     {
+      "source": "style.css",
+      "selector": ".workspace > #main > .breadcrumbs"
+    },
+    {
+      "source": "style.css",
+      "selector": ".workspace > #main > .breadcrumbs"
+    },
+    {
       "source": "custom-controls.css",
       "selector": "#search-dialog>.custom-search"
     },
@@ -2314,59 +2331,7 @@
     },
     {
       "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .dds-demo:not(.dds-demo--centered)"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .dds-demo>:first-child"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .dds-demo>:last-child"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .dds-demo>:has(+[data-ext-status]:empty)"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .dds-demo--centered"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .dds-demo--centered>.helper"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .dds-demo--centered>.dds-avatar-group"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ".component-preview .preview-inner>.demo-row"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ".playground-inner>.demo-row"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .dds-demo>.demo-row"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .tab-demo"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ":is(.component-preview,.playground-inner) .tab-demo>.tab-body"
-    },
-    {
-      "source": "layout-focus.css",
       "selector": ".component-preview .stepper"
-    },
-    {
-      "source": "layout-focus.css",
-      "selector": ".playground-inner>.stepper"
     },
     {
       "source": "layout-focus.css",
@@ -2526,7 +2491,7 @@
     },
     {
       "source": "extensions.css",
-      "selector": ".component-preview .dds-ratio"
+      "selector": ".component-preview .dds-ratio-placeholder"
     },
     {
       "source": "extensions.css",
@@ -2643,6 +2608,46 @@
     {
       "source": "chart-system.css",
       "selector": ".dds-chart-example--mini[data-chart-dense=true] .dds-chart-svg"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-overview"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-type-grid"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-type-grid a"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-type-grid strong"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-type-grid span"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-type-grid a:hover"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-guidance"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-guidance h3"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-guidance p"
+    },
+    {
+      "source": "chart-system.css",
+      "selector": ".dds-chart-type-grid"
     },
     {
       "source": "document-layout.css",
@@ -3431,7 +3436,7 @@
     "Animation identifiers are namespaced to prevent host-animation collisions; timing and frames are unchanged.",
     "Popups and tooltips must remain descendants of a .dds-ui or .dds-ui.dds-ui-portal wrapper.",
     "Canonical document hooks and the service hook aliases exported by ui/source.js share each state rule.",
-    "The plain specimen root is aliased to .dds-component for services; its width can fill its host, while centered intrinsic components keep their source sizing.",
+    "component-layout.css defines reusable fill/content sizing. Document-only caps, centering and outer spacing live in component-specimens.css, which is not part of this stylesheet or the SDK.",
     "Choose tokens.css or ui/tokens-scoped.css once. Scoped tokens belong only to outermost DDS boundaries, inherit through nested components, and leave host variables unchanged."
   ]
 }

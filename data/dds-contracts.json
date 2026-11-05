@@ -354,6 +354,7 @@
         "variants": "ui/registry.json#components.button.variants",
         "optionalParts": "ui/registry.json#components.button.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -386,7 +387,7 @@
           "실행은 button, 목적지가 있는 이동은 href가 있는 a로 구현합니다. button의 type과 기존 form·이벤트·제출값을 유지합니다.",
           "로딩은 aria-busy와 native disabled로 중복 실행을 막고 기능명을 유지합니다. 비동기 작업은 button을 사용하며 실제 요청·완료·실패 처리는 서비스가 관리합니다. aria-disabled만으로는 링크나 버튼의 동작이 차단되지 않습니다.",
           "아이콘만 있는 버튼에도 접근 가능한 기능명과 hover·focus 툴팁을 제공합니다. 전체 너비와 아이콘 전용 형태는 명시적인 속성으로 지정합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "button은 Tab으로 이동하고 Enter/Space로 실행합니다. a는 Enter로 이동합니다.",
@@ -474,6 +475,7 @@
           "variants": "ui/registry.json#components.button.variants",
           "optionalParts": "ui/registry.json#components.button.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -585,6 +587,7 @@
         "variants": "ui/registry.json#components.icon-button.variants",
         "optionalParts": "ui/registry.json#components.icon-button.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -612,7 +615,7 @@
           "구체적인 aria-label과 hover·키보드 focus 툴팁을 모두 제공합니다.",
           "동작이 바뀌면 이름과 아이콘을 함께 갱신합니다. 삭제·제거는 대상 이름을 포함합니다.",
           "동적으로 추가된 버튼과 비활성 버튼에도 기능 안내가 표시되어야 합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab으로 버튼에 초점을 두면 툴팁을 표시합니다. Enter/Space로 실행하고 Escape로 툴팁을 닫습니다."
@@ -650,6 +653,7 @@
           "variants": "ui/registry.json#components.icon-button.variants",
           "optionalParts": "ui/registry.json#components.icon-button.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -750,6 +754,7 @@
         "variants": "ui/registry.json#components.chip.variants",
         "optionalParts": "ui/registry.json#components.chip.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -777,7 +782,7 @@
           "선택 상태의 border-color와 글자색은 --primary를 사용합니다.",
           "단일 선택과 다중 선택의 의미를 구분합니다. 선택 상태는 checked 또는 aria-pressed로 전달합니다.",
           "제거 버튼에는 해당 항목 이름을 포함하며 칩 선택과 제거 행동을 분리합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "버튼형 칩은 Enter/Space로 선택합니다. Radio·Checkbox 기반 칩은 해당 입력의 키보드 규칙을 따릅니다."
@@ -815,6 +820,7 @@
           "variants": "ui/registry.json#components.chip.variants",
           "optionalParts": "ui/registry.json#components.chip.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -913,6 +919,7 @@
         "variants": "ui/registry.json#components.input.variants",
         "optionalParts": "ui/registry.json#components.input.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -940,7 +947,7 @@
           "라벨은 입력 후에도 유지합니다. Placeholder는 예시로 사용합니다.",
           "오류의 원인과 수정 방법을 필드 아래에 표시하고 aria-describedby로 연결합니다.",
           "readonly는 읽기 전용, disabled는 조작 불가로 구분합니다. 기존 name/id·제출값을 보존합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "일반 문자 입력·선택·복사·붙여넣기·커서 이동을 가로채지 않습니다."
@@ -991,6 +998,7 @@
           "variants": "ui/registry.json#components.input.variants",
           "optionalParts": "ui/registry.json#components.input.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -1092,6 +1100,7 @@
         "variants": "ui/registry.json#components.textarea.variants",
         "optionalParts": "ui/registry.json#components.textarea.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -1119,7 +1128,7 @@
           "글자 수 제한은 공백 포함 여부와 함께 안내합니다. 길이 오류와 저장 실패를 구분합니다.",
           "입력한 글을 먼저 보존하고 오류가 나도 초기화하지 않습니다.",
           "한 줄 입력의 36/44/52px 높이를 적용하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Enter는 줄바꿈합니다. 글 편집·붙여넣기·한글 조합 입력을 방해하지 않습니다."
@@ -1157,6 +1166,7 @@
           "variants": "ui/registry.json#components.textarea.variants",
           "optionalParts": "ui/registry.json#components.textarea.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -1255,6 +1265,7 @@
         "variants": "ui/registry.json#components.select.variants",
         "optionalParts": "ui/registry.json#components.select.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -1282,7 +1293,7 @@
           "선택값을 기본적으로 말줄임하지 않습니다. 긴 값은 줄바꿈하고 높이가 늘어나야 합니다.",
           "폼은 가용 너비를 채웁니다. 도구 모음은 data-control-width=\"content\"로 가장 긴 옵션의 너비를 확보합니다.",
           "기존 옵션 값·disabled·change 이벤트를 보존합니다. 커스텀 UI 교체는 CSS 변경과 구분합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "목록에서 ↑/↓로 이동하고 Home/End로 처음/마지막 항목으로 이동합니다.",
@@ -1334,6 +1345,7 @@
           "variants": "ui/registry.json#components.select.variants",
           "optionalParts": "ui/registry.json#components.select.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -1437,6 +1449,7 @@
         "variants": "ui/registry.json#components.combobox.variants",
         "optionalParts": "ui/registry.json#components.combobox.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -1464,7 +1477,7 @@
           "선택 후보와 직접 입력값을 구분하고 자유 입력 허용 여부를 필드별로 정합니다.",
           "검색 결과가 없어도 입력어를 유지합니다. 한글 조합 중 확정을 가로채지 않습니다.",
           "포커스 경계는 아이콘을 포함한 외곽 전체에 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "↓로 목록을 열고 ↑/↓로 후보를 이동합니다. Enter로 선택하고 Escape로 닫습니다.",
@@ -1511,6 +1524,7 @@
           "variants": "ui/registry.json#components.combobox.variants",
           "optionalParts": "ui/registry.json#components.combobox.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -1615,6 +1629,7 @@
         "variants": "ui/registry.json#components.checkbox.variants",
         "optionalParts": "ui/registry.json#components.checkbox.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -1641,7 +1656,7 @@
         "rules": [
           "동의를 기본 선택하지 않습니다. 전체 선택은 일부 선택 상태를 표현합니다.",
           "라벨을 눌러도 선택되도록 연결하고 disabled와 읽을 수 있는 설명을 구분합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab으로 이동하고 Space로 선택·해제합니다."
@@ -1683,6 +1698,7 @@
           "variants": "ui/registry.json#components.checkbox.variants",
           "optionalParts": "ui/registry.json#components.checkbox.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -1780,6 +1796,7 @@
         "variants": "ui/registry.json#components.radio.variants",
         "optionalParts": "ui/registry.json#components.radio.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -1806,7 +1823,7 @@
         "rules": [
           "같은 그룹의 name을 통일하고 fieldset/legend로 질문을 제공합니다.",
           "시각적 선택과 실제 checked 값을 일치시킵니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab으로 그룹에 진입하고 방향키로 항목을 선택합니다. Space로 초점 항목을 선택합니다."
@@ -1848,6 +1865,7 @@
           "variants": "ui/registry.json#components.radio.variants",
           "optionalParts": "ui/registry.json#components.radio.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -1945,6 +1963,7 @@
         "variants": "ui/registry.json#components.switch.variants",
         "optionalParts": "ui/registry.json#components.switch.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -1971,7 +1990,7 @@
         "rules": [
           "라벨의 의미는 유지하고 켜짐/꺼짐 상태를 checked 또는 aria-checked로 전달합니다.",
           "저장 실패로 설정이 적용되지 않으면 실제 값과 표시를 맞추고 복구 방법을 안내합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab으로 이동하고 Space로 전환합니다."
@@ -2009,6 +2028,7 @@
           "variants": "ui/registry.json#components.switch.variants",
           "optionalParts": "ui/registry.json#components.switch.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -2106,6 +2126,7 @@
         "variants": "ui/registry.json#components.date-picker.variants",
         "optionalParts": "ui/registry.json#components.date-picker.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -2133,7 +2154,7 @@
           "직접 입력은 숫자 8자리 YYYYMMDD로 제한하고 YYYY-MM-DD로 표시합니다. 두 형식의 붙여넣기를 허용합니다.",
           "존재하지 않는 날짜와 기간 역전을 오류로 설명합니다. 기존 min/max·required·제출값을 보존합니다.",
           "오늘 날짜의 max 값은 기존 서비스가 정합니다. DDS가 임의로 추가하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "↓ 또는 달력 버튼으로 달력을 엽니다. 날짜의 ←/→는 하루, ↑/↓는 한 주, Home/End는 주의 처음/끝, PageUp/PageDown은 월을 이동합니다.",
@@ -2184,6 +2205,7 @@
           "variants": "ui/registry.json#components.date-picker.variants",
           "optionalParts": "ui/registry.json#components.date-picker.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -2290,6 +2312,7 @@
         "variants": "ui/registry.json#components.upload.variants",
         "optionalParts": "ui/registry.json#components.upload.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -2317,7 +2340,7 @@
           "허용 확장자·파일 크기를 선택 전에 표시합니다.",
           "파일 선택과 실제 업로드 완료를 구분합니다. 클라이언트 예제만으로 서버 검증·업로드를 대체하지 않습니다.",
           "드래그 외에 파일 선택 버튼을 제공합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "파일 선택 버튼에 Tab으로 접근하고 Enter/Space로 파일 선택창을 엽니다."
@@ -2351,6 +2374,7 @@
           "variants": "ui/registry.json#components.upload.variants",
           "optionalParts": "ui/registry.json#components.upload.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -2453,6 +2477,7 @@
         "variants": "ui/registry.json#components.search.variants",
         "optionalParts": "ui/registry.json#components.search.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -2480,7 +2505,7 @@
           "검색 대상을 이름으로 명시하고 지우기 버튼에는 구체적인 기능명을 제공합니다.",
           "아이콘과 입력을 감싼 외곽 전체에 포커스 경계를 표시합니다.",
           "지우면 입력을 비우고 초점을 유지합니다. 서버 검색·필터 초기화는 기존 동작을 따릅니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab으로 입력과 지우기 버튼에 접근합니다. Enter 검색 여부는 해당 서비스의 기존 제출 방식을 유지합니다."
@@ -2526,6 +2551,7 @@
           "variants": "ui/registry.json#components.search.variants",
           "optionalParts": "ui/registry.json#components.search.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -2632,6 +2658,7 @@
         "variants": "ui/registry.json#components.tabs.variants",
         "optionalParts": "ui/registry.json#components.tabs.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -2659,7 +2686,7 @@
           "탭과 패널의 id·aria-controls·aria-labelledby를 연결합니다.",
           "탭 너비는 라벨, 패널 너비는 상위 컨테이너를 기준으로 합니다. 본문 길이로 탭 바가 바뀌지 않아야 합니다.",
           "가려진 패널의 입력·버튼이 키보드 초점 순서에 남지 않게 합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "←/→로 탭을 전환하고 Home/End로 처음/마지막 탭으로 이동합니다.",
@@ -2694,6 +2721,7 @@
           "variants": "ui/registry.json#components.tabs.variants",
           "optionalParts": "ui/registry.json#components.tabs.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -2797,6 +2825,7 @@
         "variants": "ui/registry.json#components.breadcrumb.variants",
         "optionalParts": "ui/registry.json#components.breadcrumb.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -2822,7 +2851,7 @@
         },
         "rules": [
           "마지막 항목은 현재 페이지이며 링크로 제공하지 않습니다. 화면 제목을 대체하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -2889,6 +2918,7 @@
           "variants": "ui/registry.json#components.breadcrumb.variants",
           "optionalParts": "ui/registry.json#components.breadcrumb.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -2990,6 +3020,7 @@
         "variants": "ui/registry.json#components.pagination.variants",
         "optionalParts": "ui/registry.json#components.pagination.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -3015,7 +3046,7 @@
         },
         "rules": [
           "검색 조건을 유지한 채 페이지를 이동합니다. 현재 페이지를 aria-current로 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -3082,6 +3113,7 @@
           "variants": "ui/registry.json#components.pagination.variants",
           "optionalParts": "ui/registry.json#components.pagination.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -3185,6 +3217,7 @@
         "variants": "ui/registry.json#components.stepper.variants",
         "optionalParts": "ui/registry.json#components.stepper.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -3211,7 +3244,7 @@
         "rules": [
           "예정·현재·완료·오류를 색상만으로 구분하지 않습니다.",
           "표시만 있는 단계를 클릭 가능한 것처럼 만들지 않습니다. 이동이 가능하면 기존 검증과 입력 보존을 유지합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -3245,6 +3278,7 @@
           "variants": "ui/registry.json#components.stepper.variants",
           "optionalParts": "ui/registry.json#components.stepper.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -3348,6 +3382,7 @@
         "variants": "ui/registry.json#components.sidebar.variants",
         "optionalParts": "ui/registry.json#components.sidebar.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -3373,7 +3408,7 @@
         },
         "rules": [
           "역할별 메뉴 차이는 허용하되 같은 기능의 명칭과 위치는 일관되게 유지합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -3425,7 +3460,7 @@
           ],
           [
             "너비",
-            "기본 260px · max-width:100% / min-width:0 · 긴 메뉴명 줄바꿈"
+            "부모가 지정한 열의 가용 너비 · min-width:0 · 긴 메뉴명 줄바꿈"
           ]
         ],
         "source": {
@@ -3444,6 +3479,7 @@
           "variants": "ui/registry.json#components.sidebar.variants",
           "optionalParts": "ui/registry.json#components.sidebar.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -3547,6 +3583,7 @@
         "variants": "ui/registry.json#components.dropdown.variants",
         "optionalParts": "ui/registry.json#components.dropdown.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -3572,7 +3609,7 @@
         },
         "rules": [
           "주요 행동은 숨기지 않습니다. 삭제는 마지막 그룹에 두고 파괴적 행동임을 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -3639,6 +3676,7 @@
           "variants": "ui/registry.json#components.dropdown.variants",
           "optionalParts": "ui/registry.json#components.dropdown.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -3742,6 +3780,7 @@
         "variants": "ui/registry.json#components.dialog.variants",
         "optionalParts": "ui/registry.json#components.dialog.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -3769,7 +3808,7 @@
           "제목으로 이름을 제공하고 열릴 때 내부로 초점을 이동합니다.",
           "모달이 열린 동안 배경을 조작하지 못하게 하고 닫으면 실행한 요소로 초점을 돌립니다.",
           "중첩 모달을 피합니다. 긴 내용은 내부 스크롤로 보여주고 닫기를 가리지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab/Shift+Tab은 모달 내부를 이동합니다. Escape 또는 닫기 버튼으로 닫습니다."
@@ -3807,6 +3846,7 @@
           "variants": "ui/registry.json#components.dialog.variants",
           "optionalParts": "ui/registry.json#components.dialog.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -3906,6 +3946,7 @@
         "variants": "ui/registry.json#components.alert.variants",
         "optionalParts": "ui/registry.json#components.alert.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -3932,7 +3973,7 @@
         "rules": [
           "상태에 맞는 문구와 다음 행동을 제공합니다. 색상만으로 의미를 전달하지 않습니다.",
           "반드시 알아야 하는 안내를 자동으로 사라지게 하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -3966,6 +4007,7 @@
           "variants": "ui/registry.json#components.alert.variants",
           "optionalParts": "ui/registry.json#components.alert.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -4063,6 +4105,7 @@
         "variants": "ui/registry.json#components.toast.variants",
         "optionalParts": "ui/registry.json#components.toast.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -4089,7 +4132,7 @@
         "rules": [
           "실제 처리 완료 후 알립니다. 중요한 실패를 Toast로만 전달하지 않습니다.",
           "초점을 빼앗지 않고 결과를 읽을 수 있게 전달합니다. 같은 알림을 연속으로 쌓지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -4123,6 +4166,7 @@
           "variants": "ui/registry.json#components.toast.variants",
           "optionalParts": "ui/registry.json#components.toast.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -4219,6 +4263,7 @@
         "variants": "ui/registry.json#components.tooltip.variants",
         "optionalParts": "ui/registry.json#components.tooltip.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -4245,7 +4290,7 @@
         "rules": [
           "hover와 키보드 focus 모두에서 표시합니다. 필수 정보를 툴팁에만 넣지 않습니다.",
           "버튼의 접근 가능한 이름은 툴팁 표시 여부와 관계없이 유지합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "트리거에 초점을 두면 표시하고 Escape로 닫습니다. 툴팁 자체에 초점을 이동하지 않습니다."
@@ -4283,6 +4328,7 @@
           "variants": "ui/registry.json#components.tooltip.variants",
           "optionalParts": "ui/registry.json#components.tooltip.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -4381,6 +4427,7 @@
         "variants": "ui/registry.json#components.progress.variants",
         "optionalParts": "ui/registry.json#components.progress.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -4407,7 +4454,7 @@
         "rules": [
           "서버나 작업 상태에서 얻은 실제 진행률을 표시합니다. 시간에 따라 임의의 퍼센트를 만들지 않습니다.",
           "완료·실패·재시도를 진행 중 상태와 구분합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -4441,6 +4488,7 @@
           "variants": "ui/registry.json#components.progress.variants",
           "optionalParts": "ui/registry.json#components.progress.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -4538,6 +4586,7 @@
         "variants": "ui/registry.json#components.skeleton.variants",
         "optionalParts": "ui/registry.json#components.skeleton.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -4564,7 +4613,7 @@
         "rules": [
           "실제 콘텐츠와 비슷한 영역만 예약하고 장식용 자리표시자를 늘리지 않습니다.",
           "로딩 종료 후 콘텐츠·빈 결과·오류로 전환합니다. 무한 로딩에 복구 경로를 제공합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -4583,7 +4632,7 @@
           ],
           [
             "너비",
-            "예제 260px · max-width:100% / min-width:0 · 부모 너비를 초과하지 않음"
+            "로딩 후 표시할 콘텐츠의 부모 너비 · 문서 견본의 260px은 고정 규격이 아님"
           ]
         ],
         "source": {
@@ -4602,6 +4651,7 @@
           "variants": "ui/registry.json#components.skeleton.variants",
           "optionalParts": "ui/registry.json#components.skeleton.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -4697,6 +4747,7 @@
         "variants": "ui/registry.json#components.empty.variants",
         "optionalParts": "ui/registry.json#components.empty.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -4723,7 +4774,7 @@
         "rules": [
           "처음 사용·검색 결과 없음·접근 제한을 서로 다른 문구로 설명합니다.",
           "문서 만들기 또는 조건 초기화처럼 현재 상태를 해결하는 행동을 제공합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -4761,6 +4812,7 @@
           "variants": "ui/registry.json#components.empty.variants",
           "optionalParts": "ui/registry.json#components.empty.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -4857,6 +4909,7 @@
         "variants": "ui/registry.json#components.badge.variants",
         "optionalParts": "ui/registry.json#components.badge.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -4884,7 +4937,7 @@
           "상태와 개수를 구분합니다. 상태는 .dds-status에 실제 상태 문구와 의미 아이콘을 함께 표시합니다.",
           "draft·complete·pending·error는 기존 처리 결과에 연결합니다. 색상이나 CSS만으로 저장·완료 상태를 만들지 않습니다.",
           "개수는 .dds-collection-count에 실제 데이터와 단위를 표시합니다. 장식용 숫자나 임의의 기본 개수를 넣지 않고 실제 0도 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "읽기 전용 상태·개수 배지는 Tab 정지점으로 만들지 않습니다. 색상 없이도 문구로 의미를 알 수 있어야 합니다."
@@ -4926,6 +4979,7 @@
           "variants": "ui/registry.json#components.badge.variants",
           "optionalParts": "ui/registry.json#components.badge.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -5030,6 +5084,7 @@
         "variants": "ui/registry.json#components.avatar.variants",
         "optionalParts": "ui/registry.json#components.avatar.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -5055,7 +5110,7 @@
         },
         "rules": [
           "이미지를 불러오지 못해도 레이아웃을 유지합니다. 인접한 이름과 대체 텍스트의 중복을 피합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -5095,6 +5150,7 @@
           "variants": "ui/registry.json#components.avatar.variants",
           "optionalParts": "ui/registry.json#components.avatar.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -5191,6 +5247,7 @@
         "variants": "ui/registry.json#components.card.variants",
         "optionalParts": "ui/registry.json#components.card.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -5220,7 +5277,7 @@
           "제목·기업·직무는 식별 정보로 먼저 읽히게 하고 보조 설명과 날짜를 구분합니다.",
           "상태는 실제 문구와 의미 있는 아이콘으로 표시하고, 문서 수는 실제 데이터를 사용한 개수 배지로 표시합니다.",
           "이동이나 행동이 없는 정적 카드에는 손 모양 커서·배경 전환·떠오르는 hover 효과를 넣지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "대표 링크와 보조 버튼 각각에 Tab으로 접근합니다. 같은 대표 이동을 불필요하게 중복 초점으로 제공하지 않습니다."
@@ -5271,6 +5328,7 @@
           "variants": "ui/registry.json#components.card.variants",
           "optionalParts": "ui/registry.json#components.card.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -5376,6 +5434,7 @@
         "variants": "ui/registry.json#components.table.variants",
         "optionalParts": "ui/registry.json#components.table.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -5403,7 +5462,7 @@
           "제목·열 헤더·데이터 셀 관계를 유지합니다. 정렬 가능 여부와 현재 정렬 상태를 전달합니다.",
           "빈 결과·로딩·오류를 구분합니다. 모바일에서 핵심 열 또는 가로 스크롤을 제공합니다.",
           "열 선택·전체 선택·페이지 이동 시 기존 대상 범위를 보존합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "일반 표 셀을 임의의 Tab 정지점으로 만들지 않습니다. 정렬·선택·행동 버튼에 접근할 수 있어야 합니다."
@@ -5441,6 +5500,7 @@
           "variants": "ui/registry.json#components.table.variants",
           "optionalParts": "ui/registry.json#components.table.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -5541,6 +5601,7 @@
         "variants": "ui/registry.json#components.accordion.variants",
         "optionalParts": "ui/registry.json#components.accordion.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -5567,7 +5628,7 @@
         "rules": [
           "제목만 읽어도 펼칠 내용을 알 수 있어야 합니다. 펼침 상태는 aria-expanded 또는 native details로 전달합니다.",
           "숨긴 내용은 초점 순서에서 제외합니다. 같은 섹션의 제목 계층을 유지합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "트리거에 Tab으로 이동하고 Enter/Space로 펼치거나 접습니다."
@@ -5605,6 +5666,7 @@
           "variants": "ui/registry.json#components.accordion.variants",
           "optionalParts": "ui/registry.json#components.accordion.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -5701,6 +5763,7 @@
         "variants": "ui/registry.json#components.chart.variants",
         "optionalParts": "ui/registry.json#components.chart.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -5733,7 +5796,7 @@
           "로딩·데이터 없음·요청 실패를 구분합니다. 결과가 없거나 요청이 실패했다고 0점을 만들지 않습니다.",
           "기존 Chart.js·ApexCharts 등 데이터 연결과 이벤트를 유지하고 색·서체·축·범례 설정을 DDS에 맞춥니다. 라이브러리를 일괄 교체하지 않습니다.",
           "canvas 내부 색·글자·선은 외부 CSS만으로 바뀌지 않습니다. 해당 라이브러리의 옵션과 라이트·다크 전환도 연결합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "범례와 데이터 표 열기에 Tab으로 이동하고 Enter/Space로 실행합니다.",
@@ -5796,6 +5859,7 @@
           "variants": "ui/registry.json#components.chart.variants",
           "optionalParts": "ui/registry.json#components.chart.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -5901,6 +5965,7 @@
         "variants": "ui/registry.json#components.editor.variants",
         "optionalParts": "ui/registry.json#components.editor.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -5928,7 +5993,7 @@
           "원문·AI 제안·사용자가 적용한 결과를 구분합니다. 검토 없이 원문을 덮어쓰지 않습니다.",
           "작성 중·저장 중·저장 완료·저장 실패를 구분하고 실패해도 입력을 유지합니다.",
           "라이브러리 내부 DOM·선택 영역·인쇄/PDF는 주변 CSS와 별도로 검수합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "본문 편집의 기본 단축키·한글 조합을 유지하고 도구 모음에 키보드로 접근할 수 있게 합니다."
@@ -5966,6 +6031,7 @@
           "variants": "ui/registry.json#components.editor.variants",
           "optionalParts": "ui/registry.json#components.editor.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -6065,6 +6131,7 @@
         "variants": "ui/registry.json#components.video.variants",
         "optionalParts": "ui/registry.json#components.video.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -6090,7 +6157,7 @@
         },
         "rules": [
           "자동 녹화와 자동 소리 재생을 피합니다. 카메라·마이크 권한 요청 전에 목적을 설명합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -6126,6 +6193,7 @@
           "variants": "ui/registry.json#components.video.variants",
           "optionalParts": "ui/registry.json#components.video.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -6224,6 +6292,7 @@
         "variants": "ui/registry.json#components.action-area.variants",
         "optionalParts": "ui/registry.json#components.action-area.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -6249,7 +6318,7 @@
         },
         "rules": [
           "긴 폼에서는 마지막 입력과 행동 사이에 여백을 두고 모바일 안전 영역을 확보합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "버튼은 Tab으로 이동하고 Enter 또는 Space로 실행합니다. 링크는 Enter로 이동합니다."
@@ -6285,6 +6354,7 @@
           "variants": "ui/registry.json#components.action-area.variants",
           "optionalParts": "ui/registry.json#components.action-area.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -6383,6 +6453,7 @@
         "variants": "ui/registry.json#components.text-button.variants",
         "optionalParts": "ui/registry.json#components.text-button.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -6408,7 +6479,7 @@
         },
         "rules": [
           "페이지 이동에는 링크, 상태 변경에는 버튼을 사용합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "버튼은 Tab으로 이동하고 Enter 또는 Space로 실행합니다. 링크는 Enter로 이동합니다."
@@ -6444,6 +6515,7 @@
           "variants": "ui/registry.json#components.text-button.variants",
           "optionalParts": "ui/registry.json#components.text-button.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -6543,6 +6615,7 @@
         "variants": "ui/registry.json#components.button-group.variants",
         "optionalParts": "ui/registry.json#components.button-group.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -6568,7 +6641,7 @@
         },
         "rules": [
           "각 버튼의 이름을 유지하고 그룹의 목적을 설명합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "버튼은 Tab으로 이동하고 Enter 또는 Space로 실행합니다. 링크는 Enter로 이동합니다."
@@ -6604,6 +6677,7 @@
           "variants": "ui/registry.json#components.button-group.variants",
           "optionalParts": "ui/registry.json#components.button-group.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -6702,6 +6776,7 @@
         "variants": "ui/registry.json#components.toggle.variants",
         "optionalParts": "ui/registry.json#components.toggle.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -6727,7 +6802,7 @@
         },
         "rules": [
           "aria-pressed로 상태를 전달하며 라벨의 의미를 바꾸지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "버튼은 Tab으로 이동하고 Enter 또는 Space로 실행합니다. 링크는 Enter로 이동합니다."
@@ -6763,6 +6838,7 @@
           "variants": "ui/registry.json#components.toggle.variants",
           "optionalParts": "ui/registry.json#components.toggle.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -6861,6 +6937,7 @@
         "variants": "ui/registry.json#components.toggle-group.variants",
         "optionalParts": "ui/registry.json#components.toggle-group.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -6886,7 +6963,7 @@
         },
         "rules": [
           "다중 선택과 단일 선택 그룹을 명확히 구분합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "버튼은 Tab으로 이동하고 Enter 또는 Space로 실행합니다. 링크는 Enter로 이동합니다."
@@ -6922,6 +6999,7 @@
           "variants": "ui/registry.json#components.toggle-group.variants",
           "optionalParts": "ui/registry.json#components.toggle-group.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -7020,6 +7098,7 @@
         "variants": "ui/registry.json#components.filter-button.variants",
         "optionalParts": "ui/registry.json#components.filter-button.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -7045,7 +7124,7 @@
         },
         "rules": [
           "조건을 바꿔도 검색어를 보존하고 초기화 동작을 제공합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "버튼은 Tab으로 이동하고 Enter 또는 Space로 실행합니다. 링크는 Enter로 이동합니다."
@@ -7081,6 +7160,7 @@
           "variants": "ui/registry.json#components.filter-button.variants",
           "optionalParts": "ui/registry.json#components.filter-button.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -7179,6 +7259,7 @@
         "variants": "ui/registry.json#components.calendar.variants",
         "optionalParts": "ui/registry.json#components.calendar.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -7204,7 +7285,7 @@
         },
         "rules": [
           "키보드 방향키로 날짜를 탐색하고 선택값을 문자로도 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab 순서는 라벨·입력·보조 행동의 읽기 순서를 따릅니다. 입력 방식별 조작은 아래 규칙을 적용합니다."
@@ -7240,6 +7321,7 @@
           "variants": "ui/registry.json#components.calendar.variants",
           "optionalParts": "ui/registry.json#components.calendar.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -7338,6 +7420,7 @@
         "variants": "ui/registry.json#components.field.variants",
         "optionalParts": "ui/registry.json#components.field.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -7365,7 +7448,7 @@
           "for/id와 aria-describedby로 라벨·도움말·오류를 연결합니다.",
           "첫 진입부터 오류를 표시하지 않습니다. 제출 시 검증하고, 오류가 확인된 필드는 수정 후 다시 검증합니다.",
           "제출 실패 시 첫 오류로 안내하고 입력값은 보존합니다. 기존 서버 검증을 제거하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "오류 요약이 있으면 각 오류에서 해당 입력으로 이동할 수 있어야 합니다."
@@ -7399,6 +7482,7 @@
           "variants": "ui/registry.json#components.field.variants",
           "optionalParts": "ui/registry.json#components.field.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -7500,6 +7584,7 @@
         "variants": "ui/registry.json#components.input-group.variants",
         "optionalParts": "ui/registry.json#components.input-group.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -7527,7 +7612,7 @@
           "포커스 경계와 높이는 그룹 외곽이 소유합니다. 내부 입력에 두 번째 테두리를 만들지 않습니다.",
           "보조 버튼은 type=\"button\"으로 두고 입력값과 기존 제출 이벤트를 보존합니다.",
           "비밀번호 표시·숨기기 시 값과 기능명을 함께 유지·갱신합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab으로 입력과 보조 버튼을 이동하며 버튼은 Enter/Space로 실행합니다."
@@ -7573,6 +7658,7 @@
           "variants": "ui/registry.json#components.input-group.variants",
           "optionalParts": "ui/registry.json#components.input-group.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -7676,6 +7762,7 @@
         "variants": "ui/registry.json#components.input-otp.variants",
         "optionalParts": "ui/registry.json#components.input-otp.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -7701,7 +7788,7 @@
         },
         "rules": [
           "하나의 실제 입력에 autocomplete=one-time-code를 사용합니다. 예제는 인증 서버와 연결되지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab 순서는 라벨·입력·보조 행동의 읽기 순서를 따릅니다. 입력 방식별 조작은 아래 규칙을 적용합니다."
@@ -7737,6 +7824,7 @@
           "variants": "ui/registry.json#components.input-otp.variants",
           "optionalParts": "ui/registry.json#components.input-otp.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -7836,6 +7924,7 @@
         "variants": "ui/registry.json#components.label.variants",
         "optionalParts": "ui/registry.json#components.label.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -7861,7 +7950,7 @@
         },
         "rules": [
           "for/id를 연결하고 placeholder를 라벨 대신 사용하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab 순서는 라벨·입력·보조 행동의 읽기 순서를 따릅니다. 입력 방식별 조작은 아래 규칙을 적용합니다."
@@ -7897,6 +7986,7 @@
           "variants": "ui/registry.json#components.label.variants",
           "optionalParts": "ui/registry.json#components.label.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -7995,6 +8085,7 @@
         "variants": "ui/registry.json#components.slider.variants",
         "optionalParts": "ui/registry.json#components.slider.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -8020,7 +8111,7 @@
         },
         "rules": [
           "직접 숫자 표현과 방향키 조작을 제공하며 핵심 정밀 입력을 슬라이더에만 맡기지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab 순서는 라벨·입력·보조 행동의 읽기 순서를 따릅니다. 입력 방식별 조작은 아래 규칙을 적용합니다."
@@ -8056,6 +8147,7 @@
           "variants": "ui/registry.json#components.slider.variants",
           "optionalParts": "ui/registry.json#components.slider.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -8155,6 +8247,7 @@
         "variants": "ui/registry.json#components.segmented-control.variants",
         "optionalParts": "ui/registry.json#components.segmented-control.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -8180,7 +8273,7 @@
         },
         "rules": [
           "값 선택에는 radio 의미를 사용합니다. 콘텐츠 패널 전환은 Tabs를 사용합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab 순서는 라벨·입력·보조 행동의 읽기 순서를 따릅니다. 입력 방식별 조작은 아래 규칙을 적용합니다."
@@ -8216,6 +8309,7 @@
           "variants": "ui/registry.json#components.segmented-control.variants",
           "optionalParts": "ui/registry.json#components.segmented-control.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -8314,6 +8408,7 @@
         "variants": "ui/registry.json#components.framed-style.variants",
         "optionalParts": "ui/registry.json#components.framed-style.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -8339,7 +8434,7 @@
         },
         "rules": [
           "프레임과 내부 컨트롤의 선택 상태를 항상 일치시킵니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab 순서는 라벨·입력·보조 행동의 읽기 순서를 따릅니다. 입력 방식별 조작은 아래 규칙을 적용합니다."
@@ -8375,6 +8470,7 @@
           "variants": "ui/registry.json#components.framed-style.variants",
           "optionalParts": "ui/registry.json#components.framed-style.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -8474,6 +8570,7 @@
         "variants": "ui/registry.json#components.time-picker.variants",
         "optionalParts": "ui/registry.json#components.time-picker.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -8499,7 +8596,7 @@
         },
         "rules": [
           "브라우저 기본 시계 아이콘 대신 공통 Select를 사용하며 시간대를 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab 순서는 라벨·입력·보조 행동의 읽기 순서를 따릅니다. 입력 방식별 조작은 아래 규칙을 적용합니다."
@@ -8535,6 +8632,7 @@
           "variants": "ui/registry.json#components.time-picker.variants",
           "optionalParts": "ui/registry.json#components.time-picker.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -8633,6 +8731,7 @@
         "variants": "ui/registry.json#components.questionnaire.variants",
         "optionalParts": "ui/registry.json#components.questionnaire.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -8658,7 +8757,7 @@
         },
         "rules": [
           "이전 답을 유지하고 필수 질문과 선택 질문을 구분합니다. 실제 제출은 별도 서버 계약입니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab 순서는 라벨·입력·보조 행동의 읽기 순서를 따릅니다. 입력 방식별 조작은 아래 규칙을 적용합니다."
@@ -8694,6 +8793,7 @@
           "variants": "ui/registry.json#components.questionnaire.variants",
           "optionalParts": "ui/registry.json#components.questionnaire.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -8793,6 +8893,7 @@
         "variants": "ui/registry.json#components.navigation-menu.variants",
         "optionalParts": "ui/registry.json#components.navigation-menu.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -8820,7 +8921,7 @@
           "일반 페이지 링크를 사용하며 사이트 탐색을 애플리케이션 menubar 키보드 모델로 바꾸지 않습니다.",
           "하위 메뉴의 트리거와 펼침 영역을 aria-expanded·aria-controls 또는 native details/summary로 연결합니다.",
           "모바일에서는 주 메뉴와 언어·계정 같은 보조 메뉴를 같은 펼침 패널 안에 배치합니다. 닫힌 메뉴의 내부 항목은 초점에서 제외합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab으로 링크와 펼침 버튼을 순서대로 이동합니다. Enter/Space로 하위 메뉴를 여닫습니다.",
@@ -8887,6 +8988,7 @@
           "variants": "ui/registry.json#components.navigation-menu.variants",
           "optionalParts": "ui/registry.json#components.navigation-menu.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -8992,6 +9094,7 @@
         "variants": "ui/registry.json#components.top-navigation.variants",
         "optionalParts": "ui/registry.json#components.top-navigation.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -9021,7 +9124,7 @@
           "모바일 첫 줄에는 왼쪽 로고와 맨 오른쪽 메뉴 버튼만 남기고 언어·프로필은 같은 펼침 패널 안에 둡니다. 접힌 내용은 표시와 Tab 순서에서 제외합니다.",
           "하위 메뉴는 native details/summary로 연결합니다. 언어는 아이콘에서 선택 목록을 열고 선택값·체크 표시·language action을 갱신합니다. 실제 서비스 언어 적용은 호스트가 처리합니다.",
           "화면 크기가 전환되면 열린 하위 메뉴를 정리합니다. 현재 초점이 숨겨질 때만 보이는 로고·메뉴 버튼으로 옮깁니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Enter/Space로 전체 메뉴와 하위 details를 여닫습니다. 전체 메뉴 버튼의 aria-expanded와 aria-controls를 연결합니다.",
@@ -9110,6 +9213,7 @@
           "variants": "ui/registry.json#components.top-navigation.variants",
           "optionalParts": "ui/registry.json#components.top-navigation.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -9215,6 +9319,7 @@
         "variants": "ui/registry.json#components.bottom-navigation.variants",
         "optionalParts": "ui/registry.json#components.bottom-navigation.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -9242,7 +9347,7 @@
           "항목을 같은 너비로 나누고 아이콘과 라벨을 함께 표시합니다. 긴 라벨은 항목 안에서 줄바꿈하되 항목 자체가 다음 행으로 밀려나지 않게 합니다.",
           "현재 위치는 aria-current=\"page\"와 강조 색으로 표시합니다. 선택한 항목에만 별도 배경 상자나 다른 패딩·굵기를 추가하지 않습니다.",
           "서비스에 고정 배치한다면 본문 하단 여백과 safe-area를 확보해 마지막 콘텐츠와 행동을 가리지 않게 합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -9283,6 +9388,7 @@
           "variants": "ui/registry.json#components.bottom-navigation.variants",
           "optionalParts": "ui/registry.json#components.bottom-navigation.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -9389,6 +9495,7 @@
         "variants": "ui/registry.json#components.category.variants",
         "optionalParts": "ui/registry.json#components.category.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -9414,7 +9521,7 @@
         },
         "rules": [
           "선택된 카테고리와 결과 제목을 함께 변경합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -9481,6 +9588,7 @@
           "variants": "ui/registry.json#components.category.variants",
           "optionalParts": "ui/registry.json#components.category.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -9585,6 +9693,7 @@
         "variants": "ui/registry.json#components.page-counter.variants",
         "optionalParts": "ui/registry.json#components.page-counter.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -9610,7 +9719,7 @@
         },
         "rules": [
           "숫자 표시만으로 이동 기능을 암시하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -9677,6 +9786,7 @@
           "variants": "ui/registry.json#components.page-counter.variants",
           "optionalParts": "ui/registry.json#components.page-counter.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -9781,6 +9891,7 @@
         "variants": "ui/registry.json#components.pagination-dots.variants",
         "optionalParts": "ui/registry.json#components.pagination-dots.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -9806,7 +9917,7 @@
         },
         "rules": [
           "각 점에 목적지 이름을 제공하고 현재 위치를 aria-current로 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -9873,6 +9984,7 @@
           "variants": "ui/registry.json#components.pagination-dots.variants",
           "optionalParts": "ui/registry.json#components.pagination-dots.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -9977,6 +10089,7 @@
         "variants": "ui/registry.json#components.menubar.variants",
         "optionalParts": "ui/registry.json#components.menubar.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -10002,7 +10115,7 @@
         },
         "rules": [
           "방향키 이동과 Escape 복귀를 지원합니다. 전역 사이트 링크와 편집 명령을 구분합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -10073,6 +10186,7 @@
           "variants": "ui/registry.json#components.menubar.variants",
           "optionalParts": "ui/registry.json#components.menubar.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -10177,6 +10291,7 @@
         "variants": "ui/registry.json#components.command.variants",
         "optionalParts": "ui/registry.json#components.command.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -10204,7 +10319,7 @@
           "검색 아이콘·입력·지우기 버튼을 같은 복합 입력 안에 정렬하고 포커스는 외곽 전체에 표시합니다. 폼 라벨 스타일이 입력 컨테이너의 flex 배치를 덮지 않게 합니다.",
           "결과 행은 아이콘·명령명의 클릭 영역을 함께 제공하고 긴 명령명은 행 높이를 늘려 표시합니다.",
           "필터로 숨긴 결과는 초점 순서에서도 제외하고 0개 결과에는 빈 상태를 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "검색창에서 ↓/↑로 첫/마지막 결과에 이동합니다. 결과 사이에서는 방향키와 Home/End를 사용하고 Enter로 실행합니다.",
@@ -10250,6 +10365,7 @@
           "variants": "ui/registry.json#components.command.variants",
           "optionalParts": "ui/registry.json#components.command.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -10361,6 +10477,7 @@
         "variants": "ui/registry.json#components.context-menu.variants",
         "optionalParts": "ui/registry.json#components.context-menu.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -10386,7 +10503,7 @@
         },
         "rules": [
           "우클릭 외에 보이는 메뉴 버튼과 Shift+F10 진입을 함께 제공합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "페이지 링크는 Tab으로 이동하고 Enter로 실행합니다. 화면의 시각적 순서와 초점 순서를 맞춥니다."
@@ -10457,6 +10574,7 @@
           "variants": "ui/registry.json#components.context-menu.variants",
           "optionalParts": "ui/registry.json#components.context-menu.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -10561,6 +10679,7 @@
         "variants": "ui/registry.json#components.alert-dialog.variants",
         "optionalParts": "ui/registry.json#components.alert-dialog.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -10587,7 +10706,7 @@
         "rules": [
           "실제 대상과 복구 가능 여부를 명시합니다. 확인 버튼은 ‘삭제’처럼 행동 이름으로 씁니다.",
           "최초 초점은 취소에 둡니다. 확인 전에는 데이터를 변경하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "Tab/Shift+Tab은 내부를 이동합니다. Escape는 취소이며, 닫힌 뒤 실행한 요소로 복귀합니다."
@@ -10625,6 +10744,7 @@
           "variants": "ui/registry.json#components.alert-dialog.variants",
           "optionalParts": "ui/registry.json#components.alert-dialog.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -10726,6 +10846,7 @@
         "variants": "ui/registry.json#components.sheet.variants",
         "optionalParts": "ui/registry.json#components.sheet.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -10751,7 +10872,7 @@
         },
         "rules": [
           "모달 영역 안에 초점을 유지하고 닫으면 원래 트리거로 돌아갑니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -10787,6 +10908,7 @@
           "variants": "ui/registry.json#components.sheet.variants",
           "optionalParts": "ui/registry.json#components.sheet.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -10885,6 +11007,7 @@
         "variants": "ui/registry.json#components.drawer.variants",
         "optionalParts": "ui/registry.json#components.drawer.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -10910,7 +11033,7 @@
         },
         "rules": [
           "닫기 버튼을 제공하고 스와이프 동작에만 의존하지 않습니다. DDS 예제는 버튼으로 열고 닫습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -10946,6 +11069,7 @@
           "variants": "ui/registry.json#components.drawer.variants",
           "optionalParts": "ui/registry.json#components.drawer.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -11044,6 +11168,7 @@
         "variants": "ui/registry.json#components.popover.variants",
         "optionalParts": "ui/registry.json#components.popover.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -11069,7 +11194,7 @@
         },
         "rules": [
           "화면 가장자리에 맞춰 위치를 조정하고 Escape와 바깥 클릭으로 닫습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -11105,6 +11230,7 @@
           "variants": "ui/registry.json#components.popover.variants",
           "optionalParts": "ui/registry.json#components.popover.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -11203,6 +11329,7 @@
         "variants": "ui/registry.json#components.hover-card.variants",
         "optionalParts": "ui/registry.json#components.hover-card.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -11228,7 +11355,7 @@
         },
         "rules": [
           "클릭·키보드로도 열 수 있어야 하며 필수 정보는 상세 화면에서 제공합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -11264,6 +11391,7 @@
           "variants": "ui/registry.json#components.hover-card.variants",
           "optionalParts": "ui/registry.json#components.hover-card.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -11363,6 +11491,7 @@
         "variants": "ui/registry.json#components.snackbar.variants",
         "optionalParts": "ui/registry.json#components.snackbar.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -11388,7 +11517,7 @@
         },
         "rules": [
           "행동이 있는 알림을 너무 빨리 자동으로 닫지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -11424,6 +11553,7 @@
           "variants": "ui/registry.json#components.snackbar.variants",
           "optionalParts": "ui/registry.json#components.snackbar.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -11522,6 +11652,7 @@
         "variants": "ui/registry.json#components.spinner.variants",
         "optionalParts": "ui/registry.json#components.spinner.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -11547,7 +11678,7 @@
         },
         "rules": [
           "무한 회전을 완료율로 해석하지 않도록 처리 내용을 함께 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -11583,6 +11714,7 @@
           "variants": "ui/registry.json#components.spinner.variants",
           "optionalParts": "ui/registry.json#components.spinner.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -11679,6 +11811,7 @@
         "variants": "ui/registry.json#components.fallback-view.variants",
         "optionalParts": "ui/registry.json#components.fallback-view.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -11705,7 +11838,7 @@
         "rules": [
           "제목·설명과 복구 행동을 별도 그룹으로 나누고 설명 아래 20px 간격을 둡니다.",
           "입력값을 유지하며 실제 요청의 진행·성공·실패에 연결합니다. 재시도 중에는 중복 실행을 막습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -11746,6 +11879,7 @@
           "variants": "ui/registry.json#components.fallback-view.variants",
           "optionalParts": "ui/registry.json#components.fallback-view.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -11848,6 +11982,7 @@
         "variants": "ui/registry.json#components.push-badge.variants",
         "optionalParts": "ui/registry.json#components.push-badge.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -11873,7 +12008,7 @@
         },
         "rules": [
           "99+ 등 최대 표현과 실제 읽기 이름을 구분하고 알림 개수를 버튼 이름에도 포함합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "안내 문구 자체는 초점 순서에 넣지 않습니다. 닫기·재시도 등 행동은 키보드로 실행할 수 있어야 합니다."
@@ -11909,6 +12044,7 @@
           "variants": "ui/registry.json#components.push-badge.variants",
           "optionalParts": "ui/registry.json#components.push-badge.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -12007,6 +12143,7 @@
         "variants": "ui/registry.json#components.aspect-ratio.variants",
         "optionalParts": "ui/registry.json#components.aspect-ratio.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -12032,7 +12169,7 @@
         },
         "rules": [
           "콘텐츠의 의미에 맞춰 cover/contain을 선택합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -12068,6 +12205,7 @@
           "variants": "ui/registry.json#components.aspect-ratio.variants",
           "optionalParts": "ui/registry.json#components.aspect-ratio.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -12166,6 +12304,7 @@
         "variants": "ui/registry.json#components.thumbnail.variants",
         "optionalParts": "ui/registry.json#components.thumbnail.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -12191,7 +12330,7 @@
         },
         "rules": [
           "원본 이미지가 없을 때 장식 그림을 실제 콘텐츠로 오인하게 만들지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -12227,6 +12366,7 @@
           "variants": "ui/registry.json#components.thumbnail.variants",
           "optionalParts": "ui/registry.json#components.thumbnail.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -12325,6 +12465,7 @@
         "variants": "ui/registry.json#components.play-badge.variants",
         "optionalParts": "ui/registry.json#components.play-badge.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -12350,7 +12491,7 @@
         },
         "rules": [
           "실제 플레이어와 연결될 때만 재생 동작으로 제공합니다. DDS에서는 안내 예제입니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -12386,6 +12527,7 @@
           "variants": "ui/registry.json#components.play-badge.variants",
           "optionalParts": "ui/registry.json#components.play-badge.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -12484,6 +12626,7 @@
         "variants": "ui/registry.json#components.avatar-group.variants",
         "optionalParts": "ui/registry.json#components.avatar-group.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -12509,7 +12652,7 @@
         },
         "rules": [
           "이름 전체에 접근할 수 있는 경로를 제공하며 겹침 때문에 이름이 가려지지 않게 합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -12545,6 +12688,7 @@
           "variants": "ui/registry.json#components.avatar-group.variants",
           "optionalParts": "ui/registry.json#components.avatar-group.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -12643,6 +12787,7 @@
         "variants": "ui/registry.json#components.list-card.variants",
         "optionalParts": "ui/registry.json#components.list-card.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -12668,7 +12813,7 @@
         },
         "rules": [
           "제목 링크와 보조 행동을 중첩하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -12704,6 +12849,7 @@
           "variants": "ui/registry.json#components.list-card.variants",
           "optionalParts": "ui/registry.json#components.list-card.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -12802,6 +12948,7 @@
         "variants": "ui/registry.json#components.item.variants",
         "optionalParts": "ui/registry.json#components.item.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -12829,7 +12976,7 @@
           "전체 행을 하나의 네이티브 링크로 연결하고 독립적인 버튼을 링크 안에 넣지 않습니다.",
           "앞뒤 아이콘은 수축하지 않으며 제목 영역이 남은 공간을 차지합니다. 상태 배지는 보조정보 행에 배치해 제목 너비를 불필요하게 줄이지 않습니다.",
           "긴 제목·보조정보는 내용에 맞춰 줄바꿈합니다. 글자 축소나 강제 말줄임으로 항목을 맞추지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -12870,6 +13017,7 @@
           "variants": "ui/registry.json#components.item.variants",
           "optionalParts": "ui/registry.json#components.item.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -12976,6 +13124,7 @@
         "variants": "ui/registry.json#components.section-header.variants",
         "optionalParts": "ui/registry.json#components.section-header.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -13003,7 +13152,7 @@
           "제목과 개수 배지를 별도 요소로 배치하고 8px 간격을 둡니다. 공백 문자로 간격을 만들지 않습니다.",
           "좁은 화면에서는 보조 행동을 다음 줄에 배치하고 제목이나 배지 너비를 강제로 줄이지 않습니다.",
           "장식 아이콘을 제목 앞에 추가하지 않고 개수는 실제 목록 데이터에 연결합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -13044,6 +13193,7 @@
           "variants": "ui/registry.json#components.section-header.variants",
           "optionalParts": "ui/registry.json#components.section-header.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -13150,6 +13300,7 @@
         "variants": "ui/registry.json#components.attachment.variants",
         "optionalParts": "ui/registry.json#components.attachment.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -13175,7 +13326,7 @@
         },
         "rules": [
           "파일 선택과 업로드 완료를 구분하고 제거 버튼에 파일명을 포함합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -13211,6 +13362,7 @@
           "variants": "ui/registry.json#components.attachment.variants",
           "optionalParts": "ui/registry.json#components.attachment.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -13311,6 +13463,7 @@
         "variants": "ui/registry.json#components.carousel.variants",
         "optionalParts": "ui/registry.json#components.carousel.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -13336,7 +13489,7 @@
         },
         "rules": [
           "자동 재생 없이 시작합니다. 탐색 후 새 슬라이드 제목과 위치를 전달합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -13372,6 +13525,7 @@
           "variants": "ui/registry.json#components.carousel.variants",
           "optionalParts": "ui/registry.json#components.carousel.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -13470,6 +13624,7 @@
         "variants": "ui/registry.json#components.collapsible.variants",
         "optionalParts": "ui/registry.json#components.collapsible.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -13495,7 +13650,7 @@
         },
         "rules": [
           "트리거 이름을 유지하며 펼침 상태를 전달합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -13531,6 +13686,7 @@
           "variants": "ui/registry.json#components.collapsible.variants",
           "optionalParts": "ui/registry.json#components.collapsible.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -13629,6 +13785,7 @@
         "variants": "ui/registry.json#components.separator.variants",
         "optionalParts": "ui/registry.json#components.separator.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -13654,7 +13811,7 @@
         },
         "rules": [
           "장식용 구분선에는 불필요한 읽기 순서를 추가하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -13690,6 +13847,7 @@
           "variants": "ui/registry.json#components.separator.variants",
           "optionalParts": "ui/registry.json#components.separator.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -13788,6 +13946,7 @@
         "variants": "ui/registry.json#components.kbd.variants",
         "optionalParts": "ui/registry.json#components.kbd.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -13813,7 +13972,7 @@
         },
         "rules": [
           "표시는 실제 구현된 단축키와 일치해야 합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -13849,6 +14008,7 @@
           "variants": "ui/registry.json#components.kbd.variants",
           "optionalParts": "ui/registry.json#components.kbd.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -13946,6 +14106,7 @@
         "variants": "ui/registry.json#components.scroll-area.variants",
         "optionalParts": "ui/registry.json#components.scroll-area.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -13971,7 +14132,7 @@
         },
         "rules": [
           "영역에 이름과 키보드 초점을 제공하고 스크롤 가능함을 숨기지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -14007,6 +14168,7 @@
           "variants": "ui/registry.json#components.scroll-area.variants",
           "optionalParts": "ui/registry.json#components.scroll-area.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -14105,6 +14267,7 @@
         "variants": "ui/registry.json#components.resizable.variants",
         "optionalParts": "ui/registry.json#components.resizable.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -14130,7 +14293,7 @@
         },
         "rules": [
           "드래그와 방향키를 함께 지원하고 모바일에서는 세로로 쌓습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -14166,6 +14329,7 @@
           "variants": "ui/registry.json#components.resizable.variants",
           "optionalParts": "ui/registry.json#components.resizable.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -14264,6 +14428,7 @@
         "variants": "ui/registry.json#components.direction.variants",
         "optionalParts": "ui/registry.json#components.direction.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -14289,7 +14454,7 @@
         },
         "rules": [
           "좌우 고정값 대신 inline-start/end를 사용합니다. 한국어 제품의 기본 방향은 LTR입니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -14325,6 +14490,7 @@
           "variants": "ui/registry.json#components.direction.variants",
           "optionalParts": "ui/registry.json#components.direction.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -14422,6 +14588,7 @@
         "variants": "ui/registry.json#components.bubble.variants",
         "optionalParts": "ui/registry.json#components.bubble.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -14447,7 +14614,7 @@
         },
         "rules": [
           "발화의 주체는 상위 Message에서 제공하고 사용자 입력은 HTML로 실행하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -14483,6 +14650,7 @@
           "variants": "ui/registry.json#components.bubble.variants",
           "optionalParts": "ui/registry.json#components.bubble.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -14581,6 +14749,7 @@
         "variants": "ui/registry.json#components.message.variants",
         "optionalParts": "ui/registry.json#components.message.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -14606,7 +14775,7 @@
         },
         "rules": [
           "발화자와 상태를 명시합니다. 예제는 실제 채팅이나 AI 응답을 전송하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -14642,6 +14811,7 @@
           "variants": "ui/registry.json#components.message.variants",
           "optionalParts": "ui/registry.json#components.message.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -14741,6 +14911,7 @@
         "variants": "ui/registry.json#components.marker.variants",
         "optionalParts": "ui/registry.json#components.marker.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -14766,7 +14937,7 @@
         },
         "rules": [
           "사용자 발화와 시스템 정보를 시각적·의미적으로 구분합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -14802,6 +14973,7 @@
           "variants": "ui/registry.json#components.marker.variants",
           "optionalParts": "ui/registry.json#components.marker.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -14900,6 +15072,7 @@
         "variants": "ui/registry.json#components.message-scroller.variants",
         "optionalParts": "ui/registry.json#components.message-scroller.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -14925,7 +15098,7 @@
         },
         "rules": [
           "이전 내용을 읽는 중에는 강제로 아래로 이동시키지 않습니다. 스트리밍·이력 페이지네이션은 서비스 통합 범위입니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "정보 표시는 별도 키보드 조작을 추가하지 않습니다. 내부의 링크·버튼은 각 컨트롤의 조작 규칙을 따릅니다."
@@ -14961,6 +15134,7 @@
           "variants": "ui/registry.json#components.message-scroller.variants",
           "optionalParts": "ui/registry.json#components.message-scroller.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -15063,6 +15237,7 @@
         "variants": "ui/registry.json#components.area-chart.variants",
         "optionalParts": "ui/registry.json#components.area-chart.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -15094,7 +15269,7 @@
           "면적으로 크기를 표현하므로 기본 기준선은 0으로 둡니다. 누적 영역은 계열별 값과 합계를 구분합니다.",
           "겹친 면적이 뒤의 계열을 가리지 않도록 채움의 강도를 조절하고 경계선을 함께 표시합니다.",
           "음수나 서로 다른 단위를 같은 누적 영역에 섞지 않습니다. 시간축의 순서와 누락 구간을 보존합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "곡선으로 양의 흐름을 보여 줍니다. 곡선 사이의 위치를 새 관측값으로 해석하지 않습니다."
         ],
         "keyboard": [
@@ -15170,6 +15345,7 @@
           "variants": "ui/registry.json#components.area-chart.variants",
           "optionalParts": "ui/registry.json#components.area-chart.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -15280,6 +15456,7 @@
         "variants": "ui/registry.json#components.area-chart-linear.variants",
         "optionalParts": "ui/registry.json#components.area-chart-linear.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -15311,7 +15488,7 @@
           "면적으로 크기를 표현하므로 기본 기준선은 0으로 둡니다. 누적 영역은 계열별 값과 합계를 구분합니다.",
           "겹친 면적이 뒤의 계열을 가리지 않도록 채움의 강도를 조절하고 경계선을 함께 표시합니다.",
           "음수나 서로 다른 단위를 같은 누적 영역에 섞지 않습니다. 시간축의 순서와 누락 구간을 보존합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "관측 지점을 직선으로 잇고 기준선까지 채워 양의 변화를 보여 줍니다."
         ],
         "keyboard": [
@@ -15387,6 +15564,7 @@
           "variants": "ui/registry.json#components.area-chart-linear.variants",
           "optionalParts": "ui/registry.json#components.area-chart-linear.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -15497,6 +15675,7 @@
         "variants": "ui/registry.json#components.area-chart-step.variants",
         "optionalParts": "ui/registry.json#components.area-chart-step.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -15528,7 +15707,7 @@
           "면적으로 크기를 표현하므로 기본 기준선은 0으로 둡니다. 누적 영역은 계열별 값과 합계를 구분합니다.",
           "겹친 면적이 뒤의 계열을 가리지 않도록 채움의 강도를 조절하고 경계선을 함께 표시합니다.",
           "음수나 서로 다른 단위를 같은 누적 영역에 섞지 않습니다. 시간축의 순서와 누락 구간을 보존합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "값이 바뀌는 시점까지 이전 값이 유지되는 데이터에 사용합니다."
         ],
         "keyboard": [
@@ -15604,6 +15783,7 @@
           "variants": "ui/registry.json#components.area-chart-step.variants",
           "optionalParts": "ui/registry.json#components.area-chart-step.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -15714,6 +15894,7 @@
         "variants": "ui/registry.json#components.area-chart-stacked.variants",
         "optionalParts": "ui/registry.json#components.area-chart-stacked.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -15745,7 +15926,7 @@
           "면적으로 크기를 표현하므로 기본 기준선은 0으로 둡니다. 누적 영역은 계열별 값과 합계를 구분합니다.",
           "겹친 면적이 뒤의 계열을 가리지 않도록 채움의 강도를 조절하고 경계선을 함께 표시합니다.",
           "음수나 서로 다른 단위를 같은 누적 영역에 섞지 않습니다. 시간축의 순서와 누락 구간을 보존합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "같은 단위의 값을 누적해 전체 활동량과 각 항목의 기여를 함께 표시합니다."
         ],
         "keyboard": [
@@ -15821,6 +16002,7 @@
           "variants": "ui/registry.json#components.area-chart-stacked.variants",
           "optionalParts": "ui/registry.json#components.area-chart-stacked.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -15931,6 +16113,7 @@
         "variants": "ui/registry.json#components.area-chart-normalized.variants",
         "optionalParts": "ui/registry.json#components.area-chart-normalized.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -15962,7 +16145,7 @@
           "면적으로 크기를 표현하므로 기본 기준선은 0으로 둡니다. 누적 영역은 계열별 값과 합계를 구분합니다.",
           "겹친 면적이 뒤의 계열을 가리지 않도록 채움의 강도를 조절하고 경계선을 함께 표시합니다.",
           "음수나 서로 다른 단위를 같은 누적 영역에 섞지 않습니다. 시간축의 순서와 누락 구간을 보존합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "각 시점의 표시한 항목 합계를 100%로 계산합니다. 원본 횟수와 비율의 분모를 함께 제공합니다."
         ],
         "keyboard": [
@@ -16038,6 +16221,7 @@
           "variants": "ui/registry.json#components.area-chart-normalized.variants",
           "optionalParts": "ui/registry.json#components.area-chart-normalized.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -16148,6 +16332,7 @@
         "variants": "ui/registry.json#components.area-chart-gradient.variants",
         "optionalParts": "ui/registry.json#components.area-chart-gradient.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -16179,7 +16364,7 @@
           "면적으로 크기를 표현하므로 기본 기준선은 0으로 둡니다. 누적 영역은 계열별 값과 합계를 구분합니다.",
           "겹친 면적이 뒤의 계열을 가리지 않도록 채움의 강도를 조절하고 경계선을 함께 표시합니다.",
           "음수나 서로 다른 단위를 같은 누적 영역에 섞지 않습니다. 시간축의 순서와 누락 구간을 보존합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "같은 계열의 채움 강도만 조절합니다. 그라데이션 자체에 추가 수치 의미를 부여하지 않습니다."
         ],
         "keyboard": [
@@ -16255,6 +16440,7 @@
           "variants": "ui/registry.json#components.area-chart-gradient.variants",
           "optionalParts": "ui/registry.json#components.area-chart-gradient.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -16365,6 +16551,7 @@
         "variants": "ui/registry.json#components.bar-chart.variants",
         "optionalParts": "ui/registry.json#components.bar-chart.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -16396,7 +16583,7 @@
           "막대의 길이는 0을 기준으로 비교합니다. 음수는 같은 0 기준선의 반대 방향으로 표시합니다.",
           "긴 항목명은 가로 막대를 사용합니다. 그룹은 같은 항목의 여러 계열, 누적은 항목별 전체와 구성을 비교할 때 사용합니다.",
           "누적 막대의 합계와 개별 수치를 구분합니다. 비율 누적은 각 항목의 전체가 100%라는 기준을 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "범주별 값을 같은 두께의 세로 막대로 비교합니다. 값 축은 0에서 시작합니다."
         ],
         "keyboard": [
@@ -16472,6 +16659,7 @@
           "variants": "ui/registry.json#components.bar-chart.variants",
           "optionalParts": "ui/registry.json#components.bar-chart.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -16582,6 +16770,7 @@
         "variants": "ui/registry.json#components.bar-chart-horizontal.variants",
         "optionalParts": "ui/registry.json#components.bar-chart-horizontal.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -16613,7 +16802,7 @@
           "막대의 길이는 0을 기준으로 비교합니다. 음수는 같은 0 기준선의 반대 방향으로 표시합니다.",
           "긴 항목명은 가로 막대를 사용합니다. 그룹은 같은 항목의 여러 계열, 누적은 항목별 전체와 구성을 비교할 때 사용합니다.",
           "누적 막대의 합계와 개별 수치를 구분합니다. 비율 누적은 각 항목의 전체가 100%라는 기준을 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "항목명이 길거나 순위를 비교할 때 가로 막대를 사용하고 항목명과 막대 순서를 맞춥니다."
         ],
         "keyboard": [
@@ -16689,6 +16878,7 @@
           "variants": "ui/registry.json#components.bar-chart-horizontal.variants",
           "optionalParts": "ui/registry.json#components.bar-chart-horizontal.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -16799,6 +16989,7 @@
         "variants": "ui/registry.json#components.bar-chart-multiple.variants",
         "optionalParts": "ui/registry.json#components.bar-chart-multiple.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -16830,7 +17021,7 @@
           "막대의 길이는 0을 기준으로 비교합니다. 음수는 같은 0 기준선의 반대 방향으로 표시합니다.",
           "긴 항목명은 가로 막대를 사용합니다. 그룹은 같은 항목의 여러 계열, 누적은 항목별 전체와 구성을 비교할 때 사용합니다.",
           "누적 막대의 합계와 개별 수치를 구분합니다. 비율 누적은 각 항목의 전체가 100%라는 기준을 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "같은 항목의 여러 계열을 나란히 배치합니다. 범례 선택 후에도 축 범위를 유지합니다."
         ],
         "keyboard": [
@@ -16906,6 +17097,7 @@
           "variants": "ui/registry.json#components.bar-chart-multiple.variants",
           "optionalParts": "ui/registry.json#components.bar-chart-multiple.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -17016,6 +17208,7 @@
         "variants": "ui/registry.json#components.bar-chart-stacked.variants",
         "optionalParts": "ui/registry.json#components.bar-chart-stacked.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -17047,7 +17240,7 @@
           "막대의 길이는 0을 기준으로 비교합니다. 음수는 같은 0 기준선의 반대 방향으로 표시합니다.",
           "긴 항목명은 가로 막대를 사용합니다. 그룹은 같은 항목의 여러 계열, 누적은 항목별 전체와 구성을 비교할 때 사용합니다.",
           "누적 막대의 합계와 개별 수치를 구분합니다. 비율 누적은 각 항목의 전체가 100%라는 기준을 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "같은 전체를 이루는 항목을 쌓습니다. 전체 크기와 각 조각의 수치를 구분해 제공합니다."
         ],
         "keyboard": [
@@ -17123,6 +17316,7 @@
           "variants": "ui/registry.json#components.bar-chart-stacked.variants",
           "optionalParts": "ui/registry.json#components.bar-chart-stacked.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -17233,6 +17427,7 @@
         "variants": "ui/registry.json#components.bar-chart-labels.variants",
         "optionalParts": "ui/registry.json#components.bar-chart-labels.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -17264,7 +17459,7 @@
           "막대의 길이는 0을 기준으로 비교합니다. 음수는 같은 0 기준선의 반대 방향으로 표시합니다.",
           "긴 항목명은 가로 막대를 사용합니다. 그룹은 같은 항목의 여러 계열, 누적은 항목별 전체와 구성을 비교할 때 사용합니다.",
           "누적 막대의 합계와 개별 수치를 구분합니다. 비율 누적은 각 항목의 전체가 100%라는 기준을 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "막대 위에 정확한 수치를 표시합니다. 짧은 막대에서도 단위와 라벨이 잘리지 않게 합니다."
         ],
         "keyboard": [
@@ -17340,6 +17535,7 @@
           "variants": "ui/registry.json#components.bar-chart-labels.variants",
           "optionalParts": "ui/registry.json#components.bar-chart-labels.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -17450,6 +17646,7 @@
         "variants": "ui/registry.json#components.bar-chart-negative.variants",
         "optionalParts": "ui/registry.json#components.bar-chart-negative.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -17481,7 +17678,7 @@
           "막대의 길이는 0을 기준으로 비교합니다. 음수는 같은 0 기준선의 반대 방향으로 표시합니다.",
           "긴 항목명은 가로 막대를 사용합니다. 그룹은 같은 항목의 여러 계열, 누적은 항목별 전체와 구성을 비교할 때 사용합니다.",
           "누적 막대의 합계와 개별 수치를 구분합니다. 비율 누적은 각 항목의 전체가 100%라는 기준을 표시합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "0 기준선 위와 아래에 양수·음수를 표시합니다. 증감의 기준과 단위를 함께 씁니다."
         ],
         "keyboard": [
@@ -17557,6 +17754,7 @@
           "variants": "ui/registry.json#components.bar-chart-negative.variants",
           "optionalParts": "ui/registry.json#components.bar-chart-negative.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -17667,6 +17865,7 @@
         "variants": "ui/registry.json#components.line-chart.variants",
         "optionalParts": "ui/registry.json#components.line-chart.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -17698,7 +17897,7 @@
           "가로축의 순서와 시간 간격을 유지합니다. 누락 구간을 실제 측정값처럼 이어 그리지 않습니다.",
           "여러 계열은 이름·점 모양·선 모양으로 함께 구분합니다. 범례 선택 후에도 같은 축 범위를 유지합니다.",
           "세로축을 0부터 시작하지 않으면 축의 범위를 명확히 보여 주고 작은 차이가 과장되지 않는지 확인합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "실제 관측값을 직선으로 연결합니다. 없는 값은 0으로 바꾸거나 선으로 이어 그리지 않습니다."
         ],
         "keyboard": [
@@ -17774,6 +17973,7 @@
           "variants": "ui/registry.json#components.line-chart.variants",
           "optionalParts": "ui/registry.json#components.line-chart.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -17884,6 +18084,7 @@
         "variants": "ui/registry.json#components.line-chart-smooth.variants",
         "optionalParts": "ui/registry.json#components.line-chart-smooth.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -17915,7 +18116,7 @@
           "가로축의 순서와 시간 간격을 유지합니다. 누락 구간을 실제 측정값처럼 이어 그리지 않습니다.",
           "여러 계열은 이름·점 모양·선 모양으로 함께 구분합니다. 범례 선택 후에도 같은 축 범위를 유지합니다.",
           "세로축을 0부터 시작하지 않으면 축의 범위를 명확히 보여 주고 작은 차이가 과장되지 않는지 확인합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "관측값 사이의 곡선은 흐름을 읽는 보조 표현입니다. 실제 관측 지점의 수치를 함께 제공합니다."
         ],
         "keyboard": [
@@ -17991,6 +18192,7 @@
           "variants": "ui/registry.json#components.line-chart-smooth.variants",
           "optionalParts": "ui/registry.json#components.line-chart-smooth.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -18101,6 +18303,7 @@
         "variants": "ui/registry.json#components.line-chart-step.variants",
         "optionalParts": "ui/registry.json#components.line-chart-step.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -18132,7 +18335,7 @@
           "가로축의 순서와 시간 간격을 유지합니다. 누락 구간을 실제 측정값처럼 이어 그리지 않습니다.",
           "여러 계열은 이름·점 모양·선 모양으로 함께 구분합니다. 범례 선택 후에도 같은 축 범위를 유지합니다.",
           "세로축을 0부터 시작하지 않으면 축의 범위를 명확히 보여 주고 작은 차이가 과장되지 않는지 확인합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "값이 변경되는 순간과 유지되는 구간을 구분할 때 사용합니다."
         ],
         "keyboard": [
@@ -18208,6 +18411,7 @@
           "variants": "ui/registry.json#components.line-chart-step.variants",
           "optionalParts": "ui/registry.json#components.line-chart-step.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -18318,6 +18522,7 @@
         "variants": "ui/registry.json#components.line-chart-dots.variants",
         "optionalParts": "ui/registry.json#components.line-chart-dots.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -18349,7 +18554,7 @@
           "가로축의 순서와 시간 간격을 유지합니다. 누락 구간을 실제 측정값처럼 이어 그리지 않습니다.",
           "여러 계열은 이름·점 모양·선 모양으로 함께 구분합니다. 범례 선택 후에도 같은 축 범위를 유지합니다.",
           "세로축을 0부터 시작하지 않으면 축의 범위를 명확히 보여 주고 작은 차이가 과장되지 않는지 확인합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "관측 지점을 점으로 강조합니다. 점이 없는 위치를 실제 측정한 값처럼 설명하지 않습니다."
         ],
         "keyboard": [
@@ -18425,6 +18630,7 @@
           "variants": "ui/registry.json#components.line-chart-dots.variants",
           "optionalParts": "ui/registry.json#components.line-chart-dots.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -18535,6 +18741,7 @@
         "variants": "ui/registry.json#components.line-chart-multiple.variants",
         "optionalParts": "ui/registry.json#components.line-chart-multiple.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -18566,7 +18773,7 @@
           "가로축의 순서와 시간 간격을 유지합니다. 누락 구간을 실제 측정값처럼 이어 그리지 않습니다.",
           "여러 계열은 이름·점 모양·선 모양으로 함께 구분합니다. 범례 선택 후에도 같은 축 범위를 유지합니다.",
           "세로축을 0부터 시작하지 않으면 축의 범위를 명확히 보여 주고 작은 차이가 과장되지 않는지 확인합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "여러 계열을 같은 시간축과 척도로 비교하고 이름·점·선 모양으로 구분합니다."
         ],
         "keyboard": [
@@ -18642,6 +18849,7 @@
           "variants": "ui/registry.json#components.line-chart-multiple.variants",
           "optionalParts": "ui/registry.json#components.line-chart-multiple.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -18752,6 +18960,7 @@
         "variants": "ui/registry.json#components.pie-chart.variants",
         "optionalParts": "ui/registry.json#components.pie-chart.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -18783,7 +18992,7 @@
           "음수를 사용하지 않습니다. 각 항목의 합이 같은 전체를 이루는지 확인하고 분모를 표시합니다.",
           "항목명과 값·비율을 함께 제공하고 작은 조각의 값도 표에서 확인할 수 있게 합니다.",
           "전체가 0이면 빈 원을 실제 결과처럼 표시하지 않고 데이터 없음으로 안내합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "같은 전체를 이루는 항목의 비중을 표시합니다. 합계와 분모를 명시합니다."
         ],
         "keyboard": [
@@ -18851,6 +19060,7 @@
           "variants": "ui/registry.json#components.pie-chart.variants",
           "optionalParts": "ui/registry.json#components.pie-chart.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -18961,6 +19171,7 @@
         "variants": "ui/registry.json#components.pie-chart-labels.variants",
         "optionalParts": "ui/registry.json#components.pie-chart-labels.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -18992,7 +19203,7 @@
           "음수를 사용하지 않습니다. 각 항목의 합이 같은 전체를 이루는지 확인하고 분모를 표시합니다.",
           "항목명과 값·비율을 함께 제공하고 작은 조각의 값도 표에서 확인할 수 있게 합니다.",
           "전체가 0이면 빈 원을 실제 결과처럼 표시하지 않고 데이터 없음으로 안내합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "조각의 비율을 바깥 라벨로 표시합니다. 작은 조각의 이름과 원본 값은 범례와 표에서도 제공합니다."
         ],
         "keyboard": [
@@ -19060,6 +19271,7 @@
           "variants": "ui/registry.json#components.pie-chart-labels.variants",
           "optionalParts": "ui/registry.json#components.pie-chart-labels.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -19170,6 +19382,7 @@
         "variants": "ui/registry.json#components.donut-chart-basic.variants",
         "optionalParts": "ui/registry.json#components.donut-chart-basic.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -19201,7 +19414,7 @@
           "원형 조각은 같은 전체의 부분이어야 합니다. 음수나 서로 겹치는 항목을 함께 넣지 않습니다.",
           "중앙 수치를 표시하는 경우 전체 합계인지 선택 항목의 값인지 이름과 단위로 구분합니다.",
           "범례 선택으로 계열을 숨겨도 원래 전체 대비 비중인지 표시한 항목끼리의 비중인지 기준을 유지합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "중앙에 부가 수치를 넣지 않고 조각의 비중을 보여 줍니다."
         ],
         "keyboard": [
@@ -19277,6 +19490,7 @@
           "variants": "ui/registry.json#components.donut-chart-basic.variants",
           "optionalParts": "ui/registry.json#components.donut-chart-basic.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -19387,6 +19601,7 @@
         "variants": "ui/registry.json#components.donut-chart.variants",
         "optionalParts": "ui/registry.json#components.donut-chart.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -19418,7 +19633,7 @@
           "원형 조각은 같은 전체의 부분이어야 합니다. 음수나 서로 겹치는 항목을 함께 넣지 않습니다.",
           "중앙 수치를 표시하는 경우 전체 합계인지 선택 항목의 값인지 이름과 단위로 구분합니다.",
           "범례 선택으로 계열을 숨겨도 원래 전체 대비 비중인지 표시한 항목끼리의 비중인지 기준을 유지합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "표시한 항목의 합계를 중앙에 표시하고 전체 합계인지 선택 항목 합계인지 설명합니다."
         ],
         "keyboard": [
@@ -19494,6 +19709,7 @@
           "variants": "ui/registry.json#components.donut-chart.variants",
           "optionalParts": "ui/registry.json#components.donut-chart.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -19604,6 +19820,7 @@
         "variants": "ui/registry.json#components.radar-chart.variants",
         "optionalParts": "ui/registry.json#components.radar-chart.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -19635,7 +19852,7 @@
           "모든 축에 같은 최소·최대·단위를 사용하고 평가 기준을 설명합니다. 서로 다른 단위의 원본 값을 그대로 섞지 않습니다.",
           "비교 대상의 축 순서와 범위를 유지합니다. 면적이 넓다는 이유만으로 종합 점수가 높다고 해석하지 않습니다.",
           "여러 대상을 비교할 때 선 모양과 수치도 함께 제공하고 채움이 겹쳐도 구분되게 합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "하나의 평가 대상을 동일한 척도의 여러 축으로 표시합니다."
         ],
         "keyboard": [
@@ -19711,6 +19928,7 @@
           "variants": "ui/registry.json#components.radar-chart.variants",
           "optionalParts": "ui/registry.json#components.radar-chart.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -19821,6 +20039,7 @@
         "variants": "ui/registry.json#components.radar-chart-multiple.variants",
         "optionalParts": "ui/registry.json#components.radar-chart-multiple.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -19852,7 +20071,7 @@
           "모든 축에 같은 최소·최대·단위를 사용하고 평가 기준을 설명합니다. 서로 다른 단위의 원본 값을 그대로 섞지 않습니다.",
           "비교 대상의 축 순서와 범위를 유지합니다. 면적이 넓다는 이유만으로 종합 점수가 높다고 해석하지 않습니다.",
           "여러 대상을 비교할 때 선 모양과 수치도 함께 제공하고 채움이 겹쳐도 구분되게 합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "여러 평가 대상을 같은 축 순서와 척도로 비교합니다. 채움이 겹쳐도 각 선을 구분할 수 있어야 합니다."
         ],
         "keyboard": [
@@ -19928,6 +20147,7 @@
           "variants": "ui/registry.json#components.radar-chart-multiple.variants",
           "optionalParts": "ui/registry.json#components.radar-chart-multiple.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -20038,6 +20258,7 @@
         "variants": "ui/registry.json#components.radial-chart.variants",
         "optionalParts": "ui/registry.json#components.radial-chart.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -20069,7 +20290,7 @@
           "목표·현재 값·단위를 함께 표시합니다. 다른 항목의 원호 길이를 서로 다른 척도로 비교하지 않습니다.",
           "여러 원호는 각각의 항목명과 수치를 제공하고 원호 반지름에 따른 길이 차이를 성과 차이로 해석하지 않도록 합니다.",
           "0%·100%·목표 초과의 표시 방식을 정합니다. 알 수 없는 처리 진행률을 임의의 원형 퍼센트로 표시하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "한 가지 목표의 현재 값·목표·달성률을 표시합니다."
         ],
         "keyboard": [
@@ -20141,6 +20362,7 @@
           "variants": "ui/registry.json#components.radial-chart.variants",
           "optionalParts": "ui/registry.json#components.radial-chart.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -20251,6 +20473,7 @@
         "variants": "ui/registry.json#components.radial-chart-multiple.variants",
         "optionalParts": "ui/registry.json#components.radial-chart-multiple.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -20282,7 +20505,7 @@
           "목표·현재 값·단위를 함께 표시합니다. 다른 항목의 원호 길이를 서로 다른 척도로 비교하지 않습니다.",
           "여러 원호는 각각의 항목명과 수치를 제공하고 원호 반지름에 따른 길이 차이를 성과 차이로 해석하지 않도록 합니다.",
           "0%·100%·목표 초과의 표시 방식을 정합니다. 알 수 없는 처리 진행률을 임의의 원형 퍼센트로 표시하지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "각 목표의 달성률을 독립된 원호로 표시합니다. 서로 다른 반지름의 호 길이로 크기를 비교하지 않습니다."
         ],
         "keyboard": [
@@ -20354,6 +20577,7 @@
           "variants": "ui/registry.json#components.radial-chart-multiple.variants",
           "optionalParts": "ui/registry.json#components.radial-chart-multiple.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -20464,6 +20688,7 @@
         "variants": "ui/registry.json#components.chart-tooltip-dot.variants",
         "optionalParts": "ui/registry.json#components.chart-tooltip-dot.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -20496,7 +20721,7 @@
           "hover·focus·터치 선택에서 같은 항목과 계열 값을 제공합니다. 필요한 정보는 hover에만 숨기지 않습니다.",
           "차트나 화면 경계를 벗어나지 않게 배치합니다. 선택 항목과 툴팁의 연결을 유지하고 범례에서 숨긴 계열은 툴팁에서도 구분합니다.",
           "툴팁이 닫혀도 데이터 표에서 같은 값을 읽을 수 있어야 합니다. 툴팁 안에 별도 조작이 필요하면 팝오버를 검토합니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다.",
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다.",
           "다중 막대의 같은 항목에 속하는 계열 이름·점 표식·원본 수치·단위를 함께 표시합니다."
         ],
         "keyboard": [
@@ -20569,6 +20794,7 @@
           "variants": "ui/registry.json#components.chart-tooltip-dot.variants",
           "optionalParts": "ui/registry.json#components.chart-tooltip-dot.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -20679,6 +20905,7 @@
         "variants": "ui/registry.json#components.contributions.variants",
         "optionalParts": "ui/registry.json#components.contributions.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -20710,7 +20937,7 @@
           "범위와 단위를 적은 단계형 명도 범례를 제공합니다. 밝기 차이의 방향은 모든 화면에서 유지합니다.",
           "누락값과 실제 0을 다른 상태로 표시합니다. 색상만으로 해석하지 않도록 각 셀의 값과 표를 제공합니다.",
           "순서 있는 행·열은 정렬 기준을 유지합니다. 비교 대상이 바뀔 때 같은 값의 색상 범위를 임의로 바꾸지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "범례와 데이터 표 열기에 Tab으로 이동하고 Enter/Space로 실행합니다.",
@@ -20781,6 +21008,7 @@
           "variants": "ui/registry.json#components.contributions.variants",
           "optionalParts": "ui/registry.json#components.contributions.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"
@@ -20891,6 +21119,7 @@
         "variants": "ui/registry.json#components.scatter-chart.variants",
         "optionalParts": "ui/registry.json#components.scatter-chart.optionalParts",
         "compositionGuide": "ui/composition.md",
+        "layoutContract": "ui/registry.json#layout",
         "styles": [
           "ui/tokens-scoped.css",
           "ui/dds.css"
@@ -20922,7 +21151,7 @@
           "가로·세로축의 이름과 단위, 관측 단위를 표시합니다. 각 점이 어떤 관측값인지 수치 확인에서 설명합니다.",
           "분포의 관계를 인과관계로 단정하지 않습니다. 이상값이나 겹친 점을 숨기지 않습니다.",
           "비교 화면은 같은 축 범위를 유지합니다. 점 크기에 의미가 없으면 임의로 크기를 바꾸지 않습니다.",
-          "견본의 문구·도움말·개수·묶음 배치는 필수가 아닙니다. 실제 콘텐츠와 필요한 보조 항목만 넣고 공식 변형의 디자인 규격을 유지합니다."
+          "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
           "범례와 데이터 표 열기에 Tab으로 이동하고 Enter/Space로 실행합니다.",
@@ -20989,6 +21218,7 @@
           "variants": "ui/registry.json#components.scatter-chart.variants",
           "optionalParts": "ui/registry.json#components.scatter-chart.optionalParts",
           "compositionGuide": "ui/composition.md",
+          "layoutContract": "ui/registry.json#layout",
           "styles": [
             "ui/tokens-scoped.css",
             "ui/dds.css"

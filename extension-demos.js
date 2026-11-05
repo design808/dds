@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=07d93ae023b5f009';
-import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=07d93ae023b5f009';
+import {icon} from './icons.js?v=ec6f1fc7745acd41';
+import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=ec6f1fc7745acd41';
 export {renderExtended as extensionDemo};
 const pad=n=>String(n).padStart(2,'0');
 function renderCalendar(c,focusDate){const y=+c.dataset.year,m=+c.dataset.month;c.querySelector('[data-month-label]').textContent=`${y}년 ${m+1}월`;c.querySelector('[data-calendar-grid]').innerHTML=calendarDays(y,m,c.dataset.selected);if(focusDate){const b=c.querySelector(`[data-calendar-date="${focusDate}"]`);c.querySelectorAll('[data-calendar-date]').forEach(x=>x.tabIndex=x===b?0:-1);b?.focus();}}
@@ -65,7 +65,7 @@ document.addEventListener('click',e=>{
  if(t.hasAttribute('data-ext-retry')){const p=t.closest('.dds-fallback');p.querySelector('h3').textContent='다시 연결되었습니다';p.querySelector('[data-fallback-copy]').textContent='로컬 복구 상태 예제입니다.';t.disabled=true;}
  if(t.hasAttribute('data-attachment-remove')){t.closest('.dds-attachment').hidden=true;announce(t,'포트폴리오.pdf가 예제 목록에서 제거되었습니다.');t.closest('.dds-demo').querySelector('[data-attachment-restore]').focus();}
  if(t.hasAttribute('data-attachment-restore')){t.closest('.dds-demo').querySelector('.dds-attachment').hidden=false;announce(t,'예제 파일을 복원했습니다.');}
- if(t.hasAttribute('data-carousel-shift')){const p=t.closest('.dds-carousel'),n=Math.max(0,Math.min(2,+(p.dataset.slide||0)+Number(t.dataset.carouselShift)));p.dataset.slide=n;p.querySelector('[data-carousel-slide]').innerHTML=`<span class="eyebrow">CAREER GUIDE 0${n+1}</span><b>${['나의 경험을 발견하기','직무와 경험 연결하기','성과를 구체적으로 쓰기'][n]}</b>`;p.querySelector('output').textContent=`${n+1} / 3`;p.querySelector('[data-carousel-shift="-1"]').disabled=n===0;p.querySelector('[data-carousel-shift="1"]').disabled=n===2;}
+ if(t.hasAttribute('data-carousel-shift')){const p=t.closest('.dds-carousel'),n=Math.max(0,Math.min(2,+(p.dataset.slide||0)+Number(t.dataset.carouselShift)));p.dataset.slide=n;p.querySelector('[data-carousel-slide]').innerHTML=`<div class="dds-ratio-placeholder"><span class="eyebrow">CAREER GUIDE 0${n+1}</span><b>${['나의 경험을 발견하기','직무와 경험 연결하기','성과를 구체적으로 쓰기'][n]}</b></div>`;p.querySelector('output').textContent=`${n+1} / 3`;p.querySelector('[data-carousel-shift="-1"]').disabled=n===0;p.querySelector('[data-carousel-shift="1"]').disabled=n===2;}
  if(t.hasAttribute('data-thread-add')){const p=t.closest('[data-ext-thread]'),log=p.querySelector('[data-thread-log]'),follow=log.scrollHeight-log.scrollTop-log.clientHeight<24;log.insertAdjacentHTML('beforeend',message('새 피드백: 결과를 수치로 표현해 보세요.'));if(follow)log.scrollTop=log.scrollHeight;p.querySelector('[data-thread-status]').textContent=follow?'새 예제 메시지를 표시했습니다.':'새 메시지가 있습니다. 최신으로 이동할 수 있습니다.';}
  if(t.hasAttribute('data-thread-bottom')){const p=t.closest('[data-ext-thread]'),log=p.querySelector('[data-thread-log]');log.scrollTop=log.scrollHeight;p.querySelector('[data-thread-status]').textContent='최신 메시지';}
 });
