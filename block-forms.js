@@ -1,7 +1,7 @@
-import {icon} from './icons.js?v=b011fb4a3d820cd2';
-import {collectionCount,statusBadge} from './visibility.js?v=b011fb4a3d820cd2';
-import {renderExtended} from './ui/extended.js?v=b011fb4a3d820cd2';
-import {mountDDS} from './ui/index.js?v=b011fb4a3d820cd2';
+import {icon} from './icons.js?v=6cad35b561008178';
+import {collectionCount,statusBadge} from './visibility.js?v=6cad35b561008178';
+import {renderExtended} from './ui/extended.js?v=6cad35b561008178';
+import {mountDDS} from './ui/index.js?v=6cad35b561008178';
 
 export const formBlocks = [
   {id:'login',title:'로그인',category:'account',description:'소셜 계정 또는 이메일 로그인과 비밀번호 찾기.',components:['input','button']},
