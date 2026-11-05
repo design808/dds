@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "033876330ff9a8a8f3b3a94e6225b044d9f9104720d6eb677af92ba64ed4227c",
+  "sha256": "6c4eada5163be2dbb2208da5454e57961f890b391ad1a25fb6443de750270b18",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -402,8 +402,8 @@
     },
     {
       "file": "content-primitives.css",
-      "sha256": "366d7403070cc13f05737266d34cb89acb790c783feb61d0b48980a8d1ea1e0d",
-      "retainedRules": 67,
+      "sha256": "14044f5fedf22f09373b65237972d6ea8ea87d74b8580f0738bf1edce8ed6af7",
+      "retainedRules": 71,
       "excludedSelectors": 0
     },
     {

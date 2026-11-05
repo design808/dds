@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=a996fa47ec4a3cf0';
-import {collectionCount, statusBadge} from './visibility.js?v=a996fa47ec4a3cf0';
+import {icon} from './icons.js?v=5ea18bdc1c6e31ff';
+import {collectionCount, statusBadge} from './visibility.js?v=5ea18bdc1c6e31ff';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'workspace').replace(/[^a-zA-Z0-9_-]/g,'-');

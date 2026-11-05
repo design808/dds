@@ -1162,6 +1162,8 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .dds-items > li {margin:0;padding:0;min-width:0;list-style:none}
 .dds-ui .dds-items > li + li {border-top:1px solid var(--border)}
 .dds-ui .dds-list-item {position:relative;isolation:isolate;display:flex;align-items:center;min-width:0}
+.dds-ui .dds-items > .dds-list-item:first-child {border-start-start-radius:calc(var(--radius-lg) - 1px);border-start-end-radius:calc(var(--radius-lg) - 1px)}
+.dds-ui .dds-items > .dds-list-item:last-child {border-end-start-radius:calc(var(--radius-lg) - 1px);border-end-end-radius:calc(var(--radius-lg) - 1px)}
 .dds-ui .dds-list-link {display:flex;align-items:center;gap:var(--space-3);box-sizing:border-box;flex:1;min-width:0;padding:var(--space-3);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none}
 .dds-ui .dds-list-item > .dds-list-link::after {content:'';position:absolute;inset:0;z-index:1;border-radius:inherit}
 .dds-ui .dds-list-link > svg {width:18px;height:18px;flex-shrink:0}
@@ -1212,6 +1214,8 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .dds-bottomnav > .dds-bottomnav-link[aria-current=page]:hover {color:var(--brand-ink)}
 .dds-ui .dds-command-option:hover,
 .dds-ui .dds-list-link:hover {background:var(--surface)}
+.dds-ui .dds-list-item:hover {background:var(--surface)}
+.dds-ui .dds-list-item > .dds-list-link:hover {background:transparent}
 .dds-ui .dds-section-header-action:hover {text-decoration:underline;text-underline-offset:3px}
 }
 /*  Source: button-system.css  */

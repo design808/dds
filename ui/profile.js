@@ -1,7 +1,7 @@
 /** Project-owned theme overrides. Never modifies the versioned DDS source. */
-import {normalizeSettings,DEFAULT_SETTINGS,FONT_OPTIONS} from '../design-preferences.js?v=a996fa47ec4a3cf0';
-import {normalizeDesignProfile} from '../design-profile.js?v=a996fa47ec4a3cf0';
-import {palette} from './profile-palette.js?v=a996fa47ec4a3cf0';
+import {normalizeSettings,DEFAULT_SETTINGS,FONT_OPTIONS} from '../design-preferences.js?v=5ea18bdc1c6e31ff';
+import {normalizeDesignProfile} from '../design-profile.js?v=5ea18bdc1c6e31ff';
+import {palette} from './profile-palette.js?v=5ea18bdc1c6e31ff';
 
 const directories={wanted:'wanted-sans',paperlogy:'paperlogy',plex:'ibm-plex-kr',suite:'suite',serif:'noto-serif-kr',maruburi:'maruburi',hahmlet:'hahmlet'};
 const headings='h1,h2,h3,h4,h5,h6,.dds-type-display-1,.dds-type-display-2,.dds-type-title-1,.dds-type-title-2,.dds-type-heading-1,.dds-type-heading-2,.dds-type-headline-1';

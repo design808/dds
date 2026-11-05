@@ -1,7 +1,7 @@
-import {contrast} from './color-contrast.js?v=a996fa47ec4a3cf0';
-import {textColorSection,textScaleSection,textScaleMapping} from './text-colors.js?v=a996fa47ec4a3cf0';
-import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=a996fa47ec4a3cf0';
-import {palette} from './direction-preview.js?v=a996fa47ec4a3cf0';
+import {contrast} from './color-contrast.js?v=5ea18bdc1c6e31ff';
+import {textColorSection,textScaleSection,textScaleMapping} from './text-colors.js?v=5ea18bdc1c6e31ff';
+import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=5ea18bdc1c6e31ff';
+import {palette} from './direction-preview.js?v=5ea18bdc1c6e31ff';
 export {contrast};
 export const brandScale=[['50','#FFF9EF'],['100','#FFF0D6'],['200','#FFDFA8'],['300','#FFCA7A'],['400','#FFBE5C'],['500','#FFAD31'],['600','#FF941A'],['700','#E8750A'],['800','#C24C00'],['900','#A83D00'],['950','#8A2E00']];
 
@@ -94,7 +94,7 @@ export function colorPage(input=DEFAULT_SETTINGS){
     ${heading(4,'최종 배경과 함께 대비를 확인하고, 채택한 예외를 구분합니다.')}
     <h3>Primary 라벨과 브랜드 텍스트</h3><div class="contrast-grid"><article class="contrast-example"><div style="background:${primary};color:#FFFFFF;font-weight:400">저장 후 다음 →</div><b>White · weight 400</b><p>#FFFFFF / ${primary}<br>굵기 비교용 견본.</p></article><article class="contrast-example"><div style="background:${primary};color:#FFFFFF;font-weight:700">저장 후 다음 →</div><b>White · weight 700 · 채택</b><p>#FFFFFF / ${primary}<br>주 행동과 주요 라벨의 기본 조합.</p></article><article class="contrast-example"><div style="background:#FFFFFF;color:${brandInk}">상세 내용 보기 →</div><b>강조 글자 · ${contrast(brandInk,'#FFFFFF').toFixed(2)}:1</b><p>${brandInk} / #FFFFFF<br>밝은 배경의 링크·작은 글자용 파생색.</p></article></div><p class="helper">흰색 / Primary의 대비는 ${whiteRatio.toFixed(2)}:1입니다. 700 굵기는 시각적 선명도를 보완하지만 대비 수치를 바꾸지 않으며, ${contrastDescription} <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" target="_blank" rel="noreferrer">WCAG 대비 기준 ↗</a></p>
     <h3>적용 검수</h3><ul class="plain-list"><li>Primary 내부 라벨과 아이콘은 흰색, 주요 라벨은 700 굵기를 사용합니다.</li><li>밝은 배경의 링크는 <code>--brand-ink</code>와 밑줄을 함께 사용합니다.</li><li>차트의 범주는 색의 밝기만으로 구분하지 않고 범주명·수치·패턴을 함께 제공합니다.</li><li>반투명·비활성·이미지 위 배치는 합성된 실제 배경에서 대비를 다시 확인합니다.</li></ul>
-    <a class="btn" href="./tokens.css?v=a996fa47ec4a3cf0" download>CSS 토큰 다운로드</a>
+    <a class="btn" href="./tokens.css?v=5ea18bdc1c6e31ff" download>CSS 토큰 다운로드</a>
   </section>
  </div>`;
 }
