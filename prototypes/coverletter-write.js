@@ -1,6 +1,6 @@
-import {$,$$,esc,icon,common,summary,modal,toast,load,save,sampleInfo} from './prototype-shared.js?v=ec6f1fc7745acd41';
-import '../custom-controls.js?v=ec6f1fc7745acd41';
-import {getDocument,documentInfo,updateDocument} from './document-store.js?v=ec6f1fc7745acd41';
+import {$,$$,esc,icon,common,summary,modal,toast,load,save,sampleInfo} from './prototype-shared.js?v=2f0a2393132f45ea';
+import '../custom-controls.js?v=2f0a2393132f45ea';
+import {getDocument,documentInfo,updateDocument} from './document-store.js?v=2f0a2393132f45ea';
 common();
 const documentId=new URLSearchParams(location.search).get('document');
 const linkedDocument=getDocument(documentId);

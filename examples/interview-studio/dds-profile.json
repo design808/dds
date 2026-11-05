@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "ddsVersion": "0.4.0",
+  "savedAt": "2026-11-04T04:59:08.668Z",
+  "settings": {
+    "primary": "#007AFF",
+    "colorMode": "brand",
+    "secondary": "#345BFF",
+    "accent": "#8B3DFF",
+    "positive": "#00B881",
+    "headingFont": "pretendard",
+    "bodyFont": "pretendard"
+  }
+}

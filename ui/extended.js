@@ -1,6 +1,6 @@
 // Canonical extended-component markup. No document listeners or automatic mounting.
-import {icon} from './icons.js?v=ec6f1fc7745acd41';
-import {collectionCount,statusBadge} from '../visibility.js?v=ec6f1fc7745acd41';
+import {icon} from './icons.js?v=2f0a2393132f45ea';
+import {collectionCount,statusBadge} from '../visibility.js?v=2f0a2393132f45ea';
 const button=(text,attrs='',cls='')=>`<button type="button" class="btn ${cls}" ${attrs}>${text}</button>`;
 const ic=(name,label,attrs='')=>`<button type="button" class="icon-btn" aria-label="${label}" ${attrs}>${icon(name)}</button>`;
 const link=(text,route,current=false)=>`<a class="dds-nav-link dds-nav-control" href="#${route}" ${current?'aria-current="page"':''}>${text}</a>`;
