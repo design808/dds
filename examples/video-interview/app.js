@@ -1,4 +1,4 @@
-import {createComponent, mountDDS, icon} from '../../ui/index.js?v=f202618082b57775';
+import {createComponent, mountDDS, icon} from '../../ui/index.js?v=8eb0841135cc71ad';
 
 const $ = (selector, root=document) => root.querySelector(selector);
 const storeKey = 'maju-dds-050-v1';

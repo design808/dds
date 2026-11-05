@@ -129,8 +129,8 @@ export function configureServiceItems(root,id,options,uid){
   if(!own(options.text,'name')&&!own(options.text,'description'))root.querySelector('.demo-row > div')?.remove();
  }
  if(id==='icon-button'&&!options.group)root.querySelectorAll('.demo-row > button:not(:first-child)').forEach(node=>node.remove());
- if(id==='badge'&&!own(options.slots,'statuses')&&options.variants?.kind!=='count'){
+ if(id==='badge'&&!own(options.slots,'statuses')){
   root.querySelectorAll('.badge-demo > .demo-row > :not(:first-child)').forEach(node=>node.remove());
-  root.querySelector('.badge-count-example')?.remove();
+  const count=root.querySelector('.badge-count-example');if(count)count.hidden=options.variants?.kind!=='count';
  }
 }

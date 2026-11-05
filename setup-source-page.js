@@ -1,7 +1,7 @@
-import {ddsRelease,ddsSetupPrompt} from './ui-setup-content.js?v=f202618082b57775';
-import {buildProjectProfilePrompt} from './project-profile.js?v=f202618082b57775';
-import {parseDesignProfile,PROFILE_STORAGE_KEY} from './design-profile.js?v=f202618082b57775';
-import {FONT_OPTIONS} from './design-preferences.js?v=f202618082b57775';
+import {ddsRelease,ddsSetupPrompt} from './ui-setup-content.js?v=8eb0841135cc71ad';
+import {buildProjectProfilePrompt} from './project-profile.js?v=8eb0841135cc71ad';
+import {parseDesignProfile,PROFILE_STORAGE_KEY} from './design-profile.js?v=8eb0841135cc71ad';
+import {FONT_OPTIONS} from './design-preferences.js?v=8eb0841135cc71ad';
 const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const section=(title,body)=>`<section class="doc-section"><h2>${title}</h2>${body}</section>`;
 function savedProfile(){try{return parseDesignProfile(globalThis.window?.localStorage.getItem(PROFILE_STORAGE_KEY));}catch{return null;}}

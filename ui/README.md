@@ -52,7 +52,7 @@ const cleanup = mountDDS(root, {
 - `props`: Button의 공식 variant·color·size·아이콘·loading 속성이다. 등록된 조합만 사용한다.
 - `data`: 차트의 실제 제목·항목·계열·단위다. 서비스 생성 API는 차트에 명시적인 data를 요구한다.
 - `tabs`: `{label, content}` 배열로 탭과 연결 패널을 함께 만들 수 있다.
-- `variants`: `registry.json`에 등록된 유형·크기·상태·표현을 선택한다. 지원하지 않는 값은 오류로 처리한다. 버튼은 기존 `props`, 차트는 `data`를 사용한다.
+- `variants`: `registry.json`에 등록된 유형·크기·상태·표현을 선택한다. 지원하지 않는 값은 오류로 처리한다. 표시 옵션의 `false`는 제공한 콘텐츠에도 적용한다. `true`는 생략한 설명·개수 등을 자동으로 채우지 않는다. 버튼은 기존 `props`, 차트는 `data`를 사용한다.
 - `optional`: 선택 콘텐츠 파트별 `true|false`다. 예: `{hint:false}`. 설명은 `text.hint`처럼 실제 내용을 전달하면 나타나고, 생략하면 숨겨진다. 빈 설명 영역을 남기기 위해 공백 문구를 넣지 않는다.
 - `items`: Chip·Checkbox·Radio의 `{label,value,selected,disabled}` 배열이다. 견본의 세 항목을 서비스 기본 목록으로 사용하지 않는다. 개별 Chip·Avatar·Icon button·Badge는 기본 한 개부터 생성한다.
 

@@ -1,16 +1,16 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=f202618082b57775';
-import {renderButton} from './button.js?v=f202618082b57775';
-import {icon} from './icons.js?v=f202618082b57775';
-import {mountControls} from './controls.js?v=f202618082b57775';
-import {mountTooltips} from './tooltips.js?v=f202618082b57775';
-import {bindCharts,chartDemo} from './charts.js?v=f202618082b57775';
-import {calendarDays} from './extended.js?v=f202618082b57775';
-import {UI_VERSION} from './version.js?v=f202618082b57775';
-import {prepareServiceContent,finalizeServiceContent,configureServiceItems,optionalContent} from './content.js?v=f202618082b57775';
-import {applyComponentVariants,componentVariants} from './variants.js?v=f202618082b57775';
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=8eb0841135cc71ad';
+import {renderButton} from './button.js?v=8eb0841135cc71ad';
+import {icon} from './icons.js?v=8eb0841135cc71ad';
+import {mountControls} from './controls.js?v=8eb0841135cc71ad';
+import {mountTooltips} from './tooltips.js?v=8eb0841135cc71ad';
+import {bindCharts,chartDemo} from './charts.js?v=8eb0841135cc71ad';
+import {calendarDays} from './extended.js?v=8eb0841135cc71ad';
+import {UI_VERSION} from './version.js?v=8eb0841135cc71ad';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=8eb0841135cc71ad';
+import {applyComponentVariants,componentVariants} from './variants.js?v=8eb0841135cc71ad';
 export {renderButton,icon,componentIds,componentParts,renderComponentSource,layoutContract};
 export {componentVariants,optionalContent};
-export {collectionCount,statusBadge} from '../visibility.js?v=f202618082b57775';
+export {collectionCount,statusBadge} from '../visibility.js?v=8eb0841135cc71ad';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -42,7 +42,6 @@ export function createComponent(id,options={},doc=globalThis.document){
  wrapper.innerHTML=serviceMarkup(markup);resolveAssets(wrapper);
  prepareServiceContent(wrapper,id);
  const variants={...(id==='dialog'&&Object.hasOwn(options.slots||{},'content')?{content:'plain'}:{}),...(options.variants||{})};
- applyComponentVariants(wrapper,id,variants);
  const parts=componentParts(id);
  for(const [name,value] of Object.entries(options.text||{})){const [node]=partNode(wrapper,parts,name,'text');node.textContent=String(value??'');if(node.matches('textarea'))node.value=String(value??'');}
  for(const [name,value] of Object.entries(options.slots||{})){const [node]=partNode(wrapper,parts,name,'slot');const items=Array.isArray(value)?value:[value];if(items.some(item=>item!=null&&typeof item!=='string'&&!item.nodeType))throw new TypeError('DDS slots accept DOM nodes or plain text, not HTML objects.');node.replaceChildren(...items.filter(x=>x!=null));}
@@ -51,6 +50,10 @@ export function createComponent(id,options={},doc=globalThis.document){
  if(options.tabs)configureTabs(wrapper,options.tabs,uid);
  configureServiceItems(wrapper,id,options,uid);
  finalizeServiceContent(wrapper,id,options,parts);
+ // Apply explicit presentation axes to the actual supplied content/items. The
+ // optional-content policy remains authoritative for omitted specimen copy.
+ applyComponentVariants(wrapper,id,variants);
+ connectFieldDescriptions(wrapper,uid);
  return wrapper;
 }
 function configureTabs(wrapper,items,uid){

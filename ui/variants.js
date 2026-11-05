@@ -1,5 +1,5 @@
 /** Official, opt-in presentation axes. Content, items and business logic stay with the host. */
-import {icon} from './icons.js?v=f202618082b57775';
+import {icon} from './icons.js?v=8eb0841135cc71ad';
 
 const choice=(label,values,defaultValue,labels)=>Object.freeze({label,type:'enum',values:Object.freeze(values),default:defaultValue,labels:Object.freeze(labels||Object.fromEntries(values.map(value=>[value,value])))});
 const flag=(label,defaultValue=false)=>Object.freeze({label,type:'boolean',default:defaultValue});
@@ -69,8 +69,21 @@ export function normalizeVariants(id,options={}){
 const first=(root,selector)=>root.matches?.(selector)?root:root.querySelector(selector);
 const all=(root,selector)=>[...(root.matches?.(selector)?[root]:[]),...root.querySelectorAll(selector)];
 const hosts={alert:'.alert',toast:'.dds-toast',tabs:'.tab-demo',dialog:'.dds-dialog',card:'.dds-document-card',table:'.dds-table-scroll',avatar:'.demo-row','avatar-group':'.dds-avatar-group',chip:'.demo-row',badge:'.badge-demo',stepper:'.stepper',skeleton:'.skeleton-card',empty:'.empty-state','action-area':'.dds-action-area','button-group':'.dds-button-group','alert-dialog':'.dds-overlay',sheet:'.dds-overlay',drawer:'.dds-overlay',snackbar:'.dds-snackbar',thumbnail:'.dds-thumbnail','aspect-ratio':'.dds-ratio',spinner:'[role="status"]',separator:'hr',message:'.dds-message','fallback-view':'.dds-fallback','list-card':'.dds-list-card',item:'.dds-items','section-header':'.dds-section-header'};
+const fieldSizedComponents=new Set(['input','textarea','select','combobox','date-picker','search','editor','field','input-group','input-otp','label','time-picker','segmented-control']);
+const buttonSizedComponents=new Set(['icon-button','button-group','toggle','toggle-group','filter-button','text-button']);
 function mark(host,key,value){host?.setAttribute('data-dds-'+key.replace(/[A-Z]/g,letter=>'-'+letter.toLowerCase()),String(value));}
-function show(root,selector,value){for(const item of all(root,selector))item.hidden=!value;}
+function show(root,selector,value){
+ for(const item of all(root,selector)){
+  // SVGElement.hidden is not a reflected HTML property. The shared [hidden]
+  // attribute works for both namespaces, including leading/trailing list icons.
+  // A presentation option must not restore omitted specimen-only service copy.
+  const visible=value&&item.getAttribute('data-dds-optional')!=='omitted';
+  item.toggleAttribute('hidden',!visible);
+ }
+}
+function collapseEmptyGroups(root,selector){
+ for(const group of all(root,selector))if(group.children.length)group.toggleAttribute('hidden',[...group.children].every(child=>child.hasAttribute('hidden')));
+}
 function replaceIcon(element,name){if(!element)return;const template=element.ownerDocument.createElement('template');template.innerHTML=icon(name);element.replaceChildren(template.content);}
 const toneIcon={neutral:'Info',primary:'Info',info:'Info',success:'CircleCheck',warning:'TriangleAlert',error:'CircleX'};
 
@@ -83,15 +96,17 @@ export function applyComponentVariants(root,id,options={}){
  host.classList.add('dds-variant');
  for(const [key,value] of Object.entries(selected))mark(host,key,value);
  const controls=all(root,'input,select,textarea');
- if(selected.size){
+ if(selected.size&&fieldSizedComponents.has(id)){
   for(const field of all(root,'.field,.dds-input-group,.dds-time,.dds-segmented'))field.dataset.controlSize=selected.size;
   if(!all(root,'.field').length)host.dataset.controlSize=selected.size;
-  if(['icon-button','button-group','toggle','toggle-group','filter-button','text-button'].includes(id))for(const control of all(root,'button'))control.dataset.controlSize=selected.size;
  }
+ // An overlay's size controls its width; avatars/spinners own their own size.
+ // Neither may overwrite independent controls supplied in a content slot.
+ if(selected.size&&buttonSizedComponents.has(id))for(const control of all(root,'button'))control.dataset.controlSize=selected.size;
  if(selected.state){
   for(const control of controls){control.disabled=selected.state==='disabled';if('readOnly' in control)control.readOnly=selected.state==='readOnly';control.setAttribute('aria-invalid',String(selected.state==='error'));}
   for(const action of all(root,'[data-ext-password],[data-dds-password],[data-ext-validate],[data-dds-validate],.editor-demo [data-dialog],.editor-demo [data-dds-action="dialog"]'))action.disabled=selected.state==='disabled';
-  for(const field of all(root,'.field,.dds-input-group,.search-field,.upload-zone,.dds-component,.dds-demo')){field.dataset.ddsState=selected.state;field.classList.add('dds-variant-field');}
+  for(const field of all(root,'.field,.dds-input-group,.search-field,.upload-zone,.editor-demo,.dds-component,.dds-demo')){field.dataset.ddsState=selected.state;field.classList.add('dds-variant-field');}
  }
  if(Object.hasOwn(selected,'disabled'))for(const control of all(root,'input,select,textarea,button'))control.disabled=selected.disabled;
  if(Object.hasOwn(selected,'invalid'))for(const control of controls)control.setAttribute('aria-invalid',String(selected.invalid));
@@ -108,7 +123,12 @@ export function applyComponentVariants(root,id,options={}){
  }
  if(id==='badge'){
   const badges=all(host,'.badge');for(const badge of badges){badge.classList.add('dds-badge');for(const key of ['tone','appearance'])if(selected[key])mark(badge,key,selected[key]);}
-  if(selected.kind){show(host,'.badge-count-example',selected.kind==='count');show(host,'.badge-demo > .demo-row,.demo-row',selected.kind!=='count');if(selected.kind==='label'){for(const badge of badges){badge.removeAttribute('data-status');badge.classList.remove('dds-status');show(badge,'.icon',false);}}}
+  if(selected.kind){
+   show(host,'.badge-count-example',selected.kind==='count');show(host,'.badge-demo > .demo-row,.demo-row',selected.kind!=='count');
+   // Kind changes presentation without deleting service-owned status metadata.
+   // Returning from a label to a status restores its original status icon.
+   for(const badge of badges){mark(badge,'kind',selected.kind);show(badge,'.icon',selected.kind!=='label');}
+  }
  }
  if(id==='chip')for(const chip of all(host,'.chip')){for(const key of ['appearance','size'])if(selected[key])mark(chip,key,selected[key]);}
  if(['avatar','avatar-group'].includes(id))for(const avatar of all(host,'.avatar')){for(const key of ['shape','size'])if(selected[key])mark(avatar,key,selected[key]);}
@@ -119,9 +139,30 @@ export function applyComponentVariants(root,id,options={}){
   if(Object.hasOwn(selected,'closeButton'))show(host,'.dialog-heading>button',selected.closeButton);
   if(Object.hasOwn(selected,'actions'))show(host,':scope > button,:scope > .dds-action-area',selected.actions);
  }
- if(id==='card')for(const [key,selector] of Object.entries({status:'.dds-status',metadata:'.dds-meta-primary,.dds-meta-secondary',date:'.dds-meta-date',tools:'.dds-card-tools'}))if(Object.hasOwn(selected,key))show(host,selector,selected[key]);
+ if(id==='card'){
+  for(const [key,selector] of Object.entries({status:'.dds-status',metadata:'.dds-meta-primary,.dds-meta-secondary',date:'.dds-meta-date',tools:'.dds-card-tools'}))if(Object.hasOwn(selected,key))show(host,selector,selected[key]);
+  collapseEmptyGroups(host,'.dds-card-header');
+ }
  if(id==='accordion'&&selected.selection){const name='dds-accordion-'+(host.dataset.ddsAccordionGroup||host.id||root.dataset.ddsInstance||'group');for(const details of all(host,'details'))selected.selection==='single'?details.setAttribute('name',name):details.removeAttribute('name');}
- if(id==='progress'&&Object.hasOwn(selected,'indeterminate')){const progress=first(root,'progress');if(progress){if(selected.indeterminate){progress.dataset.ddsDeterminateValue=String(progress.value);progress.removeAttribute('value');progress.removeAttribute('aria-valuenow');progress.textContent='진행 중';}else progress.value=Number(progress.dataset.ddsDeterminateValue||0);show(root,'.row-between>span',!selected.indeterminate);}}
+ if(id==='progress'&&Object.hasOwn(selected,'indeterminate')){
+  const progress=first(root,'progress');
+  if(progress){
+   if(selected.indeterminate){
+    // Reapplying the same state must not replace the saved value with the native
+    // indeterminate value (0), and choosing false initially retains real data.
+    if(progress.hasAttribute('value')){progress.dataset.ddsDeterminateValue=String(progress.value);progress.dataset.ddsDeterminateAria=progress.getAttribute('aria-valuenow')||'';}
+    progress.removeAttribute('value');progress.removeAttribute('aria-valuenow');progress.textContent='진행 중';
+   }else{
+    if(progress.dataset.ddsDeterminateValue!==undefined){
+     progress.value=Number(progress.dataset.ddsDeterminateValue);
+     progress.dataset.ddsDeterminateAria?progress.setAttribute('aria-valuenow',progress.dataset.ddsDeterminateAria):progress.removeAttribute('aria-valuenow');
+     delete progress.dataset.ddsDeterminateValue;delete progress.dataset.ddsDeterminateAria;
+    }else if(!progress.hasAttribute('value'))progress.value=0;
+    progress.textContent=Math.round(progress.value/progress.max*100)+'%';
+   }
+   show(root,'.row-between>span',!selected.indeterminate);
+  }
+ }
  if(id==='skeleton'&&selected.shape){show(host,'.skeleton.circle',selected.shape!=='text');show(host,'.skeleton:not(.circle)',selected.shape!=='avatar');}
  if(id==='empty'){
   if(selected.reason){const glyph=first(host,':scope>.icon');if(glyph){const template=host.ownerDocument.createElement('template');template.innerHTML=icon({empty:'FileText',search:'SearchX',error:'TriangleAlert'}[selected.reason]);glyph.replaceWith(template.content);}}
@@ -134,11 +175,17 @@ export function applyComponentVariants(root,id,options={}){
   if(Object.hasOwn(selected,'actions'))show(host,'.dds-fallback-actions',selected.actions);
  }
  if(id==='list-card'){if(Object.hasOwn(selected,'image'))show(host,'.dds-mini-image',selected.image);if(Object.hasOwn(selected,'metadata'))show(host,'.dds-meta-secondary',selected.metadata);}
- if(id==='item')for(const [key,selector]of Object.entries({icon:'.dds-list-link>.icon:first-child',chevron:'.dds-list-link>.icon:last-child',metadata:'.dds-meta-secondary',status:'.dds-status'}))if(Object.hasOwn(selected,key))show(root,selector,selected[key]);
+ if(id==='item'){
+  for(const [key,selector]of Object.entries({icon:'.dds-list-link>.icon:first-child',chevron:'.dds-list-link>.icon:last-child',metadata:'.dds-meta-secondary',status:'.dds-status'}))if(Object.hasOwn(selected,key))show(root,selector,selected[key]);
+  collapseEmptyGroups(root,'.dds-list-meta');
+ }
  if(id==='section-header')for(const [key,selector]of Object.entries({description:'.dds-section-header-content>p',count:'.dds-collection-count',actions:'.dds-section-header-action'}))if(Object.hasOwn(selected,key))show(root,selector,selected[key]);
  if(id==='separator'&&selected.orientation)host.setAttribute('aria-orientation',selected.orientation);
  if(['bubble','message'].includes(id)&&selected.direction)for(const message of all(root,id==='message'?'.dds-message':'.dds-bubble'))message.classList.toggle('outgoing',selected.direction==='outgoing');
- if(id==='message')for(const [key,selector]of Object.entries({avatar:':scope>.avatar',author:'.dds-message-meta>b',time:'.dds-message-meta>time'}))if(Object.hasOwn(selected,key))show(host,selector,selected[key]);
+ if(id==='message'){
+  for(const [key,selector]of Object.entries({avatar:':scope>.avatar',author:'.dds-message-meta>b',time:'.dds-message-meta>time'}))if(Object.hasOwn(selected,key))show(host,selector,selected[key]);
+  collapseEmptyGroups(host,'.dds-message-meta');
+ }
  return selected;
 }
 
