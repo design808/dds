@@ -1,8 +1,8 @@
 // Pure prompt builder: a saved profile is an explicit project setting, not live preview.
-import {ddsSetupPrompt,ddsRelease} from './ui-setup-content.js?v=1ea07ad08c5dd4c5';
-import {normalizeDesignProfile} from './design-profile.js?v=1ea07ad08c5dd4c5';
-import {FONT_OPTIONS} from './design-preferences.js?v=1ea07ad08c5dd4c5';
-export {createProfileCSS,profileTokens} from './ui/profile.js?v=1ea07ad08c5dd4c5';
+import {ddsSetupPrompt,ddsRelease} from './ui-setup-content.js?v=2ba405c41d82bf19';
+import {normalizeDesignProfile} from './design-profile.js?v=2ba405c41d82bf19';
+import {FONT_OPTIONS} from './design-preferences.js?v=2ba405c41d82bf19';
+export {createProfileCSS,profileTokens} from './ui/profile.js?v=2ba405c41d82bf19';
 
 export function buildProjectProfilePrompt(input){
  if(input==null)return ddsSetupPrompt;

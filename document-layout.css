@@ -567,3 +567,98 @@
     flex-shrink: 0;
   }
 }
+
+/* Gallery scenes are static, complete compositions. The stage occupies the
+   fitted size; an unscaled layout box cannot create a scrollbar on the card.
+   These rules never affect interactive detail or service components. */
+.workspace > #main .component-preview .preview-stage {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: none;
+  contain: layout paint;
+  overflow: clip;
+  pointer-events: none;
+}
+.workspace > #main .component-preview .preview-stage > .preview-inner {
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: block;
+  box-sizing: content-box;
+  width: var(--preview-scene-width,360px);
+  min-width: var(--preview-scene-width,360px);
+  max-width: none;
+  height: auto;
+  margin: 0;
+  padding: 8px;
+  flex: none;
+  transform: scale(var(--preview-scale,1));
+  transform-origin: top left;
+}
+.workspace > #main .component-preview .preview-inner > .dds-ui {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+.workspace > #main .component-preview .preview-inner :is(.table-wrap,.dds-table-scroll,
+  .dds-scroll,.dds-chart-plot,.dds-chart-legend--dense) {
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+  scrollbar-width: none;
+}
+.workspace > #main .component-preview .preview-inner :is(.table-wrap,.dds-table-scroll,
+  .dds-scroll,.dds-chart-plot,.dds-chart-legend--dense)::-webkit-scrollbar {display:none;}
+.workspace > #main .component-preview .preview-inner .table-wrap {width:100%;}
+.workspace > #main .component-preview .preview-inner .dds-chart-example--mini {width:100%;}
+.workspace > #main .component-preview .preview-inner .dds-chart-svg {max-height:none;}
+.workspace > #main .component-preview .preview-inner textarea {resize:none;}
+.workspace > #main .component-preview .preview-inner,
+.workspace > #main .component-preview .preview-inner *,
+.workspace > #main .component-preview .preview-inner *::before,
+.workspace > #main .component-preview .preview-inner *::after {
+  animation-play-state: paused !important;
+  scrollbar-width: none;
+}
+.workspace > #main .component-preview .preview-inner *::-webkit-scrollbar {display:none;}
+
+/* Viewport media rules must not turn an inert desktop composition into a
+   different component while its card gets narrower. Container-query navigation
+   still sees the scene's actual logical width. */
+.workspace > #main .component-preview .preview-inner .stepper li {flex-direction:row;align-items:center;}
+.workspace > #main .component-preview .preview-inner .stepper {gap:24px;}
+.workspace > #main .component-preview .preview-inner .stepper li b {font-size:var(--type-label-2-size);font-weight:500;}
+.workspace > #main .component-preview .preview-inner .dds-resizable {
+  display:grid;
+  grid-template-columns:minmax(0,var(--panel,50%)) 16px minmax(0,1fr);
+  padding:0 8px;
+}
+.workspace > #main .component-preview .preview-inner .dds-resize-handle {display:grid;}
+.workspace > #main .component-preview .preview-inner .dds-resizable section + section {border-top:0;}
+.workspace > #main .component-preview .preview-inner .dds-snackbar {flex-wrap:nowrap;}
+.workspace > #main .component-preview .preview-inner .dds-chart-legend {gap:4px 16px;}
+.workspace > #main .component-preview .preview-inner .alert {font-size:var(--type-label-2-size);padding:18px 20px;}
+
+/* A live example gets the available document width before its own responsive
+   rules are evaluated. A document frame is not part of the component API. */
+.workspace > #main .playground-inner > .dds-ui {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-width:0;
+}
+.workspace > #main .dds-variant-preview {min-width:0;}
+@media(max-width:1180px) {
+  .workspace > #main .doc-layout {grid-template-columns:minmax(0,1fr);}
+  .workspace > #main .doc-layout > .toc {display:none;}
+  .workspace > #main .playground:has(.dds-chart-example) > .playground-inner {padding:20px;}
+}
+@media(max-width:359px) {
+  .workspace > #main .dds-variant-preview {padding:12px;}
+}

@@ -1,12 +1,12 @@
-import {createComponent,mountDDS,icon,collectionCount,statusBadge} from '../ui/index.js?v=1ea07ad08c5dd4c5';
-import {jobs,categories,filterOptions,sortOptions,filterJobs,sortJobs,getJobById,getCompanyById} from './careers-data.js?v=1ea07ad08c5dd4c5';
+import {createComponent,mountDDS,icon,collectionCount,statusBadge} from '../ui/index.js?v=2ba405c41d82bf19';
+import {jobs,categories,filterOptions,sortOptions,filterJobs,sortJobs,getJobById,getCompanyById} from './careers-data.js?v=2ba405c41d82bf19';
 
 const $=selector=>document.querySelector(selector);
 const main=$('[data-co-main]');
 const storageKeys={saved:'careeron.saved.v1',drafts:'careeron.drafts.v1',theme:'careeron.theme.v1'};
 const filters={query:'',category:'',location:'',experience:'',workMode:'',sort:'latest'};
-let uid=0,cleanupMain=()=>{},cleanupDialog=()=>{},dialogReturn=null,toastTimer=null;
-let resultsHost=null,resultTitle=null,searchInput=null;
+let uid=0,cleanupMain=()=>{},cleanupDialog=()=>{},cleanupPage=()=>{},dialogReturn=null,toastTimer=null;
+let resultsHost=null,resultTitle=null,resultCountHost=null,filterCountHost=null,searchInput=null;
 let route={view:'jobs',job:null};
 const lifetime=new AbortController();
 
@@ -30,7 +30,7 @@ function persist(key,value){try{localStorage.setItem(key,JSON.stringify(value));
 const toast=component('toast',{text:{label:'알림',content:''}});
 toast.querySelector('button').remove();
 $('[data-co-status]').append(toast);
-function announce(message){const host=toast.querySelector('.dds-toast');clearTimeout(toastTimer);host.textContent=message;host.hidden=false;host.classList.add('show');toastTimer=setTimeout(()=>{host.classList.remove('show');host.hidden=true;},3500);}
+function announce(message){const host=toast.querySelector('.dds-toast');clearTimeout(toastTimer);host.querySelector('[data-dds-toast-message]').textContent=message;host.hidden=false;host.classList.add('show');toastTimer=setTimeout(()=>{host.classList.remove('show');host.hidden=true;},3500);}
 function formatDate(value){if(!value)return '상시 채용';return value.slice(0,10).replaceAll('-','.');}
 function deadlineText(job){return job.deadline?`${formatDate(job.deadline)} 마감`:'상시 채용';}
 function draftDate(value){if(!value)return '작성 중';const date=new Date(value);if(Number.isNaN(date.getTime()))return '작성 중';return `${date.getFullYear()}.${String(date.getMonth()+1).padStart(2,'0')}.${String(date.getDate()).padStart(2,'0')} 저장`;}
@@ -58,61 +58,65 @@ updateTheme();
 themeButton.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';updateTheme();try{localStorage.setItem(storageKeys.theme,theme);}catch{}});
 const cleanupFooter=mountDDS($('[data-co-theme]'),{controls:false,charts:false});
 
-function companyAvatar(job){const company=getCompanyById(job.companyId);const source=component('avatar',{text:{firstInitial:company?.initial||job.company.slice(0,1)}});const avatar=source.querySelector('.avatar');avatar.setAttribute('aria-hidden','true');return avatar;}
+function companyAvatar(job,size='sm'){const company=getCompanyById(job.companyId);const source=component('avatar',{text:{firstInitial:company?.initial||job.company.slice(0,1)},variants:{size,shape:'rounded'}});source.querySelector('.avatar').setAttribute('aria-hidden','true');return source;}
 function bookmark(job){const active=saved.has(job.id),label=`${job.title} 관심공고 ${active?'해제':'저장'}`;const result=button(label,{variant:'outlined',color:'assistive',size:'sm',iconOnly:true,before:active?'BookmarkCheck':'Bookmark'},{coBookmark:job.id});const control=result.querySelector('button');control.classList.add('dds-card-tools');control.setAttribute('aria-pressed',String(active));return result;}
-function companyIdentity(job,avatar=true){const result=node('div','co-job-company');if(avatar)result.append(companyAvatar(job));const text=node('div','co-job-company-copy');text.append(copy(job.company,'dds-meta-primary'),copy(getCompanyById(job.companyId)?.industry||job.category,'dds-meta-secondary'));result.append(text);return result;}
+function companyIdentity(job,avatar=true){const result=node('div','co-job-company');if(avatar)result.append(companyAvatar(job,'md'));const text=node('div','co-job-company-copy');text.append(copy(job.company,'dds-meta-primary'),copy(getCompanyById(job.companyId)?.industry||job.category,'dds-meta-secondary'));result.append(text);return result;}
 function jobCard(job){
- const content=document.createDocumentFragment(),header=node('div','dds-card-header');header.append(companyIdentity(job),bookmark(job));
- const title=node('h3','dds-card-title'),link=node('a','dds-card-link',job.title);link.href=`#/jobs/${encodeURIComponent(job.id)}`;title.append(link);
- const meta=copy(`${job.location} · ${job.experience}`),mode=copy(`${job.employmentType} · ${job.workMode}`);
- const tags=node('div','co-job-tags');for(const tag of job.tags.slice(0,3))tags.append(node('span','badge dds-badge',tag));
- const bottom=node('div','co-job-bottom'),date=node('time','dds-meta-date',`${formatDate(job.postedAt)} 등록`);date.dateTime=job.postedAt;bottom.append(date,node('span','dds-meta-secondary',deadlineText(job)));
- content.append(header,title,meta,mode,tags,bottom);
- return surface(content,`job-card-${job.id}-${++uid}`);
+ const row=node('div','co-job-row');
+ const title=node('h3','dds-card-title co-job-title'),link=node('a','dds-card-link',job.title);link.href=`#/jobs/${encodeURIComponent(job.id)}`;title.append(link);
+ const context=node('div','co-job-context');context.append(companyAvatar(job),copy(job.company,'dds-meta-primary'),copy(`${job.location} · ${job.experience}`));
+ const deadline=node(job.deadline?'time':'span','dds-meta-secondary co-job-deadline',deadlineText(job));if(job.deadline)deadline.dateTime=job.deadline;
+ const savedButton=bookmark(job);savedButton.querySelector('button').classList.add('co-job-bookmark');
+ row.append(title,context,deadline,savedButton);
+ return surface(row,`job-card-${job.id}-${++uid}`);
 }
-function jobGrid(values){const grid=node('div','co-jobs-grid');for(const job of values)grid.append(jobCard(job));return grid;}
+function jobGrid(values){const grid=node('div','co-job-list');for(const job of values)grid.append(jobCard(job));return grid;}
 function empty(title,description,label='채용공고 보기',href='#/jobs',reset=false){const result=component('empty',{text:{title,description,action:label},attributes:{actionControl:{href}}});if(reset)result.querySelector('a').dataset.coReset='';return result;}
 function collectionHeading(title,description,amount,label){const heading=node('div','co-collection-heading dds-ui'),row=node('div','co-results-title');const h1=node('h1','dds-type-title-1',title);h1.tabIndex=-1;row.append(h1,count(amount,label));heading.append(row,copy(description));return heading;}
 
 function selectField(label,name,values,value,onChange){
  const options=document.createDocumentFragment();
  for(const item of values){const option=node('option','',typeof item==='string'?item:item.label);option.value=typeof item==='string'?item:item.value;options.append(option);}
- const result=component('select',{text:{label},slots:{options},attributes:{control:{name,value,'aria-label':label}}});
- result.querySelector('.field').dataset.controlSize='sm';
+ const result=component('select',{text:{label},slots:{options},attributes:{control:{name,value,'aria-label':label}},variants:{size:'sm'}});
  result.querySelector('select').addEventListener('change',event=>onChange(event.target.value));
  return result;
 }
 function categoryControls(){
- const template=component('chip').querySelector('button');
- const items=document.createDocumentFragment();
- for(const category of ['전체',...categories]){const control=template.cloneNode(true);control.textContent=category;control.dataset.coCategory=category==='전체'?'':category;control.removeAttribute('data-dds-toggle');const selected=control.dataset.coCategory===filters.category;control.classList.toggle('selected',selected);control.setAttribute('aria-pressed',String(selected));items.append(control);}
- const result=component('chip',{slots:{items}});result.querySelector('.demo-row').setAttribute('aria-label','직무 선택');return result;
+ const items=['전체',...categories].map(category=>({label:category,value:category==='전체'?'':category,selected:(category==='전체'?'':category)===filters.category}));
+ const result=component('chip',{items,variants:{size:'sm'}});result.querySelector('.demo-row').setAttribute('aria-label','직무 선택');
+ [...result.querySelectorAll('button')].forEach((control,index)=>{control.dataset.coCategory=items[index].value;control.removeAttribute('data-dds-toggle');});return result;
 }
 function renderBrowse(){
- const hero=node('section','co-hero dds-ui');hero.setAttribute('aria-labelledby','careeron-title');
- const heading=node('div','co-heading');heading.append(node('h1','dds-type-title-1','다음 커리어를 만나는 곳.'),copy('원하는 일과 일하는 방식을 찾아보세요.','dds-type-body-1-normal co-secondary'));heading.querySelector('h1').id='careeron-title';
+ const intro=node('section','co-browse-intro dds-ui');intro.setAttribute('aria-labelledby','careeron-title');
+ const heading=node('div','co-heading');heading.append(node('h1','dds-type-heading-1','채용공고'),copy('나에게 맞는 일을 찾아보세요.'));heading.querySelector('h1').id='careeron-title';
  const form=node('form','co-search-form');form.setAttribute('role','search');
- const search=component('search',{idPrefix:'careeron-search',text:{label:'어떤 일을 찾고 있나요?'},attributes:{control:{name:'query',value:filters.query,placeholder:'직무, 기업명 또는 키워드','aria-label':'채용공고 검색',autocomplete:'off'}}});
+ const search=component('search',{idPrefix:'careeron-search',text:{label:'채용공고 검색'},attributes:{control:{name:'query',value:filters.query,placeholder:'직무, 기업명 또는 키워드','aria-label':'채용공고 검색',autocomplete:'off'}}});
+ search.querySelector('label').classList.add('sr-only');
  searchInput=search.querySelector('input');
- const submit=node('div','co-search-submit');submit.append(button('공고 검색',{before:'Search',attributes:{type:'submit'}}));form.append(search,submit);
+ form.append(search,button('검색',{attributes:{type:'submit'}}));
  form.addEventListener('submit',event=>{event.preventDefault();filters.query=searchInput.value;updateResults();resultTitle.focus();resultTitle.scrollIntoView({block:'nearest',behavior:'smooth'});});
- hero.append(heading,form);
- const category=node('section','co-categories dds-ui');category.setAttribute('aria-labelledby','category-title');const categoryHeading=node('div','co-category-heading');categoryHeading.append(node('h2','dds-type-body-1-normal','어떤 직무를 찾으세요?'));categoryHeading.querySelector('h2').id='category-title';category.append(categoryHeading,categoryControls());
- const filterBar=node('div','co-filter-bar');
- for(const [key,label] of [['location','지역'],['experience','경력'],['workMode','근무 방식']])filterBar.append(selectField(label,key,[{value:'',label:`${label} 전체`},...(filterOptions[key]||[])],filters[key],value=>{filters[key]=value;updateResults();}));
- const reset=node('div','co-filter-reset');reset.append(button('초기화',{variant:'outlined',color:'assistive',size:'sm',before:'RotateCcw'},{coReset:''}));filterBar.append(reset);
- const results=node('section','co-results dds-ui');results.setAttribute('aria-labelledby','results-title');const toolbar=node('div','co-results-header'),title=node('div','co-results-title');resultTitle=node('h2','dds-type-headline-1','채용 중인 공고');resultTitle.id='results-title';resultTitle.tabIndex=-1;title.append(resultTitle,node('span','', ''));
- const sort=node('div','co-sort');sort.append(node('span','dds-meta-secondary','정렬'),selectField('공고 정렬','sort',sortOptions,filters.sort,value=>{filters.sort=value;updateResults();}));sort.querySelector('label').hidden=true;
- resultsHost=node('div','co-stack');toolbar.append(title,sort);results.append(toolbar,resultsHost);main.append(hero,category,filterBar,results);updateResults();
+ intro.append(heading,form);
+ const layout=node('div','co-explore-layout'),sidebar=node('aside','co-filter-sidebar');sidebar.setAttribute('aria-label','공고 검색 조건');
+ const filterPanel=component('collapsible',{text:{firstDescription:'',secondDescription:''}}),details=filterPanel.querySelector('details'),summary=details.querySelector('summary');
+ const summaryLabel=node('span','co-filter-summary-label','검색 조건');filterCountHost=node('span');summaryLabel.append(filterCountHost);summary.replaceChildren(summaryLabel,summary.querySelector('.icon'));
+ details.querySelectorAll(':scope>p').forEach(paragraph=>paragraph.remove());
+ const conditions=node('div','co-filter-content'),category=node('section','co-filter-section');category.setAttribute('aria-labelledby','category-title');const categoryTitle=node('h2','dds-type-label-1','직무');categoryTitle.id='category-title';category.append(categoryTitle,categoryControls());conditions.append(category);
+ for(const [key,label] of [['location','지역'],['experience','경력'],['workMode','근무 방식']])conditions.append(selectField(label,key,[{value:'',label:`${label} 전체`},...(filterOptions[key]||[])],filters[key],value=>{filters[key]=value;updateResults();}));
+ conditions.append(button('조건 초기화',{variant:'outlined',color:'assistive',size:'sm',before:'RotateCcw',fullWidth:true},{coReset:''}));details.append(conditions);sidebar.append(filterPanel);
+ const narrow=window.matchMedia('(max-width:900px)');details.open=!narrow.matches;
+ const syncFilterPanel=()=>{const active=document.activeElement,focused=details.contains(active)&&active!==summary||[...details.querySelectorAll('[aria-controls]')].some(control=>(control.getAttribute('aria-controls')||'').split(/\s+/).some(id=>document.getElementById(id)?.contains(active)));if(narrow.matches&&focused)summary.focus({preventScroll:true});details.open=!narrow.matches;};
+ narrow.addEventListener('change',syncFilterPanel);cleanupPage=()=>narrow.removeEventListener('change',syncFilterPanel);
+ const results=node('section','co-results dds-ui');results.setAttribute('aria-labelledby','results-title');const toolbar=node('div','co-results-header'),title=node('div','co-results-title');resultTitle=node('h2','dds-type-headline-1','전체 공고');resultTitle.id='results-title';resultTitle.tabIndex=-1;resultCountHost=node('span');resultCountHost.setAttribute('role','status');resultCountHost.setAttribute('aria-live','polite');title.append(resultTitle,resultCountHost);
+ const sort=node('div','co-sort');sort.append(selectField('공고 정렬','sort',sortOptions,filters.sort,value=>{filters.sort=value;updateResults();}));sort.querySelector('label').hidden=true;
+ resultsHost=node('div','co-stack');toolbar.append(title,sort);results.append(toolbar,resultsHost);layout.append(sidebar,results);main.append(intro,layout);updateResults();
 }
 function updateResults(){
  if(route.view!=='jobs'||!resultsHost)return;
  const values=sortJobs(filterJobs(jobs,filters),filters.sort);
- const row=resultTitle.parentElement;row.lastElementChild.replaceWith(count(values.length));
+ const activeConditions=['category','location','experience','workMode'].filter(key=>Boolean(filters[key])).length;
+ resultTitle.textContent=filters.query?'검색 결과':filters.category?`${filters.category} 공고`:activeConditions?'조건에 맞는 공고':'전체 공고';resultCountHost.replaceChildren(count(values.length));
+ filterCountHost.replaceChildren(count(activeConditions,'선택한 검색 조건'));filterCountHost.hidden=activeConditions===0;
  resultsHost.replaceChildren(values.length?jobGrid(values):empty('조건에 맞는 공고가 없어요','검색어를 바꾸거나 선택한 조건을 줄여보세요.','검색 조건 초기화','#/jobs',true));
- // The result heading owns the live count; no specimen helper is duplicated here.
- resultTitle.parentElement.lastElementChild.setAttribute('role','status');
- resultTitle.parentElement.lastElementChild.setAttribute('aria-live','polite');
 }
 function resetFilters(){Object.assign(filters,{query:'',category:'',location:'',experience:'',workMode:'',sort:'latest'});renderRoute(false);const input=main.querySelector('input[type=search]');input?.focus();}
 
@@ -125,7 +129,7 @@ function renderDrafts(){
  const values=Object.values(drafts).filter(value=>getJobById(value.jobId)).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt));
  main.append(collectionHeading('지원서 보관함','작성하던 지원서를 이어가세요. 초안은 이 브라우저에 보관됩니다.',values.length,'지원서 초안'));
  if(!values.length){main.append(empty('작성 중인 지원서가 없어요','관심 있는 공고에서 지원서 초안을 작성해 보세요.'));return;}
- const grid=node('div','co-jobs-grid');
+ const grid=node('div','co-drafts-grid');
  for(const draft of values){
   const job=getJobById(draft.jobId),content=document.createDocumentFragment(),header=node('div','dds-card-header');
   const remove=button(`${job.title} 초안 삭제`,{variant:'outlined',color:'assistive',size:'sm',iconOnly:true,before:'Trash2'},{coDeleteDraft:job.id});remove.querySelector('button').classList.add('dds-card-tools');
@@ -161,7 +165,7 @@ function renderDetail(job){
 function parseRoute(){const path=location.hash.replace(/^#\/?/,'').split('?')[0].split('/').filter(Boolean);if(path[0]==='jobs'&&path[1])return {view:'detail',job:getJobById(decodeURIComponentSafe(path[1]))};if(['saved','drafts'].includes(path[0]))return {view:path[0],job:null};return {view:'jobs',job:null};}
 function decodeURIComponentSafe(value){try{return decodeURIComponent(value);}catch{return '';}}
 function renderRoute(focus=false){
- cleanupMain();route=parseRoute();resultsHost=null;resultTitle=null;searchInput=null;main.replaceChildren();
+ cleanupMain();cleanupPage();cleanupPage=()=>{};route=parseRoute();resultsHost=null;resultTitle=null;resultCountHost=null;filterCountHost=null;searchInput=null;main.replaceChildren();
  if(route.view==='detail')renderDetail(route.job);else if(route.view==='saved')renderSaved();else if(route.view==='drafts')renderDrafts();else renderBrowse();
  document.title=`${route.view==='detail'?(route.job?.title||'공고 찾기'):route.view==='saved'?'관심공고':route.view==='drafts'?'지원서 보관함':'채용공고'} · 커리어온`;
  updateNavigation();cleanupMain=mountDDS(main,{charts:false});
@@ -182,7 +186,7 @@ function toggleBookmark(id,trigger){
  const next=new Set(saved);next.has(id)?next.delete(id):next.add(id);
  if(!persist(storageKeys.saved,[...next]))return;
  saved=next;announce(saved.has(id)?'관심공고에 저장했어요.':'관심공고에서 해제했어요.');
- if(route.view==='saved'){const cards=[...main.querySelectorAll('.co-jobs-grid> .dds-ui')],index=cards.findIndex(card=>card.contains(trigger));renderRoute(false);const following=main.querySelectorAll('.dds-card-link');(following[Math.min(Math.max(index,0),following.length-1)]||main.querySelector('h1'))?.focus();}else refreshBookmarks(id);
+ if(route.view==='saved'){const cards=[...main.querySelectorAll('.co-job-list> .dds-ui')],index=cards.findIndex(card=>card.contains(trigger));renderRoute(false);const following=main.querySelectorAll('.dds-card-link');(following[Math.min(Math.max(index,0),following.length-1)]||main.querySelector('h1'))?.focus();}else refreshBookmarks(id);
 }
 
 function applicationField(label,name,value,placeholder,required=false){
@@ -204,7 +208,7 @@ function openApplication(jobId,trigger){
  const note=copy('초안은 이 브라우저에만 저장됩니다. 입력한 내용이 기업으로 전송되지 않습니다.');
  const saveStatus=copy(draft.updatedAt?`마지막 저장: ${draftDate(draft.updatedAt)}`:'이름, 이메일, 지원 동기를 작성하고 나중에 이어갈 수 있어요.');saveStatus.setAttribute('role','status');
  form.append(pair,motivation,note,saveStatus);
- const source=component('dialog',{idPrefix:'careeron-application',text:{title:'지원서 작성',body:`${job.company} · ${job.title}`,confirm:'임시저장'},slots:{content:form},attributes:{control:{hidden:true},close:{'aria-label':'지원서 작성 닫기'}}});
+ const source=component('dialog',{idPrefix:'careeron-application',variants:{content:'form'},text:{title:'지원서 작성',body:`${job.company} · ${job.title}`,confirm:'임시저장'},slots:{content:form},attributes:{control:{hidden:true},close:{'aria-label':'지원서 작성 닫기'}}});
  const dialog=source.querySelector('dialog'),defaultConfirm=dialog.querySelector(':scope>button');
  defaultConfirm.replaceWith(button('임시저장',{fullWidth:true,attributes:{type:'submit',form:form.id}}));
  const originalClose=dialog.querySelector('[data-dds-close]');originalClose.dataset.tooltip='지원서 작성 닫기';
@@ -232,5 +236,5 @@ window.addEventListener('storage',event=>{
  if(event.key===storageKeys.saved){try{const value=JSON.parse(event.newValue||'[]');saved=new Set(Array.isArray(value)?value.filter(id=>getJobById(id)):[]);}catch{return;}if(route.view==='saved')renderRoute(false);else for(const job of jobs)refreshBookmarks(job.id);}
  if(event.key===storageKeys.drafts){drafts=normalizeDrafts(readStorage(storageKeys.drafts,{}));if(route.view==='drafts')renderRoute(false);else if(route.job)refreshApplicationLabel(route.job.id);}
 },{signal:lifetime.signal});
-window.addEventListener('pagehide',event=>{if(event.persisted)return;lifetime.abort();cleanupHeader();cleanupFooter();cleanupMain();cleanupDialog();clearTimeout(toastTimer);},{signal:lifetime.signal});
+window.addEventListener('pagehide',event=>{if(event.persisted)return;lifetime.abort();cleanupHeader();cleanupFooter();cleanupMain();cleanupDialog();cleanupPage();clearTimeout(toastTimer);},{signal:lifetime.signal});
 renderRoute();

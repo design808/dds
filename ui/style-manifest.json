@@ -370,9 +370,9 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "a39f9d5f57767c3d7dbb9fa95fbafd67b41b27a80a84de507b1981b7769aeb83",
+      "sha256": "4ab54ddaa22eda6627cf37ac84768ab59baab2ffa6076a94dfd86a236e08c939",
       "retainedRules": 4,
-      "excludedSelectors": 143
+      "excludedSelectors": 172
     },
     {
       "file": "interactions.css",
@@ -3215,6 +3215,122 @@
     {
       "source": "document-layout.css",
       "selector": ".workspace > #main .spacing-list > div > span"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-stage"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-stage > .preview-inner"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner > .dds-ui"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner :is(.table-wrap,.dds-table-scroll,\n  .dds-scroll,.dds-chart-plot,.dds-chart-legend--dense)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner :is(.table-wrap,.dds-table-scroll,\n  .dds-scroll,.dds-chart-plot,.dds-chart-legend--dense)::-webkit-scrollbar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .table-wrap"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .dds-chart-example--mini"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .dds-chart-svg"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner textarea"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner *"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner *::before"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner *::after"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner *::-webkit-scrollbar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .stepper li"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .stepper"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .stepper li b"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .dds-resizable"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .dds-resize-handle"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .dds-resizable section + section"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .dds-snackbar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .dds-chart-legend"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .component-preview .preview-inner .alert"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .playground-inner > .dds-ui"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .dds-variant-preview"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-layout > .toc"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .playground:has(.dds-chart-example) > .playground-inner"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .dds-variant-preview"
     },
     {
       "source": "interactions.css",

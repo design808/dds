@@ -1,7 +1,7 @@
-import {componentVariants,applyComponentVariants} from './ui/variants.js?v=1ea07ad08c5dd4c5';
-import {renderComponentSource,serviceMarkup} from './ui/source.js?v=1ea07ad08c5dd4c5';
-import {renderButton} from './ui/button.js?v=1ea07ad08c5dd4c5';
-import {connectFieldDescriptions} from './ui/content.js?v=1ea07ad08c5dd4c5';
+import {componentVariants,applyComponentVariants} from './ui/variants.js?v=2ba405c41d82bf19';
+import {renderComponentSource,serviceMarkup} from './ui/source.js?v=2ba405c41d82bf19';
+import {renderButton} from './ui/button.js?v=2ba405c41d82bf19';
+import {connectFieldDescriptions} from './ui/content.js?v=2ba405c41d82bf19';
 
 const escape=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'component-variants').replace(/[^a-zA-Z0-9_-]/g,'-');
