@@ -1,6 +1,6 @@
-import {contrast} from './color-contrast.js?v=6cad35b561008178';
-import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=6cad35b561008178';
-import {palette} from './direction-preview.js?v=6cad35b561008178';
+import {contrast} from './color-contrast.js?v=07d93ae023b5f009';
+import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=07d93ae023b5f009';
+import {palette} from './direction-preview.js?v=07d93ae023b5f009';
 
 export const textScale = [
   ['50','#F7F8FA'],['100','#EEF0F3'],['200','#DDE1E7'],['300','#B4BCC8'],
