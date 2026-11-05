@@ -1,0 +1,200 @@
+[
+  {
+    "id": "ux-002",
+    "category": "Navigation",
+    "name": "Sticky Navigation",
+    "platform": "Web",
+    "outcome": "Fixed nav should not obscure content",
+    "recommendation": "Add padding-top to body equal to nav height",
+    "avoid": "Let nav overlap first section content"
+  },
+  {
+    "id": "ux-004",
+    "category": "Navigation",
+    "name": "Back Button",
+    "platform": "Mobile",
+    "outcome": "Users expect back to work predictably",
+    "recommendation": "Preserve navigation history properly",
+    "avoid": "Break browser/app back button behavior"
+  },
+  {
+    "id": "ux-005",
+    "category": "Navigation",
+    "name": "Deep Linking",
+    "platform": "All",
+    "outcome": "URLs should reflect current state for sharing",
+    "recommendation": "Update URL on state/view changes",
+    "avoid": "Static URLs for dynamic content"
+  },
+  {
+    "id": "ux-016",
+    "category": "Layout",
+    "name": "Overflow Hidden",
+    "platform": "Web",
+    "outcome": "Hidden overflow can clip important content",
+    "recommendation": "Test all content fits within containers",
+    "avoid": "Blindly apply overflow-hidden"
+  },
+  {
+    "id": "ux-017",
+    "category": "Layout",
+    "name": "Fixed Positioning",
+    "platform": "Web",
+    "outcome": "Fixed elements can overlap or be inaccessible",
+    "recommendation": "Account for safe areas and other fixed elements",
+    "avoid": "Stack multiple fixed elements carelessly"
+  },
+  {
+    "id": "ux-018",
+    "category": "Layout",
+    "name": "Stacking Context",
+    "platform": "Web",
+    "outcome": "New stacking contexts reset z-index",
+    "recommendation": "Understand what creates new stacking context",
+    "avoid": "Expect z-index to work across contexts"
+  },
+  {
+    "id": "ux-019",
+    "category": "Layout",
+    "name": "Content Jumping",
+    "platform": "Web",
+    "outcome": "Images badges validation text and skeleton replacements can shift nearby content when they update",
+    "recommendation": "Reserve appropriate space or keep async states in a stable content-driven container",
+    "avoid": "Insert compact text or media without a layout strategy"
+  },
+  {
+    "id": "ux-028",
+    "category": "Interaction",
+    "name": "Focus States",
+    "platform": "All",
+    "outcome": "Keyboard focus, including controls inside a modal, needs a visible indicator",
+    "recommendation": "Use a visible focus ring on every interactive control, including modal controls",
+    "avoid": "Remove focus outline without replacement"
+  },
+  {
+    "id": "ux-032",
+    "category": "Interaction",
+    "name": "Loading Buttons",
+    "platform": "All",
+    "outcome": "Prevent double submission during async actions",
+    "recommendation": "Disable button and show loading state",
+    "avoid": "Allow multiple clicks during processing"
+  },
+  {
+    "id": "ux-054",
+    "category": "Forms",
+    "name": "Input Labels",
+    "platform": "All",
+    "outcome": "Every input needs a visible label",
+    "recommendation": "Always show label above or beside input",
+    "avoid": "Placeholder as only label"
+  },
+  {
+    "id": "ux-055",
+    "category": "Forms",
+    "name": "Error Placement",
+    "platform": "All",
+    "outcome": "Each invalid field needs an inline error connected to that field",
+    "recommendation": "Show a specific error below the input and reference it with aria-describedby",
+    "avoid": "Show only a top-level error without identifying each invalid field"
+  },
+  {
+    "id": "ux-057",
+    "category": "Forms",
+    "name": "Input Types",
+    "platform": "All",
+    "outcome": "Use appropriate input types",
+    "recommendation": "Use email tel number url etc",
+    "avoid": "Text input for everything"
+  },
+  {
+    "id": "ux-058",
+    "category": "Forms",
+    "name": "Autofill Support",
+    "platform": "Web",
+    "outcome": "Help browsers autofill correctly",
+    "recommendation": "Use autocomplete attribute properly",
+    "avoid": "Block or ignore autofill"
+  },
+  {
+    "id": "ux-059",
+    "category": "Forms",
+    "name": "Required Indicators",
+    "platform": "All",
+    "outcome": "Mark required fields clearly",
+    "recommendation": "Use asterisk or (required) text",
+    "avoid": "No indication of required fields"
+  },
+  {
+    "id": "ux-060",
+    "category": "Forms",
+    "name": "Password Visibility",
+    "platform": "All",
+    "outcome": "Let users see password while typing",
+    "recommendation": "Toggle to show/hide password",
+    "avoid": "No visibility toggle"
+  },
+  {
+    "id": "ux-061",
+    "category": "Forms",
+    "name": "Submit Feedback",
+    "platform": "All",
+    "outcome": "Confirm form submission status",
+    "recommendation": "Show loading then success/error state",
+    "avoid": "No feedback after submit"
+  },
+  {
+    "id": "ux-063",
+    "category": "Forms",
+    "name": "Mobile Keyboards",
+    "platform": "Mobile",
+    "outcome": "Show appropriate keyboard for input type",
+    "recommendation": "Use inputmode attribute",
+    "avoid": "Default keyboard for all inputs"
+  },
+  {
+    "id": "ux-078",
+    "category": "Feedback",
+    "name": "Loading Indicators",
+    "platform": "All",
+    "outcome": "Loading feedback should match the expected wait and avoid flashing for near-instant work",
+    "recommendation": "Follow platform and component guidance; preserve layout focus and accessible busy status",
+    "avoid": "Apply one timing threshold to every operation or leave long waits unexplained"
+  },
+  {
+    "id": "ux-079",
+    "category": "Feedback",
+    "name": "Empty States",
+    "platform": "All",
+    "outcome": "Guide users when no content exists",
+    "recommendation": "Show helpful message and action",
+    "avoid": "Blank empty screens"
+  },
+  {
+    "id": "ux-080",
+    "category": "Feedback",
+    "name": "Error Recovery",
+    "platform": "All",
+    "outcome": "Help users recover from errors",
+    "recommendation": "Provide clear next steps",
+    "avoid": "Error without recovery path"
+  },
+  {
+    "id": "ux-081",
+    "category": "Feedback",
+    "name": "Progress Indicators",
+    "platform": "All",
+    "outcome": "Show progress for multi-step processes",
+    "recommendation": "Step indicators or progress bar",
+    "avoid": "No indication of progress"
+  },
+  {
+    "id": "ux-083",
+    "category": "Feedback",
+    "name": "Confirmation Messages",
+    "platform": "All",
+    "outcome": "Confirm successful actions",
+    "recommendation": "Brief success message",
+    "avoid": "Silent success"
+  }
+]

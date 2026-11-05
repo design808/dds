@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "upstream": {
+    "name": "UI/UX Pro Max",
+    "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "version": "2.15.0",
+    "commit": "ccce51cba388476d4f403091ddb91636d5cd9fed",
+    "commitURL": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/commit/ccce51cba388476d4f403091ddb91636d5cd9fed",
+    "committedAt": "2026-11-04T13:06:03Z",
+    "verifiedVia": "https://api.github.com/repos/nextlevelbuilder/ui-ux-pro-max-skill/commits/main",
+    "license": "MIT",
+    "copyright": "Copyright (c) 2024 Next Level Builder"
+  },
+  "retrievedAt": "2026-11-05T00:28:17.520Z",
+  "sources": [
+    {
+      "path": "src/ui-ux-pro-max/data/landing.csv",
+      "url": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/ccce51cba388476d4f403091ddb91636d5cd9fed/src/ui-ux-pro-max/data/landing.csv",
+      "local": "data/layouts.json",
+      "rows": 34,
+      "fields": {
+        "id": "Pattern ID",
+        "name": "Pattern Name",
+        "keywords": "Keywords",
+        "sectionOrder": "Section Order",
+        "primaryCTA": "Primary CTA Placement"
+      },
+      "transform": "CSV parsed; Keywords split on commas and limited to layout/content-purpose descriptors. Interaction, animation and accessibility search qualifiers removed. All non-allowlisted fields omitted.",
+      "retrievedTextSHA256": "9a2edd3bb676c2a58f00ade7a062e285222d4297bfd847c8d5b056f0dbbf52d0",
+      "excludedKeywordCount": 50
+    },
+    {
+      "path": "src/ui-ux-pro-max/data/ux-guidelines.csv",
+      "url": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/ccce51cba388476d4f403091ddb91636d5cd9fed/src/ui-ux-pro-max/data/ux-guidelines.csv",
+      "local": "data/ux.json",
+      "rows": 22,
+      "sourceRowNumbers": [
+        2,
+        4,
+        5,
+        16,
+        17,
+        18,
+        19,
+        28,
+        32,
+        54,
+        55,
+        57,
+        58,
+        59,
+        60,
+        61,
+        63,
+        78,
+        79,
+        80,
+        81,
+        83
+      ],
+      "fields": {
+        "id": "No (prefixed ux- and zero-padded)",
+        "category": "Category",
+        "name": "Issue",
+        "platform": "Platform",
+        "outcome": "Description",
+        "recommendation": "Do",
+        "avoid": "Don't"
+      },
+      "transform": "Selected outcome guidance from Navigation, Layout, Interaction, Forms and Feedback. All code examples and visual/numeric/motion-policy guidance omitted.",
+      "retrievedTextSHA256": "ff81ec613f70ba9fc3fcce52dbe4ae35d44b2079dbe6dc066d2d6e38c28facd5"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/nextlevelbuilder/ui-ux-pro-max-skill/ccce51cba388476d4f403091ddb91636d5cd9fed/LICENSE",
+      "local": "LICENSE",
+      "retrievedTextSHA256": "738f69dfa83db5c347c678fb9d90e560877059f0de93a327c39001bff92dc014"
+    }
+  ],
+  "authority": "References only. User requirements, current service behavior and registered DDS rules take precedence. No design-system generator or visual presets are included.",
+  "hashInput": "UTF-8 of the retrieved browser text; browser newline normalization may apply. Commit SHA pins the upstream source."
+}

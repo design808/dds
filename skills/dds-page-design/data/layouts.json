@@ -1,0 +1,474 @@
+[
+  {
+    "id": "hero-features-cta",
+    "name": "Hero + Features + CTA",
+    "keywords": [
+      "hero",
+      "hero-centric",
+      "hero-centric design",
+      "features",
+      "feature-rich",
+      "feature-rich showcase",
+      "cta",
+      "call-to-action"
+    ],
+    "sectionOrder": "Hero with headline/image > Value prop > Key features (3-5) > CTA section > Footer",
+    "primaryCTA": "Hero (sticky) + Bottom"
+  },
+  {
+    "id": "hero-testimonials-cta",
+    "name": "Hero + Testimonials + CTA",
+    "keywords": [
+      "hero",
+      "testimonials",
+      "social-proof",
+      "social-proof-focused",
+      "social proof focused",
+      "trust",
+      "reviews",
+      "cta"
+    ],
+    "sectionOrder": "Hero > Problem statement > Solution overview > Testimonials carousel > CTA",
+    "primaryCTA": "Hero (sticky) + Post-testimonials"
+  },
+  {
+    "id": "product-demo-features",
+    "name": "Product Demo + Features",
+    "keywords": [
+      "demo",
+      "product-demo",
+      "features",
+      "showcase",
+      "interactive",
+      "interactive-product-demo",
+      "interactive product demo"
+    ],
+    "sectionOrder": "Hero > Product video/mockup (center) > Feature breakdown per section > Comparison (optional) > CTA",
+    "primaryCTA": "Video center + CTA right/bottom"
+  },
+  {
+    "id": "minimal-single-column",
+    "name": "Minimal Single Column",
+    "keywords": [
+      "minimal",
+      "simple",
+      "direct",
+      "minimal & direct",
+      "minimal-direct",
+      "single-column",
+      "clean"
+    ],
+    "sectionOrder": "Hero headline > Short description > Benefit bullets (3 max) > CTA > Footer",
+    "primaryCTA": "Center, large CTA button"
+  },
+  {
+    "id": "funnel-3-step-conversion",
+    "name": "Funnel (3-Step Conversion)",
+    "keywords": [
+      "funnel",
+      "conversion",
+      "conversion-optimized",
+      "conversion optimized",
+      "steps",
+      "wizard",
+      "onboarding"
+    ],
+    "sectionOrder": "Hero > Step 1 (problem) > Step 2 (solution) > Step 3 (action) > CTA progression",
+    "primaryCTA": "Each step: mini-CTA. Final: main CTA"
+  },
+  {
+    "id": "comparison-table-cta",
+    "name": "Comparison Table + CTA",
+    "keywords": [
+      "comparison",
+      "table",
+      "compare",
+      "versus",
+      "cta"
+    ],
+    "sectionOrder": "Hero > Problem intro > Comparison table (product vs competitors) > Pricing (optional) > CTA",
+    "primaryCTA": "Table: Right column. CTA: Below table"
+  },
+  {
+    "id": "lead-magnet-form",
+    "name": "Lead Magnet + Form",
+    "keywords": [
+      "lead",
+      "form",
+      "signup",
+      "capture",
+      "email",
+      "magnet"
+    ],
+    "sectionOrder": "Hero (benefit headline) > Lead magnet preview (ebook cover, checklist, etc) > Form (minimal fields) > CTA submit",
+    "primaryCTA": "Form CTA: Submit button"
+  },
+  {
+    "id": "pricing-page-cta",
+    "name": "Pricing Page + CTA",
+    "keywords": [
+      "pricing",
+      "plans",
+      "tiers",
+      "comparison",
+      "cta"
+    ],
+    "sectionOrder": "Hero (pricing headline) > Price comparison cards > Feature comparison table > FAQ section > Final CTA",
+    "primaryCTA": "Each card: CTA button. Sticky CTA in nav"
+  },
+  {
+    "id": "video-first-hero",
+    "name": "Video-First Hero",
+    "keywords": [
+      "video",
+      "hero",
+      "media",
+      "visual",
+      "engaging"
+    ],
+    "sectionOrder": "Hero with video background > Key features overlay > Benefits section > CTA",
+    "primaryCTA": "Overlay on video (center/bottom) + Bottom section"
+  },
+  {
+    "id": "scroll-triggered-storytelling",
+    "name": "Scroll-Triggered Storytelling",
+    "keywords": [
+      "storytelling",
+      "scroll",
+      "narrative",
+      "story",
+      "immersive"
+    ],
+    "sectionOrder": "Intro hook > Chapter 1 (problem) > Chapter 2 (journey) > Chapter 3 (solution) > Climax CTA",
+    "primaryCTA": "End of each chapter (mini) + Final climax CTA"
+  },
+  {
+    "id": "ai-personalization-landing",
+    "name": "AI Personalization Landing",
+    "keywords": [
+      "ai",
+      "personalization",
+      "smart",
+      "recommendation",
+      "dynamic"
+    ],
+    "sectionOrder": "Dynamic hero (personalized) > Relevant features > Tailored testimonials > Smart CTA",
+    "primaryCTA": "Context-aware placement based on user segment"
+  },
+  {
+    "id": "waitlist-coming-soon",
+    "name": "Waitlist/Coming Soon",
+    "keywords": [
+      "waitlist",
+      "coming-soon",
+      "launch",
+      "early-access",
+      "notify"
+    ],
+    "sectionOrder": "Hero with countdown > Product teaser/preview > Email capture form > Social proof (waitlist count)",
+    "primaryCTA": "Email form prominent (above fold) + Sticky form on scroll"
+  },
+  {
+    "id": "comparison-table-focus",
+    "name": "Comparison Table Focus",
+    "keywords": [
+      "comparison",
+      "table",
+      "versus",
+      "compare",
+      "features"
+    ],
+    "sectionOrder": "Hero (problem statement) > Comparison matrix (you vs competitors) > Feature deep-dive > Winner CTA",
+    "primaryCTA": "After comparison table (highlighted row) + Bottom"
+  },
+  {
+    "id": "pricing-focused-landing",
+    "name": "Pricing-Focused Landing",
+    "keywords": [
+      "pricing",
+      "price",
+      "cost",
+      "plans",
+      "subscription"
+    ],
+    "sectionOrder": "Hero (value proposition) > Pricing cards (3 tiers) > Feature comparison > FAQ > Final CTA",
+    "primaryCTA": "Each pricing card + Sticky CTA in nav + Bottom"
+  },
+  {
+    "id": "app-store-style-landing",
+    "name": "App Store Style Landing",
+    "keywords": [
+      "app",
+      "mobile",
+      "download",
+      "store",
+      "install",
+      "single pointer buttons"
+    ],
+    "sectionOrder": "Hero with device mockup > Screenshots carousel > Features with icons > Reviews/ratings > Download CTAs",
+    "primaryCTA": "Download buttons prominent (App Store + Play Store) throughout"
+  },
+  {
+    "id": "faq-documentation-landing",
+    "name": "FAQ/Documentation Landing",
+    "keywords": [
+      "faq",
+      "documentation",
+      "help",
+      "support",
+      "questions",
+      "faq/documentation",
+      "knowledge base"
+    ],
+    "sectionOrder": "Hero with search bar > Popular categories > FAQ accordion > Contact/support CTA",
+    "primaryCTA": "Search bar prominent + Contact CTA for unresolved questions"
+  },
+  {
+    "id": "immersive-interactive-experience",
+    "name": "Immersive/Interactive Experience",
+    "keywords": [
+      "immersive",
+      "interactive",
+      "experience",
+      "3d",
+      "immersive/interactive experience"
+    ],
+    "sectionOrder": "Full-screen interactive element > Guided product tour > Key benefits revealed > CTA after completion",
+    "primaryCTA": "After interaction complete + Skip option for impatient users"
+  },
+  {
+    "id": "event-conference-landing",
+    "name": "Event/Conference Landing",
+    "keywords": [
+      "event",
+      "conference",
+      "meetup",
+      "registration",
+      "schedule",
+      "hero-centric design",
+      "hero-centric"
+    ],
+    "sectionOrder": "Hero (date/location/countdown) > Speakers grid > Agenda/schedule > Sponsors > Register CTA",
+    "primaryCTA": "Register CTA sticky + After speakers + Bottom"
+  },
+  {
+    "id": "product-review-ratings-focused",
+    "name": "Product Review/Ratings Focused",
+    "keywords": [
+      "reviews",
+      "ratings",
+      "testimonials",
+      "social-proof",
+      "social-proof-focused",
+      "stars"
+    ],
+    "sectionOrder": "Hero (product + aggregate rating) > Rating breakdown > Individual reviews > Buy/CTA",
+    "primaryCTA": "After reviews summary + Buy button alongside reviews"
+  },
+  {
+    "id": "community-forum-landing",
+    "name": "Community/Forum Landing",
+    "keywords": [
+      "community",
+      "forum",
+      "social",
+      "members",
+      "discussion"
+    ],
+    "sectionOrder": "Hero (community value prop) > Popular topics/categories > Active members showcase > Join CTA",
+    "primaryCTA": "Join button prominent + After member showcase"
+  },
+  {
+    "id": "before-after-transformation",
+    "name": "Before-After Transformation",
+    "keywords": [
+      "before-after",
+      "transformation",
+      "results",
+      "comparison"
+    ],
+    "sectionOrder": "Hero (problem state) > Transformation slider/comparison > How it works > Results CTA",
+    "primaryCTA": "After transformation reveal + Bottom"
+  },
+  {
+    "id": "marketplace-directory",
+    "name": "Marketplace / Directory",
+    "keywords": [
+      "marketplace",
+      "directory",
+      "search",
+      "listing",
+      "marketplace carousel"
+    ],
+    "sectionOrder": "Hero (Search focused) > Categories > Featured Listings > Trust/Safety > CTA (Become a host/seller)",
+    "primaryCTA": "Hero Search Bar + Navbar 'List your item'"
+  },
+  {
+    "id": "newsletter-content-first",
+    "name": "Newsletter / Content First",
+    "keywords": [
+      "newsletter",
+      "content",
+      "writer",
+      "blog",
+      "subscribe",
+      "minimal & direct",
+      "minimal-direct"
+    ],
+    "sectionOrder": "Hero (Value Prop + Form) > Recent Issues/Archives > Social Proof (Subscriber count) > About Author",
+    "primaryCTA": "Hero inline form + Sticky header form"
+  },
+  {
+    "id": "webinar-registration",
+    "name": "Webinar Registration",
+    "keywords": [
+      "webinar",
+      "registration",
+      "event",
+      "training",
+      "live"
+    ],
+    "sectionOrder": "Hero (Topic + Timer + Form) > What you'll learn > Speaker Bio > Urgency/Bonuses > Form (again)",
+    "primaryCTA": "Hero (Right side form) + Bottom anchor"
+  },
+  {
+    "id": "enterprise-gateway",
+    "name": "Enterprise Gateway",
+    "keywords": [
+      "enterprise",
+      "corporate",
+      "gateway",
+      "solutions",
+      "portal",
+      "trust",
+      "authority",
+      "trust & authority"
+    ],
+    "sectionOrder": "Hero (Video/Mission) > Solutions by Industry > Solutions by Role > Client Logos > Contact Sales",
+    "primaryCTA": "Contact Sales (Primary) + Login (Secondary)"
+  },
+  {
+    "id": "portfolio-grid",
+    "name": "Portfolio Grid",
+    "keywords": [
+      "portfolio",
+      "grid",
+      "showcase",
+      "gallery",
+      "masonry",
+      "portfolio grid + visuals"
+    ],
+    "sectionOrder": "Hero (Name/Role) > Project Grid (Masonry) > About/Philosophy > Contact",
+    "primaryCTA": "Project Card Hover + Footer Contact"
+  },
+  {
+    "id": "horizontal-scroll-journey",
+    "name": "Horizontal Scroll Journey",
+    "keywords": [
+      "horizontal",
+      "scroll",
+      "journey",
+      "gallery",
+      "storytelling",
+      "panoramic",
+      "storytelling-driven"
+    ],
+    "sectionOrder": "Intro (Vertical) > The Journey (Horizontal Track) > Detail Reveal > Vertical Footer",
+    "primaryCTA": "Floating Sticky CTA or End of Horizontal Track"
+  },
+  {
+    "id": "bento-grid-showcase",
+    "name": "Bento Grid Showcase",
+    "keywords": [
+      "bento",
+      "grid",
+      "features",
+      "modular",
+      "apple-style",
+      "showcase",
+      "feature-rich showcase"
+    ],
+    "sectionOrder": "Hero > Bento Grid (Key Features) > Detail Cards > Tech Specs > CTA",
+    "primaryCTA": "Floating Action Button or Bottom of Grid"
+  },
+  {
+    "id": "interactive-3d-configurator",
+    "name": "Interactive 3D Configurator",
+    "keywords": [
+      "3d",
+      "configurator",
+      "customizer",
+      "interactive",
+      "product",
+      "interactive product demo"
+    ],
+    "sectionOrder": "Hero (Configurator) > Feature Highlight (synced) > Price/Specs > Purchase",
+    "primaryCTA": "Inside Configurator UI + Sticky Bottom Bar"
+  },
+  {
+    "id": "ai-driven-dynamic-landing",
+    "name": "AI-Driven Dynamic Landing",
+    "keywords": [
+      "ai",
+      "dynamic",
+      "personalized",
+      "adaptive",
+      "generative"
+    ],
+    "sectionOrder": "Prompt/Input Hero > Generated Result Preview > How it Works > Value Prop",
+    "primaryCTA": "Input Field (Hero) + 'Try it' Buttons"
+  },
+  {
+    "id": "feature-rich-showcase",
+    "name": "Feature-Rich Showcase",
+    "keywords": [
+      "feature-rich",
+      "feature-rich showcase",
+      "features",
+      "showcase",
+      "product showcase"
+    ],
+    "sectionOrder": "Hero (value prop) > Feature grid/cards (4-6) > Use cases or benefits > Social proof or logos > CTA",
+    "primaryCTA": "Hero (sticky) + After features + Bottom"
+  },
+  {
+    "id": "hero-centric-design",
+    "name": "Hero-Centric Design",
+    "keywords": [
+      "hero-centric",
+      "hero-centric design",
+      "hero-first",
+      "hero above fold"
+    ],
+    "sectionOrder": "Full-bleed Hero (headline + visual) > Single value prop strip > Key benefit or proof > Primary CTA",
+    "primaryCTA": "Hero dominant (center/bottom) + Sticky nav CTA"
+  },
+  {
+    "id": "trust-authority-conversion",
+    "name": "Trust & Authority + Conversion",
+    "keywords": [
+      "trust & authority",
+      "trust",
+      "authority",
+      "conversion",
+      "credibility",
+      "enterprise"
+    ],
+    "sectionOrder": "Hero (mission/credibility) > Proof (logos, certs, stats) > Solution overview > Clear CTA path",
+    "primaryCTA": "Contact Sales / Get Quote (primary) + Nav"
+  },
+  {
+    "id": "real-time-operations-landing",
+    "name": "Real-Time / Operations Landing",
+    "keywords": [
+      "real-time",
+      "real-time monitor",
+      "operations",
+      "dashboard",
+      "telemetry",
+      "live data"
+    ],
+    "sectionOrder": "Hero (product + live preview or status) > Key metrics/indicators > How it works > CTA (Start trial / Contact)",
+    "primaryCTA": "Primary CTA in nav + After metrics"
+  }
+]

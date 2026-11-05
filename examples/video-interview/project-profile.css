@@ -1,0 +1,13 @@
+/* DDS 0.4.0: saved 2026-11-04T04:45:46.175Z. Load after DDS tokens and ui/dds.css. */
+
+:root{
+  --font-sans: 'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --font-heading: 'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+}
+
+:root[data-theme="dark"]{
+  --font-sans: 'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --font-heading: 'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+}
+
+:root :is(h1,h2,h3,h4,h5,h6,.dds-type-display-1,.dds-type-display-2,.dds-type-title-1,.dds-type-title-2,.dds-type-heading-1,.dds-type-heading-2,.dds-type-headline-1){font-family:var(--font-heading);--font-sans:var(--font-heading)}

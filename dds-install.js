@@ -46,6 +46,7 @@
   const bundle = JSON.parse(bundleBytes);
   if (bundle.schemaVersion !== 1 || bundle.kind !== 'DDSReferenceBundle' || bundle.designSystem !== 'DDS' || bundle.packageType !== 'reference' || bundle.runtimeIntegrated !== false || bundle.version !== options['--version'] || !Array.isArray(bundle.files) || !Array.isArray(manifest.files) || bundle.files.length === 0 || bundle.files.length > 600) throw new Error('Invalid DDS reference bundle.');
   if (bundle.uiSourcesIncluded !== manifest.uiSourcesIncluded || bundle.componentCount !== manifest.componentCount) throw new Error('DDS UI source metadata differs between the bundle and manifest.');
+  if (bundle.pageDesignSkillIncluded !== manifest.pageDesignSkillIncluded || (bundle.pageDesignSkillIncluded !== undefined && bundle.pageDesignSkillIncluded !== true)) throw new Error('DDS page-design skill metadata differs between the bundle and manifest.');
 
   const seen = new Set();
   const entries = [];
@@ -77,6 +78,7 @@
     schemaVersion:1, designSystem:'DDS', version:bundle.version, packageType:'reference',
     referencePrepared:true, runtimeIntegrated:false, rulesRegistered:false,
     ...(bundle.uiSourcesIncluded?{uiSourcesIncluded:true,componentCount:bundle.componentCount}:{}),
+    ...(bundle.pageDesignSkillIncluded?{pageDesignSkillIncluded:true}:{}),
     manifestSha256:sha256(manifestBytes), bundleSha256:manifest.bundle.sha256,
     files:manifest.files
   }, null, 2) + '\n');

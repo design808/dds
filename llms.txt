@@ -2,11 +2,11 @@
 
 > 딥레쥬메·딥인터뷰와 향후 신규 서비스를 위한 회사 공통 디자인 기준과 참조 소스. 기존 개선과 신규 구축의 적용 방법을 구분합니다.
 
-## 고정 버전 0.4.0
+## 고정 버전 0.5.0
 
-- [매니페스트](https://design808.github.io/dds/releases/0.4.0/manifest.json): 버전·파일·SHA-256.
-- [참조 묶음](https://design808.github.io/dds/releases/0.4.0/bundle.json): 토큰·규칙·폰트·라이선스의 고정 스냅샷.
-- [준비 도구](https://design808.github.io/dds/releases/0.4.0/dds-install.js): Node.js 18 이상. 기준 폴더만 준비하며 앱은 수정하지 않습니다.
+- [매니페스트](https://design808.github.io/dds/releases/0.5.0/manifest.json): 버전·파일·SHA-256.
+- [참조 묶음](https://design808.github.io/dds/releases/0.5.0/bundle.json): 토큰·규칙·폰트·라이선스의 고정 스냅샷.
+- [준비 도구](https://design808.github.io/dds/releases/0.5.0/dds-install.js): Node.js 18 이상. 기준 폴더만 준비하며 앱은 수정하지 않습니다.
 
 ## 현재 문서
 
@@ -29,5 +29,8 @@
 - [전체 원본 목록](https://design808.github.io/dds/ui/registry.json)
 - [공통 컴포넌트 CSS](https://design808.github.io/dds/ui/dds.css)
 - [UI 진입점](https://design808.github.io/dds/ui/index.js)
+- [화면 설계 skill](https://design808.github.io/dds/skills/dds-page-design/SKILL.md)
+
+새 페이지·큰 레이아웃 변경은 설치한 skill의 정보 우선순위·구조 선택·시각 검토 절차를 사용합니다. 새 디자인 시스템은 생성하지 않습니다. 스킬 미지원 AI는 같은 SKILL.md를 직접 읽습니다. 저장 프로필을 유지합니다.
 
 위 현재 문서 링크는 탐색용입니다. 실제 구현에는 설치한 고정 버전 안의 대응 파일을 사용합니다.

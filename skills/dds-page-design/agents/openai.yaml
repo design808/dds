@@ -1,0 +1,6 @@
+interface:
+  display_name: "DDS 화면 설계"
+  short_description: "DDS 규격과 저장한 디자인 설정을 유지하는 서비스 화면 설계"
+  default_prompt: "$dds-page-design을 사용해 DDS에 연결된 서비스 화면의 정보구조와 레이아웃을 설계해 주세요."
+policy:
+  allow_implicit_invocation: true

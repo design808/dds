@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFAD31">
+  <meta name="description" content="화상 인터뷰 전 일정, 장비, 답변을 차분하게 준비하는 나만의 공간, 마주.">
+  <title>마주 — 나의 인터뷰 준비 공간</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../tokens.css">
+  <link rel="stylesheet" href="../../ui/dds.css">
+  <link rel="stylesheet" href="./project-profile.css">
+  <link rel="stylesheet" href="./app.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <div class="dds-ui" id="app">
+    <a class="skip-link dds-nav-link" href="#main">본문으로 이동</a>
+    <div class="site-header"><div class="shell" id="navigation"></div></div>
+    <main class="shell" id="main" tabindex="-1">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow dds-type-label-2">나의 인터뷰 준비 공간</p>
+          <h1 class="dds-type-display-2" id="page-title">준비는 차분하게,<br>대화는 나답게.</h1>
+          <p class="dds-type-body-1-reading muted">다가올 인터뷰부터 마지막 리허설까지.<br class="desktop-break"> 좋은 대화의 시작을 마주에서 준비하세요.</p>
+          <div class="actions intro-actions" id="intro-actions"></div>
+        </div>
+        <div class="intro-aside">
+          <div class="intro-note">
+            <div class="intro-symbol" id="intro-symbol" aria-hidden="true"></div>
+            <div><p class="dds-type-label-1">말할 준비가 되면,<br>나를 보여줄 시간.</p><p class="dds-type-caption-1 muted">카메라를 켜기 전, 잠깐의 여유를 가져요.</p></div>
+          </div>
+        </div>
+      </section>
+      <div id="app-message" role="status" aria-live="polite"></div>
+      <div class="workspace-grid">
+        <div class="primary-column">
+          <section id="studio" aria-label="인터뷰 준비실"></section>
+          <section id="practice" aria-label="답변 연습과 노트"></section>
+        </div>
+        <aside class="secondary-column">
+          <section id="schedule" aria-label="인터뷰 일정"></section>
+          <section id="checklist" aria-label="인터뷰 준비 체크리스트"></section>
+          <div class="privacy-note dds-type-caption-1 muted" id="privacy-note"></div>
+        </aside>
+      </div>
+    </main>
+    <footer class="shell site-footer"><p class="dds-type-label-1">마주</p><p class="dds-type-caption-1 muted">당신의 다음 대화를 응원합니다.</p><p class="dds-type-caption-1 muted">이 공간은 인터뷰 준비용입니다. 원격 화상 통화·녹화·서버 저장은 제공하지 않습니다.</p></footer>
+    <div id="dialogs"></div>
+    <div class="sr-only" id="announcer" role="status" aria-live="polite"></div>
+  </div>
+  <noscript>마주를 사용하려면 브라우저의 JavaScript를 켜 주세요.</noscript>
+</body>
+</html>
