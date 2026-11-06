@@ -229,6 +229,10 @@ html.dds-direction-preview[data-direction-feature-colors=true] .di-benefits li:n
   background: var(--direction-positive-soft);
 }
 
+html.dds-direction-preview body {
+  background: var(--page-background, var(--background));
+}
+
 html.dds-direction-preview[data-direction-feature-colors=true] .hero-visual {
   background: var(--background);
   border-color: var(--border);

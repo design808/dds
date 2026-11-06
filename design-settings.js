@@ -1,9 +1,9 @@
-import {createSettingsStore} from './design-preferences.js?v=0633938e4f032d79';
-import {applyDirection} from './direction-preview.js?v=0633938e4f032d79';
-import {mountDesignSettings} from './design-settings-panel.js?v=0633938e4f032d79';
-import {createBrandLogoSync} from './brand-logo.js?v=0633938e4f032d79';
-import './custom-controls.js?v=0633938e4f032d79';
-import './icon-tooltips.js?v=0633938e4f032d79';
+import {createSettingsStore} from './design-preferences.js?v=dda57a46ecc92c81';
+import {applyDirection} from './direction-preview.js?v=dda57a46ecc92c81';
+import {mountDesignSettings} from './design-settings-panel.js?v=dda57a46ecc92c81';
+import {createBrandLogoSync} from './brand-logo.js?v=dda57a46ecc92c81';
+import './custom-controls.js?v=dda57a46ecc92c81';
+import './icon-tooltips.js?v=dda57a46ecc92c81';
 
 const store=createSettingsStore(window);
 const root=document.documentElement;
@@ -42,7 +42,8 @@ function profile(settings){
     headingFont:settings.headingFont,
     multicolor:functional,
     featureColors:functional,
-    colors:{primary:settings.primary,secondary:settings.secondary,accent:settings.accent,positive:settings.positive}
+    colors:{primary:settings.primary,secondary:settings.secondary,accent:settings.accent,positive:settings.positive,
+      pageBackground:settings.pageBackground,pageBackgroundDark:settings.pageBackgroundDark}
   };
 }
 

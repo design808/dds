@@ -2,7 +2,7 @@
 .workspace > .site-footer {align-items:center;gap:var(--space-4);flex-wrap:wrap;}
 .workspace {
   min-height: calc(100dvh - 72px);
-  background: #fdfdfd;
+  background: var(--page-background, #fdfdfd);
 }
 
 /* Gallery cards keep the preview and its name inside one document-only surface. */
@@ -101,7 +101,7 @@
   .workspace > #main .component-card > .card-caption {padding: var(--space-4) var(--space-5);}
 }
 [data-theme=dark] .workspace {
-  background: var(--background);
+  background: var(--page-background, var(--background));
 }
 .workspace > #main :is(.entry-card, .dds-loading-entry, .principle,
   .type-family-panel, .elevation, .anatomy-list > div, .table-wrap,

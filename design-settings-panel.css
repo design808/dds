@@ -146,6 +146,8 @@
 #dds-design-settings .dds-settings-combination[aria-pressed=true] { border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); }
 #dds-design-settings .dds-settings-color-dot { display: block; width: 16px; height: 16px; flex-shrink: 0; border-radius: var(--radius-sm); }
 #dds-design-settings .dds-settings-field { display: grid; gap: 8px; min-width: 0; }
+#dds-design-settings .dds-settings-background-label { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); }
+#dds-design-settings [data-dds-background-value] { color: var(--text-secondary); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height); }
 #dds-design-settings .dds-settings-field>label {
   font-size: var(--type-label-1-size);
   line-height: var(--type-label-1-line-height);

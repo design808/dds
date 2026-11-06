@@ -1,12 +1,15 @@
 // Saved project choices. Importing this module never reads browser storage or DOM.
-import {DEFAULT_SETTINGS,normalizeSettings} from './design-preferences.js?v=0633938e4f032d79';
-import {UI_VERSION} from './ui/version.js?v=0633938e4f032d79';
+import {DEFAULT_SETTINGS,normalizeSettings} from './design-preferences.js?v=dda57a46ecc92c81';
+import {UI_VERSION} from './ui/version.js?v=dda57a46ecc92c81';
 
 export const PROFILE_SCHEMA_VERSION=1;
 export const PROFILE_STORAGE_KEY='dds-design-profile-v1';
 const isRecord=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 const hasOwn=(value,key)=>Object.prototype.hasOwnProperty.call(value,key);
-const colorFields=new Set(['primary','secondary','accent','positive']);
+const colorFields=new Set(['primary','secondary','accent','positive','pageBackground','pageBackgroundDark']);
+// Version-one profiles saved before page backgrounds were added remain valid.
+// Other missing settings still indicate an incomplete or damaged saved record.
+const optionalLegacyFields=new Set(['pageBackground','pageBackgroundDark']);
 
 // Called only after module initialization; the preferences store uses these helpers.
 function checkedSettings(input){
@@ -14,7 +17,10 @@ function checkedSettings(input){
   try{
     const normalized=normalizeSettings(input);
     for(const key of Object.keys(DEFAULT_SETTINGS)){
-      if(!hasOwn(input,key))return null;
+      if(!hasOwn(input,key)){
+        if(optionalLegacyFields.has(key))continue;
+        return null;
+      }
       const value=input[key];
       if(colorFields.has(key)){
         if(typeof value!=='string'||!/^#?[0-9a-f]{6}$/i.test(value.trim()))return null;
@@ -29,7 +35,7 @@ export function settingsEqual(first,second){
   return Object.keys(DEFAULT_SETTINGS).every(key=>first[key]===second[key]);
 }
 
-/** Invalid or partial records are rejected, never silently accepted as saved defaults. */
+/** Invalid/partial records are rejected; only newly added background fields migrate. */
 export function normalizeDesignProfile(input){
   try{
     if(!isRecord(input)||!hasOwn(input,'schemaVersion')||input.schemaVersion!==PROFILE_SCHEMA_VERSION)return null;

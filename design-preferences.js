@@ -1,4 +1,4 @@
-import {PROFILE_STORAGE_KEY,createDesignProfile,parseDesignProfile,settingsEqual} from './design-profile.js?v=0633938e4f032d79';
+import {PROFILE_STORAGE_KEY,createDesignProfile,parseDesignProfile,settingsEqual} from './design-profile.js?v=dda57a46ecc92c81';
 
 // Local display preferences. These values never change the authored DDS tokens.
 const STORAGE_KEY='dds-design-settings-v1';
@@ -9,6 +9,8 @@ export const DEFAULT_SETTINGS=Object.freeze({
   secondary:'#345BFF',
   accent:'#8B3DFF',
   positive:'#00B881',
+  pageBackground:'#FDFDFD',
+  pageBackgroundDark:'#17191C',
   headingFont:'pretendard',
   bodyFont:'pretendard'
 });
@@ -41,6 +43,28 @@ export const PRIMARY_PRESETS=Object.freeze([
   Object.freeze({value:'#172238',label:'네이비'})
 ]);
 
+// Page canvas choices are independent of component and navigation surfaces.
+export const PAGE_BACKGROUND_PRESETS=Object.freeze({
+  light:Object.freeze([
+    {value:'#FDFDFD',label:'기본'},
+    {value:'#FFFFFF',label:'화이트'},
+    {value:'#F6F7F9',label:'뉴트럴'},
+    {value:'#F3F7FB',label:'쿨 그레이'},
+    {value:'#F3F7FD',label:'블루 그레이'},
+    {value:'#FAF8F4',label:'웜 그레이'},
+    {value:'#F7F6FA',label:'라벤더 그레이'}
+  ].map(Object.freeze)),
+  dark:Object.freeze([
+    {value:'#17191C',label:'기본'},
+    {value:'#111318',label:'딥 뉴트럴'},
+    {value:'#1A1F28',label:'쿨 그레이'},
+    {value:'#1B222B',label:'블루 그레이'},
+    {value:'#1D2026',label:'뉴트럴'},
+    {value:'#211F1C',label:'웜 그레이'},
+    {value:'#201D27',label:'라벤더 그레이'}
+  ].map(Object.freeze))
+});
+
 // Independent functional combinations; selecting one keeps the brand color.
 export const FUNCTIONAL_PRESETS=Object.freeze([
   Object.freeze({id:'bold',label:'볼드',secondary:'#345BFF',accent:'#8B3DFF',positive:'#00B881'}),
@@ -61,7 +85,7 @@ const legacyFunctionalPresets=Object.freeze([
 ].map(Object.freeze));
 
 const fields=Object.keys(DEFAULT_SETTINGS);
-const colorFields=new Set(['primary','secondary','accent','positive']);
+const colorFields=new Set(['primary','secondary','accent','positive','pageBackground','pageBackgroundDark']);
 const fontValues=new Set(FONT_OPTIONS.map(option=>option.value));
 const isRecord=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 

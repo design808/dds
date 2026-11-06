@@ -10,7 +10,7 @@ DDS는 딥레쥬메·딥인터뷰와 신규 서비스를 위한 공통 디자인
 | ui/composition.md | 화면 목적·정보 위계·밀도·선택 콘텐츠 기준 |
 | skills/dds-page-design/SKILL.md | 새 페이지·큰 레이아웃 변경에 사용할 설계 절차 |
 | ui/variants.js·ui/content.js | 공식 변형·선택 파트·서비스용 초기값 |
-| ui/profile.js | 저장한 색상·서체의 프로젝트 CSS 생성 |
+| ui/profile.js | 저장한 색상·배경·서체의 프로젝트 CSS 생성 |
 | ui/registry.json | 115종의 원본 위치·HTML·콘텐츠 변경 지점·SHA-256 |
 | ui/templates/{id}.html | 컴포넌트별 원본 HTML |
 | ui/index.js | createComponent·mountDDS·동작 해제 API |
@@ -53,7 +53,7 @@ React·Vue·Django 등에서는 원본 HTML을 해당 템플릿 문법으로 옮
 
 ## 프로젝트별 디자인 설정
 
-설정 프롬프트에 저장 프로필이 있으면 기본 브랜드색·서체보다 우선한다. `docs/dds-profile.json`에 보존하고 `ui/profile.js`로 `ui/project-profile.css`를 생성해 토큰·UI CSS 다음에 연결한다. 범위 토큰이면 `scoped:true`를 사용한다. 선택 서체의 CSS·WOFF2·라이선스를 함께 배포하고 실제 폰트 로드를 확인한다. 원본 토큰과 고정 릴리스는 수정하지 않는다. 미저장 미리보기와 저장 설정을 혼동하지 않는다.
+설정 프롬프트에 저장 프로필이 있으면 기본 브랜드색·배경·서체보다 우선한다. `docs/dds-profile.json`에 보존하고 `ui/profile.js`로 `ui/project-profile.css`를 생성해 토큰·UI CSS 다음에 연결한다. 범위 토큰이면 `scoped:true`를 사용한다. 화면 배경은 `pageBackground`·`pageBackgroundDark`에서 `--page-background`로 생성하며, 전역 방식은 `body`, 범위 방식은 `.dds-ui` 안의 실제 페이지 상자에 `data-dds-page`를 지정해 연결한다. 카드·입력·헤더·모달의 표면은 유지한다. 선택 서체의 CSS·WOFF2·라이선스를 함께 배포하고 실제 폰트 로드를 확인한다. 원본 토큰과 고정 릴리스는 수정하지 않는다. 미저장 미리보기와 저장 설정을 혼동하지 않는다.
 
 ## 기존 서비스 리디자인
 

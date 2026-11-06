@@ -1,14 +1,14 @@
-import {ddsRelease,ddsSetupPrompt} from './ui-setup-content.js?v=0633938e4f032d79';
-import {buildProjectProfilePrompt} from './project-profile.js?v=0633938e4f032d79';
-import {parseDesignProfile,PROFILE_STORAGE_KEY} from './design-profile.js?v=0633938e4f032d79';
-import {FONT_OPTIONS} from './design-preferences.js?v=0633938e4f032d79';
+import {ddsRelease,ddsSetupPrompt} from './ui-setup-content.js?v=dda57a46ecc92c81';
+import {buildProjectProfilePrompt} from './project-profile.js?v=dda57a46ecc92c81';
+import {parseDesignProfile,PROFILE_STORAGE_KEY} from './design-profile.js?v=dda57a46ecc92c81';
+import {FONT_OPTIONS} from './design-preferences.js?v=dda57a46ecc92c81';
 const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const section=(title,body)=>`<section class="doc-section"><h2>${title}</h2>${body}</section>`;
 function savedProfile(){try{return parseDesignProfile(globalThis.window?.localStorage.getItem(PROFILE_STORAGE_KEY));}catch{return null;}}
 function profileSummary(profile){
- if(!profile)return '프로젝트에 사용할 색상·서체를 바꾸려면 우측 하단 디자인 설정에서 선택한 뒤 저장하세요. 저장 전에는 DDS 기본값을 사용합니다.';
+ if(!profile)return '프로젝트에 사용할 색상·배경·서체를 우측 하단 디자인 설정에서 선택한 뒤 저장하세요. 저장 전에는 DDS 기본값을 사용합니다.';
  const font=value=>FONT_OPTIONS.find(option=>option.value===value).label;
- return `저장된 설정: ${profile.settings.primary} · 제목 ${font(profile.settings.headingFont)} · 본문 ${font(profile.settings.bodyFont)} · ${profile.settings.colorMode==='functional'?'기능별로 다른 색상 사용':'메인 색상만 사용'}`;
+ return `저장된 설정: ${profile.settings.primary} · 제목 ${font(profile.settings.headingFont)} · 본문 ${font(profile.settings.bodyFont)} · 배경 라이트 ${profile.settings.pageBackground} / 다크 ${profile.settings.pageBackgroundDark} · ${profile.settings.colorMode==='functional'?'기능별로 다른 색상 사용':'메인 색상만 사용'}`;
 }
 export function refreshSetupPrompt(root){
  const profile=savedProfile(),prompt=buildProjectProfilePrompt(profile);

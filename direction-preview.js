@@ -4,8 +4,8 @@ const moduleURL = new URL(import.meta.url);
 const previewSheetURL = new URL('./direction-preview.css', moduleURL);
 previewSheetURL.search = moduleURL.search;
 const sheetURL = previewSheetURL.href;
-import {palette} from './ui/profile-palette.js?v=0633938e4f032d79';
-export {palette} from './ui/profile-palette.js?v=0633938e4f032d79';
+import {palette} from './ui/profile-palette.js?v=dda57a46ecc92c81';
+export {palette} from './ui/profile-palette.js?v=dda57a46ecc92c81';
 
 function remember(doc){
   if(state.has(doc))return state.get(doc);
@@ -57,7 +57,10 @@ export async function applyDirection(doc,profile,theme='light'){
   const root=doc.documentElement;
   const dark=theme==='dark';
   const colorsEnabled=!profile.preserveColors&&!['current','baseline'].includes(profile.id);
-  const declarations=colorsEnabled?palette(profile,dark):{};
+  const valuesByRole=palette(profile,dark);
+  const declarations=colorsEnabled?valuesByRole:Object.fromEntries(
+    ['--page-background','--workspace-background'].map(name=>[name,valuesByRole[name]])
+  );
   if(font!=='pretendard')declarations['--font-sans']=`'${families[font]}','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif`;
   declarations['--font-heading']=headingFont==='pretendard'?"'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif":`'${families[headingFont]}','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif`;
   let values=doc.getElementById('dds-direction-values');

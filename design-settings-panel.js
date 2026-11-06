@@ -1,6 +1,6 @@
-import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=0633938e4f032d79';
-import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=0633938e4f032d79';
-import {renderButton} from './ui/button.js?v=0633938e4f032d79';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,PAGE_BACKGROUND_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=dda57a46ecc92c81';
+import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=dda57a46ecc92c81';
+import {renderButton} from './ui/button.js?v=dda57a46ecc92c81';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {
@@ -122,6 +122,26 @@ function fontField(key, label) {
   return field;
 }
 
+function backgroundField(key,label,presets) {
+  const field=document.createElement('div');
+  field.className='dds-settings-field';
+  const heading=document.createElement('div');
+  heading.className='dds-settings-background-label';
+  const name=document.createElement('span');
+  name.id='dds-settings-'+key+'-label';
+  name.textContent=label;
+  const value=document.createElement('span');
+  value.dataset.ddsBackgroundValue=key;
+  heading.append(name,value);
+  const choices=document.createElement('div');
+  choices.className='dds-settings-presets';
+  choices.setAttribute('role','group');
+  choices.setAttribute('aria-labelledby',name.id);
+  for(const preset of presets)choices.append(swatch(key,preset));
+  field.append(heading,choices);
+  return field;
+}
+
 /** Mount the shared design controls. Persistence and application belong to the caller. */
 export function mountDesignSettings({getSettings, updateSettings, resetSettings, subscribe,
   getSavedProfile, saveProfile, hasUnsavedChanges, subscribeProfile}) {
@@ -208,7 +228,15 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   fontsSection.setAttribute('aria-labelledby', 'dds-settings-fonts-title');
   fontsSection.innerHTML = '<h3 id="dds-settings-fonts-title">서체</h3>';
   fontsSection.append(fontField('headingFont', '제목 서체'), fontField('bodyFont', '본문 서체'));
-  body.append(brandSection, modeSection, functionalSection, fontsSection);
+  const backgroundSection=document.createElement('section');
+  backgroundSection.className='dds-settings-section';
+  backgroundSection.setAttribute('aria-labelledby','dds-settings-background-title');
+  backgroundSection.innerHTML='<h3 id="dds-settings-background-title">화면 배경</h3>';
+  backgroundSection.append(
+    backgroundField('pageBackground','라이트 모드',PAGE_BACKGROUND_PRESETS.light),
+    backgroundField('pageBackgroundDark','다크 모드',PAGE_BACKGROUND_PRESETS.dark)
+  );
+  body.append(brandSection, backgroundSection, modeSection, functionalSection, fontsSection);
 
   const footer = document.createElement('div');
   footer.className = 'dds-settings-footer';
@@ -235,7 +263,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   profileHeading.append(profileClose);
   const profileDescription=document.createElement('p');
   profileDescription.id='dds-settings-profile-description';
-  profileDescription.textContent='저장한 색상과 서체로 프로젝트를 설정할 수 있어요. 프롬프트를 복사해 작업할 AI에게 전달해 주세요.';
+  profileDescription.textContent='저장한 색상·배경·서체로 프로젝트를 설정할 수 있어요. 프롬프트를 복사해 작업할 AI에게 전달해 주세요.';
   const profileSummary=document.createElement('dl');
   profileSummary.className='dds-settings-profile-summary';
   const copyButton=actionButton('프로젝트 설정 프롬프트 복사',{before:'Copy',fullWidth:true});
@@ -338,6 +366,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     for (const button of host.querySelectorAll('[data-dds-preset]')) {
       button.setAttribute('aria-pressed', String(button.dataset.ddsPreset === settings[button.dataset.ddsColorKey].toUpperCase()));
     }
+    for(const value of host.querySelectorAll('[data-dds-background-value]'))value.textContent=settings[value.dataset.ddsBackgroundValue];
     for (const button of combinations.children) {
       const preset = FUNCTIONAL_PRESETS.find(preset=>preset.id===button.dataset.ddsCombination);
       button.setAttribute('aria-pressed',String(['secondary','accent','positive'].every(key=>settings[key]===preset[key])));
@@ -365,7 +394,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     modalProfile=profile;
     const settings=profile.settings;
     const fontName=value=>FONT_OPTIONS.find(font=>font.value===value)?.label||value;
-    const rows=[['브랜드 색상',settings.primary],['제목 서체',fontName(settings.headingFont)],
+    const rows=[['브랜드 색상',settings.primary],['라이트 배경',settings.pageBackground],['다크 배경',settings.pageBackgroundDark],['제목 서체',fontName(settings.headingFont)],
       ['본문 서체',fontName(settings.bodyFont)],['색상 사용',settings.colorMode==='functional'?'기능별로 다른 색상 사용':'메인 색상만 사용']];
     if(settings.colorMode==='functional')rows.push(['기능별 색상',`탐색 ${settings.secondary} · AI ${settings.accent} · 완료 ${settings.positive}`]);
     profileSummary.replaceChildren();
@@ -419,7 +448,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     copyButton.setAttribute('aria-busy','true');
     copyState.textContent='';
     try{
-      const {buildProjectProfilePrompt}=await import('./project-profile.js?v=0633938e4f032d79');
+      const {buildProjectProfilePrompt}=await import('./project-profile.js?v=dda57a46ecc92c81');
       const text=await buildProjectProfilePrompt(snapshot);
       if(typeof text!=='string'||!text.trim())throw new Error('The project prompt is empty.');
       if(disposed||ticket!==copyRevision||!profileDialog.open)return;

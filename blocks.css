@@ -9,7 +9,7 @@
 .dds-blocks-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px;}
 .dds-block-card {position:relative;min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--background);transition:border-color var(--duration-fast) var(--ease-standard),box-shadow var(--duration-fast) var(--ease-standard);}
 .dds-block-card:has(.dds-block-card-trigger:is(:hover,:focus-visible)) {border-color:var(--primary);box-shadow:var(--shadow-sm);}
-.dds-block-thumbnail {position:relative;height:340px;overflow:hidden;border-bottom:1px solid var(--border);background:var(--background);}
+.dds-block-thumbnail {position:relative;height:340px;overflow:hidden;border-bottom:1px solid var(--border);background:var(--page-background,var(--background));}
 .dds-block-scene {position:absolute;top:var(--block-preview-top,16px);left:50%;width:760px;padding:24px;transform:translateX(-50%) scale(var(--block-preview-scale,.5));transform-origin:top center;pointer-events:none;}
 .dds-block-card-caption {display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;}
 .dds-block-card-caption h2 {margin:0;color:var(--text-strong);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:600;letter-spacing:var(--type-body-1-normal-tracking);}
@@ -32,7 +32,7 @@
 .dds-block-dialog-close:focus-visible {outline:1px solid var(--primary);outline-offset:0;}
 .dds-block-device-tabs {width:max-content;max-width:100%;}
 .dds-block-device-tabs button {min-width:64px;white-space:nowrap;}
-.dds-block-dialog-body {flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:24px;background:var(--background);}
+.dds-block-dialog-body {flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:24px;background:var(--page-background,var(--background));}
 .dds-block-viewport {width:100%;max-width:100%;margin-inline:auto;}
 .dds-block-dialog[data-device=mobile] .dds-block-viewport {width:390px;}
 .dds-block-dialog-footer {display:flex;align-items:flex-start;gap:12px 20px;flex-wrap:wrap;padding:16px 24px;border-top:1px solid var(--border);flex-shrink:0;font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);color:var(--text-secondary);}

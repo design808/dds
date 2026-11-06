@@ -59,38 +59,43 @@ const functionalStroke = (seed,surfaces,dark) => {
 };
 
 export function palette(profile,dark){
-  const background=dark?'#17191c':'#ffffff';
+  // The page canvas is independent from cards, controls and popovers.
+  const surface=dark?'#17191c':'#ffffff';
+  const background=hex(profile.colors?.[dark?'pageBackgroundDark':'pageBackground']||surface);
   const muted=dark?'#292d33':'#f1f2f4';
   const primary=hex(profile.colors?.primary||'#ffad31');
   const secondary=hex(profile.colors?.secondary||primary);
   const accent=hex(profile.colors?.accent||secondary);
   const positive=hex(profile.colors?.positive||'#18734b');
   const sameOrange=primary==='#ffad31';
-  const primarySoft=sameOrange?(dark?'#3c251d':'#fff9ef'):mix(background,primary,dark?.18:.07);
+  const primarySoft=sameOrange?(dark?'#3c251d':'#fff9ef'):mix(surface,primary,dark?.18:.07);
   const primaryStates=sameOrange
     ? {hover:dark?'#ffbe5c':'#ff941a',active:dark?'#ffca7a':'#e8750a'}
     : filledStates(primary,dark);
-  const roles={};
+  const roles={
+    '--page-background':background,
+    '--workspace-background':'var(--page-background)'
+  };
   if(!sameOrange){
     for(const [step,ratio] of [[50,.96],[100,.90],[200,.75],[300,.55],[400,.30]])roles[`--brand-${step}`]=mix(primary,'#ffffff',ratio);
     roles['--brand-500']=primary;
     for(const [step,ratio] of [[600,.10],[700,.23],[800,.38],[900,.53],[950,.67]])roles[`--brand-${step}`]=mix(primary,'#000000',ratio);
   }
   for(const [name,value] of Object.entries({primary,secondary,accent,positive})){
-    const soft=name==='primary'?mix(background,value,dark?.19:.075):functionalSoft(value,background,dark);
-    const aiTint=mix(background,value,dark?.20:.12);
+    const soft=name==='primary'?mix(surface,value,dark?.19:.075):functionalSoft(value,surface,dark);
+    const aiTint=mix(surface,value,dark?.20:.12);
     const states=name==='primary'?primaryStates:functionalStates(value,dark);
     roles[`--direction-${name}`]=value;
-    roles[`--direction-${name}-ink`]=ink(value,[background,muted,soft,aiTint],dark);
+    roles[`--direction-${name}-ink`]=ink(value,[background,surface,muted,soft,aiTint],dark);
     roles[`--direction-${name}-soft`]=soft;
-    roles[`--direction-${name}-border`]=mix(background,value,dark?.42:.24);
+    roles[`--direction-${name}-border`]=mix(surface,value,dark?.42:.24);
     roles[`--direction-${name}-hover`]=states.hover;
     roles[`--direction-${name}-active`]=states.active;
     if(name!=='primary'){
       roles[`--direction-${name}-foreground`]=functionalForeground(value);
       roles[`--direction-${name}-hover-foreground`]=functionalForeground(states.hover);
       roles[`--direction-${name}-active-foreground`]=functionalForeground(states.active);
-      roles[`--direction-${name}-stroke`]=functionalStroke(value,[background,muted,soft,aiTint],dark);
+      roles[`--direction-${name}-stroke`]=functionalStroke(value,[background,surface,muted,soft,aiTint],dark);
     }
   }
   Object.assign(roles,{
@@ -101,27 +106,27 @@ export function palette(profile,dark){
     '--primary-border':'transparent',
     '--brand-ink':roles['--direction-primary-ink'],
     '--accent':primarySoft,
-    '--accent-foreground':ink(primary,[background,muted,primarySoft],dark),
-    '--accent-border':sameOrange?(dark?'#554022':'#fff0d6'):mix(background,primary,dark?.40:.22),
+    '--accent-foreground':ink(primary,[background,surface,muted,primarySoft],dark),
+    '--accent-border':sameOrange?(dark?'#554022':'#fff0d6'):mix(surface,primary,dark?.40:.22),
     '--ring':primary,
-    '--text-link':ink(primary,background,dark),
+    '--text-link':ink(primary,[background,surface],dark),
     '--direction-glow':mix(background,primary,dark?.16:.13)
   });
   const ai=profile.multicolor?accent:primary;
   Object.assign(roles,{
-    '--ai-input-border':mix(background,ai,dark?.30:.20),
+    '--ai-input-border':mix(surface,ai,dark?.30:.20),
     '--ai-input-background':[
-      `radial-gradient(ellipse 100% 160% at 5% 15%, ${mix(background,ai,dark?.15:.055)} 0%, transparent 85%)`,
-      `radial-gradient(ellipse 110% 160% at 100% 20%, ${mix(background,secondary,dark?.12:.035)} 0%, transparent 90%)`,
-      `radial-gradient(ellipse 110% 150% at 55% 100%, ${mix(background,positive,dark?.09:.025)} 0%, transparent 90%)`,
-      `linear-gradient(110deg,${mix(background,ai,dark?.08:.025)},${mix(background,secondary,dark?.07:.02)})`
+      `radial-gradient(ellipse 100% 160% at 5% 15%, ${mix(surface,ai,dark?.15:.055)} 0%, transparent 85%)`,
+      `radial-gradient(ellipse 110% 160% at 100% 20%, ${mix(surface,secondary,dark?.12:.035)} 0%, transparent 90%)`,
+      `radial-gradient(ellipse 110% 150% at 55% 100%, ${mix(surface,positive,dark?.09:.025)} 0%, transparent 90%)`,
+      `linear-gradient(110deg,${mix(surface,ai,dark?.08:.025)},${mix(surface,secondary,dark?.07:.02)})`
     ].join(',')
   });
   if(profile.multicolor){
     const successBg=roles['--direction-positive-soft'];
     const infoBg=roles['--direction-secondary-soft'];
-    const successInk=ink(positive,[background,successBg],dark);
-    const infoInk=ink(secondary,[background,infoBg],dark);
+    const successInk=ink(positive,[background,surface,successBg],dark);
+    const infoInk=ink(secondary,[background,surface,infoBg],dark);
     Object.assign(roles,{
       '--success':successInk,
       '--success-bg':successBg,

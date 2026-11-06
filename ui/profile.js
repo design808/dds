@@ -1,7 +1,7 @@
 /** Project-owned theme overrides. Never modifies the versioned DDS source. */
-import {normalizeSettings,DEFAULT_SETTINGS,FONT_OPTIONS} from '../design-preferences.js?v=0633938e4f032d79';
-import {normalizeDesignProfile} from '../design-profile.js?v=0633938e4f032d79';
-import {palette} from './profile-palette.js?v=0633938e4f032d79';
+import {normalizeSettings,DEFAULT_SETTINGS,FONT_OPTIONS} from '../design-preferences.js?v=dda57a46ecc92c81';
+import {normalizeDesignProfile} from '../design-profile.js?v=dda57a46ecc92c81';
+import {palette} from './profile-palette.js?v=dda57a46ecc92c81';
 
 const directories={wanted:'wanted-sans',paperlogy:'paperlogy',plex:'ibm-plex-kr',suite:'suite',serif:'noto-serif-kr',maruburi:'maruburi',hahmlet:'hahmlet'};
 const headings='h1,h2,h3,h4,h5,h6,.dds-type-display-1,.dds-type-display-2,.dds-type-title-1,.dds-type-title-2,.dds-type-heading-1,.dds-type-heading-2,.dds-type-headline-1';
@@ -10,6 +10,8 @@ export function profileTokens(input,dark=false){
  const settings=normalizeSettings(input?.settings||input);
  const colored=settings.primary!==DEFAULT_SETTINGS.primary||settings.colorMode==='functional';
  const tokens=colored?palette({colors:settings,multicolor:settings.colorMode==='functional'},dark):{};
+ tokens['--page-background']=(dark?settings.pageBackgroundDark:settings.pageBackground).toLowerCase();
+ tokens['--workspace-background']='var(--page-background)';
  tokens['--font-sans']=FONT_OPTIONS.find(font=>font.value===settings.bodyFont).family;
  tokens['--font-heading']=FONT_OPTIONS.find(font=>font.value===settings.headingFont).family;
  return tokens;
@@ -29,7 +31,8 @@ export function createProfileCSS(input,{scoped=false,assetBase='../assets/fonts/
  const dark=scoped?`:is([data-theme="dark"]) ${outer},${outer}[data-theme="dark"]`:':root[data-theme="dark"]';
  const declarations=dark=>Object.entries(profileTokens(settings,dark)).map(([name,value])=>`  ${name}: ${value};`).join('\n');
  const headingScope=scoped?'.dds-ui':':root';
- const lines=[`/* DDS ${profile.ddsVersion}: saved ${profile.savedAt}. Load after DDS tokens and ui/dds.css. */`,...imports,`${light}{\n${declarations(false)}\n}`,`${dark}{\n${declarations(true)}\n}`,`${headingScope} :is(${headings}){font-family:var(--font-heading);--font-sans:var(--font-heading)}`];
+ const canvasSelector=scoped?`${headingScope} [data-dds-page]`:':root body';
+ const lines=[`/* DDS ${profile.ddsVersion}: saved ${profile.savedAt}. Load after DDS tokens and ui/dds.css. */`,...imports,`${light}{\n${declarations(false)}\n}`,`${dark}{\n${declarations(true)}\n}`,`${canvasSelector}{background:var(--page-background)}`,`${headingScope} :is(${headings}){font-family:var(--font-heading);--font-sans:var(--font-heading)}`];
  if(settings.colorMode==='functional'){
   // An explicit role is assigned by the page author; no automatic nth-child decoration.
   for(const role of ['secondary','accent','positive'])lines.push(`${headingScope} [data-dds-color-role="${role}"]{color:var(--direction-${role}-ink);background:var(--direction-${role}-soft);border-color:var(--direction-${role}-border)}`);

@@ -1,11 +1,11 @@
-import {icon} from './icons.js?v=0633938e4f032d79';
-import {components} from './catalog.js?v=0633938e4f032d79';
-import {bindCharts} from './chart-system.js?v=0633938e4f032d79';
-import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=0633938e4f032d79';
-import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=0633938e4f032d79';
-import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=0633938e4f032d79';
-import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=0633938e4f032d79';
-import {listBlocks,renderListBlock,bindListBlocks} from './block-list.js?v=0633938e4f032d79';
+import {icon} from './icons.js?v=dda57a46ecc92c81';
+import {components} from './catalog.js?v=dda57a46ecc92c81';
+import {bindCharts} from './chart-system.js?v=dda57a46ecc92c81';
+import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=dda57a46ecc92c81';
+import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=dda57a46ecc92c81';
+import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=dda57a46ecc92c81';
+import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=dda57a46ecc92c81';
+import {listBlocks,renderListBlock,bindListBlocks} from './block-list.js?v=dda57a46ecc92c81';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const blockCategories=[

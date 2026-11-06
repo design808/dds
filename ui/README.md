@@ -92,7 +92,9 @@ Django 등 서버 템플릿도 같은 HTML을 사용한다. `dds-instance`로 �
 
 ## 저장한 디자인 설정
 
-디자인 설정 패널에서 저장한 값은 프로젝트 설정 프롬프트에 JSON으로 포함된다. 미저장 미리보기는 포함되지 않는다. 프로젝트에 `docs/dds-profile.json`으로 기록하고, 설치한 `ui/profile.js`의 `createProfileCSS(profile,{scoped:false})`로 `ui/project-profile.css`를 생성해 토큰과 `ui/dds.css` 다음에 연결한다. 범위 토큰을 사용하면 `scoped:true`를 선택한다. 다른 위치에 저장하면 `assetBase`를 실제 폰트 디렉터리의 상대 경로로 맞춘다.
+디자인 설정 패널에서 저장한 브랜드색·기능 색상·제목/본문 서체·라이트/다크 화면 배경은 프로젝트 설정 프롬프트에 JSON으로 포함된다. 미저장 미리보기는 포함되지 않는다. 프로젝트에 `docs/dds-profile.json`으로 기록하고, 설치한 `ui/profile.js`의 `createProfileCSS(profile,{scoped:false})`로 `ui/project-profile.css`를 생성해 토큰과 `ui/dds.css` 다음에 연결한다. 범위 토큰을 사용하면 `scoped:true`를 선택한다. 다른 위치에 저장하면 `assetBase`를 실제 폰트 디렉터리의 상대 경로로 맞춘다.
+
+화면 배경은 `--page-background`이며 전역 방식에서는 생성 CSS가 `body`에 연결한다. 범위 방식은 `.dds-ui` 내부의 실제 페이지 상자에 `data-dds-page`를 지정한다. `.dds-ui` 자체는 `display:contents`이므로 배경을 그리지 않는다. 카드·입력·헤더·모달의 `--background`와 `--surface`는 페이지 배경과 구분해 유지한다. 이미 별도 페이지 배경이 있다면 해당 요소의 배경을 `var(--page-background)`로 연결하고 양쪽 모드의 글자 대비를 확인한다. 이전 저장 프로필에 배경 필드가 없으면 기본 라이트 `#FDFDFD`·다크 `#17191C`로 읽는다.
 
 선택한 제목·본문 서체의 `assets/fonts/<서체>/fontfaces.css`와 연결된 WOFF2·라이선스도 함께 배포한다. 기본 토큰이나 고정 릴리스는 수정하지 않는다. 같은 저장 설정에서 라이트·다크·hover·active 색상을 생성하며 기능 색상은 의미가 있는 표면에 `data-dds-color-role="secondary|accent|positive"`로 연결한다.
 
