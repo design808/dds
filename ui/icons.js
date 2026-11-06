@@ -1,4 +1,4 @@
-import {iconNodes} from './lucide-data.js?v=cbfddd8310a75f76';
+import {iconNodes} from './lucide-data.js?v=1d5b404f43a62e77';
 const aliases={arrow:'ArrowUpRight',plus:'Plus',check:'Check',file:'FileText',grid:'LayoutGrid',search:'Search',copy:'Copy',chevron:'ChevronRight',close:'X',sun:'Sun',moon:'Moon',layers:'Layers',more:'Ellipsis',info:'Info',calendar:'CalendarDays',left:'ChevronLeft',right:'ChevronRight',down:'ChevronDown',upload:'Upload',menu:'Menu'};
 export const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function icon(name,cls=''){

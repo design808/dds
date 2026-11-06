@@ -1,4 +1,4 @@
-import {implementationRules} from './service-guidelines.js?v=cbfddd8310a75f76';
+import {implementationRules} from './service-guidelines.js?v=1d5b404f43a62e77';
 
 const table = (headings, rows) => `<div class="table-wrap"><table class="dds-rules-table"><thead><tr>${headings.map(text => `<th scope="col">${text}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((text, i) => i ? `<td>${text}</td>` : `<th scope="row">${text}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 const section = (title, content) => `<section class="doc-section"><h2>${title}</h2>${content}</section>`;
@@ -10,14 +10,14 @@ export function handoffPage() {
       ${section('프로젝트에 DDS 등록', `<p><a href="#/setup">AI로 적용하기</a>에서 설정 프롬프트와 고정 버전 파일을 제공합니다. 기준 파일 준비와 AI 규칙 등록 후, 적용할 화면을 지정해 아래 순서로 진행합니다.</p>`)}
       ${section('먼저 읽을 파일', table(['파일', '용도'], [
         ['<a href="./ui/README.md">ui/README.md</a> · <a href="./ui/registry.json">registry.json</a>', '컴포넌트 페이지와 같은 115종의 실제 원본, 콘텐츠 변경 지점, 연결 API.'],
-        ['<a href="./ui/dds.css?v=cbfddd8310a75f76">ui/dds.css</a> · <a href="./ui/index.js?v=cbfddd8310a75f76">index.js</a>', '공통 컴포넌트 CSS와 생성·UI 동작 진입점. 문서 화면의 디자인을 재사용합니다.'],
+        ['<a href="./ui/dds.css?v=1d5b404f43a62e77">ui/dds.css</a> · <a href="./ui/index.js?v=1d5b404f43a62e77">index.js</a>', '공통 컴포넌트 CSS와 생성·UI 동작 진입점. 문서 화면의 디자인을 재사용합니다.'],
         ['<a href="./handoff.md" download>handoff.md</a>', '개발자·AI용 적용 지침. 작업 범위와 기준 파일을 먼저 확인합니다.'],
         ['<a href="./data/dds-contracts.json" download>dds-contracts.json</a>', '컴포넌트별 용도·규격·동작·검수. 웹 문서와 같은 데이터에서 생성합니다.'],
-        ['<a href="./tokens.css?v=cbfddd8310a75f76" download>tokens.css</a>', '색·간격·형태·입력 크기·모션과 라이트/다크 값. 웹폰트 파일을 함께 배포합니다.'],
-        ['<a href="./typography-system.js?v=cbfddd8310a75f76" download>typography-system.js</a>', '서체·크기·행간·굵기·자간이 묶인 글자 역할. 코드와 토큰 표시에도 Pretendard를 사용합니다.'],
-        ['<a href="./service-typography.js?v=cbfddd8310a75f76" download>service-typography.js</a>', '서비스 선택자와 글자 역할의 연결 원본. CSS 생성 후 적용합니다.'],
-        ['<a href="./visibility.css?v=cbfddd8310a75f76" download>visibility.css</a>', '카드·메타정보·상태·개수·탐색의 공통 표시 규칙. 기존 선택자와 적용 범위를 확인해 연결합니다.'],
-        ['<a href="./visibility.js?v=cbfddd8310a75f76" download>visibility.js</a>', '실제 개수와 상태 문구를 표시하는 순수 도움 함수. 기존 데이터 처리와 이벤트를 대신하지 않습니다.']
+        ['<a href="./tokens.css?v=1d5b404f43a62e77" download>tokens.css</a>', '색·간격·형태·입력 크기·모션과 라이트/다크 값. 웹폰트 파일을 함께 배포합니다.'],
+        ['<a href="./typography-system.js?v=1d5b404f43a62e77" download>typography-system.js</a>', '서체·크기·행간·굵기·자간이 묶인 글자 역할. 코드와 토큰 표시에도 Pretendard를 사용합니다.'],
+        ['<a href="./service-typography.js?v=1d5b404f43a62e77" download>service-typography.js</a>', '서비스 선택자와 글자 역할의 연결 원본. CSS 생성 후 적용합니다.'],
+        ['<a href="./visibility.css?v=1d5b404f43a62e77" download>visibility.css</a>', '카드·메타정보·상태·개수·탐색의 공통 표시 규칙. 기존 선택자와 적용 범위를 확인해 연결합니다.'],
+        ['<a href="./visibility.js?v=1d5b404f43a62e77" download>visibility.js</a>', '실제 개수와 상태 문구를 표시하는 순수 도움 함수. 기존 데이터 처리와 이벤트를 대신하지 않습니다.']
       ]))}
       ${section('프로젝트에 따른 적용', table(['대상', '적용 방법'], [
         ['기존 서비스 개선', '현재 프레임워크·기능·이벤트를 보존하며 CSS와 필요한 마크업을 연결하고 변경 전 동작과 대조합니다.'],

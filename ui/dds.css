@@ -1532,11 +1532,16 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .avatar>img {display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}
 .dds-ui .tab-demo [role=tablist][data-dds-width=content] {width:max-content;max-width:100%}
 .dds-ui .tab-demo [role=tablist][data-dds-width=stretch] {width:100%}
-.dds-ui .tab-demo [role=tablist][data-dds-width=stretch]>button {flex:1;min-width:0}
+.dds-ui .tab-demo [role=tablist][data-dds-width=stretch]>button {flex:1;min-width:max-content}
 .dds-ui .tab-demo [role=tablist][data-dds-appearance=underline] {background:transparent;padding:0;border-radius:0;border-bottom:1px solid var(--border);gap:var(--space-5)}
 .dds-ui .tab-demo [role=tablist][data-dds-appearance=underline]>button {position:relative;border-radius:0;background:transparent;box-shadow:none;padding:10px 0;color:var(--text-secondary);font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:500;min-height:44px}
 .dds-ui .tab-demo [role=tablist][data-dds-appearance=underline]>button[aria-selected=true] {color:var(--brand-ink)}
-.dds-ui .tab-demo [role=tablist][data-dds-appearance=underline]>button[aria-selected=true]:after {content:'';position:absolute;inset:auto 0 -1px;height:2px;background:var(--primary)}
+.dds-ui .tab-demo [role=tablist][data-dds-appearance=underline]>button[aria-selected=true]:after {content:'';position:absolute;inset:auto 0 0;height:2px;background:var(--primary)}
+.dds-ui .tab-demo [role=tablist]>[role=tab] {transition-property:color,background-color,border-color}
+.dds-ui .tab-demo [role=tablist]>[role=tab]:focus-visible {outline:none;outline-offset:0;box-shadow:inset 0 0 0 1px var(--primary)}
+@media(forced-colors:active) {
+.dds-ui .tab-demo [role=tablist]>[role=tab]:focus-visible {outline:1px solid Highlight;outline-offset:-1px;box-shadow:none}
+}
 .dds-ui .stepper.dds-variant[data-dds-orientation=vertical] {flex-direction:column;gap:var(--space-5)}
 .dds-ui .stepper.dds-variant[data-dds-orientation=vertical]>li {flex:none;flex-direction:row;align-items:center}
 .dds-ui .dds-variant-overlay[data-dds-size=sm] {max-width:440px}
