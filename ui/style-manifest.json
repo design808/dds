@@ -378,9 +378,9 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "4c3d3162a432ede6c431584fdf8ff84dea2ddc314722e0d03c048a9bdd22d513",
+      "sha256": "b706ddf52a87bf25a12ee4127ee807c0634839ba15222bcb96167173de667271",
       "retainedRules": 4,
-      "excludedSelectors": 156
+      "excludedSelectors": 178
     },
     {
       "file": "interactions.css",
@@ -2752,15 +2752,35 @@
     },
     {
       "source": "document-layout.css",
+      "selector": "[data-theme=dark] #main[data-dds-loading]"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] *"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] *::before"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] *::after"
+    },
+    {
+      "source": "document-layout.css",
       "selector": "#main[data-dds-loading] .dds-skeleton-text"
     },
     {
       "source": "document-layout.css",
-      "selector": "#main[data-dds-loading] :is(svg,img,canvas)"
+      "selector": "#main[data-dds-loading] :is(svg,img,canvas,video,iframe)"
     },
     {
       "source": "document-layout.css",
-      "selector": "#main[data-dds-loading] :is(button,input,select,textarea,.badge,.chip)"
+      "selector": "#main[data-dds-loading] :is(button,input,select,textarea,.badge,.chip,\n  .search-field,.custom-control:not(.custom-file),.component-preview,.dds-block-thumbnail,\n  .dds-chart-plot,.dds-media-placeholder,.skeleton,progress,meter,\n  .spacing-list > div > div,.shape-grid > div > div)"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] :is(input,select,textarea,progress,meter)"
     },
     {
       "source": "document-layout.css",
@@ -2768,19 +2788,87 @@
     },
     {
       "source": "document-layout.css",
-      "selector": "#main[data-dds-loading] a"
+      "selector": "#main[data-dds-loading] input::file-selector-button"
     },
     {
       "source": "document-layout.css",
-      "selector": "#main[data-dds-loading] :is(.component-preview,.dds-block-thumbnail)"
+      "selector": "#main[data-dds-loading] progress::-webkit-progress-bar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] progress::-webkit-progress-value"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] meter::-webkit-meter-bar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] meter::-webkit-meter-optimum-value"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] meter::-webkit-meter-suboptimum-value"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] meter::-webkit-meter-even-less-good-value"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] progress::-moz-progress-bar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] meter::-moz-meter-bar"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-webkit-slider-runnable-track"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-webkit-color-swatch"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-moz-range-track"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-moz-range-progress"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-moz-color-swatch"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-webkit-slider-thumb"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-moz-range-thumb"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-webkit-calendar-picker-indicator"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-webkit-search-cancel-button"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-webkit-inner-spin-button"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": "#main[data-dds-loading] input::-webkit-outer-spin-button"
     },
     {
       "source": "document-layout.css",
       "selector": "#main[data-dds-loading] .component-preview > *"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": "#main[data-dds-loading] [style*=\"background\"]"
     },
     {
       "source": "document-layout.css",

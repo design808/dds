@@ -117,32 +117,83 @@
 }
 
 /* Loading shares the resolved document containers and their responsive rules. */
-#main[data-dds-loading] {pointer-events: none;}
+#main[data-dds-loading] {
+  --dds-document-skeleton-fill: #e8e8e8;
+  pointer-events: none;
+}
+[data-theme=dark] #main[data-dds-loading] {--dds-document-skeleton-fill: #303030;}
+/* Clear paint, not geometry: transparent borders still reserve the final space. */
+#main[data-dds-loading] *,
+#main[data-dds-loading] *::before,
+#main[data-dds-loading] *::after {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  text-decoration-color: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  border-image: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  animation: none !important;
+  transition: none !important;
+  caret-color: transparent !important;
+}
 #main[data-dds-loading] .dds-skeleton-text {
   display: inline;
   font: inherit;
   letter-spacing: inherit;
-  color: transparent !important;
-  background: var(--muted);
+  background-color: var(--dds-document-skeleton-fill) !important;
   border-radius: var(--radius-sm);
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-  animation: dds-document-pulse 1.6s ease-in-out infinite;
 }
-#main[data-dds-loading] :is(svg,img,canvas) {visibility: hidden;}
-#main[data-dds-loading] :is(button,input,select,textarea,.badge,.chip) {
-  color: transparent !important;
-  background: var(--muted) !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  caret-color: transparent;
+#main[data-dds-loading] :is(svg,img,canvas,video,iframe) {visibility: hidden !important;}
+#main[data-dds-loading] :is(button,input,select,textarea,.badge,.chip,
+  .search-field,.custom-control:not(.custom-file),.component-preview,.dds-block-thumbnail,
+  .dds-chart-plot,.dds-media-placeholder,.skeleton,progress,meter,
+  .spacing-list > div > div,.shape-grid > div > div) {
+  background-color: var(--dds-document-skeleton-fill) !important;
+}
+#main[data-dds-loading] :is(input,select,textarea,progress,meter) {
+  appearance: none !important;
+  accent-color: var(--dds-document-skeleton-fill) !important;
 }
 #main[data-dds-loading] :is(input,textarea)::placeholder {color: transparent !important;}
-#main[data-dds-loading] a {color: transparent !important; text-decoration-color: transparent !important;}
-#main[data-dds-loading] :is(.component-preview,.dds-block-thumbnail) {background: var(--muted) !important;}
-#main[data-dds-loading] .component-preview > * {visibility: hidden;}
-#main[data-dds-loading] [style*="background"] {background: var(--muted) !important;}
-@keyframes dds-document-pulse {0%,100% {opacity: .55;}50% {opacity: 1;}}
+#main[data-dds-loading] input::file-selector-button {visibility: hidden !important;}
+#main[data-dds-loading] progress::-webkit-progress-bar,
+#main[data-dds-loading] progress::-webkit-progress-value,
+#main[data-dds-loading] meter::-webkit-meter-bar,
+#main[data-dds-loading] meter::-webkit-meter-optimum-value,
+#main[data-dds-loading] meter::-webkit-meter-suboptimum-value,
+#main[data-dds-loading] meter::-webkit-meter-even-less-good-value {
+  background: var(--dds-document-skeleton-fill) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+#main[data-dds-loading] progress::-moz-progress-bar,
+#main[data-dds-loading] meter::-moz-meter-bar {background: var(--dds-document-skeleton-fill) !important;}
+#main[data-dds-loading] input::-webkit-slider-runnable-track,
+#main[data-dds-loading] input::-webkit-color-swatch {
+  background: var(--dds-document-skeleton-fill) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+#main[data-dds-loading] input::-moz-range-track,
+#main[data-dds-loading] input::-moz-range-progress,
+#main[data-dds-loading] input::-moz-color-swatch {
+  background: var(--dds-document-skeleton-fill) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+#main[data-dds-loading] input::-webkit-slider-thumb {opacity: 0 !important;}
+#main[data-dds-loading] input::-moz-range-thumb {opacity: 0 !important;}
+#main[data-dds-loading] input::-webkit-calendar-picker-indicator,
+#main[data-dds-loading] input::-webkit-search-cancel-button,
+#main[data-dds-loading] input::-webkit-inner-spin-button,
+#main[data-dds-loading] input::-webkit-outer-spin-button {opacity: 0 !important;}
+#main[data-dds-loading] .component-preview > * {visibility: hidden !important;}
 
 /* DDS navigation uses action labels; captions remain supporting information. */
 .topbar {
