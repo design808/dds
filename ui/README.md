@@ -58,6 +58,10 @@ const cleanup = mountDDS(root, {
 
 파트 이름과 선택자는 `registry.json`의 해당 컴포넌트에 있다. 기본 문구·개수·상태·링크·날짜는 원본을 확인하기 위한 값이므로 실제 서비스 데이터로 교체한다. 컴포넌트의 내부 규격과 페이지 배치는 아래 기준으로 구분한다.
 
+## 대시보드 현황
+
+Card·Icon 조합의 현황 표시는 `metricContent(options, icon)`을 사용한다. `.dds-ui` 안의 `.dds-content-card.dds-metric`에 결과를 연결한다. `metricTrend(value, previous, options)`는 숫자의 방향과 지표별 긍정·부정 판단을 별도로 반환한다. API 옵션·비교 단위·결측값·읽기 전용/선택형 사용법은 [페이지 구성 기준](./composition.md)의 대시보드 현황을 따른다. 스타일은 `ui/dds.css`에 포함되며 블록 전용 CSS를 복사하지 않는다.
+
 ## 구분선형 목록
 
 Item은 `variants: {appearance: 'divided'}`로 외곽 경계 없이 행 사이를 나눈다. 기본값은 `outlined`다. `firstLeading`·`firstMetadataContent`·`firstTrailingInfo`·`firstActions` 슬롯으로 첫 행의 앞 요소·보조정보·후행 정보·독립 행동을 연결한다. 후행 정보와 행동은 제공할 때만 표시된다. 북마크·메뉴 버튼은 링크 바깥의 `firstActions`에 둔다.

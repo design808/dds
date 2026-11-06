@@ -1,5 +1,5 @@
 /** Canonical button markup. State changes and requests belong to the host. */
-import {icon} from './icons.js?v=1d5b404f43a62e77';
+import {icon} from './icons.js?v=0633938e4f032d79';
 
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const nativeBooleans=new Set(['disabled','hidden','formnovalidate']);

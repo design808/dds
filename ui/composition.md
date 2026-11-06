@@ -22,6 +22,30 @@ DDS는 버튼·입력·상태 표현과 조작 방식을 맞춘다. 화면의 �
 
 Top navigation은 전체 헤더 폭의 부모에 연결하고, 내부 콘텐츠 폭과 좌우 여백은 부모의 `--dds-topnav-content-width`·`--dds-topnav-gutter`로 정한다. 콘텐츠 최대 폭에는 좌우 여백이 포함된다. 하단 경계는 바깥 헤더에 유지하며 `100vw`나 음수 여백으로 부모를 벗어나게 하지 않는다. 테마 전환은 헤더 대신 푸터에 아이콘 버튼 하나로 두고 현재 기능 이름과 hover·키보드 탐색 툴팁을 제공한다. 기존 테마 provider와 저장 키를 재사용한다.
 
+## 대시보드 현황
+
+현황 카드는 Card와 Icon을 조합한다. `ui/index.js`의 `metricContent(options, icon)`은 라벨·항목 아이콘·현재 값·증감 표시를 같은 원본으로 만든다. `.dds-ui` 안에서 호스트에 `.dds-content-card.dds-metric`을 적용한다. 섹션 제목의 장식 아이콘과 달리 항목 아이콘은 방문자·가입·전환 등 지표를 식별하는 용도로 쓴다.
+
+```js
+import {metricContent, icon} from './ui/index.js';
+
+const card = document.createElement('article');
+card.className = 'dds-content-card dds-metric';
+card.innerHTML = metricContent({
+  label: '이탈률', icon: 'LogOut',
+  value: 40.8, previous: 42.8, digits: 1, unit: '%',
+  mode: 'points', better: 'lower', comparison: '이전 30일 대비'
+}, icon);
+document.querySelector('.dds-ui').append(card);
+```
+
+- 항목 아이콘은 의미에 맞는 Lucide를 사용하고, 증감은 방향 아이콘과 증가·감소·변화 없음 문구를 함께 표시한다.
+- `better:'higher'`는 증가가 긍정, `'lower'`는 감소가 긍정이다. 판단하지 않은 지표는 기본값 `'neutral'`을 사용한다. 긍정은 `--success`, 부정은 `--destructive`, 중립은 `--text-secondary`다. 수치의 방향과 평가 색상을 혼동하지 않는다.
+- `mode:'relative'`는 이전 값 대비 증감률(%), `'points'`는 비율 간 차이(%p), `'absolute'`는 실제 값의 차이다. 같은 기간·정의·단위의 실제 값을 전달하고 `comparison`에 비교 기준을 명시한다. 문서 블록의 합성 수치를 서비스 데이터로 복사하지 않는다.
+- `previous`를 생략하면 증감 영역도 생략한다. `null`은 비교 데이터 없음, 이전 값이 0 이하인 상대 증감률은 계산 불가로 표시한다. 0에서 0으로 유지되면 변화 없음이다. 색이나 화살표로 없는 변화를 만들지 않는다.
+- `digits`는 현재 값, `changeDigits`는 증감의 표시 정밀도다. 금액 등 별도 표시 형식은 `valueText`로 전달하되, 비교 계산에는 숫자 `value`와 `previous`를 사용한다. 라벨·표시 문구는 이스케이프한다.
+- 읽기 전용 현황은 정적 요소로 표시한다. 실제로 상세 이동이나 그래프 선택을 수행할 때만 링크 또는 버튼을 사용한다. 버튼으로 지표를 선택하면 `aria-pressed`를 갱신하고 실제 그래프도 함께 바꾼다. 선택 경계는 지표의 긍정·부정 색상과 분리한다.
+
 ## 목록·탐색 화면
 
 - 검색·분류·필터·정렬·결과가 서로 가까운 하나의 흐름이 되도록 배치한다. 각각을 큰 섹션으로 벌리지 않는다.

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "layout": {
@@ -43,31 +43,46 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "21a364e7551bfe3c794351f9fb628f6036f56f7c5e6e551265b6b8cdcd3073e5",
-    "ui/core.js": "841a30b8d00ab5d9467f26170ac284cdb8d099556956610c2818f66d7c513c39",
-    "ui/button.js": "2bb513072074158a3a17d88fb94313be03a2ff78ac536cf4309250d1c2ad7ad6",
-    "ui/extended.js": "900ecf7260657930b7f8dd30994c3fd94f758e66fdcdb684acd71cdf785ac81a",
-    "ui/charts.js": "a20274d74f20975a51fb11369698dd52af71e78d1a30711f399c027f1c31779f",
-    "ui/source.js": "64bb1aa86a0a1d9887e7706bea480b023a08a35ea08cd077500ebbc003c8c7f7",
-    "ui/index.js": "ae0fadea56d94079c6ca80ffc02fe6030ca0707f07b576f7b17df3f0f4b8117b",
+    "ui/version.js": "8c01fee8e4880ac97e664b94ff43b5c8e160f0511a95326593b4362ea8ffba15",
+    "ui/core.js": "31d9c4f80dd68a623269254dd17b804e6355073324fd1071fc835d23ab3fc66f",
+    "ui/button.js": "dd8765c9ea605af00f669c935472181e3605e5fc41c7dcc5df8ef178d26bf830",
+    "ui/extended.js": "d02af3d64f47d27eca618f2893d809a854e1c71d45447729881f8b183a3b1975",
+    "ui/charts.js": "d6ccf111a7df5632b0f8c135cdc6ceec5fde4d003c34532c83709521ddd66026",
+    "ui/source.js": "469cb015bc8cff5037a594790cb9be2ab8474fa4dd0b5b24a75c80884dcfcc6e",
+    "ui/index.js": "4f9111fd86362ace0e62bc3672a4a6f7cec1b7480fa8353ca812c2d4600f72c7",
     "ui/content.js": "446f637ce1056cdfa87674b6b1d0bb1e9fd622fd293c208095b8cfff3cd3d25a",
-    "ui/variants.js": "a005123d964bec9d05957aebf203867d0881e9fa6c0b4d803e6d5032aaa9eda1",
-    "ui/profile.js": "393c5ba8b0d74e5a4122a2153588cd333ca2fce7bf302fb7be201109d9696e23",
+    "ui/variants.js": "d525600ce7f7e0025102ab2de42c98f6a28f25ed7d02d100cc45e42839c616c1",
+    "ui/profile.js": "2bf00b985738412a11568e8c695bc5c5bff7fd330175b95b435ad16d3e815439",
     "ui/profile-palette.js": "10a29ff6c24ef3c9acf40e619b4e2836a5760a3154eb980a92323df9096acb88",
-    "ui/icons.js": "1ccef3d7450b9940f6472f98d1e728a30714ccc7e618165b4413c1be9271c2fb",
+    "ui/icons.js": "305bb24e22b61e43cf9f2938570c999c6053d46ec866005ad6f4d93820cc25d6",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "51e4be464b87a69bdbca5e1f05a84b8ab80a1eed202eaaa5ccacdd3a3b0098cb",
+    "ui/controls.js": "01abfba878c96dc6548ee4682c66f5b2ee451ab6d621c696c231e2c121ac8657",
     "ui/tooltips.js": "1791700822254b400b0af547bc303a0c8eef56e1cc1d720e6ce7df0390bf862b",
-    "ui/dds.css": "db2a6b7462dd16f192a969a72649147a5e2a3b648a6d1e31773e547b04c9adca",
+    "ui/dds.css": "5498816a47d00d88346e6559b8b3b034917faddaea3ca2d8c0a756faeb5d1504",
     "ui/tokens-scoped.css": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713",
     "tokens.css": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
     "component-layout.css": "5a048f639ee500cb90997d3d4214f73d50484b72e5275d56cddfb24080a6cc3e",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
-    "visibility.js": "668039c6c4d07bce088d24225a377bff4fe24b0d9a322f8039205a44f39d13cb",
-    "design-preferences.js": "ad37b9a31beeee7ec9a334745ef7053118e1a495ee63d3b92286896e7082d3b6",
-    "design-profile.js": "cbc1d5596a2a5d40f27e7bb44fbf66ce9fabaf29e850612b629a85f727a5a2fe",
+    "visibility.js": "47215293093c225b345ea6f2395d1a75ec59df7a15c509421ebbd164a1788142",
+    "design-preferences.js": "2fe75bb9a7e2940273ce71224652f5c09675ede97e259b71a933607bbc7e28e2",
+    "design-profile.js": "14081098f53e6d7dc3784e477155b45b4d7740ad118dc680e08bfb9fdf11fd0e",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
+  },
+  "compositions": {
+    "metricSummary": {
+      "components": [
+        "card"
+      ],
+      "iconRenderer": "icon",
+      "hostClass": "dds-content-card dds-metric",
+      "contentHelper": "metricContent",
+      "comparisonHelper": "metricTrend",
+      "source": "visibility.js",
+      "entry": "ui/index.js",
+      "guide": "ui/composition.md",
+      "content": "Supply real current/previous values and comparison period. Direction and desirability are independent; higher/lower/neutral is a business rule."
+    }
   },
   "components": {
     "button": {
@@ -6052,7 +6067,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "1d5b404f43a62e77",
-    "canonicalBundle": "../releases/0.5.8/bundle.json"
+    "assetRevision": "0633938e4f032d79",
+    "canonicalBundle": "../releases/0.5.9/bundle.json"
   }
 }
