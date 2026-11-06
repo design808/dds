@@ -1,6 +1,6 @@
-import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,PAGE_BACKGROUND_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=a2e5a753966dbe54';
-import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=a2e5a753966dbe54';
-import {renderButton} from './ui/button.js?v=a2e5a753966dbe54';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,PAGE_BACKGROUND_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=a0e474a8a17e958f';
+import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=a0e474a8a17e958f';
+import {renderButton} from './ui/button.js?v=a0e474a8a17e958f';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {
@@ -233,8 +233,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   backgroundSection.setAttribute('aria-labelledby','dds-settings-background-title');
   backgroundSection.innerHTML='<h3 id="dds-settings-background-title">화면 배경</h3>';
   backgroundSection.append(
-    backgroundField('pageBackground','라이트 모드',PAGE_BACKGROUND_PRESETS.light),
-    backgroundField('pageBackgroundDark','다크 모드',PAGE_BACKGROUND_PRESETS.dark)
+    backgroundField('pageBackground','라이트 모드 배경',PAGE_BACKGROUND_PRESETS.light)
   );
   body.append(brandSection, backgroundSection, modeSection, functionalSection, fontsSection);
 
@@ -394,7 +393,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     modalProfile=profile;
     const settings=profile.settings;
     const fontName=value=>FONT_OPTIONS.find(font=>font.value===value)?.label||value;
-    const rows=[['브랜드 색상',settings.primary],['라이트 배경',settings.pageBackground],['다크 배경',settings.pageBackgroundDark],['제목 서체',fontName(settings.headingFont)],
+    const rows=[['브랜드 색상',settings.primary],['화면 배경',settings.pageBackground],['제목 서체',fontName(settings.headingFont)],
       ['본문 서체',fontName(settings.bodyFont)],['색상 사용',settings.colorMode==='functional'?'기능별로 다른 색상 사용':'메인 색상만 사용']];
     if(settings.colorMode==='functional')rows.push(['기능별 색상',`탐색 ${settings.secondary} · AI ${settings.accent} · 완료 ${settings.positive}`]);
     profileSummary.replaceChildren();
@@ -448,7 +447,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     copyButton.setAttribute('aria-busy','true');
     copyState.textContent='';
     try{
-      const {buildProjectProfilePrompt}=await import('./project-profile.js?v=a2e5a753966dbe54');
+      const {buildProjectProfilePrompt}=await import('./project-profile.js?v=a0e474a8a17e958f');
       const text=await buildProjectProfilePrompt(snapshot);
       if(typeof text!=='string'||!text.trim())throw new Error('The project prompt is empty.');
       if(disposed||ticket!==copyRevision||!profileDialog.open)return;

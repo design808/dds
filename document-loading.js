@@ -1,6 +1,6 @@
 // Critical, document-only bootstrap. The build embeds this function and the
 // shared layout renderers in index.html, before the application module loads.
-export function bootDocumentLoading(data, templates) {
+export function bootDocumentLoading(data, templates, canvasTextTokens) {
   const doc=document, root=doc.documentElement, main=doc.getElementById('main');
   if(!main)return;
   const read=key=>{try{return JSON.parse(localStorage.getItem(key));}catch{return null;}};
@@ -13,11 +13,11 @@ export function bootDocumentLoading(data, templates) {
   root.dataset.ddsBootstrap='';
   const font=value=>data.fonts.find(item=>item.value===value)||data.fonts[0];
   const bodyFont=font(settings.bodyFont),headingFont=font(settings.headingFont);
-  const color=(value,fallback)=>typeof value==='string'&&/^#[a-f\d]{6}$/i.test(value)?value:fallback;
-  const canvas=color(settings[theme==='dark'?'pageBackgroundDark':'pageBackground'],theme==='dark'?'#17191C':'#FDFDFD');
+  const storedBackground=typeof settings.pageBackground==='string'&&/^#[a-f\d]{6}$/i.test(settings.pageBackground)?settings.pageBackground:'#FDFDFD';
+  const canvasTokens=canvasTextTokens({pageBackground:storedBackground},theme==='dark');
   const preferenceStyle=doc.createElement('style');
   preferenceStyle.id='dds-bootstrap-preferences';
-  preferenceStyle.textContent=`html[data-dds-bootstrap]{--font-sans:${bodyFont.family};--font-heading:${headingFont.family};--page-background:${canvas};--workspace-background:var(--page-background)}html[data-dds-bootstrap] body{background:var(--page-background)}html[data-dds-bootstrap] :is(h1,h2,h3,h4,h5,h6){font-family:var(--font-heading)}`;
+  preferenceStyle.textContent=`html[data-dds-bootstrap]{--font-sans:${bodyFont.family};--font-heading:${headingFont.family};${Object.entries(canvasTokens).map(([name,value])=>name+':'+value).join(';')}}html[data-dds-bootstrap] body{background:var(--page-background)}html[data-dds-bootstrap] :is(h1,h2,h3,h4,h5,h6){font-family:var(--font-heading)}`;
   doc.head.append(preferenceStyle);
   for(const chosen of new Set([bodyFont.value,headingFont.value])){
     const sheet=data.fontSheets[chosen];

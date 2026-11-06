@@ -1,2 +1,2 @@
-export {ddsRelease,ddsSite,ddsReleaseURL,ddsProjectRule,ddsSetupPrompt} from './ui-setup-content.js?v=a2e5a753966dbe54';
-export {setupPage} from './setup-source-page.js?v=a2e5a753966dbe54';
+export {ddsRelease,ddsSite,ddsReleaseURL,ddsProjectRule,ddsSetupPrompt} from './ui-setup-content.js?v=a0e474a8a17e958f';
+export {setupPage} from './setup-source-page.js?v=a0e474a8a17e958f';

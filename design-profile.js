@@ -1,6 +1,6 @@
 // Saved project choices. Importing this module never reads browser storage or DOM.
-import {DEFAULT_SETTINGS,normalizeSettings} from './design-preferences.js?v=a2e5a753966dbe54';
-import {UI_VERSION} from './ui/version.js?v=a2e5a753966dbe54';
+import {DEFAULT_SETTINGS,normalizeSettings} from './design-preferences.js?v=a0e474a8a17e958f';
+import {UI_VERSION} from './ui/version.js?v=a0e474a8a17e958f';
 
 export const PROFILE_SCHEMA_VERSION=1;
 export const PROFILE_STORAGE_KEY='dds-design-profile-v1';
@@ -17,6 +17,8 @@ function checkedSettings(input){
   try{
     const normalized=normalizeSettings(input);
     for(const key of Object.keys(DEFAULT_SETTINGS)){
+      // Former dark-canvas choices are ignored without discarding other choices.
+      if(key==='pageBackgroundDark')continue;
       if(!hasOwn(input,key)){
         if(optionalLegacyFields.has(key))continue;
         return null;
@@ -32,7 +34,7 @@ function checkedSettings(input){
 
 export function settingsEqual(first,second){
   if(!first||!second)return false;
-  return Object.keys(DEFAULT_SETTINGS).every(key=>first[key]===second[key]);
+  return Object.keys(DEFAULT_SETTINGS).filter(key=>key!=='pageBackgroundDark').every(key=>first[key]===second[key]);
 }
 
 /** Invalid/partial records are rejected; only newly added background fields migrate. */

@@ -1,4 +1,4 @@
-import {PROFILE_STORAGE_KEY,createDesignProfile,parseDesignProfile,settingsEqual} from './design-profile.js?v=a2e5a753966dbe54';
+import {PROFILE_STORAGE_KEY,createDesignProfile,parseDesignProfile,settingsEqual} from './design-profile.js?v=a0e474a8a17e958f';
 
 // Local display preferences. These values never change the authored DDS tokens.
 const STORAGE_KEY='dds-design-settings-v1';
@@ -46,22 +46,13 @@ export const PRIMARY_PRESETS=Object.freeze([
 // Page canvas choices are independent of component and navigation surfaces.
 export const PAGE_BACKGROUND_PRESETS=Object.freeze({
   light:Object.freeze([
-    {value:'#FDFDFD',label:'기본'},
     {value:'#FFFFFF',label:'화이트'},
-    {value:'#F6F7F9',label:'뉴트럴'},
-    {value:'#F3F7FB',label:'쿨 그레이'},
-    {value:'#F3F7FD',label:'블루 그레이'},
+    {value:'#FDFDFD',label:'기본'},
     {value:'#FAF8F4',label:'웜 그레이'},
-    {value:'#F7F6FA',label:'라벤더 그레이'}
-  ].map(Object.freeze)),
-  dark:Object.freeze([
-    {value:'#17191C',label:'기본'},
-    {value:'#111318',label:'딥 뉴트럴'},
-    {value:'#1A1F28',label:'쿨 그레이'},
-    {value:'#1B222B',label:'블루 그레이'},
-    {value:'#1D2026',label:'뉴트럴'},
-    {value:'#211F1C',label:'웜 그레이'},
-    {value:'#201D27',label:'라벤더 그레이'}
+    {value:'#F3F7FD',label:'블루 그레이'},
+    {value:'#F7F6FA',label:'라벤더 그레이'},
+    {value:'#F3F7FB',label:'쿨 그레이'},
+    {value:'#F4F5F8',label:'뉴트럴'}
   ].map(Object.freeze))
 });
 
@@ -90,6 +81,8 @@ const fontValues=new Set(FONT_OPTIONS.map(option=>option.value));
 const isRecord=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 
 function normalizeField(key,value,fallback){
+  // Retained only to read earlier schema-one profiles. Dark canvas is fixed.
+  if(key==='pageBackgroundDark')return DEFAULT_SETTINGS.pageBackgroundDark;
   if(colorFields.has(key)){
     if(typeof value!=='string')return fallback;
     const color=value.trim();

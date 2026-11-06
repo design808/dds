@@ -1,7 +1,7 @@
 /** Project-owned theme overrides. Never modifies the versioned DDS source. */
-import {normalizeSettings,DEFAULT_SETTINGS,FONT_OPTIONS} from '../design-preferences.js?v=a2e5a753966dbe54';
-import {normalizeDesignProfile} from '../design-profile.js?v=a2e5a753966dbe54';
-import {palette} from './profile-palette.js?v=a2e5a753966dbe54';
+import {normalizeSettings,DEFAULT_SETTINGS,FONT_OPTIONS} from '../design-preferences.js?v=a0e474a8a17e958f';
+import {normalizeDesignProfile} from '../design-profile.js?v=a0e474a8a17e958f';
+import {palette,canvasTextTokens} from './profile-palette.js?v=a0e474a8a17e958f';
 
 const directories={wanted:'wanted-sans',paperlogy:'paperlogy',plex:'ibm-plex-kr',suite:'suite',serif:'noto-serif-kr',maruburi:'maruburi',hahmlet:'hahmlet'};
 const headings='h1,h2,h3,h4,h5,h6,.dds-type-display-1,.dds-type-display-2,.dds-type-title-1,.dds-type-title-2,.dds-type-heading-1,.dds-type-heading-2,.dds-type-headline-1';
@@ -10,8 +10,7 @@ export function profileTokens(input,dark=false){
  const settings=normalizeSettings(input?.settings||input);
  const colored=settings.primary!==DEFAULT_SETTINGS.primary||settings.colorMode==='functional';
  const tokens=colored?palette({colors:settings,multicolor:settings.colorMode==='functional'},dark):{};
- tokens['--page-background']=(dark?settings.pageBackgroundDark:settings.pageBackground).toLowerCase();
- tokens['--workspace-background']='var(--page-background)';
+ Object.assign(tokens,canvasTextTokens(settings,dark));
  tokens['--font-sans']=FONT_OPTIONS.find(font=>font.value===settings.bodyFont).family;
  tokens['--font-heading']=FONT_OPTIONS.find(font=>font.value===settings.headingFont).family;
  return tokens;

@@ -78,7 +78,7 @@ Item은 `variants: {appearance: 'divided'}`로 외곽 경계 없이 행 사이�
 
 스크롤 영역에 높이가 필요하면 페이지의 부모에 `--dds-scroll-height`와 `--dds-scroll-max-height`를 지정한다. 기본값은 각각 `auto`, `none`이다. 컴포넌트 내부를 다시 스타일링하거나 견본의 높이를 기본값으로 복사하지 않는다.
 
-Top navigation은 전체 헤더 폭의 부모에 연결한다. 부모의 `--dds-topnav-content-width`로 좌우 여백을 포함한 내부 최대 폭을, `--dds-topnav-gutter`로 좌우 여백을 정한다. 하단 1px 경계는 바깥 헤더에 유지한다. `100vw`나 음수 여백으로 부모를 벗어나게 하지 않는다. 테마 전환 버튼은 푸터에 하나만 두며 기존 provider·저장 키를 재사용한다. 아이콘 버튼의 기능 이름과 hover·키보드 탐색 툴팁을 갱신한다.
+Top navigation은 전체 헤더 폭의 부모에 연결한다. 부모의 `--dds-topnav-content-width`로 좌우 여백을 포함한 내부 최대 폭을, `--dds-topnav-gutter`로 좌우 여백을 정한다. 하단 1px 경계는 바깥 헤더에 유지한다. `100vw`나 음수 여백으로 부모를 벗어나게 하지 않는다. 서비스 화면의 테마 전환 버튼은 푸터에 하나만 두며 기존 provider·저장 키를 재사용한다. 아이콘 버튼의 기능 이름과 hover·키보드 탐색 툴팁을 갱신한다. DDS 문서 사이트의 상단 테마 버튼은 서비스 헤더에 복사하지 않는다.
 
 열린 모달의 제목·본문·행동 사이 간격은 원본이 제공한다. 문서 견본의 상하 margin을 복사하지 않으며 슬롯 내부의 필드·문단 배치는 서비스에서 정한다.
 
@@ -92,9 +92,9 @@ Django 등 서버 템플릿도 같은 HTML을 사용한다. `dds-instance`로 �
 
 ## 저장한 디자인 설정
 
-디자인 설정 패널에서 저장한 브랜드색·기능 색상·제목/본문 서체·라이트/다크 화면 배경은 프로젝트 설정 프롬프트에 JSON으로 포함된다. 미저장 미리보기는 포함되지 않는다. 프로젝트에 `docs/dds-profile.json`으로 기록하고, 설치한 `ui/profile.js`의 `createProfileCSS(profile,{scoped:false})`로 `ui/project-profile.css`를 생성해 토큰과 `ui/dds.css` 다음에 연결한다. 범위 토큰을 사용하면 `scoped:true`를 선택한다. 다른 위치에 저장하면 `assetBase`를 실제 폰트 디렉터리의 상대 경로로 맞춘다.
+디자인 설정 패널에서 저장한 브랜드색·기능 색상·제목/본문 서체·화면 배경은 프로젝트 설정 프롬프트에 JSON으로 포함된다. 미저장 미리보기는 포함되지 않는다. 프로젝트에 `docs/dds-profile.json`으로 기록하고, 설치한 `ui/profile.js`의 `createProfileCSS(profile,{scoped:false})`로 `ui/project-profile.css`를 생성해 토큰과 `ui/dds.css` 다음에 연결한다. 범위 토큰을 사용하면 `scoped:true`를 선택한다. 다른 위치에 저장하면 `assetBase`를 실제 폰트 디렉터리의 상대 경로로 맞춘다.
 
-화면 배경은 `--page-background`이며 전역 방식에서는 생성 CSS가 `body`에 연결한다. 범위 방식은 `.dds-ui` 내부의 실제 페이지 상자에 `data-dds-page`를 지정한다. `.dds-ui` 자체는 `display:contents`이므로 배경을 그리지 않는다. 카드·입력·헤더·모달의 `--background`와 `--surface`는 페이지 배경과 구분해 유지한다. 이미 별도 페이지 배경이 있다면 해당 요소의 배경을 `var(--page-background)`로 연결하고 양쪽 모드의 글자 대비를 확인한다. 이전 저장 프로필에 배경 필드가 없으면 기본 라이트 `#FDFDFD`·다크 `#17191C`로 읽는다.
+화면 배경은 `--page-background`이며 전역 방식에서는 생성 CSS가 `body`에 연결한다. 범위 방식은 `.dds-ui` 내부의 실제 페이지 상자에 `data-dds-page`를 지정한다. `.dds-ui` 자체는 `display:contents`이므로 배경을 그리지 않는다. 카드·입력·헤더·모달의 `--background`와 `--surface`는 페이지 배경과 구분해 유지한다. 이미 별도 페이지 배경이 있다면 해당 요소의 배경을 `var(--page-background)`로 연결하고 양쪽 모드의 글자 대비를 확인한다. 선택하는 배경은 밝은 모드에 적용하고 다크 모드는 `#17191C`로 고정한다. `pageBackgroundDark`는 이전 프로필 호환용으로 남기되 과거 값은 적용하지 않는다. `canvasTextTokens(settings,dark)`는 선택 배경에서 필요한 경우에만 `--text-tertiary`를 최소 보정한다. 다른 글자 역할·입력 placeholder·컴포넌트 바탕은 유지한다.
 
 선택한 제목·본문 서체의 `assets/fonts/<서체>/fontfaces.css`와 연결된 WOFF2·라이선스도 함께 배포한다. 기본 토큰이나 고정 릴리스는 수정하지 않는다. 같은 저장 설정에서 라이트·다크·hover·active 색상을 생성하며 기능 색상은 의미가 있는 표면에 `data-dds-color-role="secondary|accent|positive"`로 연결한다.
 
