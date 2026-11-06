@@ -44,19 +44,19 @@
   "runtime": "ui/index.js",
   "sourceHashes": {
     "ui/version.js": "4503db0f1b707a386414104dba305ddb7b633dd1a99944f079585a31a384e421",
-    "ui/core.js": "4a2a679b6eb68ef88826b8b6eb4833c0d1d61953c5f24ccf8336128259db8602",
-    "ui/button.js": "12824a601c342b4b677a239bb501896393301bed65b67d7fa9b71a21752a621c",
-    "ui/extended.js": "d5bc18a196d13f9db4c08117f119773cc60f2e466b90a64efdb2010aa6fdc04c",
-    "ui/charts.js": "a9133bc341845295c4eafd68d3b761f6a1dd9b7cd9a5230fd11ad98f5a2598f5",
-    "ui/source.js": "ebb7eb77e4c9240189660c230a5f93dd031b4dbb2a2d3640644b870ddb6ad7e9",
-    "ui/index.js": "c6b33dfed9f7ad95c149a67eb1cba6e0319d897feff9fca6a078381d98d2a51c",
+    "ui/core.js": "b42f68c286f134b5f159a8b72097a561dbe98d511d29ac2c128f93a5f137da68",
+    "ui/button.js": "7b0ae15416508c2d7db1b091762066e42f43012b838eb3918ddd185a9585a6ea",
+    "ui/extended.js": "0ed6f14b6d18262f28c11dcd418fc15a1120dfe9c98d476ba7a3d8a7632e3dac",
+    "ui/charts.js": "7de8a82e48a0ae20b7817f69c8a85cf93c2e1b4ef0495a837255b8de26548473",
+    "ui/source.js": "206e48d7c6a754e6618ad9aaaefa8020b2217af0352c3caa580de1971df3a94e",
+    "ui/index.js": "0e535794a68bd42345fa71f02f7703e26560127cc3e3de1da1bc90d8dfb67d50",
     "ui/content.js": "446f637ce1056cdfa87674b6b1d0bb1e9fd622fd293c208095b8cfff3cd3d25a",
-    "ui/variants.js": "abdbddbb9a75c55c0f906cc8fd317a96d15d099ab8c376dd194e5995f9967760",
-    "ui/profile.js": "cbb56393cddf5ff3e5008af426cb25244f45af5742888158c8dce669e79d2c0a",
+    "ui/variants.js": "5ba24c351331442347f94c888505b2d68da5dde0bc7d518f6293ac2c6e106f76",
+    "ui/profile.js": "079b1007096f5469b00b5f58d16a1cedb9a407a6332701abe6b8b70c439132b2",
     "ui/profile-palette.js": "4a1b2162f4936f9991123a87fcaaacb20ffb50a087e9cddd749a9750d9820466",
-    "ui/icons.js": "b3f02b146803e0be90ba9fe50d68e70ddbbd90de4fc32a9545f228837a76ea60",
+    "ui/icons.js": "cfacf8e9990d6dcec5b50bd0575a38025aa453fcddbb0805a80a5febc5736616",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "aec142651123f0cdf4e7e672c7c129867a01bfc80caf40045244d54f729da8ae",
+    "ui/controls.js": "a2a9a365e1d0a302306146cc30f6b329a36a3aeb661b6fd50f59602e2f5b1627",
     "ui/tooltips.js": "1791700822254b400b0af547bc303a0c8eef56e1cc1d720e6ce7df0390bf862b",
     "ui/dds.css": "5498816a47d00d88346e6559b8b3b034917faddaea3ca2d8c0a756faeb5d1504",
     "ui/tokens-scoped.css": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713",
@@ -65,8 +65,8 @@
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "47215293093c225b345ea6f2395d1a75ec59df7a15c509421ebbd164a1788142",
-    "design-preferences.js": "39e518efc8f6a956b15ae63eeefc3b7337a0eea03407d1f086a99b806c0dea3b",
-    "design-profile.js": "f4898ae7ae72a264eab651db1504604f3f9a326733508e57c6a6d94816cd1832",
+    "design-preferences.js": "6511a6e6e98e1f541c7d98943275c759aada7895f0dc9b79c85800442fca68ee",
+    "design-profile.js": "136fb696e85acb85d04e93b2342cf13f864e132446147fb27f3700f2d8342058",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "compositions": {
@@ -6067,7 +6067,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "dda57a46ecc92c81",
+    "assetRevision": "fbe7d307629a0ab1",
     "canonicalBundle": "../releases/0.6.1/bundle.json"
   }
 }

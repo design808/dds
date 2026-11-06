@@ -1,11 +1,13 @@
-import {components, groups, patterns, foundations} from './catalog.js?v=dda57a46ecc92c81';
-import {icon} from './icons.js?v=dda57a46ecc92c81';
-import {formatHTML} from './format-html.js?v=dda57a46ecc92c81';
-import {componentContract} from './component-contracts.js?v=dda57a46ecc92c81';
-import {exampleScope, patternRequirements} from './service-guidelines.js?v=dda57a46ecc92c81';
-import {blocks} from './blocks.js?v=dda57a46ecc92c81';
-import {renderComponentSource,serviceMarkup} from './ui/source.js?v=dda57a46ecc92c81';
-import {componentVariantsSection} from './component-variants.js?v=dda57a46ecc92c81';
+import {components, groups, patterns, foundations} from './catalog.js?v=fbe7d307629a0ab1';
+import {screenExamples,sidebarStructure,overviewStructure} from './document-layout-templates.js?v=fbe7d307629a0ab1';
+export {screenExamples} from './document-layout-templates.js?v=fbe7d307629a0ab1';
+import {icon} from './icons.js?v=fbe7d307629a0ab1';
+import {formatHTML} from './format-html.js?v=fbe7d307629a0ab1';
+import {componentContract} from './component-contracts.js?v=fbe7d307629a0ab1';
+import {exampleScope, patternRequirements} from './service-guidelines.js?v=fbe7d307629a0ab1';
+import {blocks} from './blocks.js?v=fbe7d307629a0ab1';
+import {renderComponentSource,serviceMarkup} from './ui/source.js?v=fbe7d307629a0ab1';
+import {componentVariantsSection} from './component-variants.js?v=fbe7d307629a0ab1';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const list = items => `<ul class="plain-list">${items.map(item => `<li>${esc(item)}</li>`).join('')}</ul>`;
@@ -15,37 +17,12 @@ const assetReferences = groups => [
 const section = (id, title, content) => `<section id="${id}"><div class="section-heading"><h2>${title}</h2></div>${content}</section>`;
 const header = (category, title, description = '') => `<div class="breadcrumbs"><a href="#/">DDS</a><span>/</span><span>${esc(category)}</span></div><div class="page-heading"><div><h1>${esc(title)}</h1>${description ? `<p class="lead">${esc(description)}</p>` : ''}</div></div>`;
 
-export const screenExamples = [
-  {name:'메인화면 · 독립안', url:'./prototypes/home-independent.html', description:'다른 구성의 메인화면'},
-  {name:'자기소개서 · 지원정보', url:'./prototypes/coverletter-info.html', description:'제목과 지원정보 입력'},
-  {name:'자기소개서 · 문항 작성', url:'./prototypes/coverletter-write.html', description:'문항·경험 입력과 AI 작성'},
-  {name:'마이페이지', url:'./prototypes/mypage.html', description:'내 자기소개서와 이력서 목록'},
-  {name:'이력서 작성', url:'./prototypes/resume-write.html?document=resume-1', description:'인적사항·학력·경력 편집'},
-  {name:'AI 면접 · 준비', url:'./prototypes/interview-setup.html', description:'면접 안내·환경 확인·지원정보 선택'},
-  {name:'AI 면접 · 진행', url:'./prototypes/interview-session.html', description:'질문 확인·답변·재응답·제출'}
-];
-
 export function sidebarContent(view) {
-  const route = view.split('?')[0];
-  const item = (href, text) => `<a href="#${href}" class="${route === href ? 'active' : ''}"${route === href ? ' aria-current="page"' : ''}>${esc(text)}</a>`;
-  const currentGroup = components.find(c => '/components/' + c.id === route)?.group;
-  return `<div class="sidebar-intro"><span class="sidebar-title">Deep Design System</span></div>
-    <div class="nav-section">${item('/', '시작하기')}${item('/principles', '디자인 원칙')}${item('/process', '디자인 프로세스')}${item('/setup', 'AI로 적용하기')}${item('/handoff', '개발 적용 안내')}${item('/blocks', '블록')}</div>
-    <div class="nav-label">FOUNDATIONS</div><div class="nav-section">${foundations.map(([id, , ko]) => item('/foundations/' + id, ko)).join('')}</div>
-    <div class="nav-label">COMPONENTS</div><div class="nav-section">${item('/components', '전체 컴포넌트')}${groups.map(group => `<details ${currentGroup === group ? 'open' : ''}><summary>${group}</summary>${components.filter(c => c.group === group).map(c => item('/components/' + c.id, c.name)).join('')}</details>`).join('')}</div>
-    <div class="nav-label">적용 예시</div><div class="nav-section">${screenExamples.map(screen => `<a href="${screen.url}">${screen.name}</a>`).join('')}</div>`;
+  return sidebarStructure(view,{components,groups,foundations});
 }
 
 export function overviewContent(card) {
-  return `<section class="overview-heading"><h1>Deep Design System</h1><p>회사 서비스가 함께 사용하는 디자인 규칙, 컴포넌트와 적용 방법.</p><a class="btn overview-guide-link" href="./design-system-guide.html" target="_blank" rel="noopener noreferrer" aria-label="디자인시스템이 뭔가요? (새 창)">디자인시스템이 뭔가요?</a></section>
-    <div class="entry-grid">${[
-      ['기반 규칙', '색상·글자·간격·접근성', '/foundations/color'],
-      ['컴포넌트', '용도·규격·상태·조작·코드', '/components'],
-      ['AI로 적용하기', '설정 프롬프트·고정 버전 파일', '/setup']
-    ].map(([title, description, url]) => `<a href="#${url}" class="entry-card"><div><h3>${title}</h3><p>${description}</p></div>${icon('arrow')}</a>`).join('')}</div>
-    <div class="section-heading"><h2>주요 컴포넌트</h2><a class="section-link" href="#/components" aria-label="전체 컴포넌트 보기">전체 보기</a></div>
-    <div class="component-grid">${['button','input','card','tabs','badge','dialog'].map(id => card(components.find(c => c.id === id))).join('')}</div>
-    <div class="section-heading"><h2>적용 예시</h2></div><div class="entry-grid">${screenExamples.map(screen => `<a href="${screen.url}" class="entry-card"><div><h3>${screen.name}</h3><p>${screen.description}</p></div>${icon('arrow')}</a>`).join('')}</div>`;
+  return overviewStructure(id=>card(components.find(c=>c.id===id)),icon);
 }
 
 export function componentContent(c, html, {previewHTML, previewToc} = {}) {
@@ -69,9 +46,22 @@ export function componentContent(c, html, {previewHTML, previewToc} = {}) {
     </div>
     <div data-doc-panel="code" hidden><h2>HTML</h2><p>미리보기와 같은 UI 원본입니다. <code>ui/tokens-scoped.css</code>와 <code>ui/dds.css</code>를 연결하고 <code>.dds-ui</code> 범위를 유지합니다. 예제 문구·도움말·개수·묶음 배치는 필수 요소가 아닙니다. 필요한 콘텐츠만 넣고 <code>variants</code>와 <code>optional</code>로 구성합니다. 기존 id·name·이벤트·제출값을 보존합니다.${c.group==='Charts'?' 차트는 실제 항목·계열·단위를 createComponent의 data로 전달합니다.':''}</p>
       <button class="btn sm copy-code">${icon('copy')} 코드 복사</button><pre class="html-example" tabindex="0" aria-label="서비스용 HTML 원본"><code>${esc(formatHTML(sourceHTML))}</code></pre>
-      <p><a href="./${esc(contract.source.template)}" download>HTML 템플릿</a> · <a href="./ui/README.md">연결 방법</a> · <a href="./ui/registry.json">컴포넌트 레지스트리</a> · <a href="./ui/index.js?v=dda57a46ecc92c81">생성·동작 API</a> · <a href="./ui/source.js?v=dda57a46ecc92c81">HTML 원본 API</a> · <a href="./ui/tokens-scoped.css?v=dda57a46ecc92c81">토큰 CSS</a> · <a href="./ui/dds.css?v=dda57a46ecc92c81">UI CSS</a></p>
+      <p><a href="./${esc(contract.source.template)}" download>HTML 템플릿</a> · <a href="./ui/README.md">연결 방법</a> · <a href="./ui/registry.json">컴포넌트 레지스트리</a> · <a href="./ui/index.js?v=fbe7d307629a0ab1">생성·동작 API</a> · <a href="./ui/source.js?v=fbe7d307629a0ab1">HTML 원본 API</a> · <a href="./ui/tokens-scoped.css?v=fbe7d307629a0ab1">토큰 CSS</a> · <a href="./ui/dds.css?v=fbe7d307629a0ab1">UI CSS</a></p>
       <details><summary>연결 파일</summary><p>HTML은 renderComponentSource와 serviceMarkup으로 생성하며 ui/templates에도 같은 원본을 제공합니다. UI 폴더와 registry에 기록된 의존성을 함께 유지합니다. 선택·탭·열기와 닫기는 mountDDS를 연결하고, 저장·AI·업로드·권한은 기존 서비스 함수와 연결합니다. 문서 셸과 문서 예제 전용 파일은 서비스에 연결하지 않습니다.</p>${contract.assets.includes('service-typography.css')?'<p>service-typography.css는 현재 적용 예시의 매핑입니다. 대상 서비스에 맞게 다시 생성합니다.</p>':''}${assetReferences(contract.assetGroups)}</details>
     </div></article><aside class="toc"><span>이 페이지</span>${toc.map(([id, label]) => `<button data-scroll="${id}">${label}</button>`).join('')}</aside></div>`;
+}
+
+export function componentDetailContent(c,{demo,buttonCodeExample,buttonDemo,renderJobListExample}){
+ if(c.id==='item')return componentContent(c,demo(c.id),{
+  previewHTML:`<section id="preview"><div class="section-heading"><h2>외곽선형</h2></div><div class="playground"><div class="playground-inner">${demo(c.id)}</div></div></section><section id="item-divided"><div class="section-heading"><h2>구분선형 목록</h2></div><p>외곽 테두리 없이 행 사이를 구분합니다. 후행 정보와 별도 행동은 필요한 경우에만 넣습니다.</p>${renderJobListExample('item-divided-example')}<p><a href="#/blocks?block=job-list">채용 공고 목록 블록 보기</a></p></section>`,
+  previewToc:[['preview','외곽선형'],['item-divided','구분선형 목록']]
+ });
+ if(c.id==='top-navigation')return componentContent(c,`<div class="doc-header-preview-set">${demo(c.id)}<details class="doc-header-desktop-details"><summary>데스크톱 헤더 보기</summary><div class="doc-header-scroll" role="region" aria-label="데스크톱 헤더" tabindex="0"><div class="doc-header-desktop">${demo(c.id,false,'-desktop')}</div></div></details></div>`);
+ if(c.id==='button')return componentContent(c,buttonCodeExample(),{
+   previewHTML:buttonDemo(),
+   previewToc:[['button-variants','Variants'],['button-icons','아이콘'],['button-sizes','크기'],['button-disabled','비활성'],['button-loading','로딩'],['button-width','너비']]
+ });
+ return componentContent(c,demo(c.id));
 }
 
 export function renderPattern(p, sample) {

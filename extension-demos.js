@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=dda57a46ecc92c81';
-import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=dda57a46ecc92c81';
+import {icon} from './icons.js?v=fbe7d307629a0ab1';
+import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=fbe7d307629a0ab1';
 export {renderExtended as extensionDemo};
 const pad=n=>String(n).padStart(2,'0');
 function renderCalendar(c,focusDate){const y=+c.dataset.year,m=+c.dataset.month;c.querySelector('[data-month-label]').textContent=`${y}년 ${m+1}월`;c.querySelector('[data-calendar-grid]').innerHTML=calendarDays(y,m,c.dataset.selected);if(focusDate){const b=c.querySelector(`[data-calendar-date="${focusDate}"]`);c.querySelectorAll('[data-calendar-date]').forEach(x=>x.tabIndex=x===b?0:-1);b?.focus();}}

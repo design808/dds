@@ -103,7 +103,7 @@
 [data-theme=dark] .workspace {
   background: var(--page-background, var(--background));
 }
-.workspace > #main :is(.entry-card, .dds-loading-entry, .principle,
+.workspace > #main :is(.entry-card, .principle,
   .type-family-panel, .elevation, .anatomy-list > div, .table-wrap,
   .icon-gallery, .checklist, .color-detail, .color-state-demo, .contrast-example,
   .content-fit-examples) {
@@ -116,93 +116,33 @@
   .workspace {min-height: calc(100dvh - 64px);}
 }
 
-/* First paint mirrors the document shell while modules load. */
-.dds-loading .skeleton,
-.dds-loading-nav .skeleton {
-  margin: 0;
+/* Loading shares the resolved document containers and their responsive rules. */
+#main[data-dds-loading] {pointer-events: none;}
+#main[data-dds-loading] .dds-skeleton-text {
+  display: inline;
+  font: inherit;
+  letter-spacing: inherit;
+  color: transparent !important;
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: dds-document-pulse 1.6s ease-in-out infinite;
 }
-.dds-loading-heading {
-  padding: 30px 0 42px;
+#main[data-dds-loading] :is(svg,img,canvas) {visibility: hidden;}
+#main[data-dds-loading] :is(button,input,select,textarea,.badge,.chip) {
+  color: transparent !important;
+  background: var(--muted) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  caret-color: transparent;
 }
-.dds-loading-title {
-  width: min(460px, 78%);
-  height: 52px;
-  margin-bottom: 22px !important;
-}
-.dds-loading-description {
-  width: min(520px, 92%);
-  height: 20px;
-}
-.dds-loading-entries,
-.dds-loading-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
-}
-.dds-loading-entries {
-  margin-bottom: var(--space-12);
-}
-.dds-loading-entry {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 22px;
-}
-.dds-loading-entry .skeleton:first-child {
-  width: 55%;
-  height: 20px;
-  margin-bottom: 14px;
-}
-.dds-loading-section {
-  width: 170px;
-  height: 24px;
-  margin-bottom: var(--space-5) !important;
-}
-.dds-loading-preview {
-  height: 190px;
-  border-radius: 10px;
-}
-.dds-loading-caption {
-  width: 45%;
-  height: 18px;
-  margin-top: var(--space-4) !important;
-}
-.dds-loading-nav-title {
-  width: 145px;
-  height: 14px;
-  margin-bottom: 30px !important;
-}
-.dds-loading-nav-group {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  padding: 0 12px;
-}
-.dds-loading-nav-group .skeleton {
-  height: 14px;
-  width: 75%;
-}
-.dds-loading-nav-group .skeleton.short {
-  width: 55%;
-}
-.dds-loading-nav-label {
-  width: 85px;
-  height: 10px;
-  margin: 36px 12px 22px !important;
-}
-@media (min-width: 1600px) {
-  .dds-loading-preview {height: 220px;}
-}
-@media (max-width: 1020px) {
-  .dds-loading-entries {grid-template-columns: 1fr;}
-  .dds-loading-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
-  .dds-loading-card:last-child {display: none;}
-}
-@media (max-width: 767px) {
-  .dds-loading-heading {padding: 24px 0 30px;}
-  .dds-loading-title {height: 40px;}
-  .dds-loading-preview {height: 160px;}
-  .dds-loading-entry {padding: 20px 24px;}
-}
+#main[data-dds-loading] :is(input,textarea)::placeholder {color: transparent !important;}
+#main[data-dds-loading] a {color: transparent !important; text-decoration-color: transparent !important;}
+#main[data-dds-loading] :is(.component-preview,.dds-block-thumbnail) {background: var(--muted) !important;}
+#main[data-dds-loading] .component-preview > * {visibility: hidden;}
+#main[data-dds-loading] [style*="background"] {background: var(--muted) !important;}
+@keyframes dds-document-pulse {0%,100% {opacity: .55;}50% {opacity: 1;}}
 
 /* DDS navigation uses action labels; captions remain supporting information. */
 .topbar {

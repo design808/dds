@@ -378,9 +378,9 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "936158d788967528c624a169162a4999cec67216db724710c2b773c4328acdb3",
+      "sha256": "4c3d3162a432ede6c431584fdf8ff84dea2ddc314722e0d03c048a9bdd22d513",
       "retainedRules": 4,
-      "excludedSelectors": 173
+      "excludedSelectors": 156
     },
     {
       "file": "interactions.css",
@@ -2736,7 +2736,7 @@
     },
     {
       "source": "document-layout.css",
-      "selector": ".workspace > #main :is(.entry-card, .dds-loading-entry, .principle,\n  .type-family-panel, .elevation, .anatomy-list > div, .table-wrap,\n  .icon-gallery, .checklist, .color-detail, .color-state-demo, .contrast-example,\n  .content-fit-examples)"
+      "selector": ".workspace > #main :is(.entry-card, .principle,\n  .type-family-panel, .elevation, .anatomy-list > div, .table-wrap,\n  .icon-gallery, .checklist, .color-detail, .color-state-demo, .contrast-example,\n  .content-fit-examples)"
     },
     {
       "source": "document-layout.css",
@@ -2748,107 +2748,39 @@
     },
     {
       "source": "document-layout.css",
-      "selector": ".dds-loading .skeleton"
+      "selector": "#main[data-dds-loading]"
     },
     {
       "source": "document-layout.css",
-      "selector": ".dds-loading-nav .skeleton"
+      "selector": "#main[data-dds-loading] .dds-skeleton-text"
     },
     {
       "source": "document-layout.css",
-      "selector": ".dds-loading-heading"
+      "selector": "#main[data-dds-loading] :is(svg,img,canvas)"
     },
     {
       "source": "document-layout.css",
-      "selector": ".dds-loading-title"
+      "selector": "#main[data-dds-loading] :is(button,input,select,textarea,.badge,.chip)"
     },
     {
       "source": "document-layout.css",
-      "selector": ".dds-loading-description"
+      "selector": "#main[data-dds-loading] :is(input,textarea)::placeholder"
     },
     {
       "source": "document-layout.css",
-      "selector": ".dds-loading-entries"
+      "selector": "#main[data-dds-loading] a"
     },
     {
       "source": "document-layout.css",
-      "selector": ".dds-loading-grid"
+      "selector": "#main[data-dds-loading] :is(.component-preview,.dds-block-thumbnail)"
     },
     {
       "source": "document-layout.css",
-      "selector": ".dds-loading-entries"
+      "selector": "#main[data-dds-loading] .component-preview > *"
     },
     {
       "source": "document-layout.css",
-      "selector": ".dds-loading-entry"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-entry .skeleton:first-child"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-section"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-preview"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-caption"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-nav-title"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-nav-group"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-nav-group .skeleton"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-nav-group .skeleton.short"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-nav-label"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-preview"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-entries"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-grid"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-card:last-child"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-heading"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-title"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-preview"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".dds-loading-entry"
+      "selector": "#main[data-dds-loading] [style*=\"background\"]"
     },
     {
       "source": "document-layout.css",

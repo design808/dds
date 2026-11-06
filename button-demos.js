@@ -1,5 +1,5 @@
-import {renderButton as buttonMarkup} from './ui/button.js?v=dda57a46ecc92c81';
-import {formatHTML} from './format-html.js?v=dda57a46ecc92c81';
+import {renderButton as buttonMarkup} from './ui/button.js?v=fbe7d307629a0ab1';
+import {formatHTML} from './format-html.js?v=fbe7d307629a0ab1';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
