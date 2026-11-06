@@ -93,6 +93,8 @@
 #dds-design-settings .dds-settings-close .icon { width: 22px; height: 22px; }
 #dds-design-settings .dds-settings-close:is(:hover,:focus-visible) { background: var(--muted); color: var(--foreground); }
 #dds-design-settings .dds-settings-body {
+  --settings-scroll-thumb: color-mix(in srgb,var(--text-tertiary) 55%,transparent);
+  --settings-scroll-thumb-hover: color-mix(in srgb,var(--text-tertiary) 80%,transparent);
   flex: 1;
   display: grid;
   align-content: start;
@@ -100,7 +102,34 @@
   min-height: 0;
   overflow: auto;
   overscroll-behavior: contain;
-  padding: 1px;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--settings-scroll-thumb) transparent;
+  padding: 1px 8px 1px 1px;
+}
+#dds-design-settings .dds-settings-body:is(:hover,:focus-within) {
+  scrollbar-color: var(--settings-scroll-thumb-hover) transparent;
+}
+/* Keep a generous native drag area around the slim, rounded thumb. */
+@supports selector(::-webkit-scrollbar) {
+  #dds-design-settings .dds-settings-body,
+  #dds-design-settings .dds-settings-body:is(:hover,:focus-within) {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar { width: 10px; height: 10px; }
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar-track,
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar-corner { background: transparent; }
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar-thumb {
+    min-height: 40px;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-color: var(--settings-scroll-thumb);
+    background-clip: padding-box;
+  }
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar-thumb:hover { background-color: var(--settings-scroll-thumb-hover); }
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar-thumb:active { background-color: var(--text-tertiary); }
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
 }
 #dds-design-settings .dds-settings-section {
   display: grid;
@@ -360,6 +389,11 @@
   #dds-design-settings .dds-settings-profile-summary > div { grid-template-columns: minmax(0,1fr); gap: 4px; }
 }
 @media(forced-colors:active) {
+  #dds-design-settings .dds-settings-body,
+  #dds-design-settings .dds-settings-body:is(:hover,:focus-within) { scrollbar-color: auto; }
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar-thumb,
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar-thumb:hover,
+  #dds-design-settings .dds-settings-body::-webkit-scrollbar-thumb:active { background-color: CanvasText; }
   #dds-design-settings input.dds-settings-hue { border: 1px solid ButtonText; }
   #dds-design-settings input.dds-settings-hue::-webkit-slider-thumb { background: Highlight; border-color: ButtonText; }
   #dds-design-settings input.dds-settings-hue::-moz-range-thumb { background: Highlight; border-color: ButtonText; }
