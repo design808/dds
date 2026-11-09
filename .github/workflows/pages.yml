@@ -1,0 +1,53 @@
+# Publishes main at /dds/ and the v2 branch at /dds/v2/ in one GitHub Pages deployment.
+# Requires Settings > Pages > Source: GitHub Actions.
+name: Pages (DDS and V2)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+      - name: Check out v2
+        uses: actions/checkout@v4
+        with:
+          ref: v2
+          path: v2src
+      - name: Assemble site
+        run: |
+          rm -rf site/.git site/.github
+          mkdir -p site/v2
+          rsync -a --exclude '.git' --exclude '.github' --exclude 'releases' v2src/ site/v2/
+          test -f site/index.html
+          test -f site/v2/index.html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
