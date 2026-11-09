@@ -9,11 +9,11 @@ export function bootDocumentLoading(data, templates, canvasTextTokens) {
   try{if(localStorage.getItem('deep-theme')==='dark')theme='dark';}catch{}
   root.dataset.theme=theme;
   const releaseBadge=doc.querySelector('[data-dds-release]');
-  if(releaseBadge){releaseBadge.textContent='v'+data.release;releaseBadge.setAttribute('aria-label','DDS 버전 '+data.release);}
+  if(releaseBadge){releaseBadge.textContent='v2.0.0-alpha.1';releaseBadge.setAttribute('aria-label','DDS 2.0.0-alpha.1 시안, '+data.release+' 기반');}
   root.dataset.ddsBootstrap='';
   const font=value=>data.fonts.find(item=>item.value===value)||data.fonts[0];
   const bodyFont=font(settings.bodyFont),headingFont=font(settings.headingFont);
-  const storedBackground=typeof settings.pageBackground==='string'&&/^#[a-f\d]{6}$/i.test(settings.pageBackground)?settings.pageBackground:'#FDFDFD';
+  const storedBackground=typeof settings.pageBackground==='string'&&/^#[a-f\d]{6}$/i.test(settings.pageBackground)?settings.pageBackground:'#FFFFFF';
   const canvasTokens=canvasTextTokens({pageBackground:storedBackground},theme==='dark');
   const preferenceStyle=doc.createElement('style');
   preferenceStyle.id='dds-bootstrap-preferences';

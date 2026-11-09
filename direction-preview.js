@@ -62,7 +62,7 @@ export async function applyDirection(doc,profile,theme='light'){
     ['--page-background','--workspace-background','--text-tertiary'].map(name=>[name,valuesByRole[name]])
   );
   if(font!=='pretendard')declarations['--font-sans']=`'${families[font]}','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif`;
-  declarations['--font-heading']=headingFont==='pretendard'?"'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif":`'${families[headingFont]}','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif`;
+  declarations['--font-heading']=headingFont==='pretendard'?"Figtree,'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif":`'${families[headingFont]}','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif`;
   let values=doc.getElementById('dds-direction-values');
   if(!values){values=doc.createElement('style');values.id='dds-direction-values';doc.head.append(values);}
   values.textContent='html.dds-direction-preview{'+Object.entries(declarations).map(([name,value])=>name+':'+value).join(';')+'}';

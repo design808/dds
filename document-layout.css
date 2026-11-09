@@ -2,7 +2,7 @@
 .workspace > .site-footer {align-items:center;gap:var(--space-4);flex-wrap:wrap;}
 .workspace {
   min-height: calc(100dvh - 72px);
-  background: var(--page-background, #fdfdfd);
+  background: var(--page-background, #ffffff);
 }
 
 /* Gallery cards keep the preview and its name inside one document-only surface. */

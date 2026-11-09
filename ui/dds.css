@@ -1747,3 +1747,121 @@ font-size: var(--type-code-size);
 line-height: var(--type-code-line-height);
 font-weight: var(--type-code-weight);
 letter-spacing: var(--type-code-tracking);}
+
+/* ==========================================================================
+   DDS 2.0.0-alpha.1: Astryx neutral skin (look-and-feel prototype)
+   Measured from @astryxdesign/core 0.7.11 + theme-neutral 0.7.11 rendered in Chromium.
+   Values: MIT, Copyright (c) Meta Platforms, Inc. See THIRD_PARTY_NOTICES.md.
+   Selectors are DDS selectors; this block only restyles, it does not change markup or behavior.
+   ========================================================================== */
+
+/* Base controls: 32px fields, 10px element radius, 1px #d4d4d4 border, accent focus. */
+.dds-ui input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),
+.dds-ui select{min-height:var(--control-height-md);padding:5px 8px;border-radius:10px;font-size:14px;line-height:20px}
+.dds-ui textarea{padding:4px 8px;border-radius:10px;font-size:14px;line-height:20px;min-height:72px}
+.dds-ui :is(input:not([type=checkbox]):not([type=radio]),select,textarea):focus-visible{outline:none;border-color:var(--primary);box-shadow:inset 0 0 0 2px var(--control-border)}
+.dds-ui .field{gap:4px}
+.dds-ui .field label,.dds-ui .field legend{font-size:14px;line-height:20px;font-weight:500;color:var(--text-secondary)}
+.dds-ui .search-field{border-radius:10px;padding:0 8px;min-height:var(--control-height-md)}
+.dds-ui .search-field:focus-within{border-color:var(--primary);box-shadow:inset 0 0 0 2px var(--control-border)}
+.dds-ui .search-field input:focus-visible{box-shadow:none}
+
+/* Buttons: primary #1b1b1b, secondary 6% black fill, ghost transparent, 500 weight, no border. */
+.dds-ui .dds-button{--dds-button-weight:var(--font-weight-medium);--dds-button-padding-inline:12px;--dds-button-icon-size:16px;--dds-button-border:transparent;border-width:0;border-radius:10px}
+.dds-ui .dds-button[data-control-size=sm]{--dds-button-font-size:14px;--dds-button-line-height:20px;--dds-button-padding-inline:12px;--dds-button-icon-size:16px}
+.dds-ui .dds-button[data-control-size=lg]{--dds-button-font-size:14px;--dds-button-line-height:20px;--dds-button-padding-inline:12px;--dds-button-icon-size:16px}
+.dds-ui .dds-button{padding:calc((var(--dds-button-height) - var(--dds-button-line-height)) / 2) var(--dds-button-padding-inline)}
+.dds-ui .dds-button[data-color=assistive],
+.dds-ui .dds-button[data-variant=outlined],
+.dds-ui .dds-button[data-variant=outlined][data-color=assistive]{
+  --dds-button-weight:var(--font-weight-medium);
+  --dds-button-background:color-mix(in srgb,var(--text-primary) 6%,transparent);
+  --dds-button-hover-background:color-mix(in srgb,var(--text-primary) 11%,transparent);
+  --dds-button-active-background:color-mix(in srgb,var(--text-primary) 16%,transparent);
+  --dds-button-foreground:var(--text-primary);
+  --dds-button-border:transparent}
+.dds-ui .dds-button[data-variant=text],.dds-ui .dds-button[data-variant=ghost]{--dds-button-background:transparent;--dds-button-hover-background:color-mix(in srgb,var(--text-primary) 5%,transparent);--dds-button-foreground:var(--text-primary)}
+.dds-ui .dds-button[data-color=negative]:not([data-variant=outlined]){--dds-button-background:#c9303a;--dds-button-hover-background:#b52a33;--dds-button-active-background:#a1252d;--dds-button-foreground:#ffffff}
+.dds-ui .dds-button:is(:disabled,[aria-disabled=true]):not([aria-busy=true]){opacity:.5}
+.dds-ui .dds-button:focus-visible{outline:2px solid var(--ring);outline-offset:3px}
+.dds-ui .btn{min-height:var(--control-height-md);padding:6px 12px;border:0;border-radius:10px;font-size:14px;line-height:20px;font-weight:500;background:color-mix(in srgb,var(--text-primary) 6%,transparent);color:var(--text-primary)}
+.dds-ui .btn:hover:not(:disabled){background:color-mix(in srgb,var(--text-primary) 11%,transparent);border-color:transparent}
+.dds-ui .btn.primary{background:var(--primary);color:var(--primary-foreground)}
+.dds-ui .btn.primary:hover:not(:disabled){background:var(--primary-hover)}
+.dds-ui .btn.ghost{background:transparent}
+.dds-ui button:disabled{opacity:.5}
+
+/* Navigation links: 14px/500 in secondary ink, current item in primary ink. */
+.dds-ui .dds-nav-link,.dds-ui .dds-nav-control{color:var(--text-secondary);font-weight:500}
+.dds-ui .dds-nav-link[aria-current]:not([aria-current=false]),
+.dds-ui .dds-nav-control[aria-current]:not([aria-current=false]){color:var(--text-primary)}
+.dds-ui .dds-nav-link:focus-visible,.dds-ui .dds-nav-control:focus-visible{outline:2px solid var(--ring);outline-offset:3px}
+.dds-ui a:hover{color:var(--text-primary)}
+
+/* Cards: white, 1px 8% border, 12px radius, 12px padding, no shadow. */
+.dds-ui .dds-content-card{padding:12px;border-radius:12px;box-shadow:none;background:var(--background)}
+[data-theme=dark] .dds-ui .dds-content-card{background:var(--background)}
+.dds-ui .dds-card-link::after{border-radius:12px}
+.dds-ui .dds-content-card[data-interactive=true]:hover,
+.dds-ui .dds-content-card:has(> .dds-card-title > .dds-card-link,> div > .dds-card-title > .dds-card-link):hover{box-shadow:0 2px 4px oklch(0 0 0 / 5%),0 4px 8px oklch(0 0 0 / 10%);transform:none}
+.dds-ui .dds-content-card:has(.dds-card-link:focus-visible),.dds-ui .dds-content-card[data-interactive=true]:focus-visible{border-color:var(--primary);box-shadow:inset 0 0 0 1px var(--primary)}
+.dds-ui .skeleton-card,.dds-ui .dds-nav-details{border-radius:12px}
+
+/* Badges and statuses: 20px pills, 12px/500; tones are solid fills. */
+.dds-ui .badge,.dds-ui .dds-status,.dds-ui .dds-collection-count{min-height:20px;padding:0 8px;border:0;border-radius:9999px;font-size:12px;line-height:20px;font-weight:500;background:#e2e2e2;color:#1b1b1b}
+[data-theme=dark] .dds-ui :is(.badge,.dds-status,.dds-collection-count){background:#303030;color:#d4d4d4}
+.dds-ui :is(.badge.success,.dds-status[data-status=complete]){background:#198100;color:#ffffff}
+.dds-ui :is(.badge.info,.dds-status[data-status=pending]){background:#0074e2;color:#ffffff}
+.dds-ui :is(.badge.warning,.dds-status[data-status=draft]){background:#ffce2f;color:#111111}
+.dds-ui :is(.badge.danger,.dds-status[data-status=error]){background:#c9303a;color:#ffffff}
+[data-theme=dark] .dds-ui :is(.badge.success,.dds-status[data-status=complete]){background:#64af4c;color:#111111}
+[data-theme=dark] .dds-ui :is(.badge.info,.dds-status[data-status=pending]){background:#6d9cfe;color:#111111}
+[data-theme=dark] .dds-ui :is(.badge.danger,.dds-status[data-status=error]){background:#ff705d;color:#111111}
+.dds-ui .badge.soft{background:#e2e2e2;color:#1b1b1b}
+.dds-ui .dds-status>.icon,.dds-ui .dds-status>svg{width:12px;height:12px}
+.dds-ui .chip{border:0;border-radius:10px;min-height:28px;padding:4px 12px;font-size:14px;font-weight:500;background:color-mix(in srgb,var(--text-primary) 6%,transparent)}
+.dds-ui .chip.selected{background:var(--primary);color:var(--primary-foreground)}
+
+/* Alerts follow Banner: 12px radius, 12/16 padding, muted fill with dark ink. */
+.dds-ui .alert{border-radius:12px;padding:12px 16px;font-size:12px;line-height:20px;border:0}
+.dds-ui .alert :is(strong,b,h3,h4,.dds-feedback-title){font-size:14px;line-height:20px;font-weight:600}
+.dds-ui .alert.info,.dds-ui .alert.dds-variant-feedback{--dds-tone-ink:#003978;--dds-tone-soft:#b9d7ff;--dds-tone-edge:transparent;background:#b9d7ff;color:#003978}
+[data-theme=dark] .dds-ui :is(.alert.info,.alert.dds-variant-feedback){--dds-tone-ink:#a1caff;--dds-tone-soft:#88bcff3d;background:#88bcff3d;color:#a1caff}
+
+/* Tables: no frame, 14px, header in secondary ink, 8/12 cell padding, 8% row rules. */
+.dds-ui .dds-table-scroll,.dds-ui .table-wrap{border:0;border-radius:0;background:transparent}
+.dds-ui .dds-data-table,.dds-ui .table-wrap table{font-size:14px;line-height:21px;background:transparent}
+.dds-ui .dds-data-table :is(th,td),.dds-ui .table-wrap :is(th,td){padding:8px 12px;border-bottom:1px solid var(--border)}
+.dds-ui .dds-data-table th,.dds-ui .table-wrap th{background:transparent;color:var(--text-secondary);font-weight:600}
+
+/* Segmented control: 6% track, 4px inset, white selected pill, no shadow. */
+.dds-ui .dds-segmented{gap:0;padding:4px;border-radius:10px;background:color-mix(in srgb,var(--text-primary) 6%,transparent)}
+.dds-ui .dds-segmented .dds-choice{min-height:24px;padding:2px 12px;border-radius:6px;font-size:14px;line-height:20px;font-weight:500;color:var(--text-secondary)}
+.dds-ui .dds-segmented label:has(:checked){background:var(--background);box-shadow:none;color:var(--text-primary);font-weight:600}
+[data-theme=dark] .dds-ui .dds-segmented label:has(:checked){background:#474747}
+
+/* Checkbox and radio: 24px, 6px or round, filled accent when checked. */
+.dds-ui input[type=checkbox]:not([role=switch]),.dds-ui input[type=radio]{width:24px;height:24px;border:1px solid var(--control-border);border-radius:6px}
+.dds-ui input[type=radio]{border-radius:50%}
+.dds-ui input[type=radio]:checked:after{width:10px;height:10px}
+.dds-ui input[type=checkbox]:not([role=switch]):checked,.dds-ui input[type=radio]:checked{border-color:var(--primary)}
+
+/* Avatar: 36px neutral disc. */
+.dds-ui .avatar,.dds-ui .avatar.orange,.dds-ui .avatar.dark{width:36px;height:36px;background:color-mix(in srgb,var(--text-primary) 6%,transparent);color:var(--text-primary);font-size:14.4px;font-weight:500}
+
+/* Pagination, breadcrumbs, accordion, empty state, skeleton, upload, lists. */
+.dds-ui .pagination{gap:2px;font-size:14px}
+.dds-ui .pagination :is(a,button){min-width:32px;min-height:32px;border-radius:10px;font-weight:500}
+.dds-ui .pagination [aria-current=page]{background:color-mix(in srgb,var(--text-primary) 6%,transparent);color:var(--text-primary);border-color:transparent}
+.dds-ui .breadcrumbs{gap:4px;font-size:14px;line-height:20px;color:var(--text-secondary)}
+.dds-ui .breadcrumbs [aria-current]{color:var(--text-primary);font-weight:600}
+.dds-ui .accordion{border:0;border-radius:0;background:transparent}
+.dds-ui .accordion details+details{border-top:1px solid var(--border)}
+.dds-ui .accordion summary{padding:12px 0;font-size:17px;line-height:24px;font-weight:600}
+.dds-ui .accordion p{padding:0 0 12px;font-size:14px;line-height:20px;color:var(--text-primary)}
+.dds-ui .empty-state h3,.dds-ui .dds-fallback>h3{font-size:17px;line-height:24px;font-weight:600}
+.dds-ui .empty-state p,.dds-ui .dds-fallback>p{font-size:14px;line-height:20px;color:var(--text-secondary)}
+.dds-ui .skeleton{background:var(--surface);border-radius:12px}
+.dds-ui .upload-zone{border-radius:12px;border-color:var(--control-border)}
+.dds-ui .dds-list-link{border-radius:10px;padding:8px}
+.dds-ui .dds-section-header .dds-section-heading{font-size:17px;line-height:24px;font-weight:700}

@@ -26,7 +26,7 @@ import {colorPage} from './color-system.js?v=485f1f5fc9ef459b';
 import {components,groups,patterns,foundations} from './catalog.js?v=485f1f5fc9ef459b';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const releaseBadge=document.querySelector('[data-dds-release]');
-if(releaseBadge){releaseBadge.textContent='v'+ddsRelease;releaseBadge.setAttribute('aria-label','DDS 버전 '+ddsRelease);}
+if(releaseBadge){releaseBadge.textContent='v2.0.0-alpha.1';releaseBadge.setAttribute('aria-label','DDS 2.0.0-alpha.1 시안, '+ddsRelease+' 기반');}
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 $('#search-open').setAttribute('aria-label','문서 검색');
 $('#search-open').setAttribute('data-tooltip','Ctrl K');

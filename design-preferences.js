@@ -4,19 +4,19 @@ import {PROFILE_STORAGE_KEY,createDesignProfile,parseDesignProfile,settingsEqual
 const STORAGE_KEY='dds-design-settings-v1';
 
 export const DEFAULT_SETTINGS=Object.freeze({
-  primary:'#FFAD31',
+  primary:'#1B1B1B',
   colorMode:'brand',
   secondary:'#345BFF',
   accent:'#8B3DFF',
   positive:'#00B881',
-  pageBackground:'#FDFDFD',
-  pageBackgroundDark:'#17191C',
+  pageBackground:'#FFFFFF',
+  pageBackgroundDark:'#1B1B1B',
   headingFont:'pretendard',
   bodyFont:'pretendard'
 });
 
 export const FONT_OPTIONS=Object.freeze([
-  Object.freeze({value:'pretendard',label:'프리텐다드 · Pretendard',family:"'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
+  Object.freeze({value:'pretendard',label:'피그트리 + 프리텐다드 · Figtree + Pretendard',family:"Figtree,'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
   Object.freeze({value:'wanted',label:'원티드 산스 · Wanted Sans',family:"'DDS Wanted Sans','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
   Object.freeze({value:'paperlogy',label:'페이퍼로지 · Paperlogy',family:"'DDS Paperlogy','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
   Object.freeze({value:'plex',label:'아이비엠 플렉스 산스 · IBM Plex Sans KR',family:"'DDS Plex KR','Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif"}),
@@ -27,6 +27,7 @@ export const FONT_OPTIONS=Object.freeze([
 ]);
 
 export const PRIMARY_PRESETS=Object.freeze([
+  Object.freeze({value:'#1B1B1B',label:'뉴트럴'}),
   Object.freeze({value:'#FFAD31',label:'오렌지'}),
   Object.freeze({value:'#007AFF',label:'블루'}),
   Object.freeze({value:'#4296D8',label:'스카이'}),

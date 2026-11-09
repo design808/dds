@@ -62,15 +62,15 @@ const functionalStroke = (seed,surfaces,dark) => {
  * Self-contained so the document builder can embed this exact function.
  */
 export function canvasTextTokens(settings={},dark=false){
-  const value=dark?'#17191c':settings?.pageBackground||'#ffffff';
+  const value=dark?'#1b1b1b':settings?.pageBackground||'#ffffff';
   if(typeof value!=='string'||!/^#[0-9a-f]{6}$/i.test(value))throw new TypeError('화면 배경은 6자리 HEX 값이어야 합니다.');
   const background=value.toLowerCase();
   const luminance=color=>[1,3,5].map(index=>parseInt(color.slice(index,index+2),16)/255)
     .map(channel=>channel<=.04045?channel/12.92:((channel+.055)/1.055)**2.4)
     .reduce((sum,channel,index)=>sum+channel*[.2126,.7152,.0722][index],0);
   const contrast=color=>(Math.max(luminance(color),luminance(background))+.05)/(Math.min(luminance(color),luminance(background))+.05);
-  const seed=dark?[148,157,170]:[107,114,124];
-  let tertiary=dark?'#949daa':'#6b727c';
+  const seed=dark?[158,158,158]:[106,106,106];
+  let tertiary=dark?'#9e9e9e':'#6a6a6a';
   for(let delta=0;delta<=255;delta++){
     const candidate='#'+seed.map(channel=>Math.max(0,Math.min(255,channel+(dark?delta:-delta))).toString(16).padStart(2,'0')).join('');
     if(contrast(candidate)>=4.5){tertiary=candidate;break;}
@@ -81,10 +81,10 @@ export function canvasTextTokens(settings={},dark=false){
 
 export function palette(profile,dark){
   // The page canvas is independent from cards, controls and popovers.
-  const surface=dark?'#17191c':'#ffffff';
+  const surface=dark?'#1b1b1b':'#ffffff';
   const canvas=canvasTextTokens(profile.colors,dark);
   const background=canvas['--page-background'];
-  const muted=dark?'#292d33':'#f1f2f4';
+  const muted=dark?'#303030':'#f1f1f1';
   const primary=hex(profile.colors?.primary||'#ffad31');
   const secondary=hex(profile.colors?.secondary||primary);
   const accent=hex(profile.colors?.accent||secondary);
