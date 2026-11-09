@@ -1,16 +1,16 @@
 import {PROFILE_STORAGE_KEY,createDesignProfile,parseDesignProfile,settingsEqual} from './design-profile.js?v=485f1f5fc9ef459b';
 
 // Local display preferences. These values never change the authored DDS tokens.
-const STORAGE_KEY='dds-design-settings-v1';
+const STORAGE_KEY='dds-v2-design-settings-v1';
 
 export const DEFAULT_SETTINGS=Object.freeze({
-  primary:'#1B1B1B',
+  primary:'#FFAD31',
   colorMode:'brand',
   secondary:'#345BFF',
   accent:'#8B3DFF',
   positive:'#00B881',
-  pageBackground:'#FFFFFF',
-  pageBackgroundDark:'#1B1B1B',
+  pageBackground:'#FDFDFD',
+  pageBackgroundDark:'#17191C',
   headingFont:'pretendard',
   bodyFont:'pretendard'
 });
@@ -27,7 +27,6 @@ export const FONT_OPTIONS=Object.freeze([
 ]);
 
 export const PRIMARY_PRESETS=Object.freeze([
-  Object.freeze({value:'#1B1B1B',label:'뉴트럴'}),
   Object.freeze({value:'#FFAD31',label:'오렌지'}),
   Object.freeze({value:'#007AFF',label:'블루'}),
   Object.freeze({value:'#4296D8',label:'스카이'}),

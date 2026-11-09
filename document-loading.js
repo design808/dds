@@ -4,7 +4,7 @@ export function bootDocumentLoading(data, templates, canvasTextTokens) {
   const doc=document, root=doc.documentElement, main=doc.getElementById('main');
   if(!main)return;
   const read=key=>{try{return JSON.parse(localStorage.getItem(key));}catch{return null;}};
-  const settings=read('dds-design-settings-v1')||{};
+  const settings=read('dds-v2-design-settings-v1')||{};
   let theme='light';
   try{if(localStorage.getItem('deep-theme')==='dark')theme='dark';}catch{}
   root.dataset.theme=theme;
@@ -13,7 +13,7 @@ export function bootDocumentLoading(data, templates, canvasTextTokens) {
   root.dataset.ddsBootstrap='';
   const font=value=>data.fonts.find(item=>item.value===value)||data.fonts[0];
   const bodyFont=font(settings.bodyFont),headingFont=font(settings.headingFont);
-  const storedBackground=typeof settings.pageBackground==='string'&&/^#[a-f\d]{6}$/i.test(settings.pageBackground)?settings.pageBackground:'#FFFFFF';
+  const storedBackground=typeof settings.pageBackground==='string'&&/^#[a-f\d]{6}$/i.test(settings.pageBackground)?settings.pageBackground:'#FDFDFD';
   const canvasTokens=canvasTextTokens({pageBackground:storedBackground},theme==='dark');
   const preferenceStyle=doc.createElement('style');
   preferenceStyle.id='dds-bootstrap-preferences';

@@ -1,0 +1,568 @@
+/* ==========================================================================
+   DDS 2.0.0-alpha.1: Astryx look for the DeepResume / DeepInterview service screens
+   Shape, size, type, spacing, elevation and motion follow Astryx neutral
+   (@astryxdesign/core 0.7.11, MIT, Copyright (c) Meta Platforms, Inc.); see astryx-v2-spec.md.
+   Overlay only: loads last on every prototype page and restyles the page CSS without
+   editing it. Every color is a DDS token, so the design settings panel keeps control
+   of brand color, canvas, fonts and light/dark.
+   ========================================================================== */
+
+/* ---------- Base: focus ring, links, icons ---------- */
+.dds-service :is(button,a,summary,[tabindex]):focus-visible{outline:var(--astryx-focus);outline-offset:3px}
+.dds-service .skip-link{border:0;border-radius:var(--astryx-radius-element);padding:var(--astryx-space-2) var(--astryx-space-3)}
+.dds-service .skip-link:focus{box-shadow:var(--astryx-shadow-med)}
+
+/* ---------- Page titles: Heading 1 (24/32 600); marketing heroes keep the display scale ---------- */
+:root .dds-service :is(.cover-heading h1,#mypage-content>h1,.resume-heading h1,.di-page-heading h1,.sample-heading h1){font-size:var(--type-heading-1-size);line-height:var(--type-heading-1-line-height);font-weight:var(--font-weight-semibold);letter-spacing:0;color:var(--text-strong)}
+:root .dds-service .home-hero h1{font-weight:var(--type-display-1-weight)}
+:root .dds-service .home-hero h1 :is(strong,.home-title-brand){font-weight:var(--font-weight-semibold)}
+
+/* ---------- Top navigation (Astryx TopNav) ---------- */
+:root .dds-service .product-header{box-shadow:none}
+:root .dds-service .header-inner{min-height:64px}
+:root .dds-service .product-header nav{gap:var(--astryx-space-1)}
+:root .dds-service .product-header nav>a,
+:root .dds-service .product-header .gnb-trigger,
+:root .dds-service .product-header nav>button[data-logout]{min-height:var(--astryx-size-md);padding:6px var(--astryx-space-3);gap:var(--astryx-space-1);border:0;border-radius:var(--astryx-radius-element);background:transparent;color:var(--text-secondary);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service .product-header nav>a:hover,
+:root .dds-service .product-header .gnb-trigger:hover,
+:root .dds-service .product-header nav>button[data-logout]:hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .product-header .gnb-trigger[aria-expanded=true]{background:var(--astryx-fill);color:var(--text-primary)}
+:root .dds-service .product-header :is(nav>a,.gnb-trigger)[aria-current]:not([aria-current=false]){background:var(--astryx-fill);color:var(--text-primary);font-weight:var(--font-weight-semibold)}
+:root .dds-service .product-header :is(nav>a,.gnb-trigger)[aria-current]:not([aria-current=false]):hover{background:var(--astryx-fill-hover);color:var(--text-primary)}
+:root .dds-service .product-header .gnb-trigger .icon{width:16px;height:16px;color:var(--text-secondary)}
+:root .dds-service .product-header nav>.di-link{min-height:var(--astryx-size-md);margin-inline-start:var(--astryx-space-2);padding:6px var(--astryx-space-3);border-radius:var(--astryx-radius-element);background:var(--primary);color:var(--primary-foreground);font-weight:var(--font-weight-medium)}
+:root .dds-service .product-header nav>.di-link:hover{background:var(--primary-hover);color:var(--primary-foreground)}
+:root .dds-service .product-header nav>.di-link:active{background:var(--primary-active)}
+:root .dds-service #language-menu{width:var(--astryx-size-md);height:var(--astryx-size-md);min-height:var(--astryx-size-md);padding:6px;border-radius:var(--astryx-radius-element)}
+:root .dds-service #language-menu:hover{background:var(--astryx-overlay-hover)}
+:root .dds-service #language-menu img{width:20px;height:20px}
+
+/* GNB dropdown: Astryx menu (radius 12, padding 4, gap 2, medium elevation; items 32px, radius 8) */
+:root .dds-service .gnb-submenu{display:grid;gap:var(--astryx-space-0-5);top:calc(100% + var(--astryx-space-1));min-width:min(180px,calc(100vw - 40px));padding:var(--astryx-space-1);border:0;border-radius:var(--astryx-radius-container);background:var(--background);box-shadow:var(--astryx-shadow-med)}
+:root .dds-service .gnb-submenu::before{top:calc(-1 * var(--astryx-space-1) - 1px);height:calc(var(--astryx-space-1) + 1px)}
+:root .dds-service .gnb-submenu :is(a,button){min-height:var(--astryx-size-md);padding:6px var(--astryx-space-2);gap:var(--astryx-space-2);border-radius:var(--astryx-radius-item);background:transparent;color:var(--text-primary);font-size:14px;line-height:20px;font-weight:var(--font-weight-regular)}
+:root .dds-service .gnb-submenu :is(a,button):is(:hover,:focus-visible){background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .gnb-submenu :is(a,button):focus-visible{outline:var(--astryx-focus);outline-offset:-2px}
+:root .dds-service .gnb-submenu :is(a,button)[aria-current]:not([aria-current=false]){background:var(--astryx-fill);color:var(--text-primary);font-weight:var(--font-weight-medium)}
+
+/* Compact header and the mobile menu sheet */
+@media(max-width:1180px){
+  :root .dds-service .header-inner{min-height:56px}
+  :root .dds-service #mobile-nav{width:var(--astryx-size-lg);height:var(--astryx-size-lg);min-width:var(--astryx-size-lg);min-height:var(--astryx-size-lg);padding:var(--astryx-space-2);border-radius:var(--astryx-radius-element);color:var(--text-primary)}
+  :root .dds-service #mobile-nav:hover,:root .dds-service #mobile-nav[aria-expanded=true]{background:var(--astryx-overlay-hover)}
+  :root .dds-service #mobile-nav .icon{width:20px;height:20px}
+  :root .dds-service .product-header.nav-open nav{gap:var(--astryx-space-0-5);padding:var(--astryx-space-2) var(--astryx-space-4) var(--astryx-space-4);max-height:calc(100dvh - 56px);box-shadow:none}
+  :root .dds-service .product-header nav>a,
+  :root .dds-service .product-header .gnb-trigger.dds-nav-control,
+  :root .dds-service .product-header nav>button[data-logout]{min-height:var(--astryx-size-lg);padding:var(--astryx-space-2) var(--astryx-space-3)}
+  :root .dds-service .gnb-submenu{gap:var(--astryx-space-0-5);margin:var(--astryx-space-0-5) 0 var(--astryx-space-2);padding:0 0 0 var(--astryx-space-3);border-radius:0;background:transparent;box-shadow:none}
+  :root .dds-service .gnb-submenu :is(a,button){min-height:var(--astryx-size-lg);padding:var(--astryx-space-2) var(--astryx-space-3);color:var(--text-secondary)}
+  :root .dds-service .product-header nav>.di-link{width:max-content;margin:var(--astryx-space-3) 0 0;padding:var(--astryx-space-2) var(--astryx-space-3)}
+}
+
+/* ---------- Footer ---------- */
+:root .dds-service #appearance-toggle{width:var(--astryx-size-md);height:var(--astryx-size-md);min-width:var(--astryx-size-md);min-height:var(--astryx-size-md);padding:var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-element);background:var(--astryx-fill);color:var(--text-primary)}
+:root .dds-service #appearance-toggle:hover{background:var(--astryx-fill-hover);color:var(--text-primary)}
+:root .dds-service #appearance-toggle:active{background:var(--astryx-fill-pressed)}
+:root .dds-service #appearance-toggle>.icon{width:16px;height:16px}
+:root .dds-service .home-footer-links a:hover,:root .dds-service .home-contact a:hover,:root .dds-service .home-social a:hover{color:var(--text-primary);text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- Buttons: 32px, radius 10, 14/20 500, no border ---------- */
+:root .dds-service .btn:not(span){display:inline-flex;align-items:center;justify-content:center;min-height:var(--astryx-size-md);padding:6px var(--astryx-space-3);gap:var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-element);background:var(--astryx-fill);color:var(--text-primary);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium);letter-spacing:0;box-shadow:none;transform:none}
+:root .dds-service .btn:not(span):hover:not(:disabled){background:var(--astryx-fill-hover);color:var(--text-primary)}
+:root .dds-service .btn:not(span):active:not(:disabled){background:var(--astryx-fill-pressed)}
+:root .dds-service .btn:not(span):disabled{opacity:.5}
+:root .dds-service .btn:not(span) .icon{width:16px;height:16px}
+:root .dds-service .btn.u-btn-primary,:root .dds-service .btn.primary{background:var(--primary);color:var(--primary-foreground);font-weight:var(--font-weight-medium)}
+:root .dds-service .btn.u-btn-primary:hover:not(:disabled),:root .dds-service .btn.primary:hover:not(:disabled){background:var(--primary-hover);color:var(--primary-foreground)}
+:root .dds-service .btn.u-btn-primary:active:not(:disabled),:root .dds-service .btn.primary:active:not(:disabled){background:var(--primary-active);color:var(--primary-foreground)}
+/* DDS button component (design settings panel; button-system.css is injected after this file) */
+:root .dds-service .dds-button{--dds-button-weight:var(--font-weight-medium);--dds-button-padding-inline:var(--astryx-space-3);--dds-button-icon-size:16px;--dds-button-gap:var(--astryx-space-2);--dds-button-border:transparent;--dds-button-font-size:14px;--dds-button-line-height:20px;--dds-button-tracking:0;border-width:0;border-radius:var(--astryx-radius-element);padding:calc((var(--dds-button-height) - var(--dds-button-line-height)) / 2) var(--dds-button-padding-inline)}
+:root .dds-service .dds-button:is([data-color=assistive],[data-variant=outlined]){--dds-button-background:var(--astryx-fill);--dds-button-hover-background:var(--astryx-fill-hover);--dds-button-active-background:var(--astryx-fill-pressed);--dds-button-foreground:var(--text-primary);--dds-button-border:transparent}
+:root .dds-service .dds-button:is([data-variant=text],[data-variant=ghost]){--dds-button-background:transparent;--dds-button-hover-background:var(--astryx-overlay-hover);--dds-button-active-background:var(--astryx-fill);--dds-button-foreground:var(--text-primary)}
+:root .dds-service .dds-button:focus-visible{outline:var(--astryx-focus);outline-offset:3px}
+:root .dds-service .dds-button:is(:disabled,[aria-disabled=true]):not([aria-busy=true]){opacity:.5}
+/* Page-level actions use the large (36px) size */
+:root .dds-service :is(.form-completion,.resume-completion,.session-actions,.di-dialog-actions,.mobile-actions,.sample-actions,.sample-heading) .btn:not(span),
+:root .dds-service :is(.di-start,#dialog-confirm){min-height:var(--astryx-size-lg);padding:var(--astryx-space-2) var(--astryx-space-3)}
+:root .dds-service #dialog-confirm{margin-top:var(--astryx-space-4)}
+:root .dds-service .session-actions .btn:not(span){min-width:112px}
+
+/* Marketing hero calls to action (home, home-independent) */
+:root .dds-service :is(.home-button,.hero-actions .button){min-height:var(--astryx-size-lg);padding:var(--astryx-space-2) var(--astryx-space-4);gap:var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-element);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service :is(.home-button,.hero-actions .button) .icon{width:16px;height:16px}
+:root .dds-service :is(.home-introduction,.hero-secondary,.text-link,.header-start){min-height:var(--astryx-size-lg);padding:var(--astryx-space-2) var(--astryx-space-3);gap:var(--astryx-space-2);border-radius:var(--astryx-radius-element);color:var(--text-primary);font-weight:var(--font-weight-medium)}
+:root .dds-service :is(.home-introduction,.hero-secondary,.text-link):hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service :is(.home-introduction,.hero-secondary,.text-link,.header-start) .icon{width:16px;height:16px;color:var(--text-secondary)}
+:root .dds-service .text-link{margin-left:calc(-1 * var(--astryx-space-3))}
+:root .dds-service .home-hero-actions,:root .dds-service .hero-actions{gap:var(--astryx-space-2)}
+
+/* Text links */
+:root .dds-service :is(.di-text-link,.list-more){color:var(--brand-ink);font-weight:var(--font-weight-medium);text-decoration:none}
+:root .dds-service :is(.di-text-link,.list-more):hover{color:var(--brand-ink);text-decoration:underline;text-underline-offset:4px}
+:root .dds-service :is(.di-text-link,.list-more) .icon{width:16px;height:16px}
+
+/* ---------- Text fields: 32px, radius 10, 1px control border, accent focus ---------- */
+:root .dds-service #m_title,
+:root .dds-service :is(.question-inputs input,.resume-title>input,.resume-field input:not([type=file],[type=hidden],[type=checkbox],[type=radio]),.di-form :is(input:not([type=radio],[type=checkbox]),select),.dialog-field input,.sample-panel :is(input:not([type=checkbox],[type=radio]),select)){padding:0 var(--astryx-space-2);border:1px solid var(--control-border);border-radius:var(--astryx-radius-element);background:var(--background);color:var(--text-primary);box-shadow:none}
+:root .dds-service :is(.resume-field textarea,.di-form textarea,.length-target,.sample-panel textarea,#dds-design-settings textarea){padding:var(--astryx-space-1) var(--astryx-space-2);border:1px solid var(--control-border);border-radius:var(--astryx-radius-element);background:var(--background);color:var(--text-primary);box-shadow:none}
+/* Writing editors keep room to read */
+:root .dds-service :is(.ai-input textarea,.answer-body){padding:var(--astryx-space-3);border:1px solid var(--control-border);border-radius:var(--astryx-radius-element);background:var(--background);box-shadow:none}
+:root .dds-service #m_title:focus-visible,
+:root .dds-service :is(.question-inputs input,.resume-title>input,.resume-field :is(input,textarea),.di-form :is(input,select,textarea),.dialog-field input,.length-target,.ai-input textarea,.answer-body,.sample-panel :is(input,select,textarea)):focus-visible{outline:none;border-color:var(--primary);box-shadow:inset 0 0 0 2px var(--control-border)}
+/* Inputs inside a framed control (date, combo, search) take the frame's border */
+:root .dds-service :is(.resume-field,.di-form,.sample-panel,.dialog-field,.question-inputs) :is(.custom-date,.custom-combo,.custom-search)>input:not([type=hidden]),
+:root .dds-service :is(.resume-field,.di-form,.sample-panel,.dialog-field,.question-inputs) :is(.custom-date,.custom-combo,.custom-search)>input:not([type=hidden]):focus-visible{border:0;border-radius:inherit;background:transparent;box-shadow:none}
+:root .dds-service :is(input,textarea)::placeholder{color:var(--text-placeholder)}
+:root .dds-service .di-form textarea{min-height:160px}
+/* Title fields with an inline help button */
+:root .dds-service .document-name #m_title{padding-right:calc(var(--astryx-size-md) + var(--astryx-space-1))}
+:root .dds-service #title_suggest{top:50%;right:var(--astryx-space-1);width:var(--astryx-size-sm);height:var(--astryx-size-sm);min-height:0;padding:0;border-radius:var(--astryx-radius-inner);background:transparent;color:var(--text-secondary);transform:translateY(-50%)}
+:root .dds-service #title_suggest:hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service #title_suggest .icon{width:16px;height:16px}
+
+/* Compound fields: keyword input group, job/company groups, date */
+:root .dds-service #cover_view :is(.input-group,.d-flex.align-items-center),:root .dds-service .resume-field .custom-date,:root .dds-service .sample-panel .custom-date,:root .dds-service .custom-date{border:1px solid var(--control-border);border-radius:var(--astryx-radius-element);background:var(--background);box-shadow:none}
+:root .dds-service #cover_view :is(.input-group,.d-flex.align-items-center):focus-within,:root .dds-service .resume-field .custom-date:focus-within,:root .dds-service .sample-panel .custom-date:focus-within,:root .dds-service .custom-date:focus-within{border-color:var(--primary);box-shadow:inset 0 0 0 2px var(--control-border)}
+:root .dds-service #cover_view .input-group input{padding:0 var(--astryx-space-2)}
+:root .dds-service #cover_view #hashtagKeyword{height:calc(var(--control-height) - 2px);min-height:0;padding:0 var(--astryx-space-2)}
+:root .dds-service #cover_view #hashtag_btn{width:auto;min-width:0;height:calc(var(--control-height) - 10px);min-height:0;margin:var(--astryx-space-1);padding:0 var(--astryx-space-2)!important;border:0;border-radius:var(--astryx-radius-inner);background:var(--astryx-fill);color:var(--text-primary);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service #cover_view #hashtag_btn:hover{background:var(--astryx-fill-hover)}
+:root .dds-service #cover_view .d-flex.align-items-center{align-items:center}
+
+/* Custom select, date and popups (custom-controls.js) */
+:root .dds-service .custom-trigger{border:1px solid var(--control-border);border-radius:var(--astryx-radius-element);background:var(--background);color:var(--text-primary);box-shadow:none}
+:root .dds-service .custom-trigger>svg,:root .dds-service .control-icon>svg{width:16px;height:16px;color:var(--text-secondary)}
+:root .dds-service .custom-trigger:is(:focus-visible,[aria-expanded=true]){outline:none;border-color:var(--primary);box-shadow:inset 0 0 0 2px var(--control-border)}
+:root .dds-service .control-icon{border-radius:var(--astryx-radius-inner)}
+:root .dds-service .control-icon:hover{background:var(--astryx-overlay-hover)}
+:root .dds-service .control-popup{padding:var(--astryx-space-1);border:0;border-radius:var(--astryx-radius-container);background:var(--background);box-shadow:var(--astryx-shadow-med)}
+:root .dds-service .control-popup .custom-option{min-height:var(--astryx-size-md);padding:6px var(--astryx-space-2);border-radius:var(--astryx-radius-item);font-size:14px;line-height:20px;font-weight:var(--font-weight-regular);color:var(--text-primary)}
+:root .dds-service .control-popup .custom-option:is(:hover,.highlighted):not(:disabled){background:var(--astryx-overlay-hover)}
+:root .dds-service .control-popup .custom-option[aria-selected=true]{background:var(--astryx-fill);color:var(--text-primary);font-weight:var(--font-weight-medium)}
+:root .dds-service .control-popup .custom-option:focus-visible{outline:var(--astryx-focus);outline-offset:-2px}
+:root .dds-service .calendar-popup{padding:var(--astryx-space-3)}
+:root .dds-service .calendar-head b{font-size:14px;line-height:20px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .calendar-nav{width:var(--astryx-size-md);height:var(--astryx-size-md);border-radius:var(--astryx-radius-element)}
+:root .dds-service .calendar-week{color:var(--text-secondary);font-size:12px;line-height:20px;font-weight:var(--font-weight-regular)}
+:root .dds-service .calendar-week,:root .dds-service .calendar-row{gap:2px}
+:root .dds-service .calendar-day{width:var(--astryx-size-sm);height:var(--astryx-size-sm);min-height:var(--astryx-size-sm);margin:auto;padding:0;border:0;border-radius:var(--astryx-radius-full);font-size:14px;line-height:21px;font-weight:var(--font-weight-regular)}
+:root .dds-service .calendar-day:hover:not(:disabled){background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .calendar-day[aria-current=date]:not([aria-selected=true]){background:transparent;color:var(--text-primary);text-decoration:none;box-shadow:inset 0 0 0 1px var(--control-border)}
+:root .dds-service .calendar-day[aria-selected=true]{background:var(--primary);color:var(--primary-foreground);font-weight:var(--font-weight-semibold)}
+:root .dds-service .calendar-day:focus-visible{outline:var(--astryx-focus);outline-offset:1px}
+:root .dds-service .calendar-footer{border-top-color:var(--border)}
+:root .dds-service .calendar-footer button{min-height:var(--astryx-size-sm);padding:0 var(--astryx-space-2);border-radius:var(--astryx-radius-element);font-size:14px;font-weight:var(--font-weight-medium)}
+:root .dds-service .calendar-footer button:hover{background:var(--astryx-overlay-hover)}
+
+/* Checkbox and radio: 24px, radius 6 */
+:root .dds-service input[type=checkbox]:not([role=switch]),:root .dds-service input[type=radio]{width:24px;height:24px;border:1px solid var(--control-border);border-radius:var(--astryx-radius-inner);background:var(--background);accent-color:var(--primary)}
+:root .dds-service input[type=radio]{border-radius:50%}
+:root .dds-service input[type=radio]:checked::after{width:10px;height:10px}
+:root .dds-service :is(input[type=checkbox]:not([role=switch]):checked,input[type=checkbox]:indeterminate,input[type=radio]:checked){border-color:var(--primary);background:var(--primary)}
+:root .dds-service :is(input[type=checkbox],input[type=radio]):focus-visible{outline:var(--astryx-focus);outline-offset:3px}
+
+/* ---------- Chips (24px, radius 6, 12/20 500) and badges (20px, full radius) ---------- */
+:root .dds-service #cover_view .u-list-inline{gap:var(--astryx-space-2)}
+:root .dds-service #cover_view .u-check span,
+:root .dds-service .di-radio>span,
+:root .dds-service .session-topic,
+:root .dds-service .experience-tags span,
+:root .dds-service #cover_view .u-tags-v1{display:inline-flex;align-items:center;justify-content:center;gap:var(--astryx-space-1);min-height:24px;padding:2px var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-inner);background:var(--astryx-fill);color:var(--text-primary);font-size:12px;line-height:20px;font-weight:var(--font-weight-medium);letter-spacing:0;box-shadow:none}
+:root .dds-service #cover_view .u-check:hover span,:root .dds-service .di-radio:hover>span{background:var(--astryx-fill-hover);color:var(--text-primary)}
+:root .dds-service #cover_view .u-check input:checked+span,
+:root .dds-service .di-radio>input:checked+span,
+:root .dds-service .session-topic[aria-current=true]{background:var(--primary);color:var(--primary-foreground)}
+:root .dds-service #cover_view .u-check input:focus-visible+span,:root .dds-service .di-radio>input:focus-visible+span{outline:var(--astryx-focus);outline-offset:2px}
+:root .dds-service .session-topic .icon{width:12px;height:12px}
+:root .dds-service #cover_view .u-tags-v1{padding-inline-end:var(--astryx-space-1)}
+:root .dds-service #cover_view .u-tags-v1 button{display:grid;place-items:center;width:16px;height:16px;border-radius:var(--astryx-radius-full);color:var(--text-secondary)}
+:root .dds-service #cover_view .u-tags-v1 button:hover{background:var(--astryx-fill-hover);color:var(--text-primary)}
+:root .dds-service #cover_view .u-tags-v1 .icon{width:12px;height:12px}
+:root .dds-service #cover_view .hashtag-list{gap:var(--astryx-space-1);margin-bottom:var(--astryx-space-2)}
+:root .dds-service .di-radio-row,:root .dds-service #session-topics,:root .dds-service .experience-tags{gap:var(--astryx-space-2)}
+
+:root .dds-service :is(.beta,.resume-required,.session-question-type,.badge,.dds-badge,.dds-collection-count,.dds-status){display:inline-flex;align-items:center;gap:var(--astryx-space-1);min-height:20px;padding:0 var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-full);background:var(--astryx-badge-fill);color:var(--text-primary);font-size:12px;line-height:20px;font-weight:var(--font-weight-medium);letter-spacing:0;white-space:nowrap}
+:root .dds-service .dds-status>:is(.icon,svg){width:12px;height:12px}
+:root .dds-service :is(.dds-status[data-status=complete],.badge.success){background:var(--success);color:var(--background)}
+:root .dds-service :is(.dds-status[data-status=pending],.badge.info){background:var(--info);color:var(--background)}
+:root .dds-service :is(.dds-status[data-status=draft],.badge.warning){background:var(--warning);color:var(--background)}
+:root .dds-service :is(.dds-status[data-status=error],.badge.danger){background:var(--destructive);color:var(--background)}
+:root .dds-service .cover-heading h1{gap:var(--astryx-space-2)}
+
+/* ---------- Cards and panels: radius 12, 1px hairline, no shadow ---------- */
+:root .dds-service .dds-content-card{border:1px solid var(--border);border-radius:var(--astryx-radius-container);background:var(--background);box-shadow:none;transform:none}
+[data-theme=dark] .dds-service .dds-content-card{background:var(--background)}
+@media(hover:hover) and (pointer:fine){
+  :root .dds-service .dds-content-card:has(> .dds-card-title > .dds-card-link,> div > .dds-card-title > .dds-card-link):hover,
+  :root .dds-service .dds-content-card[data-interactive=true]:hover{border-color:var(--border);box-shadow:var(--astryx-shadow-low);transform:none}
+}
+:root .dds-service .dds-content-card:has(.dds-card-link:focus-visible){border-color:var(--primary);box-shadow:inset 0 0 0 1px var(--primary)}
+:root .dds-service .dds-card-link::after{border-radius:var(--astryx-radius-container)}
+:root .dds-service .form-section.dds-content-card{padding:var(--astryx-space-6)}
+:root .dds-service .form-section>h3{margin-bottom:var(--astryx-space-6)}
+:root .dds-service .question-form.dds-content-card{padding:var(--astryx-space-6)}
+:root .dds-service .resume-section.dds-content-card{padding:var(--astryx-space-6)}
+:root .dds-service .my-document.dds-content-card{padding:var(--astryx-space-4)}
+:root .dds-service .di-introduction.dds-content-card{padding:var(--astryx-space-8) var(--astryx-space-10);border-radius:var(--astryx-radius-container)}
+:root .dds-service :is(#cover_view>.shadow-sm,.sticky>.shadow-sm,.question-card,.write-document-title,.empty-documents,.session-complete-summary,.sample-panel,.sample-features article){border-radius:var(--astryx-radius-container);box-shadow:none}
+:root .dds-service .sample-panel{padding:var(--astryx-space-6)}
+:root .dds-service .sample-features article{padding:var(--astryx-space-4);gap:var(--astryx-space-3)}
+@media(max-width:1000px){:root .dds-service .di-introduction.dds-content-card{padding:var(--astryx-space-8)}}
+@media(max-width:740px){:root .dds-service .sample-panel{padding:var(--astryx-space-4)}}
+@media(max-width:700px){:root .dds-service .di-introduction.dds-content-card{padding:var(--astryx-space-6)}}
+@media(max-width:600px){:root .dds-service .resume-section.dds-content-card{padding:var(--astryx-space-4)}}
+@media(max-width:520px){:root .dds-service :is(.form-section,.question-form).dds-content-card{padding:var(--astryx-space-4)}}
+
+/* Collapsible groups: hairline card, 14/20 summary */
+:root .dds-service :is(.application-summary,.resume-hope,.resume-secondary){border:1px solid var(--border);border-radius:var(--astryx-radius-container);background:var(--background)}
+:root .dds-service :is(.application-summary,.resume-hope,.resume-secondary)>summary{min-height:var(--astryx-size-lg);padding:var(--astryx-space-3) var(--astryx-space-4);border-radius:var(--astryx-radius-container);color:var(--text-primary);font-weight:var(--font-weight-medium)}
+:root .dds-service :is(.application-summary,.resume-hope,.resume-secondary)>summary:hover{background:var(--astryx-overlay-hover)}
+:root .dds-service :is(.application-summary,.resume-hope,.resume-secondary)>summary .icon{width:16px;height:16px;color:var(--text-secondary)}
+:root .dds-service .application-summary #nav_part1{padding:var(--astryx-space-1) var(--astryx-space-4) var(--astryx-space-4)}
+:root .dds-service :is(.resume-hope,.resume-secondary)>.resume-fields{padding:var(--astryx-space-1) var(--astryx-space-4) var(--astryx-space-4)}
+
+/* Notes and alerts: radius 12, 12x16 */
+:root .dds-service :is(.session-answer-guide,.di-local-note,.di-review-list,.session-transcript){padding:var(--astryx-space-3) var(--astryx-space-4);border-radius:var(--astryx-radius-container)}
+:root .dds-service .di-review-list{background:var(--muted)}
+:root .dds-service .ai_gen_info{gap:var(--astryx-space-2);color:var(--text-secondary)}
+:root .dds-service .ai_gen_info .icon{width:16px;height:16px;margin-top:2px}
+:root .dds-service :is(.di-empty,.empty-documents){gap:var(--astryx-space-2);border:1px dashed var(--control-border);border-radius:var(--astryx-radius-container);color:var(--text-secondary)}
+:root .dds-service .di-empty>.icon{width:24px;height:24px;color:var(--text-secondary)}
+:root .dds-service .sample-reading .alert{padding:var(--astryx-space-3) var(--astryx-space-4);border:0;border-radius:var(--astryx-radius-container);font-size:12px;line-height:20px}
+:root .dds-service .alert.success{background:var(--success-bg);color:var(--success)}
+:root .dds-service .alert.info{background:var(--info-bg);color:var(--info)}
+:root .dds-service .alert.warning{background:var(--warning-bg);color:var(--warning)}
+:root .dds-service .alert.danger{background:var(--destructive-bg);color:var(--destructive)}
+
+/* AI prompt panel keeps its brand gradient; Astryx shape */
+:root .dds-service :is(.ai-input,.sample-ai-panel){padding:var(--astryx-space-4);border-radius:var(--astryx-radius-container)}
+:root .dds-service.dds-cover-write .ai-input{padding:var(--astryx-space-4)}
+:root .dds-service .ai-input label{gap:var(--astryx-space-2);margin-bottom:var(--astryx-space-2)}
+:root .dds-service .ai-input label .icon{width:16px;height:16px}
+:root .dds-service .ai-input-bottom{margin-top:var(--astryx-space-3);color:var(--text-secondary);font-size:12px;line-height:20px}
+
+/* ---------- Coverletter: steps, question list, model choice, editor tools ---------- */
+:root .dds-service .workflow-steps{gap:var(--astryx-space-2);color:var(--text-secondary)}
+:root .dds-service .workflow-steps :is(li,a){gap:var(--astryx-space-2);font-size:14px;line-height:20px;font-weight:var(--font-weight-regular)}
+:root .dds-service .workflow-steps :is(li,a)>span{width:16px;height:16px;border:0;border-radius:var(--astryx-radius-full);background:var(--muted);color:var(--text-secondary);font-size:10px;line-height:15px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .workflow-steps [aria-current=step]{color:var(--text-primary);font-weight:var(--font-weight-semibold)}
+:root .dds-service .workflow-steps :is([aria-current=step],.completed,.completed>a)>span{background:var(--primary);color:var(--primary-foreground)}
+:root .dds-service .workflow-steps .completed{color:var(--text-primary)}
+:root .dds-service .workflow-steps a{padding:var(--astryx-space-1) var(--astryx-space-2);margin:calc(-1 * var(--astryx-space-1)) calc(-1 * var(--astryx-space-2));border-radius:var(--astryx-radius-element)}
+:root .dds-service .workflow-steps a:hover{background:var(--astryx-overlay-hover)}
+:root .dds-service .workflow-steps .icon{width:16px;height:16px;color:var(--text-tertiary)}
+
+:root .dds-service .question-outline{gap:var(--astryx-space-3)}
+:root .dds-service #question-outline-links{gap:var(--astryx-space-1)}
+:root .dds-service #question-outline-links>a{min-height:var(--astryx-size-md);padding:6px var(--astryx-space-3);border:0;border-radius:var(--astryx-radius-element);background:transparent;color:var(--text-secondary);font-weight:var(--font-weight-medium)}
+:root .dds-service #question-outline-links>a:hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service #question-outline-links>a[aria-current=true]{background:var(--astryx-fill);color:var(--text-primary);font-weight:var(--font-weight-semibold)}
+:root .dds-service :is(.question-outline #back-info,.write-document-title #back-info,.resume-back,.mode-switch){min-height:var(--astryx-size-md);padding:6px var(--astryx-space-2);margin-inline:calc(-1 * var(--astryx-space-2));border-radius:var(--astryx-radius-element);color:var(--text-secondary)}
+:root .dds-service :is(.question-outline #back-info,.write-document-title #back-info,.resume-back,.mode-switch):hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service :is(.question-outline #back-info,.resume-back,.mode-switch) .icon{width:16px;height:16px}
+
+:root .dds-service .question-heading h2{gap:var(--astryx-space-2)}
+:root .dds-service .question-number{width:24px;height:24px;border-radius:var(--astryx-radius-inner);background:var(--astryx-fill);color:var(--text-primary);font-weight:var(--font-weight-semibold)}
+:root .dds-service .question-inputs{gap:var(--astryx-space-2)}
+
+/* "Write help" disclosure and its menu */
+:root .dds-service .write-help>summary{min-height:var(--astryx-size-md);padding:6px var(--astryx-space-3);gap:var(--astryx-space-2);border-radius:var(--astryx-radius-element);color:var(--text-primary);font-weight:var(--font-weight-medium)}
+:root .dds-service .write-help>summary:hover,:root .dds-service .write-help[open]>summary{background:var(--astryx-overlay-hover)}
+:root .dds-service .write-help>summary .icon{width:16px;height:16px;color:var(--text-secondary)}
+:root .dds-service .write-resources{gap:var(--astryx-space-0-5)}
+:root .dds-service.dds-cover-write .write-resources{top:calc(100% + var(--astryx-space-1));width:220px;padding:var(--astryx-space-1);border:0;border-radius:var(--astryx-radius-container);background:var(--background);box-shadow:var(--astryx-shadow-med);gap:var(--astryx-space-0-5);margin:0}
+:root .dds-service .write-resources :is(a,button){min-height:var(--astryx-size-md);padding:6px var(--astryx-space-2);gap:var(--astryx-space-2);border-radius:var(--astryx-radius-item);color:var(--text-primary);font-weight:var(--font-weight-regular)}
+:root .dds-service.dds-cover-write .write-resources :is(a,button){padding:6px var(--astryx-space-2)}
+:root .dds-service .write-resources :is(a,button):hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .write-resources .icon{width:16px;height:16px;color:var(--text-secondary)}
+
+/* Model choice: framed radio choices (Astryx framed choice) */
+:root .dds-service .gpt_choose_wrap>p{color:var(--text-secondary);font-weight:var(--font-weight-medium)}
+:root .dds-service.dds-cover-write .gpt_choose{gap:var(--astryx-space-2);margin-bottom:var(--astryx-space-6)}
+:root .dds-service.dds-cover-write .gpt_choose .btn{min-height:var(--astryx-size-lg);min-width:112px;padding:var(--astryx-space-2) var(--astryx-space-3);gap:var(--astryx-space-2);border:1px solid var(--border);border-radius:var(--astryx-radius-element);background:var(--background);color:var(--text-primary);font-weight:var(--font-weight-medium);box-shadow:none}
+:root .dds-service.dds-cover-write .gpt_choose .btn::before{width:16px;height:16px;border:1px solid var(--control-border);background:var(--background)}
+:root .dds-service.dds-cover-write .gpt_choose .btn:hover:not(:disabled){background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service.dds-cover-write .gpt_choose .btn.active{border-color:var(--primary);background:var(--background);color:var(--text-primary);box-shadow:inset 0 0 0 1px var(--primary)}
+:root .dds-service.dds-cover-write .gpt_choose .btn.active::before{border:5px solid var(--primary)}
+:root .dds-service.dds-cover-write .gpt_choose .btn[name=directly]{margin-right:var(--astryx-space-2)}
+
+/* Editor footer tools and question actions */
+:root .dds-service .answer-footer{color:var(--text-secondary);font-size:12px;line-height:20px}
+:root .dds-service .translation-tools{gap:var(--astryx-space-1)}
+:root .dds-service .translation-tools button:not(.custom-trigger){min-height:var(--astryx-size-sm);min-width:var(--astryx-size-sm);padding:4px var(--astryx-space-2);border-radius:var(--astryx-radius-element);color:var(--text-primary);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service .translation-tools button:not(.custom-trigger):hover:not(:disabled){background:var(--astryx-overlay-hover)}
+:root .dds-service .translation-tools button[data-action=revert]{width:var(--astryx-size-sm);padding:0;display:inline-grid;place-items:center}
+:root .dds-service .translation-tools .custom-trigger{min-height:var(--astryx-size-sm);padding-block:3px;padding-inline:var(--astryx-space-2)}
+:root .dds-service .adjust-length{min-height:var(--astryx-size-sm);margin-left:var(--astryx-space-2);padding:4px var(--astryx-space-2);gap:var(--astryx-space-1);border-radius:var(--astryx-radius-element);background:var(--astryx-fill);color:var(--text-primary);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service .adjust-length:hover{background:var(--astryx-fill-hover)}
+:root .dds-service .adjust-length .icon{width:16px;height:16px}
+:root .dds-service .question-actions{gap:var(--astryx-space-2)}
+:root .dds-service .question-actions>div{gap:var(--astryx-space-1)}
+:root .dds-service .question-actions button{min-height:var(--astryx-size-md);min-width:var(--astryx-size-md);padding:6px var(--astryx-space-2);gap:var(--astryx-space-2);border-radius:var(--astryx-radius-element);background:transparent;color:var(--text-secondary);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service .question-actions button:hover:not(:disabled){background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .question-actions button:disabled{opacity:.5}
+:root .dds-service .question-actions [name=add_btn]{padding-inline:var(--astryx-space-3);background:var(--astryx-fill);color:var(--text-primary)}
+:root .dds-service .question-actions [name=add_btn]:hover{background:var(--astryx-fill-hover)}
+:root .dds-service .question-actions .icon{width:16px;height:16px}
+
+/* ---------- My page: side navigation, profile, document cards ---------- */
+:root .dds-service .mypage-sidebar nav{gap:var(--astryx-space-0-5)}
+:root .dds-service .mypage-sidebar nav>:is(a,button){min-height:var(--astryx-size-md);padding:6px var(--astryx-space-2);gap:var(--astryx-space-2);border-radius:var(--astryx-radius-element);background:transparent;color:var(--text-primary);font-size:14px;line-height:20px;font-weight:var(--font-weight-regular)}
+:root .dds-service .mypage-sidebar nav>:is(a,button):hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service.dds-mypage .mypage-sidebar nav>[aria-current=page]{background:var(--astryx-fill);color:var(--text-primary);font-weight:var(--font-weight-medium)}
+:root .dds-service .mypage-sidebar nav .icon{width:16px;height:16px;stroke-width:2;color:var(--text-secondary)}
+:root .dds-service .mypage-sidebar nav>[aria-current=page] .icon{color:var(--text-primary)}
+:root .dds-service .profile{padding:0 var(--astryx-space-2) var(--astryx-space-6);margin-bottom:var(--astryx-space-4)}
+:root .dds-service .profile-avatar{background:var(--astryx-fill);color:var(--text-secondary)}
+:root .dds-service #profile-edit{width:24px;height:24px;border:1px solid var(--border);border-radius:var(--astryx-radius-full);background:var(--background)}
+:root .dds-service #profile-edit:hover{background:var(--muted)}
+:root .dds-service #profile-edit .icon{width:12px;height:12px}
+:root .dds-service .profile>strong{margin-bottom:var(--astryx-space-2)}
+:root .dds-service .mode-switch{margin-inline:calc(-1 * var(--astryx-space-2))}
+:root .dds-service .list-heading{margin-bottom:var(--astryx-space-4)}
+:root .dds-service .document-heading{gap:var(--astryx-space-2)}
+:root .dds-service .document-grid{gap:var(--astryx-space-4)}
+:root .dds-service .document-topline{margin-bottom:var(--astryx-space-2)}
+:root .dds-service .my-document .document-open{margin-bottom:var(--astryx-space-2);font-size:14px;line-height:20px;font-weight:var(--font-weight-semibold);min-height:40px}
+:root .dds-service .document-context{gap:0;margin-bottom:var(--astryx-space-3)}
+:root .dds-service .representative-action{min-height:var(--astryx-size-sm);padding:4px var(--astryx-space-2);margin-right:calc(-1 * var(--astryx-space-1));gap:var(--astryx-space-1);border-radius:var(--astryx-radius-element);color:var(--text-secondary);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service .representative-action:hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .representative-action[aria-pressed=true]{margin-right:0;padding-inline:var(--astryx-space-2);background:var(--astryx-fill-hover);color:var(--text-primary)}
+:root .dds-service .representative-action[aria-pressed=true] .icon{color:var(--brand-ink)}
+:root .dds-service .representative-action .icon{width:16px;height:16px}
+:root .dds-service .document-menu>summary{width:var(--astryx-size-md);height:var(--astryx-size-md);border-radius:var(--astryx-radius-element);color:var(--text-secondary)}
+:root .dds-service .document-menu>summary:hover,:root .dds-service .document-menu[open]>summary{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .document-menu>div{display:grid;gap:var(--astryx-space-0-5);min-width:144px;padding:var(--astryx-space-1);border:0;border-radius:var(--astryx-radius-container);background:var(--background);box-shadow:var(--astryx-shadow-med)}
+:root .dds-service .document-menu button{min-height:var(--astryx-size-md);padding:6px var(--astryx-space-2);gap:var(--astryx-space-2);border-radius:var(--astryx-radius-item);color:var(--text-primary);font-size:14px;line-height:20px;font-weight:var(--font-weight-regular)}
+:root .dds-service .document-menu button:hover{background:var(--astryx-overlay-hover)}
+:root .dds-service .document-menu button[data-action=delete]{color:var(--destructive)}
+:root .dds-service .document-menu .icon{width:16px;height:16px}
+:root .dds-service .profile-file-label{min-height:var(--astryx-size-md);padding:6px var(--astryx-space-3);gap:var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-element);background:var(--astryx-fill);font-weight:var(--font-weight-medium)}
+:root .dds-service .profile-file-label:hover{background:var(--astryx-fill-hover)}
+:root .dds-service .profile-file-label:has(input:focus-visible){outline:var(--astryx-focus);outline-offset:3px}
+:root .dds-service .dialog-field{gap:var(--astryx-space-1);color:var(--text-secondary)}
+@media(max-width:900px){
+  :root .dds-service .mypage-sidebar nav{gap:var(--astryx-space-1);padding-bottom:var(--astryx-space-2)}
+  :root .dds-service .mypage-sidebar nav>:is(a,button){min-height:var(--astryx-size-md);padding:6px var(--astryx-space-3)}
+  :root .dds-service .profile{padding:0;margin-bottom:var(--astryx-space-4)}
+}
+
+/* ---------- Resume: index side navigation, photo, entries ---------- */
+:root .dds-service .resume-index>p{margin:0 var(--astryx-space-2) var(--astryx-space-1);color:var(--text-secondary);font-size:12px;line-height:20px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .resume-index nav{gap:var(--astryx-space-0-5)}
+:root .dds-service .resume-index nav>a{align-items:center;min-height:var(--astryx-size-md);padding:6px var(--astryx-space-2);border-radius:var(--astryx-radius-element);color:var(--text-primary);font-size:14px;line-height:20px;font-weight:var(--font-weight-regular)}
+:root .dds-service .resume-index nav>a:hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .resume-index nav>a[aria-current]{background:var(--astryx-fill);color:var(--text-primary);font-weight:var(--font-weight-medium)}
+:root .dds-service .resume-index nav span{color:var(--text-secondary);font-size:12px;line-height:20px}
+:root .dds-service .resume-add-link{min-height:var(--astryx-size-md);margin-top:var(--astryx-space-2);padding:6px var(--astryx-space-2);border-top:0;border-radius:var(--astryx-radius-element);color:var(--text-secondary)}
+:root .dds-service .resume-add-link:hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .resume-index nav+.resume-add-link{position:relative;margin-top:var(--astryx-space-3)}
+:root .dds-service .resume-index nav+.resume-add-link::before{content:"";position:absolute;left:0;right:0;top:calc(-1 * var(--astryx-space-1) - 1px);border-top:1px solid var(--border)}
+:root .dds-service .resume-section>header{gap:var(--astryx-space-2);margin-bottom:var(--astryx-space-6)}
+:root .dds-service .resume-fields{gap:var(--astryx-space-4) var(--astryx-space-4)}
+:root .dds-service .resume-field>label{margin-bottom:var(--astryx-space-1);color:var(--text-secondary);font-weight:var(--font-weight-medium)}
+:root .dds-service .resume-title>label,:root .dds-service .title-field>label,:root .dds-service .write-document-title>label,:root .dds-service #cover_view .exampleSelect1,:root .dds-service .answer-label,:root .dds-service .di-field>:is(span,label,legend){color:var(--text-secondary);font-weight:var(--font-weight-medium)}
+:root .dds-service .resume-photo>div{border-radius:var(--astryx-radius-element);background:var(--astryx-fill);border-color:var(--border)}
+:root .dds-service .resume-photo>div>.icon{color:var(--text-secondary)}
+:root .dds-service .resume-entry-heading button{width:var(--astryx-size-md);height:var(--astryx-size-md);border-radius:var(--astryx-radius-element);color:var(--text-secondary)}
+:root .dds-service .resume-entry-heading button:hover:not(:disabled){background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .resume-entry-heading button:disabled{opacity:.5}
+:root .dds-service .resume-section-picker>div{gap:var(--astryx-space-2)}
+:root .dds-service .resume-section-picker .btn:not(span):disabled{opacity:.5}
+:root .dds-service .resume-completion>div{gap:var(--astryx-space-2)}
+@media(max-width:1000px){
+  :root .dds-service .resume-index nav{gap:var(--astryx-space-1);padding-bottom:var(--astryx-space-2)}
+  :root .dds-service .resume-index nav>a{padding-inline:var(--astryx-space-3)}
+}
+
+/* ---------- Interview setup: stepper, intro card, dialog choices ---------- */
+:root .dds-service .di-process{gap:var(--astryx-space-2)}
+:root .dds-service .di-process li{gap:var(--astryx-space-2);padding-top:var(--astryx-space-3)}
+:root .dds-service .di-process li::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;border-radius:var(--astryx-radius-full);background:var(--border)}
+:root .dds-service .di-process li:not(:last-child)::after{display:none}
+:root .dds-service .di-step-number{width:16px;height:16px;margin-top:2px;border-radius:var(--astryx-radius-full);background:var(--muted);color:var(--text-secondary);font-size:10px;line-height:15px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .di-process li>div{gap:0;padding-top:0}
+:root .dds-service .di-process li>div>span{color:var(--text-primary);font-size:14px;line-height:20px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .di-process small{color:var(--text-secondary);font-size:12px;line-height:20px}
+@media(max-width:700px){
+  :root .dds-service .di-process{row-gap:var(--astryx-space-4)}
+  :root .dds-service .di-process li>div{padding-top:0}
+}
+:root .dds-service .di-guide{border-radius:var(--astryx-radius-container)}
+:root .dds-service .di-benefits{gap:var(--astryx-space-6)}
+:root .dds-service .di-benefits li{gap:var(--astryx-space-4)}
+:root .dds-service .di-benefit-icon{width:40px;height:40px;border-radius:var(--astryx-radius-element)}
+:root .dds-service .di-benefit-icon>.icon{width:20px;height:20px}
+:root .dds-service .di-benefits h3{margin-bottom:var(--astryx-space-1)}
+:root .dds-service .di-bottom-grid h2{margin-bottom:var(--astryx-space-3)}
+:root .dds-service .di-before ul{gap:var(--astryx-space-2)}
+:root .dds-service .di-mode-list{gap:var(--astryx-space-2)}
+:root .dds-service .di-mode-choice.dds-content-card{gap:var(--astryx-space-3);padding:var(--astryx-space-3);border-radius:var(--astryx-radius-container);grid-template-columns:36px minmax(0,1fr) 16px}
+:root .dds-service .di-mode-choice.dds-content-card:hover{background:var(--astryx-overlay-hover);box-shadow:none}
+:root .dds-service .di-mode-choice>span:first-child{width:36px;height:36px;border-radius:var(--astryx-radius-element);background:var(--astryx-fill)}
+:root .dds-service .di-mode-choice>span:first-child>.icon{width:20px;height:20px}
+:root .dds-service .di-mode-choice>.icon{width:16px;height:16px}
+:root .dds-service .di-mode-choice small{margin-top:0;color:var(--text-secondary)}
+:root .dds-service .di-interview-type>span{gap:var(--astryx-space-3);padding:var(--astryx-space-4);border:1px solid var(--border);border-radius:var(--astryx-radius-container);background:var(--background)}
+:root .dds-service .di-interview-type:hover>span{background:var(--astryx-overlay-hover)}
+:root .dds-service .di-interview-type input:checked+span{border-color:var(--primary);background:var(--background);box-shadow:inset 0 0 0 1px var(--primary)}
+:root .dds-service .di-interview-type input:focus-visible+span{outline:var(--astryx-focus);outline-offset:3px}
+:root .dds-service .di-cover-sample{padding:var(--astryx-space-4);border:1px solid var(--border);border-radius:var(--astryx-radius-container);background:var(--background)}
+:root .dds-service .di-cover-sample:has(input:checked){border-color:var(--primary);box-shadow:inset 0 0 0 1px var(--primary)}
+:root .dds-service .di-cover-sample summary{color:var(--brand-ink);font-weight:var(--font-weight-medium)}
+:root .dds-service .di-camera-placeholder{border-radius:var(--astryx-radius-container);background:var(--muted)}
+:root .dds-service .di-form{gap:var(--astryx-space-5)}
+:root .dds-service .di-field{gap:var(--astryx-space-1)}
+:root .dds-service .di-dialog-step{color:var(--text-secondary);font-size:12px;line-height:20px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .di-dialog-description{margin-bottom:var(--astryx-space-4);color:var(--text-secondary)}
+:root .dds-service .di-dialog-actions{gap:var(--astryx-space-2);margin-top:var(--astryx-space-6);padding-top:var(--astryx-space-4)}
+
+/* ---------- Interview session ---------- */
+:root .dds-service .session-header{height:64px}
+:root .dds-service .session-progress-track{height:8px;border-radius:var(--astryx-radius-full);background:var(--control-border)}
+:root .dds-service #session-progress-fill{border-radius:var(--astryx-radius-full)}
+:root .dds-service .btn.session-exit{background:transparent;color:var(--text-secondary)}
+:root .dds-service .btn.session-exit:hover:not(:disabled){background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .btn.session-stop{background:var(--text-primary);color:var(--background)}
+:root .dds-service .btn.session-stop:hover:not(:disabled){background:var(--text-strong);color:var(--background)}
+:root .dds-service .session-question-meta{gap:var(--astryx-space-2)}
+:root .dds-service .session-answer-guide{gap:var(--astryx-space-3)}
+:root .dds-service .session-answer-guide>.icon{width:16px;height:16px;margin-top:2px}
+:root .dds-service .session-video{border-radius:var(--astryx-radius-container)}
+:root .dds-service .session-video:fullscreen{border-radius:0}
+:root .dds-service .session-camera-icon{width:48px;height:48px;border-radius:var(--astryx-radius-container)}
+:root .dds-service .session-camera-icon .icon{width:24px;height:24px}
+/* Buttons on the dark video surface: secondary fill made from the surface's own ink */
+:root .dds-service .btn.session-connect{background:color-mix(in srgb,currentColor 12%,transparent);color:inherit}
+:root .dds-service .btn.session-connect:hover:not(:disabled){background:color-mix(in srgb,currentColor 20%,transparent);color:inherit}
+:root .dds-service .session-icon-button{width:var(--astryx-size-md);height:var(--astryx-size-md);border:0;border-radius:var(--astryx-radius-element);background:color-mix(in srgb,currentColor 12%,transparent)}
+:root .dds-service .session-icon-button:hover{background:color-mix(in srgb,currentColor 20%,transparent)}
+:root .dds-service .session-icon-button .icon{width:16px;height:16px}
+:root .dds-service .session-device-badge{border-radius:var(--astryx-radius-inner)}
+:root .dds-service .session-text-button{min-height:var(--astryx-size-sm);padding:4px var(--astryx-space-2);margin-inline:calc(-1 * var(--astryx-space-2));border-radius:var(--astryx-radius-element);color:var(--brand-ink);text-decoration:none;font-weight:var(--font-weight-medium)}
+:root .dds-service .session-text-button:hover{background:var(--astryx-overlay-hover);color:var(--brand-ink);text-decoration:underline;text-underline-offset:4px}
+:root .dds-service .session-answer-actions{gap:var(--astryx-space-6);padding:var(--astryx-space-4) 0}
+:root .dds-service .session-timer-icon{width:40px;height:40px;border-radius:var(--astryx-radius-element);background:var(--astryx-fill);color:var(--text-secondary)}
+:root .dds-service .session-timer-icon .icon{width:20px;height:20px}
+:root .dds-service .session-answer-progress{height:4px}
+:root .dds-service .session-complete-icon{width:56px;height:56px;margin-bottom:var(--astryx-space-4)}
+:root .dds-service .session-complete-icon .icon{width:24px;height:24px}
+:root .dds-service .session-complete-row{padding:var(--astryx-space-3) var(--astryx-space-4)}
+:root .dds-service .session-dialog-actions{gap:var(--astryx-space-2);margin-top:var(--astryx-space-4)}
+@media(max-width:760px){
+  :root .dds-service .session-header{height:56px}
+  :root .dds-service .session-actions .btn:not(span){min-width:96px}
+}
+
+/* ---------- Dialogs: radius 12, padding 16, high elevation, scrim ---------- */
+:root .dds-service dialog:not(.dds-settings-dialog,.dds-settings-profile-dialog){padding:var(--astryx-space-4);border:0;border-radius:var(--astryx-radius-container);background:var(--background);box-shadow:var(--astryx-shadow-high)}
+:root .dds-service dialog:not(.dds-settings-dialog,.dds-settings-profile-dialog)::backdrop{background:var(--astryx-scrim);backdrop-filter:none}
+:root .dds-service :is(.dialog-heading,.di-dialog-heading){align-items:center;gap:var(--astryx-space-3);margin-bottom:var(--astryx-space-3)}
+:root .dds-service :is(.dialog-heading,.di-dialog-heading) h2{font-size:20px;line-height:28px;font-weight:var(--font-weight-semibold);color:var(--text-strong)}
+:root .dds-service :is(.dialog-heading,.di-dialog-heading) :is(button,.di-icon-button,.session-dialog-close,#dialog-close){display:grid;place-items:center;width:var(--astryx-size-md);height:var(--astryx-size-md);min-width:var(--astryx-size-md);min-height:var(--astryx-size-md);margin:0;padding:var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-element);background:var(--astryx-fill);color:var(--text-primary)}
+:root .dds-service :is(.dialog-heading,.di-dialog-heading) :is(button,.di-icon-button,.session-dialog-close,#dialog-close):hover{background:var(--astryx-fill-hover);color:var(--text-primary)}
+:root .dds-service :is(.dialog-heading,.di-dialog-heading) :is(button,.di-icon-button,.session-dialog-close) .icon{width:16px;height:16px}
+:root .dds-service #dialog-body{color:var(--text-secondary);font-size:14px;line-height:20px}
+:root .dds-service #dialog-body .example-title{margin:0;padding:var(--astryx-space-2) var(--astryx-space-3);border:0;border-radius:var(--astryx-radius-element);background:var(--astryx-fill);color:var(--text-primary);font-size:14px;line-height:20px}
+:root .dds-service #dialog-body button.example-title:hover{background:var(--astryx-fill-hover);border-color:transparent}
+:root .dds-service #dialog-body button.example-title .icon{width:16px;height:16px}
+:root .dds-service .title-examples{gap:var(--astryx-space-1)}
+:root .dds-service #dialog-body .preview-answer{padding:var(--astryx-space-3) var(--astryx-space-4);border:1px solid var(--border);border-radius:var(--astryx-radius-container);background:var(--background)}
+:root .dds-service #dialog-body .example-image{border-radius:var(--astryx-radius-container)}
+:root .dds-service .language-grid{gap:var(--astryx-space-2)}
+:root .dds-service .language-grid button{border:0;border-radius:var(--astryx-radius-element)}
+:root .dds-service .language-grid button:hover{background:var(--astryx-overlay-hover)}
+
+/* ---------- Toast and tooltips ---------- */
+:root .dds-service #preview-status:not(:empty){padding:var(--astryx-space-4);border-radius:var(--astryx-radius-container);background:var(--surface-inverse);color:var(--text-inverse);box-shadow:var(--astryx-shadow-med);font-size:14px;line-height:20px}
+:root .dds-service .dds-icon-tooltip,:root .dds-service .theme-tooltip{padding:var(--astryx-space-1) var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-container);background:var(--surface-inverse);color:var(--text-inverse);font-size:14px;line-height:20px;font-weight:var(--font-weight-regular);box-shadow:none}
+
+/* ---------- Home and home-independent marketing pages ---------- */
+:root .dds-service .header-row{min-height:64px}
+:root .dds-service .header-row nav{gap:var(--astryx-space-1);align-items:center}
+:root .dds-service .header-row nav a{display:inline-flex;align-items:center;min-height:var(--astryx-size-md);padding:6px var(--astryx-space-3);border-radius:var(--astryx-radius-element);color:var(--text-secondary);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service .header-row nav a:hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .header-row nav .header-start{margin-left:var(--astryx-space-2);color:var(--text-primary)}
+:root .dds-service .header-row nav .header-start .icon{color:var(--brand-ink)}
+:root .dds-service #independent-mobile-nav{width:var(--astryx-size-lg);height:var(--astryx-size-lg);min-width:var(--astryx-size-lg);min-height:var(--astryx-size-lg);padding:var(--astryx-space-2);border-radius:var(--astryx-radius-element)}
+:root .dds-service #independent-mobile-nav:hover{background:var(--astryx-overlay-hover)}
+@media(max-width:700px){
+  :root .dds-service .header-row{min-height:56px}
+  :root .dds-service .header-row nav{gap:var(--astryx-space-0-5);padding:var(--astryx-space-2) var(--astryx-space-4) var(--astryx-space-4);box-shadow:none}
+  :root .dds-service .header-row nav a{min-height:var(--astryx-size-lg);padding:var(--astryx-space-2) var(--astryx-space-3)}
+  :root .dds-service .header-row nav .header-start{margin-left:0}
+  :root .dds-service .header-row nav{align-items:stretch}
+  :root .dds-service .header-row nav a{display:flex}
+}
+:root .dds-service .section-label{color:var(--brand-ink);font-size:14px;line-height:20px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .method-list li{gap:var(--astryx-space-4);padding:var(--astryx-space-6) 0}
+:root .dds-service .method-list li:first-child{padding-top:0}
+:root .dds-service .method-list li:last-child{padding-bottom:0}
+:root .dds-service .method-list li>.icon{width:20px;height:20px;stroke-width:1.75}
+:root .dds-service .question-list summary{padding:var(--astryx-space-3) 0;font-size:17px;line-height:24px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .question-list summary .icon{width:16px;height:16px}
+:root .dds-service .question-list details p{padding:0 var(--astryx-space-8) var(--astryx-space-3) 0;color:var(--text-secondary);font-size:14px;line-height:20px}
+:root .dds-service .brand-core{border-radius:var(--astryx-radius-page)}
+
+/* ---------- Component comparison sample (direction-sample) ---------- */
+:root .dds-service .sample-heading{margin-bottom:var(--astryx-space-6)}
+:root .dds-service .sample-context{margin-bottom:var(--astryx-space-1);font-size:12px;line-height:20px}
+:root .dds-service .sample-features{gap:var(--astryx-space-4);margin-bottom:var(--astryx-space-6)}
+:root .dds-service .sample-feature-icon{width:36px;height:36px;border-radius:var(--astryx-radius-element)}
+:root .dds-service .sample-features article>div>span{font-size:12px;line-height:20px}
+:root .dds-service .sample-tabs{gap:var(--astryx-space-1);margin-bottom:var(--astryx-space-6)}
+:root .dds-service .sample-tabs button{position:relative;min-height:var(--astryx-size-md);margin-bottom:var(--astryx-space-1);padding:0 var(--astryx-space-3);border-radius:var(--astryx-radius-element);color:var(--text-secondary);font-size:14px;line-height:20px;font-weight:var(--font-weight-regular);box-shadow:none}
+:root .dds-service .sample-tabs button:hover{background:var(--astryx-overlay-hover);color:var(--text-primary)}
+:root .dds-service .sample-tabs button[aria-pressed=true]{color:var(--text-primary);font-weight:var(--font-weight-semibold);box-shadow:none}
+:root .dds-service .sample-tabs button[aria-pressed=true]::after{content:"";position:absolute;left:var(--astryx-space-3);right:var(--astryx-space-3);bottom:calc(-1 * var(--astryx-space-1) - 1px);height:2px;border-radius:var(--astryx-radius-full);background:var(--primary)}
+:root .dds-service .sample-columns{gap:var(--astryx-space-6)}
+:root .dds-service .sample-panel .field{margin-bottom:var(--astryx-space-4)}
+:root .dds-service .sample-panel label{margin-bottom:var(--astryx-space-1);color:var(--text-secondary)}
+:root .dds-service .sample-section-heading{margin-bottom:var(--astryx-space-4)}
+:root .dds-service .sample-ai-panel{margin-top:var(--astryx-space-6)}
+:root .dds-service .sample-ai-panel textarea{min-height:144px}
+:root .dds-service .sample-panel h2{font-size:17px;line-height:24px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .sample-ai-panel h3{font-size:14px;line-height:20px;font-weight:var(--font-weight-semibold)}
+:root .dds-service .sample-ai-panel h3 svg{width:16px;height:16px}
+:root .dds-service .sample-chips .chip{min-height:24px;padding:2px var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-inner);background:var(--astryx-fill);color:var(--text-primary);font-size:12px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service .sample-chips .chip:hover{background:var(--astryx-fill-hover)}
+:root .dds-service .sample-chips .chip.selected{background:var(--primary);color:var(--primary-foreground)}
+:root .dds-service .sample-progress progress{height:8px;border-radius:var(--astryx-radius-full);background:var(--control-border)}
+:root .dds-service .sample-progress progress::-webkit-progress-bar{background:var(--control-border)}
+:root .dds-service .sample-progress progress::-webkit-progress-value{border-radius:var(--astryx-radius-full)}
+:root .dds-service .sample-actions{gap:var(--astryx-space-2)}
+
+/* ---------- Design settings panel (prototype pages): Astryx shape, same logic ---------- */
+:root .dds-service #dds-design-settings .dds-settings-launcher{width:44px;height:44px;padding:var(--astryx-space-2);border:1px solid var(--border);border-radius:var(--astryx-radius-container);background:var(--background);box-shadow:var(--astryx-shadow-low)}
+:root .dds-service #dds-design-settings .dds-settings-launcher:hover{background:var(--background);box-shadow:var(--astryx-shadow-med)}
+:root .dds-service #dds-design-settings .dds-settings-launcher .icon{width:20px;height:20px}
+:root .dds-service #dds-design-settings .dds-settings-dialog{padding:var(--astryx-space-4);border:0;border-radius:var(--astryx-radius-container) 0 0 var(--astryx-radius-container);box-shadow:var(--astryx-shadow-high)}
+:root .dds-service #dds-design-settings .dds-settings-heading{margin-bottom:var(--astryx-space-4)}
+:root .dds-service #dds-design-settings .dds-settings-heading h2{font-size:20px;line-height:28px;font-weight:var(--font-weight-semibold)}
+:root .dds-service #dds-design-settings .dds-settings-close{width:var(--astryx-size-md);height:var(--astryx-size-md);min-width:var(--astryx-size-md);min-height:var(--astryx-size-md);padding:var(--astryx-space-2);border-radius:var(--astryx-radius-element)}
+:root .dds-service #dds-design-settings .dds-settings-close .icon{width:16px;height:16px}:root .dds-service #dds-design-settings .dds-settings-body{gap:var(--astryx-space-6)}
+:root .dds-service #dds-design-settings .dds-settings-section{gap:var(--astryx-space-3)}
+:root .dds-service #dds-design-settings .dds-settings-section :is(h3,legend){font-size:12px;line-height:20px;font-weight:var(--font-weight-semibold);color:var(--text-secondary)}
+:root .dds-service #dds-design-settings .dds-settings-mode legend{margin-bottom:var(--astryx-space-3)}
+:root .dds-service #dds-design-settings .dds-settings-preset{border-radius:var(--astryx-radius-inner)}
+:root .dds-service #dds-design-settings .dds-settings-combination{min-height:var(--astryx-size-lg);border-radius:var(--astryx-radius-element)}
+:root .dds-service #dds-design-settings .dds-settings-combination:hover{border-color:var(--control-border);background:var(--astryx-overlay-hover)}
+:root .dds-service #dds-design-settings .dds-settings-field{gap:var(--astryx-space-1)}
+:root .dds-service #dds-design-settings .dds-settings-field>label,:root .dds-service #dds-design-settings .dds-settings-background-label{font-size:14px;line-height:20px;font-weight:var(--font-weight-medium);color:var(--text-secondary)}
+:root .dds-service #dds-design-settings .dds-settings-color-control{min-height:var(--astryx-size-md);padding-inline:var(--astryx-space-2);gap:var(--astryx-space-2);border-radius:var(--astryx-radius-element)}
+:root .dds-service #dds-design-settings .dds-settings-color-control:focus-within{border-color:var(--primary);box-shadow:inset 0 0 0 2px var(--control-border)}
+:root .dds-service #dds-design-settings .dds-settings-color-control input{height:30px;min-height:30px;padding:5px 0;font-size:14px;line-height:20px}
+:root .dds-service #dds-design-settings .dds-segmented{gap:0;padding:var(--astryx-space-1);border-radius:var(--astryx-radius-element);background:var(--astryx-fill)}
+:root .dds-service #dds-design-settings .dds-choice{min-height:24px;padding:2px var(--astryx-space-3);border-radius:var(--astryx-radius-inner);color:var(--text-secondary);font-size:14px;line-height:20px;font-weight:var(--font-weight-medium)}
+:root .dds-service #dds-design-settings .dds-choice:has(:checked){background:var(--background);color:var(--text-primary);font-weight:var(--font-weight-semibold);box-shadow:none}
+:root .dds-service #dds-design-settings .dds-settings-field :is(select,.custom-trigger){min-height:var(--astryx-size-md);padding:5px var(--astryx-space-2);border-radius:var(--astryx-radius-element);font-size:14px;line-height:20px}
+:root .dds-service #dds-design-settings .dds-settings-field :is(select,.custom-trigger):focus-visible,:root .dds-service #dds-design-settings .dds-settings-field .custom-trigger[aria-expanded=true]{border-color:var(--primary);box-shadow:inset 0 0 0 2px var(--control-border)}
+:root .dds-service #dds-design-settings .dds-settings-footer{gap:var(--astryx-space-2);margin-top:var(--astryx-space-4);padding-top:var(--astryx-space-4)}
+:root .dds-service #dds-design-settings .dds-settings-profile-dialog{padding:var(--astryx-space-4);border:0;border-radius:var(--astryx-radius-container);box-shadow:var(--astryx-shadow-high)}
+:root .dds-service #dds-design-settings .dds-settings-profile-dialog::backdrop{background:var(--astryx-scrim)}
+:root .dds-service #dds-design-settings .dds-settings-profile-dialog h2{font-size:20px;line-height:28px;font-weight:var(--font-weight-semibold)}
+@media(max-width:520px){
+  :root .dds-service #dds-design-settings .dds-settings-dialog{border-radius:0}
+}

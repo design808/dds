@@ -1,8 +1,10 @@
 # Third-party notices
 
-DDS 2.0.0-alpha.1 is a look-and-feel prototype forked from DDS 0.6.2 (design808/dds). Its token values and
-component styling in `tokens.css`, `ui/tokens-scoped.css`, `ui/dds.css` and `astryx-skin.css` (the blocks marked "Astryx neutral skin")
-are derived from Astryx `@astryxdesign/core` 0.7.11 and `@astryxdesign/theme-neutral` 0.7.11.
+DDS 2.0.0-alpha.1 forks DDS 0.6.2 (design808/dds) and takes its shape, size, type, spacing,
+elevation and motion from Astryx `@astryxdesign/core` 0.7.11 and `@astryxdesign/theme-neutral` 0.7.11.
+The Astryx design layer in `tokens.css` and `ui/tokens-scoped.css`, the skin appended to `ui/dds.css`,
+and `astryx-skin.css`, `astryx-docs.css`, `prototypes/astryx-service.css` and
+`examples/astryx-examples.css` are derived from Astryx. Colors remain DDS tokens.
 DDS is not affiliated with or endorsed by Meta, and the Astryx name and Meta logos are not used.
 
 ## Astryx

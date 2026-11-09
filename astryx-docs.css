@@ -1,0 +1,1154 @@
+/* DDS 2.0.0-alpha.1: Astryx skin for the documentation site chrome. See astryx-v2-spec.md.
+   Shape, size, type, spacing, elevation and motion follow Astryx neutral
+   (@astryxdesign/core and theme-neutral 0.7.11, MIT, Copyright (c) Meta Platforms, Inc.).
+   Every color is a DDS token, so the design settings panel and dark mode keep working.
+   Component specimens (.dds-ui, .dds-button, .btn, .badge, .chip, .segmented, ...) are
+   skinned by astryx-skin.css and ui/dds.css, not here. */
+
+/* ---------------------------------------------------------------- Base type */
+body {
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+}
+/* Code in the documentation chrome uses the Astryx mono stack. */
+.workspace > #main :is(code, kbd, pre):not(.dds-ui *),
+.dds-guide :is(code, pre):not(.guide-demo-canvas *) {
+  font-family: var(--font-mono);
+}
+
+/* ---------------------------------------------------------------- Top bar (Astryx TopNav) */
+.topbar {
+  height: 56px;
+  padding: 0 var(--astryx-space-4);
+  gap: var(--astryx-space-6);
+  border-bottom: 1px solid var(--border);
+  background: var(--background);
+  box-shadow: none;
+}
+.topbar .brand {
+  gap: var(--astryx-space-2);
+  min-height: var(--astryx-size-md);
+  border-radius: var(--astryx-radius-element);
+  color: var(--text-primary);
+}
+.topbar .brand:hover {color: var(--text-primary);}
+.topbar .brand-logo.brand-symbol {width: 28px; height: 28px; min-width: 28px; max-width: 28px; flex-basis: 28px;}
+.topbar .brand-caption {
+  font-size: var(--type-headline-1-size);
+  line-height: var(--type-headline-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+  color: var(--text-primary);
+}
+.topbar .brand-version {margin-left: var(--astryx-space-1);}
+.topbar nav {
+  height: auto;
+  align-items: center;
+  gap: var(--astryx-space-1);
+}
+.topbar nav a {
+  height: var(--astryx-size-md);
+  padding: var(--astryx-space-1-5) var(--astryx-space-3);
+  border-radius: var(--astryx-radius-element);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+.topbar nav a:hover {
+  background: var(--astryx-overlay-hover);
+  color: var(--text-primary);
+}
+.topbar nav a.active,
+.topbar nav a.active:hover {
+  background: var(--astryx-fill);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+.topbar .top-actions {gap: var(--astryx-space-2);}
+/* Search trigger reads as an Astryx text input with a Kbd hint. */
+.topbar .search-trigger {
+  width: 220px;
+  height: var(--astryx-size-md);
+  padding: var(--astryx-space-1) var(--astryx-space-2);
+  gap: var(--astryx-space-2);
+  border: 1px solid var(--control-border);
+  border-radius: var(--astryx-radius-element);
+  background: var(--background);
+  color: var(--text-placeholder);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+}
+.topbar .search-trigger:hover {border-color: var(--text-tertiary); color: var(--text-secondary);}
+.topbar .search-trigger > .icon {width: 16px; height: 16px; color: var(--text-secondary);}
+.topbar .search-trigger kbd {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  margin-left: auto;
+  padding: 0 var(--astryx-space-1);
+  border: 1px solid var(--control-border);
+  border-bottom-width: 2px;
+  border-radius: var(--astryx-radius-inner);
+  background: var(--astryx-fill);
+  color: var(--text-secondary);
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  font-weight: var(--font-weight-medium);
+}
+.topbar .icon-btn {
+  width: var(--astryx-size-md);
+  height: var(--astryx-size-md);
+  border: 0;
+  border-radius: var(--astryx-radius-element);
+  background: transparent;
+  color: var(--text-secondary);
+}
+.topbar .icon-btn:hover {background: var(--astryx-fill); color: var(--text-primary);}
+.topbar .icon-btn > .icon {width: 18px; height: 18px;}
+.topbar :is(nav a, .brand, .search-trigger, .icon-btn):focus-visible {
+  outline: var(--astryx-focus);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- Sidebar (Astryx SideNav) */
+#sidebar {
+  top: 56px;
+  padding: var(--astryx-space-4) var(--astryx-space-3) var(--astryx-space-10);
+  border-right: 1px solid var(--border);
+  background: var(--background);
+}
+#sidebar .sidebar-intro {margin: 0 0 var(--astryx-space-2); padding: var(--astryx-space-1-5) var(--astryx-space-2);}
+#sidebar .sidebar-title,
+#sidebar .nav-label {
+  display: block;
+  margin: var(--astryx-space-4) 0 var(--astryx-space-0-5);
+  padding: var(--astryx-space-1-5) var(--astryx-space-2);
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-secondary);
+}
+#sidebar .sidebar-title {margin: 0; padding: 0;}
+/* Astryx has no uppercase labels: FOUNDATIONS reads as Foundations. */
+#sidebar .nav-label {text-transform: lowercase;}
+#sidebar .nav-label::first-letter {text-transform: uppercase;}
+#sidebar .nav-section {gap: var(--astryx-space-0-5);}
+#sidebar .nav-section :is(a, summary) {
+  min-height: var(--astryx-size-md);
+  padding: 0 var(--astryx-space-2);
+  border-radius: var(--astryx-radius-element);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  color: var(--text-primary);
+}
+#sidebar .nav-section details a {padding-left: calc(var(--astryx-space-2) + var(--astryx-space-4));}
+#sidebar .nav-section summary::after {width: 16px; height: 16px; color: var(--text-secondary);}
+#sidebar .nav-section :is(a, summary):hover {
+  background: var(--astryx-overlay-hover);
+  color: var(--text-primary);
+}
+#sidebar .nav-section a.active,
+#sidebar .nav-section a.active:hover {
+  background: var(--astryx-fill);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+}
+#sidebar .nav-section :is(a, summary):focus-visible {outline: var(--astryx-focus); outline-offset: -2px;}
+
+/* ---------------------------------------------------------------- Workspace and footer */
+.workspace {min-height: calc(100dvh - 56px);}
+.workspace > .site-footer {
+  padding: var(--astryx-space-4) 0;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+}
+
+/* ---------------------------------------------------------------- Page header */
+.workspace > #main > .breadcrumbs {
+  gap: var(--astryx-space-1);
+  margin-bottom: var(--astryx-space-4);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  color: var(--text-secondary);
+}
+.workspace > #main > .breadcrumbs > a {color: var(--text-secondary); border-radius: var(--astryx-radius-inner);}
+.workspace > #main > .breadcrumbs > a:hover {color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px;}
+.workspace > #main > .breadcrumbs > span:last-child {color: var(--text-primary); font-weight: var(--font-weight-semibold);}
+.workspace > #main .page-heading {gap: var(--astryx-space-6); margin-bottom: var(--astryx-space-10);}
+.workspace > #main .page-heading h1 {
+  margin: 0 0 var(--astryx-space-2);
+  font-size: var(--type-display-2-size);
+  line-height: var(--type-display-2-line-height);
+  font-weight: var(--type-display-2-weight);
+  letter-spacing: 0;
+  color: var(--text-strong);
+}
+.workspace > #main .page-heading .lead {
+  max-width: 720px;
+  font-size: var(--type-headline-1-size);
+  line-height: var(--type-headline-1-line-height);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-secondary);
+}
+.workspace > #main .page-heading > :is(.badge, .btn) {margin-top: var(--astryx-space-3);}
+/* The hero link keeps the .btn component skin; only the old doc-specific orange outline is reset. */
+.workspace > #main .overview-heading .overview-guide-link {
+  min-height: var(--astryx-size-lg);
+  padding: var(--astryx-space-2) var(--astryx-space-3);
+  border-color: transparent;
+  color: var(--text-primary);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-medium);
+}
+.workspace > #main .overview-heading .overview-guide-link:is(:hover, :focus-visible, :active) {border-color: transparent; color: var(--text-primary);}
+
+/* Home hero. */
+.workspace > #main .overview-heading {padding: var(--astryx-space-4) 0 var(--astryx-space-10);}
+.workspace > #main .overview-heading h1 {
+  margin: 0 0 var(--astryx-space-3);
+  font-size: var(--type-display-1-size);
+  line-height: var(--type-display-1-line-height);
+  font-weight: var(--type-display-1-weight);
+  letter-spacing: 0;
+  color: var(--text-strong);
+}
+.workspace > #main .overview-heading p {
+  margin-bottom: var(--astryx-space-6);
+  font-size: var(--type-headline-1-size);
+  line-height: var(--type-headline-1-line-height);
+  color: var(--text-secondary);
+}
+
+/* ---------------------------------------------------------------- Headings and prose */
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section,
+  .typography-docs > section, .text-color-section) > h2,
+.workspace > #main .section-heading > h2,
+.workspace > #main .color-docs .color-section-heading h2 {
+  font-size: var(--type-heading-1-size);
+  line-height: var(--type-heading-1-line-height);
+  font-weight: var(--type-heading-1-weight);
+  letter-spacing: 0;
+  color: var(--text-strong);
+}
+.workspace > #main .section-heading {margin-top: var(--astryx-space-8); margin-bottom: var(--astryx-space-4);}
+.workspace > #main .dds-button-docs .section-heading {margin: 0 0 var(--astryx-space-2);}
+.workspace > #main .section-heading > p,
+.workspace > #main .color-section-heading p {
+  margin: 0;
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  color: var(--text-secondary);
+}
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel] > section, .typography-docs > section,
+  .text-color-section, .text-scale-section, .color-subsection, .color-doc-section, .asset-reference-group) > h3,
+.workspace > #main .color-docs .color-subsection > h3 {
+  font-size: var(--type-headline-1-size);
+  line-height: var(--type-headline-1-line-height);
+  font-weight: var(--type-headline-1-weight);
+  letter-spacing: 0;
+  color: var(--text-strong);
+}
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section,
+  .typography-docs > section, .text-color-section, .text-scale-section, .color-subsection) > p {
+  font-size: var(--type-body-1-reading-size);
+  line-height: var(--type-body-1-reading-line-height);
+  color: var(--text-secondary);
+  margin-bottom: var(--astryx-space-4);
+}
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel] > section, .typography-docs > section,
+  .text-color-section, .text-scale-section, .color-subsection, .color-doc-section) > .helper {
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  color: var(--text-secondary);
+}
+.workspace > #main .plain-list {
+  padding-left: var(--astryx-space-5);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  color: var(--text-secondary);
+}
+.workspace > #main .plain-list li {margin-bottom: var(--astryx-space-2);}
+.workspace > #main .plain-list li::marker {color: var(--text-tertiary);}
+.workspace > #main :is(p, li, dd, .helper) > a:not(.btn, .dds-ui *) {
+  color: var(--brand-ink);
+  text-decoration: none;
+}
+.workspace > #main :is(p, li, dd, .helper) > a:not(.btn, .dds-ui *):hover {text-decoration: underline; text-underline-offset: 3px;}
+
+/* Inline code. */
+.workspace > #main :is(p, li, td, th, dd, .helper, .lead, summary) > code:not(.dds-ui code),
+.dds-guide :is(p, li, td, th, dd) > code {
+  padding: 0 var(--astryx-space-1);
+  border-radius: var(--astryx-radius-inner);
+  background: var(--muted);
+  color: var(--text-primary);
+  font-size: var(--type-code-size);
+  line-height: inherit;
+  overflow-wrap: anywhere;
+}
+.workspace > #main .helper > code:not(.dds-ui code) {font-size: var(--type-caption-1-size);}
+
+/* ---------------------------------------------------------------- Component page tabs (Astryx Tabs) */
+.workspace > #main .doc-tabs {
+  gap: var(--astryx-space-1);
+  margin-bottom: var(--astryx-space-8);
+  border-bottom: 0;
+  box-shadow: inset 0 -1px 0 var(--border);
+}
+.workspace > #main .doc-tabs button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: var(--astryx-size-md);
+  margin-bottom: var(--astryx-space-2);
+  padding: 0 var(--astryx-space-3);
+  border: 0;
+  border-radius: var(--astryx-radius-element);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-secondary);
+}
+.workspace > #main .doc-tabs button:hover {background: var(--astryx-overlay-hover); color: var(--text-primary);}
+.workspace > #main .doc-tabs button[aria-selected=true] {color: var(--text-primary); font-weight: var(--font-weight-semibold);}
+.workspace > #main .doc-tabs button[aria-selected=true]::after {
+  content: '';
+  position: absolute;
+  left: var(--astryx-space-3);
+  right: var(--astryx-space-3);
+  bottom: calc(-1 * var(--astryx-space-2));
+  height: 2px;
+  border-radius: var(--astryx-radius-full);
+  background: var(--primary);
+}
+.workspace > #main .doc-tabs button:focus-visible {outline: var(--astryx-focus); outline-offset: -2px;}
+.workspace > #main .doc-tabs button span {
+  margin-left: var(--astryx-space-1-5);
+  padding: 0 var(--astryx-space-1-5);
+  border-radius: var(--astryx-radius-full);
+  background: var(--astryx-badge-fill);
+  color: var(--text-primary);
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---------------------------------------------------------------- On this page */
+.workspace > #main .toc {top: 88px; font-size: var(--type-caption-1-size);}
+.workspace > #main .toc > span {
+  margin-bottom: var(--astryx-space-1);
+  padding: var(--astryx-space-1-5) var(--astryx-space-2);
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+  color: var(--text-secondary);
+}
+.workspace > #main .toc button {
+  width: 100%;
+  min-height: 28px;
+  padding: var(--astryx-space-1) var(--astryx-space-2);
+  border-radius: var(--astryx-radius-item);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  color: var(--text-secondary);
+}
+.workspace > #main .toc button:hover {background: var(--astryx-overlay-hover); color: var(--text-primary);}
+.workspace > #main .toc button:focus-visible {outline: var(--astryx-focus); outline-offset: -2px;}
+
+/* ---------------------------------------------------------------- Example frames */
+.workspace > #main .playground {
+  border: 1px solid var(--border);
+  border-radius: var(--astryx-radius-container);
+  background: var(--background);
+  box-shadow: none;
+}
+.workspace > #main .playground-inner {padding: var(--astryx-space-10) var(--astryx-space-6);}
+.workspace > #main .preview-footer {
+  padding: var(--astryx-space-2) var(--astryx-space-4);
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 var(--astryx-radius-container) var(--astryx-radius-container);
+  color: var(--text-secondary);
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+}
+.workspace > #main .dds-variant-controls {gap: var(--astryx-space-3) var(--astryx-space-4); margin-bottom: var(--astryx-space-4);}
+.workspace > #main .dds-variant-preview {
+  border: 1px solid var(--border);
+  border-radius: var(--astryx-radius-container);
+  background: var(--background);
+  box-shadow: none;
+}
+.workspace > #main .dds-variant-toolbar {margin-top: var(--astryx-space-2);}
+.workspace > #main .dds-variant-code {margin-top: var(--astryx-space-4);}
+.workspace > #main .dds-variant-code-tools {margin-block: var(--astryx-space-2);}
+
+/* Button documentation frames: specimen body plus a "code" bar. */
+.workspace > #main .dds-button-docs {gap: var(--astryx-space-12);}
+.workspace > #main .dds-button-docs .dds-button-doc-section {gap: var(--astryx-space-3);}
+.workspace > #main .dds-button-docs .dds-button-example {
+  border: 1px solid var(--border);
+  border-radius: var(--astryx-radius-container);
+  background: var(--background);
+  box-shadow: none;
+}
+.workspace > #main .dds-button-docs .dds-button-example-body {gap: var(--astryx-space-5); padding: var(--astryx-space-4);}
+.workspace > #main .dds-button-docs .dds-button-example-heading {gap: var(--astryx-space-1);}
+.workspace > #main .dds-button-docs .dds-button-example-heading h3 {
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-strong);
+}
+.workspace > #main .dds-button-docs :is(.dds-button-doc-heading, .dds-button-example-heading) p {
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  color: var(--text-secondary);
+}
+.workspace > #main .dds-button-docs .dds-button-sample-caption {
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+.workspace > #main .dds-button-docs .dds-button-code {border-top: 1px solid var(--border);}
+.workspace > #main .dds-button-docs .dds-button-code-content {gap: var(--astryx-space-2); padding: 0 var(--astryx-space-4) var(--astryx-space-4);}
+
+/* Disclosure bars ("코드 보기" and similar) use a chevron instead of the native marker. */
+.workspace > #main .dds-button-docs .dds-button-code > summary,
+.workspace > #main .dds-variant-code > summary,
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section) > details > summary,
+.workspace > #main .color-detail > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--astryx-space-2);
+  min-height: var(--astryx-size-md);
+  padding: var(--astryx-space-1-5) var(--astryx-space-2);
+  border-radius: var(--astryx-radius-element);
+  list-style: none;
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.workspace > #main .dds-button-docs .dds-button-code > summary {
+  padding: var(--astryx-space-2) var(--astryx-space-4);
+  border-radius: 0 0 var(--astryx-radius-container) var(--astryx-radius-container);
+}
+.workspace > #main .dds-button-docs .dds-button-code[open] > summary {border-radius: 0;}
+.workspace > #main :is(.dds-button-code, .dds-variant-code, .color-detail) > summary::-webkit-details-marker,
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section) > details > summary::-webkit-details-marker {display: none;}
+.workspace > #main :is(.dds-button-code, .dds-variant-code, .color-detail) > summary::before,
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section) > details > summary::before {
+  content: '';
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  background: var(--text-secondary);
+  -webkit-mask: url('./assets/icons/chevron-down.svg') center/contain no-repeat;
+  mask: url('./assets/icons/chevron-down.svg') center/contain no-repeat;
+  transform: rotate(-90deg);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+.workspace > #main :is(.dds-button-code, .dds-variant-code, .color-detail)[open] > summary::before,
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section) > details[open] > summary::before {transform: none;}
+.workspace > #main :is(.dds-button-code, .dds-variant-code, .color-detail) > summary:hover,
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section) > details > summary:hover {background: var(--astryx-overlay-hover);}
+.workspace > #main :is(.dds-button-code, .dds-variant-code, .color-detail) > summary:focus-visible,
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section) > details > summary:focus-visible {outline: var(--astryx-focus); outline-offset: -2px;}
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section) > details {margin-block: var(--astryx-space-3);}
+.workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section) > details > summary {width: fit-content; margin-left: calc(-1 * var(--astryx-space-2));}
+.workspace > #main :is(.reading, .doc-section) > details > pre {margin-top: var(--astryx-space-2);}
+
+/* ---------------------------------------------------------------- Code blocks */
+.workspace > #main pre:not(.dds-ui *),
+.dds-guide .guide-code-example pre {
+  margin: 0;
+  padding: var(--astryx-space-3) var(--astryx-space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--astryx-radius-element);
+  background: var(--background);
+  color: var(--text-primary);
+  font-size: var(--type-code-size);
+  line-height: var(--type-code-line-height);
+  font-weight: var(--font-weight-regular);
+  box-shadow: none;
+}
+.workspace > #main pre:not(.dds-ui *) code {font: inherit; padding: 0; background: none;}
+.workspace > #main [data-doc-panel="code"] > pre.html-example {margin-block: var(--astryx-space-3) var(--astryx-space-6);}
+.workspace > #main pre:not(.dds-ui *):focus-visible {outline: var(--astryx-focus); outline-offset: 2px;}
+/* The copy action above a code sample is a small Astryx secondary button. */
+.workspace > #main .copy-code {
+  min-height: var(--astryx-size-sm);
+  height: var(--astryx-size-sm);
+  padding: var(--astryx-space-1) var(--astryx-space-2);
+  gap: var(--astryx-space-1-5);
+  border: 0;
+  border-radius: var(--astryx-radius-element);
+  background: var(--astryx-fill);
+  color: var(--text-primary);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-medium);
+}
+.workspace > #main .copy-code:hover:not(:disabled) {background: var(--astryx-fill-hover); color: var(--text-primary); border-color: transparent;}
+.workspace > #main .copy-code:active:not(:disabled) {background: var(--astryx-fill-pressed);}
+.workspace > #main .copy-code .icon {width: 16px; height: 16px;}
+
+/* ---------------------------------------------------------------- Documentation tables */
+.workspace > #main .table-wrap:not(.dds-ui *) {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: var(--type-body-1-normal-size);
+}
+.workspace > #main .table-wrap:not(.dds-ui *) > table {background: transparent;}
+.workspace > #main .table-wrap:not(.dds-ui *) :is(th, td),
+.dds-guide .guide-comparison :is(th, td) {
+  padding: var(--astryx-space-2) var(--astryx-space-3);
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  font-size: var(--type-body-1-normal-size);
+  line-height: 21px;
+  color: var(--text-primary);
+}
+.workspace > #main .table-wrap:not(.dds-ui *) thead th,
+.dds-guide .guide-comparison thead th {
+  background: transparent;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+}
+.workspace > #main .table-wrap:not(.dds-ui *) tbody th {font-weight: var(--font-weight-medium); color: var(--text-primary);}
+.workspace > #main .table-wrap:not(.dds-ui *) tbody tr:last-child :is(th, td) {border-bottom: 0;}
+.workspace > #main .table-wrap:not(.dds-ui *) td > :is(p, small) {color: var(--text-secondary);}
+
+/* ---------------------------------------------------------------- Home and gallery cards */
+.workspace > #main .entry-grid {gap: var(--astryx-space-4);}
+.workspace > #main .entry-card {
+  align-items: flex-start;
+  gap: var(--astryx-space-3);
+  padding: var(--astryx-space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--astryx-radius-container);
+  background: var(--background);
+  box-shadow: none;
+  color: var(--text-primary);
+  transition: box-shadow var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+}
+.workspace > #main .entry-card:hover {border-color: var(--border); box-shadow: var(--astryx-shadow-low); color: var(--text-primary);}
+.workspace > #main .entry-card:focus-visible {outline: var(--astryx-focus); outline-offset: 3px;}
+.workspace > #main .entry-card h3 {
+  margin: 0 0 var(--astryx-space-1);
+  font-size: var(--type-headline-1-size);
+  line-height: var(--type-headline-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+  color: var(--text-strong);
+}
+.workspace > #main .entry-card p {
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  color: var(--text-secondary);
+}
+.workspace > #main .entry-card > .icon {top: var(--astryx-space-4); right: var(--astryx-space-4); width: 16px; height: 16px; color: var(--text-secondary);}
+
+.workspace > #main .section-heading > .section-link {
+  min-height: var(--astryx-size-md);
+  padding: 0 var(--astryx-space-1);
+  border-radius: var(--astryx-radius-inner);
+  color: var(--brand-ink);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+}
+.workspace > #main .section-heading > .section-link:hover {color: var(--brand-ink); text-decoration: underline; text-underline-offset: 3px;}
+
+.workspace > #main .component-grid {gap: var(--astryx-space-6) var(--astryx-space-4);}
+.workspace > #main .component-card {
+  border: 1px solid var(--border);
+  border-radius: var(--astryx-radius-container);
+  background: var(--background);
+  box-shadow: none;
+}
+.workspace > #main .component-card > .card-caption {gap: var(--astryx-space-3); padding: var(--astryx-space-3) var(--astryx-space-4);}
+.workspace > #main .component-card .card-caption > div {gap: 0;}
+.workspace > #main .component-card .card-caption h3 {
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-strong);
+}
+.workspace > #main .component-card .card-caption p {
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-secondary);
+}
+.workspace > #main .component-card-link::after {border-radius: var(--astryx-radius-container);}
+.workspace > #main .component-card-link:focus-visible::after {outline: var(--astryx-focus); outline-offset: 3px;}
+.workspace > #main .component-card-arrow {
+  width: var(--astryx-size-md);
+  height: var(--astryx-size-md);
+  border-radius: var(--astryx-radius-element);
+  color: var(--text-secondary);
+}
+.workspace > #main .component-card-arrow .icon {width: 16px; height: 16px;}
+.workspace > #main .component-card:has(.component-card-link:is(:hover,:focus-visible)) {
+  border-color: var(--border);
+  box-shadow: var(--astryx-shadow-low);
+}
+.workspace > #main .component-card:has(.component-card-link:hover) .component-card-arrow {
+  background: var(--astryx-fill);
+  color: var(--text-primary);
+}
+.workspace > #main .filter-bar {gap: var(--astryx-space-3); margin-bottom: var(--astryx-space-6);}
+
+/* ---------------------------------------------------------------- Documentation panels */
+.workspace > #main :is(.guideline, .principle, .finding, .research-note, .checklist, .elevation,
+  .icon-gallery, .audit-summary, .architecture, .template-item, .sample-document, .skeleton-card,
+  .contrast-example, .color-detail, .type-family-panel, .text-hierarchy-demo, .swatch, .lucide-card):not(.dds-ui *) {
+  border-radius: var(--astryx-radius-container);
+  box-shadow: none;
+}
+.workspace > #main .guideline {padding: var(--astryx-space-4); border: 1px solid var(--border); font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+.workspace > #main .guideline p {margin-top: var(--astryx-space-1); color: var(--text-secondary);}
+.workspace > #main :is(.good-label, .bad-label) {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height); font-weight: var(--font-weight-semibold); letter-spacing: 0;}
+.workspace > #main .principle {padding: var(--astryx-space-6);}
+.workspace > #main .principle > span {margin-bottom: var(--astryx-space-6); font-family: var(--font-mono); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .principle h2 {font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line-height); font-weight: var(--type-heading-2-weight); letter-spacing: 0;}
+.workspace > #main .principle p {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+.workspace > #main .principle small {padding-top: var(--astryx-space-3); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .process-list article {gap: var(--astryx-space-6); padding: var(--astryx-space-8) 0;}
+.workspace > #main .process-number {font-family: var(--font-mono); font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line-height);}
+.workspace > #main .process-list h2 {font-size: var(--type-heading-1-size); line-height: var(--type-heading-1-line-height); font-weight: var(--type-heading-1-weight); letter-spacing: 0;}
+.workspace > #main .process-list p {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+.workspace > #main .process-list .two-col {padding: var(--astryx-space-4); border-radius: var(--astryx-radius-container);}
+.workspace > #main .process-list small {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height); letter-spacing: 0;}
+.workspace > #main .finding {padding: var(--astryx-space-6);}
+.workspace > #main .research-note {padding: var(--astryx-space-4);}
+.workspace > #main .checklist > div {padding: var(--astryx-space-3) var(--astryx-space-4); font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+.workspace > #main .anatomy-list {gap: var(--astryx-space-2);}
+.workspace > #main .anatomy-list > div {
+  gap: var(--astryx-space-2);
+  padding: var(--astryx-space-1-5) var(--astryx-space-3) var(--astryx-space-1-5) var(--astryx-space-1-5);
+  border: 1px solid var(--border);
+  border-radius: var(--astryx-radius-element);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+}
+.workspace > #main .anatomy-list span {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--astryx-radius-full);
+  background: var(--astryx-badge-fill);
+  color: var(--text-primary);
+  font-size: var(--type-caption-1-size);
+  line-height: var(--type-caption-1-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+.workspace > #main .state-list {gap: var(--astryx-space-2);}
+.workspace > #main :is(.source-link, .reference-links a) {
+  gap: var(--astryx-space-2);
+  padding: var(--astryx-space-2) var(--astryx-space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--astryx-radius-element);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+}
+.workspace > #main :is(.source-link, .reference-links a):hover {background: var(--astryx-overlay-hover);}
+.workspace > #main .template-item > summary {padding: var(--astryx-space-3) var(--astryx-space-4);}
+.workspace > #main .route-detail {padding: var(--astryx-space-4); border-radius: var(--astryx-radius-container);}
+.workspace > #main .route-icon {border-radius: var(--astryx-radius-inner);}
+.workspace > #main :is(.architecture > span, .pattern-flow) {border-radius: var(--astryx-radius-element);}
+.workspace > #main .pattern-flow {border-radius: var(--astryx-radius-container);}
+.workspace > #main .pattern-flow small {font-family: var(--font-mono); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .asset-reference-group h3 {margin: var(--astryx-space-4) 0 var(--astryx-space-2); font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); font-weight: var(--font-weight-bold);}
+
+/* ---------------------------------------------------------------- Foundations: color */
+.workspace > #main .color-page-nav {gap: var(--astryx-space-1); padding: 0 0 var(--astryx-space-4); margin-bottom: var(--astryx-space-10);}
+.workspace > #main .color-page-nav button {
+  height: var(--astryx-size-md);
+  padding: var(--astryx-space-1-5) var(--astryx-space-3);
+  gap: var(--astryx-space-1-5);
+  border-radius: var(--astryx-radius-element);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+.workspace > #main .color-page-nav button:hover {background: var(--astryx-overlay-hover); color: var(--text-primary);}
+.workspace > #main .color-page-nav button span {font-family: var(--font-mono); font-size: var(--type-caption-1-size); color: var(--text-tertiary);}
+.workspace > #main .color-doc-section + .color-doc-section {margin-top: var(--astryx-space-12); padding-top: var(--astryx-space-10);}
+.workspace > #main .color-section-heading {gap: var(--astryx-space-3); margin-bottom: var(--astryx-space-6);}
+.workspace > #main .color-section-heading > span {padding-top: var(--astryx-space-1); font-family: var(--font-mono); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); color: var(--text-tertiary);}
+.workspace > #main .color-docs .color-section-heading h2 {margin: 0 0 var(--astryx-space-1);}
+.workspace > #main .color-token-flow {gap: var(--astryx-space-3); padding: var(--astryx-space-4); border-radius: var(--astryx-radius-container);}
+.workspace > #main .color-token-flow > span {font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height);}
+.workspace > #main .color-token-flow code {margin-top: var(--astryx-space-0-5); font-size: var(--type-code-size); line-height: var(--type-code-line-height);}
+.workspace > #main .color-intro-grid {gap: var(--astryx-space-6);}
+.workspace > #main .color-docs .brand-anchor {gap: var(--astryx-space-2); padding: var(--astryx-space-6); border-radius: var(--astryx-radius-container);}
+.workspace > #main .color-docs .brand-anchor strong {font-family: var(--font-mono); font-size: var(--type-title-2-size); line-height: var(--type-title-2-line-height); font-weight: var(--font-weight-semibold);}
+.workspace > #main .color-anchor-label {font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-semibold);}
+.workspace > #main .color-docs .brand-anchor p {font-weight: var(--font-weight-medium);}
+.workspace > #main .color-docs .color-principles {gap: var(--astryx-space-6);}
+.workspace > #main .color-docs .color-principles h3 {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); font-weight: var(--font-weight-bold); margin-bottom: var(--astryx-space-1);}
+.workspace > #main .color-docs .color-principles p {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); color: var(--text-secondary);}
+.workspace > #main .color-docs .color-subsection > p {color: var(--text-secondary);}
+.workspace > #main :is(.brand-ramp, .text-scale-ramp) {gap: var(--astryx-space-2);}
+.workspace > #main .ramp-swatch {
+  min-height: 96px;
+  padding: var(--astryx-space-3);
+  border-radius: var(--astryx-radius-element);
+}
+.workspace > #main .ramp-swatch span {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); font-weight: var(--font-weight-semibold);}
+.workspace > #main .ramp-swatch b {margin-top: var(--astryx-space-1); font-family: var(--font-mono); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height); font-weight: var(--font-weight-regular);}
+.workspace > #main .ramp-swatch small {margin-top: var(--astryx-space-1); font-size: var(--type-caption-2-size); line-height: var(--type-caption-2-line-height); letter-spacing: 0;}
+.workspace > #main .ramp-swatch:focus-visible {outline: var(--astryx-focus); outline-offset: 3px;}
+.workspace > #main .color-detail {padding: var(--astryx-space-2) var(--astryx-space-3); border: 1px solid var(--border);}
+.workspace > #main .color-detail[open] > summary {margin-bottom: var(--astryx-space-3);}
+.workspace > #main .color-surface-rules {gap: var(--astryx-space-4);}
+.workspace > #main .color-surface-rules article {padding: var(--astryx-space-4); border-radius: var(--astryx-radius-container);}
+.workspace > #main .color-surface-rules h4 {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); font-weight: var(--font-weight-bold);}
+.workspace > #main .color-surface-rules p {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+.workspace > #main .contrast-grid {gap: var(--astryx-space-4);}
+.workspace > #main .contrast-example > div {padding: var(--astryx-space-6) var(--astryx-space-3); font-size: var(--type-headline-1-size); line-height: var(--type-headline-1-line-height); font-weight: var(--font-weight-semibold);}
+.workspace > #main .contrast-example > b {padding: var(--astryx-space-3) var(--astryx-space-4) 0; font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+.workspace > #main .contrast-example p {padding: 0 var(--astryx-space-4); margin: var(--astryx-space-1) 0 var(--astryx-space-4); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .swatch {padding-bottom: var(--astryx-space-3);}
+.workspace > #main .swatch b {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); padding: 0 var(--astryx-space-3);}
+.workspace > #main .swatch :is(span, code) {padding: 0 var(--astryx-space-3); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .token-chain {padding: var(--astryx-space-4); border-radius: var(--astryx-radius-container);}
+.workspace > #main .token-chain code {font-size: var(--type-code-size); line-height: var(--type-code-line-height);}
+
+/* ---------------------------------------------------------------- Foundations: typography, spacing, shape */
+.workspace > #main .type-family-panel {padding: var(--astryx-space-6); margin: var(--astryx-space-6) 0;}
+.workspace > #main .type-family-panel > code {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .type-playground {gap: var(--astryx-space-3); padding: var(--astryx-space-4); border-radius: var(--astryx-radius-container);}
+.workspace > #main .type-playground label {font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-medium); color: var(--text-secondary);}
+.workspace > #main .type-role {gap: var(--astryx-space-6); padding: var(--astryx-space-6) 0;}
+.workspace > #main .type-role-meta h3 {margin: 0 0 var(--astryx-space-1); font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); font-weight: var(--font-weight-bold); color: var(--text-strong);}
+.workspace > #main .type-role-meta p {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .type-metrics {font-family: var(--font-mono); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height); color: var(--text-secondary);}
+.workspace > #main .token-copy {padding: var(--astryx-space-0-5) 0; font-family: var(--font-mono); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .token-copy:hover {color: var(--brand-ink);}
+.workspace > #main .type-reading-grid {gap: var(--astryx-space-4);}
+.workspace > #main .type-reading-grid article {padding: var(--astryx-space-4); border-radius: var(--astryx-radius-container);}
+.workspace > #main .type-reading-grid h3 {margin: 0 0 var(--astryx-space-3); font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); font-weight: var(--font-weight-bold);}
+.workspace > #main .type-weight-grid b,
+.workspace > #main .type-weight-grid small {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .text-hierarchy-kicker {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .text-color-table td > p {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .text-role-example {padding: var(--astryx-space-1) var(--astryx-space-2); border-radius: var(--astryx-radius-inner);}
+.workspace > #main .type-scale > div {padding: var(--astryx-space-6) 0;}
+.workspace > #main .type-scale > div > span {font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height);}
+.workspace > #main .type-scale small {font-family: var(--font-mono); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .spacing-list > div {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .spacing-list > div > div {border-radius: var(--astryx-radius-inner);}
+.workspace > #main .shape-grid code {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.workspace > #main .elevation {padding: var(--astryx-space-6);}
+.workspace > #main .elevation p {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+.workspace > #main .lucide-grid {gap: var(--astryx-space-2);}
+.workspace > #main .lucide-card {gap: var(--astryx-space-3); padding: var(--astryx-space-5) var(--astryx-space-2);}
+.workspace > #main .lucide-card:hover {background: var(--astryx-overlay-hover); color: var(--text-primary);}
+.workspace > #main .lucide-card > span {font-family: var(--font-mono); font-size: var(--type-caption-2-size); line-height: var(--type-caption-2-line-height);}
+
+/* ---------------------------------------------------------------- Blocks gallery */
+.dds-blocks-page #main {padding-top: var(--astryx-space-6);}
+.dds-blocks-grid {gap: var(--astryx-space-6) var(--astryx-space-4);}
+.dds-block-card {border: 1px solid var(--border); border-radius: var(--astryx-radius-container); box-shadow: none;}
+.dds-block-card:has(.dds-block-card-trigger:is(:hover,:focus-visible)) {border-color: var(--border); box-shadow: var(--astryx-shadow-low);}
+.dds-block-card .dds-block-card-caption {gap: var(--astryx-space-3); padding: var(--astryx-space-3) var(--astryx-space-4);}
+.dds-block-card .dds-block-card-caption h2 {
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+}
+.dds-block-card .dds-block-expand {width: var(--astryx-size-md); height: var(--astryx-size-md); border-radius: var(--astryx-radius-element);}
+.dds-block-card .dds-block-expand .icon {width: 16px; height: 16px;}
+.dds-block-card:has(.dds-block-card-trigger:hover) .dds-block-expand {background: var(--astryx-fill); color: var(--text-primary);}
+.dds-block-card .dds-block-card-trigger:focus-visible {outline: var(--astryx-focus); outline-offset: 2px;}
+.dds-block-dialog {border: 0; border-radius: var(--astryx-radius-container); box-shadow: var(--astryx-shadow-high);}
+.dds-block-dialog::backdrop {background: var(--astryx-scrim); backdrop-filter: none;}
+.dds-block-dialog .dds-block-dialog-header {gap: var(--astryx-space-3) var(--astryx-space-4); padding: var(--astryx-space-3) var(--astryx-space-4);}
+.dds-block-dialog .dds-block-dialog-header h2 {font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line-height); font-weight: var(--type-heading-2-weight); letter-spacing: 0;}
+.dds-block-dialog .dds-block-dialog-close {width: var(--astryx-size-md); height: var(--astryx-size-md); padding: var(--astryx-space-2); border-radius: var(--astryx-radius-element);}
+.dds-block-dialog .dds-block-dialog-close .icon {width: 16px; height: 16px;}
+.dds-block-dialog .dds-block-dialog-close:is(:hover,:focus-visible) {background: var(--astryx-fill); color: var(--text-primary);}
+.dds-block-dialog .dds-block-dialog-body {padding: var(--astryx-space-4);}
+.dds-block-dialog .dds-block-dialog-footer {gap: var(--astryx-space-2) var(--astryx-space-4); padding: var(--astryx-space-3) var(--astryx-space-4);}
+
+/* ---------------------------------------------------------------- Search dialog */
+#search-dialog {
+  max-width: 560px;
+  padding: var(--astryx-space-4);
+  border: 0;
+  border-radius: var(--astryx-radius-container);
+  background: var(--background);
+  box-shadow: var(--astryx-shadow-high);
+}
+#search-dialog::backdrop {background: var(--astryx-scrim); backdrop-filter: none;}
+#search-dialog .dialog-heading {gap: var(--astryx-space-3); margin-bottom: var(--astryx-space-3);}
+#search-dialog .dialog-heading h2 {font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line-height); font-weight: var(--font-weight-semibold); letter-spacing: 0;}
+#search-dialog .dialog-heading [data-close] {
+  width: var(--astryx-size-md);
+  height: var(--astryx-size-md);
+  min-width: var(--astryx-size-md);
+  min-height: var(--astryx-size-md);
+  padding: var(--astryx-space-2);
+  border-radius: var(--astryx-radius-element);
+  color: var(--text-secondary);
+}
+#search-dialog .dialog-heading [data-close] .icon {width: 16px; height: 16px;}
+#search-dialog .dialog-heading [data-close]:hover {background: var(--astryx-fill); color: var(--text-primary);}
+#search-results {display: grid; gap: var(--astryx-space-0-5); margin-top: var(--astryx-space-2);}
+#search-results > a {
+  gap: var(--astryx-space-3);
+  padding: var(--astryx-space-2);
+  border-radius: var(--astryx-radius-element);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  color: var(--text-primary);
+}
+#search-results > a:is(:hover, :focus-visible) {background: var(--astryx-overlay-hover); color: var(--text-primary);}
+#search-results > a:focus-visible {outline: var(--astryx-focus); outline-offset: -2px;}
+#search-results b {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); font-weight: var(--font-weight-medium);}
+#search-results small {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height); color: var(--text-secondary);}
+#search-results .icon {width: 16px; height: 16px; color: var(--text-secondary);}
+#search-dialog > .muted.small {margin: var(--astryx-space-3) 0 0; font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height); color: var(--text-secondary);}
+
+/* ---------------------------------------------------------------- Design settings */
+#dds-design-settings .dds-settings-launcher {
+  width: 44px;
+  height: 44px;
+  padding: var(--astryx-space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--astryx-radius-container);
+  background: var(--background);
+  box-shadow: var(--astryx-shadow-med);
+}
+#dds-design-settings .dds-settings-launcher:hover {background: var(--background); box-shadow: var(--astryx-shadow-high);}
+#dds-design-settings .dds-settings-launcher .icon {width: 20px; height: 20px;}
+#dds-design-settings .dds-settings-launcher:focus-visible {outline: var(--astryx-focus); outline-offset: 3px;}
+#dds-design-settings .dds-settings-dialog {
+  padding: var(--astryx-space-4);
+  border: 0;
+  border-radius: var(--astryx-radius-container) 0 0 var(--astryx-radius-container);
+  box-shadow: var(--astryx-shadow-high);
+}
+#dds-design-settings .dds-settings-heading {gap: var(--astryx-space-3); margin: 0 0 var(--astryx-space-4);}
+#dds-design-settings .dds-settings-heading h2,
+#dds-design-settings .dds-settings-profile-dialog h2 {
+  font-size: var(--type-heading-2-size);
+  line-height: var(--type-heading-2-line-height);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0;
+}
+#dds-design-settings .dds-settings-close {
+  width: var(--astryx-size-md);
+  height: var(--astryx-size-md);
+  min-width: var(--astryx-size-md);
+  min-height: var(--astryx-size-md);
+  padding: var(--astryx-space-2);
+  border-radius: var(--astryx-radius-element);
+  color: var(--text-secondary);
+}
+#dds-design-settings .dds-settings-close .icon {width: 16px; height: 16px;}
+#dds-design-settings .dds-settings-close:is(:hover,:focus-visible) {background: var(--astryx-fill); color: var(--text-primary);}
+#dds-design-settings .dds-settings-body {gap: var(--astryx-space-6);}
+#dds-design-settings .dds-settings-section {gap: var(--astryx-space-3);}
+#dds-design-settings .dds-settings-mode legend {margin-bottom: var(--astryx-space-3);}
+#dds-design-settings .dds-settings-section :is(h3, legend) {
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+#dds-design-settings .dds-settings-field {gap: var(--astryx-space-1-5);}
+#dds-design-settings .dds-settings-field > label,
+#dds-design-settings .dds-settings-background-label {
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+#dds-design-settings [data-dds-background-value] {font-family: var(--font-mono); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+#dds-design-settings .dds-settings-presets {gap: var(--astryx-space-2);}
+#dds-design-settings .dds-settings-preset {height: 28px; min-height: 28px; padding: var(--astryx-space-1); border-radius: var(--astryx-radius-inner);}
+#dds-design-settings .dds-settings-preset .icon {width: 16px; height: 16px;}
+#dds-design-settings .dds-settings-preset:focus-visible {outline: var(--astryx-focus); outline-offset: 2px;}
+#dds-design-settings .dds-settings-combination {min-height: var(--astryx-size-md); padding: var(--astryx-space-1); border-radius: var(--astryx-radius-element);}
+#dds-design-settings .dds-settings-combination span {border-radius: var(--astryx-radius-inner);}
+#dds-design-settings .dds-settings-combination:hover {border-color: var(--control-border); background: var(--astryx-overlay-hover);}
+/* Hue slider: Astryx slider track and 20px thumb; the gradient itself is the DDS hue value. */
+#dds-design-settings .dds-settings-hue-well {height: 32px; margin: 0;}
+#dds-design-settings .dds-settings-hue-well::before {inset: 8px 0;}
+#dds-design-settings input.dds-settings-hue {height: 32px; min-height: 32px; padding: 0 2px;}
+#dds-design-settings input.dds-settings-hue::-webkit-slider-runnable-track {height: 20px;}
+#dds-design-settings input.dds-settings-hue::-moz-range-track {height: 20px;}
+#dds-design-settings input.dds-settings-hue::-webkit-slider-thumb {width: 20px; height: 20px; margin-top: 0; border-color: var(--background); box-shadow: var(--astryx-shadow-low);}
+#dds-design-settings input.dds-settings-hue::-moz-range-thumb {width: 20px; height: 20px; border-color: var(--background); box-shadow: var(--astryx-shadow-low);}
+#dds-design-settings input.dds-settings-hue:focus-visible {outline: var(--astryx-focus); outline-offset: 2px;}
+/* Inputs and selects inside the panel use the Astryx input frame. */
+#dds-design-settings .dds-settings-color-control {
+  gap: var(--astryx-space-2);
+  min-height: var(--astryx-size-md);
+  padding-inline: var(--astryx-space-2);
+  border: 1px solid var(--control-border);
+  border-radius: var(--astryx-radius-element);
+}
+#dds-design-settings .dds-settings-color-control:focus-within {border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary);}
+#dds-design-settings .dds-settings-color-dot {border-radius: var(--astryx-radius-inner);}
+#dds-design-settings .dds-settings-color-control input {
+  height: 30px;
+  min-height: 30px;
+  padding: var(--astryx-space-1) 0;
+  font-family: var(--font-mono);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+}
+#dds-design-settings .dds-settings-field select,
+#dds-design-settings .dds-settings-field .custom-trigger {
+  min-height: var(--astryx-size-md);
+  height: var(--astryx-size-md);
+  padding: var(--astryx-space-1) var(--astryx-space-2);
+  border: 1px solid var(--control-border);
+  border-radius: var(--astryx-radius-element);
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+}
+#dds-design-settings .dds-settings-field .custom-trigger[aria-expanded=true],
+#dds-design-settings .dds-settings-field :is(select, .custom-trigger):focus-visible {border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary);}
+/* Segmented choice: Astryx segmented control. */
+#dds-design-settings .dds-segmented {gap: 0; padding: var(--astryx-space-1); border-radius: var(--astryx-radius-element); background: var(--astryx-fill);}
+#dds-design-settings .dds-choice {
+  min-height: 24px;
+  padding: var(--astryx-space-0-5) var(--astryx-space-3);
+  border-radius: var(--astryx-radius-inner);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+#dds-design-settings .dds-choice:hover {color: var(--text-primary);}
+#dds-design-settings .dds-choice:has(:checked) {background: var(--background); color: var(--text-primary); font-weight: var(--font-weight-semibold); box-shadow: none;}
+[data-theme=dark] #dds-design-settings .dds-choice:has(:checked) {background: color-mix(in srgb, var(--text-primary) 18%, var(--background));}
+#dds-design-settings .dds-settings-footer {gap: var(--astryx-space-2); margin-top: var(--astryx-space-4); padding-top: var(--astryx-space-4);}
+#dds-design-settings :is(.dds-settings-save-state, .dds-settings-copy-state) {font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height); color: var(--text-secondary);}
+#dds-design-settings .dds-settings-profile-dialog {
+  gap: var(--astryx-space-4);
+  padding: var(--astryx-space-4);
+  border: 0;
+  border-radius: var(--astryx-radius-container);
+  box-shadow: var(--astryx-shadow-high);
+}
+#dds-design-settings .dds-settings-profile-dialog::backdrop {background: var(--astryx-scrim);}
+#dds-design-settings .dds-settings-profile-dialog > p {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+#dds-design-settings .dds-settings-prompt-fallback textarea {padding: var(--astryx-space-1) var(--astryx-space-2); border-radius: var(--astryx-radius-element); font-family: var(--font-mono); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+
+/* ---------------------------------------------------------------- Loading skeleton */
+:root #main[data-dds-loading] {--dds-document-skeleton-fill: var(--muted);}
+#main[data-dds-loading] .dds-skeleton-text {border-radius: var(--astryx-radius-inner);}
+
+/* ---------------------------------------------------------------- "디자인시스템이 뭔가요?" guide page */
+.dds-guide .guide-header {
+  min-height: 56px;
+  padding-block: var(--astryx-space-3);
+  gap: var(--astryx-space-4);
+  border-bottom: 1px solid var(--border);
+  box-shadow: none;
+}
+.dds-guide .guide-brand {gap: var(--astryx-space-3);}
+.dds-guide .guide-brand span {
+  padding-left: var(--astryx-space-3);
+  font-size: var(--type-headline-1-size);
+  line-height: var(--type-headline-1-line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+.dds-guide .guide-header-actions {gap: var(--astryx-space-2);}
+.dds-guide .guide-header .icon-btn {
+  width: var(--astryx-size-md);
+  height: var(--astryx-size-md);
+  border: 0;
+  border-radius: var(--astryx-radius-element);
+  background: transparent;
+  color: var(--text-secondary);
+}
+.dds-guide .guide-header .icon-btn:hover {background: var(--astryx-fill); color: var(--text-primary);}
+.dds-guide .guide-header .icon-btn .icon {width: 18px; height: 18px;}
+.dds-guide .guide-header :is(a, button):focus-visible {outline: var(--astryx-focus); outline-offset: 3px;}
+.dds-guide .guide-intro > p {margin-top: var(--astryx-space-4);}
+.dds-guide .guide-contents {gap: var(--astryx-space-1); margin-top: var(--astryx-space-6);}
+.dds-guide .guide-contents a {
+  display: inline-flex;
+  align-items: center;
+  height: var(--astryx-size-md);
+  padding: var(--astryx-space-1-5) var(--astryx-space-3);
+  border-radius: var(--astryx-radius-element);
+  background: var(--astryx-fill);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.dds-guide .guide-contents a:hover {background: var(--astryx-fill-hover); color: var(--text-primary);}
+.dds-guide :is(.guide-steps, .guide-component-list, .guide-footer) a,
+.dds-guide .guide-evidence-pair figcaption a {color: var(--brand-ink); text-decoration: none;}
+.dds-guide :is(.guide-steps, .guide-component-list, .guide-footer) a:hover,
+.dds-guide .guide-evidence-pair figcaption a:hover {text-decoration: underline; text-underline-offset: 3px;}
+.dds-guide .guide-section-heading {margin-bottom: var(--astryx-space-6);}
+.dds-guide .guide-section-heading p {margin-top: var(--astryx-space-2);}
+.dds-guide .guide-evidence-pair {gap: var(--astryx-space-4);}
+.dds-guide .guide-evidence-pair figure,
+.dds-guide .guide-block-figures figure {border-radius: var(--astryx-radius-container); box-shadow: none;}
+.dds-guide .guide-evidence-pair figcaption {padding: var(--astryx-space-3) var(--astryx-space-4); font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+.dds-guide .guide-comparison {border: 0; border-radius: 0; background: transparent;}
+.dds-guide .guide-comparison table {background: transparent;}
+.dds-guide .guide-comparison tbody th {font-weight: var(--font-weight-medium);}
+.dds-guide .guide-block-figures {gap: var(--astryx-space-4);}
+.dds-guide .guide-block-figures figure {padding: var(--astryx-space-4);}
+.dds-guide .guide-composer {padding: var(--astryx-space-4); border-radius: var(--astryx-radius-container);}
+/* The composer switch is a Tabs specimen (.tab-demo) and the editor switch a Segmented
+   specimen; the old guide-only pill override is reset so the component skin reads true. */
+.dds-guide .guide-composer-tabs > .segmented {
+  gap: var(--astryx-space-1);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.dds-guide .guide-composer-tabs > .segmented button {
+  min-height: var(--astryx-size-md);
+  padding: 0 var(--astryx-space-3);
+  border-radius: var(--astryx-radius-element);
+  background: transparent;
+  font-size: var(--type-body-1-normal-size);
+  line-height: var(--type-body-1-normal-line-height);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-secondary);
+}
+.dds-guide .guide-composer-tabs > .segmented button:hover {background: var(--astryx-overlay-hover); color: var(--text-primary);}
+.dds-guide .guide-composer-tabs > .segmented button[aria-selected=true] {
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: none;
+}
+.dds-guide .guide-service-tabs {
+  gap: 0;
+  padding: var(--astryx-space-1);
+  border-radius: var(--astryx-radius-element);
+  background: var(--astryx-fill);
+}
+.dds-guide .guide-service-tabs button {
+  min-height: 24px;
+  padding: var(--astryx-space-0-5) var(--astryx-space-3);
+  border-radius: var(--astryx-radius-inner);
+  font-size: var(--type-label-1-size);
+  line-height: var(--type-label-1-line-height);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+.dds-guide .guide-service-tabs button:hover {color: var(--text-primary);}
+.dds-guide .guide-service-tabs button[aria-selected=true] {
+  background: var(--background);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: none;
+}
+[data-theme=dark] .dds-guide .guide-service-tabs button[aria-selected=true] {background: color-mix(in srgb, var(--text-primary) 18%, var(--background));}
+.dds-guide .guide-code-example pre {padding: var(--astryx-space-3) var(--astryx-space-4); margin-top: var(--astryx-space-3);}
+.dds-guide .guide-steps li {padding-block: var(--astryx-space-5);}
+.dds-guide .guide-steps li::before {top: var(--astryx-space-5); font-family: var(--font-mono);}
+.dds-guide .guide-steps li:first-child::before {top: 0;}
+.dds-guide .guide-footer {padding: var(--astryx-space-4) 0; font-size: var(--type-caption-1-size); line-height: var(--type-caption-1-line-height);}
+
+/* ---------------------------------------------------------------- Responsive */
+@media (max-width: 1250px) {
+  .topbar {padding: 0 var(--astryx-space-4); gap: var(--astryx-space-5);}
+  .topbar .search-trigger {width: 180px;}
+}
+@media (max-width: 1020px) {
+  #sidebar {padding: var(--astryx-space-4) var(--astryx-space-2) var(--astryx-space-10);}
+  .topbar nav a {padding-inline: var(--astryx-space-2);}
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+  .topbar {gap: var(--astryx-space-4);}
+  .topbar .search-trigger {
+    width: var(--astryx-size-md);
+    height: var(--astryx-size-md);
+    padding: 0;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    font-size: 0;
+  }
+  .topbar .search-trigger:hover {background: var(--astryx-fill);}
+  .topbar .search-trigger kbd {display: none;}
+}
+@media (max-width: 767px) {
+  .topbar {height: 56px; padding: 0 var(--astryx-space-3); gap: var(--astryx-space-2);}
+  .topbar .top-actions {gap: var(--astryx-space-1);}
+  .topbar .search-trigger {
+    width: var(--astryx-size-md);
+    height: var(--astryx-size-md);
+    padding: 0;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    font-size: 0;
+  }
+  .topbar .search-trigger:hover {background: var(--astryx-fill);}
+  .topbar .search-trigger kbd {display: none;}
+  .topbar .mobile-menu {width: var(--astryx-size-md);}
+  #sidebar {top: 56px; padding: var(--astryx-space-3) var(--astryx-space-3) var(--astryx-space-10); box-shadow: none;}
+  .menu-open #sidebar {box-shadow: var(--astryx-shadow-high);}
+  .workspace > #main .page-heading {gap: var(--astryx-space-3); margin-bottom: var(--astryx-space-8);}
+  .workspace > #main .page-heading h1 {font-size: var(--type-title-1-size); line-height: var(--type-title-1-line-height);}
+  .workspace > #main .page-heading .lead {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+  .workspace > #main .page-heading > :is(.badge, .btn) {margin-top: 0;}
+  .workspace > #main .overview-heading {padding: var(--astryx-space-2) 0 var(--astryx-space-8);}
+  .workspace > #main .overview-heading h1 {font-size: var(--type-display-2-size); line-height: var(--type-display-2-line-height);}
+  .workspace > #main .overview-heading p {font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height);}
+  .workspace > #main .section-heading > h2,
+  .workspace > #main :is(.reading, .doc-section, [data-doc-panel], [data-doc-panel] > section,
+    .typography-docs > section, .text-color-section) > h2,
+  .workspace > #main .color-docs .color-section-heading h2 {font-size: var(--type-heading-2-size); line-height: var(--type-heading-2-line-height);}
+  .workspace > #main .doc-tabs {gap: var(--astryx-space-1); margin-bottom: var(--astryx-space-6);}
+  .workspace > #main .playground-inner {padding: var(--astryx-space-6) var(--astryx-space-4);}
+  .workspace > #main .entry-card {align-items: center; padding: var(--astryx-space-4);}
+  .workspace > #main .entry-card > .icon {top: 50%; right: var(--astryx-space-4); transform: translateY(-50%);}
+  .workspace > #main .color-page-nav {gap: 0; margin-bottom: var(--astryx-space-8);}
+  .workspace > #main .color-doc-section + .color-doc-section {margin-top: var(--astryx-space-10); padding-top: var(--astryx-space-8);}
+  .workspace > #main :is(.principle, .finding, .elevation, .type-family-panel) {padding: var(--astryx-space-4);}
+  .dds-guide .guide-header {padding: var(--astryx-space-3) var(--astryx-space-4);}
+  .dds-guide .guide-footer {margin-inline: var(--astryx-space-5);}
+}
+@media (max-width: 1020px) and (min-width: 768px) {
+  .workspace > #main .entry-card {align-items: center;}
+  .workspace > #main .entry-card > .icon {top: 50%; right: var(--astryx-space-4); transform: translateY(-50%);}
+}
+@media (max-width: 520px) {
+  #dds-design-settings .dds-settings-launcher {width: 40px; height: 40px;}
+  #dds-design-settings .dds-settings-dialog {width: 100%; border-radius: 0;}
+}
+
+/* Component classes used by documentation chrome (added after the chrome pass). */
+.pill-tabs{gap:var(--astryx-space-1)}
+.pill-tabs .btn{min-height:var(--astryx-size-md);padding:6px var(--astryx-space-3);background:transparent;color:var(--text-secondary);font-size:14px;line-height:20px;font-weight:500}
+.pill-tabs .btn:hover:not(:disabled){background:var(--astryx-overlay-hover);color:var(--text-primary)}
+.pill-tabs .btn.selected{background:var(--astryx-fill);color:var(--text-primary);font-weight:600}
+.brand-anchor .btn{border-color:transparent;background:var(--astryx-fill);color:var(--text-primary)}
+.brand-anchor .btn:hover:not(:disabled){background:var(--astryx-fill-hover);color:var(--text-primary)}
+.overview-heading .overview-guide-link{min-height:var(--astryx-size-md);padding:6px var(--astryx-space-3);border-color:transparent;background:var(--astryx-fill);color:var(--brand-ink);font-size:14px;line-height:20px;font-weight:500}

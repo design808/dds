@@ -1,0 +1,55 @@
+/* ==========================================================================
+   DDS 2.0.0-alpha.1: Astryx look for the example sites
+   Shape, size, type, spacing, elevation and motion follow Astryx neutral
+   (@astryxdesign/core 0.7.11, MIT, Copyright (c) Meta Platforms, Inc.); see astryx-v2-spec.md.
+   The examples are built from DDS components, which ui/dds.css skins; this overlay
+   only adjusts the page-level pieces each example defines in its own CSS. Every color
+   is a DDS token, so each example keeps its own project profile colors.
+   ========================================================================== */
+
+/* ---------- Skip links and focus ---------- */
+:is(.co-skip,.tw-skip,.skip-link){border-radius:var(--astryx-radius-element);padding:var(--astryx-space-2) var(--astryx-space-3)}
+:is(.co-skip,.tw-skip,.skip-link):focus{outline:var(--astryx-focus);outline-offset:3px;box-shadow:var(--astryx-shadow-med)}
+.tw-footer-links a:focus-visible,.co-footer-links a:focus-visible{outline:var(--astryx-focus);outline-offset:3px;border-radius:var(--astryx-radius-inner)}
+
+/* ---------- Footers: hairline, supporting text, links underline on hover ---------- */
+:is(.co-footer,.tw-footer,.page-footer,.site-footer){border-top:1px solid var(--border)}
+.tw-footer-links a:hover{color:var(--text-primary);text-decoration:underline;text-underline-offset:4px}
+.co-footer-links,.tw-footer-links{gap:var(--astryx-space-4)}
+
+/* ---------- Careers ---------- */
+.co-browse-intro{gap:var(--astryx-space-6);padding-block:var(--astryx-space-6)}
+.co-explore-layout{gap:var(--astryx-space-8)}
+.co-filter-content{gap:var(--astryx-space-4)}
+.co-filter-section{gap:var(--astryx-space-2)}
+.co-results,.co-job-list{gap:var(--astryx-space-2)}
+.co-search-form{gap:var(--astryx-space-2)}
+
+/* ---------- Team workspace ---------- */
+.tw-hero{gap:var(--astryx-space-12)}
+.tw-hero-copy{gap:var(--astryx-space-5)}
+.tw-actions{gap:var(--astryx-space-2)}
+.tw-section-heading{gap:var(--astryx-space-2);margin-bottom:var(--astryx-space-6)}
+.tw-feature-grid,.tw-plan-grid{gap:var(--astryx-space-4)}
+.tw-plan-copy{gap:var(--astryx-space-4)}
+.tw-plan-features{gap:var(--astryx-space-2)}
+
+/* ---------- Interview studio ---------- */
+.page-media-area{border-radius:var(--astryx-radius-container)}
+.page-media-label{min-height:20px;padding:0 var(--astryx-space-2);border:0;border-radius:var(--astryx-radius-full);background:var(--background);color:var(--text-primary);font-size:12px;line-height:20px;font-weight:var(--font-weight-medium);box-shadow:var(--astryx-shadow-low)}
+.page-playback{border-radius:var(--astryx-radius-container)}
+.page-complete-symbol{width:48px;height:48px}
+.page-actions,.page-row{gap:var(--astryx-space-2)}
+.page-title-group{gap:var(--astryx-space-2)}
+
+/* ---------- Video interview ---------- */
+.brand-icon{width:var(--astryx-size-md);height:var(--astryx-size-md);border-radius:var(--astryx-radius-element)}
+.brand-icon>:is(.icon,svg){width:18px;height:18px}
+.camera-view{border-radius:var(--astryx-radius-container)}
+.camera-view .camera-label{min-height:20px;padding:0 var(--astryx-space-2);border-radius:var(--astryx-radius-full);font-size:12px;line-height:20px;font-weight:var(--font-weight-medium)}
+.intro-symbol{border-radius:var(--astryx-radius-container)}
+.date-block{min-width:44px;padding:var(--astryx-space-1) var(--astryx-space-2);border-radius:var(--astryx-radius-element)}
+.actions,.timer-buttons,.entry-actions,.dialog-actions{gap:var(--astryx-space-2)}
+.form-stack{gap:var(--astryx-space-4)}
+.form-row{gap:var(--astryx-space-3)}
+.question-line{padding-block:var(--astryx-space-4)}

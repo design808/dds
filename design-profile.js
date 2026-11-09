@@ -3,7 +3,7 @@ import {DEFAULT_SETTINGS,normalizeSettings} from './design-preferences.js?v=485f
 import {UI_VERSION} from './ui/version.js?v=485f1f5fc9ef459b';
 
 export const PROFILE_SCHEMA_VERSION=1;
-export const PROFILE_STORAGE_KEY='dds-design-profile-v1';
+export const PROFILE_STORAGE_KEY='dds-v2-design-profile-v1';
 const isRecord=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 const hasOwn=(value,key)=>Object.prototype.hasOwnProperty.call(value,key);
 const colorFields=new Set(['primary','secondary','accent','positive','pageBackground','pageBackgroundDark']);

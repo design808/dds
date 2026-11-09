@@ -1,0 +1,24 @@
+# A push to v2 reruns the Pages deployment that lives on main (.github/workflows/pages.yml),
+# so /dds/v2/ updates without a commit to main.
+name: Request Pages deployment for V2
+
+on:
+  push:
+    branches: [v2]
+
+permissions:
+  actions: write
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run the Pages workflow on main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh workflow view pages.yml --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            gh workflow run pages.yml --ref main --repo "${{ github.repository }}"
+          else
+            echo "::notice::pages.yml is not on main yet; skipping."
+          fi

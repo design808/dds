@@ -182,37 +182,44 @@
 .dds-type-code{font-family:var(--font-sans);font-size:var(--type-code-size);line-height:var(--type-code-line-height);font-weight:var(--type-code-weight);letter-spacing:var(--type-code-tracking)}
 
 /* ==========================================================================
-   DDS 2.0.0-alpha.1 — Astryx neutral skin (look-and-feel prototype)
-   Values copied from @astryxdesign/theme-neutral 0.7.11 and @astryxdesign/core 0.7.11
-   (MIT, Copyright (c) Meta Platforms, Inc.). See THIRD_PARTY_NOTICES.md.
-   Token names stay DDS names; only values change. Korean glyphs fall back to Pretendard.
+   DDS 2.0.0-alpha.1: Astryx design layer
+   Shape, size, type, spacing, elevation and motion follow Astryx neutral
+   (@astryxdesign/core and theme-neutral 0.7.11, MIT, Copyright (c) Meta Platforms, Inc.).
+   See THIRD_PARTY_NOTICES.md. Colors stay DDS: no color token is redefined here,
+   so the design settings panel keeps controlling brand, canvas and status colors.
    ========================================================================== */
 :root {
-  --brand-50:#f1f1f1; --brand-100:#e2e2e2; --brand-200:#d4d4d4; --brand-300:#b9b9b9; --brand-400:#919191;
-  --brand-500:#1b1b1b; --brand-600:#000000; --brand-700:#000000; --brand-800:#1b1b1b; --brand-900:#111111; --brand-950:#000000;
-  --text-scale-50:#f7f7f7; --text-scale-100:#f1f1f1; --text-scale-200:#e2e2e2; --text-scale-300:#b9b9b9; --text-scale-400:#9e9e9e;
-  --text-scale-500:#6a6a6a; --text-scale-600:#474747; --text-scale-700:#303030; --text-scale-800:#262626; --text-scale-900:#1b1b1b; --text-scale-950:#111111;
-  --background:#ffffff; --surface:#f1f1f1; --muted:#e8e8e8; --workspace-background:#f1f1f1;
-  --text-strong:#000000; --text-primary:#000000; --text-secondary:#474747; --text-tertiary:#6a6a6a;
-  --text-placeholder:#474747; --text-disabled:#919191; --text-inverse:#ffffff; --surface-inverse:#1b1b1b;
-  --foreground:var(--text-primary); --muted-foreground:var(--text-secondary);
-  --border:#00000014; --control-border:#d4d4d4; --accent-border:#e2e2e2;
-  --primary:#1b1b1b; --primary-hover:#000000; --primary-active:#000000; --primary-foreground:#ffffff; --primary-border:transparent;
-  --brand-ink:#1b1b1b; --accent:#f1f1f1; --accent-foreground:#1b1b1b;
-  --ai-input-border:#e2e2e2; --ai-input-background:#ffffff;
-  --success:#2f7d33; --success-bg:#bce0bb; --warning:#836700; --warning-bg:#fae19e;
-  --destructive:#c0262c; --destructive-bg:#ffc4be; --info:#0067ce; --info-bg:#b9d7ff;
-  --ring:#1b1b1b; --dialog-padding:16px;
+  /* Astryx scale, named for the skin files. */
+  --astryx-radius-inner:6px; --astryx-radius-item:8px; --astryx-radius-element:10px;
+  --astryx-radius-container:12px; --astryx-radius-page:28px; --astryx-radius-full:9999px;
+  --astryx-size-sm:28px; --astryx-size-md:32px; --astryx-size-lg:36px;
+  --astryx-space-0-5:2px; --astryx-space-1:4px; --astryx-space-1-5:6px; --astryx-space-2:8px; --astryx-space-3:12px;
+  --astryx-space-4:16px; --astryx-space-5:20px; --astryx-space-6:24px; --astryx-space-8:32px; --astryx-space-10:40px; --astryx-space-12:48px;
+  --astryx-shadow-low:0 2px 4px oklch(0 0 0 / 5%),0 4px 8px oklch(0 0 0 / 10%);
+  --astryx-shadow-med:0 2px 4px oklch(0 0 0 / 5%),0 4px 12px oklch(0 0 0 / 10%);
+  --astryx-shadow-high:0 4px 6px oklch(0 0 0 / 10%),0 12px 24px oklch(0 0 0 / 15%);
+  --astryx-scrim:rgb(0 0 0 / 50%);
+  /* Neutral fills are derived from DDS ink, so they follow DDS colors in both themes. */
+  --astryx-fill:color-mix(in srgb,var(--text-primary) 6%,transparent);
+  --astryx-fill-hover:color-mix(in srgb,var(--text-primary) 10%,transparent);
+  --astryx-fill-pressed:color-mix(in srgb,var(--text-primary) 14%,transparent);
+  --astryx-overlay-hover:color-mix(in srgb,var(--text-primary) 5%,transparent);
+  --astryx-badge-fill:color-mix(in srgb,var(--text-primary) 11%,var(--background));
+  --astryx-focus:2px solid var(--ring);
+  --font-mono:ui-monospace,'SF Mono',Monaco,Consolas,'Liberation Mono','Courier New',monospace;
+
+  /* DDS tokens with Astryx values (non-color). */
+  --dialog-padding:16px;
   --radius-sm:6px; --radius-md:10px; --radius-lg:12px; --radius-xl:12px;
   --control-height-sm:28px; --control-height-md:32px; --control-height-lg:36px;
   --control-type-role:label-1; --control-font-size:14px; --control-line-height:20px; --control-font-weight:400; --control-tracking:0;
   --control-padding-inline:8px; --control-gap:8px; --control-icon-size:16px;
   --shadow-sm:0 0 0 0 transparent;
-  --shadow-overlay:0 4px 6px oklch(0 0 0 / 10%),0 12px 24px oklch(0 0 0 / 15%);
+  --shadow-overlay:var(--astryx-shadow-high);
   --duration-fast:125ms; --duration-normal:300ms;
   --ease-standard:cubic-bezier(.24,1,.4,1); --ease-enter:cubic-bezier(.24,1,.4,1); --ease-exit:cubic-bezier(.3,0,.6,.6);
   --font-sans:Figtree,'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI','Malgun Gothic',sans-serif;
-  --tracking-heading:0; --tracking-label:0;
+  --tracking-body:0; --tracking-heading:0; --tracking-label:0;
   --type-display-1-size:42px; --type-display-1-line-height:52px; --type-display-1-weight:400; --type-display-1-tracking:0;
   --type-display-2-size:35px; --type-display-2-line-height:44px; --type-display-2-weight:400; --type-display-2-tracking:0;
   --type-title-1-size:29px; --type-title-1-line-height:40px; --type-title-1-weight:400; --type-title-1-tracking:0;
@@ -231,16 +238,9 @@
   --type-code-size:14px; --type-code-line-height:20px; --type-code-weight:400; --type-code-tracking:0;
 }
 [data-theme=dark] {
-  --text-scale-50:#111111; --text-scale-100:#ffffff; --text-scale-200:#f1f1f1; --text-scale-300:#9e9e9e; --text-scale-400:#9e9e9e; --text-scale-950:#111111;
-  --background:#1b1b1b; --surface:#262626; --muted:#303030; --workspace-background:#1b1b1b;
-  --text-strong:#ffffff; --text-primary:#ffffff; --text-secondary:#9e9e9e; --text-tertiary:#9e9e9e;
-  --text-placeholder:#9e9e9e; --text-disabled:#525252; --text-inverse:#111111; --surface-inverse:#f1f1f1;
-  --border:#ffffff1a; --control-border:#525252; --accent-border:#474747;
-  --primary:#f1f1f1; --primary-hover:#ffffff; --primary-active:#ffffff; --primary-foreground:#111111;
-  --brand-ink:#f1f1f1; --accent:#262626; --accent-foreground:#f1f1f1;
-  --ai-input-border:#474747; --ai-input-background:#1b1b1b;
-  --success:#90ca90; --success-bg:#90ca903d; --warning:#eec448; --warning-bg:#e2b6233d;
-  --destructive:#ffaea7; --destructive-bg:#ff98903d; --info:#a1caff; --info-bg:#88bcff3d;
-  --ring:#f1f1f1;
-  --shadow-overlay:0 4px 6px oklch(0 0 0 / 50%),0 12px 24px oklch(0 0 0 / 70%),inset 0 0 0 1px oklch(1 0 0 / 15%);
+  --astryx-shadow-low:0 2px 4px oklch(0 0 0 / 25%),0 4px 8px oklch(0 0 0 / 40%),inset 0 0 0 1px oklch(1 0 0 / 8%);
+  --astryx-shadow-med:0 2px 4px oklch(0 0 0 / 35%),0 4px 12px oklch(0 0 0 / 50%),inset 0 0 0 1px oklch(1 0 0 / 12%);
+  --astryx-shadow-high:0 4px 6px oklch(0 0 0 / 50%),0 12px 24px oklch(0 0 0 / 70%),inset 0 0 0 1px oklch(1 0 0 / 15%);
+  --astryx-scrim:rgb(0 0 0 / 80%);
+  --shadow-overlay:var(--astryx-shadow-high);
 }
