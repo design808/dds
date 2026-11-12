@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=30a3948cfc3adddc';
+import {icon} from './icons.js?v=027b0a50880ecefb';
 
 // Enhancement is explicit. Importing this module does not inspect or modify a page.
 const mounts=new WeakMap(),owners=new WeakMap();

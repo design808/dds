@@ -651,7 +651,7 @@
   --chart-series-1:var(--primary);
   --chart-series-2:var(--text-scale-400);
   --chart-series-3:var(--text-scale-700);
-  --chart-line-1:var(--brand-700);
+  --chart-line-1:var(--chart-primary-stroke,var(--brand-600));
   --chart-area-opacity:.12;
   --chart-area-stacked-opacity:.24;
   --chart-gradient-start:.3;

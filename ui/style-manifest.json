@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "bc3e24ac6aa666290ef627fbef09748b7235121eb37430abfc91f0c04efb6327",
+  "sha256": "bc739a5e75a3cdf9887ac358cee4b413ffcb058f3d72a4ad89bce38a3ff8bbff",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -372,7 +372,7 @@
     },
     {
       "file": "chart-system.css",
-      "sha256": "64351460f94e63d206bc637fbe9045d4925964bda2c2a77808a479fbce73352a",
+      "sha256": "5fe1dfde2e689437aae96c0b883ab0050013490f518a3540c6bd5c88bca057f0",
       "retainedRules": 79,
       "excludedSelectors": 16
     },

@@ -102,6 +102,7 @@ export function palette(profile,dark){
     for(const [step,ratio] of [[50,.96],[100,.90],[200,.75],[300,.55],[400,.30]])roles[`--brand-${step}`]=mix(primary,'#ffffff',ratio);
     roles['--brand-500']=primary;
     for(const [step,ratio] of [[600,.10],[700,.23],[800,.38],[900,.53],[950,.67]])roles[`--brand-${step}`]=mix(primary,'#000000',ratio);
+    roles['--chart-primary-stroke']='var(--brand-700)';
   }
   for(const [name,value] of Object.entries({primary,secondary,accent,positive})){
     const soft=name==='primary'?mix(surface,value,dark?.19:.075):functionalSoft(value,surface,dark);

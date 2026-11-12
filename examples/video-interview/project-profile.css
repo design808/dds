@@ -9,6 +9,7 @@
   --brand-500: #007aff;
   --brand-600: #006ee6;
   --brand-700: #005ec4;
+  --chart-primary-stroke: var(--brand-700);
   --brand-800: #004c9e;
   --brand-900: #003978;
   --brand-950: #002854;
