@@ -35,7 +35,7 @@
   overflow-wrap:anywhere;
 }
 .dds-bottomnav > .dds-bottomnav-link > svg {width:22px;height:22px;flex-shrink:0}
-.dds-bottomnav > .dds-bottomnav-link[aria-current=page] {color:var(--brand-ink)}
+.dds-bottomnav > .dds-bottomnav-link[aria-current=page] {color:var(--active-state-ink,var(--brand-ink))}
 .dds-bottomnav > .dds-bottomnav-link:focus-visible {outline:1px solid var(--primary);outline-offset:0}
 
 .dds-command {
@@ -167,7 +167,7 @@
 
 @media(hover:hover) and (pointer:fine) {
   .dds-bottomnav > .dds-bottomnav-link:hover {color:var(--text-strong)}
-  .dds-bottomnav > .dds-bottomnav-link[aria-current=page]:hover {color:var(--brand-ink)}
+  .dds-bottomnav > .dds-bottomnav-link[aria-current=page]:hover {color:var(--active-state-ink,var(--brand-ink))}
   .dds-command-option:hover,.dds-list-link:hover {background:var(--surface)}
   .dds-list-item:hover {background:var(--surface)}
   .dds-list-item > .dds-list-link:hover {background:transparent}

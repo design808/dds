@@ -27,7 +27,7 @@
 .dds-cover-info #cover_view .selection-fields>.form-group>.exampleSelect1{margin:0 0 12px}
 .dds-cover-info #cover_view .selection-fields .u-list-inline{gap:8px}
 .dds-cover-info #cover_view .u-check span{min-height:40px;padding:9px 14px;border-radius:8px;color:var(--foreground)}
-.dds-cover-info #cover_view .u-check input:checked+span{border-color:var(--primary);color:var(--primary);background:var(--accent)}
+.dds-cover-info #cover_view .u-check input:checked+span{border-color:var(--primary);color:var(--active-state-ink,var(--primary));background:var(--accent)}
 .dds-cover-info #cover_view .application-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px;padding:0}
 .dds-cover-info #cover_view .application-fields>.form-group{margin:0;min-width:0}
 .dds-cover-info #cover_view .application-fields .exampleSelect1{margin-bottom:12px}

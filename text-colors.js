@@ -1,6 +1,6 @@
-import {contrast} from './color-contrast.js?v=2a22c87422b484f5';
-import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=2a22c87422b484f5';
-import {palette} from './direction-preview.js?v=2a22c87422b484f5';
+import {contrast} from './color-contrast.js?v=d9735dada5500b56';
+import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=d9735dada5500b56';
+import {palette} from './direction-preview.js?v=d9735dada5500b56';
 
 export const textScale = [
   ['50','#F7F8FA'],['100','#EEF0F3'],['200','#DDE1E7'],['300','#B4BCC8'],
@@ -33,7 +33,7 @@ export const textColors = [
   {id:'placeholder', name:'Placeholder · 입력 예시', light:'#6B727C', dark:'#949DAA', usage:'입력 전 예시·힌트. 필드 이름과 필수 안내는 별도 라벨로 제공합니다.', sample:'예: 서비스 기획 인턴'},
   {id:'disabled', name:'Disabled · 비활성', light:'#A2A8B1', dark:'#646D79', usage:'실제로 비활성화된 컨트롤만 사용. 읽기 전용 값이나 일반 도움말에는 쓰지 않습니다.', sample:'선택할 수 없는 항목', exempt:true},
   {id:'inverse', name:'Inverse · 반전 면', light:'#F7F8FA', dark:'#252D3A', usage:'반전 배경의 툴팁·안내. 반드시 --surface-inverse와 함께 사용합니다.', sample:'수정 내용이 저장되었습니다.', background:'--surface-inverse', lightBg:'#252D3A', darkBg:'#EEF0F3'},
-  {id:'link', name:'Link · 링크', light:'#A85A00', dark:'#FFBE5C', usage:'본문 링크. 밑줄을 함께 표시해 일반 본문과 구분합니다.', sample:'작성 가이드 보기'},
+  {id:'link', name:'Link · 링크', light:'#C44000', dark:'#FFBE5C', usage:'본문 링크. 밑줄을 함께 표시해 일반 본문과 구분합니다.', sample:'작성 가이드 보기'},
   {id:'on-primary', name:'On primary · 주 행동 위', light:'#FFFFFF', dark:'#FFFFFF', usage:'Primary 채움 위의 버튼·선택 라벨. 기본 굵기 700을 유지합니다.', sample:'저장 후 다음', background:'--primary', lightBg:'#FFAD31', darkBg:'#FFAD31', exception:true},
   {id:'success', name:'Success · 완료', light:'#18734B', dark:'#87D7AA', usage:'완료·성공 상태를 명시하는 문구.', sample:'저장이 완료되었습니다.', background:'--success-bg', lightBg:'#EDF8F1', darkBg:'#1C3528'},
   {id:'warning', name:'Warning · 주의', light:'#8A5500', dark:'#F5C76C', usage:'확인이 필요한 조건이나 제한 안내.', sample:'제출 전에 지원 분야를 확인하세요.', background:'--warning-bg', lightBg:'#FFF5DA', darkBg:'#382E1B'},

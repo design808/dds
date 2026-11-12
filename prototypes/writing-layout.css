@@ -13,7 +13,7 @@
 .outline-heading>span{color:var(--muted-foreground)}
 #question-outline-links{display:flex;gap:8px;flex:1;min-width:0;overflow:auto;padding:1px}
 #question-outline-links>a{display:flex;align-items:center;gap:7px;flex-shrink:0;padding:9px 13px;border-radius:8px;color:var(--muted-foreground);background:var(--surface);border:1px solid transparent}
-#question-outline-links>a[aria-current=true]{background:var(--accent);color:var(--brand-ink);border-color:var(--accent-border)}
+#question-outline-links>a[aria-current=true]{background:var(--accent);color:var(--active-state-ink,var(--brand-ink));border-color:var(--accent-border)}
 .outline-number,.outline-label>span{display:none}
 .question-outline #back-info{display:flex;align-items:center;gap:6px;color:var(--muted-foreground);white-space:nowrap}
 .question-outline #back-info .icon{width:14px;height:14px}

@@ -63,12 +63,12 @@
 .dds-variant[data-dds-tone=primary]>.btn {color:var(--brand-ink)}
 .dds-variant[data-dds-tone=assistive]>.btn {color:var(--text-primary)}
 .dds-variant[data-dds-tone=negative]>.btn {color:var(--destructive)}
-.dds-variant :is([data-ext-filter],[data-dds-action="ext-filter"])[aria-pressed=true] {color:var(--primary);background:var(--accent)}
-.dds-variant :is([data-ext-filter],[data-dds-action="ext-filter"])[aria-pressed=true]:hover {color:var(--primary)}
+.dds-variant :is([data-ext-filter],[data-dds-action="ext-filter"])[aria-pressed=true] {color:var(--active-state-ink,var(--primary));background:var(--accent)}
+.dds-variant :is([data-ext-filter],[data-dds-action="ext-filter"])[aria-pressed=true]:hover {color:var(--active-state-ink,var(--primary))}
 .chip[data-dds-size=sm] {min-height:28px;padding:3px 9px;font-size:var(--type-label-2-size);line-height:var(--type-label-2-line-height)}
 .chip[data-dds-size=md] {min-height:36px;padding:6px 12px;font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height)}
 .chip[data-dds-appearance=soft] {background:var(--surface);border-color:transparent}
-.chip[data-dds-appearance=soft][aria-pressed=true] {background:var(--accent);border-color:var(--primary);color:var(--primary)}
+.chip[data-dds-appearance=soft][aria-pressed=true] {background:var(--accent);border-color:var(--primary);color:var(--active-state-ink,var(--primary))}
 .badge.dds-badge[data-dds-tone] {background:var(--dds-tone-soft);color:var(--dds-tone-ink);border-color:var(--dds-tone-edge)}
 .badge.dds-badge[data-dds-appearance=soft] {background:var(--dds-tone-soft,var(--surface));color:var(--dds-tone-ink,var(--text-primary));border-color:var(--dds-tone-edge,var(--border))}
 .badge.dds-badge[data-dds-appearance=outlined] {background:transparent;color:var(--dds-tone-ink,var(--text-primary));border-color:var(--dds-tone-ink,var(--border))}
@@ -86,7 +86,7 @@
 .tab-demo [role=tablist][data-dds-width=stretch]>button {flex:1;min-width:max-content}
 .tab-demo [role=tablist][data-dds-appearance=underline] {background:transparent;padding:0;border-radius:0;border-bottom:1px solid var(--border);gap:var(--space-5)}
 .tab-demo [role=tablist][data-dds-appearance=underline]>button {position:relative;border-radius:0;background:transparent;box-shadow:none;padding:10px 0;color:var(--text-secondary);font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:500;min-height:44px}
-.tab-demo [role=tablist][data-dds-appearance=underline]>button[aria-selected=true] {color:var(--brand-ink)}
+.tab-demo [role=tablist][data-dds-appearance=underline]>button[aria-selected=true] {color:var(--active-state-ink,var(--brand-ink))}
 .tab-demo [role=tablist][data-dds-appearance=underline]>button[aria-selected=true]:after {content:'';position:absolute;inset:auto 0 0;height:2px;background:var(--primary)}
 /* A scrolling tab list must contain its active and keyboard-focus indicators. */
 .tab-demo [role=tablist]>[role=tab] {transition-property:color,background-color,border-color}

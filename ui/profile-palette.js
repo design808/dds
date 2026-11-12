@@ -90,9 +90,9 @@ export function palette(profile,dark){
   const accent=hex(profile.colors?.accent||secondary);
   const positive=hex(profile.colors?.positive||'#18734b');
   const sameOrange=primary==='#ffad31';
-  const primarySoft=sameOrange?(dark?'#322313':'#fff9ef'):mix(surface,primary,dark?.18:.07);
+  const primarySoft=sameOrange?(dark?'#381d13':'#fff9ef'):mix(surface,primary,dark?.18:.07);
   const primaryInk=backgrounds=>sameOrange
-    ? ink(dark?'#ffbe5c':'#a85a00',backgrounds,dark,'#000000')
+    ? ink(dark?'#ffbe5c':'#c44000',backgrounds,dark,'#000000')
     : ink(primary,backgrounds,dark);
   const primaryStates=sameOrange
     ? {hover:dark?'#ffbe5c':'#ff941a',active:dark?'#ffca7a':'#e8750a'}
@@ -128,6 +128,7 @@ export function palette(profile,dark){
     '--primary-foreground':'#ffffff',
     '--primary-border':'transparent',
     '--brand-ink':roles['--direction-primary-ink'],
+    '--active-state-ink':sameOrange?'#e8750a':'initial',
     '--accent':primarySoft,
     '--accent-foreground':primaryInk([background,surface,muted,primarySoft]),
     '--accent-border':sameOrange?(dark?'#554022':'#fff0d6'):mix(surface,primary,dark?.40:.22),

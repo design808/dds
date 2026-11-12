@@ -54,6 +54,7 @@
   --primary-foreground: #ffffff;
   --primary-border: transparent;
   --brand-ink: #0568d5;
+  --active-state-ink: initial;
   --accent: #edf6ff;
   --accent-foreground: #0568d5;
   --accent-border: #c7e2ff;
@@ -120,6 +121,7 @@
   --primary-foreground: #ffffff;
   --primary-border: transparent;
   --brand-ink: #3395ff;
+  --active-state-ink: initial;
   --accent: #132a45;
   --accent-foreground: #3395ff;
   --accent-border: #0e4077;

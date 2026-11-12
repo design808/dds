@@ -51,7 +51,7 @@ button:focus-visible,a:focus-visible{outline:1px solid var(--primary);outline-of
 #session-topics{display:flex;flex-wrap:wrap;gap:8px}
 .session-topic{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;color:var(--text-tertiary);background:var(--background)}
 .session-topic .icon{width:14px;height:14px}
-.session-topic[aria-current=true]{border-color:var(--primary);color:var(--brand-ink);background:var(--accent)}
+.session-topic[aria-current=true]{border-color:var(--primary);color:var(--active-state-ink,var(--brand-ink));background:var(--accent)}
 .session-stage{min-width:0}
 .session-video{position:relative;width:100%;aspect-ratio:16/10;max-height:min(420px,calc(100dvh - 350px));overflow:hidden;border-radius:16px;background:#232830;color:#e8ebf0;isolation:isolate}
 .session-video:fullscreen{aspect-ratio:auto;max-height:none;height:100%;border-radius:0;display:grid;place-items:center}

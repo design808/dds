@@ -238,11 +238,11 @@
   color: var(--brand-ink);
 }
 .topbar nav a.active {
-  color: var(--primary);
+  color: var(--active-state-ink,var(--primary));
   font-weight: var(--font-weight-semibold);
 }
 .topbar nav a.active:hover {
-  color: var(--primary);
+  color: var(--active-state-ink,var(--primary));
 }
 .topbar .top-actions {
   margin-left: 0;
@@ -278,7 +278,7 @@
 }
 #sidebar .nav-section a.active {
   background: var(--accent);
-  color: var(--brand-ink);
+  color: var(--active-state-ink,var(--brand-ink));
   font-weight: var(--font-weight-bold);
 }
 .workspace > #main .section-heading > .section-link {
@@ -520,7 +520,7 @@
 .badge-demo {display:flex;flex-direction:column;align-items:center;gap:var(--space-6)}
 .badge-count-example {display:flex;align-items:center;gap:var(--space-2)}
 .sample-sidebar a.dds-nav-link {font-size:var(--type-label-1-size);color:var(--text-primary);gap:var(--space-3);align-items:center}
-.sample-sidebar a.dds-nav-link[aria-current] {color:var(--brand-ink)}
+.sample-sidebar a.dds-nav-link[aria-current] {color:var(--active-state-ink,var(--brand-ink))}
 .component-preview .sample-sidebar a.dds-nav-link {font-size:var(--type-label-1-size)}
 
 /* Wide service navigation can be inspected without changing its breakpoint. */

@@ -29,7 +29,10 @@ html.dds-direction-preview[data-direction-colors=true] .session-video-state[data
 }
 
 /* Navigation/selection, AI guidance, and positive outcomes have separate jobs. */
-html.dds-direction-preview[data-direction-colors=true] :is(.dds-demo [data-ext-toggle][aria-pressed=true],.dds-applied,.dds-segmented label:has(:checked),.dds-topnav>b,.dds-bottomnav>[aria-current],.dds-mini-image,.di-radio>input:checked+span) {
+html.dds-direction-preview[data-direction-colors=true] :is(.dds-demo [data-ext-toggle][aria-pressed=true],.dds-applied,.dds-segmented label:has(:checked),.dds-bottomnav>[aria-current],.di-radio>input:checked+span) {
+  color: var(--active-state-ink,var(--brand-ink));
+}
+html.dds-direction-preview[data-direction-colors=true] :is(.dds-topnav>b,.dds-mini-image) {
   color: var(--brand-ink);
 }
 html.dds-direction-preview[data-direction-multicolor=true] :is(.gnb-trigger.active,.product-header nav>a[aria-current=page],.mypage-sidebar nav>a[aria-current=page]) {

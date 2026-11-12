@@ -23,9 +23,9 @@
   --brand-500: #ffad31;
   --brand-600: #ff941a;
   --brand-700: #e8750a;
-  --brand-800: #a85a00;
-  --brand-900: #884800;
-  --brand-950: #6c3800;
+  --brand-800: #c44000;
+  --brand-900: #a33200;
+  --brand-950: #7e2400;
   /* Text primitives stay fixed; semantic roles choose a step for each theme. */
   --text-scale-50: #f7f8fa;
   --text-scale-100: #eef0f3;
@@ -62,6 +62,7 @@
   --primary-foreground: #ffffff;
   --primary-border: transparent;
   --brand-ink: var(--brand-800);
+  --active-state-ink: var(--brand-700);
   --accent: var(--brand-50);
   --dialog-padding: 24px;
   --ai-input-border: var(--brand-100);

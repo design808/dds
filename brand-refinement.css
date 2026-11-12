@@ -1,8 +1,8 @@
 .brand-logo{display:block;width:184px;height:auto;max-width:100%;object-fit:contain}.brand-caption{margin-left:2px}.brand:hover{color:inherit}
 .btn.primary,.btn.primary:hover:not(:disabled),.btn.primary:active:not(:disabled),.stepper li.current span,.brand-anchor{border-color:transparent}
 .btn:hover:not(:disabled),.component-card:hover .component-preview,.entry-card:hover{border-color:var(--border)}
-.chip.selected{border-color:var(--primary);color:var(--primary)}.shape-grid>div>div{border-color:transparent}.ramp-swatch{border-color:transparent}.ramp-swatch.anchor{outline:none;box-shadow:none}
-.calendar-day[aria-current=date]:not([aria-selected=true]){border-color:transparent;background:var(--accent);color:var(--accent-foreground);text-decoration:underline;text-underline-offset:4px}.calendar-day[aria-selected=true]{border-color:transparent}
+.chip.selected{border-color:var(--primary);color:var(--active-state-ink,var(--primary))}.shape-grid>div>div{border-color:transparent}.ramp-swatch{border-color:transparent}.ramp-swatch.anchor{outline:none;box-shadow:none}
+.calendar-day[aria-current=date]:not([aria-selected=true]){border-color:transparent;background:var(--accent);color:var(--active-state-ink,var(--accent-foreground));text-decoration:underline;text-underline-offset:4px}.calendar-day[aria-selected=true]{border-color:transparent}
 input[type=checkbox]:not([role=switch]),input[type=radio]{border-color:var(--border)}input[type=checkbox]:not([role=switch]):checked,input[type=checkbox]:indeterminate,input[type=radio]:checked{border-color:transparent}
 input[type=checkbox]:not([role=switch]):checked:after{width:13px;height:13px;border:0;transform:none;background:var(--primary-foreground);mask:url('./assets/icons/check.svg') center/contain no-repeat;-webkit-mask:url('./assets/icons/check.svg') center/contain no-repeat}
 input[type=checkbox]:indeterminate:after{width:13px;height:13px;border:0;background:var(--primary-foreground);mask:url('./assets/icons/minus.svg') center/contain no-repeat;-webkit-mask:url('./assets/icons/minus.svg') center/contain no-repeat}

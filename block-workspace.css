@@ -71,7 +71,7 @@
 .dds-block-example .bws-cell-status{min-height:22px}
 .dds-block-example .bws-cohort-legend{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-3)}
 .dds-block-example .bws-cohort-legend button{padding:6px 8px;border-radius:var(--radius-sm);font-size:var(--type-label-2-size);line-height:var(--type-label-2-line-height);color:var(--text-secondary)}
-.dds-block-example .bws-cohort-legend button[aria-pressed=true]{background:var(--accent);color:var(--brand-ink)}
+.dds-block-example .bws-cohort-legend button[aria-pressed=true]{background:var(--accent);color:var(--active-state-ink,var(--brand-ink))}
 .dds-block-example .bws-side-shell{display:grid;grid-template-columns:208px minmax(0,1fr);min-height:520px;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;max-width:100%}
 .dds-block-example .bws-side-nav{display:flex;flex-direction:column;gap:var(--space-1);min-width:0;padding:var(--space-4);border-right:1px solid var(--border)}
 .dds-block-example .bws-side-heading{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);margin-bottom:var(--space-3)}

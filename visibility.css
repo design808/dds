@@ -132,7 +132,7 @@
   text-decoration:none;
 }
 .dds-nav-link[aria-current]:not([aria-current=false]),
-.dds-nav-control[aria-current]:not([aria-current=false]) {color:var(--brand-ink)}
+.dds-nav-control[aria-current]:not([aria-current=false]) {color:var(--active-state-ink,var(--brand-ink))}
 .dds-nav-link:focus-visible,.dds-nav-control:focus-visible {outline:1px solid var(--primary);outline-offset:0}
 /* A background belongs to a padded control, never to every text link. */
 .dds-nav-control {
@@ -163,6 +163,6 @@
   .dds-nav-link:hover {color:var(--text-strong)}
   .dds-nav-control:hover {color:var(--text-strong);background:var(--surface)}
   .dds-nav-link[aria-current]:not([aria-current=false]):hover,
-  .dds-nav-control[aria-current]:not([aria-current=false]):hover {color:var(--brand-ink)}
+  .dds-nav-control[aria-current]:not([aria-current=false]):hover {color:var(--active-state-ink,var(--brand-ink))}
   .dds-nav-control[aria-current]:not([aria-current=false]):hover {background:var(--accent)}
 }

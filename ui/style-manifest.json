@@ -12,12 +12,12 @@
     "entry": "ui/tokens-scoped.css",
     "scope": ".dds-ui:not(.dds-ui .dds-ui)",
     "source": "tokens.css",
-    "sourceSha256": "6812b8ab38aa0f17f0a6a08e9310cfd977d1fbc656a4d81ea474c9011101a57e",
-    "sha256": "f620326ca6c446b7241278050d5b1617eaf4594bdd70b02f387cd94bddaad448"
+    "sourceSha256": "d9d4a1a7da07cda212c4de967e6c9a5bed11561467e8f26d967824b57d44a36a",
+    "sha256": "8c5f7bb1eae44ae5d38682b384b41330d8fbc1a9cc00da8d234a80799fa6dafd"
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "e71facdba50a9929c74dbf6edd76ef154208d3e3b77e528024650a076f37b702",
+  "sha256": "bc3e24ac6aa666290ef627fbef09748b7235121eb37430abfc91f0c04efb6327",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -342,19 +342,19 @@
   "sources": [
     {
       "file": "style.css",
-      "sha256": "05004dd7165f7b7584d3f9ac90064c82af0a3d3a003287bdf972081ccf89314a",
+      "sha256": "8da536e93d6f69bbe376c0866a9078c1125c5db9f80519898abf88cc0ce99509",
       "retainedRules": 162,
       "excludedSelectors": 431
     },
     {
       "file": "custom-controls.css",
-      "sha256": "3dedf797dfb9dcfa86a7909718b7fbcb2ea69b1fbe74442c0c1cf400d1388f31",
+      "sha256": "212a549e6a35c40365f7f2d8640e45800f73b320f3ac6cc2871808ae69079125",
       "retainedRules": 67,
       "excludedSelectors": 3
     },
     {
       "file": "brand-refinement.css",
-      "sha256": "4f6fee5876754d5ffe91933439482ea2ed16079d65d8a57d8d5aa15393e0810e",
+      "sha256": "0233d5d14dfc155ba04b5ea2976892322a1cc4cf006d77e21d1746b1e1d63ebc",
       "retainedRules": 10,
       "excludedSelectors": 28
     },
@@ -366,7 +366,7 @@
     },
     {
       "file": "extensions.css",
-      "sha256": "a3d5ba54419a87bfe94389850f7539c9c797793f8298b5c71e570f523e02dcca",
+      "sha256": "f60a3ed6923660e96344f96e8b753773dde72969ef397974d16cc287e5fc6128",
       "retainedRules": 194,
       "excludedSelectors": 36
     },
@@ -378,7 +378,7 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "b706ddf52a87bf25a12ee4127ee807c0634839ba15222bcb96167173de667271",
+      "sha256": "8df3a1da52a089ed9dfb4752f8e168bd9898e34923703f60eaf6f7776322524c",
       "retainedRules": 4,
       "excludedSelectors": 178
     },
@@ -396,13 +396,13 @@
     },
     {
       "file": "visibility.css",
-      "sha256": "33ec70330221edd9130377cb511c763754b26da0561f74e2fcb58076f03ba4ac",
+      "sha256": "261ee162cf23d57aba44e172666c6290f4142051281727ec88e492b61b9f4932",
       "retainedRules": 54,
       "excludedSelectors": 0
     },
     {
       "file": "content-primitives.css",
-      "sha256": "1dc68053d399eb1db19db33f4c64eb7d712498b06e44b2e59631d8cfd5a29be9",
+      "sha256": "ad0ccef8e73f53d05832c1e46c0901458ac6ff746c92eb22ebb692b1c6ca9e41",
       "retainedRules": 71,
       "excludedSelectors": 0
     },
@@ -414,7 +414,7 @@
     },
     {
       "file": "variant-system.css",
-      "sha256": "2de86f061dfe4395ea9cf338a9408ea9c7cd6b713d1c419a0e0f92acc6ffac06",
+      "sha256": "c95657b4ac64a4efb9acb9b4095417d8ca8f5fcb0f08d6f9669ad1696bb895b4",
       "retainedRules": 140,
       "excludedSelectors": 0
     },

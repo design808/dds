@@ -50,7 +50,7 @@
 .dds-block-example .dbc-guide-sidebar {padding:var(--space-5) var(--space-3); border-right:1px solid var(--border); color:var(--text-secondary);}
 .dds-block-example .dbc-guide-name {display:block; margin-bottom:var(--space-5); color:var(--text-strong); font:600 var(--type-label-1-size)/var(--type-label-1-line-height) var(--font-sans);}
 .dds-block-example .dbc-guide-sidebar ul {display:grid; gap:var(--space-4); padding:0; list-style:none; font:500 var(--type-label-2-size)/var(--type-label-2-line-height) var(--font-sans); word-break:keep-all; overflow-wrap:anywhere;}
-.dds-block-example .dbc-guide-sidebar .is-current {color:var(--brand-ink);}
+.dds-block-example .dbc-guide-sidebar .is-current {color:var(--active-state-ink,var(--brand-ink));}
 .dds-block-example .dbc-guide-content {display:grid; gap:var(--space-5); padding:var(--space-5); min-width:0;}
 .dds-block-example .dbc-guide-section {display:grid; gap:var(--space-2); margin:0;}
 .dds-block-example .dbc-guide-section h4 {color:var(--text-primary); font:600 var(--type-label-1-size)/var(--type-label-1-line-height) var(--font-sans);}
