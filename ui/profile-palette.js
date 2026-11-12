@@ -7,10 +7,10 @@ const rgb = value => [1,3,5].map(index => parseInt(value.slice(index,index+2),16
 const mix = (first, second, ratio) => '#'+rgb(first).map((value,index) => Math.round(value*(1-ratio)+rgb(second)[index]*ratio).toString(16).padStart(2,'0')).join('');
 const luminance = value => rgb(value).map(channel => channel/255).map(channel => channel<=.04045 ? channel/12.92 : ((channel+.055)/1.055)**2.4).reduce((sum,value,index) => sum+value*[.2126,.7152,.0722][index],0);
 const contrast = (first,second) => (Math.max(luminance(first),luminance(second))+.05)/(Math.min(luminance(first),luminance(second))+.05);
-const ink = (seed,background,dark) => {
+const ink = (seed,background,dark,lightTarget='#17212f') => {
   const surfaces=Array.isArray(background)?background:[background];
   for(let step=0;step<=20;step++){
-    const candidate=mix(seed,dark?'#ffffff':'#17212f',step/20);
+    const candidate=mix(seed,dark?'#ffffff':lightTarget,step/20);
     if(surfaces.every(surface=>contrast(candidate,surface)>=4.5))return candidate;
   }
   return dark?'#f7f8fa':'#17212f';
@@ -90,7 +90,10 @@ export function palette(profile,dark){
   const accent=hex(profile.colors?.accent||secondary);
   const positive=hex(profile.colors?.positive||'#18734b');
   const sameOrange=primary==='#ffad31';
-  const primarySoft=sameOrange?(dark?'#3c251d':'#fff9ef'):mix(surface,primary,dark?.18:.07);
+  const primarySoft=sameOrange?(dark?'#322313':'#fff9ef'):mix(surface,primary,dark?.18:.07);
+  const primaryInk=backgrounds=>sameOrange
+    ? ink(dark?'#ffbe5c':'#a85a00',backgrounds,dark,'#000000')
+    : ink(primary,backgrounds,dark);
   const primaryStates=sameOrange
     ? {hover:dark?'#ffbe5c':'#ff941a',active:dark?'#ffca7a':'#e8750a'}
     : filledStates(primary,dark);
@@ -105,7 +108,8 @@ export function palette(profile,dark){
     const aiTint=mix(surface,value,dark?.20:.12);
     const states=name==='primary'?primaryStates:functionalStates(value,dark);
     roles[`--direction-${name}`]=value;
-    roles[`--direction-${name}-ink`]=ink(value,[background,surface,muted,soft,aiTint],dark);
+    const inkSurfaces=[background,surface,muted,soft,aiTint];
+    roles[`--direction-${name}-ink`]=name==='primary'?primaryInk(inkSurfaces):ink(value,inkSurfaces,dark);
     roles[`--direction-${name}-soft`]=soft;
     roles[`--direction-${name}-border`]=mix(surface,value,dark?.42:.24);
     roles[`--direction-${name}-hover`]=states.hover;
@@ -125,10 +129,10 @@ export function palette(profile,dark){
     '--primary-border':'transparent',
     '--brand-ink':roles['--direction-primary-ink'],
     '--accent':primarySoft,
-    '--accent-foreground':ink(primary,[background,surface,muted,primarySoft],dark),
+    '--accent-foreground':primaryInk([background,surface,muted,primarySoft]),
     '--accent-border':sameOrange?(dark?'#554022':'#fff0d6'):mix(surface,primary,dark?.40:.22),
     '--ring':primary,
-    '--text-link':ink(primary,[background,surface],dark),
+    '--text-link':primaryInk([background,surface]),
     '--direction-glow':mix(background,primary,dark?.16:.13)
   });
   const ai=profile.multicolor?accent:primary;

@@ -61,6 +61,10 @@
 .dds-topnav-demo .dds-topnav-toggle {display:none;}
 .dds-topnav-demo :is(.dds-topnav-icon,.dds-topnav-profile,.dds-topnav-dropdown a,.dds-topnav-dropdown button):focus-visible {outline:1px solid var(--primary);outline-offset:0;}
 @container dds-topnav (width > 900px) {
+  .dds-topnav-demo .dds-topnav-links > .dds-topnav-menu > summary > .icon {
+    transform:none;
+    transition:none;
+  }
   /* Desktop panels float outside the header, so they fade without collapsing. */
   .dds-topnav-demo .dds-topnav-menu::details-content {
     block-size:auto;

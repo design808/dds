@@ -12,12 +12,12 @@
     "entry": "ui/tokens-scoped.css",
     "scope": ".dds-ui:not(.dds-ui .dds-ui)",
     "source": "tokens.css",
-    "sourceSha256": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
-    "sha256": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713"
+    "sourceSha256": "6812b8ab38aa0f17f0a6a08e9310cfd977d1fbc656a4d81ea474c9011101a57e",
+    "sha256": "f620326ca6c446b7241278050d5b1617eaf4594bdd70b02f387cd94bddaad448"
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "f8dcf89523978e6b5c99700fc661ffbffe6f1f6ebbdf49f08bf3ab17d49a1337",
+  "sha256": "e71facdba50a9929c74dbf6edd76ef154208d3e3b77e528024650a076f37b702",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -366,8 +366,8 @@
     },
     {
       "file": "extensions.css",
-      "sha256": "02b314992b10d99db5f9b4b10d7a6dc95733b7632f79625215ec50108658e73a",
-      "retainedRules": 193,
+      "sha256": "a3d5ba54419a87bfe94389850f7539c9c797793f8298b5c71e570f523e02dcca",
+      "retainedRules": 194,
       "excludedSelectors": 36
     },
     {

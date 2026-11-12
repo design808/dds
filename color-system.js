@@ -1,32 +1,32 @@
-import {contrast} from './color-contrast.js?v=c0b7fefa1c3d8659';
-import {textColorSection,textScaleSection,textScaleMapping} from './text-colors.js?v=c0b7fefa1c3d8659';
-import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=c0b7fefa1c3d8659';
-import {palette} from './direction-preview.js?v=c0b7fefa1c3d8659';
+import {contrast} from './color-contrast.js?v=2a22c87422b484f5';
+import {textColorSection,textScaleSection,textScaleMapping} from './text-colors.js?v=2a22c87422b484f5';
+import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=2a22c87422b484f5';
+import {palette} from './direction-preview.js?v=2a22c87422b484f5';
 export {contrast};
-export const brandScale=[['50','#FFF9EF'],['100','#FFF0D6'],['200','#FFDFA8'],['300','#FFCA7A'],['400','#FFBE5C'],['500','#FFAD31'],['600','#FF941A'],['700','#E8750A'],['800','#C24C00'],['900','#A83D00'],['950','#8A2E00']];
+export const brandScale=[['50','#FFF9EF'],['100','#FFF0D6'],['200','#FFDFA8'],['300','#FFCA7A'],['400','#FFBE5C'],['500','#FFAD31'],['600','#FF941A'],['700','#E8750A'],['800','#A85A00'],['900','#884800'],['950','#6C3800']];
 
 const sections=[['color-principles','기준과 원칙'],['color-scales','색상 스케일'],['color-roles','역할별 토큰'],['color-usage','화면 적용'],['color-contrast','대비와 검수']];
 const heading=(index,description)=>`<header class="color-section-heading"><span>0${index+1}</span><div><h2>${sections[index][1]}</h2><p>${description}</p></div></header>`;
 const tokenTable=(rows,caption)=>`<div class="table-wrap color-token-table"><table><caption class="sr-only">${caption}</caption><thead><tr><th scope="col">역할 / 토큰</th><th scope="col">Light</th><th scope="col">Dark</th><th scope="col">사용 원칙</th></tr></thead><tbody>${rows.map(([name,token,light,dark,usage])=>`<tr><th scope="row">${name}<br><button class="token-copy" data-copy="var(${token})" aria-label="${token} 토큰 복사"><code>${token}</code></button></th><td><span class="color-dot" style="background:${light}"></span><code>${light}</code></td><td><span class="color-dot" style="background:${dark}"></span><code>${dark}</code></td><td>${usage}</td></tr>`).join('')}</tbody></table></div>`;
 
 const baseLight={
- '--workspace-background':'#FFFFFF','--footer-background':'transparent','--control-border':'#C2C7CF','--border':'#E4E6EA',
+ '--footer-background':'transparent','--control-border':'#C2C7CF','--border':'#E4E6EA',
  '--primary':'#FFAD31','--primary-foreground':'#FFFFFF','--primary-hover':'#FF941A','--primary-active':'#E8750A',
- '--primary-border':'transparent','--brand-ink':'#C24C00','--accent':'#FFF9EF','--accent-foreground':'#C24C00','--ring':'#FFAD31'
+ '--primary-border':'transparent','--brand-ink':'#A85A00','--accent':'#FFF9EF','--accent-foreground':'#A85A00','--ring':'#FFAD31'
 };
 const baseDark={
- '--workspace-background':'#17191C','--footer-background':'transparent','--control-border':'#626A76','--border':'#353A43',
+ '--footer-background':'transparent','--control-border':'#626A76','--border':'#353A43',
  '--primary':'#FFAD31','--primary-foreground':'#FFFFFF','--primary-hover':'#FFBE5C','--primary-active':'#FFCA7A',
- '--primary-border':'transparent','--brand-ink':'#FFBE5C','--accent':'#3C2013','--accent-foreground':'#FFBE5C','--ring':'#FFAD31'
+ '--primary-border':'transparent','--brand-ink':'#FFBE5C','--accent':'#322313','--accent-foreground':'#FFBE5C','--ring':'#FFAD31'
 };
 const displayColor=value=>/^#[0-9a-f]{6}$/i.test(value)?value.toUpperCase():value;
 
 export function colorPage(input=DEFAULT_SETTINGS){
  const settings=normalizeSettings(input);
  const isBase=settings.primary===DEFAULT_SETTINGS.primary&&settings.colorMode==='brand';
- const profile={colors:{primary:settings.primary,secondary:settings.secondary,accent:settings.accent,positive:settings.positive},multicolor:settings.colorMode==='functional'};
- const light=isBase?baseLight:{...baseLight,...palette(profile,false)};
- const dark=isBase?baseDark:{...baseDark,...palette(profile,true)};
+ const profile={colors:settings,multicolor:settings.colorMode==='functional'};
+ const light={...baseLight,...(isBase?{}:palette(profile,false)),'--workspace-background':settings.pageBackground};
+ const dark={...baseDark,...(isBase?{}:palette(profile,true)),'--workspace-background':settings.pageBackgroundDark};
  const scale=brandScale.map(([step,value])=>[step,displayColor(light['--brand-'+step]||value)]);
  const value=(token,theme)=>displayColor((theme==='light'?light:dark)[token]);
  const primary=value('--primary','light');
@@ -94,7 +94,7 @@ export function colorPage(input=DEFAULT_SETTINGS){
     ${heading(4,'최종 배경과 함께 대비를 확인하고, 채택한 예외를 구분합니다.')}
     <h3>Primary 라벨과 브랜드 텍스트</h3><div class="contrast-grid"><article class="contrast-example"><div style="background:${primary};color:#FFFFFF;font-weight:400">저장 후 다음 →</div><b>White · weight 400</b><p>#FFFFFF / ${primary}<br>굵기 비교용 견본.</p></article><article class="contrast-example"><div style="background:${primary};color:#FFFFFF;font-weight:700">저장 후 다음 →</div><b>White · weight 700 · 채택</b><p>#FFFFFF / ${primary}<br>주 행동과 주요 라벨의 기본 조합.</p></article><article class="contrast-example"><div style="background:#FFFFFF;color:${brandInk}">상세 내용 보기 →</div><b>강조 글자 · ${contrast(brandInk,'#FFFFFF').toFixed(2)}:1</b><p>${brandInk} / #FFFFFF<br>밝은 배경의 링크·작은 글자용 파생색.</p></article></div><p class="helper">흰색 / Primary의 대비는 ${whiteRatio.toFixed(2)}:1입니다. 700 굵기는 시각적 선명도를 보완하지만 대비 수치를 바꾸지 않으며, ${contrastDescription} <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" target="_blank" rel="noreferrer">WCAG 대비 기준 ↗</a></p>
     <h3>적용 검수</h3><ul class="plain-list"><li>Primary 내부 라벨과 아이콘은 흰색, 주요 라벨은 700 굵기를 사용합니다.</li><li>밝은 배경의 링크는 <code>--brand-ink</code>와 밑줄을 함께 사용합니다.</li><li>차트의 범주는 색의 밝기만으로 구분하지 않고 범주명·수치·패턴을 함께 제공합니다.</li><li>반투명·비활성·이미지 위 배치는 합성된 실제 배경에서 대비를 다시 확인합니다.</li></ul>
-    <a class="btn" href="./tokens.css?v=c0b7fefa1c3d8659" download>CSS 토큰 다운로드</a>
+    <a class="btn" href="./tokens.css?v=2a22c87422b484f5" download>CSS 토큰 다운로드</a>
   </section>
  </div>`;
 }

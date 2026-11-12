@@ -1,4 +1,4 @@
-import {icon} from '../icons.js?v=c0b7fefa1c3d8659';
+import {icon} from '../icons.js?v=2a22c87422b484f5';
 export {icon};
 export const $=s=>document.querySelector(s);
 export const $$=s=>[...document.querySelectorAll(s)];

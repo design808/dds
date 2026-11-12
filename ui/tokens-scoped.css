@@ -23,9 +23,9 @@
   --brand-500: #ffad31;
   --brand-600: #ff941a;
   --brand-700: #e8750a;
-  --brand-800: #c24c00;
-  --brand-900: #a83d00;
-  --brand-950: #8a2e00;
+  --brand-800: #a85a00;
+  --brand-900: #884800;
+  --brand-950: #6c3800;
   /* Text primitives stay fixed; semantic roles choose a step for each theme. */
   --text-scale-50: #f7f8fa;
   --text-scale-100: #eef0f3;
