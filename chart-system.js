@@ -1,2 +1,2 @@
 // The documentation and services share the same chart renderer and binder.
-export {chartData,chartDemo,bindCharts} from './ui/charts.js?v=888f0c1451ec7763';
+export {chartData,chartDemo,bindCharts} from './ui/charts.js?v=fb3ed366538b2432';

@@ -1,7 +1,9 @@
-/* Composition spacing only. Item rows, dividers, metadata and actions use DDS. */
-.dds-block-scene:has(.dbl-job-block),
-.dds-block-dialog-body:has(.dbl-job-block) {
+/* Use roomier rows in this block while retaining the shared Item layout. */
+.dds-block-example .dbl-job-block .dds-list-link {
   padding: var(--space-5);
+}
+.dds-block-example .dbl-job-block .dds-list-actions {
+  padding-inline-end: var(--space-5);
 }
 .dds-block-example .dbl-job-block {min-width:0;}
 .dds-block-example .dbl-job-detail {display:grid;gap:var(--space-6);min-width:0;}
