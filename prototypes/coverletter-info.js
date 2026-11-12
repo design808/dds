@@ -1,5 +1,5 @@
-import {$,$$,esc,icon,common,summary,modal,toast,load,save,sampleInfo,blankInfo} from './prototype-shared.js?v=a2951f06bdfb22b5';
-import {getDocument,documentInfo,updateDocument} from './document-store.js?v=a2951f06bdfb22b5';
+import {$,$$,esc,icon,common,summary,modal,toast,load,save,sampleInfo,blankInfo} from './prototype-shared.js?v=124c9ad30d73cda6';
+import {getDocument,documentInfo,updateDocument} from './document-store.js?v=124c9ad30d73cda6';
 common();
 const documentId=new URLSearchParams(location.search).get('document'),linkedDocument=getDocument(documentId);
 const infoKey=linkedDocument?'info:'+documentId:'info';

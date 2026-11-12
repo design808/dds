@@ -29,7 +29,7 @@
 
 
 
-.dds-topnav-demo .dds-topnav-bar {display:flex;align-items:center;gap:var(--space-5);width:100%;max-width:var(--dds-topnav-content-width,none);min-height:72px;min-width:0;margin-inline:auto;padding-inline:var(--dds-topnav-gutter,0);}
+.dds-topnav-demo .dds-topnav-bar {display:flex;align-items:center;gap:var(--space-10);width:100%;max-width:var(--dds-topnav-content-width,none);min-height:72px;min-width:0;margin-inline:auto;padding-inline:var(--dds-topnav-gutter,0);}
 .dds-topnav-demo .dds-topnav-brand {display:flex;flex-shrink:0;}
 .dds-topnav-demo .dds-topnav-brand img {display:block;width:174px;max-width:100%;height:auto;}
 .dds-topnav-demo .dds-topnav-panel {display:flex;align-items:center;gap:var(--space-5);flex:1;min-width:0;}
