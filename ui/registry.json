@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "layout": {
@@ -43,30 +43,30 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "0f0fff25474d456eece4dd2f020c8c1a90b16722fe036d140a7500b660c98345",
-    "ui/core.js": "fa354628fe934a3b46599add40ed1a33ce8515761f3d6ac2d19254f94dec140d",
-    "ui/button.js": "b97cc11d1922f47554e63ef801fa716845f2ecde46f8fb619b2d1ac4990132d6",
-    "ui/extended.js": "3bf776bb7072b73c98be96968564a5c6827df4fb0f8ff6a093a248607970379c",
-    "ui/charts.js": "f3479fbba710327a3092ada02004a7ff71f7419940f6f0329115b239e5666d05",
-    "ui/source.js": "0435fea9a9d9e3435919ac7dd0cb1a99acf5037c1e09434777589a08bba32f75",
-    "ui/index.js": "90e0a4b8a5008af85da280a0a78861a0b5423362f5c6419a03f3639da992f989",
+    "ui/version.js": "44d26f0ec677deaa18044facc29a57a3630a704a758ca4ed890489a43b94ca7e",
+    "ui/core.js": "07c927223d27b7b5de9b7240ab18ceca87122022a315817b401863e5b75e39a0",
+    "ui/button.js": "1e0d6c74d313e17cbad19b0c38e32d10ddc1ac5ff04af3574af78d2e4a9f0992",
+    "ui/extended.js": "dda76df56dc1ad0e6bc12e752c420de9e03c5c992c6a9394731b07997a747b24",
+    "ui/charts.js": "c0d80a7b66f8d8ab34002062780dcd0e9720e74dc662eae22bf158f683616f09",
+    "ui/source.js": "78350e2c74fad3b312ab0c9ca8bd0230d71ebf1ae2cb5844ac0a954601d604c1",
+    "ui/index.js": "28053abb15a97d47fa3ae9cf5064e592e9799ba2ca406e0fac52a4b9e39b17df",
     "ui/content.js": "446f637ce1056cdfa87674b6b1d0bb1e9fd622fd293c208095b8cfff3cd3d25a",
-    "ui/variants.js": "38218ee10af76d696184dc497093cf349e9601fb8a606dd8ee165c5c47177fea",
-    "ui/profile.js": "3dda881d237acc98c1b9574a994a9feafd349387264a6fc17d9fb77fd8c68a0d",
+    "ui/variants.js": "f31c1c998cd2e0a7acdd05a968597246f9460a3c65780c4b95825cd0b978c8e9",
+    "ui/profile.js": "32c585a0fb90c5de21c64a8f329daa7346213495be3cc49626cbcd6ce31e3ce4",
     "ui/profile-palette.js": "e811788b0f71da0ad6ca1fb230c36a03c325d9d269f0acbcab54e9ec13cf4f74",
-    "ui/icons.js": "c0ce2a6fb71ca7e39c239fabb50eb763aa7c7368fa59e13d318011160c7e65c8",
+    "ui/icons.js": "a6c5885d04c34d743812cccb34c3e6160dce53058b5ea9c0566efcfab4b9e915",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "f2fb1a7e52fd0312bb61f86b1217ac797e9d85a6ecb48c21ea079c3c632d2482",
+    "ui/controls.js": "f54fa8315577fc827eaf02572a81421693282e66adbc707e88adfd7188a5a300",
     "ui/tooltips.js": "1791700822254b400b0af547bc303a0c8eef56e1cc1d720e6ce7df0390bf862b",
-    "ui/dds.css": "c9d69918f5692407dc7bb76083fe72e4ffa35251e8afa2c2b6db111553bc1b87",
+    "ui/dds.css": "f8dcf89523978e6b5c99700fc661ffbffe6f1f6ebbdf49f08bf3ab17d49a1337",
     "ui/tokens-scoped.css": "87826baa6ff7e90e63fb382bc30188694ba255d0abc181df32b4816dc6c5e713",
     "tokens.css": "6943b4574639f286ee5b489cad6eb2317083be9ed0da3ada87248b19a004b80c",
     "component-layout.css": "5a048f639ee500cb90997d3d4214f73d50484b72e5275d56cddfb24080a6cc3e",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "47215293093c225b345ea6f2395d1a75ec59df7a15c509421ebbd164a1788142",
-    "design-preferences.js": "2dc74b79e647b44a59d2eb604cd14de4997289a74bf20495d13ac4354a0ecdd8",
-    "design-profile.js": "e90caf8ec3f3a88ed9221975431027bf6c5df5d5945e8966559977164affd898",
+    "design-preferences.js": "996da703faed6d6487d12f8bc7ec64faf74149ce6942c2edfc7a67c84ca031f0",
+    "design-profile.js": "6106b55fc3473450041315d370e2216343f49fa9367792942f0afa5f0eff75e8",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "compositions": {
@@ -6067,7 +6067,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "124c9ad30d73cda6",
-    "canonicalBundle": "../releases/0.6.4/bundle.json"
+    "assetRevision": "c0b7fefa1c3d8659",
+    "canonicalBundle": "../releases/0.6.5/bundle.json"
   }
 }
