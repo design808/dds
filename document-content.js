@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=fb3ed366538b2432';
+import {icon} from './icons.js?v=a2951f06bdfb22b5';
 
 const principles = [
   ['01', '역할에 맞는 규격 사용',
