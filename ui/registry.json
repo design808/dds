@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.6.9",
+  "version": "0.6.11",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "layout": {
@@ -43,30 +43,30 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "5fcc885f5f2ffbecdff732b3c1bde8cbd3067b0586637f0f680211e9ca0d0a3a",
-    "ui/core.js": "68549654ecb874979797a6b4b4873b82ca8eadf67bdf4041173e8487d0358b76",
-    "ui/button.js": "d1638f8be460c2d5d5d5179008b6e4c3530a22a65d8277ae2acf20ac56e99500",
-    "ui/extended.js": "6412fc03f577d7759442f61f97f7390f3e2728f3f478aa64ac3c57d622fdb0c9",
-    "ui/charts.js": "3e24b6e74e4182f8f631a97766240253f3daef29aff90bbaaec78bb0011396e0",
-    "ui/source.js": "6704db7e2ba1f65b26d17b9d24107181c51ad9e39dfdd0cc760b1cbf3c1a5b8a",
-    "ui/index.js": "c1fac6b1103b419501cd61584c705119437ffa82b98309761e8cd251e3802868",
+    "ui/version.js": "e7324fe8b65005d290e581604ee5d9577733fbc26efa4831a64008157e3a0a15",
+    "ui/core.js": "946376e7131c2f12c2b681aeb9827d4f79d55830496038f3bd9ecb9fa1f7f904",
+    "ui/button.js": "3afb23ddbc590837647af539d4ad0b9e50b11ecb692c17f47f4bd382914b661f",
+    "ui/extended.js": "30158f3c41b95ef634ed8c93ff96905340840575ac41466a29393ebe00002e90",
+    "ui/charts.js": "fca2c8ddd2d05c870f92280b61cf5be071920595b853716330fd5c3bdf2a73e0",
+    "ui/source.js": "89c32ad3d758dd370d9541d88452ee3727b9c52eaa2b6e0a2f3d5ea9bb028462",
+    "ui/index.js": "48568f6fde25ca9b0bbf0f13e4c745322467b36bd272c1a7cd568c454bc89fb4",
     "ui/content.js": "446f637ce1056cdfa87674b6b1d0bb1e9fd622fd293c208095b8cfff3cd3d25a",
-    "ui/variants.js": "9cc55a61c413276ee1d9b555f1dbe8a2c848c7f26687948400c9e509a5d5aa93",
-    "ui/profile.js": "464b126a8cfb30b9e0c8bfd59bd31bc7373937fdb29c4560b9c5b8f427d37f58",
-    "ui/profile-palette.js": "b0b846a76714fd420c862748f3d415804863366b341c49f8588ad5203bc282bc",
-    "ui/icons.js": "e1c1b4e47b72991e583f3747f9e1240669067666e0c48cb28dd179196de42dab",
+    "ui/variants.js": "fb559f7b33a73d24148182fd30291dae966fbbbb50819679fa4bb14661a5cfd6",
+    "ui/profile.js": "ccca2e37c9259cc2552f5b2bbfa218c51dff19aa8153ce972b8be73902ee5ef7",
+    "ui/profile-palette.js": "23e56c78a0552e2add9a5d2d03cdbdfe002bcfa04c25a161fca2adfea54ba3ba",
+    "ui/icons.js": "71cf90690d5d24efe1aa5ee841e6480e604975fc0625a0afd8d2a9e8f4ada9fd",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "86acded285b024f27a30c549d9ee8d70528a3cb6f9f76844ee372c418b7d8164",
+    "ui/controls.js": "84f32e80af06ff7cb2248f0304b39f617e54d353b74a8bffc83dd52972edb94c",
     "ui/tooltips.js": "1791700822254b400b0af547bc303a0c8eef56e1cc1d720e6ce7df0390bf862b",
-    "ui/dds.css": "bc739a5e75a3cdf9887ac358cee4b413ffcb058f3d72a4ad89bce38a3ff8bbff",
-    "ui/tokens-scoped.css": "8c5f7bb1eae44ae5d38682b384b41330d8fbc1a9cc00da8d234a80799fa6dafd",
-    "tokens.css": "d9d4a1a7da07cda212c4de967e6c9a5bed11561467e8f26d967824b57d44a36a",
+    "ui/dds.css": "4b752554effab7cb971a0f55dab6d64115c57f7034c4d396a560001a7108741f",
+    "ui/tokens-scoped.css": "06304dcc9ab4ea51a72b9763b1ee7063414dc94c73e0674cddab6a7f4f444ea0",
+    "tokens.css": "8c09fb77054a78a9ac0c01cb88c77084be9d98b6004ea8b8832118254e3d7dfd",
     "component-layout.css": "5a048f639ee500cb90997d3d4214f73d50484b72e5275d56cddfb24080a6cc3e",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "47215293093c225b345ea6f2395d1a75ec59df7a15c509421ebbd164a1788142",
-    "design-preferences.js": "9a2de3d58257f7616d742adad618bb873e07f7f50438eef3497b2679419a0238",
-    "design-profile.js": "7007bfb1f082f1a5d2781de19d8db27d761649569a8da9562991577930de331e",
+    "design-preferences.js": "7eedf16521044e2cb518d9e36cf539afe38d0cd1dbb4789eff05d05aee4d5b6a",
+    "design-profile.js": "6fa57ef01102c67c1973a4760be20f297b8e3c602c0d456047d87bfe14237273",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "compositions": {
@@ -6067,7 +6067,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "027b0a50880ecefb",
-    "canonicalBundle": "../releases/0.6.9/bundle.json"
+    "assetRevision": "1fe6ce322b8635fc",
+    "canonicalBundle": "../releases/0.6.11/bundle.json"
   }
 }

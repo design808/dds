@@ -12,12 +12,12 @@
     "entry": "ui/tokens-scoped.css",
     "scope": ".dds-ui:not(.dds-ui .dds-ui)",
     "source": "tokens.css",
-    "sourceSha256": "d9d4a1a7da07cda212c4de967e6c9a5bed11561467e8f26d967824b57d44a36a",
-    "sha256": "8c5f7bb1eae44ae5d38682b384b41330d8fbc1a9cc00da8d234a80799fa6dafd"
+    "sourceSha256": "8c09fb77054a78a9ac0c01cb88c77084be9d98b6004ea8b8832118254e3d7dfd",
+    "sha256": "06304dcc9ab4ea51a72b9763b1ee7063414dc94c73e0674cddab6a7f4f444ea0"
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "bc739a5e75a3cdf9887ac358cee4b413ffcb058f3d72a4ad89bce38a3ff8bbff",
+  "sha256": "4b752554effab7cb971a0f55dab6d64115c57f7034c4d396a560001a7108741f",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -378,9 +378,9 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "8df3a1da52a089ed9dfb4752f8e168bd9898e34923703f60eaf6f7776322524c",
+      "sha256": "b1588dee27bd8a97b7a9e741e5ec0e0957051d99412537be48ab6063956a4557",
       "retainedRules": 4,
-      "excludedSelectors": 178
+      "excludedSelectors": 180
     },
     {
       "file": "interactions.css",
@@ -390,8 +390,8 @@
     },
     {
       "file": "control-sizing.css",
-      "sha256": "a7dbcb33f110975a56c0a67a0469fc435c10997ba4e49585938d7d4facb38358",
-      "retainedRules": 34,
+      "sha256": "8e318a18e16cd83c88d2adc76d46adfe7f96ba7dabdb2297e5c75d27b1da3626",
+      "retainedRules": 35,
       "excludedSelectors": 19
     },
     {
@@ -402,8 +402,8 @@
     },
     {
       "file": "content-primitives.css",
-      "sha256": "ad0ccef8e73f53d05832c1e46c0901458ac6ff746c92eb22ebb692b1c6ca9e41",
-      "retainedRules": 71,
+      "sha256": "bb07070e3af5ccaa9d41cb387ff8c1b24967d59b3774fd649390d56c67265104",
+      "retainedRules": 72,
       "excludedSelectors": 0
     },
     {
@@ -3192,6 +3192,10 @@
     },
     {
       "source": "document-layout.css",
+      "selector": ".page-heading:has(> .badge)"
+    },
+    {
+      "source": "document-layout.css",
       "selector": ".component-preview .sample-sidebar a.dds-nav-link"
     },
     {
@@ -3233,6 +3237,10 @@
     {
       "source": "document-layout.css",
       "selector": ".workspace > #main .doc-tabs"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .spacing-list"
     },
     {
       "source": "document-layout.css",

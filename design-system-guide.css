@@ -90,7 +90,7 @@
 .dds-guide .guide-demo-card :is(h4,h5) { margin: 0; font-size: var(--type-body-1-normal-size); line-height: var(--type-body-1-normal-line-height); font-weight: var(--font-weight-semibold); color: var(--text-strong); }
 .dds-guide .guide-demo-card h5 { font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); }
 .dds-guide .guide-demo-card p { margin: 0; font-size: var(--type-body-2-reading-size); line-height: var(--type-body-2-reading-line-height); }
-.dds-guide .guide-preview-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-2); }
+.dds-guide .guide-preview-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-3); }
 .dds-guide .guide-preview-heading h4 { color: var(--text-secondary); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); font-weight: var(--font-weight-medium); }
 .dds-guide .guide-editor-preview dl { margin: 0; }
 .dds-guide .guide-editor-preview dt { color: var(--text-secondary); font-size: var(--type-label-1-size); line-height: var(--type-label-1-line-height); }

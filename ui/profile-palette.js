@@ -122,19 +122,20 @@ export function palette(profile,dark){
       roles[`--direction-${name}-stroke`]=functionalStroke(value,[background,surface,muted,soft,aiTint],dark);
     }
   }
+  const defaultLightBrandInk=sameOrange&&!dark?'#e8750a':null;
   Object.assign(roles,{
     '--primary':primary,
     '--primary-hover':primaryStates.hover,
     '--primary-active':primaryStates.active,
     '--primary-foreground':'#ffffff',
     '--primary-border':'transparent',
-    '--brand-ink':roles['--direction-primary-ink'],
+    '--brand-ink':defaultLightBrandInk||roles['--direction-primary-ink'],
     '--active-state-ink':sameOrange?'#e8750a':'initial',
     '--accent':primarySoft,
     '--accent-foreground':primaryInk([background,surface,muted,primarySoft]),
     '--accent-border':sameOrange?(dark?'#554022':'#fff0d6'):mix(surface,primary,dark?.40:.22),
     '--ring':primary,
-    '--text-link':primaryInk([background,surface]),
+    '--text-link':defaultLightBrandInk||primaryInk([background,surface]),
     '--direction-glow':mix(background,primary,dark?.16:.13)
   });
   const ai=profile.multicolor?accent:primary;

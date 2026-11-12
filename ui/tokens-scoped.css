@@ -61,7 +61,7 @@
   --primary-active: var(--brand-700);
   --primary-foreground: #ffffff;
   --primary-border: transparent;
-  --brand-ink: var(--brand-800);
+  --brand-ink: var(--brand-700);
   --active-state-ink: var(--brand-700);
   --accent: var(--brand-50);
   --dialog-padding: 24px;
@@ -101,7 +101,9 @@
   --control-tracking:var(--type-body-1-normal-tracking);
   --control-padding-inline:12px; --control-gap:10px; --control-icon-size:18px;
   --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px;
-  --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px;
+  --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
+  --space-13:52px; --space-14:56px; --space-15:60px; --space-16:64px;
+  --space-17:68px; --space-18:72px; --space-19:76px; --space-20:80px;
   --shadow-sm:0 1px 3px #2021240a; --shadow-overlay:0 18px 60px #10182024;
   --duration-fast:120ms; --duration-normal:180ms;
   --ease-standard:cubic-bezier(.2,0,0,1);

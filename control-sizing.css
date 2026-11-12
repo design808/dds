@@ -72,12 +72,15 @@
 :root :is(.custom-date,.custom-combo,.custom-search)>input{padding-inline-start:var(--control-padding-inline);padding-inline-end:calc(var(--control-height) - 2px)}
 :root :is(.custom-date,.custom-combo,.custom-search)>.control-icon>svg{width:var(--control-icon-size);height:var(--control-icon-size)}
 :root :is(.custom-date,.custom-combo,.custom-search)>.control-icon{
+  --control-icon-hit-size:min(38px,var(--control-height) - 6px);
   top:50%;
   transform:translateY(-50%);
-  width:calc(var(--control-height) - 6px);
-  height:calc(var(--control-height) - 6px);
-  max-width:38px;
-  max-height:38px;
+  width:var(--control-icon-hit-size);
+  height:var(--control-icon-hit-size);
+}
+:root .custom-combo>.control-icon{
+  right:auto;
+  inset-inline-end:calc((var(--control-height) - 2px - var(--control-icon-hit-size)) / 2);
 }
 .dds-input-group>.btn,.dds-input-group>.icon-btn{height:calc(var(--control-height) - 8px);min-height:0;padding-block:0;flex-shrink:0}
 

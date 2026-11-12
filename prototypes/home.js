@@ -1,2 +1,2 @@
-import {common} from './prototype-shared.js?v=027b0a50880ecefb';
+import {common} from './prototype-shared.js?v=1fe6ce322b8635fc';
 common();

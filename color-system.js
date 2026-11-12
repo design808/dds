@@ -1,7 +1,7 @@
-import {contrast} from './color-contrast.js?v=027b0a50880ecefb';
-import {textColorSection,textScaleSection,textScaleMapping} from './text-colors.js?v=027b0a50880ecefb';
-import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=027b0a50880ecefb';
-import {palette} from './direction-preview.js?v=027b0a50880ecefb';
+import {contrast} from './color-contrast.js?v=1fe6ce322b8635fc';
+import {textColorSection,textScaleSection,textScaleMapping} from './text-colors.js?v=1fe6ce322b8635fc';
+import {normalizeSettings,DEFAULT_SETTINGS} from './design-preferences.js?v=1fe6ce322b8635fc';
+import {palette} from './direction-preview.js?v=1fe6ce322b8635fc';
 export {contrast};
 export const brandScale=[['50','#FFF9EF'],['100','#FFF0D6'],['200','#FFDFA8'],['300','#FFCA7A'],['400','#FFBE5C'],['500','#FFAD31'],['600','#FF941A'],['700','#E8750A'],['800','#C44000'],['900','#A33200'],['950','#7E2400']];
 
@@ -12,7 +12,7 @@ const tokenTable=(rows,caption)=>`<div class="table-wrap color-token-table"><tab
 const baseLight={
  '--footer-background':'transparent','--control-border':'#C2C7CF','--border':'#E4E6EA',
  '--primary':'#FFAD31','--primary-foreground':'#FFFFFF','--primary-hover':'#FF941A','--primary-active':'#E8750A',
- '--primary-border':'transparent','--brand-ink':'#C44000','--active-state-ink':'#E8750A','--accent':'#FFF9EF','--accent-foreground':'#C44000','--ring':'#FFAD31'
+ '--primary-border':'transparent','--brand-ink':'#E8750A','--active-state-ink':'#E8750A','--accent':'#FFF9EF','--accent-foreground':'#C44000','--ring':'#FFAD31'
 };
 const baseDark={
  '--footer-background':'transparent','--control-border':'#626A76','--border':'#353A43',
@@ -33,6 +33,8 @@ export function colorPage(input=DEFAULT_SETTINGS){
  const selectionToken=isHex(light['--active-state-ink'])?'--active-state-ink':'--accent-foreground';
  const primary=value('--primary','light');
  const brandInk=value('--brand-ink','light');
+ const brandInkRatio=contrast(brandInk,'#FFFFFF');
+ const brandInkDescription=brandInkRatio<4.5?'흰색 배경에서 일반 텍스트 대비 기준(4.5:1)에 미달합니다.':'밝은 배경의 링크와 강조 글자에 사용합니다.';
  const whiteRatio=contrast(primary,'#FFFFFF');
  const contrastDescription=whiteRatio>=4.5
   ? '이 조합은 WCAG AA 일반 텍스트 대비 기준을 충족합니다. 실제 적용에서도 호버·누르는 중·비활성 상태를 각각 확인합니다.'
@@ -94,9 +96,9 @@ export function colorPage(input=DEFAULT_SETTINGS){
   </section>
   <section id="color-contrast" class="color-doc-section">
     ${heading(4,'최종 배경과 함께 대비를 확인하고, 채택한 예외를 구분합니다.')}
-    <h3>Primary 라벨과 브랜드 텍스트</h3><div class="contrast-grid"><article class="contrast-example"><div style="background:${primary};color:#FFFFFF;font-weight:400">저장 후 다음 →</div><b>White · weight 400</b><p>#FFFFFF / ${primary}<br>굵기 비교용 견본.</p></article><article class="contrast-example"><div style="background:${primary};color:#FFFFFF;font-weight:700">저장 후 다음 →</div><b>White · weight 700 · 채택</b><p>#FFFFFF / ${primary}<br>주 행동과 주요 라벨의 기본 조합.</p></article><article class="contrast-example"><div style="background:#FFFFFF;color:${brandInk}">상세 내용 보기 →</div><b>강조 글자 · ${contrast(brandInk,'#FFFFFF').toFixed(2)}:1</b><p>${brandInk} / #FFFFFF<br>밝은 배경의 링크·작은 글자용 파생색.</p></article></div><p class="helper">흰색 / Primary의 대비는 ${whiteRatio.toFixed(2)}:1입니다. 700 굵기는 시각적 선명도를 보완하지만 대비 수치를 바꾸지 않으며, ${contrastDescription} <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" target="_blank" rel="noreferrer">WCAG 대비 기준 ↗</a></p>
+    <h3>Primary 라벨과 브랜드 텍스트</h3><div class="contrast-grid"><article class="contrast-example"><div style="background:${primary};color:#FFFFFF;font-weight:400">저장 후 다음 →</div><b>White · weight 400</b><p>#FFFFFF / ${primary}<br>굵기 비교용 견본.</p></article><article class="contrast-example"><div style="background:${primary};color:#FFFFFF;font-weight:700">저장 후 다음 →</div><b>White · weight 700 · 채택</b><p>#FFFFFF / ${primary}<br>주 행동과 주요 라벨의 기본 조합.</p></article><article class="contrast-example"><div style="background:#FFFFFF;color:${brandInk}">상세 내용 보기 →</div><b>강조 글자 · ${brandInkRatio.toFixed(2)}:1</b><p>${brandInk} / #FFFFFF<br>${brandInkDescription}</p></article></div><p class="helper">흰색 / Primary의 대비는 ${whiteRatio.toFixed(2)}:1입니다. 700 굵기는 시각적 선명도를 보완하지만 대비 수치를 바꾸지 않으며, ${contrastDescription} <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" target="_blank" rel="noreferrer">WCAG 대비 기준 ↗</a></p>
     <h3>적용 검수</h3><ul class="plain-list"><li>Primary 내부 라벨과 아이콘은 흰색, 주요 라벨은 700 굵기를 사용합니다.</li><li>밝은 배경의 링크는 <code>--brand-ink</code>와 밑줄을 함께 사용합니다.</li><li>차트의 범주는 색의 밝기만으로 구분하지 않고 범주명·수치·패턴을 함께 제공합니다.</li><li>반투명·비활성·이미지 위 배치는 합성된 실제 배경에서 대비를 다시 확인합니다.</li></ul>
-    <a class="btn" href="./tokens.css?v=027b0a50880ecefb" download>CSS 토큰 다운로드</a>
+    <a class="btn" href="./tokens.css?v=1fe6ce322b8635fc" download>CSS 토큰 다운로드</a>
   </section>
  </div>`;
 }

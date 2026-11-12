@@ -147,10 +147,11 @@
 
 .dds-section-header {display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);min-width:0}
 .dds-section-header-content {flex:1 1 180px;min-width:0}
-.dds-section-header .dds-section-heading {display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-2);margin:0;color:var(--text-strong);font-family:var(--font-sans);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:var(--font-weight-semibold);letter-spacing:var(--type-body-1-normal-tracking)}
+.dds-section-header .dds-section-heading {display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-3);margin:0;color:var(--text-strong);font-family:var(--font-sans);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:var(--font-weight-semibold);letter-spacing:var(--type-body-1-normal-tracking)}
 .dds-section-heading > span:first-child {min-width:0;overflow-wrap:anywhere}
 .dds-section-header-content > p {margin:var(--space-1) 0 0}
 .dds-section-header-action {flex-shrink:0;padding-block:var(--space-2)}
+.editor-demo > .row-between:first-child {gap:var(--space-3)}
 
 .dds-fallback {box-sizing:border-box;min-width:0;padding:var(--space-4);text-align:center}
 .dds-fallback > svg {display:block;width:32px;height:32px;margin:0 auto var(--space-4);color:var(--text-secondary)}

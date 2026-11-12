@@ -97,8 +97,8 @@ const overrides = {
   },
   'section-header': {
     usage:{when:'섹션의 제목·실제 개수·보조 설명·전체 보기 행동을 제공할 때 사용합니다.',alternative:'화면 전체의 제목은 페이지 헤더를 사용합니다.'},
-    rules:['제목과 개수 배지를 별도 요소로 배치하고 8px 간격을 둡니다. 공백 문자로 간격을 만들지 않습니다.', '좁은 화면에서는 보조 행동을 다음 줄에 배치하고 제목이나 배지 너비를 강제로 줄이지 않습니다.', '장식 아이콘을 제목 앞에 추가하지 않고 개수는 실제 목록 데이터에 연결합니다.'],
-    specification:[['공통 스타일','content-primitives.css + visibility.css · .dds-section-header / .dds-section-heading'],['제목/배지','간격 8px · 제목 Body 1 Normal 16/24/600 · 배지 Label 2 13/18/600'],['행동/설명','그룹 간격 12px · 설명 위 4px · 부족한 너비에서 줄바꿈']],
+    rules:['제목과 개수 배지를 별도 요소로 배치하고 --space-3 간격을 둡니다. 공백 문자로 간격을 만들지 않습니다.', '좁은 화면에서는 보조 행동을 다음 줄에 배치하고 제목이나 배지 너비를 강제로 줄이지 않습니다.', '장식 아이콘을 제목 앞에 추가하지 않고 개수는 실제 목록 데이터에 연결합니다.'],
+    specification:[['공통 스타일','content-primitives.css + visibility.css · .dds-section-header / .dds-section-heading'],['제목/배지','간격 --space-3 (12px) · 제목 Body 1 Normal 16/24/600 · 배지 Label 2 13/18/600'],['행동/설명','그룹 간격 12px · 설명 위 4px · 부족한 너비에서 줄바꿈']],
     checks:[...defaultChecks,'0개·여러 자리 개수, 긴 제목·보조 행동과 320px에서 간격과 줄바꿈을 확인합니다.'],
     assets:['content-primitives.css',...visibilityAssets],
   },
@@ -265,7 +265,7 @@ const overrides = {
     rules: ['선택 후보와 직접 입력값을 구분하고 자유 입력 허용 여부를 필드별로 정합니다.', '검색 결과가 없어도 입력어를 유지합니다. 한글 조합 중 확정을 가로채지 않습니다.', '포커스 경계는 아이콘을 포함한 외곽 전체에 표시합니다.'],
     keyboard: ['↓로 목록을 열고 ↑/↓로 후보를 이동합니다. Enter로 선택하고 Escape로 닫습니다.', '문자 입력·좌우 커서 이동과 한글 조합은 입력 필드의 기본 동작을 유지합니다.'],
     checks: ['검색 중·결과 있음·없음·선택 후·한글 조합·disabled를 확인합니다.'],
-    specification: [...fieldSizes, fieldFocus],
+    specification: [...fieldSizes, fieldFocus, ['화살표 버튼', '위·아래와 바깥쪽의 여백을 동일하게 유지']],
     assets: ['control-sizing.css', 'custom-controls.css', 'custom-controls.js'],
   },
   search: {

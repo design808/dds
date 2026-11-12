@@ -1,4 +1,4 @@
-import {createComponent,mountDDS,icon,statusBadge} from '../ui/index.js?v=027b0a50880ecefb';
+import {createComponent,mountDDS,icon,statusBadge} from '../ui/index.js?v=1fe6ce322b8635fc';
 
 const tasks=[
  {id:'onboarding',title:'온보딩 가이드 문서 정리',owner:'박서연',due:'오늘',state:'pending',status:'검토 중',body:'새로 합류하는 팀원이 첫 주에 확인할 내용을 정리합니다. 계정 준비, 팀 소개, 첫 프로젝트 안내를 함께 확인해 주세요.'},

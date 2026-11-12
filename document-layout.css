@@ -518,7 +518,8 @@
 
 /* These wrappers arrange documentation examples, not service sections. */
 .badge-demo {display:flex;flex-direction:column;align-items:center;gap:var(--space-6)}
-.badge-count-example {display:flex;align-items:center;gap:var(--space-2)}
+.badge-count-example {display:flex;align-items:center;gap:var(--space-3)}
+.page-heading:has(> .badge) {column-gap:var(--space-3)}
 .sample-sidebar a.dds-nav-link {font-size:var(--type-label-1-size);color:var(--text-primary);gap:var(--space-3);align-items:center}
 .sample-sidebar a.dds-nav-link[aria-current] {color:var(--active-state-ink,var(--brand-ink))}
 .component-preview .sample-sidebar a.dds-nav-link {font-size:var(--type-label-1-size)}
@@ -544,6 +545,9 @@
   }
   .workspace > #main .doc-tabs {
     gap: var(--space-6);
+  }
+  .workspace > #main .spacing-list {
+    --spacing-preview-scale: 1.5;
   }
   .workspace > #main .spacing-list > div {
     gap: var(--space-3);

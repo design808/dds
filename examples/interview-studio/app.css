@@ -27,6 +27,7 @@ body{margin:0;background:var(--background);color:var(--foreground);font-family:v
 .page-fact{display:flex;flex-direction:column;gap:2px;min-width:0}
 .page-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,340px);gap:48px;align-items:start}
 .page-lead{margin:40px 0 32px}
+.page-between.page-lead:has(> .dds-status){gap:var(--space-3)}
 .page-step-content{display:flex;gap:24px;align-items:flex-start}
 .page-step-copy{display:flex;flex-direction:column;gap:8px;min-width:0}
 .page-room{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:32px;align-items:start}
