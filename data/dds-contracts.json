@@ -779,7 +779,7 @@
           "alternative": "작업 결과만 표시하면 Badge, 긴 설명이 필요한 선택이면 Framed choice를 사용합니다."
         },
         "rules": [
-          "선택 상태의 border-color와 글자색은 --primary를 사용합니다.",
+          "선택 상태의 테두리는 --primary를 사용합니다. 글자는 --active-state-ink를 적용하며, 이 토큰은 기본 브랜드(#FFAD31)에서만 --brand-700으로 설정됩니다. 다른 브랜드의 선택 글자는 --primary를 사용합니다.",
           "단일 선택과 다중 선택의 의미를 구분합니다. 선택 상태는 checked 또는 aria-pressed로 전달합니다.",
           "제거 버튼에는 해당 항목 이름을 포함하며 칩 선택과 제거 행동을 분리합니다.",
           "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
@@ -793,7 +793,7 @@
         "specification": [
           [
             "선택",
-            "테두리 --primary · 텍스트 --primary"
+            "테두리 --primary · 글자 var(--active-state-ink, var(--primary))"
           ],
           [
             "텍스트",

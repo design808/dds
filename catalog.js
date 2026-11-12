@@ -1,12 +1,12 @@
-import {extensionComponents,componentAliases} from './extension-catalog.js?v=d9735dada5500b56';
-import {chartComponents} from './chart-catalog.js?v=d9735dada5500b56';
+import {extensionComponents,componentAliases} from './extension-catalog.js?v=30a3948cfc3adddc';
+import {chartComponents} from './chart-catalog.js?v=30a3948cfc3adddc';
 export const groups=['Actions','Inputs','Navigation','Feedback','Data display','Charts'];
 // The catalog describes proposed target components. source names link to static evidence, not production React components.
 const row=(id,name,ko,group,description,source,anatomy,states,rule)=>({id,name,ko,group,description,source,anatomy,states,rule});
 export const components=[
 row('button','Button','버튼','Actions','행동의 중요도와 결과를 구분하는 Solid·Outlined 버튼.', ['Button'],'Container · Label · Leading / Trailing icon · Loading indicator','Default · Hover · Pressed · Focus · Disabled · Loading','한 행동 영역에는 주 행동을 하나만 둡니다. Solid는 Primary·Assistive·Negative, Outlined는 Primary·Assistive를 사용합니다. Negative는 실제 파괴 행동에만 사용하며 로딩은 실제 요청과 연결합니다.'),
 row('icon-button','Icon button','아이콘 버튼','Actions','공간이 제한된 도구 모음의 단일 동작.', ['Button','Tooltip'],'Hit area · Icon · Accessible name','Default · Hover · Focus · Disabled','아이콘만 있는 모든 버튼은 구체적인 기능 이름과 hover·키보드 focus 툴팁을 반드시 제공합니다. 닫기·이동·달력·동적 버튼도 동일하며 Escape로 툴팁을 닫습니다. 삭제는 별도 확인 단계를 둡니다.'),
-row('chip','Chip','선택 칩','Actions','직종, 업종, 핵심 키워드를 작고 명확하게 선택.', ['Checkbox','Radio'],'Label · Selected indicator · Remove','Default · Selected · Focus · Disabled','활성 상태의 테두리와 텍스트는 --primary (#FFAD31)를 사용합니다. 단일 선택과 다중 선택을 섞지 않습니다. 제거 버튼은 키워드명까지 읽어줍니다.'),
+row('chip','Chip','선택 칩','Actions','직종, 업종, 핵심 키워드를 작고 명확하게 선택.', ['Checkbox','Radio'],'Label · Selected indicator · Remove','Default · Selected · Focus · Disabled','선택 상태의 테두리는 --primary를 사용합니다. 기본 브랜드(#FFAD31)의 선택 글자는 --brand-700을 사용합니다. 단일 선택과 다중 선택을 섞지 않습니다. 제거 버튼은 키워드명까지 읽어줍니다.'),
 row('input','Input','입력 필드','Inputs','짧은 정보를 입력하고 즉시 이해할 수 있는 피드백 제공.', ['Input'],'Label · Required · Control · Hint / Error','Empty · Filled · Focus · Invalid · Disabled · Readonly','한 줄 입력은 기본 44px이며 같은 그룹의 Select·검색·날짜 입력과 높이를 맞춥니다. 크기는 공통 토큰으로 지정합니다. 라벨은 입력 후에도 남기고 오류는 입력 아래에 원인과 해결 방법을 함께 표시합니다.'),
 row('textarea','Textarea','여러 줄 입력','Inputs','자기소개서와 경험을 작성하는 긴 글 입력.', ['Textarea'],'Label · Textarea · Helper · Counter','Empty · Filled · Focus · Invalid · Limit reached','글자 수 계산에 공백 포함 여부를 표시합니다. 길이 제한과 저장 상태를 구분합니다.'),
 row('select','Select','선택 상자','Inputs','선택지가 정해진 값 하나를 고르는 컨트롤.', ['Select'],'Label · Trigger · Options · Selected value','Placeholder · Open · Selected · Disabled','선택지가 짧을 때 사용합니다. 기업명처럼 많은 항목은 검색 가능한 선택으로 제공합니다.'),

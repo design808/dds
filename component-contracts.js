@@ -232,10 +232,10 @@ const overrides = {
   },
   chip: {
     usage: {when: '직종·업종·키워드를 선택하거나 선택한 조건을 표시할 때 사용합니다.', alternative: '작업 결과만 표시하면 Badge, 긴 설명이 필요한 선택이면 Framed choice를 사용합니다.'},
-    rules: ['선택 상태의 border-color와 글자색은 --primary를 사용합니다.', '단일 선택과 다중 선택의 의미를 구분합니다. 선택 상태는 checked 또는 aria-pressed로 전달합니다.', '제거 버튼에는 해당 항목 이름을 포함하며 칩 선택과 제거 행동을 분리합니다.'],
+    rules: ['선택 상태의 테두리는 --primary를 사용합니다. 글자는 --active-state-ink를 적용하며, 이 토큰은 기본 브랜드(#FFAD31)에서만 --brand-700으로 설정됩니다. 다른 브랜드의 선택 글자는 --primary를 사용합니다.', '단일 선택과 다중 선택의 의미를 구분합니다. 선택 상태는 checked 또는 aria-pressed로 전달합니다.', '제거 버튼에는 해당 항목 이름을 포함하며 칩 선택과 제거 행동을 분리합니다.'],
     keyboard: ['버튼형 칩은 Enter/Space로 선택합니다. Radio·Checkbox 기반 칩은 해당 입력의 키보드 규칙을 따릅니다.'],
     checks: ['긴 선택값에서 줄바꿈하며 선택·제거 버튼이 중첩되지 않는지 확인합니다.'],
-    specification: [['선택', '테두리 --primary · 텍스트 --primary'], ['텍스트', '작은 칩 Label 2 · 긴 라벨은 줄바꿈'], buttonFocus],
+    specification: [['선택', '테두리 --primary · 글자 var(--active-state-ink, var(--primary))'], ['텍스트', '작은 칩 Label 2 · 긴 라벨은 줄바꿈'], buttonFocus],
   },
   input: {
     usage: {when: '제목·이름 등 한 줄의 값을 입력할 때 사용합니다.', alternative: '긴 글은 Textarea, 정해진 후보 선택은 Select 또는 Combobox를 사용합니다.'},
