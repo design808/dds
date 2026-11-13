@@ -17,6 +17,9 @@ document.querySelectorAll('[data-icon]').forEach(node => {
   toggle.replaceChildren(window.lucide.createElement(window.lucide.icons[open?'X':'Menu'],{class:'icon','stroke-width':1.7,'aria-hidden':'true',focusable:'false'}));
   if(restoreFocus)toggle.focus({preventScroll:true});
  };
+ const resetMenu=()=>{headerFocus=null;if(header.classList.contains('nav-open'))setMenu(false);};
+ for(const type of ['pagehide','popstate','hashchange'])window.addEventListener(type,resetMenu);
+ window.addEventListener('pageshow',event=>{if(event.persisted)resetMenu();});
  toggle.addEventListener('click',()=>setMenu(!header.classList.contains('nav-open')));
  header.addEventListener('keydown',event=>{if(event.key==='Escape'&&header.classList.contains('nav-open')){event.preventDefault();event.stopPropagation();setMenu(false,true);}});
  nav.addEventListener('click',event=>{if(event.target.closest('a')&&header.classList.contains('nav-open'))setMenu(false,true);});

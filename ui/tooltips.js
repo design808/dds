@@ -147,6 +147,7 @@ export function mountTooltips(root,{signal,owns=node=>root.contains(node),priori
  doc.addEventListener('scroll',dismiss,{...events,capture:true});
  view.addEventListener('blur',reset,events);
  view.addEventListener('pagehide',reset,events);
+ view.addEventListener('pageshow',event=>{if(event.persisted)reset();},events);
  view.addEventListener('hashchange',reset,events);
  view.addEventListener('popstate',reset,events);
  doc.addEventListener('visibilitychange',()=>{if(doc.hidden)reset();},events);

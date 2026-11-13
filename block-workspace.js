@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=1fe6ce322b8635fc';
-import {collectionCount, statusBadge, metricContent} from './visibility.js?v=1fe6ce322b8635fc';
+import {icon} from './icons.js?v=4d6e4bc925033bb2';
+import {collectionCount, statusBadge, metricContent} from './visibility.js?v=4d6e4bc925033bb2';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'workspace').replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -178,6 +178,12 @@ export function bindWorkspaceBlocks(root=document){
   root.addEventListener('pointerover',event=>showPoint(event.target),options);root.addEventListener('focusin',event=>showPoint(event.target),options);
   root.addEventListener('pointerout',event=>{if(event.target.closest?.('[data-bws-point]'))event.target.closest('.bws-chart')?.querySelector('[role=tooltip]')?.setAttribute('hidden','');},options);
   root.addEventListener('focusout',event=>{if(event.target.closest?.('[data-bws-point]'))event.target.closest('.bws-chart')?.querySelector('[role=tooltip]')?.setAttribute('hidden','');},options);
+  const dismissTips=()=>{for(const block of blocks)for(const tip of block.querySelectorAll('.bws-tooltip:not([hidden])'))tip.hidden=true;};
+  const window=(root.ownerDocument||root).defaultView;
+  if(blocks.length){
+    for(const event of ['pagehide','popstate','hashchange'])window.addEventListener(event,dismissTips,options);
+    window.addEventListener('pageshow',event=>{if(event.persisted)dismissTips();},options);
+  }
   root.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const dialog=event.target.closest?.('.bws-task-dialog[open]');if(dialog){const [block,state]=context(dialog);event.preventDefault();event.stopPropagation();closeTask(block,state);return;}for(const tip of root.querySelectorAll('.bws-tooltip:not([hidden])'))tip.hidden=true;},options);
   const cleanup=()=>{controller.abort();for(const block of blocks){const dialog=block.querySelector('dialog');if(dialog?.open)dialog.close();}for(const [url,timer] of downloads){clearTimeout(timer);URL.revokeObjectURL(url);}downloads.clear();if(bindings.get(root)===cleanup)bindings.delete(root);};bindings.set(root,cleanup);return cleanup;
 }

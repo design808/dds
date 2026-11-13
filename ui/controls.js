@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=1fe6ce322b8635fc';
+import {icon} from './icons.js?v=4d6e4bc925033bb2';
 
 // Enhancement is explicit. Importing this module does not inspect or modify a page.
 const mounts=new WeakMap(),owners=new WeakMap();
@@ -295,6 +295,9 @@ export function mountControls(root,{onlyDDS=false}={}){
   listen(document,'focusin',event=>{if(opened&&!opened.popup.contains(event.target)&&!opened.trigger.closest('.custom-control')?.contains(event.target))close();});
   listen(document,'close',event=>{if(opened&&event.target.tagName==='DIALOG'&&event.target.contains(opened.trigger))close();},{capture:true});
   listen(document,'toggle',event=>{if(opened&&event.newState==='closed'&&event.target.hasAttribute?.('popover')&&event.target.contains(opened.trigger))close();},{capture:true});
+  const dismissForNavigation=()=>close();
+  for(const event of ['pagehide','popstate','hashchange'])listen(window,event,dismissForNavigation);
+  listen(window,'pageshow',event=>{if(event.persisted)dismissForNavigation();});
   listen(window,'resize',position);listen(document,'scroll',event=>{if(opened&&!opened.popup.contains(event.target))position();},{capture:true});
   listen(window.visualViewport,'resize',position);listen(window.visualViewport,'scroll',position);
  }

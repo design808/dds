@@ -1,16 +1,16 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=1fe6ce322b8635fc';
-import {renderButton} from './button.js?v=1fe6ce322b8635fc';
-import {icon} from './icons.js?v=1fe6ce322b8635fc';
-import {mountControls} from './controls.js?v=1fe6ce322b8635fc';
-import {mountTooltips} from './tooltips.js?v=1fe6ce322b8635fc';
-import {bindCharts,chartDemo} from './charts.js?v=1fe6ce322b8635fc';
-import {calendarDays,renderItemList} from './extended.js?v=1fe6ce322b8635fc';
-import {UI_VERSION} from './version.js?v=1fe6ce322b8635fc';
-import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=1fe6ce322b8635fc';
-import {applyComponentVariants,componentVariants} from './variants.js?v=1fe6ce322b8635fc';
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=4d6e4bc925033bb2';
+import {renderButton} from './button.js?v=4d6e4bc925033bb2';
+import {icon} from './icons.js?v=4d6e4bc925033bb2';
+import {mountControls} from './controls.js?v=4d6e4bc925033bb2';
+import {mountTooltips} from './tooltips.js?v=4d6e4bc925033bb2';
+import {bindCharts,chartDemo} from './charts.js?v=4d6e4bc925033bb2';
+import {calendarDays,renderItemList} from './extended.js?v=4d6e4bc925033bb2';
+import {UI_VERSION} from './version.js?v=4d6e4bc925033bb2';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=4d6e4bc925033bb2';
+import {applyComponentVariants,componentVariants} from './variants.js?v=4d6e4bc925033bb2';
 export {renderButton,renderItemList,icon,componentIds,componentParts,renderComponentSource,layoutContract};
 export {componentVariants,optionalContent};
-export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=1fe6ce322b8635fc';
+export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=4d6e4bc925033bb2';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -87,7 +87,8 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  const doc=root.ownerDocument,view=doc.defaultView,abort=new view.AbortController(),signal=abort.signal;
  const stops=[],timers=new Set(),portals=new Set(),floating=new Map(),navs=new Map(),dragging=new Map(),toastTimers=new Map();
  const questionnaireLabels=new WeakMap(),timeSuffixes=new WeakMap(),sliderSuffixes=new WeakMap();
- let disposed=false,scanPending=false;
+ let disposed=false,scanPending=false,resettingOverlays=false;
+ let lastMousePosition,blockedMousePosition,blockedFocusTrigger;
  const owns=target=>{
   const element=asElement(target);if(!element)return false;
   for(const portal of portals)if(portal.contains(element))return true;
@@ -203,6 +204,14 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   const menu=element?.closest(primaryNavMenu),header=menu?.closest('[data-dds-topnav]'),state=navs.get(header);
   return state?.mobile===false?{menu,header,state}:null;
  }
+ function stationaryMouse(event){
+  if(event.pointerType!=='mouse')return false;
+  const {clientX:x,clientY:y}=event;
+  if(blockedMousePosition?.x===x&&blockedMousePosition.y===y)return true;
+  blockedMousePosition=undefined;
+  if(lastMousePosition?.x!==x||lastMousePosition.y!==y)lastMousePosition={x,y};
+  return false;
+ }
  function closeNavMenuLater(menu,state){
   cancel(state.hoverTimer);
   state.hoverTimer=later(()=>{
@@ -227,15 +236,41 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   const activeMenu=remembered?.closest?.('.dds-topnav-menu[open]'),menuSummary=activeMenu?.querySelector('summary');
   let floatingClosed=false;
   if(changed||mobile&&!expanded){clearNavHover(state);for(const details of header.querySelectorAll('.dds-topnav-menu[open]'))details.open=false;for(const record of [...floating.values()])if(header.contains(record.trigger)){floatingClosed=floatingClosed||record.panel.contains(current);restore(record);}}
-  const controlClosed=(changed||mobile&&!expanded)&&closeNestedControl(panel);state.mobile=mobile;state.open=!!expanded;
+  const controlClosed=!resettingOverlays&&(changed||mobile&&!expanded)&&closeNestedControl(panel);state.mobile=mobile;state.open=!!expanded;
   const label=expanded?'메뉴 닫기':'메뉴 열기';toggle.hidden=!mobile;toggle.setAttribute('aria-expanded',String(!!expanded));toggle.setAttribute('aria-label',label);toggle.setAttribute('data-tooltip',label);
   const labelNode=toggle.querySelector('.dds-button-label');if(labelNode)labelNode.innerHTML=icon(expanded?'X':'Menu');
-  if(mobile&&!expanded&&(restoreFocus||panel.contains(remembered)||controlClosed||floatingClosed)&&doc.hasFocus())focus(toggle);
+  if(!resettingOverlays&&mobile&&!expanded&&(restoreFocus||panel.contains(remembered)||controlClosed||floatingClosed)&&doc.hasFocus())focus(toggle);
   if(!mobile&&remembered===toggle&&doc.hasFocus())focus(header.querySelector('.dds-topnav-brand'));
   else if(!mobile&&changed&&activeMenu&&doc.hasFocus())focus(menuSummary);
   panel.hidden=mobile&&!expanded;panel.inert=panel.hidden;header.dataset.ddsMobile=String(mobile);
   positionNavDropdowns(header);
  }
+ function resetOverlays(){
+  if(resettingOverlays)return;
+  resettingOverlays=true;
+  // Closing a layer or restoring a cached page can dispatch boundary events
+  // under the stationary mouse. Require fresh pointer movement before hover.
+  blockedMousePosition=lastMousePosition;
+  const active=doc.activeElement;
+  if(owns(active))blockedFocusTrigger=active.closest('[data-dds-hover]')||blockedFocusTrigger;
+  try{
+   for(const record of [...floating.values()]){
+    if(record.trigger.hasAttribute('data-dds-hover')&&record.panel.contains(active))blockedFocusTrigger=record.trigger;
+    restore(record);
+   }
+   for(const details of all('.dds-nav-details[open],details.sample-dropdown[open]'))details.open=false;
+   for(const [header,state] of navs){
+    if(!owns(header))continue;
+    clearNavHover(state);
+    state.lastFocused=null;
+    for(const details of header.querySelectorAll('.dds-topnav-menu[open]'))details.open=false;
+    if(state.open)setNav(header,false);
+    else positionNavDropdowns(header);
+   }
+  }finally{resettingOverlays=false;}
+ }
+ for(const event of ['pagehide','popstate','hashchange'])view.addEventListener(event,resetOverlays,{signal});
+ view.addEventListener('pageshow',event=>{if(event.persisted)resetOverlays();},{signal});
  const resize=new view.ResizeObserver(entries=>{for(const entry of entries){const header=entry.target.querySelector('[data-dds-topnav]');if(header)setNav(header,undefined,false,entry.contentRect.width);}});
  function syncCounter(input){const output=input.closest('.field,.editor-demo')?.querySelector('[data-count]'),text=input.value.length+(input.maxLength>0?' / '+input.maxLength:'');if(output&&output.textContent!==text)output.textContent=text;}
  function scan(){
@@ -294,7 +329,9 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
    header.dataset.ddsLanguage=value;const visible=header.querySelector('[data-dds-part="language-value"]');if(visible)visible.textContent=label;
    const details=target.closest('details');setNavMenuOpen(details,false);focus(details.querySelector('summary'));const status=header.querySelector('[data-dds-nav-status]');if(status)status.textContent=label+' 선택';notify(target,'language',value);
   }
-  if(target.matches('.dds-topnav-panel a'))setNav(target.closest('[data-dds-topnav]'),false);
+  if(target.matches(':is(.dds-topnav-panel,.dds-nav-details,.sample-dropdown) a[href],.dds-topnav-brand[href]')&&
+     !target.hasAttribute('download')&&(!target.target||target.target.toLowerCase()==='_self')&&
+     !(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey))resetOverlays();
   if(target.hasAttribute('data-dds-page')){const nav=target.closest('nav');for(const button of nav.querySelectorAll('[data-dds-page]')){button.classList.toggle('primary',button===target);button===target?button.setAttribute('aria-current','page'):button.removeAttribute('aria-current');}const out=nav.querySelector('[data-page-state]');if(out)out.textContent=target.textContent+' / '+nav.querySelectorAll('[data-dds-page]').length+' 페이지';notify(target,'page',Number(target.textContent));}
   if(target.hasAttribute('data-dds-page-shift')){
    const pager=target.closest('[data-dds-pager],.dds-pager'),output=pager.querySelector('output'),numbers=output.textContent.match(/\d+/g)||[],total=Math.max(0,Number(pager.dataset.ddsTotal??numbers[1]??0)),current=Number(pager.dataset.page??numbers[0]??0),next=total?Math.max(1,Math.min(total,current+Number(target.dataset.ddsPageShift))):0;
@@ -365,14 +402,17 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   for(const record of [...floating.values()])if(record.kind==='menu'&&!record.panel.contains(element)&&!record.trigger.contains(element))restore(record);
   if(!owns(element))return;const handle=element.closest('.dds-resize-handle');if(handle&&(event.button===0||event.pointerType==='touch')){event.preventDefault();dragging.set(handle,event.pointerId);try{handle.setPointerCapture(event.pointerId);}catch{}}
  },{capture:true,signal});
- doc.addEventListener('pointermove',event=>{if(!owns(event.target))return;const handle=asElement(event.target).closest('.dds-resize-handle');if(!handle||dragging.get(handle)!==event.pointerId)return;const bounds=handle.parentElement.getBoundingClientRect(),ratio=(event.clientX-bounds.left)/bounds.width;resizePanel(handle,(view.getComputedStyle(handle.parentElement).direction==='rtl'?1-ratio:ratio)*100);},{signal});
+ doc.addEventListener('pointermove',event=>{stationaryMouse(event);if(!owns(event.target))return;const handle=asElement(event.target).closest('.dds-resize-handle');if(!handle||dragging.get(handle)!==event.pointerId)return;const bounds=handle.parentElement.getBoundingClientRect(),ratio=(event.clientX-bounds.left)/bounds.width;resizePanel(handle,(view.getComputedStyle(handle.parentElement).direction==='rtl'?1-ratio:ratio)*100);},{signal});
  const endDrag=event=>{const handle=asElement(event.target)?.closest('.dds-resize-handle');if(handle&&dragging.get(handle)===event.pointerId){dragging.delete(handle);try{handle.releasePointerCapture(event.pointerId);}catch{}}};
  doc.addEventListener('pointerup',endDrag,{signal});doc.addEventListener('pointercancel',endDrag,{signal});doc.addEventListener('lostpointercapture',endDrag,{signal});
  doc.addEventListener('focusin',event=>{
   const element=asElement(event.target);
+  if(resettingOverlays)return;
   for(const [header,state]of navs){if(element===doc.body){if(state.lastFocused?.getClientRects().length)state.lastFocused=null;}else state.lastFocused=header.contains(element)?element:null;}
   for(const record of [...floating.values()])if(record.kind==='menu'&&!record.panel.contains(element)&&!record.trigger.contains(element))restore(record);
-  if(!owns(element))return;const trigger=element.closest('[data-dds-hover]');if(trigger)openPopover(trigger);
+  const trigger=element?.closest('[data-dds-hover]');
+  if(blockedFocusTrigger&&trigger!==blockedFocusTrigger&&element!==doc.body)blockedFocusTrigger=undefined;
+  if(!owns(element))return;if(trigger&&trigger!==blockedFocusTrigger)openPopover(trigger);
   const panel=element.closest('.dds-popover');if(panel&&floating.has(panel))cancel(floating.get(panel).hoverTimer);
  },{signal});
  doc.addEventListener('focusout',event=>{
@@ -382,7 +422,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   for(const record of floating.values())if(record.kind==='popover'&&record.trigger.hasAttribute('data-dds-hover')&&(record.trigger.contains(element)||record.panel.contains(element)))closeHoverLater(record);
  },{signal});
  doc.addEventListener('pointerover',event=>{
-  if(event.pointerType==='touch'||!owns(event.target))return;const element=asElement(event.target),trigger=element.closest('[data-dds-hover]');if(trigger)openPopover(trigger);
+  if(stationaryMouse(event)||resettingOverlays||event.pointerType==='touch'||!owns(event.target))return;const element=asElement(event.target),trigger=element.closest('[data-dds-hover]');if(trigger)openPopover(trigger);
   const hover=event.pointerType==='mouse'&&hoverNavMenu(element);
   if(hover&&!hover.menu.contains(asElement(event.relatedTarget))){
    const {menu,header,state}=hover;

@@ -1,5 +1,5 @@
-import {chartComponents, chartPresentation} from '../chart-catalog.js?v=1fe6ce322b8635fc';
-import {bindChartLayout} from '../chart-layout.js?v=1fe6ce322b8635fc';
+import {chartComponents, chartPresentation} from '../chart-catalog.js?v=4d6e4bc925033bb2';
+import {bindChartLayout} from '../chart-layout.js?v=4d6e4bc925033bb2';
 
 // SVG examples use local data. Service adapters keep their existing chart engine,
 // data requests, permissions and export behavior.
@@ -309,7 +309,7 @@ const chartRootBindings = new WeakMap();
 export function bindCharts(root=document) {
   if(!root?.querySelectorAll)return ()=>{};
   chartRootBindings.get(root)?.();
-  const cleanups=[],stopLayout=bindChartLayout(root);
+  const cleanups=[],dismissals=[],stopLayout=bindChartLayout(root);
   const examples=[...root.querySelectorAll('[data-chart-example]')];
   if(root.matches?.('[data-chart-example]'))examples.unshift(root);
   examples.forEach(example=>{
@@ -324,6 +324,7 @@ export function bindCharts(root=document) {
     let tooltipTimer=0;
     const tooltip=example.querySelector('.dds-chart-tooltip');
     function closeTip(){clearTimeout(tooltipTimer);tooltip.hidden=true;}
+    dismissals.push(closeTip);
     function update(){
       closeTip();
       example.querySelector('[data-chart-content]').innerHTML=chartMarkup(id,variant,uid,hidden,false,data);
@@ -382,8 +383,15 @@ export function bindCharts(root=document) {
     const cleanup=()=>{controller.abort();closeTip();if(chartBindings.get(example)===cleanup){chartBindings.delete(example);delete example.dataset.chartBound;}};
     chartBindings.set(example,cleanup);cleanups.push(cleanup);
   });
+  const view=(root.ownerDocument||root).defaultView,navigation=new AbortController();
+  const dismiss=()=>dismissals.forEach(close=>close());
+  const events={signal:navigation.signal};
+  if(dismissals.length){
+    for(const event of ['pagehide','popstate','hashchange'])view?.addEventListener(event,dismiss,events);
+    view?.addEventListener('pageshow',event=>{if(event.persisted)dismiss();},events);
+  }
   let disposed=false;
-  const cleanup=()=>{if(disposed)return;disposed=true;cleanups.forEach(stop=>stop());stopLayout();if(chartRootBindings.get(root)===cleanup)chartRootBindings.delete(root);};
+  const cleanup=()=>{if(disposed)return;disposed=true;navigation.abort();cleanups.forEach(stop=>stop());stopLayout();if(chartRootBindings.get(root)===cleanup)chartRootBindings.delete(root);};
   chartRootBindings.set(root,cleanup);
   return cleanup;
 }

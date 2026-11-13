@@ -1,4 +1,4 @@
-import {icon} from '../icons.js?v=1fe6ce322b8635fc';
+import {icon} from '../icons.js?v=4d6e4bc925033bb2';
 export {icon};
 export const $=s=>document.querySelector(s);
 export const $$=s=>[...document.querySelectorAll(s)];
@@ -20,19 +20,37 @@ export function common(){
    trigger.classList.toggle('active',current);
    if(current)trigger.setAttribute('aria-current','page');else trigger.removeAttribute('aria-current');
  });
- const closeMenus=()=>{$$('.gnb-trigger').forEach(b=>{b.setAttribute('aria-expanded','false');$('#'+b.getAttribute('aria-controls')).hidden=true;});};
+ const closeMenus=()=>{$$('.gnb-trigger[aria-expanded=true]').forEach(b=>{b.setAttribute('aria-expanded','false');$('#'+b.getAttribute('aria-controls')).hidden=true;});};
  const header=$('.product-header'),mobileToggle=$('#mobile-nav'),serviceNav=$('#service-nav'),desktopNavigation=matchMedia('(min-width:1181px)');
- let headerFocus=null;
+ let headerFocus=null,hoverNeedsInput=false;
  document.addEventListener('focusin',event=>{if(event.target!==document.body)headerFocus=header.contains(event.target)?event.target:null;});
  document.addEventListener('pointerdown',event=>{if(!header.contains(event.target))headerFocus=null;});
  const setMobileMenu=(open,restoreFocus=false)=>{header.classList.toggle('nav-open',open);mobileToggle.setAttribute('aria-expanded',String(open));mobileToggle.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');mobileToggle.innerHTML=icon(open?'X':'Menu');if(!open)closeMenus();if(restoreFocus)mobileToggle.focus({preventScroll:true});};
+ const resetMenus=()=>{
+  hoverNeedsInput=true;
+  headerFocus=null;
+  if(header.classList.contains('nav-open'))setMobileMenu(false);else closeMenus();
+  for(const menu of $$('details:is(.document-menu,.write-help)[open]'))menu.open=false;
+ };
+ for(const type of ['pagehide','popstate','hashchange'])window.addEventListener(type,resetMenus);
+ window.addEventListener('pageshow',event=>{if(event.persisted)resetMenus();});
+ serviceNav.addEventListener('click',event=>{if(event.target.closest('a[href]')&&!event.defaultPrevented)resetMenus();});
+ document.addEventListener('pointermove',event=>{
+  if(!hoverNeedsInput||event.pointerType!=='mouse'||(!event.movementX&&!event.movementY))return;
+  hoverNeedsInput=false;
+  if(desktopNavigation.matches){
+   const trigger=event.target.closest('.gnb-item')?.querySelector('.gnb-trigger');
+   if(trigger)showMenu(trigger);
+  }
+ });
  mobileToggle.addEventListener('click',()=>setMobileMenu(!header.classList.contains('nav-open')));
  desktopNavigation.addEventListener('change',event=>{const active=header.contains(document.activeElement)?document.activeElement:document.activeElement===document.body?headerFocus:null,inNav=!!active&&serviceNav.contains(active),wasToggle=active===mobileToggle,submenuTrigger=active?.closest('.gnb-submenu')?.closest('.gnb-item')?.querySelector('.gnb-trigger');setMobileMenu(false);if(!event.matches&&inNav)mobileToggle.focus({preventScroll:true});else if(event.matches&&(wasToggle||submenuTrigger))(submenuTrigger||serviceNav.querySelector('[aria-current="page"],.gnb-trigger,a,button'))?.focus({preventScroll:true});});
+ const showMenu=trigger=>{closeMenus();trigger.setAttribute('aria-expanded','true');$('#'+trigger.getAttribute('aria-controls')).hidden=false;};
  for(const b of $$('.gnb-trigger')){
-  const show=()=>{closeMenus();b.setAttribute('aria-expanded','true');$('#'+b.getAttribute('aria-controls')).hidden=false;};
+  const show=()=>showMenu(b);
   b.addEventListener('click',()=>{const open=b.getAttribute('aria-expanded')==='true';closeMenus();if(!open||matchMedia('(min-width:1181px)').matches)show();});
   b.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();show();$('#'+b.getAttribute('aria-controls')).querySelector('a,button').focus();}});
-  b.parentElement.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&matchMedia('(min-width:1181px)').matches)show();});
+  b.parentElement.addEventListener('pointerenter',e=>{if(!hoverNeedsInput&&e.pointerType==='mouse'&&desktopNavigation.matches)show();});
   b.parentElement.addEventListener('pointerleave',()=>{if(!b.parentElement.contains(document.activeElement))closeMenus();});
   b.parentElement.addEventListener('focusout',e=>{if(!b.parentElement.contains(e.relatedTarget))closeMenus();});
  }

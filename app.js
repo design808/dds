@@ -1,29 +1,29 @@
-import {handoffPage} from './developer-guide.js?v=1fe6ce322b8635fc';
-import {getDesignSettings} from './design-settings.js?v=1fe6ce322b8635fc';
-import {textColorSection} from './text-colors.js?v=1fe6ce322b8635fc';
-import {setupPage,ddsRelease} from './adoption-content.js?v=1fe6ce322b8635fc';
-import {refreshSetupPrompt,downloadSetupPrompt} from './setup-source-page.js?v=1fe6ce322b8635fc';
-import {bindComponentVariants} from './component-variants.js?v=1fe6ce322b8635fc';
-import {renderJobListExample,bindListBlocks} from './block-list.js?v=1fe6ce322b8635fc';
-import {bindTypography} from './typography-system.js?v=1fe6ce322b8635fc';
-import {bindServiceGuidelines} from './service-guidelines.js?v=1fe6ce322b8635fc';
-import {sidebarContent,overviewContent,componentContent,componentDetailContent,renderPattern,searchableDocuments} from './document-shell.js?v=1fe6ce322b8635fc';
-import {componentCardStructure,componentIndexStructure} from './document-layout-templates.js?v=1fe6ce322b8635fc';
-import {controlSizingSpec,foundationsDocument} from './document-foundations.js?v=1fe6ce322b8635fc';
-import {principlesContent,processContent} from './document-content.js?v=1fe6ce322b8635fc';
-import {icon,iconGallery,bindIconGallery} from './icons.js?v=1fe6ce322b8635fc';
-import {collectionCount,statusBadge} from './visibility.js?v=1fe6ce322b8635fc';
-import {renderComponentSource} from './ui/source.js?v=1fe6ce322b8635fc';
-import {renderDocumentCard} from './ui/core.js?v=1fe6ce322b8635fc';
-import {mountDDS} from './ui/index.js?v=1fe6ce322b8635fc';
-import './interactions.js?v=1fe6ce322b8635fc';
-import {extensionDemo,bindExtensions} from './extension-demos.js?v=1fe6ce322b8635fc';
-import {chartDemo,bindCharts} from './chart-system.js?v=1fe6ce322b8635fc';
-import {buttonDemo,buttonCodeExample,bindButtonDemos} from './button-demos.js?v=1fe6ce322b8635fc';
-import {blocksPage,bindBlocks} from './blocks.js?v=1fe6ce322b8635fc';
-import {chartRouteAliases} from './chart-catalog.js?v=1fe6ce322b8635fc';
-import {colorPage} from './color-system.js?v=1fe6ce322b8635fc';
-import {components,groups,patterns,foundations} from './catalog.js?v=1fe6ce322b8635fc';
+import {handoffPage} from './developer-guide.js?v=4d6e4bc925033bb2';
+import {getDesignSettings} from './design-settings.js?v=4d6e4bc925033bb2';
+import {textColorSection} from './text-colors.js?v=4d6e4bc925033bb2';
+import {setupPage,ddsRelease} from './adoption-content.js?v=4d6e4bc925033bb2';
+import {refreshSetupPrompt,downloadSetupPrompt} from './setup-source-page.js?v=4d6e4bc925033bb2';
+import {bindComponentVariants} from './component-variants.js?v=4d6e4bc925033bb2';
+import {renderJobListExample,bindListBlocks} from './block-list.js?v=4d6e4bc925033bb2';
+import {bindTypography} from './typography-system.js?v=4d6e4bc925033bb2';
+import {bindServiceGuidelines} from './service-guidelines.js?v=4d6e4bc925033bb2';
+import {sidebarContent,overviewContent,componentContent,componentDetailContent,renderPattern,searchableDocuments} from './document-shell.js?v=4d6e4bc925033bb2';
+import {componentCardStructure,componentIndexStructure} from './document-layout-templates.js?v=4d6e4bc925033bb2';
+import {controlSizingSpec,foundationsDocument} from './document-foundations.js?v=4d6e4bc925033bb2';
+import {principlesContent,processContent} from './document-content.js?v=4d6e4bc925033bb2';
+import {icon,iconGallery,bindIconGallery} from './icons.js?v=4d6e4bc925033bb2';
+import {collectionCount,statusBadge} from './visibility.js?v=4d6e4bc925033bb2';
+import {renderComponentSource} from './ui/source.js?v=4d6e4bc925033bb2';
+import {renderDocumentCard} from './ui/core.js?v=4d6e4bc925033bb2';
+import {mountDDS} from './ui/index.js?v=4d6e4bc925033bb2';
+import './interactions.js?v=4d6e4bc925033bb2';
+import {extensionDemo,bindExtensions} from './extension-demos.js?v=4d6e4bc925033bb2';
+import {chartDemo,bindCharts} from './chart-system.js?v=4d6e4bc925033bb2';
+import {buttonDemo,buttonCodeExample,bindButtonDemos} from './button-demos.js?v=4d6e4bc925033bb2';
+import {blocksPage,bindBlocks} from './blocks.js?v=4d6e4bc925033bb2';
+import {chartRouteAliases} from './chart-catalog.js?v=4d6e4bc925033bb2';
+import {colorPage} from './color-system.js?v=4d6e4bc925033bb2';
+import {components,groups,patterns,foundations} from './catalog.js?v=4d6e4bc925033bb2';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const releaseBadge=document.querySelector('[data-dds-release]');
 if(releaseBadge){releaseBadge.textContent='v'+ddsRelease;releaseBadge.setAttribute('aria-label','DDS 버전 '+ddsRelease);}
@@ -101,7 +101,7 @@ function render(){
  $('#main').removeAttribute('data-dds-loading');
  $('#main').removeAttribute('inert');
  document.title=route==='/'?'Deep Design System':($('#main h1')?.textContent||'DDS')+' — Deep Design System';
- nav();bind();syncDesignDocs();window.scrollTo(0,0);document.body.classList.remove('menu-open');$('#mobile-menu').setAttribute('aria-expanded','false');
+ nav();bind();syncDesignDocs();window.scrollTo(0,0);resetNavigationOverlays();
 }
 
 function notFound(){return head('404','문서를 찾을 수 없습니다.','메뉴에서 문서를 선택해 주세요.')+'<a class="btn" href="#/">살펴보기로 이동</a>';}
@@ -110,6 +110,14 @@ function bind(){ cleanupVariants();cleanupVariants=bindComponentVariants($('#mai
 document.addEventListener('click',e=>{const t=e.target.closest('button,[data-copy]');if(!t)return;if(t.hasAttribute('data-toast'))toast(t.dataset.toast);if(t.hasAttribute('data-copy'))copy(t.dataset.copy);if(t.hasAttribute('data-dialog')){$('#demo-dialog').showModal();}if(t.hasAttribute('data-close'))t.closest('dialog').close();if(t.hasAttribute('data-chip')){const s=t.getAttribute('aria-pressed')!=='true';t.setAttribute('aria-pressed',s);t.classList.toggle('selected',s);}if(t.hasAttribute('data-demo-tab')){const container=t.closest('.tab-demo');container.querySelectorAll('[role=tab]').forEach(x=>{x.setAttribute('aria-selected',x===t);x.tabIndex=x===t?0:-1;});const panel=container.querySelector('[role=tabpanel]');panel.textContent=t.textContent+' 목록을 확인하고 작성을 이어가세요.';panel.setAttribute('aria-labelledby',t.id);}if(t.hasAttribute('data-page')){const nav=t.closest('nav');nav.querySelectorAll('[data-page]').forEach(x=>{x.classList.toggle('primary',x===t);x.removeAttribute('aria-current');});t.setAttribute('aria-current','page');nav.querySelector('[data-page-state]').textContent=t.textContent+' / 4 페이지';}if(t.hasAttribute('data-group')){selectedGroup=t.dataset.group;render();}if(t.hasAttribute('data-doc-tab')){const chosen=t.dataset.docTab;$$('[data-doc-tab]').forEach(x=>{x.setAttribute('aria-selected',x===t);x.tabIndex=x===t?0:-1;});$$('[data-doc-panel]').forEach(p=>p.hidden=p.dataset.docPanel!==chosen);}if(t.classList.contains('copy-code'))copy(t.parentElement.querySelector('pre code').textContent);if(t.hasAttribute('data-scroll')){$('[data-doc-tab="design"]')?.click();$('#'+t.dataset.scroll)?.scrollIntoView({behavior:'smooth',block:'start'});}});
 document.addEventListener('keydown',e=>{if(e.target.matches('[role=tab]')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const tabs=[...e.target.parentElement.querySelectorAll('[role=tab]')];let i=tabs.indexOf(e.target);i=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click();}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openSearch();}if(e.key==='Escape'){document.body.classList.remove('menu-open');$('#mobile-menu').setAttribute('aria-expanded','false');}});
 function openSearch(){$('#search-dialog').showModal();$('#global-search').value='';search('');$('#global-search').focus();}
+function resetNavigationOverlays(){
+ document.body.classList.remove('menu-open');
+ $('#mobile-menu').setAttribute('aria-expanded','false');
+ const searchDialog=$('#search-dialog');
+ if(searchDialog.open)searchDialog.close();
+}
+for(const type of ['pagehide','popstate'])window.addEventListener(type,resetNavigationOverlays);
+window.addEventListener('pageshow',event=>{if(event.persisted)resetNavigationOverlays();});
 function search(q){const docs=searchableDocuments();const results=docs.filter(d=>`${d.name} ${d.ko} ${(d.aliases||[]).join(" ")}`.toLowerCase().includes(q.toLowerCase())).slice(0,12);$('#search-results').innerHTML=results.map(d=>`<a href="${d.external?d.url:'#'+d.url}">${icon('file')}<span><b>${esc(d.name)}</b><small>${esc(d.ko)}</small></span>${icon('chevron')}</a>`).join('')||'<p class="empty-state">검색 결과가 없습니다.</p>';}
 
 $('#search-open').onclick=openSearch;$('#global-search').oninput=e=>search(e.target.value);$('#search-results').onclick=e=>{if(e.target.closest('a'))$('#search-dialog').close();};$('#theme-toggle').onclick=()=>{theme=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=theme;localStorage.setItem('deep-theme',theme);$('#theme-toggle').innerHTML=icon(theme==='light'?'moon':'sun');$('#theme-toggle').setAttribute('aria-label',theme==='light'?'다크 모드로 전환':'라이트 모드로 전환');};$('#mobile-menu').onclick=()=>{const open=document.body.classList.toggle('menu-open');$('#mobile-menu').setAttribute('aria-expanded',open);};document.querySelector('.skip').onclick=e=>{e.preventDefault();document.querySelector('#main').focus();};window.addEventListener('hashchange',()=>{render();$('#main').focus({preventScroll:true});});
