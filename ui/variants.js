@@ -1,5 +1,5 @@
 /** Official, opt-in presentation axes. Content, items and business logic stay with the host. */
-import {icon} from './icons.js?v=189cfecb45f30e1e';
+import {icon} from './icons.js?v=f9086ddd38cf7f33';
 
 const choice=(label,values,defaultValue,labels)=>Object.freeze({label,type:'enum',values:Object.freeze(values),default:defaultValue,labels:Object.freeze(labels||Object.fromEntries(values.map(value=>[value,value])))});
 const flag=(label,defaultValue=false)=>Object.freeze({label,type:'boolean',default:defaultValue});
@@ -49,7 +49,7 @@ const schemas={
  item:{appearance:choice('형태',['outlined','divided'],'outlined',{outlined:'외곽선',divided:'행 구분선'}),icon:flag('앞 아이콘',true),metadata:flag('보조정보',true),status:flag('상태',true),chevron:flag('이동 표시',true)},
  'section-header':{description:flag('설명',true),count:flag('개수',true),actions:flag('행동',true)},
  attachment:{disabled:flag('비활성')},
- carousel:{align:choice('컨트롤 정렬',['start','center','end'],'center',{start:'좌측 배치',center:'중앙 배치',end:'우측 배치'})},
+ carousel:{layout:choice('표시 방식',['single','multiple'],'single',{single:'한 장씩',multiple:'여러 장씩'}),align:choice('컨트롤 정렬',['start','center','end'],'center',{start:'좌측 배치',center:'중앙 배치',end:'우측 배치'})},
  separator:{orientation:choice('방향',['horizontal','vertical'],'horizontal',{horizontal:'가로',vertical:'세로'})},
  bubble:{direction:choice('방향',['incoming','outgoing'],'incoming',{incoming:'받은 메시지',outgoing:'보낸 메시지'})},
  message:{direction:choice('방향',['incoming','outgoing'],'incoming',{incoming:'받은 메시지',outgoing:'보낸 메시지'}),avatar:flag('아바타',true),author:flag('보낸 사람',true),time:flag('시간',true)}

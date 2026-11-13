@@ -1,16 +1,16 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=189cfecb45f30e1e';
-import {renderButton} from './button.js?v=189cfecb45f30e1e';
-import {icon} from './icons.js?v=189cfecb45f30e1e';
-import {mountControls} from './controls.js?v=189cfecb45f30e1e';
-import {mountTooltips} from './tooltips.js?v=189cfecb45f30e1e';
-import {bindCharts,chartDemo} from './charts.js?v=189cfecb45f30e1e';
-import {calendarDays,renderItemList} from './extended.js?v=189cfecb45f30e1e';
-import {UI_VERSION} from './version.js?v=189cfecb45f30e1e';
-import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=189cfecb45f30e1e';
-import {applyComponentVariants,componentVariants} from './variants.js?v=189cfecb45f30e1e';
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=f9086ddd38cf7f33';
+import {renderButton} from './button.js?v=f9086ddd38cf7f33';
+import {icon} from './icons.js?v=f9086ddd38cf7f33';
+import {mountControls} from './controls.js?v=f9086ddd38cf7f33';
+import {mountTooltips} from './tooltips.js?v=f9086ddd38cf7f33';
+import {bindCharts,chartDemo} from './charts.js?v=f9086ddd38cf7f33';
+import {calendarDays,renderItemList} from './extended.js?v=f9086ddd38cf7f33';
+import {UI_VERSION} from './version.js?v=f9086ddd38cf7f33';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=f9086ddd38cf7f33';
+import {applyComponentVariants,componentVariants} from './variants.js?v=f9086ddd38cf7f33';
 export {renderButton,renderItemList,icon,componentIds,componentParts,renderComponentSource,layoutContract};
 export {componentVariants,optionalContent};
-export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=189cfecb45f30e1e';
+export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=f9086ddd38cf7f33';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -45,6 +45,12 @@ export function createComponent(id,options={},doc=globalThis.document){
  const parts=componentParts(id);
  for(const [name,value] of Object.entries(options.text||{})){const [node]=partNode(wrapper,parts,name,'text');node.textContent=String(value??'');if(node.matches('textarea'))node.value=String(value??'');}
  for(const [name,value] of Object.entries(options.slots||{})){const [node]=partNode(wrapper,parts,name,'slot');const items=Array.isArray(value)?value:[value];if(items.some(item=>item!=null&&typeof item!=='string'&&!item.nodeType))throw new TypeError('DDS slots accept DOM nodes or plain text, not HTML objects.');node.replaceChildren(...items.filter(x=>x!=null));}
+ if(id==='carousel'&&Object.hasOwn(options.slots||{},'slides')){
+  wrapper.querySelector('.dds-carousel').setAttribute('data-dds-carousel-slides','');
+  const [previous,counter,next]=wrapper.querySelector('.dds-carousel-controls').children;
+  previous.disabled=next.disabled=true;
+  counter.textContent='';
+ }
  for(const [name,attributes] of Object.entries(options.attributes||{})){const [node,part]=partNode(wrapper,parts,name,'attributes');for(const [key,value] of Object.entries(attributes))safeAttribute(node,key,value,part);}
  for(const progress of wrapper.querySelectorAll('progress'))progress.textContent=progress.hasAttribute('value')?Math.round(progress.value/progress.max*100)+'%':'진행 중';
  if(options.tabs)configureTabs(wrapper,options.tabs,uid);
@@ -85,7 +91,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  if(!root?.addEventListener||!root.ownerDocument)throw new TypeError('mountDDS requires an explicit root element.');
  bindings.get(root)?.();
  const doc=root.ownerDocument,view=doc.defaultView,abort=new view.AbortController(),signal=abort.signal;
- const stops=[],timers=new Set(),portals=new Set(),floating=new Map(),navs=new Map(),dragging=new Map(),toastTimers=new Map();
+ const stops=[],timers=new Set(),portals=new Set(),floating=new Map(),navs=new Map(),carousels=new Map(),dragging=new Map(),toastTimers=new Map();
  const questionnaireLabels=new WeakMap(),timeSuffixes=new WeakMap(),sliderSuffixes=new WeakMap();
  let disposed=false,scanPending=false,resettingOverlays=false,returningCommandFocus=false;
  let lastMousePosition,blockedMousePosition,blockedFocusTrigger;
@@ -367,18 +373,59 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  }
  for(const event of ['pagehide','popstate','hashchange'])view.addEventListener(event,resetOverlays,{signal});
  view.addEventListener('pageshow',event=>{if(event.persisted)resetOverlays();},{signal});
- const resize=new view.ResizeObserver(entries=>{for(const entry of entries){const header=entry.target.querySelector('[data-dds-topnav]');if(header)setNav(header,undefined,false,entry.contentRect.width);}});
+ const pagedCarousel='.dds-carousel:is([data-dds-layout="multiple"],[data-dds-carousel-slides])';
+ function pageCarousel(carousel,amount=0){
+  const track=carousel.querySelector(':scope > .dds-carousel-track'),controls=carousel.querySelector(':scope > .dds-carousel-controls');
+  if(!track||!controls||track.getClientRects().length===0)return;
+  const [previous,counter,next]=controls.children;
+  const slides=[...track.children].filter(slide=>!slide.matches('[hidden],template,script,style'));
+  const perPage=carousel.dataset.ddsLayout==='multiple'?Number(view.getComputedStyle(track).getPropertyValue('--dds-carousel-per-page'))||1:1;
+  const total=Math.ceil(slides.length/perPage),state=carousels.get(carousel);
+  const active=doc.activeElement,focusedSlide=slides.find(slide=>slide.contains(active));
+  const anchor=amount?state.anchor:focusedSlide||state.anchor;
+  const current=Math.floor(Math.max(0,slides.indexOf(anchor))/perPage);
+  const page=Math.max(0,Math.min(total-1,current+amount)),first=page*perPage;
+  state.anchor=amount||!slides.includes(anchor)?slides[first]:anchor;
+  track.setAttribute('data-dds-paged','');
+  slides.forEach((slide,index)=>slide.toggleAttribute('data-dds-carousel-offpage',index<first||index>=first+perPage));
+  const count=`${total?page+1:0} / ${total}`;
+  if(counter.textContent!==count)counter.textContent=count;
+  previous.disabled=page===0;
+  next.disabled=page>=total-1;
+  if(active===previous&&previous.disabled)focus(next.disabled?carousel:next);
+  if(active===next&&next.disabled)focus(previous.disabled?carousel:previous);
+  if(focusedSlide?.hasAttribute('data-dds-carousel-offpage'))focus(next.disabled?previous:next);
+ }
+ function unpageCarousel(carousel){
+  const track=carousel.querySelector(':scope > .dds-carousel-track');
+  track?.removeAttribute('data-dds-paged');
+  for(const slide of track?.children||[])slide.removeAttribute('data-dds-carousel-offpage');
+ }
+ const resize=new view.ResizeObserver(entries=>{for(const entry of entries){
+  if(carousels.has(entry.target)){pageCarousel(entry.target);continue;}
+  const header=entry.target.querySelector('[data-dds-topnav]');if(header)setNav(header,undefined,false,entry.contentRect.width);
+ }});
  function syncCounter(input){const output=input.closest('.field,.editor-demo')?.querySelector('[data-count]'),text=input.value.length+(input.maxLength>0?' / '+input.maxLength:'');if(output&&output.textContent!==text)output.textContent=text;}
  function scan(){
   if(disposed)return;
   for(const [header,state]of navs)if(!owns(header)){cleanNav(header,state);resize.unobserve(state.wrapper);navs.delete(header);}
   for(const header of all('[data-dds-topnav]'))if(!navs.has(header)){const wrapper=header.closest('.dds-topnav-demo');if(wrapper){navs.set(header,{wrapper,mobile:null,open:false,lastFocused:null,hoveredMenu:null,hoverTimer:undefined,inertPanels:new Map()});setNav(header,false);resize.observe(wrapper);}}
+  for(const carousel of carousels.keys())if(!owns(carousel)||!carousel.matches(pagedCarousel)){
+   unpageCarousel(carousel);resize.unobserve(carousel);carousels.delete(carousel);
+  }
+  for(const carousel of all(pagedCarousel)){
+   if(!carousels.has(carousel)){carousels.set(carousel,{});resize.observe(carousel);}
+   pageCarousel(carousel);
+  }
   for(const input of all('[data-dds-counter]'))syncCounter(input);
   for(const trigger of all('.dds-menubar > .dds-menu-unit > [data-dds-menu]'))trigger.setAttribute('role','menuitem');
   for(const record of [...floating.values()])if(!owns(record.trigger))restore(record);
  }
- const mutation=new view.MutationObserver(()=>{if(!scanPending){scanPending=true;view.queueMicrotask(()=>{scanPending=false;scan();});}});
- mutation.observe(root,{childList:true,subtree:true});scan();stops.push(()=>{resize.disconnect();mutation.disconnect();});
+ const mutation=new view.MutationObserver(records=>{
+  if(scanPending||!records.some(record=>record.type==='childList'||record.target.matches('.dds-carousel')||record.target.parentElement?.matches('.dds-carousel-track')))return;
+  scanPending=true;view.queueMicrotask(()=>{scanPending=false;scan();});
+ });
+ mutation.observe(root,{childList:true,subtree:true,attributes:true,attributeFilter:['data-dds-layout','data-dds-carousel-slides','hidden']});scan();stops.push(()=>{resize.disconnect();mutation.disconnect();});
  const pad=value=>String(value).padStart(2,'0'),iso=date=>`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
  function renderCalendar(calendar,focusDate){
   const year=Number(calendar.dataset.year),month=Number(calendar.dataset.month);if(!Number.isInteger(year)||!Number.isInteger(month))return;
@@ -448,7 +495,14 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   if(target.hasAttribute('data-dds-snack-show'))scopeOf(target).querySelector('.dds-snackbar').hidden=false;
   if(target.hasAttribute('data-dds-snack-undo'))notify(target,'undo');
   if(target.hasAttribute('data-dds-thread-bottom')){const log=target.closest('.dds-thread').querySelector('[data-thread-log]');log.scrollTop=log.scrollHeight;}
-  if(target.hasAttribute('data-dds-action')){notify(target,target.dataset.ddsAction,target.dataset.ddsActionValue);const panel=target.closest('.dds-menu');if(panel)restore(floating.get(panel),true);}
+  if(target.hasAttribute('data-dds-action')){
+   const {ddsAction,ddsActionValue}=target.dataset;
+   if(ddsAction==='carousel-shift'&&['-1','1'].includes(ddsActionValue)){
+    const carousel=target.closest(pagedCarousel);
+    if(carousels.has(carousel)&&target.parentElement===carousel.querySelector(':scope > .dds-carousel-controls'))pageCarousel(carousel,Number(ddsActionValue));
+   }
+   notify(target,ddsAction,ddsActionValue);const panel=target.closest('.dds-menu');if(panel)restore(floating.get(panel),true);
+  }
  }
  doc.addEventListener('click',click,{signal});
  doc.addEventListener('input',event=>{
@@ -560,7 +614,8 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   for(const record of [...floating.values()])restore(record);for(const [handle,pointer]of dragging)try{handle.releasePointerCapture(pointer);}catch{}dragging.clear();
   for(const host of toastTimers.keys()){host.hidden=true;host.classList.remove('show');}
   for(const [header,state] of navs)cleanNav(header,state);
-  for(const stop of stops)stop();for(const scope of [...portals])removePortal(scope);navs.clear();toastTimers.clear();if(bindings.get(root)===cleanup)bindings.delete(root);
+  for(const carousel of carousels.keys())unpageCarousel(carousel);
+  for(const stop of stops)stop();for(const scope of [...portals])removePortal(scope);navs.clear();carousels.clear();toastTimers.clear();if(bindings.get(root)===cleanup)bindings.delete(root);
  };
  bindings.set(root,cleanup);return cleanup;
 }

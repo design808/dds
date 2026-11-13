@@ -1708,6 +1708,27 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .dds-thumbnail img{display:block;width:100%;height:auto}
 .dds-ui .dds-ratio{position:relative;width:100%;min-width:0;overflow:hidden;padding:0;border:0;background:transparent}
 .dds-ui .dds-carousel .dds-ratio{border-radius:10px}
+.dds-ui .dds-carousel[data-dds-layout=multiple]{container:dds-carousel / inline-size}
+.dds-ui .dds-carousel[data-dds-layout=multiple] > .dds-carousel-track{
+  --dds-carousel-per-page:1;
+  display:grid;
+  grid-template-columns:repeat(var(--dds-carousel-per-page),minmax(0,1fr));
+  gap:var(--space-3);
+}
+.dds-ui .dds-carousel-track > *{min-width:0;overflow-wrap:anywhere}
+.dds-ui .dds-carousel-track > [data-dds-carousel-offpage]{display:none!important}
+.dds-ui .dds-carousel[data-dds-carousel-slides][data-dds-layout=single] > .dds-carousel-track:not([data-dds-paged]) > :nth-child(n+2){display:none!important}
+@container dds-carousel (width < 416px){
+.dds-ui .dds-carousel[data-dds-layout=multiple] > .dds-carousel-track:not([data-dds-paged]) > :nth-child(n+2){display:none!important}
+}
+@container dds-carousel (416px <= width < 624px){
+.dds-ui .dds-carousel[data-dds-layout=multiple] > .dds-carousel-track{--dds-carousel-per-page:2}
+.dds-ui .dds-carousel[data-dds-layout=multiple] > .dds-carousel-track:not([data-dds-paged]) > :nth-child(n+3){display:none!important}
+}
+@container dds-carousel (width >= 624px){
+.dds-ui .dds-carousel[data-dds-layout=multiple] > .dds-carousel-track{--dds-carousel-per-page:3}
+.dds-ui .dds-carousel[data-dds-layout=multiple] > .dds-carousel-track:not([data-dds-paged]) > :nth-child(n+4){display:none!important}
+}
 .dds-ui .dds-carousel-controls{
   display:flex;
   align-items:stretch;

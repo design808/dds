@@ -110,10 +110,10 @@ const overrides = {
     assets:['content-primitives.css','button-system.css'],
   },
   carousel: {
-    rules:['이전 버튼·현재 / 전체 표시·다음 버튼을 같은 외곽선 안에 둡니다. 컨트롤은 기본 중앙이며 variants.align의 start, center, end로 배치합니다.', '현재 위치와 버튼의 disabled 상태는 실제 슬라이드에 연결합니다. mountDDS가 전달하는 dds:action의 carousel-shift 값 -1 또는 1을 서비스에서 처리합니다.'],
-    specification:[['하단 컨트롤','슬라이드와 --space-3 · 버튼 최소 높이 --space-8 · 페이지 표시 Label 2 · 한 줄 유지']],
-    keyboard:['이전·다음 버튼은 Tab으로 이동하고 Enter/Space로 실행합니다. 이동 후 현재 위치를 알립니다.'],
-    checks:[...defaultChecks,'첫 장의 이전과 마지막 장의 다음 버튼이 비활성인지, 컨트롤이 세 정렬에서 슬라이드의 같은 너비를 기준으로 배치되는지 확인합니다.'],
+    rules:['이전 버튼·현재 / 전체 표시·다음 버튼을 같은 외곽선 안에 둡니다. 컨트롤은 기본 중앙이며 variants.align의 start, center, end로 배치합니다.', '여러 장씩 표시하려면 variants.layout을 multiple로 지정하고 slots.slides에 실제 슬라이드 요소를 하나씩 전달합니다. mountDDS가 한 화면 단위로 이동하고 현재 / 전체 페이지를 갱신합니다.', '기존 단일 슬라이드 연결은 dds:action의 carousel-shift 값 -1 또는 1을 서비스에서 처리합니다. 여러 장 변형에서도 같은 이벤트로 탐색을 기록할 수 있습니다.'],
+    specification:[['하단 컨트롤','슬라이드와 --space-3 · 버튼 최소 높이 --space-8 · 페이지 표시 Label 2 · 한 줄 유지'],['동시 표시','Carousel 너비 416px 미만 1장 · 416px 이상 2장 · 624px 이상 3장 · 사이 간격 --space-3']],
+    keyboard:['이전·다음 버튼은 Tab으로 이동하고 Enter/Space로 실행합니다. 이동 후 현재 위치를 알립니다. 다른 페이지의 슬라이드는 Tab 순서에서 제외합니다.'],
+    checks:[...defaultChecks,'첫 페이지의 이전과 마지막 페이지의 다음 버튼이 비활성인지, 여러 장 표시에서 마지막 페이지에 남은 슬라이드의 폭이 유지되는지 확인합니다. 컨테이너 너비를 바꿔도 읽던 슬라이드를 찾을 수 있는지 확인합니다.'],
   },
   'top-navigation': {
     usage: {when:'서비스의 로고·주 메뉴·언어와 계정 메뉴를 제공할 때 사용합니다.', alternative:'페이지 내부의 동등한 콘텐츠 전환은 Tabs를 사용합니다.'},

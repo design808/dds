@@ -74,6 +74,10 @@ Item은 `variants: {appearance: 'divided'}`로 외곽 경계 없이 행 사이�
 
 여러 행은 `slots.items`에 실제 `<li>` 노드를 전달하거나 `ui/index.js`의 `renderItemList(items, {appearance, label})`로 같은 구조를 생성한다. 각 항목의 `title`·`href`·`metadata`는 이 helper가 이스케이프한다. `slots.leading`·`metadata`·`trailingInfo`·`actions`는 개발자가 작성한 안전한 DDS HTML 전용이며 사용자 입력 HTML을 넣지 않는다. 사용자 문자열·DOM을 직접 연결할 때는 `createComponent`의 슬롯을 사용한다. 이 helper는 마크업만 생성하며 실제 이동·북마크 저장은 서비스에서 연결한다. [페이지 구성 기준](./composition.md)의 목록·블록 사용 방법을 함께 따른다.
 
+## 캐러셀 여러 장 표시
+
+`createComponent('carousel', {variants: {layout: 'multiple'}, slots: {slides: cards}})`로 생성한다. `cards`는 실제 카드 요소 배열 또는 카드 요소를 자식으로 가진 `DocumentFragment`다. `mountDDS`를 연결하면 캐러셀 자체의 너비에 맞춰 한 번에 1~3장을 표시하고, 이전·다음 버튼은 한 페이지씩 이동한다. 숫자는 현재 / 전체 페이지다. `align`은 `start`, `center`, `end`를 지원한다. 여러 장 모드의 `carousel-shift` 이벤트는 이미 처리된 탐색을 알린다. 기존 `slots.slide` 단일 슬롯은 서비스의 현재 슬라이드 연결을 유지한다.
+
 ## 크기와 배치
 
 컨트롤 높이·글자·내부 패딩·색·경계·모서리·상태는 DDS 규격을 유지한다. 가용 폭, 페이지 그리드, 컴포넌트 바깥 여백과 필요한 영역 높이는 서비스에서 정한다.

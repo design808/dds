@@ -1,9 +1,9 @@
-import {componentVariants} from './ui/variants.js?v=189cfecb45f30e1e';
-import {createComponent,icon} from './ui/index.js?v=189cfecb45f30e1e';
-import {renderItemList} from './ui/extended.js?v=189cfecb45f30e1e';
-import {statusBadge} from './visibility.js?v=189cfecb45f30e1e';
-import {renderButton} from './ui/button.js?v=189cfecb45f30e1e';
-import {optionalContent} from './ui/content.js?v=189cfecb45f30e1e';
+import {componentVariants} from './ui/variants.js?v=f9086ddd38cf7f33';
+import {createComponent,icon} from './ui/index.js?v=f9086ddd38cf7f33';
+import {renderItemList} from './ui/extended.js?v=f9086ddd38cf7f33';
+import {statusBadge} from './visibility.js?v=f9086ddd38cf7f33';
+import {renderButton} from './ui/button.js?v=f9086ddd38cf7f33';
+import {optionalContent} from './ui/content.js?v=f9086ddd38cf7f33';
 
 const escape=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'component-variants').replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -47,6 +47,15 @@ export function variantPreviewOptions(id,selected,doc=globalThis.document,idPref
    selected.content==='plain'?'<p>작성한 내용을 확인한 후 저장해 주세요.</p>':'<span class="badge">저장 완료</span><h3>프로덕트 디자이너 자기소개서</h3><p>사용자의 문제를 발견하고 더 나은 경험을 설계합니다.</p>';
   options.slots={content:content.content};
   options.text={title:'자기소개서 미리보기',body:'작성한 문서의 내용을 확인하세요.',confirm:'확인'};
+ }
+ if(id==='carousel'&&selected.layout==='multiple'){
+  const template=doc.createElement('template');
+  template.innerHTML=['나의 경험을 발견하기','직무와 경험 연결하기','성과를 구체적으로 쓰기','지원 동기 정리하기','문항별로 초안 쓰기','핵심 문장 다듬기','제출 전 최종 검토'].map((title,index)=>`
+   <article class="dds-content-card" data-carousel-slide>
+    <span class="dds-type-caption-1 dds-meta-secondary">커리어 가이드 ${String(index+1).padStart(2,'0')}</span>
+    <h3 class="dds-card-title">${escape(title)}</h3>
+   </article>`).join('');
+  options.slots={slides:template.content};
  }
  if(id==='item'&&selected.appearance==='divided'){
   const template=doc.createElement('template');

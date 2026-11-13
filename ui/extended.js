@@ -1,6 +1,6 @@
 // Canonical extended-component markup. No document listeners or automatic mounting.
-import {icon} from './icons.js?v=189cfecb45f30e1e';
-import {collectionCount,statusBadge} from '../visibility.js?v=189cfecb45f30e1e';
+import {icon} from './icons.js?v=f9086ddd38cf7f33';
+import {collectionCount,statusBadge} from '../visibility.js?v=f9086ddd38cf7f33';
 const button=(text,attrs='',cls='')=>`<button type="button" class="btn ${cls}" ${attrs}>${text}</button>`;
 const ic=(name,label,attrs='')=>`<button type="button" class="icon-btn" aria-label="${label}" ${attrs}>${icon(name)}</button>`;
 const link=(text,route,current=false)=>`<a class="dds-nav-link dds-nav-control" href="#${route}" ${current?'aria-current="page"':''}>${text}</a>`;
@@ -89,8 +89,8 @@ export function renderExtended(id,uid,mini=false){
  case 'item':return box(renderItemList(['프로덕트 디자이너','서비스 기획자'].map(title=>({title,href:'/prototypes/coverletter-write.html',slots:{metadata:`<span class="dds-meta-secondary">자기소개서</span>${statusBadge('draft','임시저장',icon)}`}}))));
  case 'section-header':return box(`<div class="dds-section-header"><div class="dds-section-header-content"><h3 class="dds-section-heading"><span>내 자기소개서</span>${collectionCount(3,{label:'자기소개서'})}</h3><p class="dds-meta-secondary">최근 작성한 문서</p></div><a class="dds-nav-link dds-section-header-action" href="#/patterns/document-list">전체 보기</a></div>`);
  case 'attachment':return box(`<div class="dds-attachment">${icon('FileText')}<div><b>포트폴리오.pdf</b><p class="helper">PDF · 2.4 MB · 선택됨</p></div>${ic('close','포트폴리오.pdf 제거','data-attachment-remove')}</div>${button('첨부 예제 복원','data-attachment-restore','ghost')}${status}`);
- case 'carousel':return box(`<section class="dds-carousel" data-dds-align="center" aria-roledescription="캐러셀" aria-label="커리어 가이드">
-  <div data-carousel-slide class="dds-ratio"><div class="dds-ratio-placeholder"><span class="eyebrow">CAREER GUIDE 01</span><b>나의 경험을 발견하기</b></div></div>
+ case 'carousel':return box(`<section class="dds-carousel" data-dds-layout="single" data-dds-align="center" aria-roledescription="캐러셀" aria-label="커리어 가이드" tabindex="-1">
+  <div class="dds-carousel-track"><div data-carousel-slide class="dds-ratio"><div class="dds-ratio-placeholder"><span class="eyebrow">CAREER GUIDE 01</span><b>나의 경험을 발견하기</b></div></div></div>
   <div class="dds-carousel-controls" role="group" aria-label="슬라이드 탐색">
    ${ic('left','이전 슬라이드','data-carousel-shift="-1" disabled')}
    <output data-carousel-count aria-live="polite" aria-atomic="true">1 / 3</output>
@@ -161,7 +161,7 @@ const parts={
  item:{list:attributes('.dds-items'),items:slot('.dds-items'),firstLink:attributes('.dds-items > li:first-child .dds-list-link'),firstTitle:text('.dds-items > li:first-child .dds-card-title'),firstMetadata:text('.dds-items > li:first-child .dds-meta-secondary'),firstStatus:text('.dds-items > li:first-child .dds-status > span'),firstLeading:slot('.dds-items > li:first-child .dds-list-leading'),firstMetadataContent:slot('.dds-items > li:first-child .dds-list-meta'),firstTrailingInfo:slot('.dds-items > li:first-child .dds-list-trailing-info'),firstActions:slot('.dds-items > li:first-child .dds-list-actions')},
  'section-header':{title:text('.dds-section-heading > span:first-child'),count:text('.dds-collection-count'),countAttributes:attributes('.dds-collection-count'),description:text('.dds-section-header-content > p'),actionLabel:text('.dds-section-header-action'),action:attributes('.dds-section-header-action')},
  attachment:{filename:text('.dds-attachment > div > b'),metadata:text('.dds-attachment .helper'),remove:attributes('[data-attachment-remove]'),restoreLabel:text('[data-attachment-restore]'),status:text('[data-ext-status]')},
- carousel:{carousel:attributes('.dds-carousel'),slide:slot('[data-carousel-slide]'),label:text('[data-carousel-slide] > .dds-ratio-placeholder > span'),title:text('[data-carousel-slide] > .dds-ratio-placeholder > b'),counter:text('[data-carousel-count]'),previous:attributes('.dds-carousel-controls > button:first-child'),next:attributes('.dds-carousel-controls > button:last-child')},
+ carousel:{carousel:attributes('.dds-carousel'),slides:slot('.dds-carousel-track'),slide:slot('[data-carousel-slide]'),label:text('[data-carousel-slide] > .dds-ratio-placeholder > span'),title:text('[data-carousel-slide] > .dds-ratio-placeholder > b'),counter:text('[data-carousel-count]'),previous:attributes('.dds-carousel-controls > button:first-child'),next:attributes('.dds-carousel-controls > button:last-child')},
  collapsible:{details:attributes('.dds-collapsible'),trigger:attributes('.dds-collapsible > summary'),firstDescription:text('.dds-collapsible > p:first-of-type'),secondDescription:text('.dds-collapsible > p:last-of-type')},
  separator:{before:text('.dds-demo > p:first-of-type'),after:text('.dds-demo > p:last-of-type'),rule:attributes('hr')},
  kbd:{firstKey:text('kbd:first-of-type'),lastKey:text('kbd:last-of-type'),description:text('.helper')},

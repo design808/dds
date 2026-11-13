@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.6.17",
+  "version": "0.6.18",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "layout": {
@@ -43,31 +43,31 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "34eb4af4e015a66ac17f9ba0db48f0de56c75f7032dfae8e3d766709dd19cf4f",
-    "ui/core.js": "23095649188d3bfd14a9b4a23c083ab77b26048e07790d8ab211fbab43754f6b",
-    "ui/button.js": "03d7ce2fdde16b7e026fb7b1a11405e8bbd23f0f32642c6b3d7464de7735bf7a",
-    "ui/extended.js": "1e25f42132ff363f293a7e7f3fd2042bb3e3b7ffbb409c5449d614704c2a8680",
-    "ui/charts.js": "bcfe868e18744b85040b53676d8b73dd1df28a231c79848128ffc136858d226c",
-    "ui/source.js": "035c77ab9183d213623775e34d71cf45f23c936cea89ce10dec46031b93de81a",
-    "ui/index.js": "98a276a170eac6aee75ee188eb714563070bb0b659192e2b46865c3425d36773",
+    "ui/version.js": "0ea133b33866bb56b761e58ffdf740fe0ca3ff332a0f8317bf1ace3832716a92",
+    "ui/core.js": "22a8ee3e2bdc326b6efea9c0e80578f751d53036f605b685ad045fa685af4b59",
+    "ui/button.js": "d28c6a5594e6b800c40e04f0f7f42fbdfc984467c96ed0df2162a396afdea30b",
+    "ui/extended.js": "9049f7e70e8b66c87736e0511485f3e134c2682ff0a31e6901e08f60d9a82923",
+    "ui/charts.js": "df42498387c0053ae0ccdf40ce0eb1f66cccfa5285d4ff501b9b8409f9dd56d4",
+    "ui/source.js": "eb9f0baaa106dcfeac379690d92322a8f7d7d8e10bfb2a5d20c2556fa8791650",
+    "ui/index.js": "c88f782e5efe1fa95320440da37259d8c4acf3237a5aa8ecc7f5b810e413b25a",
     "ui/content.js": "0d00159dab8d6b37e07a8934c4245f1b0e88db64e113155d6534402a3ac51494",
-    "ui/variants.js": "9685cb370c4f363d8042538b9e0415c81a9fbdb4dcd4f9100bd654af00452376",
-    "ui/profile.js": "b2f5f6d8ef8ca75a097687fbcc3ef68b3555252a68b7359cad484e34335fe204",
+    "ui/variants.js": "31af722abe1e3e6e725eb45d3e26f7cfc77db0e67197f93a0981bff039e53c7b",
+    "ui/profile.js": "cd9355fa68db9d87fbd05b5e5deb2944e22270829643f641056bd8f1d7e409d3",
     "ui/profile-palette.js": "23e56c78a0552e2add9a5d2d03cdbdfe002bcfa04c25a161fca2adfea54ba3ba",
-    "ui/icons.js": "b80e7379f0ae96f19fe81e3c98fc3edf5ff40cc84c21e99830cdfc9ad12dbc14",
+    "ui/icons.js": "3a3097f631ecf1c1083cb93b20c438834bb0e0abd6156c7185c1739e5cf62e99",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "30047d9e0509aeac54c247e86c1cc050a7306ea1812346ef0d4603b160795dfe",
+    "ui/controls.js": "74a7a33c6ba263e9c1020d19e4a4d29ba3b524dd62bac70d55869190581e49dd",
     "ui/tooltips.js": "8d2aab972d2c39df86a6327a406e5d3817d3c0de738d9ab61c392803628abc3d",
     "ui/font-loading.js": "ab986571698ff44cf7a4253d5007b9e93c46b2371bf301e0a5aa3b3e45c2282b",
-    "ui/dds.css": "e5f0a50e437a672cc7d0dbdf50da137b2f2f8a24b17c2a197ae5149822e8d108",
+    "ui/dds.css": "58e2a1dff20063954dffa75f3447fca983876d20498803e7cd876925c0db2a22",
     "ui/tokens-scoped.css": "354128a6014e10799b7dc757ee752629bfdfd846bd81d1e3d4d24fa75c06940f",
     "tokens.css": "3209e5b74aedb141f017471c9a30e7c918452a32ca49b085d6de83d6bc244b99",
-    "component-layout.css": "1b237f132e2a59c29cf8115ca7c40261f712872ea0e439878f51a7f4194a3a29",
+    "component-layout.css": "68dc1fed3ae43f82a50b787d48c14aea648b0ce3564c1af6a837073a3acf7291",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "47215293093c225b345ea6f2395d1a75ec59df7a15c509421ebbd164a1788142",
-    "design-preferences.js": "6a3186ec1b57fd8f7aa6c65cb0130c7e623ab779c58cf09be13f82a2b5e23fda",
-    "design-profile.js": "acd800eb6d57b5be0f3e26816480f75c833c684d6fb39b535b955b9524a3f1db",
+    "design-preferences.js": "1a3bb0b61fc50e4ec6554804452566eef18b7ddb40b90cdbec5163bf51ec30b3",
+    "design-profile.js": "4b5fd6e005021c679ab87548d0900f3cf65bb8e3df0c6bcfb9a48575c97163c0",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "compositions": {
@@ -4717,7 +4717,7 @@
       "group": "Data display",
       "template": "ui/templates/carousel.html",
       "idPrefix": "dds-instance",
-      "sha256": "22e6fcfb883550ba710c33a79fe0ca539c77935f94b1a8686375d6485936ffbd",
+      "sha256": "a66c619f0aba1ba2bfbe124efd81ac0616ad11a3ff2a2ee8bc6a935ddf74921b",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4727,6 +4727,10 @@
         "carousel": {
           "selector": ".dds-carousel",
           "kind": "attributes"
+        },
+        "slides": {
+          "selector": ".dds-carousel-track",
+          "kind": "slot"
         },
         "slide": {
           "selector": "[data-carousel-slide]",
@@ -4754,6 +4758,19 @@
         }
       },
       "variants": {
+        "layout": {
+          "label": "표시 방식",
+          "type": "enum",
+          "values": [
+            "single",
+            "multiple"
+          ],
+          "default": "single",
+          "labels": {
+            "single": "한 장씩",
+            "multiple": "여러 장씩"
+          }
+        },
         "align": {
           "label": "컨트롤 정렬",
           "type": "enum",
@@ -6084,7 +6101,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "189cfecb45f30e1e",
-    "canonicalBundle": "../releases/0.6.17/bundle.json"
+    "assetRevision": "f9086ddd38cf7f33",
+    "canonicalBundle": "../releases/0.6.18/bundle.json"
   }
 }

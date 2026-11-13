@@ -1,7 +1,7 @@
-import {renderItemList} from './ui/extended.js?v=189cfecb45f30e1e';
-import {renderButton} from './ui/button.js?v=189cfecb45f30e1e';
-import {icon} from './ui/icons.js?v=189cfecb45f30e1e';
-import {statusBadge} from './visibility.js?v=189cfecb45f30e1e';
+import {renderItemList} from './ui/extended.js?v=f9086ddd38cf7f33';
+import {renderButton} from './ui/button.js?v=f9086ddd38cf7f33';
+import {icon} from './ui/icons.js?v=f9086ddd38cf7f33';
+import {statusBadge} from './visibility.js?v=f9086ddd38cf7f33';
 
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'job-list').replace(/[^a-zA-Z0-9_-]/g,'-');

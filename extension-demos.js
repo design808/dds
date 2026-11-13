@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=189cfecb45f30e1e';
-import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=189cfecb45f30e1e';
+import {icon} from './icons.js?v=f9086ddd38cf7f33';
+import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=f9086ddd38cf7f33';
 export {renderExtended as extensionDemo};
 const pad=n=>String(n).padStart(2,'0');
 function renderCalendar(c,focusDate){const y=+c.dataset.year,m=+c.dataset.month;c.querySelector('[data-month-label]').textContent=`${y}년 ${m+1}월`;c.querySelector('[data-calendar-grid]').innerHTML=calendarDays(y,m,c.dataset.selected);if(focusDate){const b=c.querySelector(`[data-calendar-date="${focusDate}"]`);c.querySelectorAll('[data-calendar-date]').forEach(x=>x.tabIndex=x===b?0:-1);b?.focus();}}
@@ -78,7 +78,7 @@ function shiftCarousel(trigger,amount){
  if(restoreFocus&&trigger.disabled)(trigger===previous?next:previous).focus({preventScroll:true});
 }
 document.addEventListener('dds:action',event=>{
- if(event.detail?.action==='carousel-shift'&&event.target.closest('[data-variant-preview="carousel"]'))shiftCarousel(event.target,event.detail.value);
+ if(event.detail?.action==='carousel-shift'&&event.target.closest('[data-variant-preview="carousel"] .dds-carousel[data-dds-layout="single"]'))shiftCarousel(event.target,event.detail.value);
 });
 function showPopover(t,focus){const p=document.getElementById(t.dataset.extPopover);if(p.matches(':popover-open')){if(focus)p.querySelector('button,input')?.focus();return;}p.showPopover();const r=t.getBoundingClientRect(),w=p.offsetWidth,h=p.offsetHeight;p.style.left=Math.max(8,Math.min(r.left,innerWidth-w-8))+'px';p.style.top=Math.max(8,r.bottom+h+8>innerHeight?r.top-h-8:r.bottom+8)+'px';t.setAttribute('aria-expanded','true');if(focus)p.querySelector('button,input')?.focus();}
 document.addEventListener('click',e=>{

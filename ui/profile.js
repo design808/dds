@@ -1,7 +1,7 @@
 /** Project-owned theme overrides. Never modifies the versioned DDS source. */
-import {normalizeSettings,DEFAULT_SETTINGS,FONT_OPTIONS} from '../design-preferences.js?v=189cfecb45f30e1e';
-import {normalizeDesignProfile} from '../design-profile.js?v=189cfecb45f30e1e';
-import {palette,canvasTextTokens} from './profile-palette.js?v=189cfecb45f30e1e';
+import {normalizeSettings,DEFAULT_SETTINGS,FONT_OPTIONS} from '../design-preferences.js?v=f9086ddd38cf7f33';
+import {normalizeDesignProfile} from '../design-profile.js?v=f9086ddd38cf7f33';
+import {palette,canvasTextTokens} from './profile-palette.js?v=f9086ddd38cf7f33';
 
 const defaultFontAssetBase='../assets/fonts/';
 const directories={pretendard:'pretendard',wanted:'wanted-sans',paperlogy:'paperlogy',plex:'ibm-plex-kr',suite:'suite',serif:'noto-serif-kr',maruburi:'maruburi',hahmlet:'hahmlet'};

@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "e5f0a50e437a672cc7d0dbdf50da137b2f2f8a24b17c2a197ae5149822e8d108",
+  "sha256": "58e2a1dff20063954dffa75f3447fca983876d20498803e7cd876925c0db2a22",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -54,6 +54,7 @@
     "dds-card-tools",
     "dds-carousel",
     "dds-carousel-controls",
+    "dds-carousel-track",
     "dds-chart-area",
     "dds-chart-area--stacked",
     "dds-chart-axis-tick",
@@ -421,8 +422,8 @@
     },
     {
       "file": "component-layout.css",
-      "sha256": "1b237f132e2a59c29cf8115ca7c40261f712872ea0e439878f51a7f4194a3a29",
-      "retainedRules": 39,
+      "sha256": "68dc1fed3ae43f82a50b787d48c14aea648b0ce3564c1af6a837073a3acf7291",
+      "retainedRules": 49,
       "excludedSelectors": 0
     }
   ],
