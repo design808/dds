@@ -4,8 +4,8 @@ const moduleURL = new URL(import.meta.url);
 const previewSheetURL = new URL('./direction-preview.css', moduleURL);
 previewSheetURL.search = moduleURL.search;
 const sheetURL = previewSheetURL.href;
-import {palette} from './ui/profile-palette.js?v=eb518823ac99b3c2';
-export {palette} from './ui/profile-palette.js?v=eb518823ac99b3c2';
+import {palette} from './ui/profile-palette.js?v=397886dd51872b8b';
+export {palette} from './ui/profile-palette.js?v=397886dd51872b8b';
 
 function remember(doc){
   if(state.has(doc))return state.get(doc);

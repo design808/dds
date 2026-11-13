@@ -1,7 +1,7 @@
-import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=eb518823ac99b3c2';
-import {getDocument,updateDocument} from './document-store.js?v=eb518823ac99b3c2';
-import {personalFields,preferenceFields,militaryFields,hopeFields,sections,blankEntry,initialResume} from './resume-schema.js?v=eb518823ac99b3c2';
-import '../custom-controls.js?v=eb518823ac99b3c2';
+import {$,esc,icon,common,modal,toast,load,save} from './prototype-shared.js?v=397886dd51872b8b';
+import {getDocument,updateDocument} from './document-store.js?v=397886dd51872b8b';
+import {personalFields,preferenceFields,militaryFields,hopeFields,sections,blankEntry,initialResume} from './resume-schema.js?v=397886dd51872b8b';
+import '../custom-controls.js?v=397886dd51872b8b';
 common();
 const params=new URLSearchParams(location.search);
 const documentId=params.get('document')||crypto.randomUUID();

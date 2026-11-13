@@ -8,6 +8,18 @@
   src:url('./assets/fonts/pretendard/PretendardVariable.woff2') format('woff2');
 }
 
+html[data-dds-font-loading=pending] [data-dds-font-content] {
+  opacity:0;
+  visibility:hidden;
+}
+html[data-dds-font-loading=fallback] :is([data-dds-font-content],[data-dds-font-content] .dds-ui) {
+  --font-sans:'Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif !important;
+  --font-heading:var(--font-sans) !important;
+}
+html[data-dds-font-loading=fallback] [data-dds-font-content] {
+  font-family:var(--font-sans);
+}
+
 /* Confirmed brand: #FFAD31 with white foreground and 700-weight labels.
    White on primary has 1.86:1 contrast; font weight does not change this ratio.
    Derivative values are design proposals. */

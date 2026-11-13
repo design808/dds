@@ -12,8 +12,8 @@
     "entry": "ui/tokens-scoped.css",
     "scope": ".dds-ui:not(.dds-ui .dds-ui)",
     "source": "tokens.css",
-    "sourceSha256": "8c09fb77054a78a9ac0c01cb88c77084be9d98b6004ea8b8832118254e3d7dfd",
-    "sha256": "06304dcc9ab4ea51a72b9763b1ee7063414dc94c73e0674cddab6a7f4f444ea0"
+    "sourceSha256": "7c2f0a7f7a5a6397c6c4b60b05fe56a9a09ad9268913e3af70269d5777dd4733",
+    "sha256": "aaac62fb55dbf5d5baa69be8593f5688f4fbe1112dcd5e41f44369ec1aad1ce3"
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",

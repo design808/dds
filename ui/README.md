@@ -9,9 +9,13 @@ DDS 컴포넌트 페이지와 서비스가 같은 `core.js`, `extended.js`, `but
 묶음의 폴더 구조를 유지해 서비스가 제공하는 정적 자산 경로에 연결한다. 폰트·아이콘 마스크·JS 상대 경로를 함께 유지한다.
 
 ```html
+<!-- 공통 head -->
+<link rel="preload" href="/vendor/dds/assets/fonts/pretendard/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+<script src="/vendor/dds/ui/font-loading.js" data-dds-font-loading></script>
 <link rel="stylesheet" href="/vendor/dds/tokens.css">
 <link rel="stylesheet" href="/vendor/dds/ui/dds.css">
-<div id="workspace"></div>
+<!-- body -->
+<div id="workspace" data-dds-font-content></div>
 ```
 
 ```js
@@ -41,6 +45,8 @@ const cleanup = mountDDS(root, {
 기존 서비스에서 사용하는 선택기·달력·편집기 이벤트를 먼저 확인한다. 이미 위젯이 연결된 곳은 `controls:false`로 시작해 이중 초기화를 막는다. UI의 ID·name·값·CSRF·서버 조건·제출·권한은 유지한다. `mountControls`를 직접 사용할 때도 명시한 root 안에서만 동작한다.
 
 기존 서비스의 전역 토큰과 충돌을 피하려면 위 예제의 `tokens.css` 대신 `ui/tokens-scoped.css`를 연결한다. 둘 중 하나만 사용한다. 범위 토큰은 `.dds-ui` 밖에 영향을 주지 않으며 중첩된 DDS 영역은 바깥 값을 상속한다. 기본 토큰값과 라이트/다크값은 전역 버전과 동일하다. 호스트가 다크인 상태에서 DDS 일부만 라이트로 강제하는 별도 reset은 제공하지 않는다.
+
+서체 로딩 스크립트는 공통 `head`에 한 번 연결한다. `data-dds-font-content`는 실제 글자 토큰을 상속하는 화면 영역에 지정한다. 범위 토큰을 사용하면 `.dds-ui` 안의 화면 영역에 지정한다. 첫 렌더링에서 제목·본문 서체를 기다리며, 1.8초 안에 준비되지 않으면 해당 화면에서 대체 서체를 유지한다. 자바스크립트가 실행되지 않아도 콘텐츠를 읽을 수 있다. 캐시를 비우고 느린 네트워크와 폰트 요청 실패에서 줄바꿈과 메뉴·카드 배치를 확인한다.
 
 ## 콘텐츠 변경
 
@@ -96,7 +102,9 @@ Django 등 서버 템플릿도 같은 HTML을 사용한다. `dds-instance`로 �
 
 화면 배경은 `--page-background`이며 전역 방식에서는 생성 CSS가 `body`에 연결한다. 범위 방식은 `.dds-ui` 내부의 실제 페이지 상자에 `data-dds-page`를 지정한다. `.dds-ui` 자체는 `display:contents`이므로 배경을 그리지 않는다. 카드·입력·헤더·모달의 `--background`와 `--surface`는 페이지 배경과 구분해 유지한다. 이미 별도 페이지 배경이 있다면 해당 요소의 배경을 `var(--page-background)`로 연결하고 양쪽 모드의 글자 대비를 확인한다. 선택하는 배경은 밝은 모드에 적용하고 다크 모드는 `#17191C`로 고정한다. `pageBackgroundDark`는 이전 프로필 호환용으로 남기되 과거 값은 적용하지 않는다. `canvasTextTokens(settings,dark)`는 선택 배경에서 필요한 경우에만 `--text-tertiary`를 최소 보정한다. 다른 글자 역할·입력 placeholder·컴포넌트 바탕은 유지한다.
 
-선택한 제목·본문 서체의 `assets/fonts/<서체>/fontfaces.css`와 연결된 WOFF2·라이선스도 함께 배포한다. 기본 토큰이나 고정 릴리스는 수정하지 않는다. 같은 저장 설정에서 라이트·다크·hover·active 색상을 생성하며 기능 색상은 의미가 있는 표면에 `data-dds-color-role="secondary|accent|positive"`로 연결한다.
+선택한 제목·본문 서체의 CSS·WOFF2·라이선스를 함께 배포한다. `profileFontAssets(profile,{assetBase:'/vendor/dds/assets/fonts/'})`에서 받은 `preloads`는 위 예제의 preload를 대신하고, `stylesheets`는 로딩 스크립트와 토큰 CSS 사이에 연결한다. 서체 CSS를 직접 연결했으면 `createProfileCSS`에 `includeFontImports:false`를 지정해 중복 로드를 피한다. `assetBase`는 실제 정적 자산 경로에 맞춘다. 분할 서체는 브라우저가 화면 글자에 맞는 파일을 요청한다.
+
+같은 저장 설정에서 라이트·다크·hover·active 색상을 생성하며 기능 색상은 의미가 있는 표면에 `data-dds-color-role="secondary|accent|positive"`로 연결한다.
 
 ## 동작과 검수
 
