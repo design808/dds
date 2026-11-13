@@ -1,7 +1,7 @@
-import {createComponent as component,mountDDS,icon,statusBadge} from '../../ui/index.js?v=37572f4be3f4fe6a';
-import {STORAGE_KEY,CHECK_LABELS,LIMIT,questionsFor,createSession,restoreSession,charCount,canSubmit,metrics,formatTime} from './app-model.js?v=37572f4be3f4fe6a';
+import {createComponent as component,mountDDS,icon,statusBadge} from '../../ui/index.js?v=7a9142d15652404b';
+import {STORAGE_KEY,CHECK_LABELS,LIMIT,questionsFor,createSession,restoreSession,charCount,canSubmit,metrics,formatTime} from './app-model.js?v=7a9142d15652404b';
 
-import {prepareNavigation} from './app-lifecycle.js?v=37572f4be3f4fe6a';
+import {prepareNavigation} from './app-lifecycle.js?v=7a9142d15652404b';
 
 const app=document.querySelector('#app');
 let session=null,storageAvailable=true;

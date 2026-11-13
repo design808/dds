@@ -11,7 +11,7 @@ const fieldSizes = [
   ['Large', '--control-height-lg: 52px · Body 1 Normal 16/24 · 좌우 16px · 아이콘 20px'],
   ['크기 지정', 'data-control-size="sm | md | lg" · 기본 Medium · 모바일에서 자동 축소하지 않음'],
 ];
-const fieldFocus = ['포커스', '입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시'];
+const fieldFocus = ['입력 경계', '기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시'];
 const buttonFocus = ['포커스', 'outline: 1px solid var(--primary) · outline-offset: 0'];
 const dialogSpecs = [
   ['내부 여백', '--dialog-padding: 24px'],
@@ -81,16 +81,16 @@ const overrides = {
   },
   command: {
     usage:{when:'검색으로 명령을 찾아 실행할 때 사용합니다.',alternative:'문서나 상품을 찾는 일반 검색은 Search를 사용합니다.'},
-    rules:['검색 아이콘·입력·지우기 버튼을 같은 복합 입력 안에 정렬하고 포커스는 외곽 전체에 표시합니다. 폼 라벨 스타일이 입력 컨테이너의 flex 배치를 덮지 않게 합니다.', '결과 행은 아이콘·명령명의 클릭 영역을 함께 제공하고 긴 명령명은 행 높이를 늘려 표시합니다.', '필터로 숨긴 결과는 초점 순서에서도 제외하고 0개 결과에는 빈 상태를 표시합니다.'],
-    keyboard:['검색창에서 ↓/↑로 첫/마지막 결과에 이동합니다. 결과 사이에서는 방향키와 Home/End를 사용하고 Enter로 실행합니다.', '검색창의 Home/End는 원래 커서 이동을 유지합니다. Escape는 검색창으로 초점을 돌립니다.'],
+    rules:['처음에는 검색창을 표시합니다. 검색창을 클릭하거나 키보드로 진입하면 아래에 별도 결과 목록을 표시합니다. 화면 하단에 공간이 부족하면 위쪽을 사용합니다.', '검색 아이콘·입력·지우기 버튼을 같은 복합 입력 안에 정렬하고 포커스는 외곽 전체에 표시합니다.', '결과 행은 아이콘·명령명의 클릭 영역을 함께 제공하고 긴 명령명은 행 높이를 늘려 표시합니다.', '필터로 숨긴 결과는 탐색에서 제외하고 0개 결과에는 빈 상태를 표시합니다.'],
+    keyboard:['검색창에 초점을 유지하며 ↓/↑로 명령을 탐색하고 Enter로 실행합니다. 활성 결과는 aria-activedescendant로 연결합니다.', 'Home/End는 입력 커서를 이동합니다. Escape·Tab 또는 바깥 클릭으로 목록을 닫습니다.'],
     specification:[['공통 스타일','content-primitives.css · .dds-command / .dds-command-field / .dds-command-option'],fieldFocus,['결과 행','최소 높이 44px · 좌우 12px · 아이콘 18px · 간격 12px · Label 1 14/20/500'],['결과 간격','검색창/결과 8px · 결과 행 사이 4px']],
-    checks:[...defaultChecks,'아이콘/입력 정렬, 긴 명령, 결과 0개·1개·다수, 방향키·Enter·Escape와 검색 지우기를 확인합니다.'],
+    checks:[...defaultChecks,'처음에는 결과 목록이 숨겨져 있으며 열려도 입력 위치와 주변 레이아웃이 그대로인지 확인합니다.', '긴 명령, 결과 0개·1개·다수, 방향키·Enter·Escape·Tab, 검색 지우기와 바깥 클릭을 확인합니다.'],
     assets:['content-primitives.css','custom-controls.css','custom-controls.js'],
   },
   item: {
     usage:{when:'공고·문서처럼 제목·보조정보·후행 정보와 행동이 반복되는 목록에 사용합니다.',alternative:'열별 비교는 Table, 이미지 중심 목록은 List card, 독립된 정보 묶음은 Card를 사용합니다.'},
     rules:['기본 outlined는 목록 전체의 외곽 경계를 표시합니다. divided는 외곽 테두리·모서리·배경을 없애고 행 사이 구분선만 표시합니다. 별도 컴포넌트로 다시 그리지 않습니다.', '행의 대표 이동은 네이티브 링크로 연결합니다. 북마크·메뉴 같은 독립 행동은 링크 바깥의 행동 슬롯에 두며 버튼을 링크 안에 중첩하지 않습니다.', '제목·조건은 본문, 마감일 같은 짧은 값은 후행 정보에 배치합니다. 앞뒤 아이콘은 수축하지 않으며 제목 영역이 남은 공간을 차지합니다.', '목록 컨테이너 480px 이하에서는 후행 정보를 다음 줄로 보내 제목·조건의 읽기 폭을 확보합니다. 별도 행동은 오른쪽에 유지합니다.', '긴 제목·보조정보는 내용에 맞춰 줄바꿈합니다. 글자 축소나 강제 말줄임으로 항목을 맞추지 않습니다.'],
-    specification:[['공통 스타일','content-primitives.css + visibility.css · .dds-items / .dds-list-item / .dds-list-link / .dds-list-content / .dds-list-meta'],['표면','outlined: 기본 외곽 경계 · divided: 외곽 경계 0 / radius 0 / 배경 투명 / 행 사이 구분선'],['제목','Body 1 Normal 16/24/600 · Strong'],['배치','두 형태의 행 패딩 --space-5 (20px) · 아이콘 18px · 본문과 간격 12px · 보조정보 위 4px · 상태와 간격 8px']],
+    specification:[['공통 스타일','content-primitives.css + visibility.css · .dds-items / .dds-list-item / .dds-list-link / .dds-list-content / .dds-list-meta'],['표면','outlined: 기본 외곽 경계 · divided: 외곽 경계 0 / radius 0 / 배경 투명 / 행 사이 구분선'],['제목','Body 1 Normal 16/24/600 · Strong'],['배치','두 형태의 행 패딩 --space-5 (20px) · 아이콘 18px · 링크 내부 간격 --space-6 (24px) · 480px 이하 행 간격 --space-3 (12px) · 보조정보 위 4px · 상태와 간격 8px']],
     keyboard:['Tab으로 대표 링크와 별도 행동에 각각 이동합니다. Enter는 상세 이동, Enter/Space는 버튼의 행동을 실행합니다. 북마크를 누르면 상세로 이동하지 않습니다.'],
     checks:[...defaultChecks,'outlined/divided 전환·첫/마지막 행·1개 항목·긴 제목·보조정보 없음·후행 정보와 독립 행동 조합을 확인합니다.', '320px·390px에서 내용과 마감·버튼이 겹치지 않고 높이가 늘어나는지 확인합니다. 대표 링크와 보조 버튼의 초점·클릭 결과가 분리되는지 확인합니다.'],
     assets:['content-primitives.css',...visibilityAssets],

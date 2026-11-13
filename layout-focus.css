@@ -57,7 +57,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible,.custom-option:focus-
 input[type=checkbox]:focus-visible,input[type=radio]:focus-visible{border-width:1px;border-color:var(--primary);outline:1px solid var(--primary);outline-offset:0}
 
 /* Compound fields own their border; descendants never draw a second one. */
-.search-field,.custom-date,.custom-combo,.custom-search{border:1px solid var(--border);border-radius:var(--radius-md);background:var(--background);outline:none;outline-offset:0;box-shadow:none}
+.search-field,.custom-date,.custom-combo,.custom-search{border:1px solid var(--control-border);border-radius:var(--radius-md);background:var(--background);outline:none;outline-offset:0;box-shadow:none}
 
 .custom-date>input,.custom-combo>input,.custom-search>input{border:0;border-radius:inherit;background:transparent;outline:none;outline-offset:0;}
 .search-field .custom-search{border:0;background:transparent;margin:0;border-radius:inherit}

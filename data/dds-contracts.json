@@ -974,8 +974,8 @@
             "data-control-size=\"sm | md | lg\" · 기본 Medium · 모바일에서 자동 축소하지 않음"
           ],
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "모서리",
@@ -1146,8 +1146,8 @@
             "내용과 작성 과업에 맞춘 최소 높이 · 한 줄 입력 높이 토큰과 별개"
           ],
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ]
         ],
         "source": {
@@ -1321,8 +1321,8 @@
             "data-control-size=\"sm | md | lg\" · 기본 Medium · 모바일에서 자동 축소하지 않음"
           ],
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "너비",
@@ -1504,8 +1504,8 @@
             "data-control-size=\"sm | md | lg\" · 기본 Medium · 모바일에서 자동 축소하지 않음"
           ],
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "화살표 버튼",
@@ -2185,8 +2185,8 @@
             "data-control-size=\"sm | md | lg\" · 기본 Medium · 모바일에서 자동 축소하지 않음"
           ],
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "직접 입력",
@@ -2535,8 +2535,8 @@
             "data-control-size=\"sm | md | lg\" · 기본 Medium · 모바일에서 자동 축소하지 않음"
           ],
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ]
         ],
         "source": {
@@ -7324,8 +7324,8 @@
         ],
         "specification": [
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "크기",
@@ -7665,8 +7665,8 @@
             "data-control-size=\"sm | md | lg\" · 기본 Medium · 모바일에서 자동 축소하지 않음"
           ],
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ]
         ],
         "source": {
@@ -7827,8 +7827,8 @@
         ],
         "specification": [
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "크기",
@@ -7989,8 +7989,8 @@
         ],
         "specification": [
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "크기",
@@ -8150,8 +8150,8 @@
         ],
         "specification": [
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "크기",
@@ -8312,8 +8312,8 @@
         ],
         "specification": [
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "크기",
@@ -8473,8 +8473,8 @@
         ],
         "specification": [
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "크기",
@@ -8635,8 +8635,8 @@
         ],
         "specification": [
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "크기",
@@ -8796,8 +8796,8 @@
         ],
         "specification": [
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "크기",
@@ -10355,20 +10355,22 @@
           "alternative": "문서나 상품을 찾는 일반 검색은 Search를 사용합니다."
         },
         "rules": [
-          "검색 아이콘·입력·지우기 버튼을 같은 복합 입력 안에 정렬하고 포커스는 외곽 전체에 표시합니다. 폼 라벨 스타일이 입력 컨테이너의 flex 배치를 덮지 않게 합니다.",
+          "처음에는 검색창을 표시합니다. 검색창을 클릭하거나 키보드로 진입하면 아래에 별도 결과 목록을 표시합니다. 화면 하단에 공간이 부족하면 위쪽을 사용합니다.",
+          "검색 아이콘·입력·지우기 버튼을 같은 복합 입력 안에 정렬하고 포커스는 외곽 전체에 표시합니다.",
           "결과 행은 아이콘·명령명의 클릭 영역을 함께 제공하고 긴 명령명은 행 높이를 늘려 표시합니다.",
-          "필터로 숨긴 결과는 초점 순서에서도 제외하고 0개 결과에는 빈 상태를 표시합니다.",
+          "필터로 숨긴 결과는 탐색에서 제외하고 0개 결과에는 빈 상태를 표시합니다.",
           "견본의 문구·도움말·개수·묶음 배치·표시용 폭과 외부 여백은 필수가 아닙니다. 실제 콘텐츠를 연결하고 부모에서 배치를 정하며 공식 변형의 내부 디자인 규격을 유지합니다."
         ],
         "keyboard": [
-          "검색창에서 ↓/↑로 첫/마지막 결과에 이동합니다. 결과 사이에서는 방향키와 Home/End를 사용하고 Enter로 실행합니다.",
-          "검색창의 Home/End는 원래 커서 이동을 유지합니다. Escape는 검색창으로 초점을 돌립니다."
+          "검색창에 초점을 유지하며 ↓/↑로 명령을 탐색하고 Enter로 실행합니다. 활성 결과는 aria-activedescendant로 연결합니다.",
+          "Home/End는 입력 커서를 이동합니다. Escape·Tab 또는 바깥 클릭으로 목록을 닫습니다."
         ],
         "checks": [
           "긴 한글·영문과 200% 확대에서 내용과 행동이 잘리지 않는지 확인합니다.",
           "Light/Dark에서 의미·선택 상태·포커스를 확인합니다.",
           "320px·390px와 전환 경계의 실제 컨테이너에서 겹침·잘림·불필요한 페이지 가로 스크롤을 확인합니다.",
-          "아이콘/입력 정렬, 긴 명령, 결과 0개·1개·다수, 방향키·Enter·Escape와 검색 지우기를 확인합니다."
+          "처음에는 결과 목록이 숨겨져 있으며 열려도 입력 위치와 주변 레이아웃이 그대로인지 확인합니다.",
+          "긴 명령, 결과 0개·1개·다수, 방향키·Enter·Escape·Tab, 검색 지우기와 바깥 클릭을 확인합니다."
         ],
         "specification": [
           [
@@ -10376,8 +10378,8 @@
             "content-primitives.css · .dds-command / .dds-command-field / .dds-command-option"
           ],
           [
-            "포커스",
-            "입력 경계 1px · --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
+            "입력 경계",
+            "기본 1px --control-border · 포커스 1px --primary · outline-offset: 0 · 복합 입력은 외곽 전체에 표시"
           ],
           [
             "결과 행",
@@ -10483,10 +10485,10 @@
         }
       },
       "specifiedStates": [
-        "Empty",
+        "Closed",
+        "Open",
         "Filtered",
-        "No result",
-        "Executed"
+        "No result"
       ],
       "exampleScope": {
         "provided": "페이지의 로컬 예제",
@@ -13044,7 +13046,7 @@
           ],
           [
             "배치",
-            "두 형태의 행 패딩 --space-5 (20px) · 아이콘 18px · 본문과 간격 12px · 보조정보 위 4px · 상태와 간격 8px"
+            "두 형태의 행 패딩 --space-5 (20px) · 아이콘 18px · 링크 내부 간격 --space-6 (24px) · 480px 이하 행 간격 --space-3 (12px) · 보조정보 위 4px · 상태와 간격 8px"
           ]
         ],
         "source": {

@@ -45,8 +45,10 @@
   border:1px solid var(--border);
   border-radius:var(--radius-lg);
   background:var(--background);
+  box-shadow:var(--shadow-overlay);
 }
-.dds-command .dds-command-field {
+.dds-command[hidden] {display:none}
+.dds-command-field {
   display:flex;
   align-items:center;
   gap:var(--space-2);
@@ -63,10 +65,10 @@
   color:var(--text-secondary);
 }
 .dds-command-field > svg {width:18px;height:18px;flex-shrink:0}
-.dds-command .dds-command-field > input,
-.dds-command .dds-command-field > .custom-search {flex:1;min-width:0;width:0;max-width:100%}
-.dds-command .dds-command-field > .custom-search {height:100%;border:0;background:transparent}
-.dds-command .dds-command-field input {
+.dds-command-field > input,
+.dds-command-field > .custom-search {flex:1;min-width:0;width:0;max-width:100%}
+.dds-command-field > .custom-search {height:100%;border:0;background:transparent}
+.dds-command-field input {
   box-sizing:border-box;
   min-height:0;
   height:100%;
@@ -82,9 +84,9 @@
   font-weight:var(--font-weight-regular);
   letter-spacing:var(--control-tracking,var(--type-body-1-normal-tracking));
 }
-.dds-command .dds-command-field:focus-within {border-color:var(--primary)}
-.dds-command .dds-command-field input:focus-visible {outline:none;outline-offset:0;box-shadow:none}
-.dds-command-results {display:grid;gap:var(--space-1);min-width:0;margin-top:var(--space-2)}
+.dds-command-field:focus-within {border-color:var(--primary)}
+.dds-command-field input:focus-visible {outline:none;outline-offset:0;box-shadow:none}
+.dds-command-results {display:grid;gap:var(--space-1);min-width:0}
 .dds-command-option {
   display:flex;
   align-items:center;
@@ -110,8 +112,8 @@
 }
 .dds-command-option > svg {width:18px;height:18px;flex-shrink:0;color:var(--text-secondary)}
 .dds-command-option > span {min-width:0}
-.dds-command-option[hidden] {display:none}
-.dds-command-option:focus-visible {outline:1px solid var(--primary);outline-offset:0;background:var(--surface)}
+.dds-command-option:is([hidden],[data-dds-command-filtered]) {display:none}
+.dds-command-option:is(:focus-visible,[aria-selected=true]) {outline:1px solid var(--primary);outline-offset:-1px;background:var(--surface)}
 .dds-command [data-command-empty] {margin:0;padding:var(--space-6) var(--space-3);color:var(--text-secondary);font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);text-align:center}
 
 .dds-items {container:dds-items / inline-size;list-style:none;width:100%;min-width:0;margin:0;padding:0;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--background)}
@@ -120,7 +122,7 @@
 .dds-list-item {position:relative;isolation:isolate;display:flex;align-items:center;min-width:0}
 .dds-items > .dds-list-item:first-child {border-start-start-radius:calc(var(--radius-lg) - 1px);border-start-end-radius:calc(var(--radius-lg) - 1px)}
 .dds-items > .dds-list-item:last-child {border-end-start-radius:calc(var(--radius-lg) - 1px);border-end-end-radius:calc(var(--radius-lg) - 1px)}
-.dds-list-link {display:flex;align-items:center;gap:var(--space-3);box-sizing:border-box;flex:1;min-width:0;padding:var(--space-5);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none}
+.dds-list-link {display:flex;align-items:center;gap:var(--space-6);box-sizing:border-box;flex:1;min-width:0;padding:var(--space-5);border-radius:var(--radius-md);color:var(--text-primary);text-decoration:none}
 .dds-list-item > .dds-list-link::after {content:'';position:absolute;inset:0;z-index:1;border-radius:inherit}
 .dds-list-link > svg {width:18px;height:18px;flex-shrink:0}
 .dds-list-leading {display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:0;max-width:25%}
@@ -138,7 +140,7 @@
 .dds-items[data-dds-appearance=divided] {border:0;border-radius:0;background:transparent}
 .dds-items[data-dds-appearance=divided] :is(.dds-list-item,.dds-list-link) {border-radius:0}
 @container dds-items (max-width:480px) {
-  .dds-list-link {flex-wrap:wrap;row-gap:var(--space-1)}
+  .dds-list-link {flex-wrap:wrap;row-gap:var(--space-3)}
   .dds-list-leading {order:0}
   .dds-list-content {order:1}
   .dds-list-chevron {order:2}

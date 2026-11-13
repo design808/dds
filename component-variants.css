@@ -9,6 +9,7 @@
 .dds-variant-preview[data-variant-preview=separator] .dds-component>p {margin:0}
 .dds-variant-toolbar {display:flex;justify-content:flex-end;margin-top:12px}
 .dds-variant-docs>[data-variant-status]:empty {display:none}
+.dds-variant-docs>[data-variant-status]:not(:empty) {margin-block-start:var(--space-2)}
 .dds-variant-code {margin-top:20px}
 .dds-variant-code>summary {cursor:pointer;font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);font-weight:600;color:var(--text-primary)}
 .dds-variant-code-tools {display:flex;justify-content:flex-end;margin-block:12px}

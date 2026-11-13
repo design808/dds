@@ -40,6 +40,18 @@
 :is(.breadcrumbs,.stepper,.alert){margin:0}
 .pagination{margin:0;padding:0}
 
+/* Stacked descriptions need space only when their parent has no gap. */
+:is(
+  .upload-zone > :is(label,.custom-file,input[type=file]) + .helper,
+  .dds-demo > :is(input,.dds-dots,.dds-avatar-group,.dds-direction) + .helper,
+  .dds-demo > .demo-row + :is([data-ext-filter-result],[data-category-result]),
+  [data-ext-form] fieldset > :is(input,.custom-control) + .helper,
+  .dds-calendar-grid + .helper,
+  .dds-time + .helper,
+  [data-ext-status]:not(:empty),
+  [data-thread-status]:not(:empty)
+){margin-block-start:var(--space-2)}
+
 /* A supplied media slot is a neutral container. Its empty/permission placeholder
    is the distinct .dds-media-placeholder child defined in the shared source. */
 .media-demo{

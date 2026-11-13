@@ -430,6 +430,12 @@
 .workspace > #main .text-color-section > .helper + .guideline {
   margin-top: var(--doc-content-gap);
 }
+.workspace > #main .playground + .helper {
+  margin-block-start: var(--space-2);
+}
+.workspace > #main [data-validation-result]:not(:empty) {
+  margin-block-start: var(--space-2);
+}
 
 /* Component documentation owns section spacing. Nested preview sections are
    live components, so the old global section margin must not reach them. */

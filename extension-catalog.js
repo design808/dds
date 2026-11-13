@@ -23,7 +23,7 @@ const entries = [
 ['page-counter','Page counter','페이지 카운터','Navigation','현재 위치와 전체 개수를 간단히 표시합니다.','Current · Total · Previous / Next','First · Middle · Last','숫자 표시만으로 이동 기능을 암시하지 않습니다.'],
 ['pagination-dots','Pagination dots','페이지 점 표시','Navigation','소수의 슬라이드 위치를 표시하고 이동합니다.','Dots · Current · Accessible labels','First · Middle · Last','각 점에 목적지 이름을 제공하고 현재 위치를 aria-current로 표시합니다.'],
 ['menubar','Menubar','메뉴 바','Navigation','편집 화면의 명령을 카테고리별로 정리합니다.','Bar · Menu triggers · Menu items','Closed · Open · Keyboard focus','방향키 이동과 Escape 복귀를 지원합니다. 전역 사이트 링크와 편집 명령을 구분합니다.'],
-['command','Command','명령 검색','Navigation','명령을 검색하고 키보드로 실행합니다.','Search · Results · Empty result · Shortcut','Empty · Filtered · No result · Executed','검색어와 선택 결과를 구분하고 방향키·Enter·Escape를 지원합니다.'],
+['command','Command','명령 검색','Navigation','명령을 검색하고 키보드로 실행합니다.','Search · Results · Empty result','Closed · Open · Filtered · No result','검색창 아래에서 결과를 열고 방향키·Enter·Escape를 지원합니다.'],
 ['context-menu','Context menu','컨텍스트 메뉴','Navigation','대상에 관한 보조 명령을 제공합니다.','Target · Trigger · Menu · Items','Closed · Open · Focus','우클릭 외에 보이는 메뉴 버튼과 Shift+F10 진입을 함께 제공합니다.'],
 ['alert-dialog','Alert dialog','확인 다이얼로그','Feedback','삭제 등 영향이 있는 행동을 실행하기 전에 확인합니다.','Scrim · Title · Description · Cancel · Confirm','Closed · Open · Confirmed · Cancelled','최초 초점은 취소에 두고 실제 대상과 결과를 명시합니다. 예제는 데이터 삭제를 수행하지 않습니다.'],
 ['sheet','Sheet','사이드 시트','Feedback','현재 맥락을 유지하며 옆에서 보조 작업을 엽니다.','Scrim · Title · Body · Close','Closed · Open · Focus trapped','모달 영역 안에 초점을 유지하고 닫으면 원래 트리거로 돌아갑니다.'],

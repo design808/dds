@@ -1,7 +1,7 @@
-import {renderCore,coreParts,coreIds} from './core.js?v=37572f4be3f4fe6a';
-import {renderExtended,extendedParts} from './extended.js?v=37572f4be3f4fe6a';
-import {chartDemo} from './charts.js?v=37572f4be3f4fe6a';
-import {chartComponents,chartPresentation} from '../chart-catalog.js?v=37572f4be3f4fe6a';
+import {renderCore,coreParts,coreIds} from './core.js?v=7a9142d15652404b';
+import {renderExtended,extendedParts} from './extended.js?v=7a9142d15652404b';
+import {chartDemo} from './charts.js?v=7a9142d15652404b';
+import {chartComponents,chartPresentation} from '../chart-catalog.js?v=7a9142d15652404b';
 
 export const componentIds=Object.freeze([...coreIds,...Object.keys(extendedParts),'chart',...chartComponents.map(c=>c.id)]);
 export const isChart=id=>id==='chart'||!!chartPresentation(id);
@@ -66,5 +66,7 @@ export function componentParts(id){
   control:{selector:'.dds-chart-example',kind:'attributes',attributes:['aria-label']}
  }:null);
  if(!parts)throw new TypeError('Unknown DDS component: '+id);
- return Object.fromEntries(Object.entries(parts).map(([name,part])=>[name,{...part,selector:Object.entries(hooks).reduce((s,[from,to])=>s.replaceAll(from,to),part.selector).replace(/\.dds-demo(?![a-zA-Z0-9_-])/g,'.dds-component')} ]));
+ return Object.fromEntries(Object.entries(parts).map(([name,part])=>[name,{...part,selector:part.selector
+  .replace(/\[([\w-]+)(?=[\s=\]])/g,(attribute,key)=>hooks[key]?'['+hooks[key]:attribute)
+  .replace(/\.dds-demo(?![a-zA-Z0-9_-])/g,'.dds-component')} ]));
 }

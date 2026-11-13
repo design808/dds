@@ -1,4 +1,4 @@
-import {mountTooltips} from './ui/tooltips.js?v=37572f4be3f4fe6a';
+import {mountTooltips} from './ui/tooltips.js?v=7a9142d15652404b';
 
 // The docs and older service screens use the same interaction as mountDDS.
 // Palette exclusions, dynamic accessible names and keyboard guidance are shared.

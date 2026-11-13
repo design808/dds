@@ -1,16 +1,16 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=37572f4be3f4fe6a';
-import {renderButton} from './button.js?v=37572f4be3f4fe6a';
-import {icon} from './icons.js?v=37572f4be3f4fe6a';
-import {mountControls} from './controls.js?v=37572f4be3f4fe6a';
-import {mountTooltips} from './tooltips.js?v=37572f4be3f4fe6a';
-import {bindCharts,chartDemo} from './charts.js?v=37572f4be3f4fe6a';
-import {calendarDays,renderItemList} from './extended.js?v=37572f4be3f4fe6a';
-import {UI_VERSION} from './version.js?v=37572f4be3f4fe6a';
-import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=37572f4be3f4fe6a';
-import {applyComponentVariants,componentVariants} from './variants.js?v=37572f4be3f4fe6a';
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=7a9142d15652404b';
+import {renderButton} from './button.js?v=7a9142d15652404b';
+import {icon} from './icons.js?v=7a9142d15652404b';
+import {mountControls} from './controls.js?v=7a9142d15652404b';
+import {mountTooltips} from './tooltips.js?v=7a9142d15652404b';
+import {bindCharts,chartDemo} from './charts.js?v=7a9142d15652404b';
+import {calendarDays,renderItemList} from './extended.js?v=7a9142d15652404b';
+import {UI_VERSION} from './version.js?v=7a9142d15652404b';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=7a9142d15652404b';
+import {applyComponentVariants,componentVariants} from './variants.js?v=7a9142d15652404b';
 export {renderButton,renderItemList,icon,componentIds,componentParts,renderComponentSource,layoutContract};
 export {componentVariants,optionalContent};
-export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=37572f4be3f4fe6a';
+export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=7a9142d15652404b';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -87,7 +87,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  const doc=root.ownerDocument,view=doc.defaultView,abort=new view.AbortController(),signal=abort.signal;
  const stops=[],timers=new Set(),portals=new Set(),floating=new Map(),navs=new Map(),dragging=new Map(),toastTimers=new Map();
  const questionnaireLabels=new WeakMap(),timeSuffixes=new WeakMap(),sliderSuffixes=new WeakMap();
- let disposed=false,scanPending=false,resettingOverlays=false;
+ let disposed=false,scanPending=false,resettingOverlays=false,returningCommandFocus=false;
  let lastMousePosition,blockedMousePosition,blockedFocusTrigger;
  const owns=target=>{
   const element=asElement(target);if(!element)return false;
@@ -120,7 +120,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   let record=floating.get(panel);if(record)return record;
   // Native popovers already render in the top layer. Keep their form controls
   // in the mounted DOM so form ownership and control adapters stay attached.
-  if(kind==='popover'){record={panel,trigger,kind,marker:null,scope:null,returnFocus,style:panel.getAttribute('style'),hidden:panel.hidden,hoverTimer:undefined};floating.set(panel,record);return record;}
+  if(kind==='popover'||kind==='command'){record={panel,trigger,kind,marker:null,scope:null,returnFocus,style:panel.getAttribute('style'),hidden:panel.hidden,hoverTimer:undefined};floating.set(panel,record);return record;}
   const marker=doc.createComment('dds-'+kind+'-position'),scope=createPortal(trigger);
   panel.before(marker);record={panel,trigger,kind,marker,scope,returnFocus,style:panel.getAttribute('style'),hidden:panel.hidden,hoverTimer:undefined};
   scope.append(panel);floating.set(panel,record);return record;
@@ -130,7 +130,8 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   const {panel,trigger,marker,scope}=record;
   for(const child of [...floating.values()])if(child!==record&&panel.contains(child.trigger))restore(child);
   cancel(record.hoverTimer);floating.delete(panel);
-  if(record.kind==='popover'&&panel.matches(':popover-open'))panel.hidePopover();
+  if((record.kind==='popover'||record.kind==='command')&&panel.matches(':popover-open'))panel.hidePopover();
+  if(record.kind==='command')setCommandOption(record);
   if(record.kind==='menu')panel.hidden=true;else panel.hidden=record.hidden;
   record.style===null?panel.removeAttribute('style'):panel.setAttribute('style',record.style);
   if(marker){if(marker.parentNode&&trigger.isConnected)marker.replaceWith(panel);else{marker.remove();panel.remove();}}
@@ -138,6 +139,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  }
  function positionFloating(record,point){
   if(!record.trigger.isConnected)return restore(record);
+  if(record.kind==='command')return positionCommand(record);
   const panel=record.panel,anchor=point?{left:point.x,top:point.y,bottom:point.y}:record.trigger.getBoundingClientRect(),edge=8;
   if(record.scope)refreshPortal(record.scope,record.trigger);panel.style.position='fixed';panel.style.inset='auto';panel.style.margin='0';
   if(record.kind==='menu')panel.style.width=Math.max(1,Math.min(180,view.innerWidth-edge*2))+'px';
@@ -160,6 +162,100 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   if(takeFocus)focus(panel.querySelector('button,input,select,a,[tabindex]'));
  }
  function closeHoverLater(record){cancel(record.hoverTimer);record.hoverTimer=later(()=>{if(!record.panel.contains(doc.activeElement)&&!record.trigger.contains(doc.activeElement))restore(record);},140);}
+ const commandSearch='[data-dds-command-search]';
+ const commandOptions='.dds-command-option:not([hidden],[data-dds-command-filtered],:disabled,[aria-disabled=true])';
+ const popupAnchor=record=>record.kind==='command'?record.trigger.closest('.dds-command-field')||record.trigger:record.trigger;
+ function commandPanel(input){
+  return byId(input,input.getAttribute('aria-controls'))?.closest('.dds-command');
+ }
+ function positionCommand({panel,trigger}){
+  const anchor=(trigger.closest('.dds-command-field')||trigger).getBoundingClientRect();
+  const viewport=view.visualViewport,edge=8,gap=8;
+  const x=viewport?.offsetLeft||0,y=viewport?.offsetTop||0;
+  const width=viewport?.width||view.innerWidth,height=viewport?.height||view.innerHeight;
+  const panelWidth=Math.min(anchor.width,Math.max(1,width-edge*2));
+  const below=y+height-anchor.bottom-edge-gap,above=anchor.top-y-edge-gap;
+  const down=below>=60||below>=above;
+  Object.assign(panel.style,{
+   position:'fixed',inset:'auto',margin:'0',overflowY:'auto',
+   width:`${panelWidth}px`,maxHeight:`${Math.max(1,down?below:above)}px`,
+   left:`${Math.max(x+edge,Math.min(anchor.left,x+width-panelWidth-edge))}px`,
+  });
+  const top=down?anchor.bottom+gap:anchor.top-panel.getBoundingClientRect().height-gap;
+  panel.style.top=`${Math.max(y+edge,top)}px`;
+ }
+ function setCommandOption(record,option){
+  if(record.activeOption!==option)record.activeOption?.setAttribute('aria-selected','false');
+  record.activeOption=option;
+  if(!option){record.trigger.removeAttribute('aria-activedescendant');return;}
+  if(!option.id){
+   let id;
+   do{id=`${record.trigger.getAttribute('aria-controls')}-option-${++serial}`;}while(doc.getElementById(id));
+   option.id=id;
+  }
+  option.setAttribute('aria-selected','true');
+  record.trigger.setAttribute('aria-activedescendant',option.id);
+  const item=option.getBoundingClientRect(),panel=record.panel.getBoundingClientRect();
+  if(item.top<panel.top)record.panel.scrollTop-=panel.top-item.top;
+  else if(item.bottom>panel.bottom)record.panel.scrollTop+=item.bottom-panel.bottom;
+ }
+ function filterCommands(record){
+  const query=record.trigger.value.trim().toLocaleLowerCase();
+  setCommandOption(record);
+  for(const option of record.panel.querySelectorAll('.dds-command-option'))option.toggleAttribute('data-dds-command-filtered',!option.textContent.toLocaleLowerCase().includes(query));
+  const empty=record.panel.querySelector('[data-command-empty]');
+  if(empty)empty.hidden=!!record.panel.querySelector('.dds-command-option:not([hidden],[data-dds-command-filtered])');
+  record.panel.scrollTop=0;
+  positionCommand(record);
+ }
+ function openCommand(input){
+  if(input.matches(':disabled,[readonly],[aria-disabled=true]'))return;
+  const panel=commandPanel(input);if(!panel)return;
+  if(floating.has(panel))return floating.get(panel);
+  const record=relocate(panel,input,'command');
+  panel.hidden=false;
+  panel.showPopover?.();
+  input.setAttribute('aria-expanded','true');
+  filterCommands(record);
+  return record;
+ }
+ function chooseCommand(record,option){
+  closeCommand(record);
+  const status=record.trigger.closest('.dds-demo')?.querySelector('[data-ext-status]');
+  if(status)status.textContent=option.textContent.trim()+' 명령을 선택했습니다. (예제)';
+  if(option.hasAttribute('data-dds-action'))notify(option,option.dataset.ddsAction,option.dataset.ddsActionValue);
+ }
+ function closeCommand(record){
+  returningCommandFocus=true;
+  try{restore(record,true);}finally{returningCommandFocus=false;}
+ }
+ function commandKeys(event,target){
+  const input=target.matches(commandSearch)?target:null;
+  const panel=input?commandPanel(input):target.closest('.dds-command');
+  if(!panel||event.isComposing||event.keyCode===229)return false;
+  const current=floating.get(panel);
+  if(event.key==='Escape'&&current){
+   event.preventDefault();
+   event.stopPropagation();
+   closeCommand(current);
+   return true;
+  }
+  if(event.key==='Tab'&&current){restore(current);return false;}
+  if(event.key==='Enter'&&current?.activeOption?.matches(commandOptions)){
+   event.preventDefault();
+   current.activeOption.click();
+   return true;
+  }
+  if(!['ArrowDown','ArrowUp'].includes(event.key)&&!(current&&!input&&['Home','End'].includes(event.key)))return false;
+  const record=current||(input&&openCommand(input));if(!record)return false;
+  event.preventDefault();
+  const options=[...panel.querySelectorAll(commandOptions)],index=options.indexOf(record.activeOption);
+  if(!options.length)return true;
+  const last=options.length-1;
+  const next=event.key==='Home'?0:event.key==='End'?last:event.key==='ArrowUp'?(index<=0?last:index-1):(index+1)%options.length;
+  setCommandOption(record,options[next]);
+  return true;
+ }
  const setTab=tab=>{
   const list=tab.closest('[role=tablist]'),selectedPanel=tab.getAttribute('aria-controls'),panels=new Set();
   for(const item of list.querySelectorAll('[role=tab]')){const active=item===tab;item.setAttribute('aria-selected',String(active));item.tabIndex=active?0:-1;const panel=byId(item,item.getAttribute('aria-controls'));if(panel)panels.add(panel);}
@@ -307,7 +403,12 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   focus(steps[next].querySelector('input:not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled)'));notify(target,'step',next);
  }
  function click(event){
-  if(!owns(event.target))return;const target=asElement(event.target).closest('button,a,summary');if(!target||target.disabled||target.getAttribute('aria-disabled')==='true')return;
+  if(!owns(event.target))return;
+  const element=asElement(event.target),search=element.closest('.dds-command-field')?.querySelector(commandSearch);
+  if(search&&(element===search||!element.closest('button'))){focus(search);openCommand(search);return;}
+  const target=element.closest('button,a,summary');if(!target||target.disabled||target.getAttribute('aria-disabled')==='true')return;
+  const command=floating.get(target.closest('.dds-command'));
+  if(command&&target.matches(commandOptions)){chooseCommand(command,target);return;}
   if(target.matches(primaryNavMenu+' > summary')&&hoverNavMenu(target)){
    const mouseClick=event.pointerType==='mouse'||(!event.pointerType&&event.detail>0&&!event.sourceCapabilities?.firesTouchEvents&&view.matchMedia('(any-hover: hover)').matches);
    if(mouseClick){event.preventDefault();return;}
@@ -353,7 +454,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  doc.addEventListener('input',event=>{
   const target=asElement(event.target);if(!owns(target))return;
   if(target.hasAttribute('data-dds-counter'))syncCounter(target);
-  if(target.hasAttribute('data-dds-command-search')){const command=target.closest('.dds-command');let count=0;for(const item of command.querySelectorAll('.dds-command-option')){item.hidden=!item.textContent.toLocaleLowerCase().includes(target.value.toLocaleLowerCase());if(!item.hidden)count++;}command.querySelector('[data-command-empty]').hidden=count>0;}
+  if(target.matches(commandSearch)){const record=floating.get(commandPanel(target));if(record)filterCommands(record);else openCommand(target);}
   if(target.hasAttribute('data-dds-slider')){const minimum=Number(target.min||0),maximum=Number(target.max||100),ratio=maximum>minimum?(Number(target.value)-minimum)/(maximum-minimum)*100:0;target.style.setProperty('--value',Math.max(0,Math.min(100,ratio))+'%');const out=scopeOf(target).querySelector('output');if(out){if(!sliderSuffixes.has(out))sliderSuffixes.set(out,out.textContent.match(/[^\d.\s-]+$/)?.[0]||'');out.textContent=target.value+sliderSuffixes.get(out);}}
   if(target.hasAttribute('data-dds-otp')){target.value=target.value.replace(/\D/g,'').slice(0,6);const out=scopeOf(target).querySelector('[data-otp-status]');if(out)out.textContent=target.value.length===6?'6자리 입력 · 인증 요청 전':`${target.value.length} / 6자리 입력`;notify(target,'otp',target.value);}
  },{signal});
@@ -372,6 +473,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
    return;
   }
   const target=asElement(event.target);
+  if(commandKeys(event,target))return;
   if(target.hasAttribute('data-dds-tab')&&['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();event.stopPropagation();const tabs=[...target.closest('[role=tablist]').querySelectorAll('[data-dds-tab]:not(:disabled)')],index=tabs.indexOf(target),next=event.key==='Home'?0:event.key==='End'?tabs.length-1:(index+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;setTab(tabs[next]);focus(tabs[next]);}
   if((event.shiftKey&&event.key==='F10'||event.key==='ContextMenu')&&target.closest('[data-dds-context]')){event.preventDefault();const context=target.closest('[data-dds-context]');openMenu(context.querySelector('[data-dds-menu]'),{returnFocus:context});}
   if(target.matches('.dds-resize-handle')&&['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();const rtl=view.getComputedStyle(target.parentElement).direction==='rtl',step=(event.key==='ArrowRight'?!rtl:rtl)?5:-5;resizePanel(target,event.key==='Home'?Number(target.getAttribute('aria-valuemin')||25):event.key==='End'?Number(target.getAttribute('aria-valuemax')||75):Number(target.getAttribute('aria-valuenow')||50)+step);}
@@ -380,17 +482,16 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
    if(event.key==='PageUp'||event.key==='PageDown'){const nextMonth=date.getMonth()+(event.key==='PageUp'?-1:1),last=new Date(date.getFullYear(),nextMonth+1,0).getDate();date.setMonth(nextMonth,Math.min(date.getDate(),last));}else date.setDate(date.getDate()+({ArrowLeft:-1,ArrowRight:1,ArrowUp:-7,ArrowDown:7,Home:-date.getDay(),End:6-date.getDay()}[event.key]));
    calendar.dataset.year=String(date.getFullYear());calendar.dataset.month=String(date.getMonth());renderCalendar(calendar,iso(date));
   }
-  const menu=target.closest('.dds-menu,.dds-command');
+  const menu=target.closest('.dds-menu');
   const headerMenu=target.closest('.dds-topnav-menu'),headerDropdown=target.closest('.dds-topnav-dropdown');
   if(target.matches('.dds-topnav-menu > summary')&&['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();setNavMenuOpen(headerMenu,true);const items=[...headerMenu.querySelectorAll('.dds-topnav-dropdown a,.dds-topnav-dropdown button')].filter(item=>!item.disabled&&!item.hidden);focus(event.key==='ArrowUp'?items.at(-1):items[0]);}
   else if(headerDropdown&&['ArrowDown','ArrowUp','Home','End'].includes(event.key)){event.preventDefault();const items=[...headerDropdown.querySelectorAll('a,button')].filter(item=>!item.disabled&&!item.hidden),index=items.indexOf(target),next=event.key==='Home'?0:event.key==='End'?items.length-1:(index+(event.key==='ArrowUp'?-1:1)+items.length)%items.length;focus(items[next]);}
-  if(menu&&['ArrowDown','ArrowUp','Home','End'].includes(event.key)&&!(target.matches('input')&&['Home','End'].includes(event.key))){const selector=menu.classList.contains('dds-command')?'.dds-command-option:not([hidden]):not(:disabled)':'button:not([hidden]):not(:disabled),a[href]:not([hidden])',items=[...menu.querySelectorAll(selector)],index=items.indexOf(target);if(items.length){event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?items.length-1:index<0?(event.key==='ArrowUp'?items.length-1:0):(index+(event.key==='ArrowUp'?-1:1)+items.length)%items.length;focus(items[next]);}}
+  if(menu&&['ArrowDown','ArrowUp','Home','End'].includes(event.key)&&!(target.matches('input')&&['Home','End'].includes(event.key))){const items=[...menu.querySelectorAll('button:not([hidden]):not(:disabled),a[href]:not([hidden])')],index=items.indexOf(target);if(items.length){event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?items.length-1:index<0?(event.key==='ArrowUp'?items.length-1:0):(index+(event.key==='ArrowUp'?-1:1)+items.length)%items.length;focus(items[next]);}}
   if(target.hasAttribute('data-dds-menu')&&['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();openMenu(target,{last:event.key==='ArrowUp'});}
   if(target.matches('.dds-menubar [data-dds-menu]')&&['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();closeMenus();const items=[...target.closest('.dds-menubar').querySelectorAll('[data-dds-menu]')],index=items.indexOf(target),next=event.key==='Home'?0:event.key==='End'?items.length-1:(index+(event.key==='ArrowRight'?1:-1)+items.length)%items.length;focus(items[next]);}
   if(event.key==='Escape'){
    const panel=target.closest('.dds-menu,.dds-popover');if(panel&&floating.has(panel)){event.preventDefault();event.stopPropagation();restore(floating.get(panel),true);return;}
    const popover=target.hasAttribute('data-dds-popover')&&byId(target,target.dataset.ddsPopover);if(popover&&floating.has(popover)){event.preventDefault();restore(floating.get(popover),true);return;}
-   const command=target.closest('.dds-command');if(command){event.preventDefault();focus(command.querySelector('input'));}
    const navigation=target.closest('.dds-nav-details');if(navigation?.open){event.preventDefault();event.stopPropagation();setNavMenuOpen(navigation,false);focus(navigation.querySelector('summary'));return;}
    const header=target.closest('[data-dds-topnav]');if(header?.querySelector('[data-dds-topnav-toggle]')?.getAttribute('aria-expanded')==='true'){event.preventDefault();event.stopPropagation();setNav(header,false,true);return;}
    if(!event.defaultPrevented&&dismissHoveredNavMenu()){event.preventDefault();event.stopPropagation();}
@@ -399,7 +500,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  doc.addEventListener('pointerdown',event=>{
   const element=asElement(event.target);for(const [header,state]of navs)if(!header.contains(element))state.lastFocused=null;
   for(const details of all('.dds-topnav-menu[open]'))if(!details.contains(element))setNavMenuOpen(details,false);
-  for(const record of [...floating.values()])if(record.kind==='menu'&&!record.panel.contains(element)&&!record.trigger.contains(element))restore(record);
+  for(const record of [...floating.values()])if((record.kind==='menu'||record.kind==='command')&&!record.panel.contains(element)&&!popupAnchor(record).contains(element))restore(record);
   if(!owns(element))return;const handle=element.closest('.dds-resize-handle');if(handle&&(event.button===0||event.pointerType==='touch')){event.preventDefault();dragging.set(handle,event.pointerId);try{handle.setPointerCapture(event.pointerId);}catch{}}
  },{capture:true,signal});
  doc.addEventListener('pointermove',event=>{stationaryMouse(event);if(!owns(event.target))return;const handle=asElement(event.target).closest('.dds-resize-handle');if(!handle||dragging.get(handle)!==event.pointerId)return;const bounds=handle.parentElement.getBoundingClientRect(),ratio=(event.clientX-bounds.left)/bounds.width;resizePanel(handle,(view.getComputedStyle(handle.parentElement).direction==='rtl'?1-ratio:ratio)*100);},{signal});
@@ -409,10 +510,11 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   const element=asElement(event.target);
   if(resettingOverlays)return;
   for(const [header,state]of navs){if(element===doc.body){if(state.lastFocused?.getClientRects().length)state.lastFocused=null;}else state.lastFocused=header.contains(element)?element:null;}
-  for(const record of [...floating.values()])if(record.kind==='menu'&&!record.panel.contains(element)&&!record.trigger.contains(element))restore(record);
+  for(const record of [...floating.values()])if((record.kind==='menu'||record.kind==='command')&&!record.panel.contains(element)&&!popupAnchor(record).contains(element))restore(record);
   const trigger=element?.closest('[data-dds-hover]');
   if(blockedFocusTrigger&&trigger!==blockedFocusTrigger&&element!==doc.body)blockedFocusTrigger=undefined;
   if(!owns(element))return;if(trigger&&trigger!==blockedFocusTrigger)openPopover(trigger);
+  if(!returningCommandFocus&&element.matches(commandSearch)&&element.matches(':focus-visible'))openCommand(element);
   const panel=element.closest('.dds-popover');if(panel&&floating.has(panel))cancel(floating.get(panel).hoverTimer);
  },{signal});
  doc.addEventListener('focusout',event=>{
@@ -444,11 +546,14 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   }
   for(const record of floating.values())if(record.kind==='popover'&&record.trigger.hasAttribute('data-dds-hover')&&(record.trigger.contains(element)||record.panel.contains(element))&&!record.trigger.contains(related)&&!record.panel.contains(related))closeHoverLater(record);
  },{signal});
- doc.addEventListener('toggle',event=>{const record=floating.get(event.target);if(record?.kind==='popover'&&event.newState==='closed')restore(record);if(owns(event.target)&&event.target.matches('.dds-topnav-menu'))positionNavDropdowns(event.target.closest('[data-dds-topnav]'));},{capture:true,signal});
+ doc.addEventListener('toggle',event=>{const record=floating.get(event.target);if((record?.kind==='popover'||record?.kind==='command')&&event.newState==='closed')restore(record);if(owns(event.target)&&event.target.matches('.dds-topnav-menu'))positionNavDropdowns(event.target.closest('[data-dds-topnav]'));},{capture:true,signal});
  doc.addEventListener('close',event=>{if(!owns(event.target)||event.target.tagName!=='DIALOG')return;for(const record of [...floating.values()])if(event.target.contains(record.trigger))restore(record);},{capture:true,signal});
  const dismissMenus=()=>closeMenus(true);
- view.addEventListener('resize',()=>{dismissMenus();for(const record of [...floating.values()])if(record.kind==='popover')positionFloating(record);},{signal});
- doc.addEventListener('scroll',event=>{for(const record of floating.values())if(record.panel.contains(event.target))return;dismissMenus();for(const record of [...floating.values()])if(record.kind==='popover')positionFloating(record);},{capture:true,signal});
+ const positionPopups=()=>{for(const record of floating.values())if(record.kind!=='menu')positionFloating(record);};
+ view.addEventListener('resize',()=>{dismissMenus();positionPopups();},{signal});
+ view.visualViewport?.addEventListener('resize',positionPopups,{signal});
+ view.visualViewport?.addEventListener('scroll',positionPopups,{signal});
+ doc.addEventListener('scroll',event=>{for(const record of floating.values())if(record.panel.contains(event.target))return;dismissMenus();positionPopups();},{capture:true,signal});
  if(tooltips)stops.push(mountTooltips(root,{signal,owns,priority:1,createPortal,removePortal,refreshPortal}));
  const cleanup=()=>{
   if(disposed)return;disposed=true;abort.abort();for(const timer of timers)view.clearTimeout(timer);timers.clear();

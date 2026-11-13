@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "105dda5421295fcaf96ba9674016cd7e2b7f77a19558ff1af1ab40108d99e19b",
+  "sha256": "47d446bca29bc5e65a8c5179a41230ef485aabe5e4f85bb938a611a88f6ba794",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -342,7 +342,7 @@
   "sources": [
     {
       "file": "style.css",
-      "sha256": "8da536e93d6f69bbe376c0866a9078c1125c5db9f80519898abf88cc0ce99509",
+      "sha256": "76f90e905917fb757fc89b6cde978d92a9640bb9f2b0dc4933382b36c2df758a",
       "retainedRules": 162,
       "excludedSelectors": 431
     },
@@ -360,7 +360,7 @@
     },
     {
       "file": "layout-focus.css",
-      "sha256": "0ecf9d1e52fa5a35b424d072d92af292641fcd214c3c93e52027c63bf3252a26",
+      "sha256": "5eab646eda00fc42b6686db9511f93a217a03ef9a37a12ade1a0b8d6717b7e6d",
       "retainedRules": 27,
       "excludedSelectors": 36
     },
@@ -378,9 +378,9 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "b1588dee27bd8a97b7a9e741e5ec0e0957051d99412537be48ab6063956a4557",
+      "sha256": "0bcf5dd355df3d8ee28830eea3e822ed12f1221339684f1857dd4169d61744f1",
       "retainedRules": 4,
-      "excludedSelectors": 180
+      "excludedSelectors": 182
     },
     {
       "file": "interactions.css",
@@ -402,8 +402,8 @@
     },
     {
       "file": "content-primitives.css",
-      "sha256": "bb07070e3af5ccaa9d41cb387ff8c1b24967d59b3774fd649390d56c67265104",
-      "retainedRules": 72,
+      "sha256": "a7db57160402c29e92127c8959be66851f21c17ca198fe3999f7dc210221f426",
+      "retainedRules": 73,
       "excludedSelectors": 0
     },
     {
@@ -420,8 +420,8 @@
     },
     {
       "file": "component-layout.css",
-      "sha256": "5a048f639ee500cb90997d3d4214f73d50484b72e5275d56cddfb24080a6cc3e",
-      "retainedRules": 28,
+      "sha256": "cbfe6f9274a17ed919a5c455e9527a354131b0f564251c156b3efe08a94b9bb8",
+      "retainedRules": 29,
       "excludedSelectors": 0
     }
   ],
@@ -3089,6 +3089,14 @@
     {
       "source": "document-layout.css",
       "selector": ".workspace > #main .text-color-section > .helper + .guideline"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .playground + .helper"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main [data-validation-result]:not(:empty)"
     },
     {
       "source": "document-layout.css",
