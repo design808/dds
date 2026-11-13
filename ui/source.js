@@ -1,7 +1,7 @@
-import {renderCore,coreParts,coreIds} from './core.js?v=0f53a279b3f975a6';
-import {renderExtended,extendedParts} from './extended.js?v=0f53a279b3f975a6';
-import {chartDemo} from './charts.js?v=0f53a279b3f975a6';
-import {chartComponents,chartPresentation} from '../chart-catalog.js?v=0f53a279b3f975a6';
+import {renderCore,coreParts,coreIds} from './core.js?v=189cfecb45f30e1e';
+import {renderExtended,extendedParts} from './extended.js?v=189cfecb45f30e1e';
+import {chartDemo} from './charts.js?v=189cfecb45f30e1e';
+import {chartComponents,chartPresentation} from '../chart-catalog.js?v=189cfecb45f30e1e';
 
 export const componentIds=Object.freeze([...coreIds,...Object.keys(extendedParts),'chart',...chartComponents.map(c=>c.id)]);
 export const isChart=id=>id==='chart'||!!chartPresentation(id);

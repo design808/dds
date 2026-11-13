@@ -1,5 +1,5 @@
 /** Official, opt-in presentation axes. Content, items and business logic stay with the host. */
-import {icon} from './icons.js?v=0f53a279b3f975a6';
+import {icon} from './icons.js?v=189cfecb45f30e1e';
 
 const choice=(label,values,defaultValue,labels)=>Object.freeze({label,type:'enum',values:Object.freeze(values),default:defaultValue,labels:Object.freeze(labels||Object.fromEntries(values.map(value=>[value,value])))});
 const flag=(label,defaultValue=false)=>Object.freeze({label,type:'boolean',default:defaultValue});
@@ -49,6 +49,7 @@ const schemas={
  item:{appearance:choice('형태',['outlined','divided'],'outlined',{outlined:'외곽선',divided:'행 구분선'}),icon:flag('앞 아이콘',true),metadata:flag('보조정보',true),status:flag('상태',true),chevron:flag('이동 표시',true)},
  'section-header':{description:flag('설명',true),count:flag('개수',true),actions:flag('행동',true)},
  attachment:{disabled:flag('비활성')},
+ carousel:{align:choice('컨트롤 정렬',['start','center','end'],'center',{start:'좌측 배치',center:'중앙 배치',end:'우측 배치'})},
  separator:{orientation:choice('방향',['horizontal','vertical'],'horizontal',{horizontal:'가로',vertical:'세로'})},
  bubble:{direction:choice('방향',['incoming','outgoing'],'incoming',{incoming:'받은 메시지',outgoing:'보낸 메시지'})},
  message:{direction:choice('방향',['incoming','outgoing'],'incoming',{incoming:'받은 메시지',outgoing:'보낸 메시지'}),avatar:flag('아바타',true),author:flag('보낸 사람',true),time:flag('시간',true)}
@@ -68,7 +69,7 @@ export function normalizeVariants(id,options={}){
 }
 const first=(root,selector)=>root.matches?.(selector)?root:root.querySelector(selector);
 const all=(root,selector)=>[...(root.matches?.(selector)?[root]:[]),...root.querySelectorAll(selector)];
-const hosts={alert:'.alert',toast:'.dds-toast',tabs:'.tab-demo',dialog:'.dds-dialog',card:'.dds-document-card',table:'.dds-table-scroll',avatar:'.demo-row','avatar-group':'.dds-avatar-group',chip:'.demo-row',badge:'.badge-demo',stepper:'.stepper',skeleton:'.skeleton-card',empty:'.empty-state','action-area':'.dds-action-area','button-group':'.dds-button-group','alert-dialog':'.dds-overlay',sheet:'.dds-overlay',drawer:'.dds-overlay',snackbar:'.dds-snackbar',thumbnail:'.dds-thumbnail','aspect-ratio':'.dds-ratio',spinner:'[role="status"]',separator:'hr',message:'.dds-message','fallback-view':'.dds-fallback','list-card':'.dds-list-card',item:'.dds-items','section-header':'.dds-section-header'};
+const hosts={alert:'.alert',toast:'.dds-toast',tabs:'.tab-demo',dialog:'.dds-dialog',card:'.dds-document-card',table:'.dds-table-scroll',avatar:'.demo-row','avatar-group':'.dds-avatar-group',chip:'.demo-row',badge:'.badge-demo',stepper:'.stepper',skeleton:'.skeleton-card',empty:'.empty-state','action-area':'.dds-action-area','button-group':'.dds-button-group','alert-dialog':'.dds-overlay',sheet:'.dds-overlay',drawer:'.dds-overlay',snackbar:'.dds-snackbar',thumbnail:'.dds-thumbnail','aspect-ratio':'.dds-ratio',spinner:'[role="status"]',separator:'hr',message:'.dds-message','fallback-view':'.dds-fallback','list-card':'.dds-list-card',item:'.dds-items','section-header':'.dds-section-header',carousel:'.dds-carousel'};
 const fieldSizedComponents=new Set(['input','textarea','select','combobox','date-picker','search','editor','field','input-group','input-otp','label','time-picker','segmented-control']);
 const buttonSizedComponents=new Set(['icon-button','button-group','toggle','toggle-group','filter-button','text-button']);
 function mark(host,key,value){host?.setAttribute('data-dds-'+key.replace(/[A-Z]/g,letter=>'-'+letter.toLowerCase()),String(value));}
@@ -192,7 +193,7 @@ export function applyComponentVariants(root,id,options={}){
 const unchanged={
  button:'공식 props에서 형태·색·크기·아이콘·비활성·로딩·전체 너비를 선택합니다.',
  breadcrumb:'계층 경로와 현재 위치는 링크 데이터로 구성합니다.',pagination:'페이지 수·현재 페이지·이동 가능 여부는 데이터로 구성합니다.',sidebar:'실제 탐색 항목과 현재 위치를 사용합니다.',dropdown:'실제 명령 항목과 비활성·주의 행동을 연결합니다.',tooltip:'기능 설명과 화면 경계에 따른 자동 위치를 사용합니다.',
- calendar:'선택 날짜·월·범위는 실제 값과 min/max 조건을 사용합니다.',questionnaire:'질문·단계·입력 조건은 데이터와 실제 응답을 사용합니다.','navigation-menu':'실제 링크와 하위 메뉴를 구성합니다.','top-navigation':'공통 반응형 헤더에 브랜드·탐색·도구 콘텐츠를 연결합니다.','bottom-navigation':'실제 목적지와 현재 위치를 사용합니다.',category:'항목과 선택값을 실제 분류 데이터로 구성합니다.','page-counter':'현재·전체 페이지와 이동 가능 여부를 사용합니다.','pagination-dots':'실제 슬라이드 수와 현재 위치를 사용합니다.',menubar:'실제 명령과 활성 상태를 연결합니다.',command:'명령 목록과 검색·실행 가능 여부를 사용합니다.','context-menu':'실제 대상의 명령과 활성 상태를 사용합니다.',popover:'실제 콘텐츠와 트리거를 연결합니다.','hover-card':'대상의 실제 요약 콘텐츠와 트리거를 연결합니다.','push-badge':'실제 읽지 않은 개수와 접근성 이름을 연결합니다.','play-badge':'실제 미디어·재생 시간·재생 가능 여부를 연결합니다.',carousel:'실제 슬라이드와 현재 위치를 연결합니다.',collapsible:'실제 본문과 open 속성으로 펼침을 제어합니다.',kbd:'실제 키 이름을 표시합니다.','scroll-area':'콘텐츠와 접근성 이름·영역 높이를 서비스에서 정합니다.',resizable:'실제 패널 내용·min/max·현재 비율을 사용합니다.',direction:'dir 속성으로 실제 문서의 LTR·RTL 방향을 설정합니다.',marker:'실제 단계·시점 문구를 표시합니다.','message-scroller':'실제 대화 목록과 최신 위치를 사용합니다.',video:'실제 미디어·권한·연결 상태를 사용합니다.'
+ calendar:'선택 날짜·월·범위는 실제 값과 min/max 조건을 사용합니다.',questionnaire:'질문·단계·입력 조건은 데이터와 실제 응답을 사용합니다.','navigation-menu':'실제 링크와 하위 메뉴를 구성합니다.','top-navigation':'공통 반응형 헤더에 브랜드·탐색·도구 콘텐츠를 연결합니다.','bottom-navigation':'실제 목적지와 현재 위치를 사용합니다.',category:'항목과 선택값을 실제 분류 데이터로 구성합니다.','page-counter':'현재·전체 페이지와 이동 가능 여부를 사용합니다.','pagination-dots':'실제 슬라이드 수와 현재 위치를 사용합니다.',menubar:'실제 명령과 활성 상태를 연결합니다.',command:'명령 목록과 검색·실행 가능 여부를 사용합니다.','context-menu':'실제 대상의 명령과 활성 상태를 사용합니다.',popover:'실제 콘텐츠와 트리거를 연결합니다.','hover-card':'대상의 실제 요약 콘텐츠와 트리거를 연결합니다.','push-badge':'실제 읽지 않은 개수와 접근성 이름을 연결합니다.','play-badge':'실제 미디어·재생 시간·재생 가능 여부를 연결합니다.',collapsible:'실제 본문과 open 속성으로 펼침을 제어합니다.',kbd:'실제 키 이름을 표시합니다.','scroll-area':'콘텐츠와 접근성 이름·영역 높이를 서비스에서 정합니다.',resizable:'실제 패널 내용·min/max·현재 비율을 사용합니다.',direction:'dir 속성으로 실제 문서의 LTR·RTL 방향을 설정합니다.',marker:'실제 단계·시점 문구를 표시합니다.','message-scroller':'실제 대화 목록과 최신 위치를 사용합니다.',video:'실제 미디어·권한·연결 상태를 사용합니다.'
 };
 const chartIds=['chart','area-chart','area-chart-linear','area-chart-step','area-chart-stacked','area-chart-normalized','area-chart-gradient','bar-chart','bar-chart-horizontal','bar-chart-multiple','bar-chart-stacked','bar-chart-labels','bar-chart-negative','line-chart','line-chart-smooth','line-chart-step','line-chart-dots','line-chart-multiple','pie-chart','pie-chart-labels','donut-chart-basic','donut-chart','radar-chart','radar-chart-multiple','radial-chart','radial-chart-multiple','chart-tooltip-dot','contributions','scatter-chart'];
 export const componentVariantAudit=Object.freeze(Object.fromEntries([

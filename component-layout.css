@@ -73,6 +73,47 @@
 /* Ratio and context behavior do not paint a demonstration canvas around content. */
 .dds-ratio{position:relative;width:100%;min-width:0;overflow:hidden;padding:0;border:0;background:transparent}
 .dds-carousel .dds-ratio{border-radius:10px}
+.dds-carousel-controls{
+  display:flex;
+  align-items:stretch;
+  width:fit-content;
+  max-width:100%;
+  margin-block-start:var(--space-3);
+  margin-inline:auto;
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  background:var(--background);
+}
+.dds-carousel[data-dds-align=start] .dds-carousel-controls{margin-inline-start:0}
+.dds-carousel[data-dds-align=end] .dds-carousel-controls{margin-inline-end:0}
+.dds-carousel-controls > .icon-btn{
+  flex:none;
+  inline-size:var(--space-8);
+  block-size:auto;
+  min-block-size:var(--space-8);
+  padding:0;
+  border:0;
+  border-radius:0;
+  color:var(--text-secondary);
+}
+.dds-carousel-controls > .icon-btn:first-child{border-start-start-radius:calc(var(--radius-sm) - 1px);border-end-start-radius:calc(var(--radius-sm) - 1px)}
+.dds-carousel-controls > .icon-btn:last-child{border-start-end-radius:calc(var(--radius-sm) - 1px);border-end-end-radius:calc(var(--radius-sm) - 1px)}
+.dds-carousel-controls > .icon-btn > .icon{width:14px;height:14px}
+.dds-carousel-controls > .icon-btn:disabled:hover{background:transparent}
+.dds-carousel-controls > .icon-btn:focus-visible{position:relative;z-index:1}
+.dds-carousel-controls > output{
+  display:grid;
+  place-items:center;
+  min-inline-size:var(--space-10);
+  padding-inline:var(--space-2);
+  border-inline:1px solid var(--border);
+  color:var(--text-secondary);
+  font-size:var(--type-label-2-size);
+  line-height:var(--type-label-2-line-height);
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
 .dds-context,.dds-context-content{min-width:0}
 .dds-direction{min-width:0}
 

@@ -42,7 +42,7 @@ const entries = [
 ['item','Item / List cell','목록 항목','Data display','외곽선형·구분선형 목록에서 제목·조건·후행 정보와 독립 행동을 정렬합니다.','Leading · Content · Metadata · Trailing information · Action','Default · Hover · Focus · With action','전체 행의 이동과 별도 행동을 분리하고 긴 내용은 행 높이를 늘려 표시합니다.'],
 ['section-header','Section header','섹션 헤더','Data display','정보 묶음의 제목과 보조 행동을 정의합니다.','Heading · Count · Description · Action','Default · With action · With count','문서의 제목 계층을 따르며 제목 자체를 버튼으로 만들지 않습니다.'],
 ['attachment','Attachment','첨부파일 항목','Data display','파일명·형식·처리 상태와 제거 행동을 묶습니다.','Media · Filename · Metadata · Action','Selected · Processing · Done · Removed · Error','파일 선택과 업로드 완료를 구분하고 제거 버튼에 파일명을 포함합니다.'],
-['carousel','Carousel','캐러셀','Data display','콘텐츠를 한 장씩 탐색합니다.','Viewport · Slide · Previous / Next · Counter','First · Middle · Last','자동 재생 없이 시작합니다. 탐색 후 새 슬라이드 제목과 위치를 전달합니다.'],
+['carousel','Carousel','캐러셀','Data display','콘텐츠를 한 장씩 탐색합니다.','Viewport · Slide · Controls · Counter','First · Middle · Last · 좌측 / 중앙 / 우측','자동 재생 없이 시작합니다. 탐색 후 새 슬라이드 제목과 위치를 전달합니다.'],
 ['collapsible','Collapsible','접기·펼치기','Data display','하나의 보조 정보 영역을 펼칩니다.','Trigger · Indicator · Content','Closed · Open · Focus','트리거 이름을 유지하며 펼침 상태를 전달합니다.'],
 ['separator','Separator / Divider','구분선','Data display','인접한 정보 그룹의 경계를 표현합니다.','Horizontal / Vertical rule','Horizontal · Vertical · Decorative','장식용 구분선에는 불필요한 읽기 순서를 추가하지 않습니다.'],
 ['kbd','Kbd','단축키 표시','Data display','사용 가능한 키보드 조합을 시각적으로 설명합니다.','Key label · Combination','Single · Combination','표시는 실제 구현된 단축키와 일치해야 합니다.'],

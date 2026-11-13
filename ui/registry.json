@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.6.16",
+  "version": "0.6.17",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "layout": {
@@ -43,31 +43,31 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "aada7f01b1c80b9b4d4df0bdc82a74aef4a986268cced635d86d6bd90ce3d242",
-    "ui/core.js": "febee8dcb8932547a3c4490f7e000248c71af2eaaedbb0ad163bbbf3681b7666",
-    "ui/button.js": "ea084f5f1680da8b13050597820969712d822ef6165e949bed64b678a9ec8c74",
-    "ui/extended.js": "e3c0efd88fe4bc4697d97dc0aed3e5e767e8f8a946f202ad7ae78a0a81b42fae",
-    "ui/charts.js": "adb358a33a02d35994dbcd71e6e8ef13505c8354c0d46849433b8a3601fede1d",
-    "ui/source.js": "941b6c7e5560bef97ae6e523364ac46c1df61a65f3ff46b2a71c8972bd9dcc3b",
-    "ui/index.js": "93d01265afad36b01594a8065b451cbd270ffb865c90361830c7e0f3fa4483b5",
+    "ui/version.js": "34eb4af4e015a66ac17f9ba0db48f0de56c75f7032dfae8e3d766709dd19cf4f",
+    "ui/core.js": "23095649188d3bfd14a9b4a23c083ab77b26048e07790d8ab211fbab43754f6b",
+    "ui/button.js": "03d7ce2fdde16b7e026fb7b1a11405e8bbd23f0f32642c6b3d7464de7735bf7a",
+    "ui/extended.js": "1e25f42132ff363f293a7e7f3fd2042bb3e3b7ffbb409c5449d614704c2a8680",
+    "ui/charts.js": "bcfe868e18744b85040b53676d8b73dd1df28a231c79848128ffc136858d226c",
+    "ui/source.js": "035c77ab9183d213623775e34d71cf45f23c936cea89ce10dec46031b93de81a",
+    "ui/index.js": "98a276a170eac6aee75ee188eb714563070bb0b659192e2b46865c3425d36773",
     "ui/content.js": "0d00159dab8d6b37e07a8934c4245f1b0e88db64e113155d6534402a3ac51494",
-    "ui/variants.js": "2fa4cbdb8af526018d60ca82e62bba5ca1d554cbf4c5355d5c91150c31a4e897",
-    "ui/profile.js": "796c2f20e1a523756680fa284e83083c315a26a3a23c1bd0d6aafc054581e7ad",
+    "ui/variants.js": "9685cb370c4f363d8042538b9e0415c81a9fbdb4dcd4f9100bd654af00452376",
+    "ui/profile.js": "b2f5f6d8ef8ca75a097687fbcc3ef68b3555252a68b7359cad484e34335fe204",
     "ui/profile-palette.js": "23e56c78a0552e2add9a5d2d03cdbdfe002bcfa04c25a161fca2adfea54ba3ba",
-    "ui/icons.js": "b31af19dfca0a37aee57f922218ff27418442706ab82aac77f28d71f374ad512",
+    "ui/icons.js": "b80e7379f0ae96f19fe81e3c98fc3edf5ff40cc84c21e99830cdfc9ad12dbc14",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "9d734fe2dc6b86d8fc71ff3e441697949c6516020f689fa0fa25657ea6346342",
+    "ui/controls.js": "30047d9e0509aeac54c247e86c1cc050a7306ea1812346ef0d4603b160795dfe",
     "ui/tooltips.js": "8d2aab972d2c39df86a6327a406e5d3817d3c0de738d9ab61c392803628abc3d",
     "ui/font-loading.js": "ab986571698ff44cf7a4253d5007b9e93c46b2371bf301e0a5aa3b3e45c2282b",
-    "ui/dds.css": "47d446bca29bc5e65a8c5179a41230ef485aabe5e4f85bb938a611a88f6ba794",
+    "ui/dds.css": "e5f0a50e437a672cc7d0dbdf50da137b2f2f8a24b17c2a197ae5149822e8d108",
     "ui/tokens-scoped.css": "354128a6014e10799b7dc757ee752629bfdfd846bd81d1e3d4d24fa75c06940f",
     "tokens.css": "3209e5b74aedb141f017471c9a30e7c918452a32ca49b085d6de83d6bc244b99",
-    "component-layout.css": "cbfe6f9274a17ed919a5c455e9527a354131b0f564251c156b3efe08a94b9bb8",
+    "component-layout.css": "1b237f132e2a59c29cf8115ca7c40261f712872ea0e439878f51a7f4194a3a29",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "47215293093c225b345ea6f2395d1a75ec59df7a15c509421ebbd164a1788142",
-    "design-preferences.js": "acb0532b5a599bea5ded4ee218be69c7a9bd92c8c0b79f920e266082ae820c1d",
-    "design-profile.js": "393972c794f96002c643036df095b1799c9616b0890edda5350a6022834e6954",
+    "design-preferences.js": "6a3186ec1b57fd8f7aa6c65cb0130c7e623ab779c58cf09be13f82a2b5e23fda",
+    "design-profile.js": "acd800eb6d57b5be0f3e26816480f75c833c684d6fb39b535b955b9524a3f1db",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "compositions": {
@@ -4717,7 +4717,7 @@
       "group": "Data display",
       "template": "ui/templates/carousel.html",
       "idPrefix": "dds-instance",
-      "sha256": "fda5d00247fcb55bc79591bec8a6ef989d20bb258568a38baead1bc00e6663f5",
+      "sha256": "22e6fcfb883550ba710c33a79fe0ca539c77935f94b1a8686375d6485936ffbd",
       "renderer": "ui/extended.js",
       "parts": {
         "root": {
@@ -4745,15 +4745,31 @@
           "kind": "text"
         },
         "previous": {
-          "selector": "[data-carousel-shift=\"-1\"]",
+          "selector": ".dds-carousel-controls > button:first-child",
           "kind": "attributes"
         },
         "next": {
-          "selector": "[data-carousel-shift=\"1\"]",
+          "selector": ".dds-carousel-controls > button:last-child",
           "kind": "attributes"
         }
       },
-      "variants": {},
+      "variants": {
+        "align": {
+          "label": "컨트롤 정렬",
+          "type": "enum",
+          "values": [
+            "start",
+            "center",
+            "end"
+          ],
+          "default": "center",
+          "labels": {
+            "start": "좌측 배치",
+            "center": "중앙 배치",
+            "end": "우측 배치"
+          }
+        }
+      },
       "optionalParts": {},
       "templatePurpose": "Specimen with reference content, not a mandatory production composition.",
       "content": "Reuse canonical CSS and the selected variant structure. Supply real content/data; omit unnecessary helper text, metadata, actions and specimen item groups. Use ui/index.js production factory and ui/composition.md."
@@ -6068,7 +6084,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "0f53a279b3f975a6",
-    "canonicalBundle": "../releases/0.6.16/bundle.json"
+    "assetRevision": "189cfecb45f30e1e",
+    "canonicalBundle": "../releases/0.6.17/bundle.json"
   }
 }

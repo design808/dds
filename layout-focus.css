@@ -46,8 +46,8 @@
 .dds-stable-label{display:inline-grid;min-width:0}
 .dds-stable-label>span,.dds-stable-label::after{grid-area:1/1}
 .dds-stable-label::after{content:attr(data-size-label);visibility:hidden;pointer-events:none}
-.pagination [data-page-state],.dds-pager output,.dds-carousel output{font-variant-numeric:tabular-nums}
-.dds-pager output,.dds-carousel output{min-width:5ch;text-align:center}
+.pagination [data-page-state],.dds-pager output{font-variant-numeric:tabular-nums}
+.dds-pager output{min-width:5ch;text-align:center}
 
 /* Focus contract: one-pixel primary boundary, no offset, no layout jump. */
 input:focus-visible,textarea:focus-visible,select:focus-visible{border-width:1px;border-color:var(--primary);outline:none;outline-offset:0;box-shadow:none}

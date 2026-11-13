@@ -327,10 +327,8 @@
 .dds-ui .dds-stable-label::after{grid-area:1/1}
 .dds-ui .dds-stable-label::after{content:attr(data-size-label);visibility:hidden;pointer-events:none}
 .dds-ui .pagination [data-page-state],
-.dds-ui .dds-pager output,
-.dds-ui .dds-carousel output{font-variant-numeric:tabular-nums}
-.dds-ui .dds-pager output,
-.dds-ui .dds-carousel output{min-width:5ch;text-align:center}
+.dds-ui .dds-pager output{font-variant-numeric:tabular-nums}
+.dds-ui .dds-pager output{min-width:5ch;text-align:center}
 .dds-ui input:focus-visible,
 .dds-ui textarea:focus-visible,
 .dds-ui select:focus-visible{border-width:1px;border-color:var(--primary);outline:none;outline-offset:0;box-shadow:none}
@@ -497,7 +495,6 @@
 .dds-ui .dds-mini-image{display:grid;place-items:center;aspect-ratio:1;max-width:60px;background:var(--accent);border-radius:8px;color:var(--primary)}
 .dds-ui .dds-attachment b{overflow-wrap:anywhere}
 .dds-ui .dds-attachment p{margin:2px 0 0}
-.dds-ui .dds-carousel .row-between{margin-top:10px}
 .dds-ui .dds-collapsible{border:1px solid var(--border);border-radius:8px;background:var(--background)}
 .dds-ui .dds-collapsible p{font-size:13px;padding:0 12px;margin:8px 0 12px}
 .dds-ui .dds-scroll{overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--muted-foreground) var(--surface);padding:12px;border:1px solid var(--border);border-radius:8px;background:var(--background)}
@@ -1711,6 +1708,47 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .dds-thumbnail img{display:block;width:100%;height:auto}
 .dds-ui .dds-ratio{position:relative;width:100%;min-width:0;overflow:hidden;padding:0;border:0;background:transparent}
 .dds-ui .dds-carousel .dds-ratio{border-radius:10px}
+.dds-ui .dds-carousel-controls{
+  display:flex;
+  align-items:stretch;
+  width:fit-content;
+  max-width:100%;
+  margin-block-start:var(--space-3);
+  margin-inline:auto;
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  background:var(--background);
+}
+.dds-ui .dds-carousel[data-dds-align=start] .dds-carousel-controls{margin-inline-start:0}
+.dds-ui .dds-carousel[data-dds-align=end] .dds-carousel-controls{margin-inline-end:0}
+.dds-ui .dds-carousel-controls > .icon-btn{
+  flex:none;
+  inline-size:var(--space-8);
+  block-size:auto;
+  min-block-size:var(--space-8);
+  padding:0;
+  border:0;
+  border-radius:0;
+  color:var(--text-secondary);
+}
+.dds-ui .dds-carousel-controls > .icon-btn:first-child{border-start-start-radius:calc(var(--radius-sm) - 1px);border-end-start-radius:calc(var(--radius-sm) - 1px)}
+.dds-ui .dds-carousel-controls > .icon-btn:last-child{border-start-end-radius:calc(var(--radius-sm) - 1px);border-end-end-radius:calc(var(--radius-sm) - 1px)}
+.dds-ui .dds-carousel-controls > .icon-btn > .icon{width:14px;height:14px}
+.dds-ui .dds-carousel-controls > .icon-btn:disabled:hover{background:transparent}
+.dds-ui .dds-carousel-controls > .icon-btn:focus-visible{position:relative;z-index:1}
+.dds-ui .dds-carousel-controls > output{
+  display:grid;
+  place-items:center;
+  min-inline-size:var(--space-10);
+  padding-inline:var(--space-2);
+  border-inline:1px solid var(--border);
+  color:var(--text-secondary);
+  font-size:var(--type-label-2-size);
+  line-height:var(--type-label-2-line-height);
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
 .dds-ui .dds-context,
 .dds-ui .dds-context-content{min-width:0}
 .dds-ui .dds-direction{min-width:0}

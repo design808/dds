@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "47d446bca29bc5e65a8c5179a41230ef485aabe5e4f85bb938a611a88f6ba794",
+  "sha256": "e5f0a50e437a672cc7d0dbdf50da137b2f2f8a24b17c2a197ae5149822e8d108",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -53,6 +53,7 @@
     "dds-card-title",
     "dds-card-tools",
     "dds-carousel",
+    "dds-carousel-controls",
     "dds-chart-area",
     "dds-chart-area--stacked",
     "dds-chart-axis-tick",
@@ -360,14 +361,14 @@
     },
     {
       "file": "layout-focus.css",
-      "sha256": "5eab646eda00fc42b6686db9511f93a217a03ef9a37a12ade1a0b8d6717b7e6d",
+      "sha256": "52c2a24d02fa4d01bb6f49ba7090f649dc5fc6cabb444662c73cc951ccecbf47",
       "retainedRules": 27,
       "excludedSelectors": 36
     },
     {
       "file": "extensions.css",
-      "sha256": "35f798c1e20f2712310091a8ab606ec15e2c270a552445f9bb52ad89bcc885e1",
-      "retainedRules": 197,
+      "sha256": "5de1d0bf4b3c2010d1a5d40b414dc14847f8d1dc4d339d80378a16cfff929232",
+      "retainedRules": 196,
       "excludedSelectors": 36
     },
     {
@@ -420,8 +421,8 @@
     },
     {
       "file": "component-layout.css",
-      "sha256": "cbfe6f9274a17ed919a5c455e9527a354131b0f564251c156b3efe08a94b9bb8",
-      "retainedRules": 29,
+      "sha256": "1b237f132e2a59c29cf8115ca7c40261f712872ea0e439878f51a7f4194a3a29",
+      "retainedRules": 39,
       "excludedSelectors": 0
     }
   ],
