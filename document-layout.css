@@ -531,7 +531,6 @@
 .component-preview .sample-sidebar a.dds-nav-link {font-size:var(--type-label-1-size)}
 
 /* Wide service navigation can be inspected without changing its breakpoint. */
-.workspace > #main .component-card[data-component="top-navigation"] .preview-inner {width:1100px;max-width:none;}
 .workspace > #main .doc-header-preview-set {display:grid;gap:var(--space-6);width:100%;min-width:0;}
 .workspace > #main .doc-header-desktop-details {min-width:0;text-align:start;}
 .workspace > #main .doc-header-desktop-details > summary {cursor:pointer;min-height:44px;padding-block:var(--space-3);color:var(--text-primary);font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:var(--font-weight-semibold);}

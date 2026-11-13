@@ -1,29 +1,30 @@
-import {handoffPage} from './developer-guide.js?v=7a9142d15652404b';
-import {getDesignSettings} from './design-settings.js?v=7a9142d15652404b';
-import {textColorSection} from './text-colors.js?v=7a9142d15652404b';
-import {setupPage,ddsRelease} from './adoption-content.js?v=7a9142d15652404b';
-import {refreshSetupPrompt,downloadSetupPrompt} from './setup-source-page.js?v=7a9142d15652404b';
-import {bindComponentVariants} from './component-variants.js?v=7a9142d15652404b';
-import {renderJobListExample,bindListBlocks} from './block-list.js?v=7a9142d15652404b';
-import {bindTypography} from './typography-system.js?v=7a9142d15652404b';
-import {bindServiceGuidelines} from './service-guidelines.js?v=7a9142d15652404b';
-import {sidebarContent,overviewContent,componentContent,componentDetailContent,renderPattern,searchableDocuments} from './document-shell.js?v=7a9142d15652404b';
-import {componentCardStructure,componentIndexStructure} from './document-layout-templates.js?v=7a9142d15652404b';
-import {controlSizingSpec,foundationsDocument} from './document-foundations.js?v=7a9142d15652404b';
-import {principlesContent,processContent} from './document-content.js?v=7a9142d15652404b';
-import {icon,iconGallery,bindIconGallery} from './icons.js?v=7a9142d15652404b';
-import {collectionCount,statusBadge} from './visibility.js?v=7a9142d15652404b';
-import {renderComponentSource} from './ui/source.js?v=7a9142d15652404b';
-import {renderDocumentCard} from './ui/core.js?v=7a9142d15652404b';
-import {mountDDS} from './ui/index.js?v=7a9142d15652404b';
-import './interactions.js?v=7a9142d15652404b';
-import {extensionDemo,bindExtensions} from './extension-demos.js?v=7a9142d15652404b';
-import {chartDemo,bindCharts} from './chart-system.js?v=7a9142d15652404b';
-import {buttonDemo,buttonCodeExample,bindButtonDemos} from './button-demos.js?v=7a9142d15652404b';
-import {blocksPage,bindBlocks} from './blocks.js?v=7a9142d15652404b';
-import {chartRouteAliases} from './chart-catalog.js?v=7a9142d15652404b';
-import {colorPage} from './color-system.js?v=7a9142d15652404b';
-import {components,groups,patterns,foundations} from './catalog.js?v=7a9142d15652404b';
+import {handoffPage} from './developer-guide.js?v=f963c57c0fc718c6';
+import {getDesignSettings} from './design-settings.js?v=f963c57c0fc718c6';
+import {textColorSection} from './text-colors.js?v=f963c57c0fc718c6';
+import {setupPage,ddsRelease} from './adoption-content.js?v=f963c57c0fc718c6';
+import {refreshSetupPrompt,downloadSetupPrompt} from './setup-source-page.js?v=f963c57c0fc718c6';
+import {bindComponentVariants} from './component-variants.js?v=f963c57c0fc718c6';
+import {renderJobListExample,bindListBlocks} from './block-list.js?v=f963c57c0fc718c6';
+import {bindTypography} from './typography-system.js?v=f963c57c0fc718c6';
+import {bindServiceGuidelines} from './service-guidelines.js?v=f963c57c0fc718c6';
+import {sidebarContent,overviewContent,componentContent,componentDetailContent,renderPattern,searchableDocuments} from './document-shell.js?v=f963c57c0fc718c6';
+import {componentCardStructure,componentIndexStructure} from './document-layout-templates.js?v=f963c57c0fc718c6';
+import {controlSizingSpec,foundationsDocument} from './document-foundations.js?v=f963c57c0fc718c6';
+import {principlesContent,processContent} from './document-content.js?v=f963c57c0fc718c6';
+import {icon,iconGallery,bindIconGallery} from './icons.js?v=f963c57c0fc718c6';
+import {collectionCount,statusBadge} from './visibility.js?v=f963c57c0fc718c6';
+import {renderComponentSource} from './ui/source.js?v=f963c57c0fc718c6';
+import {representativeThumbnail} from './preview-scenes.js?v=f963c57c0fc718c6';
+import {renderDocumentCard} from './ui/core.js?v=f963c57c0fc718c6';
+import {mountDDS} from './ui/index.js?v=f963c57c0fc718c6';
+import './interactions.js?v=f963c57c0fc718c6';
+import {extensionDemo,bindExtensions} from './extension-demos.js?v=f963c57c0fc718c6';
+import {chartDemo,bindCharts} from './chart-system.js?v=f963c57c0fc718c6';
+import {buttonDemo,buttonCodeExample,bindButtonDemos} from './button-demos.js?v=f963c57c0fc718c6';
+import {blocksPage,bindBlocks} from './blocks.js?v=f963c57c0fc718c6';
+import {chartRouteAliases} from './chart-catalog.js?v=f963c57c0fc718c6';
+import {colorPage} from './color-system.js?v=f963c57c0fc718c6';
+import {components,groups,patterns,foundations} from './catalog.js?v=f963c57c0fc718c6';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const releaseBadge=document.querySelector('[data-dds-release]');
 if(releaseBadge){releaseBadge.textContent='v'+ddsRelease;releaseBadge.setAttribute('aria-label','DDS 버전 '+ddsRelease);}
@@ -62,7 +63,8 @@ function documentCard(...args){return renderDocumentCard(...args);}
 function demo(id,mini=false,instanceSuffix=''){
  const uid='demo-'+id+(mini?'-mini-'+(++demoSequence):'')+instanceSuffix;
  const markup=id==='button'?buttonDemo(mini,uid):id==='chart'?chartDemo(id,uid,mini):renderComponentSource(id,uid,mini);
- const resolved=markup.replace(/(\bsrc=["'])\/assets\//g,(_,prefix)=>prefix+new URL('./assets/',import.meta.url).href);
+ const scene=mini?representativeThumbnail(id,markup,uid,icon):markup;
+ const resolved=scene.replace(/(\bsrc=["'])\/assets\//g,(_,prefix)=>prefix+new URL('./assets/',import.meta.url).href);
  return `<div class="dds-ui" data-dds-component="${id}">${resolved}</div>`;
 }
 function card(c){return componentCardStructure(c,demo(c.id,true),icon('arrow'));}
@@ -106,7 +108,7 @@ function render(){
 
 function notFound(){return head('404','문서를 찾을 수 없습니다.','메뉴에서 문서를 선택해 주세요.')+'<a class="btn" href="#/">살펴보기로 이동</a>';}
 let cleanupDDS=()=>{};
-function bind(){ cleanupVariants();cleanupVariants=bindComponentVariants($('#main'),view.split('/')[2]); cleanupDDS();cleanupDDS=mountDDS($('#main'),{controls:false,charts:false,tooltips:false}); cleanupButtonDemos=bindButtonDemos($('#main'),{notify:toast}); cleanupBlocks=bindBlocks($('#main')); cleanupListExamples=view.split('?')[0]==='/components/item'?bindListBlocks($('#main')):()=>{}; cleanupCharts=bindCharts($('#main')); bindServiceGuidelines(); bindTypography(); bindExtensions(); bindIconGallery(); document.querySelectorAll('[data-doc-tab]').forEach(t=>{const key=t.dataset.docTab;t.id='doc-tab-'+key;t.setAttribute('aria-controls','doc-panel-'+key);const p=document.querySelector('[data-doc-panel="'+key+'"]');p.id='doc-panel-'+key;p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby',t.id);}); $$('[data-counter]').forEach(t=>{const count=()=>{const el=t.closest('.field,.editor-demo')?.querySelector('[data-count]');if(el)el.textContent=`${t.value.length} / ${t.maxLength}`;};count();t.addEventListener('input',count);});$('#component-search')?.addEventListener('input',e=>{$('#component-results').innerHTML=components.filter(c=>(selectedGroup==='All'||c.group===selectedGroup)&&`${c.name} ${c.ko} ${(c.aliases||[]).join(" ")}`.toLowerCase().includes(e.target.value.toLowerCase())).map(card).join('')||'<p>검색 결과가 없습니다.</p>';});$$('[data-demo-search]').forEach(el=>el.addEventListener('input',()=>{el.closest('.field').querySelector('[data-search-count]').textContent=el.value?`“${el.value}” 검색 · ${'자기소개서'.includes(el.value)?1:0}개 예제 문서`:'문서 제목을 입력해 검색 예제를 확인하세요.';}));$$('[data-file]').forEach(el=>el.addEventListener('change',()=>{const f=el.files[0];el.closest('.upload-zone').querySelector('.file-state').textContent=!f?'선택한 파일이 없습니다.':f.size>10*1024*1024?'10MB 이하 파일을 선택해 주세요.':!f.name.toLowerCase().endsWith('.pdf')?'PDF 파일을 선택해 주세요.':`${f.name} · 선택 완료 (업로드하지 않음)`;}));}
+function bind(){ cleanupVariants();cleanupVariants=bindComponentVariants($('#main'),view.split('/')[2]); cleanupDDS();cleanupDDS=['/','/components'].includes(view.split('?')[0])?()=>{}:mountDDS($('#main'),{controls:false,charts:false,tooltips:false}); cleanupButtonDemos=bindButtonDemos($('#main'),{notify:toast}); cleanupBlocks=bindBlocks($('#main')); cleanupListExamples=view.split('?')[0]==='/components/item'?bindListBlocks($('#main')):()=>{}; cleanupCharts=bindCharts($('#main')); bindServiceGuidelines(); bindTypography(); bindExtensions(); bindIconGallery(); document.querySelectorAll('[data-doc-tab]').forEach(t=>{const key=t.dataset.docTab;t.id='doc-tab-'+key;t.setAttribute('aria-controls','doc-panel-'+key);const p=document.querySelector('[data-doc-panel="'+key+'"]');p.id='doc-panel-'+key;p.setAttribute('role','tabpanel');p.setAttribute('aria-labelledby',t.id);}); $$('[data-counter]').forEach(t=>{const count=()=>{const el=t.closest('.field,.editor-demo')?.querySelector('[data-count]');if(el)el.textContent=`${t.value.length} / ${t.maxLength}`;};count();t.addEventListener('input',count);});$('#component-search')?.addEventListener('input',e=>{$('#component-results').innerHTML=components.filter(c=>(selectedGroup==='All'||c.group===selectedGroup)&&`${c.name} ${c.ko} ${(c.aliases||[]).join(" ")}`.toLowerCase().includes(e.target.value.toLowerCase())).map(card).join('')||'<p>검색 결과가 없습니다.</p>';});$$('[data-demo-search]').forEach(el=>el.addEventListener('input',()=>{el.closest('.field').querySelector('[data-search-count]').textContent=el.value?`“${el.value}” 검색 · ${'자기소개서'.includes(el.value)?1:0}개 예제 문서`:'문서 제목을 입력해 검색 예제를 확인하세요.';}));$$('[data-file]').forEach(el=>el.addEventListener('change',()=>{const f=el.files[0];el.closest('.upload-zone').querySelector('.file-state').textContent=!f?'선택한 파일이 없습니다.':f.size>10*1024*1024?'10MB 이하 파일을 선택해 주세요.':!f.name.toLowerCase().endsWith('.pdf')?'PDF 파일을 선택해 주세요.':`${f.name} · 선택 완료 (업로드하지 않음)`;}));}
 document.addEventListener('click',e=>{const t=e.target.closest('button,[data-copy]');if(!t)return;if(t.hasAttribute('data-toast'))toast(t.dataset.toast);if(t.hasAttribute('data-copy'))copy(t.dataset.copy);if(t.hasAttribute('data-dialog')){$('#demo-dialog').showModal();}if(t.hasAttribute('data-close'))t.closest('dialog').close();if(t.hasAttribute('data-chip')){const s=t.getAttribute('aria-pressed')!=='true';t.setAttribute('aria-pressed',s);t.classList.toggle('selected',s);}if(t.hasAttribute('data-demo-tab')){const container=t.closest('.tab-demo');container.querySelectorAll('[role=tab]').forEach(x=>{x.setAttribute('aria-selected',x===t);x.tabIndex=x===t?0:-1;});const panel=container.querySelector('[role=tabpanel]');panel.textContent=t.textContent+' 목록을 확인하고 작성을 이어가세요.';panel.setAttribute('aria-labelledby',t.id);}if(t.hasAttribute('data-page')){const nav=t.closest('nav');nav.querySelectorAll('[data-page]').forEach(x=>{x.classList.toggle('primary',x===t);x.removeAttribute('aria-current');});t.setAttribute('aria-current','page');nav.querySelector('[data-page-state]').textContent=t.textContent+' / 4 페이지';}if(t.hasAttribute('data-group')){selectedGroup=t.dataset.group;render();}if(t.hasAttribute('data-doc-tab')){const chosen=t.dataset.docTab;$$('[data-doc-tab]').forEach(x=>{x.setAttribute('aria-selected',x===t);x.tabIndex=x===t?0:-1;});$$('[data-doc-panel]').forEach(p=>p.hidden=p.dataset.docPanel!==chosen);}if(t.classList.contains('copy-code'))copy(t.parentElement.querySelector('pre code').textContent);if(t.hasAttribute('data-scroll')){$('[data-doc-tab="design"]')?.click();$('#'+t.dataset.scroll)?.scrollIntoView({behavior:'smooth',block:'start'});}});
 document.addEventListener('keydown',e=>{if(e.target.matches('[role=tab]')&&['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const tabs=[...e.target.parentElement.querySelectorAll('[role=tab]')];let i=tabs.indexOf(e.target);i=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tabs[i].focus();tabs[i].click();}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();openSearch();}if(e.key==='Escape'){document.body.classList.remove('menu-open');$('#mobile-menu').setAttribute('aria-expanded','false');}});
 function openSearch(){$('#search-dialog').showModal();$('#global-search').value='';search('');$('#global-search').focus();}

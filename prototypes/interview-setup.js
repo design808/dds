@@ -1,4 +1,4 @@
-import {common,icons,icon,esc,toast,$} from './prototype-shared.js?v=7a9142d15652404b';
+import {common,icons,icon,esc,toast,$} from './prototype-shared.js?v=f963c57c0fc718c6';
 common();
 const dialog=$('#di-setup-dialog'),content=$('#di-setup-content'),next=$('#di-setup-next'),back=$('#di-setup-back');
 let step='choice',origin;

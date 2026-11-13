@@ -1,5 +1,5 @@
-import {icon} from './icons.js?v=7a9142d15652404b';
-import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=7a9142d15652404b';
+import {icon} from './icons.js?v=f963c57c0fc718c6';
+import {renderExtended,calendarDays,renderExtendedMessage as message} from './ui/extended.js?v=f963c57c0fc718c6';
 export {renderExtended as extensionDemo};
 const pad=n=>String(n).padStart(2,'0');
 function renderCalendar(c,focusDate){const y=+c.dataset.year,m=+c.dataset.month;c.querySelector('[data-month-label]').textContent=`${y}년 ${m+1}월`;c.querySelector('[data-calendar-grid]').innerHTML=calendarDays(y,m,c.dataset.selected);if(focusDate){const b=c.querySelector(`[data-calendar-date="${focusDate}"]`);c.querySelectorAll('[data-calendar-date]').forEach(x=>x.tabIndex=x===b?0:-1);b?.focus();}}
@@ -33,7 +33,9 @@ function resetFloatingDemos(){
   if(panel?.matches(':popover-open'))panel.hidePopover();
   trigger.setAttribute('aria-expanded','false');
  }
- for(const details of document.querySelectorAll('details:is(.sample-dropdown,.dds-nav-details)[open]:not(.dds-topnav-menu)'))details.open=false;
+ for(const details of document.querySelectorAll('details:is(.sample-dropdown,.dds-nav-details)[open]:not(.dds-topnav-menu)')){
+  if(!details.closest('.inert-preview'))details.open=false;
+ }
 }
 window.addEventListener('resize',dismissMenusOnLayoutChange);
 for(const type of ['pagehide','popstate','hashchange'])window.addEventListener(type,resetFloatingDemos);

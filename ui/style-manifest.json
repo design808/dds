@@ -378,9 +378,9 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "0bcf5dd355df3d8ee28830eea3e822ed12f1221339684f1857dd4169d61744f1",
+      "sha256": "59d79ef0b10ee3b781977833e509e910648e7ff659247d80d01b6c9626a02c06",
       "retainedRules": 4,
-      "excludedSelectors": 182
+      "excludedSelectors": 181
     },
     {
       "file": "interactions.css",
@@ -3205,10 +3205,6 @@
     {
       "source": "document-layout.css",
       "selector": ".component-preview .sample-sidebar a.dds-nav-link"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".workspace > #main .component-card[data-component=\"top-navigation\"] .preview-inner"
     },
     {
       "source": "document-layout.css",
