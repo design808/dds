@@ -1,4 +1,4 @@
-import {textColorSection} from './text-colors.js?v=397886dd51872b8b';
+import {textColorSection} from './text-colors.js?v=37572f4be3f4fe6a';
 
 export const typeStyles = [
   {id:'display-1', name:'Display 1', size:48, line:60, weight:700, tracking:'-0.01em', usage:'메인 히어로·캠페인의 대표 메시지'},
@@ -35,7 +35,7 @@ export function typographyPage() {
     <section aria-labelledby="type-basics"><h2 id="type-basics">기본 서체</h2>
       <div class="type-family-panel"><div><b>Pretendard</b><p>가나다라마바사 · Aa Bb Cc · 0123456789</p></div><code>--font-sans</code></div>
       <p>Pretendard 1.3.9 가변 웹폰트를 사이트에 포함합니다. DDS와 모든 시안은 같은 파일을 불러오므로 컴퓨터에 폰트를 설치할 필요가 없습니다. 외부 폰트 서버에 의존하지 않으며, 100–900의 굵기를 하나의 파일로 제공합니다. 일반 텍스트의 사용 범위는 400–700입니다.</p>
-      <p>웹폰트는 공통 head에서 미리 요청합니다. 서비스의 서체 로딩 스크립트는 첫 화면의 제목과 본문을 서체가 준비된 뒤 표시합니다. 로딩이 실패하거나 제한 시간을 넘기면 Apple SD Gothic Neo, Malgun Gothic, 시스템 sans-serif 순서로 대체합니다. <a href="./assets/fonts/pretendard/LICENSE" target="_blank" rel="noreferrer">폰트 라이선스</a></p>
+      <p>웹폰트는 공통 head에서 미리 요청합니다. 서체를 기다리는 동안 첫 화면의 제목·본문·컨트롤 위치에 회색 스켈레톤을 표시합니다. 로딩이 실패하거나 제한 시간을 넘기면 Apple SD Gothic Neo, Malgun Gothic, 시스템 sans-serif 순서로 대체합니다. <a href="./assets/fonts/pretendard/LICENSE" target="_blank" rel="noreferrer">폰트 라이선스</a></p>
       <p>서비스에 적용할 때는 <code>tokens.css</code>와 <code>assets/fonts/pretendard/</code>를 같은 폴더 구조로 배포합니다. 공통 head와 화면 영역 연결 방법은 <a href="./ui/README.md">UI 원본 사용 안내</a>에서 확인합니다.</p>
       <p>코드 예제·토큰명·숫자도 <code>--font-sans</code>를 사용합니다. 문서의 제목 계층은 <code>h1–h6</code>로 정하고, 시각적 크기는 아래 역할 클래스로 지정합니다.</p>
     </section>
@@ -79,14 +79,14 @@ export function typographyPage() {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }</code></pre>
-      <a class="btn" href="./tokens.css?v=397886dd51872b8b" download>타이포그래피·색상 토큰 다운로드</a>
+      <a class="btn" href="./tokens.css?v=37572f4be3f4fe6a" download>타이포그래피·색상 토큰 다운로드</a>
     </section>
     <section aria-labelledby="type-service-contract"><h2 id="type-service-contract">서비스 적용 규칙</h2>
       <p>같은 크기여도 역할이 다르면 사용처를 구분합니다. GNB와 서브메뉴는 Label 1(14 / 20 / 500), 작은 칩·배지는 Label 2(13 / 18 / 500)입니다. 일반 입력 값은 Body 1 Normal(16px), 작은 도구 모음의 Small 입력·선택 값은 Body 2 Normal(14px), 자기소개서 본문은 Body 1 Reading을 사용합니다. 메뉴나 입력란의 너비가 부족하면 간격·줄바꿈·배치를 조정합니다.</p>
       <p>메인 2종·지원정보·문항 작성·마이페이지·이력서 작성은 하나의 역할 매핑을 공유합니다. 메인 제목은 Display 역할에 500·600·700의 굵기 강약을 적용하며, 메인 CTA는 16px / 700, 푸터는 14px를 유지합니다. 반응형에서 크기가 달라지는 제목도 정의된 역할로 전환합니다.</p>
       <ol class="plain-list"><li>화면을 옮기기 전에 제목·메뉴·필드·도움말·상태 메시지의 역할을 지정합니다. 숨겨진 메뉴·모달·오류·동적 추가 항목도 포함합니다.</li><li><code>.dds-service</code> 범위에서 공통 적용 CSS를 마지막에 불러옵니다. 원본의 글자 크기 유틸리티·인라인 스타일·<code>!important</code>가 충돌하면 DDS를 적용하는 템플릿에서 정리합니다. 필드 ID·이벤트·서버 처리 코드는 유지합니다.</li><li>크기 하나만 바꾸지 않고 서체·크기·행간·굵기·자간을 한 역할로 적용합니다. 새 요소는 <code>service-typography.js</code> 매핑 또는 <code>.dds-type-*</code> 역할 클래스로 지정합니다. 굵기 예외는 대상과 이유를 함께 기록합니다.</li><li><code>npm run typography:build</code>로 CSS를 생성하고 <code>npm run typography:check</code>로 검사합니다. 기본 검사와 공유 패키지 생성에도 검사가 실행됩니다. 운영 적용 시에는 각 권한·상태·화면 너비의 실제 렌더링을 확인합니다.</li></ol>
       <p>자동 검사는 직접 지정한 글자값과 매핑 누락·변경을 감지합니다. 새로운 요소에 어떤 역할이 적합한지, 기존 CSS와 충돌하는지에 대한 화면 검수도 함께 진행해야 합니다.</p>
-      <a class="btn" href="./service-typography.css?v=397886dd51872b8b" download>서비스 타이포그래피 CSS 다운로드</a>
+      <a class="btn" href="./service-typography.css?v=37572f4be3f4fe6a" download>서비스 타이포그래피 CSS 다운로드</a>
     </section>
   </div>`;
 }

@@ -58,7 +58,7 @@ React·Vue·Django 등에서는 원본 HTML을 해당 템플릿 문법으로 옮
 
 ## 첫 화면 서체
 
-기본 Pretendard는 공통 `head`에서 WOFF2를 `as="font"`와 `crossorigin`을 지정해 미리 요청한다. 저장한 서체가 있으면 `profileFontAssets`가 반환하는 경로로 서체 CSS와 필요한 WOFF2를 미리 연결하고, 프로젝트 CSS는 `includeFontImports:false`로 생성한다. `ui/font-loading.js`를 같은 `head`에 연결하고 글자 토큰을 상속하는 화면 영역에 `data-dds-font-content`를 지정한다. 기존 서비스에서는 DDS 적용 영역만 표시 대상으로 삼는다. 네트워크가 느리거나 파일 요청에 실패해도 제한 시간 후 대체 서체로 읽을 수 있는지 확인한다.
+기본 Pretendard는 공통 `head`에서 WOFF2를 `as="font"`와 `crossorigin`을 지정해 미리 요청한다. 저장한 서체가 있으면 `profileFontAssets`가 반환하는 경로로 서체 CSS와 필요한 WOFF2를 미리 연결하고, 프로젝트 CSS는 `includeFontImports:false`로 생성한다. `ui/font-loading.js`를 같은 `head`에 연결하고 글자 토큰을 상속하는 화면 영역에 `data-dds-font-content`를 지정한다. 헤더·본문·푸터가 한 흐름에서 배치되는 서비스라면 함께 묶어 스켈레톤과 본문을 같은 배치에서 표시한다. 서비스가 데이터를 기다릴 때는 실제 콘텐츠와 같은 영역을 미리 예약한다. 느린 네트워크와 요청 실패에서 스켈레톤과 본문의 위치, 제한 시간 후 대체 서체로 읽을 수 있는지 확인한다.
 
 ## 기존 서비스 리디자인
 

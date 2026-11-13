@@ -8,7 +8,7 @@
   src:url('./assets/fonts/pretendard/PretendardVariable.woff2') format('woff2');
 }
 
-html[data-dds-font-loading=pending] [data-dds-font-content] {
+html[data-dds-font-skeleton-active] [data-dds-font-content] {
   opacity:0;
   visibility:hidden;
 }

@@ -1,9 +1,9 @@
-import {componentVariants} from './ui/variants.js?v=397886dd51872b8b';
-import {createComponent,icon} from './ui/index.js?v=397886dd51872b8b';
-import {renderItemList} from './ui/extended.js?v=397886dd51872b8b';
-import {statusBadge} from './visibility.js?v=397886dd51872b8b';
-import {renderButton} from './ui/button.js?v=397886dd51872b8b';
-import {optionalContent} from './ui/content.js?v=397886dd51872b8b';
+import {componentVariants} from './ui/variants.js?v=37572f4be3f4fe6a';
+import {createComponent,icon} from './ui/index.js?v=37572f4be3f4fe6a';
+import {renderItemList} from './ui/extended.js?v=37572f4be3f4fe6a';
+import {statusBadge} from './visibility.js?v=37572f4be3f4fe6a';
+import {renderButton} from './ui/button.js?v=37572f4be3f4fe6a';
+import {optionalContent} from './ui/content.js?v=37572f4be3f4fe6a';
 
 const escape=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'component-variants').replace(/[^a-zA-Z0-9_-]/g,'-');

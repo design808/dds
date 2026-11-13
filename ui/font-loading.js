@@ -8,6 +8,9 @@
   const region='[data-dds-font-content]';
   if(page.hasAttribute(state))return;
   page.setAttribute(state,'pending');
+  page.setAttribute('data-dds-font-skeleton-active','');
+  const events=new AbortController();
+  let canvas,context,frame,observer;
   let finished=false;
   const deadline=setTimeout(()=>finish('fallback'),1800);
 
@@ -15,8 +18,84 @@
     if(finished)return;
     finished=true;
     clearTimeout(deadline);
-    if(result==='fallback')page.setAttribute(state,result);
-    else page.removeAttribute(state);
+    events.abort();
+    observer?.disconnect();
+    cancelAnimationFrame(frame);
+    page.setAttribute(state,result==='fallback'?'fallback':'settling');
+    const reveal=()=>{
+      canvas?.remove();
+      page.removeAttribute('data-dds-font-skeleton-active');
+      if(result!=='fallback')page.removeAttribute(state);
+    };
+    if(!context){reveal();return;}
+    try{paint();}catch{reveal();return;}
+    // Let the skeleton paint in the final geometry before exposing the content.
+    requestAnimationFrame(()=>requestAnimationFrame(reveal));
+  }
+
+  function roots(){
+    return [...document.querySelectorAll(region)].filter(root=>!root.parentElement?.closest(region));
+  }
+
+  const block='button,summary,input,select,textarea,progress,meter,.badge,.chip,.custom-control,img,svg,canvas,video,iframe';
+  const surface='.dds-content-card,.sample-document,.dds-panel,.dds-chart-plot,[data-dds-skeleton-block]';
+  const ignored='script,style,template,noscript,option,[hidden],.sr-only,details:not([open]) > :not(summary)';
+  function paint(){
+    const width=page.clientWidth,height=window.innerHeight,ratio=Math.min(devicePixelRatio||1,2);
+    if(canvas.width!==Math.round(width*ratio)||canvas.height!==Math.round(height*ratio)){
+      canvas.width=Math.round(width*ratio);
+      canvas.height=Math.round(height*ratio);
+    }
+    context.setTransform(ratio,0,0,ratio,0,0);
+    context.clearRect(0,0,width,height);
+    const range=document.createRange();
+    const draw=(bounds,fill,thickness=bounds.height)=>{
+      const x=bounds.left,y=bounds.top+(bounds.height-thickness)/2,w=bounds.width;
+      if(w<=0||thickness<=0||x>=width||y>=height||x+w<=0||y+thickness<=0)return;
+      context.fillStyle=fill;
+      context.beginPath();
+      context.roundRect(x,y,w,thickness,Math.min(4,w/2,thickness/2));
+      context.fill();
+    };
+    for(const root of roots()){
+      const dark=root.closest('[data-theme]')?.getAttribute('data-theme')==='dark';
+      const fill=dark?'#3d3d3d':'#e8e8e8',panel=dark?'#292929':'#f1f1f1';
+      const walker=document.createTreeWalker(root,NodeFilter.SHOW_ELEMENT,{
+        acceptNode:node=>node.matches(ignored)||node.parentElement?.closest(block)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT,
+      });
+      for(let node=root;node;node=walker.nextNode()){
+        if(node.matches(block)){draw(node.getBoundingClientRect(),fill);continue;}
+        if(node.matches(surface))draw(node.getBoundingClientRect(),panel);
+        for(const text of node.childNodes){
+          if(text.nodeType!==Node.TEXT_NODE||!text.textContent.trim())continue;
+          range.selectNodeContents(text);
+          for(const bounds of range.getClientRects())draw(bounds,fill,bounds.height*.58);
+        }
+      }
+    }
+  }
+
+  function showSkeleton(){
+    if(!roots().length)return;
+    canvas=document.createElement('canvas');
+    canvas.className='dds-font-skeleton';
+    canvas.setAttribute('aria-hidden','true');
+    Object.assign(canvas.style,{position:'fixed',inset:'0',width:'100%',height:'100%',zIndex:'2147483646',pointerEvents:'none'});
+    context=canvas.getContext('2d');
+    if(!context||typeof context.roundRect!=='function'){context=null;return;}
+    // The body itself can be a marked region, so keep the layer outside it.
+    page.append(canvas);
+    paint();
+    const schedule=()=>{
+      if(finished)return;
+      cancelAnimationFrame(frame);
+      frame=requestAnimationFrame(paint);
+    };
+    const options={passive:true,signal:events.signal};
+    window.addEventListener('resize',schedule,options);
+    document.addEventListener('scroll',schedule,{...options,capture:true});
+    observer=new MutationObserver(schedule);
+    for(const root of roots())observer.observe(root,{childList:true,subtree:true,characterData:true});
   }
 
   function requestsFor(root){
@@ -60,6 +139,7 @@
         link.addEventListener('error',resolve,{once:true});
       })));
       if(finished)return;
+      showSkeleton();
       const requests=[...document.querySelectorAll(region)].flatMap(root=>[...requestsFor(root)]);
       const expectedFamilies=new Set(requests.map(([,request])=>request.family));
       const faces=await Promise.all(requests.map(([descriptor,{chars}])=>document.fonts.load(descriptor,[...chars].join(''))));

@@ -1,6 +1,6 @@
-import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,PAGE_BACKGROUND_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=397886dd51872b8b';
-import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=397886dd51872b8b';
-import {renderButton} from './ui/button.js?v=397886dd51872b8b';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,PAGE_BACKGROUND_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=37572f4be3f4fe6a';
+import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=37572f4be3f4fe6a';
+import {renderButton} from './ui/button.js?v=37572f4be3f4fe6a';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {
@@ -447,7 +447,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     copyButton.setAttribute('aria-busy','true');
     copyState.textContent='';
     try{
-      const {buildProjectProfilePrompt}=await import('./project-profile.js?v=397886dd51872b8b');
+      const {buildProjectProfilePrompt}=await import('./project-profile.js?v=37572f4be3f4fe6a');
       const text=await buildProjectProfilePrompt(snapshot);
       if(typeof text!=='string'||!text.trim())throw new Error('The project prompt is empty.');
       if(disposed||ticket!==copyRevision||!profileDialog.open)return;

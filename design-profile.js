@@ -1,6 +1,6 @@
 // Saved project choices. Importing this module never reads browser storage or DOM.
-import {DEFAULT_SETTINGS,normalizeSettings} from './design-preferences.js?v=397886dd51872b8b';
-import {UI_VERSION} from './ui/version.js?v=397886dd51872b8b';
+import {DEFAULT_SETTINGS,normalizeSettings} from './design-preferences.js?v=37572f4be3f4fe6a';
+import {UI_VERSION} from './ui/version.js?v=37572f4be3f4fe6a';
 
 export const PROFILE_SCHEMA_VERSION=1;
 export const PROFILE_STORAGE_KEY='dds-design-profile-v1';
