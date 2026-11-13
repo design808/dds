@@ -1,6 +1,6 @@
-import {calendarDays} from './ui/extended.js?v=f963c57c0fc718c6';
-import {chartData} from './ui/charts.js?v=f963c57c0fc718c6';
-import {secondaryThumbnail} from './preview-states.js?v=f963c57c0fc718c6';
+import {calendarDays} from './ui/extended.js?v=0f53a279b3f975a6';
+import {chartData} from './ui/charts.js?v=0f53a279b3f975a6';
+import {secondaryThumbnail} from './preview-states.js?v=0f53a279b3f975a6';
 
 // Documentation thumbnails use a logical scene, never the gallery card as a device.
 // These are presentation widths; no service component or breakpoint is changed.
@@ -10,7 +10,7 @@ const widths=Object.freeze({
   avatar:440,card:360,table:640,alert:440,empty:360,
   'action-area':440,'button-group':360,'toggle-group':280,'filter-button':400,
   calendar:320,'segmented-control':400,'framed-style':440,'time-picker':360,
-  'top-navigation':500,'bottom-navigation':400,category:440,command:400,
+  'top-navigation':960,'bottom-navigation':400,category:440,command:400,
   snackbar:480,'aspect-ratio':400,'play-badge':400,'list-card':440,attachment:480,
   carousel:400,resizable:480,'scroll-area':360,'message-scroller':440,
 });
@@ -77,13 +77,6 @@ export function representativeThumbnail(id,markup,uid,icon){
     case 'dropdown':case 'navigation-menu':case 'collapsible':
       scene=openDetails(markup);
       break;
-    case 'top-navigation':{
-      const menu=markup.match(/<details\b[\s\S]*?<\/details>/)?.[0];
-      if(!menu)break;
-      scene=markup.replace(/(<nav\b[^>]*>)[\s\S]*?(<a class="dds-nav-link dds-nav-control" href="#\/setup">[^<]*<\/a>)<\/nav>/,'$1'+openDetails(menu)+'$2</nav>')
-        .replace(/<div class="dds-topnav-tools">[\s\S]*?<\/details><\/div>(?=<\/div><\/div>)/,'');
-      break;
-    }
     case 'dialog':case 'alert-dialog':case 'sheet':case 'drawer':
       scene=overlayWindow(markup,id);
       break;
@@ -114,6 +107,6 @@ export function representativeThumbnail(id,markup,uid,icon){
     default:
       scene=secondaryThumbnail(id,markup,icon);
   }
-  const staticScene=scene?.replace(/\sdata-(?:ext-menu|ext-popover|ext-hover|dds-command-search|dds-topnav)(?:="[^"]*")?(?=[\s>])/g,'');
+  const staticScene=scene?.replace(/\sdata-(?:ext-menu|ext-popover|ext-hover|dds-command-search)(?:="[^"]*")?(?=[\s>])/g,'');
   return staticScene?`<div class="dds-gallery-state" data-gallery-state="${id}">${staticScene}</div>`:markup;
 }

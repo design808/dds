@@ -1,6 +1,13 @@
 /* Documentation only. Caps and presentation apply only to the specimen directly
    inside a preview frame, never to components nested inside a real page/block. */
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state {width:100%;min-width:0;}
+.preview-inner.inert-preview > .dds-ui > .dds-gallery-state:is([data-gallery-state=toggle],[data-gallery-state=toggle-group]),
+.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=context-menu] .dds-context,
+.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=context-menu] .dds-menu-unit {
+  display:grid;
+  justify-items:center;
+}
+.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=context-menu] .dds-context-content {text-align:center;}
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state :is(.dds-command,.dds-gallery-popup,.dds-menu,.dds-popover,.dds-icon-tooltip,.dds-tooltip) {
   position:static;
   inset:auto;
@@ -64,26 +71,6 @@
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state .dds-gallery-window:has(> .drawer) {align-items:flex-end;}
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state .dds-gallery-window > .sheet {width:min(82%,360px);}
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state .dds-gallery-window > .drawer {width:100%;}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=top-navigation] :is(.dds-topnav-bar,.dds-topnav-panel,.dds-topnav-links) {
-  display:flex;
-  flex-direction:row;
-  align-items:flex-start;
-}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=top-navigation] .dds-topnav-bar {gap:var(--space-4);padding-block:var(--space-2);}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=top-navigation] .dds-topnav-brand {padding-block:var(--space-1);}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=top-navigation] .dds-topnav-brand img {width:136px;}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=top-navigation] .dds-topnav-panel {padding:0;}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=top-navigation] :is(.dds-topnav-links,.dds-topnav-links > .dds-nav-control) {width:auto;}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=top-navigation] .dds-topnav-toggle {display:none;}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=top-navigation] .dds-topnav-menu[open] > .dds-topnav-dropdown {
-  position:static;
-  width:210px;
-  margin-block-start:var(--space-3);
-  opacity:1;
-  translate:none;
-  transition:none;
-}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=top-navigation] .dds-topnav-menu:not([open]) > .dds-topnav-dropdown {display:none;}
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state .dds-gallery-scroll-window {position:relative;}
 .workspace > #main .component-preview .preview-inner.inert-preview > .dds-ui > .dds-gallery-state .dds-gallery-scroll-window > .dds-scroll {
   height:112px;
