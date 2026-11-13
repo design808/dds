@@ -74,9 +74,6 @@ export function finalizeServiceContent(root,id,options={},parts={}){
  }
  // Empty document-preview content must not leak into a general purpose dialog.
  if(id==='dialog'&&!own(options.slots,'content')&&!optional.content)root.querySelector('.sample-document,.dds-dialog-content')?.replaceChildren();
- if(id==='top-navigation'){
-  const tools=root.querySelector('.dds-topnav-tools');if(tools&&!tools.children.length)tools.hidden=true;
- }
  for(const header of root.querySelectorAll('.dds-card-header'))if([...header.children].every(node=>node.hidden))header.hidden=true;
  connectFieldDescriptions(root,root.dataset.ddsInstance||'dds-field');
 }

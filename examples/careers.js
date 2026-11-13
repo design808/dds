@@ -1,5 +1,5 @@
-import {createComponent,mountDDS,icon,collectionCount,statusBadge} from '../ui/index.js?v=4d6e4bc925033bb2';
-import {jobs,categories,filterOptions,sortOptions,filterJobs,sortJobs,getJobById,getCompanyById} from './careers-data.js?v=4d6e4bc925033bb2';
+import {createComponent,mountDDS,icon,collectionCount,statusBadge} from '../ui/index.js?v=eb518823ac99b3c2';
+import {jobs,categories,filterOptions,sortOptions,filterJobs,sortJobs,getJobById,getCompanyById} from './careers-data.js?v=eb518823ac99b3c2';
 
 const $=selector=>document.querySelector(selector);
 const main=$('[data-co-main]');
@@ -43,7 +43,6 @@ function makeHeader(){
   attributes:{brandLink:{href:'#/jobs','aria-label':'커리어온 채용공고',translate:'no'},header:{'aria-label':'커리어온 메뉴'}},
   slots:{links,tools:document.createDocumentFragment()}
  });
- header.querySelector('.dds-topnav-tools').hidden=true;
  $('[data-co-header]').append(header);
  return mountDDS(header,{charts:false});
 }

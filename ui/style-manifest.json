@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "4b752554effab7cb971a0f55dab6d64115c57f7034c4d396a560001a7108741f",
+  "sha256": "105dda5421295fcaf96ba9674016cd7e2b7f77a19558ff1af1ab40108d99e19b",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -366,8 +366,8 @@
     },
     {
       "file": "extensions.css",
-      "sha256": "f60a3ed6923660e96344f96e8b753773dde72969ef397974d16cc287e5fc6128",
-      "retainedRules": 194,
+      "sha256": "35f798c1e20f2712310091a8ab606ec15e2c270a552445f9bb52ad89bcc885e1",
+      "retainedRules": 197,
       "excludedSelectors": 36
     },
     {

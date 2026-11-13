@@ -565,6 +565,8 @@
 .dds-ui .dds-topnav-demo .dds-topnav-dropdown strong {font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:var(--font-weight-semibold);overflow-wrap:anywhere;}
 .dds-ui .dds-topnav-demo .dds-topnav-dropdown>a>span>span {font-size:var(--type-body-2-normal-size);line-height:var(--type-body-2-normal-line-height);color:var(--text-secondary);overflow-wrap:anywhere;}
 .dds-ui .dds-topnav-demo .dds-topnav-tools {display:flex;align-items:center;gap:var(--space-2);margin-left:auto;flex-shrink:0;}
+.dds-ui .dds-topnav-demo .dds-topnav-tools:not(:has(> :not([hidden],template,script,style))) {display:contents;}
+.dds-ui .dds-topnav-demo .dds-topnav-tools:is([hidden],:empty) {display:none;}
 .dds-ui .dds-topnav-demo .dds-topnav-icon {display:grid;place-items:center;width:40px;height:40px;padding:8px;flex-shrink:0;border:0;border-radius:var(--radius-md);background:transparent;color:var(--text-primary);cursor:pointer;}
 .dds-ui .dds-topnav-demo .dds-topnav-icon>.icon {width:20px;height:20px;}
 .dds-ui .dds-topnav-demo .dds-topnav-icon:is(:hover,:focus-visible) {background:var(--surface);}
@@ -631,7 +633,8 @@
 .dds-ui .dds-topnav-demo .dds-topnav-links>.dds-topnav-menu>.dds-nav-control {min-height:44px;padding:var(--space-3);}
 .dds-ui .dds-topnav-demo .dds-topnav-links>.dds-topnav-menu>.dds-nav-control {justify-content:space-between;width:100%;}
 .dds-ui .dds-topnav-demo .dds-topnav-panel .dds-topnav-dropdown {position:static;width:100%;max-width:100%;margin-block:var(--space-2);box-shadow:none;}
-.dds-ui .dds-topnav-demo .dds-topnav-tools {align-items:stretch;flex-direction:column;gap:var(--space-1);width:100%;min-width:0;margin-left:0;padding-top:var(--space-3);border-top:1px solid var(--border);}
+.dds-ui .dds-topnav-demo .dds-topnav-tools {align-items:stretch;flex-direction:column;gap:var(--space-1);width:100%;min-width:0;margin-left:0;}
+.dds-ui .dds-topnav-demo .dds-topnav-tools:has(> :not([hidden],template,script,style)) {padding-top:var(--space-3);border-top:1px solid var(--border);}
 .dds-ui .dds-topnav-demo .dds-topnav-tools>.dds-topnav-menu {min-width:0;}
 .dds-ui .dds-topnav-demo .dds-topnav-language,
 .dds-ui .dds-topnav-demo .dds-topnav-profile {display:flex;justify-content:flex-start;gap:var(--space-3);width:100%;min-height:44px;height:auto;padding:var(--space-3);border-radius:var(--radius-md);color:var(--text-primary);font-family:var(--font-sans);font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:var(--type-label-1-weight);letter-spacing:var(--type-label-1-tracking);text-align:left;}
