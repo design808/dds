@@ -347,7 +347,7 @@ const overrides = {
     rules: ['제목으로 이름을 제공하고 열릴 때 내부로 초점을 이동합니다. 자동 초점만으로 닫기 툴팁을 표시하지 않습니다.', '모달이 열린 동안 배경을 조작하지 못하게 하고 닫으면 실행한 요소로 초점을 돌립니다.', '하단 버튼은 오른쪽에 배치합니다. 버튼이 여러 개라면 slots.actions에 보조 버튼부터 주요 버튼 순서로 넣습니다.', '본문 슬롯에는 상하 margin을 넣지 않습니다. 긴 내용을 표시할 때는 variants.scrollable을 켭니다. 제목과 하단 버튼 영역을 고정하고 설명과 콘텐츠가 있는 본문만 스크롤합니다.'],
     keyboard: ['Tab/Shift+Tab으로 모달 안을 이동합니다. Scrollable 본문에 초점을 두고 방향키·Page Up·Page Down으로 스크롤합니다. Escape 또는 닫기 버튼으로 닫고 실행 요소로 돌아갑니다.'],
     checks: ['좁고 낮은 화면에서 본문 끝까지 스크롤할 수 있고 제목·닫기·하단 버튼이 처음 위치에 남는지 확인합니다.', '본문이나 하단 버튼을 생략했을 때 빈 영역이 생기지 않는지 확인합니다. 열기·닫기·초점 복귀·모바일 키보드 상태도 확인합니다.'],
-    specification: [...dialogSpecs,['하단 버튼','오른쪽 정렬 · 간격 --space-2 · 좁을 때 줄바꿈'],['Scrollable','최대 높이 42rem 또는 뷰포트 높이에서 32px을 뺀 값 중 작은 값 · 본문만 스크롤']],
+    specification: [...dialogSpecs,['하단 버튼','오른쪽 정렬 · 간격 --space-2 · 좁을 때 줄바꿈'],['Scrollable','최대 높이 42rem 또는 뷰포트 높이에서 32px을 뺀 값 중 작은 값 · 본문만 스크롤 · 얇은 스크롤바는 모달 안쪽 경계에 배치']],
     assets: ['component-layout.css', 'variant-system.css', 'ui/tooltips.js', 'icon-tooltips.js'],
   },
   'alert-dialog': {

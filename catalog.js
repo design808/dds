@@ -1,5 +1,5 @@
-import {extensionComponents,componentAliases} from './extension-catalog.js?v=e0a33ceb6c034018';
-import {chartComponents} from './chart-catalog.js?v=e0a33ceb6c034018';
+import {extensionComponents,componentAliases} from './extension-catalog.js?v=80f7f2182aeb104b';
+import {chartComponents} from './chart-catalog.js?v=80f7f2182aeb104b';
 export const groups=['Actions','Inputs','Navigation','Feedback','Data display','Charts'];
 // The catalog describes proposed target components. source names link to static evidence, not production React components.
 const row=(id,name,ko,group,description,source,anatomy,states,rule)=>({id,name,ko,group,description,source,anatomy,states,rule});

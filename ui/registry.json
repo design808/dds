@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.6.19",
+  "version": "0.6.20",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "layout": {
@@ -43,31 +43,31 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "246eefb7578cad6aada71bdd286611f2539cf9ac96bbed21ea13ef8615c5f45c",
-    "ui/core.js": "2bc83d6dab7f9abce67b2e746eb723d4d282b7825865b136559c8379f37d97a9",
-    "ui/button.js": "4faf5b8dd1f383e7b5452390661435f827549edc455c019d8179a0858f05c406",
-    "ui/extended.js": "ce1818f7754d92194a72a3b4e2b7e95fe08aa0d49a628097c4db02039e53ed67",
-    "ui/charts.js": "4a40e5ffc0f2b9d71dfeb9c9b72b2cc1baae03b134ac16ab9f3843c2db987d8e",
-    "ui/source.js": "08aa34012240d40e6778e6cf9fd8bbab90902a2e18c0008e9365a4513b6c1319",
-    "ui/index.js": "ba0203bada26fdb6f6a8b20b338d31cbea50eb764473428448d853c10eeb0c7c",
+    "ui/version.js": "faf4f64b2fde551a29cd8154603da312f98a646807802eb564b2c0432ead3d98",
+    "ui/core.js": "87094d8158748c39786d3cffc63034049459cb6faad57771ed460bfd2027c015",
+    "ui/button.js": "5b037f525171bc5e69ffc85d34b2258c87e5d47d18adf9dcc8666221f09d7b5c",
+    "ui/extended.js": "9d05468ecb61dd4f75c51629de0d631b4264141e48ec03ba9c2ad595a24e35a7",
+    "ui/charts.js": "9449ad208d645e4bf51290f6114f3eeaefa79b6dcd21892a572eecddfe51c82f",
+    "ui/source.js": "47bc02edc058094188ccea56e0cfe88de9e48b9396ffa51b17733d330f2c030e",
+    "ui/index.js": "ad961307c3a519b8af89aad84f22ddb9ef95f279040defde3621adf2a56fe066",
     "ui/content.js": "a0ffc5f68a651a76a1e5aaaea3630b29e790484115097b88db59be0eeb404eb2",
-    "ui/variants.js": "e2fecd782fa40e8050c2a11bb55f9dce40e39bb0a85f6e482c51317596a984aa",
-    "ui/profile.js": "4ff7172b71a7111b9bef2f2cc706784df746d3ae472f6b05730dcdf9f80a6a4e",
+    "ui/variants.js": "c4dc9fdc64b7040f0fd01ce1781252ee99d23033dd60b0a5a31977c48a983927",
+    "ui/profile.js": "b6323f7bee6fd3d9d03ed50857c9993d38c685961e78a3eaa5de71373a32af5b",
     "ui/profile-palette.js": "23e56c78a0552e2add9a5d2d03cdbdfe002bcfa04c25a161fca2adfea54ba3ba",
-    "ui/icons.js": "cd1858bb7d6ebd6f69aee198b600958736de3bdd8db1fe02cc0a4d49cc1cf801",
+    "ui/icons.js": "dd7c326499cb95fe5df6e77e488e8353c44ee7b046c4d7ed3ae83b393f56b7f1",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "712cbf878ccf7acff8efc52a71e1dc9ebbf43082a1c02830c2d83110fe915ba4",
+    "ui/controls.js": "0414c2b98d9ee0c6c8999b931945e9ab3928649763445b00705c371ddf79274a",
     "ui/tooltips.js": "8d2aab972d2c39df86a6327a406e5d3817d3c0de738d9ab61c392803628abc3d",
     "ui/font-loading.js": "ab986571698ff44cf7a4253d5007b9e93c46b2371bf301e0a5aa3b3e45c2282b",
-    "ui/dds.css": "99513f5bc4ed61981174b81c0a6a39a15d0d57a55797b50b9dd0b6897ccce0d4",
+    "ui/dds.css": "551f617b14c1d30e95164edd61a71f9192059a4c0b7d62b7b26e6ebb66d02809",
     "ui/tokens-scoped.css": "354128a6014e10799b7dc757ee752629bfdfd846bd81d1e3d4d24fa75c06940f",
     "tokens.css": "3209e5b74aedb141f017471c9a30e7c918452a32ca49b085d6de83d6bc244b99",
-    "component-layout.css": "0b93b4d26af0b6fdf24ea1b43a9eb1aa9440f4176e3ca373f2731f541c5548e4",
+    "component-layout.css": "00293f3b2c709b58a8f19148dea68412c5e1642dd23b75cf52e0ab12bf39e3c4",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "47215293093c225b345ea6f2395d1a75ec59df7a15c509421ebbd164a1788142",
-    "design-preferences.js": "559d1d9613d70c2847f03567c5ca7472fa1965b4fc95dcdb30106dc75eabd15d",
-    "design-profile.js": "609b6690af17dd7e8cb1f8ad5b29b26ed1363739ab2dc02987eba72c6bd88f9a",
+    "design-preferences.js": "699b76dd661e8307105ee5f86118c7ffff7ba78bdbcfcd9738ed306d7d435f17",
+    "design-profile.js": "7c099dd995bf3ff552bddc8ccb5229cbce15f64af49e5b21eea095e194b7ccf5",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "compositions": {
@@ -1371,7 +1371,7 @@
       "group": "Feedback",
       "template": "ui/templates/dialog.html",
       "idPrefix": "dds-instance",
-      "sha256": "36237e4bdd4377596df871625566a98894f354849ff44cc870a33f0cc2dc88ad",
+      "sha256": "be3c0f7e169ac0c4f3304372936803d6406ec63c725e6ff6dec1f5b02c58b69a",
       "renderer": "ui/core.js",
       "parts": {
         "trigger": {
@@ -6110,7 +6110,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "e0a33ceb6c034018",
-    "canonicalBundle": "../releases/0.6.19/bundle.json"
+    "assetRevision": "80f7f2182aeb104b",
+    "canonicalBundle": "../releases/0.6.20/bundle.json"
   }
 }

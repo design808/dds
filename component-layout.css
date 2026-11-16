@@ -13,33 +13,35 @@
 .empty-state > h3:not([hidden]):not(:empty) ~ p:not([hidden]):not(:empty){margin-block-start:12px}
 .empty-state > :is(h3,p):not([hidden]):not(:empty) ~ :is(a,button):not([hidden]){margin-block-start:20px}
 .dds-overlay > p{margin:0 0 20px}
-/* The dialog owns space between its heading, body and actions. A supplied body
-   has no outer margin; its content controls its own internal layout. Keep the
-   display rule limited to [open] so a closed native dialog stays hidden. */
-.dds-dialog[open]{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+/* Display follows the native dialog state. Layout also applies during the
+   exit transition, when the browser keeps painting after removing [open]. */
+.dds-dialog{grid-template-columns:minmax(0,1fr);gap:20px}
+.dds-dialog[open]{display:grid}
 .dds-dialog > :is(.dialog-heading,p,.sample-document){margin:0}
 .dds-dialog > button{justify-self:end}
 .dds-dialog-body{display:grid;gap:20px;min-inline-size:0;overflow-wrap:anywhere}
 .dds-dialog-body > :is(p,.sample-document){margin:0}
 .dds-dialog-footer{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:var(--space-2)}
 .dds-dialog > :is(.dds-dialog-body,.dds-dialog-footer):not(:has(> :not([hidden]))){display:none}
-.dds-dialog[open][data-dds-scrollable=true]{
-  display:flex;
+.dds-dialog[data-dds-scrollable=true]{
   flex-direction:column;
   max-block-size:min(42rem,calc(100vh - var(--space-8)));
   max-block-size:min(42rem,calc(100dvh - var(--space-8)));
   overflow:hidden;
 }
+.dds-dialog[open][data-dds-scrollable=true]{display:flex}
 .dds-dialog[data-dds-scrollable=true] > :is(.dialog-heading,.dds-dialog-footer){flex:none}
 .dds-dialog[data-dds-scrollable=true] > .dds-dialog-body{
   flex:1 1 auto;
   min-block-size:0;
   overflow:auto;
   overscroll-behavior:contain;
+  margin-inline:calc(-1 * var(--dialog-padding));
+  padding-inline:var(--dialog-padding);
 }
-.dds-dialog[data-dds-scrollable=true] > .dds-dialog-body:focus-visible{outline:1px solid var(--primary);outline-offset:0}
+.dds-dialog[data-dds-scrollable=true] > .dds-dialog-body:focus-visible{outline:1px solid var(--primary);outline-offset:-1px}
 @media(max-height:480px){
-  .dds-dialog[open][data-dds-scrollable=true]{gap:var(--space-3);padding-block:var(--space-4);}
+  .dds-dialog[data-dds-scrollable=true]{gap:var(--space-3);padding-block:var(--space-4);}
 }
 /* Floating runtime UI inherits tokens through a portal without adding a layout
    row or section gap to the containing dialog. */

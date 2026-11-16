@@ -828,6 +828,38 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui dialog[open]::backdrop{animation:dds-ui-fade-in var(--duration-normal) var(--ease-enter)}}
 @keyframes dds-ui-dialog-enter{from{opacity:0;transform:var(--dialog-start)}to{opacity:1;transform:none}}
 @keyframes dds-ui-fade-in{from{opacity:0}to{opacity:1}}
+.dds-ui .dds-scrollbar {
+  --dds-scroll-thumb:color-mix(in srgb,var(--text-tertiary) 55%,transparent);
+  --dds-scroll-thumb-hover:color-mix(in srgb,var(--text-tertiary) 80%,transparent);
+  scrollbar-gutter:stable;
+  scrollbar-width:thin;
+  scrollbar-color:var(--dds-scroll-thumb) transparent;
+}
+.dds-ui .dds-scrollbar:is(:hover,:focus-within) {scrollbar-color:var(--dds-scroll-thumb-hover) transparent}
+@supports selector(::-webkit-scrollbar) {
+.dds-ui .dds-scrollbar,
+.dds-ui .dds-scrollbar:is(:hover,:focus-within) {scrollbar-width:auto;scrollbar-color:auto}
+.dds-ui .dds-scrollbar::-webkit-scrollbar {width:10px;height:10px}
+.dds-ui .dds-scrollbar::-webkit-scrollbar-track,
+.dds-ui .dds-scrollbar::-webkit-scrollbar-corner {background:transparent}
+.dds-ui .dds-scrollbar::-webkit-scrollbar-thumb {
+    min-height:40px;
+    border:2px solid transparent;
+    border-radius:999px;
+    background-color:var(--dds-scroll-thumb);
+    background-clip:padding-box;
+  }
+.dds-ui .dds-scrollbar::-webkit-scrollbar-thumb:hover {background-color:var(--dds-scroll-thumb-hover)}
+.dds-ui .dds-scrollbar::-webkit-scrollbar-thumb:active {background-color:var(--text-tertiary)}
+.dds-ui .dds-scrollbar::-webkit-scrollbar-button {display:none;width:0;height:0}
+}
+@media(forced-colors:active) {
+.dds-ui .dds-scrollbar,
+.dds-ui .dds-scrollbar:is(:hover,:focus-within) {scrollbar-color:auto}
+.dds-ui .dds-scrollbar::-webkit-scrollbar-thumb,
+.dds-ui .dds-scrollbar::-webkit-scrollbar-thumb:hover,
+.dds-ui .dds-scrollbar::-webkit-scrollbar-thumb:active {background-color:CanvasText}
+}
 @keyframes dds-ui-panel-enter{from{opacity:0;translate:0 4px}to{opacity:1;translate:0 0}}
 .dds-ui .control-popup,
 .dds-ui .dds-menu:not([hidden]),
@@ -1673,30 +1705,33 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .empty-state > h3:not([hidden]):not(:empty) ~ p:not([hidden]):not(:empty){margin-block-start:12px}
 .dds-ui .empty-state > :is(h3,p):not([hidden]):not(:empty) ~ :is(a,button):not([hidden]){margin-block-start:20px}
 .dds-ui .dds-overlay > p{margin:0 0 20px}
-.dds-ui .dds-dialog[open]{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.dds-ui .dds-dialog{grid-template-columns:minmax(0,1fr);gap:20px}
+.dds-ui .dds-dialog[open]{display:grid}
 .dds-ui .dds-dialog > :is(.dialog-heading,p,.sample-document){margin:0}
 .dds-ui .dds-dialog > button{justify-self:end}
 .dds-ui .dds-dialog-body{display:grid;gap:20px;min-inline-size:0;overflow-wrap:anywhere}
 .dds-ui .dds-dialog-body > :is(p,.sample-document){margin:0}
 .dds-ui .dds-dialog-footer{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:var(--space-2)}
 .dds-ui .dds-dialog > :is(.dds-dialog-body,.dds-dialog-footer):not(:has(> :not([hidden]))){display:none}
-.dds-ui .dds-dialog[open][data-dds-scrollable=true]{
-  display:flex;
+.dds-ui .dds-dialog[data-dds-scrollable=true]{
   flex-direction:column;
   max-block-size:min(42rem,calc(100vh - var(--space-8)));
   max-block-size:min(42rem,calc(100dvh - var(--space-8)));
   overflow:hidden;
 }
+.dds-ui .dds-dialog[open][data-dds-scrollable=true]{display:flex}
 .dds-ui .dds-dialog[data-dds-scrollable=true] > :is(.dialog-heading,.dds-dialog-footer){flex:none}
 .dds-ui .dds-dialog[data-dds-scrollable=true] > .dds-dialog-body{
   flex:1 1 auto;
   min-block-size:0;
   overflow:auto;
   overscroll-behavior:contain;
+  margin-inline:calc(-1 * var(--dialog-padding));
+  padding-inline:var(--dialog-padding);
 }
-.dds-ui .dds-dialog[data-dds-scrollable=true] > .dds-dialog-body:focus-visible{outline:1px solid var(--primary);outline-offset:0}
+.dds-ui .dds-dialog[data-dds-scrollable=true] > .dds-dialog-body:focus-visible{outline:1px solid var(--primary);outline-offset:-1px}
 @media(max-height:480px){
-.dds-ui .dds-dialog[open][data-dds-scrollable=true]{gap:var(--space-3);padding-block:var(--space-4);}
+.dds-ui .dds-dialog[data-dds-scrollable=true]{gap:var(--space-3);padding-block:var(--space-4);}
 }
 .dds-ui .dds-ui-portal{display:contents}
 .dds-ui .dds-component > .dds-action-area{margin-block-start:0}

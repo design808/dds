@@ -1,7 +1,7 @@
 /** Canonical core markup. No DOM access, listeners, storage, or document UI. */
-import {icon} from './icons.js?v=e0a33ceb6c034018';
-import {renderButton} from './button.js?v=e0a33ceb6c034018';
-import {collectionCount,statusBadge} from '../visibility.js?v=e0a33ceb6c034018';
+import {icon} from './icons.js?v=80f7f2182aeb104b';
+import {renderButton} from './button.js?v=80f7f2182aeb104b';
+import {collectionCount,statusBadge} from '../visibility.js?v=80f7f2182aeb104b';
 
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=(value,id)=>String(value||'dds-'+id).replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -48,7 +48,7 @@ case 'sidebar':return `<nav class="sample-sidebar" aria-label="예제 마이페�
 case 'dropdown':return `<details class="sample-dropdown"><summary class="btn"><span data-dds-part="label">문서 작업</span> ${icon('chevron')}</summary><div>${btn('미리보기','ghost','data-dialog')}${btn('코드 복사','ghost','data-toast="실제 문서 복사는 원본 서비스에서 진행합니다."')}</div></details>`;
  case 'dialog':return `${btn('<span data-dds-part="trigger-label">미리보기 열기</span> '+icon('arrow'),'',`data-dds-dialog="${uid}-dialog"`)}<dialog class="dds-dialog" id="${uid}-dialog" aria-labelledby="${uid}-dialog-title">
   <div class="dialog-heading"><h2 id="${uid}-dialog-title">자기소개서 미리보기</h2><button class="icon-btn" type="button" data-dds-close aria-label="미리보기 닫기">${icon('close')}</button></div>
-  <div class="dds-dialog-body">
+  <div class="dds-dialog-body dds-scrollbar">
    <p>이곳은 디자인 시스템 안의 예제입니다. 실제 자기소개서 데이터는 사용하지 않습니다.</p>
    <div class="sample-document" data-dds-dialog-content><span class="badge">예제 데이터</span><h3>함께 성장하는 프로덕트 디자이너</h3><p>사용자의 문제를 발견하고, 팀과 함께 더 나은 경험을 만들어 갑니다.</p></div>
   </div>

@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "99513f5bc4ed61981174b81c0a6a39a15d0d57a55797b50b9dd0b6897ccce0d4",
+  "sha256": "551f617b14c1d30e95164edd61a71f9192059a4c0b7d62b7b26e6ebb66d02809",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -157,6 +157,7 @@
     "dds-resizable",
     "dds-resize-handle",
     "dds-scroll",
+    "dds-scrollbar",
     "dds-section-header",
     "dds-section-header-action",
     "dds-section-header-content",
@@ -388,8 +389,8 @@
     },
     {
       "file": "interactions.css",
-      "sha256": "a90516f8ef4dd7dac2dfb8bc18b7f0c848844eb01e46703bf70488177384c9e5",
-      "retainedRules": 28,
+      "sha256": "76f73600edd38b01cb3718fe77ffbdfd5aa0b31abb852ee44dfb64a856dd7223",
+      "retainedRules": 39,
       "excludedSelectors": 3
     },
     {
@@ -424,8 +425,8 @@
     },
     {
       "file": "component-layout.css",
-      "sha256": "0b93b4d26af0b6fdf24ea1b43a9eb1aa9440f4176e3ca373f2731f541c5548e4",
-      "retainedRules": 58,
+      "sha256": "00293f3b2c709b58a8f19148dea68412c5e1642dd23b75cf52e0ab12bf39e3c4",
+      "retainedRules": 60,
       "excludedSelectors": 0
     }
   ],

@@ -1,6 +1,6 @@
-import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,PAGE_BACKGROUND_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=e0a33ceb6c034018';
-import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=e0a33ceb6c034018';
-import {renderButton} from './ui/button.js?v=e0a33ceb6c034018';
+import {PRIMARY_PRESETS,FUNCTIONAL_PRESETS,PAGE_BACKGROUND_PRESETS,FONT_OPTIONS} from './design-preferences.js?v=80f7f2182aeb104b';
+import {HUE_GRADIENT,hexToHue,hueToHex} from './color-slider.js?v=80f7f2182aeb104b';
+import {renderButton} from './ui/button.js?v=80f7f2182aeb104b';
 const PRESETS=PRIMARY_PRESETS.map(({value,label})=>({value,name:label}));
 const FONTS=FONT_OPTIONS.map(({value,label})=>({value,name:label}));
 const normalizeHex = value => {
@@ -171,7 +171,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
   heading.append(closeButton);
 
   const body = document.createElement('div');
-  body.className = 'dds-settings-body';
+  body.className = 'dds-settings-body dds-scrollbar';
   const brandSection = document.createElement('section');
   brandSection.className = 'dds-settings-section';
   brandSection.setAttribute('aria-labelledby', 'dds-settings-brand-title');
@@ -447,7 +447,7 @@ export function mountDesignSettings({getSettings, updateSettings, resetSettings,
     copyButton.setAttribute('aria-busy','true');
     copyState.textContent='';
     try{
-      const {buildProjectProfilePrompt}=await import('./project-profile.js?v=e0a33ceb6c034018');
+      const {buildProjectProfilePrompt}=await import('./project-profile.js?v=80f7f2182aeb104b');
       const text=await buildProjectProfilePrompt(snapshot);
       if(typeof text!=='string'||!text.trim())throw new Error('The project prompt is empty.');
       if(disposed||ticket!==copyRevision||!profileDialog.open)return;
