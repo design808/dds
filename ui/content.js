@@ -6,7 +6,7 @@ export const optionalContent=Object.freeze({
  textarea:{limit:'.row-between.helper > span:first-child',counter:'[data-count]'},
  upload:{hint:'.helper:not(.file-state)'},
  progress:{hint:'.helper'},
- dialog:{trigger:'[data-dds-dialog]',body:'.dds-dialog > p',content:'.sample-document,.dds-dialog-content',confirm:'.dds-dialog > button'},
+ dialog:{trigger:'[data-dds-dialog]',body:'.dds-dialog-body > p',content:'.sample-document,.dds-dialog-content',confirm:'[data-dds-part="dialog-confirm"]'},
  alert:{title:'[data-dds-alert-title]',description:'.alert p'},
  toast:{label:'[data-dds-toast]'},
  empty:{description:'.empty-state > p',action:'.empty-state > a'},

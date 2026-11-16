@@ -1,4 +1,4 @@
-import {thumbnailSceneWidth,fitThumbnailScene} from './preview-scenes.js?v=f2a2d87e2a7711af';
+import {thumbnailSceneWidth,fitThumbnailScene} from './preview-scenes.js?v=e0a33ceb6c034018';
 
 // Only inert gallery thumbnails are fitted. Detail examples and variants retain
 // their real container width and the component's own scrolling/interaction.

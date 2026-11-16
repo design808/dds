@@ -1,13 +1,24 @@
-import {componentVariants} from './ui/variants.js?v=f2a2d87e2a7711af';
-import {createComponent,icon} from './ui/index.js?v=f2a2d87e2a7711af';
-import {renderItemList} from './ui/extended.js?v=f2a2d87e2a7711af';
-import {statusBadge} from './visibility.js?v=f2a2d87e2a7711af';
-import {renderButton} from './ui/button.js?v=f2a2d87e2a7711af';
-import {optionalContent} from './ui/content.js?v=f2a2d87e2a7711af';
+import {componentVariants} from './ui/variants.js?v=e0a33ceb6c034018';
+import {createComponent,icon} from './ui/index.js?v=e0a33ceb6c034018';
+import {renderItemList} from './ui/extended.js?v=e0a33ceb6c034018';
+import {statusBadge} from './visibility.js?v=e0a33ceb6c034018';
+import {renderButton} from './ui/button.js?v=e0a33ceb6c034018';
+import {optionalContent} from './ui/content.js?v=e0a33ceb6c034018';
 
 const escape=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'component-variants').replace(/[^a-zA-Z0-9_-]/g,'-');
 const bindings=new WeakMap();
+const dialogSections=[
+ ['지원 동기','목표 직무에 관심을 갖게 된 계기와 그 관심을 확인한 경험을 적었습니다.'],
+ ['직무 역량','제품 문제를 정의하고 팀과 해결안을 검증하는 과정에서 담당한 역할을 정리했습니다.'],
+ ['프로젝트 배경','사용자 인터뷰와 문의 내역을 살펴보며 많은 사용자가 같은 단계에서 작업을 중단한다는 점을 확인했습니다.'],
+ ['문제 정의','사용자마다 다른 용어로 설명하던 문제를 팀에서 함께 확인할 수 있도록 핵심 상황과 목표를 기록했습니다.'],
+ ['협업 과정','디자인과 개발 담당자가 각 대안의 구현 범위를 논의했고, 일정과 사용자 영향에 따라 작업 순서를 정했습니다.'],
+ ['해결 방법','반복되는 안내를 정리하고, 다음 행동이 분명하도록 주요 단계의 화면 구성과 문구를 바꿨습니다.'],
+ ['검증 결과','변경한 흐름을 사용성 테스트에서 확인하고 참여자가 혼동한 부분을 추가로 수정했습니다.'],
+ ['배운 점','문제를 좁혀 가설을 검증하면 구현 전에 팀의 판단 기준을 맞추기 쉽다는 점을 배웠습니다.'],
+ ['입사 후 목표','사용자의 실제 업무 흐름을 이해하고, 팀과 재사용할 수 있는 해결 방법을 만들고 싶습니다.']
+];
 
 /** Explicit documentation content; the preview and its copied code use the same options. */
 export function variantPreviewOptions(id,selected,doc=globalThis.document,idPrefix='dds-variant-'+id){
@@ -45,6 +56,13 @@ export function variantPreviewOptions(id,selected,doc=globalThis.document,idPref
   const content=doc.createElement('template'),fieldId=safeId(idPrefix+'-content-field');
   content.innerHTML=selected.content==='form'?`<div class="field"><label for="${fieldId}">문서 제목</label><input id="${fieldId}" value="프로덕트 디자이너 자기소개서"></div>`:
    selected.content==='plain'?'<p>작성한 내용을 확인한 후 저장해 주세요.</p>':'<span class="badge">저장 완료</span><h3>프로덕트 디자이너 자기소개서</h3><p>사용자의 문제를 발견하고 더 나은 경험을 설계합니다.</p>';
+  if(selected.scrollable){
+   const sections=dialogSections.map(([title,description],index)=>{
+    if(selected.content==='form')return `<div class="field"><label for="${fieldId}-${index}">${escape(title)}</label><textarea id="${fieldId}-${index}" rows="2">${escape(description)}</textarea></div>`;
+    return `<h3>${escape(title)}</h3><p>${escape(description)}</p>`;
+   }).join('');
+   content.innerHTML=selected.content==='document'?content.innerHTML+sections:`<div class="stack">${content.innerHTML}${sections}</div>`;
+  }
   options.slots={content:content.content};
   options.text={title:'자기소개서 미리보기',body:'작성한 문서의 내용을 확인하세요.',confirm:'확인'};
  }

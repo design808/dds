@@ -1,5 +1,5 @@
 /** Official, opt-in presentation axes. Content, items and business logic stay with the host. */
-import {icon} from './icons.js?v=f2a2d87e2a7711af';
+import {icon} from './icons.js?v=e0a33ceb6c034018';
 
 const choice=(label,values,defaultValue,labels)=>Object.freeze({label,type:'enum',values:Object.freeze(values),default:defaultValue,labels:Object.freeze(labels||Object.fromEntries(values.map(value=>[value,value])))});
 const flag=(label,defaultValue=false)=>Object.freeze({label,type:'boolean',default:defaultValue});
@@ -16,7 +16,7 @@ const schemas={
  upload:{state:state(false)},
  tabs:{appearance:choice('형태',['segmented','underline'],'segmented',{segmented:'분할형',underline:'밑줄형'}),width:choice('너비',['content','stretch'],'content',{content:'내용에 맞춤',stretch:'영역 채우기'})},
  stepper:{orientation:choice('방향',['horizontal','vertical'],'horizontal',{horizontal:'가로',vertical:'세로'})},
- dialog:{content:choice('본문',['document','plain','form'],'document',{document:'문서 미리보기',plain:'일반 본문',form:'입력 폼'}),size:size(),closeButton:flag('닫기 버튼',true),actions:flag('하단 행동',true)},
+ dialog:{content:choice('본문',['document','plain','form'],'document',{document:'문서 미리보기',plain:'일반 본문',form:'입력 폼'}),size:size(),scrollable:flag('Scrollable'),closeButton:flag('닫기 버튼',true),actions:flag('하단 행동',true)},
  alert:{tone:tone(),icon:flag('상태 아이콘',true),...visibility()},
  toast:{tone:tone(),icon:flag('상태 아이콘'),actions:flag('행동'),closeButton:flag('닫기 버튼')},
  progress:{indeterminate:flag('진행률 미정')},
@@ -138,7 +138,12 @@ export function applyComponentVariants(root,id,options={}){
   host.classList.add('dds-variant-overlay');
   if(selected.content)mark(first(host,'.sample-document,.dds-dialog-content'),'content',selected.content);
   if(Object.hasOwn(selected,'closeButton'))show(host,'.dialog-heading>button',selected.closeButton);
-  if(Object.hasOwn(selected,'actions'))show(host,':scope > button,:scope > .dds-action-area',selected.actions);
+  if(Object.hasOwn(selected,'actions'))show(host,':scope > button,:scope > .dds-action-area,:scope > .dds-dialog-footer',selected.actions);
+  if(Object.hasOwn(selected,'scrollable')){
+   const body=first(host,'.dds-dialog-body');
+   if(selected.scrollable){body?.setAttribute('tabindex','0');body?.setAttribute('role','region');body?.setAttribute('aria-label','다이얼로그 본문');}
+   else for(const attribute of ['tabindex','role','aria-label'])body?.removeAttribute(attribute);
+  }
  }
  if(id==='card'){
   for(const [key,selector] of Object.entries({status:'.dds-status',metadata:'.dds-meta-primary,.dds-meta-secondary',date:'.dds-meta-date',tools:'.dds-card-tools'}))if(Object.hasOwn(selected,key))show(host,selector,selected[key]);

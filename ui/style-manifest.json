@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "58e2a1dff20063954dffa75f3447fca983876d20498803e7cd876925c0db2a22",
+  "sha256": "99513f5bc4ed61981174b81c0a6a39a15d0d57a55797b50b9dd0b6897ccce0d4",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -108,6 +108,8 @@
     "dds-data-table",
     "dds-demo",
     "dds-dialog",
+    "dds-dialog-body",
+    "dds-dialog-footer",
     "dds-direction",
     "dds-document-card",
     "dds-dots",
@@ -422,8 +424,8 @@
     },
     {
       "file": "component-layout.css",
-      "sha256": "68dc1fed3ae43f82a50b787d48c14aea648b0ce3564c1af6a837073a3acf7291",
-      "retainedRules": 49,
+      "sha256": "0b93b4d26af0b6fdf24ea1b43a9eb1aa9440f4176e3ca373f2731f541c5548e4",
+      "retainedRules": 58,
       "excludedSelectors": 0
     }
   ],

@@ -1675,7 +1675,29 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 .dds-ui .dds-overlay > p{margin:0 0 20px}
 .dds-ui .dds-dialog[open]{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
 .dds-ui .dds-dialog > :is(.dialog-heading,p,.sample-document){margin:0}
-.dds-ui .dds-dialog > button{justify-self:start}
+.dds-ui .dds-dialog > button{justify-self:end}
+.dds-ui .dds-dialog-body{display:grid;gap:20px;min-inline-size:0;overflow-wrap:anywhere}
+.dds-ui .dds-dialog-body > :is(p,.sample-document){margin:0}
+.dds-ui .dds-dialog-footer{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:var(--space-2)}
+.dds-ui .dds-dialog > :is(.dds-dialog-body,.dds-dialog-footer):not(:has(> :not([hidden]))){display:none}
+.dds-ui .dds-dialog[open][data-dds-scrollable=true]{
+  display:flex;
+  flex-direction:column;
+  max-block-size:min(42rem,calc(100vh - var(--space-8)));
+  max-block-size:min(42rem,calc(100dvh - var(--space-8)));
+  overflow:hidden;
+}
+.dds-ui .dds-dialog[data-dds-scrollable=true] > :is(.dialog-heading,.dds-dialog-footer){flex:none}
+.dds-ui .dds-dialog[data-dds-scrollable=true] > .dds-dialog-body{
+  flex:1 1 auto;
+  min-block-size:0;
+  overflow:auto;
+  overscroll-behavior:contain;
+}
+.dds-ui .dds-dialog[data-dds-scrollable=true] > .dds-dialog-body:focus-visible{outline:1px solid var(--primary);outline-offset:0}
+@media(max-height:480px){
+.dds-ui .dds-dialog[open][data-dds-scrollable=true]{gap:var(--space-3);padding-block:var(--space-4);}
+}
 .dds-ui .dds-ui-portal{display:contents}
 .dds-ui .dds-component > .dds-action-area{margin-block-start:0}
 .dds-ui .dds-component > .helper:not([hidden]):not(:empty) ~ .dds-action-area{margin-block-start:18px}
