@@ -42,13 +42,18 @@
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state .dds-icon-tooltip {display:block;width:max-content;}
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=tooltip] {display:grid;justify-items:center;}
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=toast] {display:grid;justify-items:center;gap:var(--space-2);}
-.preview-inner.inert-preview > .dds-ui > .dds-gallery-state .dds-toast.show {
+.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=toast] > .dds-toast.show {
   position:static;
   inset:auto;
+  width:max-content;
   max-width:100%;
+  flex-wrap:nowrap;
+  text-align:start;
+  box-shadow:var(--shadow-sm);
   opacity:1;
   transform:none;
 }
+.preview-inner.inert-preview > .dds-ui > .dds-gallery-state[data-gallery-state=toast] [data-dds-toast-message] {flex-basis:auto;}
 .preview-inner.inert-preview > .dds-ui > .dds-gallery-state .dds-gallery-slide {
   position:relative;
   width:min(100%,280px);

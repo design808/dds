@@ -1,6 +1,6 @@
-import {calendarDays} from './ui/extended.js?v=f9086ddd38cf7f33';
-import {chartData} from './ui/charts.js?v=f9086ddd38cf7f33';
-import {secondaryThumbnail} from './preview-states.js?v=f9086ddd38cf7f33';
+import {calendarDays} from './ui/extended.js?v=f2a2d87e2a7711af';
+import {chartData} from './ui/charts.js?v=f2a2d87e2a7711af';
+import {secondaryThumbnail} from './preview-states.js?v=f2a2d87e2a7711af';
 
 // Documentation thumbnails use a logical scene, never the gallery card as a device.
 // These are presentation widths; no service component or breakpoint is changed.
@@ -82,8 +82,8 @@ export function representativeThumbnail(id,markup,uid,icon){
       break;
     case 'toast':
       scene=markup.replace(/<button\b[\s\S]*?<\/button>/,'')
-        .replace(/class="dds-toast"([^>]*?) hidden>/,'class="dds-toast show"$1>')
-        .replace('aria-hidden="true" hidden','aria-hidden="true"')
+        .replace(/class="dds-toast"([^>]*?) hidden>/,'class="dds-toast show dds-variant dds-variant-feedback"$1>')
+        .replace(/(<span class="dds-feedback-icon"[^>]*?) hidden>[\s\S]*?<\/span>/,(_,start)=>`${start}>${icon('CircleCheck')}</span>`)
         .replace('data-dds-dismissible','data-dds-dismissible data-dds-tone="success"');
       break;
     case 'tooltip':
