@@ -82,7 +82,7 @@ Item은 `variants: {appearance: 'divided'}`로 외곽 경계 없이 행 사이�
 
 Side Nav는 `createComponent('sidebar', {data: {groups, title, account, footer, collapsible}})` 또는 `renderSideNav(groups, options)`로 생성합니다. `groups`는 `{label, items}` 배열입니다. 항목에 `label`, `icon`, `href`, `current`를 연결하고 필요한 경우 `count`, `badge`, `action`, `children`을 전달합니다. `account`의 `items`는 작업 공간을 바꾸는 실제 링크를 받습니다. 주소 없는 항목과 독립 버튼은 각각 `side-nav-item`과 `side-nav-item-action`을 발생시킵니다. `mountDDS`로 접기 버튼과 툴팁을 연결합니다.
 
-Side Nav와 본문을 같은 그리드 행이나 플렉스에 놓고 상위 레이아웃에서 높이를 지정합니다. 그리드에서는 `grid-template-columns: 260px minmax(0, 1fr)`와 `grid-template-rows: minmax(0, 1fr)`를 시작점으로 사용할 수 있습니다. 잠긴 높이 없이 놓으면 콘텐츠 높이에 맞춰집니다. 접기 버튼을 제공하면 호스트에서 `.dds-side-nav[data-dds-collapsed=true]`를 감지해 탐색 열을 56px로 바꿉니다.
+Side Nav와 본문을 같은 그리드 행이나 플렉스에 놓고 상위 레이아웃에서 높이를 지정합니다. 그리드에서는 `grid-template-columns: 260px minmax(0, 1fr)`와 `grid-template-rows: minmax(0, 1fr)`를 시작점으로 사용할 수 있습니다. 잠긴 높이 없이 놓으면 콘텐츠 높이에 맞춰집니다. 접기 버튼을 제공하면 호스트에서 `.dds-side-nav[data-dds-collapsed=true]`를 감지해 탐색 열을 기본 68px로 바꿉니다. 레일 너비를 조정할 때는 공통 부모에서 `--dds-side-nav-rail-width`를 설정하고 탐색 열에도 같은 값을 연결합니다.
 
 컨트롤 높이·글자·내부 패딩·색·경계·모서리·상태는 DDS 규격을 유지한다. 가용 폭, 페이지 그리드, 컴포넌트 바깥 여백과 필요한 영역 높이는 서비스에서 정한다.
 

@@ -1,6 +1,6 @@
-import {icon} from './icons.js?v=74e8957c2df4664c';
-import {collectionCount, statusBadge, metricContent} from './visibility.js?v=74e8957c2df4664c';
-import {renderSideNav} from './ui/core.js?v=74e8957c2df4664c';
+import {icon} from './icons.js?v=6259b05e21604bbd';
+import {collectionCount, statusBadge, metricContent} from './visibility.js?v=6259b05e21604bbd';
+import {renderSideNav} from './ui/core.js?v=6259b05e21604bbd';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'workspace').replace(/[^a-zA-Z0-9_-]/g,'-');

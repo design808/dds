@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "cc3425ba86bd5a1c52346420a90b08fbd9696840cd2157d5c2c2c88b0b523cae",
+  "sha256": "44c878432b760d99c6de32fcaec28c8bd559c7b44a41d7c4b1b38fa24d3a8da4",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -184,7 +184,6 @@
     "dds-side-nav-list",
     "dds-side-nav-mark",
     "dds-side-nav-row",
-    "dds-side-nav-toggle",
     "dds-side-nav-trailing",
     "dds-size-content",
     "dds-slider",
@@ -437,9 +436,9 @@
     },
     {
       "file": "content-primitives.css",
-      "sha256": "4068514d12bddbe7ae1813fd41d6cea8c249dec0b09cb3c8c628691e00f0dc59",
-      "retainedRules": 117,
-      "excludedSelectors": 1
+      "sha256": "c0cb5e116959172cb4b46b64ecba41e487fbef254d464546a31f418071c8aa27",
+      "retainedRules": 122,
+      "excludedSelectors": 0
     },
     {
       "file": "button-system.css",
@@ -3500,10 +3499,6 @@
     {
       "source": "control-sizing.css",
       "selector": ".content-fit-examples .alert"
-    },
-    {
-      "source": "content-primitives.css",
-      "selector": ".dds-side-nav-brand-static"
     }
   ],
   "notes": [

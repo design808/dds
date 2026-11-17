@@ -1,4 +1,4 @@
-import {PROFILE_STORAGE_KEY,createDesignProfile,parseDesignProfile,settingsEqual} from './design-profile.js?v=74e8957c2df4664c';
+import {PROFILE_STORAGE_KEY,createDesignProfile,parseDesignProfile,settingsEqual} from './design-profile.js?v=6259b05e21604bbd';
 
 // Local display preferences. These values never change the authored DDS tokens.
 const STORAGE_KEY='dds-design-settings-v1';

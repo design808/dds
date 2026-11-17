@@ -1,17 +1,17 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=74e8957c2df4664c';
-import {renderButton} from './button.js?v=74e8957c2df4664c';
-import {renderSideNav} from './core.js?v=74e8957c2df4664c';
-import {icon} from './icons.js?v=74e8957c2df4664c';
-import {mountControls} from './controls.js?v=74e8957c2df4664c';
-import {mountTooltips} from './tooltips.js?v=74e8957c2df4664c';
-import {bindCharts,chartDemo} from './charts.js?v=74e8957c2df4664c';
-import {calendarDays,renderItemList} from './extended.js?v=74e8957c2df4664c';
-import {UI_VERSION} from './version.js?v=74e8957c2df4664c';
-import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=74e8957c2df4664c';
-import {applyComponentVariants,componentVariants} from './variants.js?v=74e8957c2df4664c';
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=6259b05e21604bbd';
+import {renderButton} from './button.js?v=6259b05e21604bbd';
+import {renderSideNav} from './core.js?v=6259b05e21604bbd';
+import {icon} from './icons.js?v=6259b05e21604bbd';
+import {mountControls} from './controls.js?v=6259b05e21604bbd';
+import {mountTooltips} from './tooltips.js?v=6259b05e21604bbd';
+import {bindCharts,chartDemo} from './charts.js?v=6259b05e21604bbd';
+import {calendarDays,renderItemList} from './extended.js?v=6259b05e21604bbd';
+import {UI_VERSION} from './version.js?v=6259b05e21604bbd';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=6259b05e21604bbd';
+import {applyComponentVariants,componentVariants} from './variants.js?v=6259b05e21604bbd';
 export {renderButton,renderItemList,renderSideNav,icon,componentIds,componentParts,renderComponentSource,layoutContract};
 export {componentVariants,optionalContent};
-export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=74e8957c2df4664c';
+export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=6259b05e21604bbd';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -432,16 +432,26 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
    }
   }
  }
+ const sideNavOpenGroups=new WeakMap();
  function toggleSideNav(toggle){
   const nav=toggle.closest('[data-dds-sidenav]');
   if(!nav)return;
   const collapsed=nav.dataset.ddsCollapsed!=='true';
   const label=collapsed?'탐색 펼치기':'탐색 접기';
+  if(collapsed){
+   const groups=[...nav.querySelectorAll('.dds-side-nav-body .dds-side-nav-disclosure[open]')];
+   sideNavOpenGroups.set(nav,groups);
+   for(const group of groups)group.open=false;
+  }else{
+   for(const group of sideNavOpenGroups.get(nav)||[])if(nav.contains(group))group.open=true;
+   sideNavOpenGroups.delete(nav);
+  }
   nav.dataset.ddsCollapsed=String(collapsed);
   toggle.setAttribute('aria-expanded',String(!collapsed));
   toggle.setAttribute('aria-label',label);
   toggle.dataset.tooltip=label;
-  toggle.innerHTML=icon(collapsed?'PanelLeftOpen':'PanelLeftClose');
+  const buttonLabel=toggle.querySelector('.dds-button-label')||toggle;
+  buttonLabel.innerHTML=icon(collapsed?'PanelLeftOpen':'PanelLeftClose');
   updateSideNavLabels(nav);
   notify(toggle,'side-nav-collapse',collapsed);
  }

@@ -1,7 +1,7 @@
 /** Canonical core markup. No DOM access, listeners, storage, or document UI. */
-import {icon} from './icons.js?v=74e8957c2df4664c';
-import {renderButton} from './button.js?v=74e8957c2df4664c';
-import {collectionCount,statusBadge} from '../visibility.js?v=74e8957c2df4664c';
+import {icon} from './icons.js?v=6259b05e21604bbd';
+import {renderButton} from './button.js?v=6259b05e21604bbd';
+import {collectionCount,statusBadge} from '../visibility.js?v=6259b05e21604bbd';
 
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=(value,id)=>String(value||'dds-'+id).replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -40,11 +40,11 @@ function sideNavItem(item,part=''){
  const row=`${leading}<span class="dds-side-nav-label"${partAttr}>${label}</span>${trailing}`;
  if(item.children!==undefined){
   if(!Array.isArray(item.children)||!item.children.length)throw new TypeError('DDS Side Nav groups require child items.');
-  return `<li><details class="dds-side-nav-disclosure"${item.expanded?' open':''}><summary class="dds-side-nav-row" data-dds-sidenav-label>${row}${icon('ChevronDown','dds-side-nav-chevron')}</summary><ul class="dds-side-nav-list dds-side-nav-children">${item.children.map(child=>sideNavItem(child)).join('')}</ul></details></li>`;
+  return `<li><details class="dds-side-nav-disclosure"${item.expanded?' open':''}><summary class="dds-nav-control dds-side-nav-row" data-dds-sidenav-label>${row}${icon('ChevronDown','dds-side-nav-chevron')}</summary><ul class="dds-side-nav-list dds-side-nav-children">${item.children.map(child=>sideNavItem(child)).join('')}</ul></details></li>`;
  }
  const destination=item.href!==undefined
-  ? `<a class="dds-side-nav-row" href="${safeHref(item.href)}" data-dds-sidenav-label${current}>${row}</a>`
-  : `<button type="button" class="dds-side-nav-row" data-dds-sidenav-label data-dds-action="side-nav-item" data-dds-action-value="${escapeHTML(item.value??item.label)}"${current}>${row}</button>`;
+  ? `<a class="dds-nav-control dds-side-nav-row" href="${safeHref(item.href)}" data-dds-sidenav-label${current}>${row}</a>`
+  : `<button type="button" class="dds-nav-control dds-side-nav-row" data-dds-sidenav-label data-dds-action="side-nav-item" data-dds-action-value="${escapeHTML(item.value??item.label)}"${current}>${row}</button>`;
  const action=item.action&&String(item.action.label??'').trim()
   ? `<button class="icon-btn dds-side-nav-action" type="button" aria-label="${escapeHTML(item.action.label)}" data-tooltip="${escapeHTML(item.action.label)}" data-dds-action="side-nav-item-action" data-dds-action-value="${escapeHTML(item.action.value??item.value??item.label)}">${icon('Ellipsis')}</button>`
   : '';
@@ -56,14 +56,14 @@ export function renderSideNav(groups,{idPrefix='side-nav',label='사이드 내�
  if(!Array.isArray(groups)||groups.some(group=>!group||!Array.isArray(group.items))||!Array.isArray(footer))throw new TypeError('DDS Side Nav requires groups and items arrays.');
  const uid=safeId(idPrefix,'sidebar');
  const collapseLabel=collapsed?'탐색 펼치기':'탐색 접기';
- const toggle=collapsible?`<button class="icon-btn dds-side-nav-toggle" type="button" data-dds-sidenav-toggle aria-label="${collapseLabel}" data-tooltip="${collapseLabel}" aria-expanded="${!collapsed}" aria-controls="${uid}-items">${icon(collapsed?'PanelLeftOpen':'PanelLeftClose')}</button>`:'';
+ const toggle=collapsible?renderButton({variant:'outlined',color:'assistive',size:'sm',iconOnly:true,label:collapseLabel,before:collapsed?'PanelLeftOpen':'PanelLeftClose',attributes:{'data-dds-sidenav-toggle':'','aria-expanded':String(!collapsed),'aria-controls':uid+'-items'}}):'';
  const brand=`<span class="dds-side-nav-mark" aria-hidden="true">${icon(account?.icon||brandIcon)}</span><span class="dds-side-nav-label"><b data-dds-part="side-nav-title">${escapeHTML(account?.label||title)}</b>${account?.description?`<span class="dds-side-nav-account-description">${escapeHTML(account.description)}</span>`:''}</span>`;
  const brandContent=account?.items?.length
-  ? `<details class="dds-side-nav-disclosure dds-side-nav-account"><summary class="dds-side-nav-row" data-dds-sidenav-label>${brand}${icon('ChevronsUpDown','dds-side-nav-chevron')}</summary><ul class="dds-side-nav-list dds-side-nav-accounts">${account.items.map(item=>sideNavItem(item)).join('')}</ul></details>`
-  : `<div class="dds-side-nav-brand-static">${brand}</div>`;
+  ? `<details class="dds-side-nav-disclosure dds-side-nav-account"><summary class="dds-nav-control dds-side-nav-row" data-dds-sidenav-label>${brand}${icon('ChevronsUpDown','dds-side-nav-chevron')}</summary><ul class="dds-side-nav-list dds-side-nav-accounts">${account.items.map(item=>sideNavItem(item)).join('')}</ul></details>`
+  : `<div class="dds-nav-link dds-side-nav-brand-static">${brand}</div>`;
  const header=`<div class="dds-side-nav-header"><div class="dds-side-nav-brand"${title||account?.label?'':' hidden'}>${brandContent}</div>${toggle}</div>`;
  let position=0;
- const sections=groups.map(({label,items})=>`<div class="dds-side-nav-group">${label?`<p class="dds-side-nav-group-label">${escapeHTML(label)}</p>`:''}<ul class="dds-side-nav-list"${label?` aria-label="${escapeHTML(label)}"`:''}>${items.map(item=>sideNavItem(item,['side-nav-first','side-nav-second','side-nav-third'][position++]||'')).join('')}</ul></div>`).join('');
+ const sections=groups.map(({label,items})=>`<div class="dds-side-nav-group">${label?`<p class="dds-side-nav-group-label dds-meta-date">${escapeHTML(label)}</p>`:''}<ul class="dds-side-nav-list"${label?` aria-label="${escapeHTML(label)}"`:''}>${items.map(item=>sideNavItem(item,['side-nav-first','side-nav-second','side-nav-third'][position++]||'')).join('')}</ul></div>`).join('');
  return `<nav class="dds-side-nav" aria-label="${escapeHTML(label)}" data-dds-sidenav data-dds-collapsed="${collapsed}">${header}<div class="dds-side-nav-body dds-scrollbar" id="${uid}-items" data-dds-sidenav-content>${sections}</div><ul class="dds-side-nav-list dds-side-nav-footer"${footer.length?'':' hidden'}>${footer.map(item=>sideNavItem(item)).join('')}</ul></nav>`;
 }
 
