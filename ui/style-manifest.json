@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "551f617b14c1d30e95164edd61a71f9192059a4c0b7d62b7b26e6ebb66d02809",
+  "sha256": "cc3425ba86bd5a1c52346420a90b08fbd9696840cd2157d5c2c2c88b0b523cae",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -163,6 +163,29 @@
     "dds-section-header-content",
     "dds-section-heading",
     "dds-segmented",
+    "dds-side-nav",
+    "dds-side-nav-account",
+    "dds-side-nav-account-description",
+    "dds-side-nav-accounts",
+    "dds-side-nav-action",
+    "dds-side-nav-badge",
+    "dds-side-nav-body",
+    "dds-side-nav-brand",
+    "dds-side-nav-chevron",
+    "dds-side-nav-children",
+    "dds-side-nav-disclosure",
+    "dds-side-nav-entry",
+    "dds-side-nav-footer",
+    "dds-side-nav-group",
+    "dds-side-nav-group-label",
+    "dds-side-nav-header",
+    "dds-side-nav-label",
+    "dds-side-nav-leading",
+    "dds-side-nav-list",
+    "dds-side-nav-mark",
+    "dds-side-nav-row",
+    "dds-side-nav-toggle",
+    "dds-side-nav-trailing",
     "dds-size-content",
     "dds-slider",
     "dds-snackbar",
@@ -215,11 +238,13 @@
     "lucide-Bold",
     "lucide-BookOpen",
     "lucide-Bookmark",
+    "lucide-BriefcaseBusiness",
     "lucide-ChartColumn",
     "lucide-Check",
     "lucide-ChevronDown",
     "lucide-ChevronLeft",
     "lucide-ChevronRight",
+    "lucide-ChevronsUpDown",
     "lucide-CircleAlert",
     "lucide-Clock",
     "lucide-Clock3",
@@ -229,6 +254,8 @@
     "lucide-Eye",
     "lucide-FilePlus",
     "lucide-FileText",
+    "lucide-Files",
+    "lucide-Folder",
     "lucide-GripVertical",
     "lucide-House",
     "lucide-Image",
@@ -236,17 +263,21 @@
     "lucide-Italic",
     "lucide-Languages",
     "lucide-Layers",
+    "lucide-LayoutDashboard",
     "lucide-LayoutGrid",
     "lucide-LockKeyhole",
     "lucide-Menu",
     "lucide-Palette",
+    "lucide-PanelLeftClose",
     "lucide-PencilLine",
     "lucide-Play",
     "lucide-Plus",
     "lucide-Search",
+    "lucide-Settings",
     "lucide-SlidersHorizontal",
     "lucide-Sparkles",
     "lucide-Underline",
+    "lucide-UserRound",
     "lucide-Users",
     "lucide-X",
     "media-demo",
@@ -260,7 +291,6 @@
     "row-between",
     "sample-document",
     "sample-dropdown",
-    "sample-sidebar",
     "search-field",
     "segmented",
     "selected",
@@ -371,8 +401,8 @@
     },
     {
       "file": "extensions.css",
-      "sha256": "5de1d0bf4b3c2010d1a5d40b414dc14847f8d1dc4d339d80378a16cfff929232",
-      "retainedRules": 196,
+      "sha256": "4b3fb209af950745e2a7900c54c0fb585c55f60b37cab0f51c9536f648bb95e1",
+      "retainedRules": 195,
       "excludedSelectors": 36
     },
     {
@@ -389,8 +419,8 @@
     },
     {
       "file": "interactions.css",
-      "sha256": "76f73600edd38b01cb3718fe77ffbdfd5aa0b31abb852ee44dfb64a856dd7223",
-      "retainedRules": 39,
+      "sha256": "dedf6d69ba6191c542c3f9d85caea2cfb4ca585c85624a2b5d57d89902a5da36",
+      "retainedRules": 30,
       "excludedSelectors": 3
     },
     {
@@ -407,9 +437,9 @@
     },
     {
       "file": "content-primitives.css",
-      "sha256": "a7db57160402c29e92127c8959be66851f21c17ca198fe3999f7dc210221f426",
-      "retainedRules": 73,
-      "excludedSelectors": 0
+      "sha256": "4068514d12bddbe7ae1813fd41d6cea8c249dec0b09cb3c8c628691e00f0dc59",
+      "retainedRules": 117,
+      "excludedSelectors": 1
     },
     {
       "file": "button-system.css",
@@ -3470,6 +3500,10 @@
     {
       "source": "control-sizing.css",
       "selector": ".content-fit-examples .alert"
+    },
+    {
+      "source": "content-primitives.css",
+      "selector": ".dds-side-nav-brand-static"
     }
   ],
   "notes": [

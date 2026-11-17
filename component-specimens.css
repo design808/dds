@@ -115,8 +115,8 @@
 :where(.playground-inner,.preview-inner) > .skeleton-card,
 :where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .skeleton-card{max-width:260px}
 
-:where(.playground-inner,.preview-inner) > .sample-sidebar,
-:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .sample-sidebar{max-width:260px}
+:where(.playground-inner,.preview-inner) > .dds-side-nav,
+:where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .dds-side-nav{max-inline-size:260px;block-size:360px}
 
 :where(.playground-inner,.preview-inner) > .sample-chart,
 :where(.playground-inner,.preview-inner) > .dds-ui[data-dds-component] > .sample-chart{max-width:420px}

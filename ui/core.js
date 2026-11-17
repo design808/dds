@@ -1,7 +1,7 @@
 /** Canonical core markup. No DOM access, listeners, storage, or document UI. */
-import {icon} from './icons.js?v=80f7f2182aeb104b';
-import {renderButton} from './button.js?v=80f7f2182aeb104b';
-import {collectionCount,statusBadge} from '../visibility.js?v=80f7f2182aeb104b';
+import {icon} from './icons.js?v=74e8957c2df4664c';
+import {renderButton} from './button.js?v=74e8957c2df4664c';
+import {collectionCount,statusBadge} from '../visibility.js?v=74e8957c2df4664c';
 
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=(value,id)=>String(value||'dds-'+id).replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -23,8 +23,52 @@ export function renderDocumentCard(title='프로덕트 디자이너 자기소개
  return `<article class="dds-document-card dds-content-card"><div class="dds-card-header">${statusBadge(status==='저장 완료'?'complete':'draft',status,icon)}<button class="icon-btn dds-card-tools" type="button" data-dialog aria-label="${escapeHTML(title)} 미리보기">${icon('Eye')}</button></div><h3 class="dds-card-title"><a class="dds-card-link" href="${safeHref(href)}">${escapeHTML(title)}</a></h3><p class="dds-meta-primary">${escapeHTML(primary)}</p><p class="dds-meta-secondary">${escapeHTML(secondary)}</p><time class="dds-meta-date" datetime="${escapeHTML(datetime)}">${escapeHTML(dateLabel)}</time></article>`;
 }
 
+const sideNavExample=[
+ {items:[{label:'대시보드',icon:'LayoutDashboard',href:'#/blocks?block=dashboard',current:true},{label:'알림',icon:'Bell',href:'#/blocks?block=notifications',count:3}]},
+ {label:'작업 공간',items:[{label:'프로젝트',icon:'Layers',href:'#/blocks?block=kanban',badge:'새로 추가',action:{label:'프로젝트 더 보기',value:'projects'}},{label:'내 문서',icon:'Folder',expanded:true,children:[{label:'자기소개서',icon:'FileText',href:'#/patterns/document-list'},{label:'이력서',icon:'Files',href:'#/patterns/resume-builder'}]}]},
+];
+
+function sideNavItem(item,part=''){
+ if(!item||typeof item.label!=='string'||!item.label.trim())throw new TypeError('DDS Side Nav items require a name.');
+ const label=escapeHTML(item.label);
+ const current=item.current?' aria-current="page"':'';
+ const partAttr=part?` data-dds-part="${part}"`:'';
+ const leading=`<span class="dds-side-nav-leading" aria-hidden="true">${icon(item.icon||'FileText')}</span>`;
+ const count=Number.isInteger(item.count)&&item.count>=0?collectionCount(item.count,{label:item.label}):'';
+ const badge=item.badge?`<span class="badge dds-side-nav-badge">${escapeHTML(item.badge)}</span>`:'';
+ const trailing=count||badge?`<span class="dds-side-nav-trailing">${count}${badge}</span>`:'';
+ const row=`${leading}<span class="dds-side-nav-label"${partAttr}>${label}</span>${trailing}`;
+ if(item.children!==undefined){
+  if(!Array.isArray(item.children)||!item.children.length)throw new TypeError('DDS Side Nav groups require child items.');
+  return `<li><details class="dds-side-nav-disclosure"${item.expanded?' open':''}><summary class="dds-side-nav-row" data-dds-sidenav-label>${row}${icon('ChevronDown','dds-side-nav-chevron')}</summary><ul class="dds-side-nav-list dds-side-nav-children">${item.children.map(child=>sideNavItem(child)).join('')}</ul></details></li>`;
+ }
+ const destination=item.href!==undefined
+  ? `<a class="dds-side-nav-row" href="${safeHref(item.href)}" data-dds-sidenav-label${current}>${row}</a>`
+  : `<button type="button" class="dds-side-nav-row" data-dds-sidenav-label data-dds-action="side-nav-item" data-dds-action-value="${escapeHTML(item.value??item.label)}"${current}>${row}</button>`;
+ const action=item.action&&String(item.action.label??'').trim()
+  ? `<button class="icon-btn dds-side-nav-action" type="button" aria-label="${escapeHTML(item.action.label)}" data-tooltip="${escapeHTML(item.action.label)}" data-dds-action="side-nav-item-action" data-dds-action-value="${escapeHTML(item.action.value??item.value??item.label)}">${icon('Ellipsis')}</button>`
+  : '';
+ return `<li class="dds-side-nav-entry">${destination}${action}</li>`;
+}
+
+/** Navigation destinations and actions are supplied by the service. */
+export function renderSideNav(groups,{idPrefix='side-nav',label='사이드 내비게이션',title,brandIcon='BriefcaseBusiness',account,footer=[],collapsible=false,collapsed=false}={}){
+ if(!Array.isArray(groups)||groups.some(group=>!group||!Array.isArray(group.items))||!Array.isArray(footer))throw new TypeError('DDS Side Nav requires groups and items arrays.');
+ const uid=safeId(idPrefix,'sidebar');
+ const collapseLabel=collapsed?'탐색 펼치기':'탐색 접기';
+ const toggle=collapsible?`<button class="icon-btn dds-side-nav-toggle" type="button" data-dds-sidenav-toggle aria-label="${collapseLabel}" data-tooltip="${collapseLabel}" aria-expanded="${!collapsed}" aria-controls="${uid}-items">${icon(collapsed?'PanelLeftOpen':'PanelLeftClose')}</button>`:'';
+ const brand=`<span class="dds-side-nav-mark" aria-hidden="true">${icon(account?.icon||brandIcon)}</span><span class="dds-side-nav-label"><b data-dds-part="side-nav-title">${escapeHTML(account?.label||title)}</b>${account?.description?`<span class="dds-side-nav-account-description">${escapeHTML(account.description)}</span>`:''}</span>`;
+ const brandContent=account?.items?.length
+  ? `<details class="dds-side-nav-disclosure dds-side-nav-account"><summary class="dds-side-nav-row" data-dds-sidenav-label>${brand}${icon('ChevronsUpDown','dds-side-nav-chevron')}</summary><ul class="dds-side-nav-list dds-side-nav-accounts">${account.items.map(item=>sideNavItem(item)).join('')}</ul></details>`
+  : `<div class="dds-side-nav-brand-static">${brand}</div>`;
+ const header=`<div class="dds-side-nav-header"><div class="dds-side-nav-brand"${title||account?.label?'':' hidden'}>${brandContent}</div>${toggle}</div>`;
+ let position=0;
+ const sections=groups.map(({label,items})=>`<div class="dds-side-nav-group">${label?`<p class="dds-side-nav-group-label">${escapeHTML(label)}</p>`:''}<ul class="dds-side-nav-list"${label?` aria-label="${escapeHTML(label)}"`:''}>${items.map(item=>sideNavItem(item,['side-nav-first','side-nav-second','side-nav-third'][position++]||'')).join('')}</ul></div>`).join('');
+ return `<nav class="dds-side-nav" aria-label="${escapeHTML(label)}" data-dds-sidenav data-dds-collapsed="${collapsed}">${header}<div class="dds-side-nav-body dds-scrollbar" id="${uid}-items" data-dds-sidenav-content>${sections}</div><ul class="dds-side-nav-list dds-side-nav-footer"${footer.length?'':' hidden'}>${footer.map(item=>sideNavItem(item)).join('')}</ul></nav>`;
+}
+
 /** Return null for IDs owned by another canonical module. */
-export function renderCore(id,instanceId,mini=false){
+export function renderCore(id,instanceId,mini=false,data){
  const uid=safeId(instanceId,id);
  switch(id){
 case 'button':return renderButton({label:'작성 시작'});
@@ -44,7 +88,7 @@ case 'tabs':return `<div class="tab-demo"><div class="segmented" role="tablist" 
 case 'breadcrumb':return `<nav class="breadcrumbs" aria-label="예제 경로"><a href="#/">홈</a><span>/</span><a href="#/patterns/document-list">내 문서</a><span>/</span><span aria-current="page">자기소개서</span></nav>`;
 case 'pagination':return `<nav class="pagination" aria-label="예제 페이지">${[1,2,3,4].map((n,i)=>`<button type="button" class="btn sm ${i?'':'primary'}" ${i?'':'aria-current="page"'} data-page>${n}</button>`).join('')}<span class="helper" data-page-state>1 / 4 페이지</span></nav>`;
 case 'stepper':return `<ol class="stepper">${['지원정보','문항 작성','검토·저장'].map((s,i)=>`<li class="${i===0?'done':i===1?'current':''}" ${i===1?'aria-current="step"':''}><span>${i===0?icon('check'):i+1}</span><b>${s}</b></li>`).join('')}</ol>`;
-case 'sidebar':return `<nav class="sample-sidebar" aria-label="예제 마이페이지"><b>내 작업 공간</b><a href="#/patterns/document-list" class="dds-nav-link dds-nav-control selected" aria-current="page"><span data-dds-part="item-label">내 자기소개서</span> ${collectionCount(3,{label:'자기소개서'})}</a><a class="dds-nav-link dds-nav-control" href="#/patterns/resume-builder">내 이력서</a><a class="dds-nav-link dds-nav-control" href="#/patterns/consulting">컨설팅 신청내역</a></nav>`;
+case 'sidebar':return data?renderSideNav(data.groups,{...data,idPrefix:uid}):renderSideNav(sideNavExample,{idPrefix:uid,label:'팀 워크스페이스 탐색',collapsible:true,account:{label:'팀 워크스페이스',description:'프로덕트 팀',items:[{label:'팀 워크스페이스',icon:'BriefcaseBusiness',current:true,href:'#/blocks?block=sidebar'},{label:'개인 작업 공간',icon:'UserRound',href:'/prototypes/mypage.html'}]},footer:[{label:'설정',icon:'Settings',href:'#/blocks?block=settings'}]});
 case 'dropdown':return `<details class="sample-dropdown"><summary class="btn"><span data-dds-part="label">문서 작업</span> ${icon('chevron')}</summary><div>${btn('미리보기','ghost','data-dialog')}${btn('코드 복사','ghost','data-toast="실제 문서 복사는 원본 서비스에서 진행합니다."')}</div></details>`;
  case 'dialog':return `${btn('<span data-dds-part="trigger-label">미리보기 열기</span> '+icon('arrow'),'',`data-dds-dialog="${uid}-dialog"`)}<dialog class="dds-dialog" id="${uid}-dialog" aria-labelledby="${uid}-dialog-title">
   <div class="dialog-heading"><h2 id="${uid}-dialog-title">자기소개서 미리보기</h2><button class="icon-btn" type="button" data-dds-close aria-label="미리보기 닫기">${icon('close')}</button></div>
@@ -128,7 +172,7 @@ export const coreParts=Object.freeze({
  breadcrumb:{home:text('a:nth-of-type(1)'),parent:text('a:nth-of-type(2)'),current:text('[aria-current="page"]'),homeLink:attrs('a:nth-of-type(1)','href'),parentLink:attrs('a:nth-of-type(2)','href'),group:attrs('nav','aria-label')},
  pagination:{pages:slot('.pagination'),state:text('[data-page-state]'),group:attrs('nav','aria-label')},
  stepper:{steps:slot('.stepper'),firstLabel:text('li:nth-child(1) b'),secondLabel:text('li:nth-child(2) b'),thirdLabel:text('li:nth-child(3) b')},
- sidebar:{title:text('.sample-sidebar > b'),firstLabel:text('[data-dds-part="item-label"]'),secondLabel:text('a:nth-of-type(2)'),thirdLabel:text('a:nth-of-type(3)'),firstLink:attrs('a:nth-of-type(1)','href','aria-current'),secondLink:attrs('a:nth-of-type(2)','href','aria-current'),thirdLink:attrs('a:nth-of-type(3)','href','aria-current'),count:text('.dds-collection-count'),countControl:attrs('.dds-collection-count','aria-label')},
+ sidebar:{title:text('[data-dds-part="side-nav-title"]'),firstLabel:text('[data-dds-part="side-nav-first"]'),secondLabel:text('[data-dds-part="side-nav-second"]'),thirdLabel:text('[data-dds-part="side-nav-third"]'),firstLink:attrs('a:has(> [data-dds-part="side-nav-first"])','href','aria-current'),secondLink:attrs('a:has(> [data-dds-part="side-nav-second"])','href','aria-current'),thirdLink:attrs('a:has(> [data-dds-part="side-nav-third"])','href','aria-current'),count:text('.dds-collection-count'),countControl:attrs('.dds-collection-count','aria-label'),navigation:attrs('.dds-side-nav','aria-label'),brand:slot('.dds-side-nav-brand'),items:slot('.dds-side-nav-body'),footer:slot('.dds-side-nav-footer')},
  dropdown:{label:text('[data-dds-part="label"]'),items:slot('.sample-dropdown > div'),firstLabel:text('.sample-dropdown > div > button:nth-child(1)'),secondLabel:text('.sample-dropdown > div > button:nth-child(2)')},
  dialog:{trigger:text('[data-dds-part="trigger-label"]'),title:text('.dialog-heading > h2'),body:text('.dds-dialog-body > p'),content:slot('.sample-document'),documentTitle:text('.sample-document > h3'),documentBody:text('.sample-document > p'),actions:slot('.dds-dialog-footer'),confirm:text('[data-dds-part="dialog-confirm"]'),close:attrs('.dialog-heading > button','aria-label'),control:attrs('[data-dds-dialog]','aria-label','disabled','hidden')},
  alert:{title:text('[data-dds-alert-title]'),description:text('[data-dds-alert-description]'),content:slot('.alert > .dds-feedback-content'),actions:slot('[data-dds-feedback-actions]'),actionLabel:text('[data-dds-action="alert-action"] .dds-button-label > span'),action:attrs('[data-dds-action="alert-action"]','disabled','aria-label'),close:attrs('[data-dds-dismiss]','aria-label','disabled'),control:attrs('.alert','role','aria-live')},

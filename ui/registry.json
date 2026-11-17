@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "DDSComponentSourceRegistry",
-  "version": "0.6.20",
+  "version": "0.6.21",
   "scopeClass": "dds-ui",
   "componentCount": 115,
   "layout": {
@@ -43,31 +43,31 @@
   },
   "runtime": "ui/index.js",
   "sourceHashes": {
-    "ui/version.js": "faf4f64b2fde551a29cd8154603da312f98a646807802eb564b2c0432ead3d98",
-    "ui/core.js": "87094d8158748c39786d3cffc63034049459cb6faad57771ed460bfd2027c015",
-    "ui/button.js": "5b037f525171bc5e69ffc85d34b2258c87e5d47d18adf9dcc8666221f09d7b5c",
-    "ui/extended.js": "9d05468ecb61dd4f75c51629de0d631b4264141e48ec03ba9c2ad595a24e35a7",
-    "ui/charts.js": "9449ad208d645e4bf51290f6114f3eeaefa79b6dcd21892a572eecddfe51c82f",
-    "ui/source.js": "47bc02edc058094188ccea56e0cfe88de9e48b9396ffa51b17733d330f2c030e",
-    "ui/index.js": "ad961307c3a519b8af89aad84f22ddb9ef95f279040defde3621adf2a56fe066",
+    "ui/version.js": "8ec45e3b8162062c52a690289876b475e0bd5dcb2cd478f62de695188e291149",
+    "ui/core.js": "f1d2a0639c8ffb4a105ff0ce36be84553c3d603e71b3d2c7a4cdd7aff1566cde",
+    "ui/button.js": "21f79d4846b1d278e6ebd6fd9e1d65ba9b61c14498055e89b1d016d199bae2e3",
+    "ui/extended.js": "80ec7cbedcba0d7c60880cf974e8ce4fdfb55b123a34329beec5e6e801830e0c",
+    "ui/charts.js": "a8290a7b065446fcb3cda3de9a519c980e6786841e5be9cfaf34fda1c64a11aa",
+    "ui/source.js": "d45c1902c028019d95c0cf10bf8d7e718d3aa8d6d8fb745b9a269e86f3253990",
+    "ui/index.js": "a55ddd0992fd479d4f5d5644c1a430d3c91925b61801e4226ffca7be44523c9d",
     "ui/content.js": "a0ffc5f68a651a76a1e5aaaea3630b29e790484115097b88db59be0eeb404eb2",
-    "ui/variants.js": "c4dc9fdc64b7040f0fd01ce1781252ee99d23033dd60b0a5a31977c48a983927",
-    "ui/profile.js": "b6323f7bee6fd3d9d03ed50857c9993d38c685961e78a3eaa5de71373a32af5b",
+    "ui/variants.js": "ddd79c1e5cce17612b9a85dbf4129d339c7d1ee424f4f199b935263e44573624",
+    "ui/profile.js": "dc18af2d57cd9f7552212cbe647509ed3e1f7345b7558486e29643261e2fcf19",
     "ui/profile-palette.js": "23e56c78a0552e2add9a5d2d03cdbdfe002bcfa04c25a161fca2adfea54ba3ba",
-    "ui/icons.js": "dd7c326499cb95fe5df6e77e488e8353c44ee7b046c4d7ed3ae83b393f56b7f1",
+    "ui/icons.js": "5c7924f084bc05208452d5e35c66a35c5617b8be712fa861c484c068e6cb0478",
     "ui/lucide-data.js": "b0b029340fa12d39d18ef1e227224a1bceec67c22191b1e71f359c9107a9db98",
-    "ui/controls.js": "0414c2b98d9ee0c6c8999b931945e9ab3928649763445b00705c371ddf79274a",
+    "ui/controls.js": "5a092f3f30f214fff8fc3f6ca9d4391af8e1e0b4440de725032fe20b345f50bb",
     "ui/tooltips.js": "8d2aab972d2c39df86a6327a406e5d3817d3c0de738d9ab61c392803628abc3d",
     "ui/font-loading.js": "ab986571698ff44cf7a4253d5007b9e93c46b2371bf301e0a5aa3b3e45c2282b",
-    "ui/dds.css": "551f617b14c1d30e95164edd61a71f9192059a4c0b7d62b7b26e6ebb66d02809",
+    "ui/dds.css": "cc3425ba86bd5a1c52346420a90b08fbd9696840cd2157d5c2c2c88b0b523cae",
     "ui/tokens-scoped.css": "354128a6014e10799b7dc757ee752629bfdfd846bd81d1e3d4d24fa75c06940f",
     "tokens.css": "3209e5b74aedb141f017471c9a30e7c918452a32ca49b085d6de83d6bc244b99",
     "component-layout.css": "00293f3b2c709b58a8f19148dea68412c5e1642dd23b75cf52e0ab12bf39e3c4",
     "chart-layout.js": "8762af03413b6ff551514938c51e7f12a839f3bd4997dee6fc3ca0af85afecd9",
     "chart-catalog.js": "58e28c25e64064614f839a15cdf48008bf3c6ca5de8967ace8e37732fa43dd05",
     "visibility.js": "47215293093c225b345ea6f2395d1a75ec59df7a15c509421ebbd164a1788142",
-    "design-preferences.js": "699b76dd661e8307105ee5f86118c7ffff7ba78bdbcfcd9738ed306d7d435f17",
-    "design-profile.js": "7c099dd995bf3ff552bddc8ccb5229cbce15f64af49e5b21eea095e194b7ccf5",
+    "design-preferences.js": "9657fa842aa39c5ef4ddd1bdb40c2445c0e630f0cb35749718f9904440c1d083",
+    "design-profile.js": "1fa963fc0594b1bc48d4eec82fbb638dd7c1b5385066a2195e3447a500058c25",
     "package.json": "7da745c07c972db80d4d5d348a51b45d90eb267c871fba8e0164b182ef45c11f"
   },
   "compositions": {
@@ -1270,31 +1270,31 @@
     },
     "sidebar": {
       "id": "sidebar",
-      "name": "Sidebar",
+      "name": "Side Nav",
       "group": "Navigation",
       "template": "ui/templates/sidebar.html",
       "idPrefix": "dds-instance",
-      "sha256": "1f9cbe7c68f98dac07fac78afaa5412806cc7cc9fb98edf6b7c33b7387b46fef",
+      "sha256": "f379a68aace78e86b2c2f82fd5ab3b438a07aca3cf1205eda930e77872e84b61",
       "renderer": "ui/core.js",
       "parts": {
         "title": {
-          "selector": ".sample-sidebar > b",
+          "selector": "[data-dds-part=\"side-nav-title\"]",
           "kind": "text"
         },
         "firstLabel": {
-          "selector": "[data-dds-part=\"item-label\"]",
+          "selector": "[data-dds-part=\"side-nav-first\"]",
           "kind": "text"
         },
         "secondLabel": {
-          "selector": "a:nth-of-type(2)",
+          "selector": "[data-dds-part=\"side-nav-second\"]",
           "kind": "text"
         },
         "thirdLabel": {
-          "selector": "a:nth-of-type(3)",
+          "selector": "[data-dds-part=\"side-nav-third\"]",
           "kind": "text"
         },
         "firstLink": {
-          "selector": "a:nth-of-type(1)",
+          "selector": "a:has(> [data-dds-part=\"side-nav-first\"])",
           "kind": "attributes",
           "attributes": [
             "href",
@@ -1302,7 +1302,7 @@
           ]
         },
         "secondLink": {
-          "selector": "a:nth-of-type(2)",
+          "selector": "a:has(> [data-dds-part=\"side-nav-second\"])",
           "kind": "attributes",
           "attributes": [
             "href",
@@ -1310,7 +1310,7 @@
           ]
         },
         "thirdLink": {
-          "selector": "a:nth-of-type(3)",
+          "selector": "a:has(> [data-dds-part=\"side-nav-third\"])",
           "kind": "attributes",
           "attributes": [
             "href",
@@ -1327,6 +1327,25 @@
           "attributes": [
             "aria-label"
           ]
+        },
+        "navigation": {
+          "selector": ".dds-side-nav",
+          "kind": "attributes",
+          "attributes": [
+            "aria-label"
+          ]
+        },
+        "brand": {
+          "selector": ".dds-side-nav-brand",
+          "kind": "slot"
+        },
+        "items": {
+          "selector": ".dds-side-nav-body",
+          "kind": "slot"
+        },
+        "footer": {
+          "selector": ".dds-side-nav-footer",
+          "kind": "slot"
         }
       },
       "variants": {},
@@ -6110,7 +6129,7 @@
   },
   "distribution": {
     "kind": "github-pages",
-    "assetRevision": "80f7f2182aeb104b",
-    "canonicalBundle": "../releases/0.6.20/bundle.json"
+    "assetRevision": "74e8957c2df4664c",
+    "canonicalBundle": "../releases/0.6.21/bundle.json"
   }
 }

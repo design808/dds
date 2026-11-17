@@ -1,16 +1,17 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=80f7f2182aeb104b';
-import {renderButton} from './button.js?v=80f7f2182aeb104b';
-import {icon} from './icons.js?v=80f7f2182aeb104b';
-import {mountControls} from './controls.js?v=80f7f2182aeb104b';
-import {mountTooltips} from './tooltips.js?v=80f7f2182aeb104b';
-import {bindCharts,chartDemo} from './charts.js?v=80f7f2182aeb104b';
-import {calendarDays,renderItemList} from './extended.js?v=80f7f2182aeb104b';
-import {UI_VERSION} from './version.js?v=80f7f2182aeb104b';
-import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=80f7f2182aeb104b';
-import {applyComponentVariants,componentVariants} from './variants.js?v=80f7f2182aeb104b';
-export {renderButton,renderItemList,icon,componentIds,componentParts,renderComponentSource,layoutContract};
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=74e8957c2df4664c';
+import {renderButton} from './button.js?v=74e8957c2df4664c';
+import {renderSideNav} from './core.js?v=74e8957c2df4664c';
+import {icon} from './icons.js?v=74e8957c2df4664c';
+import {mountControls} from './controls.js?v=74e8957c2df4664c';
+import {mountTooltips} from './tooltips.js?v=74e8957c2df4664c';
+import {bindCharts,chartDemo} from './charts.js?v=74e8957c2df4664c';
+import {calendarDays,renderItemList} from './extended.js?v=74e8957c2df4664c';
+import {UI_VERSION} from './version.js?v=74e8957c2df4664c';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=74e8957c2df4664c';
+import {applyComponentVariants,componentVariants} from './variants.js?v=74e8957c2df4664c';
+export {renderButton,renderItemList,renderSideNav,icon,componentIds,componentParts,renderComponentSource,layoutContract};
 export {componentVariants,optionalContent};
-export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=80f7f2182aeb104b';
+export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=74e8957c2df4664c';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -56,6 +57,15 @@ export function createComponent(id,options={},doc=globalThis.document){
  if(options.tabs)configureTabs(wrapper,options.tabs,uid);
  configureServiceItems(wrapper,id,options,uid);
  finalizeServiceContent(wrapper,id,options,parts);
+ if(id==='sidebar'){
+  for(const [part,selector] of [['brand','.dds-side-nav-brand'],['footer','.dds-side-nav-footer']]){
+   if(Object.hasOwn(options.slots||{},part)){
+    const region=wrapper.querySelector(selector);
+    region.hidden=!region.hasChildNodes();
+   }
+  }
+  if(options.text?.title)wrapper.querySelector('.dds-side-nav-brand').hidden=false;
+ }
  // Apply explicit presentation axes to the actual supplied content/items. The
  // optional-content policy remains authoritative for omitted specimen copy.
  applyComponentVariants(wrapper,id,variants);
@@ -347,6 +357,9 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   panel.hidden=mobile&&!expanded;panel.inert=panel.hidden;header.dataset.ddsMobile=String(mobile);
   positionNavDropdowns(header);
  }
+ function dismissSideNavAccounts(target){
+  for(const details of all('.dds-side-nav-account[open]'))if(!details.contains(target))details.open=false;
+ }
  function resetOverlays(){
   if(resettingOverlays)return;
   resettingOverlays=true;
@@ -361,6 +374,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
     restore(record);
    }
    for(const details of all('.dds-nav-details[open],details.sample-dropdown[open]'))details.open=false;
+   dismissSideNavAccounts(null);
    for(const [header,state] of navs){
     if(!owns(header))continue;
     clearNavHover(state);
@@ -406,6 +420,31 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   const header=entry.target.querySelector('[data-dds-topnav]');if(header)setNav(header,undefined,false,entry.contentRect.width);
  }});
  function syncCounter(input){const output=input.closest('.field,.editor-demo')?.querySelector('[data-count]'),text=input.value.length+(input.maxLength>0?' / '+input.maxLength:'');if(output&&output.textContent!==text)output.textContent=text;}
+ function updateSideNavLabels(nav){
+  const collapsed=nav.dataset.ddsCollapsed==='true';
+  for(const row of nav.querySelectorAll('[data-dds-sidenav-label]')){
+   if(collapsed&&!row.hasAttribute('data-tooltip')){
+    row.dataset.tooltip=row.querySelector('.dds-side-nav-label')?.textContent.trim()||'';
+    row.setAttribute('data-dds-sidenav-tooltip','');
+   }else if(!collapsed&&row.hasAttribute('data-dds-sidenav-tooltip')){
+    row.removeAttribute('data-tooltip');
+    row.removeAttribute('data-dds-sidenav-tooltip');
+   }
+  }
+ }
+ function toggleSideNav(toggle){
+  const nav=toggle.closest('[data-dds-sidenav]');
+  if(!nav)return;
+  const collapsed=nav.dataset.ddsCollapsed!=='true';
+  const label=collapsed?'탐색 펼치기':'탐색 접기';
+  nav.dataset.ddsCollapsed=String(collapsed);
+  toggle.setAttribute('aria-expanded',String(!collapsed));
+  toggle.setAttribute('aria-label',label);
+  toggle.dataset.tooltip=label;
+  toggle.innerHTML=icon(collapsed?'PanelLeftOpen':'PanelLeftClose');
+  updateSideNavLabels(nav);
+  notify(toggle,'side-nav-collapse',collapsed);
+ }
  function scan(){
   if(disposed)return;
   for(const [header,state]of navs)if(!owns(header)){cleanNav(header,state);resize.unobserve(state.wrapper);navs.delete(header);}
@@ -417,6 +456,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
    if(!carousels.has(carousel)){carousels.set(carousel,{});resize.observe(carousel);}
    pageCarousel(carousel);
   }
+  for(const nav of all('[data-dds-sidenav]'))if(nav.dataset.ddsCollapsed==='true')updateSideNavLabels(nav);
   for(const input of all('[data-dds-counter]'))syncCounter(input);
   for(const trigger of all('.dds-menubar > .dds-menu-unit > [data-dds-menu]'))trigger.setAttribute('role','menuitem');
   for(const record of [...floating.values()])if(!owns(record.trigger))restore(record);
@@ -460,6 +500,9 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
    const mouseClick=event.pointerType==='mouse'||(!event.pointerType&&event.detail>0&&!event.sourceCapabilities?.firesTouchEvents&&view.matchMedia('(any-hover: hover)').matches);
    if(mouseClick){event.preventDefault();return;}
   }
+  if(target.hasAttribute('data-dds-sidenav-toggle'))toggleSideNav(target);
+  const sideNavAccount=target.closest('.dds-side-nav-account[open]');
+  const sideNavAccountChoice=sideNavAccount&&target.matches('a[href],button[data-dds-action]')&&target.closest('.dds-side-nav-accounts');
   if(target.hasAttribute('data-dds-tab'))setTab(target);
   if(target.hasAttribute('data-dds-toggle')){const on=target.getAttribute('aria-pressed')!=='true';target.setAttribute('aria-pressed',String(on));target.classList.toggle('selected',on);notify(target,'toggle',on);}
   if(target.hasAttribute('data-dds-password')){const input=target.parentElement.querySelector('input'),show=input.type==='password';input.type=show?'text':'password';const label=show?'비밀번호 숨기기':'비밀번호 표시';target.setAttribute('aria-label',label);target.setAttribute('data-tooltip',label);target.setAttribute('aria-pressed',String(show));target.innerHTML=icon(show?'EyeOff':'Eye');}
@@ -502,6 +545,11 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
     if(carousels.has(carousel)&&target.parentElement===carousel.querySelector(':scope > .dds-carousel-controls'))pageCarousel(carousel,Number(ddsActionValue));
    }
    notify(target,ddsAction,ddsActionValue);const panel=target.closest('.dds-menu');if(panel)restore(floating.get(panel),true);
+  }
+  if(sideNavAccountChoice){
+   const restoreFocus=sideNavAccountChoice.contains(doc.activeElement);
+   sideNavAccount.open=false;
+   if(restoreFocus)focus(sideNavAccount.querySelector('summary'));
   }
  }
  doc.addEventListener('click',click,{signal});
@@ -546,6 +594,8 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   if(event.key==='Escape'){
    const panel=target.closest('.dds-menu,.dds-popover');if(panel&&floating.has(panel)){event.preventDefault();event.stopPropagation();restore(floating.get(panel),true);return;}
    const popover=target.hasAttribute('data-dds-popover')&&byId(target,target.dataset.ddsPopover);if(popover&&floating.has(popover)){event.preventDefault();restore(floating.get(popover),true);return;}
+   const sideNav=target.closest('.dds-side-nav-disclosure[open]');
+   if(sideNav){event.preventDefault();event.stopPropagation();sideNav.open=false;focus(sideNav.querySelector('summary'));return;}
    const navigation=target.closest('.dds-nav-details');if(navigation?.open){event.preventDefault();event.stopPropagation();setNavMenuOpen(navigation,false);focus(navigation.querySelector('summary'));return;}
    const header=target.closest('[data-dds-topnav]');if(header?.querySelector('[data-dds-topnav-toggle]')?.getAttribute('aria-expanded')==='true'){event.preventDefault();event.stopPropagation();setNav(header,false,true);return;}
    if(!event.defaultPrevented&&dismissHoveredNavMenu()){event.preventDefault();event.stopPropagation();}
@@ -554,6 +604,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  doc.addEventListener('pointerdown',event=>{
   const element=asElement(event.target);for(const [header,state]of navs)if(!header.contains(element))state.lastFocused=null;
   for(const details of all('.dds-topnav-menu[open]'))if(!details.contains(element))setNavMenuOpen(details,false);
+  dismissSideNavAccounts(element);
   for(const record of [...floating.values()])if((record.kind==='menu'||record.kind==='command')&&!record.panel.contains(element)&&!popupAnchor(record).contains(element))restore(record);
   if(!owns(element))return;const handle=element.closest('.dds-resize-handle');if(handle&&(event.button===0||event.pointerType==='touch')){event.preventDefault();dragging.set(handle,event.pointerId);try{handle.setPointerCapture(event.pointerId);}catch{}}
  },{capture:true,signal});
@@ -564,6 +615,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   const element=asElement(event.target);
   if(resettingOverlays)return;
   for(const [header,state]of navs){if(element===doc.body){if(state.lastFocused?.getClientRects().length)state.lastFocused=null;}else state.lastFocused=header.contains(element)?element:null;}
+  dismissSideNavAccounts(element);
   for(const record of [...floating.values()])if((record.kind==='menu'||record.kind==='command')&&!record.panel.contains(element)&&!popupAnchor(record).contains(element))restore(record);
   const trigger=element?.closest('[data-dds-hover]');
   if(blockedFocusTrigger&&trigger!==blockedFocusTrigger&&element!==doc.body)blockedFocusTrigger=undefined;

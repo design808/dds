@@ -1,11 +1,11 @@
-import {icon} from './icons.js?v=80f7f2182aeb104b';
-import {components} from './catalog.js?v=80f7f2182aeb104b';
-import {bindCharts} from './chart-system.js?v=80f7f2182aeb104b';
-import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=80f7f2182aeb104b';
-import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=80f7f2182aeb104b';
-import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=80f7f2182aeb104b';
-import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=80f7f2182aeb104b';
-import {listBlocks,renderListBlock,bindListBlocks} from './block-list.js?v=80f7f2182aeb104b';
+import {icon} from './icons.js?v=74e8957c2df4664c';
+import {components} from './catalog.js?v=74e8957c2df4664c';
+import {bindCharts} from './chart-system.js?v=74e8957c2df4664c';
+import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=74e8957c2df4664c';
+import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=74e8957c2df4664c';
+import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=74e8957c2df4664c';
+import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=74e8957c2df4664c';
+import {listBlocks,renderListBlock,bindListBlocks} from './block-list.js?v=74e8957c2df4664c';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const blockCategories=[
@@ -54,8 +54,8 @@ export function blocksPage(){
         <div class="segmented dds-block-device-tabs" role="tablist" aria-label="블록 화면 크기"><button type="button" role="tab" id="block-device-desktop" aria-selected="true" tabindex="0" aria-controls="dds-block-preview" data-block-device="desktop">PC</button><button type="button" role="tab" id="block-device-mobile" aria-selected="false" tabindex="-1" aria-controls="dds-block-preview" data-block-device="mobile">모바일</button></div>
         <button type="button" class="dds-block-dialog-close" data-block-close aria-label="블록 닫기">${icon('X')}</button>
       </header>
-      <div class="dds-block-dialog-body"><div class="dds-block-viewport" id="dds-block-preview" role="tabpanel" aria-labelledby="block-device-desktop"><div data-block-expanded></div></div></div>
-      <footer class="dds-block-dialog-footer"><span>사용한 컴포넌트</span><div data-block-components></div></footer>
+      <div class="dds-block-dialog-body dds-scrollbar"><div class="dds-block-viewport" id="dds-block-preview" role="tabpanel" aria-labelledby="block-device-desktop"><div data-block-expanded></div></div></div>
+      <footer class="dds-block-dialog-footer dds-scrollbar"><span>사용한 컴포넌트</span><div data-block-components></div></footer>
     </dialog>
   </div>`;
 }

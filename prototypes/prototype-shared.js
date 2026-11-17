@@ -1,4 +1,4 @@
-import {icon} from '../icons.js?v=80f7f2182aeb104b';
+import {icon} from '../icons.js?v=74e8957c2df4664c';
 export {icon};
 export const $=s=>document.querySelector(s);
 export const $$=s=>[...document.querySelectorAll(s)];
@@ -10,7 +10,14 @@ export function save(key,data){try{sessionStorage.setItem('dds-prototype-'+key,J
 export function icons(root=document){root.querySelectorAll('[data-icon]').forEach(e=>{const svg=document.createElement('span');svg.innerHTML=icon(e.dataset.icon);const node=svg.firstElementChild;if(e.id)node.id=e.id;e.replaceWith(node);});}
 let timer,origin,afterClose;
 export function toast(text){clearTimeout(timer);$('#preview-status').textContent=text;timer=setTimeout(()=>$('#preview-status').textContent='',4000);}
-export function modal(title,html,onConfirm){origin=document.activeElement;afterClose=onConfirm;$('#dialog-confirm').textContent='확인';$('#dialog-title').textContent=title;$('#dialog-body').innerHTML=html;$('#preview-dialog').showModal();icons($('#preview-dialog'));}
+export function modal(title,html,onConfirm){
+ origin=document.activeElement;afterClose=onConfirm;
+ const confirm=$('#dialog-confirm');
+ confirm.hidden=false;confirm.textContent='확인';
+ $('#dialog-title').textContent=title;$('#dialog-body').innerHTML=html;
+ const dialog=$('#preview-dialog');
+ dialog.showModal();icons(dialog);
+}
 export function summary(info){for(const key of ['job','ind','cor','supportArea','com','exp','hashtag']){const e=$('#'+key+'_text');if(!e)continue;const value=Array.isArray(info[key])?info[key].join(' · '):info[key];e.textContent=value||'선택 전';e.classList.toggle('empty',!value);e.parentElement.classList.toggle('complete',!!value);const old=$('#'+key+'_icon');if(old){const host=document.createElement('span');host.innerHTML=icon(value?'CircleCheck':'Circle');host.firstElementChild.id=old.id;old.replaceWith(host.firstElementChild);}}}
 export function common(){
  icons();
@@ -58,7 +65,7 @@ export function common(){
  header.addEventListener('keydown',e=>{if(e.key!=='Escape')return;const active=$('.gnb-trigger[aria-expanded=true]');if(active){e.preventDefault();e.stopPropagation();closeMenus();active.focus({preventScroll:true});}else if(header.classList.contains('nav-open')){e.preventDefault();e.stopPropagation();setMobileMenu(false,true);}});
  $('#dialog-close').addEventListener('click',()=>$('#preview-dialog').close());
  $('#dialog-confirm').addEventListener('click',()=>{const callback=afterClose;afterClose=null;$('#preview-dialog').close();callback?.();});
- $('#preview-dialog').addEventListener('close',()=>{origin?.focus();afterClose=null;$('#dialog-confirm').hidden=false;});
+ $('#preview-dialog').addEventListener('close',({currentTarget})=>{if(currentTarget.open)return;origin?.focus();afterClose=null;});
  const languages=[['kr','한국어'],['en','English'],['zh-hans','简体中文'],['zh-hant','繁體中文'],['ja','日本語'],['es','Español'],['fr','Français'],['de','Deutsch'],['ar','العربية'],['pt','Português'],['ru','Русский'],['uz','O‘zbekcha'],['vi','Tiếng Việt'],['kk','Қазақша'],['km','ភាសាខ្មែរ'],['mn','Монгол'],['my','မြန်မာစာ'],['ne','नेपाली'],['lo','ລາວ'],['fil','Filipino'],['id','Bahasa Indonesia'],['it','Italiano'],['hi','हिन्दी'],['he','עברית'],['fa','فارسی'],['ms','Bahasa Melayu'],['th','ไทย'],['tr','Türkçe']];
  $('#language-menu').addEventListener('click',()=>{modal('언어 선택',`<div class="language-grid">${languages.map(([code,label])=>`<button type="button" data-language="${code}" aria-label="${label}"><img src="/prototypes/assets/flags/${code}.png" alt="${label}" width="40" height="40"></button>`).join('')}</div>`);$('#dialog-confirm').hidden=true;});
  $('#dialog-body').addEventListener('click',e=>{const b=e.target.closest('[data-language]');if(!b)return;$('#preview-dialog').close();});

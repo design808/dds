@@ -1,5 +1,6 @@
-import {icon} from './icons.js?v=80f7f2182aeb104b';
-import {collectionCount, statusBadge, metricContent} from './visibility.js?v=80f7f2182aeb104b';
+import {icon} from './icons.js?v=74e8957c2df4664c';
+import {collectionCount, statusBadge, metricContent} from './visibility.js?v=74e8957c2df4664c';
+import {renderSideNav} from './ui/core.js?v=74e8957c2df4664c';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'workspace').replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -15,7 +16,12 @@ const cohortNames=['25년 10월','25년 11월','25년 12월','26년 1월','26년
 const journeySources={organic:[9000,2900,2200,1400,600],paid:[6500,1800,1300,800,300],referral:[1465,575,452,325,120]};
 const taskSeeds=[{id:1,title:'온보딩 플로우 설계',tag:'Design',person:'김민지',initial:'민',column:'todo'}, {id:2,title:'사용자 인터뷰 정리',tag:'Research',person:'이준호',initial:'준',column:'todo'}, {id:3,title:'대시보드 컴포넌트',tag:'Design',person:'박서연',initial:'서',column:'doing'}, {id:4,title:'알림 상태 구현',tag:'Development',person:'김민지',initial:'민',column:'doing'}, {id:5,title:'접근성 검토',tag:'Review',person:'이준호',initial:'준',column:'review'}, {id:6,title:'디자인 토큰 정리',tag:'Design',person:'박서연',initial:'서',column:'done'}];
 const columns=[['todo','할 일'],['doing','진행 중'],['review','검토'],['done','완료']];
-const navItems=[['overview','대시보드','LayoutDashboard'],['playground','플레이그라운드','SquareTerminal'],['models','모델','Bot'],['documents','문서','BookOpen'],['design','디자인 엔지니어링','Code'],['sales','영업·마케팅','Folder'],['travel','여행','Map'],['settings','설정','Settings']];
+const workspaceNavItem=(value,label,icon,extra={})=>({value,label,icon,...extra});
+const workspaceNav=[
+  {items:[workspaceNavItem('overview','대시보드','LayoutDashboard',{current:true}),workspaceNavItem('notifications','알림','Bell',{count:3})]},
+  {label:'플랫폼',items:[workspaceNavItem('playground','플레이그라운드','SquareTerminal'),workspaceNavItem('models','모델','Bot'),workspaceNavItem('documents','문서','BookOpen')]},
+  {label:'프로젝트',items:[{label:'팀 프로젝트',icon:'Folder',children:[workspaceNavItem('design','디자인 엔지니어링','Code'),workspaceNavItem('sales','영업·마케팅','ChartNoAxesCombined')]}]},
+];
 
 export const workspaceBlocks=[
   {id:'dashboard',title:'대시보드',category:'workspace',description:'기간별 방문자와 전환 지표, 인기 페이지와 유입 경로.',components:['card','tabs','switch','chart','table','button']},
@@ -105,7 +111,10 @@ function cohortBody(state){
   const weighted=months.map((_,month)=>{const observed=rows.filter(row=>row.values[month]);return (sum(observed.map(row=>row.values[month].count))/sum(observed.map(row=>row.size))*100).toFixed(1)+'%';});
   return `<div class="bws-retention-key"><span>유지율</span>${[20,40,60,80].map(value=>`<span><i style="--retention:${value}%"></i>${value}%</span>`).join('')}</div><div class="bws-cohort-table">${table(headers,[...cells,['가중 평균',number(sum(rows.map(row=>row.size))),...weighted]],'월별 코호트 유지율')}</div><p class="dds-meta-secondary bws-cell-status" role="status" data-bws-cell-status>유지율을 선택하면 해당 기간의 인원을 확인할 수 있습니다.</p>`;
 }
-function sidebar(prefix){return `<div class="bws-side-shell" data-bws-side-shell><nav class="bws-side-nav" aria-label="업무 탐색"><div class="bws-side-heading"><button type="button" class="dds-nav-link bws-workspace-name" data-bws-nav="overview">워크스페이스</button>${button('사이드바 접기','collapse',{glyph:'PanelLeftClose',only:true,extra:'aria-expanded="true"'})}</div>${navItems.map(([key,label,glyph],index)=>`${index===1?'<p class="dds-meta-date bws-nav-group">플랫폼</p>':index===4?'<p class="dds-meta-date bws-nav-group">프로젝트</p>':''}<button type="button" class="dds-nav-control bws-side-item" data-bws-nav="${key}" aria-label="${label}" ${index===0?'aria-current="page"':''}>${icon(glyph)}<span>${label}</span></button>`).join('')}</nav><section class="bws-side-main" id="${prefix}-panel"><h2 class="db-title" data-bws-side-title>대시보드</h2></section></div>`;}
+function sidebar(prefix){
+  const nav=renderSideNav(workspaceNav,{idPrefix:prefix,title:'워크스페이스',label:'업무 탐색',collapsible:true,footer:[workspaceNavItem('settings','설정','Settings')]});
+  return `<div class="bws-side-shell"><div class="dds-ui" data-dds-component="sidebar">${nav}</div><section class="bws-side-main" id="${prefix}-panel"><h2 class="db-title" data-bws-side-title>대시보드</h2></section></div>`;
+}
 function kanbanBoard(state){return `<div class="bws-board-wrap" tabindex="0" role="region" aria-label="작업 보드"><div class="bws-board">${columns.map(([key,label])=>`<section class="bws-column" data-bws-column="${key}" aria-label="${label}"><div class="db-header bws-column-heading"><div class="bws-column-label"><span class="bws-column-dot" aria-hidden="true"></span><h3 class="db-section-title">${label}</h3></div>${collectionCount(state.tasks.filter(task=>task.column===key).length,{label:label+' 작업'})}</div><div class="bws-task-list">${state.tasks.filter(task=>task.column===key).map(task=>`<button class="dds-content-card bws-task" type="button" draggable="true" data-bws-task="${task.id}" data-interactive="true" aria-haspopup="dialog"><span class="dds-card-title">${esc(task.title)}</span><span class="badge dds-badge bws-task-tag">${task.tag}</span><span class="avatar bws-avatar" aria-label="담당자 ${task.person}">${task.initial}</span></button>`).join('')}</div></section>`).join('')}</div></div>`;}
 function metricValues(config,period){return Array.from({length:period},(_,index)=>{const t=index/Math.max(1,period-1),curve=t*t*(3-2*t),value=config.start+(config.end-config.start)*curve+Math.sin(t*Math.PI*4)*(config.end-config.start)*.025;return config.unit==='percent'?Math.round(value*10)/10:Math.round(value);});}
 function metricFormat(config,value){return config.unit==='currency'?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:0,maximumFractionDigits:0}).format(value):number(value)+(config.unit==='percent'?'%':'');}
@@ -149,18 +158,27 @@ export function bindWorkspaceBlocks(root=document){
   function closeTask(block,state){block.querySelector('dialog').close();block.querySelector(`[data-bws-task="${state.currentTask}"]`)?.focus({preventScroll:true});}
   function updateInvoice(block,state){const invoice=state.invoice,totals=invoiceTotals(invoice);for(const row of block.querySelectorAll('[data-bws-invoice-item]')){const item=invoice.items.find(value=>value.id===Number(row.dataset.bwsInvoiceItem));if(item)row.querySelector('[data-bws-line-amount]').textContent=money(Math.max(0,item.quantity)*Math.max(0,item.rate));}block.querySelector('[data-bws-subtotal]').textContent=money(totals.subtotal/100);block.querySelector('[data-bws-tax]').textContent=money(totals.tax/100);block.querySelector('[data-bws-total]').textContent=money(totals.total/100);const invalid=invoice.items.some(item=>item.quantity<0||item.rate<0)||invoice.tax<0||invoice.tax>100;block.querySelector('[data-bws-invoice-error]').hidden=!invalid;block.querySelector('[data-bws-action="save-invoice"]').disabled=invalid;block.querySelector('[data-bws-invoice-status]').textContent=invoice.saved?'초안 저장됨':'초안';}
   function downloadCSV(rows){const text='\uFEFF'+rows.map(row=>row.map(value=>'"'+String(value).replace(/"/g,'""')+'"').join(',')).join('\r\n'),url=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'})),link=document.createElement('a');link.href=url;link.download='analytics.csv';link.hidden=true;document.body.append(link);link.click();link.remove();downloads.set(url,setTimeout(()=>{URL.revokeObjectURL(url);downloads.delete(url);},1000));}
+  root.addEventListener('dds:action',event=>{
+    const {action,target}=event.detail||{};
+    if(action!=='side-nav-item')return;
+    const [block]=context(target);
+    if(block?.dataset.bwsBlock!=='sidebar')return;
+    for(const item of block.querySelectorAll('[data-dds-action="side-nav-item"]')){
+      if(item===target)item.setAttribute('aria-current','page');
+      else item.removeAttribute('aria-current');
+    }
+    block.querySelector('[data-bws-side-title]').textContent=target.querySelector('.dds-side-nav-label').textContent;
+  },options);
   root.addEventListener('click',event=>{
-    const target=event.target.closest?.('[data-bws-tab],[data-bws-metric],[data-bws-source],[data-bws-action],[data-bws-nav],[data-bws-task],[data-bws-cell],[data-bws-cohort]');if(!target||target.disabled)return;const [block,state]=context(target);if(!block)return;
+    const target=event.target.closest?.('[data-bws-tab],[data-bws-metric],[data-bws-source],[data-bws-action],[data-bws-task],[data-bws-cell],[data-bws-cohort]');if(!target||target.disabled)return;const [block,state]=context(target);if(!block)return;
     if(target.hasAttribute('data-bws-tab')){chooseTab(target);return;}
     if(target.hasAttribute('data-bws-metric')){state.metric=Number(target.dataset.bwsMetric);redraw(block,state);block.querySelector(`[data-bws-metric="${state.metric}"]`).focus({preventScroll:true});return;}
     if(target.hasAttribute('data-bws-source')){state.flowSource=target.dataset.bwsSource;state.processed=0;redraw(block,state);block.querySelector(`[data-bws-source="${state.flowSource}"]`).focus({preventScroll:true});return;}
-    if(target.hasAttribute('data-bws-nav')){state.selectedNav=target.dataset.bwsNav;for(const item of block.querySelectorAll('[data-bws-nav]')){if(item.dataset.bwsNav===state.selectedNav&&item.classList.contains('bws-side-item'))item.setAttribute('aria-current','page');else item.removeAttribute('aria-current');}block.querySelector('[data-bws-side-title]').textContent=navItems.find(item=>item[0]===state.selectedNav)[1];return;}
     if(target.hasAttribute('data-bws-task')){state.currentTask=Number(target.dataset.bwsTask);const task=state.tasks.find(item=>item.id===state.currentTask),dialog=block.querySelector('dialog');dialog.querySelector('[data-bws-task-title]').textContent=task.title;dialog.querySelector('[data-bws-task-person]').textContent=task.tag+' · 담당자 '+task.person;const select=dialog.querySelector('[data-bws-task-column]');select.value=task.column;select.dispatchEvent(new Event('change',{bubbles:true}));dialog.showModal();return;}
     if(target.hasAttribute('data-bws-cell')){const [row,month]=target.dataset.bwsCell.split(':').map(Number),data=cohortRows(state)[row],value=data.values[month];block.querySelector('[data-bws-cell-status]').textContent=`${data.label} · ${month+1}개월 · ${value.rate.toFixed(1)}% · ${number(value.count)} / ${number(data.size)}명`;return;}
     if(target.hasAttribute('data-bws-cohort')){state.selectedCohort=Number(target.dataset.bwsCohort);redraw(block,state);block.querySelector(`[data-bws-cohort="${state.selectedCohort}"]`).focus({preventScroll:true});return;}
     const action=target.dataset.bwsAction;
     if(action==='transform'){state.processed={app:12,database:18,events:8}[state.flowSource];redraw(block,state);block.querySelector('[data-bws-action="transform"]').focus({preventScroll:true});}
-    if(action==='collapse'){state.collapsed=!state.collapsed;block.querySelector('[data-bws-side-shell]').classList.toggle('is-collapsed',state.collapsed);target.setAttribute('aria-expanded',String(!state.collapsed));const label=state.collapsed?'사이드바 펼치기':'사이드바 접기';target.setAttribute('aria-label',label);target.setAttribute('data-tooltip',label);target.innerHTML=icon(state.collapsed?'PanelLeftOpen':'PanelLeftClose');for(const item of block.querySelectorAll('[data-bws-nav]')){if(state.collapsed)item.setAttribute('data-tooltip',item.getAttribute('aria-label'));else item.removeAttribute('data-tooltip');}}
     if(action==='close-task')closeTask(block,state);
     if(action==='add-item'){const item={id:state.invoice.nextId++,title:'',quantity:1,rate:0};state.invoice.items.push(item);state.invoice.saved=false;block.querySelector('[data-bws-invoice-rows]').innerHTML=invoiceRows(state.invoice,block.dataset.bwsUid);updateInvoice(block,state);block.querySelector(`#${block.dataset.bwsUid}-item-${item.id}`).focus();}
     if(action==='delete-item'){state.invoice.items=state.invoice.items.filter(item=>item.id!==Number(target.dataset.itemId));state.invoice.saved=false;block.querySelector('[data-bws-invoice-rows]').innerHTML=invoiceRows(state.invoice,block.dataset.bwsUid);updateInvoice(block,state);block.querySelector('[data-bws-action="add-item"]').focus();}

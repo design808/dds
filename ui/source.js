@@ -1,12 +1,12 @@
-import {renderCore,coreParts,coreIds} from './core.js?v=80f7f2182aeb104b';
-import {renderExtended,extendedParts} from './extended.js?v=80f7f2182aeb104b';
-import {chartDemo} from './charts.js?v=80f7f2182aeb104b';
-import {chartComponents,chartPresentation} from '../chart-catalog.js?v=80f7f2182aeb104b';
+import {renderCore,coreParts,coreIds} from './core.js?v=74e8957c2df4664c';
+import {renderExtended,extendedParts} from './extended.js?v=74e8957c2df4664c';
+import {chartDemo} from './charts.js?v=74e8957c2df4664c';
+import {chartComponents,chartPresentation} from '../chart-catalog.js?v=74e8957c2df4664c';
 
 export const componentIds=Object.freeze([...coreIds,...Object.keys(extendedParts),'chart',...chartComponents.map(c=>c.id)]);
 export const isChart=id=>id==='chart'||!!chartPresentation(id);
 export function renderComponentSource(id,uid='dds-instance',mini=false,data){
- if(coreIds.includes(id))return renderCore(id,uid,mini);
+ if(coreIds.includes(id))return renderCore(id,uid,mini,data);
  if(Object.hasOwn(extendedParts,id))return renderExtended(id,uid,mini);
  if(isChart(id))return chartDemo(id==='chart'?'bar-chart':id,uid,mini,data);
  throw new TypeError('Unknown DDS component: '+id);
