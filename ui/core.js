@@ -1,7 +1,7 @@
 /** Canonical core markup. No DOM access, listeners, storage, or document UI. */
-import {icon} from './icons.js?v=52d03817fac7e7b9';
-import {renderButton} from './button.js?v=52d03817fac7e7b9';
-import {collectionCount,statusBadge} from '../visibility.js?v=52d03817fac7e7b9';
+import {icon} from './icons.js?v=610ff83a2c7af4db';
+import {renderButton} from './button.js?v=610ff83a2c7af4db';
+import {collectionCount,statusBadge} from '../visibility.js?v=610ff83a2c7af4db';
 
 const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=(value,id)=>String(value||'dds-'+id).replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -27,6 +27,13 @@ const sideNavExample=[
  {items:[{label:'대시보드',icon:'LayoutDashboard',href:'#/blocks?block=dashboard',current:true},{label:'알림',icon:'Bell',href:'#/blocks?block=notifications',count:3}]},
  {label:'작업 공간',items:[{label:'프로젝트',icon:'Layers',href:'#/blocks?block=kanban',badge:'새로 추가',action:{label:'프로젝트 더 보기',value:'projects'}},{label:'내 문서',icon:'Folder',expanded:true,children:[{label:'자기소개서',icon:'FileText',href:'#/patterns/document-list'},{label:'이력서',icon:'Files',href:'#/patterns/resume-builder'}]}]},
 ];
+
+/** Shared, full-viewport navigation shell. Content is caller-authored markup. */
+export function renderMobileNavDialog(id,{title='메뉴',content=''}={}){
+ const uid=safeId(id,'mobile-nav');
+ const close=renderButton({variant:'outlined',color:'assistive',size:'md',iconOnly:true,label:'메뉴 닫기',before:'X',attributes:{'data-dds-mobile-nav-close':''}});
+ return `<dialog class="dds-mobile-nav-dialog" id="${uid}" data-dds-mobile-nav-dialog aria-labelledby="${uid}-title"><div class="dds-mobile-nav-heading"><h2 id="${uid}-title">${escapeHTML(title)}</h2>${close}</div><div class="dds-mobile-nav-body dds-scrollbar" data-dds-mobile-nav-body>${content}</div></dialog>`;
+}
 
 function sideNavItem(item,part=''){
  if(!item||typeof item.label!=='string'||!item.label.trim())throw new TypeError('DDS Side Nav items require a name.');

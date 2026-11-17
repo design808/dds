@@ -530,13 +530,18 @@
 .sample-sidebar a.dds-nav-link[aria-current] {color:var(--active-state-ink,var(--brand-ink))}
 .component-preview .sample-sidebar a.dds-nav-link {font-size:var(--type-label-1-size)}
 
-/* Wide service navigation can be inspected without changing its breakpoint. */
-.workspace > #main .doc-header-preview-set {display:grid;gap:var(--space-6);width:100%;min-width:0;}
-.workspace > #main .doc-header-desktop-details {min-width:0;text-align:start;}
-.workspace > #main .doc-header-desktop-details > summary {cursor:pointer;min-height:44px;padding-block:var(--space-3);color:var(--text-primary);font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:var(--font-weight-semibold);}
-.workspace > #main .doc-header-scroll {width:100%;max-width:100%;overflow:auto;overscroll-behavior-inline:contain;}
+/* Each example supplies the container width of its device to the same header. */
+.workspace > #main .doc-header-preview-set {display:grid;gap:var(--space-6);min-width:0;}
+.workspace > #main .doc-header-example {display:grid;gap:var(--space-3);min-width:0;}
+.workspace > #main .doc-header-example > h3 {margin:0;color:var(--text-primary);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:var(--font-weight-semibold);letter-spacing:var(--type-body-1-normal-tracking);}
+.workspace > #main .doc-header-frame {min-width:0;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--background);--dds-topnav-gutter:var(--space-4);}
+.workspace > #main .doc-header-scroll {overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;}
+.workspace > #main .doc-header-scroll:has(.dds-topnav-menu[open]) {overflow-y:auto;}
 .workspace > #main .doc-header-scroll:focus-visible {outline:1px solid var(--primary);outline-offset:0;}
-.workspace > #main .doc-header-desktop {width:1100px;min-width:1100px;min-height:320px;text-align:start;}
+.workspace > #main .doc-header-desktop {width:100%;min-width:960px;zoom:var(--doc-header-zoom,1);}
+.workspace > #main .doc-header-desktop:has(.dds-topnav-menu[open]) {min-height:272px;}
+.workspace > #main .doc-header-mobile {width:100%;max-width:392px;overflow:clip;}
+.workspace > #main .doc-header-preview-set + .helper {margin-block-start:var(--space-3);}
 
 @media (max-width: 767px) {
   .workspace > #main {

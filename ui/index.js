@@ -1,17 +1,17 @@
-import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=52d03817fac7e7b9';
-import {renderButton} from './button.js?v=52d03817fac7e7b9';
-import {renderSideNav} from './core.js?v=52d03817fac7e7b9';
-import {icon} from './icons.js?v=52d03817fac7e7b9';
-import {mountControls} from './controls.js?v=52d03817fac7e7b9';
-import {mountTooltips} from './tooltips.js?v=52d03817fac7e7b9';
-import {bindCharts,chartDemo} from './charts.js?v=52d03817fac7e7b9';
-import {calendarDays,renderItemList} from './extended.js?v=52d03817fac7e7b9';
-import {UI_VERSION} from './version.js?v=52d03817fac7e7b9';
-import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=52d03817fac7e7b9';
-import {applyComponentVariants,componentVariants} from './variants.js?v=52d03817fac7e7b9';
-export {renderButton,renderItemList,renderSideNav,icon,componentIds,componentParts,renderComponentSource,layoutContract};
+import {renderComponentSource,serviceMarkup,componentParts,componentIds,isChart,layoutContract} from './source.js?v=610ff83a2c7af4db';
+import {renderButton} from './button.js?v=610ff83a2c7af4db';
+import {renderSideNav,renderMobileNavDialog} from './core.js?v=610ff83a2c7af4db';
+import {icon} from './icons.js?v=610ff83a2c7af4db';
+import {mountControls} from './controls.js?v=610ff83a2c7af4db';
+import {mountTooltips} from './tooltips.js?v=610ff83a2c7af4db';
+import {bindCharts,chartDemo} from './charts.js?v=610ff83a2c7af4db';
+import {calendarDays,renderItemList} from './extended.js?v=610ff83a2c7af4db';
+import {UI_VERSION} from './version.js?v=610ff83a2c7af4db';
+import {prepareServiceContent,finalizeServiceContent,configureServiceItems,connectFieldDescriptions,optionalContent} from './content.js?v=610ff83a2c7af4db';
+import {applyComponentVariants,componentVariants} from './variants.js?v=610ff83a2c7af4db';
+export {renderButton,renderItemList,renderSideNav,renderMobileNavDialog,icon,componentIds,componentParts,renderComponentSource,layoutContract};
 export {componentVariants,optionalContent};
-export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=52d03817fac7e7b9';
+export {collectionCount,statusBadge,metricTrend,metricContent} from '../visibility.js?v=610ff83a2c7af4db';
 export const version=UI_VERSION;
 let serial=0;
 const booleans=new Set(['checked','selected','disabled','required','readonly','multiple','open','hidden','autofocus','formnovalidate']);
@@ -101,7 +101,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  if(!root?.addEventListener||!root.ownerDocument)throw new TypeError('mountDDS requires an explicit root element.');
  bindings.get(root)?.();
  const doc=root.ownerDocument,view=doc.defaultView,abort=new view.AbortController(),signal=abort.signal;
- const stops=[],timers=new Set(),portals=new Set(),floating=new Map(),navs=new Map(),carousels=new Map(),dragging=new Map(),toastTimers=new Map();
+ const stops=[],timers=new Set(),portals=new Set(),floating=new Map(),navs=new Map(),mobileMenus=new Map(),carousels=new Map(),dragging=new Map(),toastTimers=new Map();
  const questionnaireLabels=new WeakMap(),timeSuffixes=new WeakMap(),sliderSuffixes=new WeakMap();
  let disposed=false,scanPending=false,resettingOverlays=false,returningCommandFocus=false;
  let lastMousePosition,blockedMousePosition,blockedFocusTrigger;
@@ -278,6 +278,36 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   for(const panel of panels){panel.hidden=panel.id!==selectedPanel;if(!panel.hidden)panel.setAttribute('aria-labelledby',tab.id);}notify(tab,'tab',tab.id);
  };
  function closeNestedControl(panel){const trigger=panel.querySelector('.custom-trigger[aria-expanded="true"],.control-icon[aria-expanded="true"]');if(!trigger)return false;trigger.dispatchEvent(new view.KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true}));return true;}
+ const mobileMenuSelector='dialog[data-dds-mobile-nav-dialog]';
+ function openMobileMenu(menu,trigger){
+  if(!menu?.matches(mobileMenuSelector)||menu.open)return;
+  mobileMenus.set(menu,trigger);
+  trigger.setAttribute('aria-expanded','true');
+  menu.showModal();
+  focus(menu.querySelector('[data-dds-mobile-nav-close]'));
+ }
+ function releaseMobileMenu(menu){
+  const trigger=mobileMenus.get(menu);
+  mobileMenus.delete(menu);
+  trigger?.setAttribute('aria-expanded','false');
+  return trigger;
+ }
+ function closeMobileMenu(menu,{restoreFocus=false,immediate=false}={}){
+  const trigger=releaseMobileMenu(menu);
+  if(immediate)menu.setAttribute('data-dds-mobile-nav-instant','');
+  if(menu.open)menu.close();
+  if(immediate){
+   // Finish the discrete display transition before moving the menu contents.
+   view.getComputedStyle(menu).display;
+   menu.removeAttribute('data-dds-mobile-nav-instant');
+  }
+  if(restoreFocus&&trigger?.getClientRects().length)focus(trigger);
+ }
+ function closeNavigationMenu(menu,restoreFocus){
+  const header=menu.closest('[data-dds-topnav]');
+  if(navs.get(header)?.menu===menu)setNav(header,false,restoreFocus);
+  else closeMobileMenu(menu,{restoreFocus});
+ }
  const primaryNavMenu='.dds-topnav-links > .dds-topnav-menu';
  const navPositionProperties=['--dds-topnav-dropdown-y','--dds-topnav-hover-bridge'];
  function clearNavHover(state){
@@ -287,13 +317,18 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  }
  function cleanNav(header,state){
   clearNavHover(state);
+  closeMobileMenu(state.menu,{immediate:true});
+  state.bar.append(state.panel);
+  state.panel.inert=false;
   for(const details of header.querySelectorAll('.dds-topnav-menu'))for(const property of navPositionProperties)details.style.removeProperty(property);
   for(const [dropdown,inert] of state.inertPanels)dropdown.inert=inert;
   state.inertPanels.clear();
  }
  function positionNavDropdowns(header){
   const state=navs.get(header),bar=header?.querySelector('.dds-topnav-bar');if(!state||!bar)return;
-  const dropdownTop=bar.getBoundingClientRect().bottom+12;
+  const barBounds=bar.getBoundingClientRect();
+  const scale=barBounds.height/(bar.offsetHeight||1)||1;
+  const dropdownTop=barBounds.bottom+12*scale;
   for(const details of header.querySelectorAll('.dds-topnav-menu')){
    const dropdown=details.querySelector(':scope > .dds-topnav-dropdown');
    if(dropdown){
@@ -303,8 +338,8 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
    if(state.mobile){for(const property of navPositionProperties)details.style.removeProperty(property);continue;}
    // Preserve the panel position while its closing transition is visible.
    const bounds=details.getBoundingClientRect();
-   details.style.setProperty('--dds-topnav-dropdown-y',`${dropdownTop-bounds.top}px`);
-   details.style.setProperty('--dds-topnav-hover-bridge',`${Math.max(0,dropdownTop-bounds.bottom)}px`);
+   details.style.setProperty('--dds-topnav-dropdown-y',`${(dropdownTop-bounds.top)/scale}px`);
+   details.style.setProperty('--dds-topnav-hover-bridge',`${Math.max(0,(dropdownTop-bounds.bottom)/scale)}px`);
   }
  }
  function setNavMenuOpen(menu,open){
@@ -342,20 +377,46 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   return false;
  }
  function setNav(header,open,restoreFocus=false,width){
-  const state=navs.get(header),toggle=header.querySelector('[data-dds-topnav-toggle]'),panel=header.querySelector('[data-dds-topnav-panel]');if(!state||!toggle||!panel)return;
+  const state=navs.get(header);if(!state)return;
+  const {toggle,panel,menu,bar,body}=state;
   const current=doc.activeElement,remembered=(current===doc.body||!current)&&state.lastFocused&&!state.lastFocused.getClientRects().length?state.lastFocused:current;
   const mobile=(width??state.wrapper.clientWidth)<=900,changed=state.mobile!==null&&state.mobile!==mobile,expanded=mobile&&!changed&&(open??state.open);
   const activeMenu=remembered?.closest?.('.dds-topnav-menu[open]'),menuSummary=activeMenu?.querySelector('summary');
   let floatingClosed=false;
   if(changed||mobile&&!expanded){clearNavHover(state);for(const details of header.querySelectorAll('.dds-topnav-menu[open]'))details.open=false;for(const record of [...floating.values()])if(header.contains(record.trigger)){floatingClosed=floatingClosed||record.panel.contains(current);restore(record);}}
   const controlClosed=!resettingOverlays&&(changed||mobile&&!expanded)&&closeNestedControl(panel);state.mobile=mobile;state.open=!!expanded;
-  const label=expanded?'메뉴 닫기':'메뉴 열기';toggle.hidden=!mobile;toggle.setAttribute('aria-expanded',String(!!expanded));toggle.setAttribute('aria-label',label);toggle.setAttribute('data-tooltip',label);
-  const labelNode=toggle.querySelector('.dds-button-label');if(labelNode)labelNode.innerHTML=icon(expanded?'X':'Menu');
-  if(!resettingOverlays&&mobile&&!expanded&&(restoreFocus||panel.contains(remembered)||controlClosed||floatingClosed)&&doc.hasFocus())focus(toggle);
-  if(!mobile&&remembered===toggle&&doc.hasFocus())focus(header.querySelector('.dds-topnav-brand'));
-  else if(!mobile&&changed&&activeMenu&&doc.hasFocus())focus(menuSummary);
-  panel.hidden=mobile&&!expanded;panel.inert=panel.hidden;header.dataset.ddsMobile=String(mobile);
+  toggle.hidden=!mobile;toggle.setAttribute('aria-expanded',String(!!expanded));
+  const hadMenuFocus=menu.contains(remembered);
+  if(!expanded&&(menu.open||mobileMenus.has(menu)))closeMobileMenu(menu,{immediate:changed});
+  const destination=mobile?body:bar;
+  if(panel.parentElement!==destination)destination.append(panel);
+  panel.hidden=false;panel.inert=mobile&&!expanded;header.dataset.ddsMobile=String(mobile);
+  if(expanded)openMobileMenu(menu,toggle);
+  if(!resettingOverlays&&mobile&&!expanded&&(restoreFocus||hadMenuFocus||panel.contains(remembered)||controlClosed||floatingClosed)&&doc.hasFocus())focus(toggle);
+  if(!mobile&&changed&&doc.hasFocus()){
+   if(activeMenu)focus(menuSummary);
+   else if(panel.contains(remembered))focus(remembered);
+   else if(hadMenuFocus||remembered===toggle)focus(header.querySelector('.dds-topnav-brand'));
+  }
   positionNavDropdowns(header);
+ }
+ function bindNavigation(header){
+  const wrapper=header.closest('.dds-topnav-demo'),bar=header.querySelector('.dds-topnav-bar');
+  const toggle=header.querySelector('[data-dds-topnav-toggle]'),panel=header.querySelector('[data-dds-topnav-panel]');
+  if(!wrapper||!bar||!toggle||!panel)return;
+  let menu=header.querySelector(':scope > '+mobileMenuSelector);
+  if(!menu){
+   const template=doc.createElement('template');
+   template.innerHTML=renderMobileNavDialog((panel.id||'dds-topnav-'+(++serial))+'-mobile',{title:'주 메뉴'});
+   menu=template.content.firstElementChild;
+   header.append(menu);
+  }
+  const body=menu.querySelector('[data-dds-mobile-nav-body]');
+  if(!body)return;
+  toggle.setAttribute('aria-haspopup','dialog');
+  toggle.setAttribute('aria-controls',menu.id);
+  navs.set(header,{wrapper,bar,toggle,panel,menu,body,mobile:null,open:false,lastFocused:null,hoveredMenu:null,hoverTimer:undefined,inertPanels:new Map()});
+  setNav(header,false);resize.observe(wrapper);
  }
  function dismissSideNavAccounts(target){
   for(const details of all('.dds-side-nav-account[open]'))if(!details.contains(target))details.open=false;
@@ -383,6 +444,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
     if(state.open)setNav(header,false);
     else positionNavDropdowns(header);
    }
+   for(const menu of [...mobileMenus.keys()])closeMobileMenu(menu);
   }finally{resettingOverlays=false;}
  }
  for(const event of ['pagehide','popstate','hashchange'])view.addEventListener(event,resetOverlays,{signal});
@@ -458,7 +520,8 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
  function scan(){
   if(disposed)return;
   for(const [header,state]of navs)if(!owns(header)){cleanNav(header,state);resize.unobserve(state.wrapper);navs.delete(header);}
-  for(const header of all('[data-dds-topnav]'))if(!navs.has(header)){const wrapper=header.closest('.dds-topnav-demo');if(wrapper){navs.set(header,{wrapper,mobile:null,open:false,lastFocused:null,hoveredMenu:null,hoverTimer:undefined,inertPanels:new Map()});setNav(header,false);resize.observe(wrapper);}}
+  for(const header of all('[data-dds-topnav]'))if(!navs.has(header))bindNavigation(header);
+  for(const menu of mobileMenus.keys())if(!owns(menu))closeMobileMenu(menu,{immediate:true});
   for(const carousel of carousels.keys())if(!owns(carousel)||!carousel.matches(pagedCarousel)){
    unpageCarousel(carousel);resize.unobserve(carousel);carousels.delete(carousel);
   }
@@ -504,6 +567,15 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   const element=asElement(event.target),search=element.closest('.dds-command-field')?.querySelector(commandSearch);
   if(search&&(element===search||!element.closest('button'))){focus(search);openCommand(search);return;}
   const target=element.closest('button,a,summary');if(!target||target.disabled||target.getAttribute('aria-disabled')==='true')return;
+  if(target.hasAttribute('data-dds-mobile-nav-open')){
+   const menu=byId(target,target.dataset.ddsMobileNavOpen);
+   openMobileMenu(menu,target);return;
+  }
+  if(target.hasAttribute('data-dds-mobile-nav-close')){
+   const menu=target.closest(mobileMenuSelector);
+   if(menu)closeNavigationMenu(menu,true);
+   return;
+  }
   const command=floating.get(target.closest('.dds-command'));
   if(command&&target.matches(commandOptions)){chooseCommand(command,target);return;}
   if(target.matches(primaryNavMenu+' > summary')&&hoverNavMenu(target)){
@@ -602,18 +674,22 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   if(target.hasAttribute('data-dds-menu')&&['ArrowDown','ArrowUp'].includes(event.key)){event.preventDefault();openMenu(target,{last:event.key==='ArrowUp'});}
   if(target.matches('.dds-menubar [data-dds-menu]')&&['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();closeMenus();const items=[...target.closest('.dds-menubar').querySelectorAll('[data-dds-menu]')],index=items.indexOf(target),next=event.key==='Home'?0:event.key==='End'?items.length-1:(index+(event.key==='ArrowRight'?1:-1)+items.length)%items.length;focus(items[next]);}
   if(event.key==='Escape'){
+   if(event.defaultPrevented)return;
    const panel=target.closest('.dds-menu,.dds-popover');if(panel&&floating.has(panel)){event.preventDefault();event.stopPropagation();restore(floating.get(panel),true);return;}
    const popover=target.hasAttribute('data-dds-popover')&&byId(target,target.dataset.ddsPopover);if(popover&&floating.has(popover)){event.preventDefault();restore(floating.get(popover),true);return;}
    const sideNav=target.closest('.dds-side-nav-disclosure[open]');
    if(sideNav){event.preventDefault();event.stopPropagation();sideNav.open=false;focus(sideNav.querySelector('summary'));return;}
    const navigation=target.closest('.dds-nav-details');if(navigation?.open){event.preventDefault();event.stopPropagation();setNavMenuOpen(navigation,false);focus(navigation.querySelector('summary'));return;}
-   const header=target.closest('[data-dds-topnav]');if(header?.querySelector('[data-dds-topnav-toggle]')?.getAttribute('aria-expanded')==='true'){event.preventDefault();event.stopPropagation();setNav(header,false,true);return;}
+   const mobileMenu=target.closest(mobileMenuSelector);
+   if(mobileMenu?.open){event.preventDefault();event.stopPropagation();closeNavigationMenu(mobileMenu,true);return;}
    if(!event.defaultPrevented&&dismissHoveredNavMenu()){event.preventDefault();event.stopPropagation();}
   }
  },{signal});
  doc.addEventListener('pointerdown',event=>{
   const element=asElement(event.target);for(const [header,state]of navs)if(!header.contains(element))state.lastFocused=null;
-  for(const details of all('.dds-topnav-menu[open]'))if(!details.contains(element))setNavMenuOpen(details,false);
+  // Closing a different inline disclosure on press can move the new tap target.
+  // In the mobile menu, the native details group switches items on activation.
+  for(const details of all('.dds-topnav-menu[open]'))if(!navs.get(details.closest('[data-dds-topnav]'))?.mobile&&!details.contains(element))setNavMenuOpen(details,false);
   dismissSideNavAccounts(element);
   for(const record of [...floating.values()])if((record.kind==='menu'||record.kind==='command')&&!record.panel.contains(element)&&!popupAnchor(record).contains(element))restore(record);
   if(!owns(element))return;const handle=element.closest('.dds-resize-handle');if(handle&&(event.button===0||event.pointerType==='touch')){event.preventDefault();dragging.set(handle,event.pointerId);try{handle.setPointerCapture(event.pointerId);}catch{}}
@@ -663,7 +739,22 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   for(const record of floating.values())if(record.kind==='popover'&&record.trigger.hasAttribute('data-dds-hover')&&(record.trigger.contains(element)||record.panel.contains(element))&&!record.trigger.contains(related)&&!record.panel.contains(related))closeHoverLater(record);
  },{signal});
  doc.addEventListener('toggle',event=>{const record=floating.get(event.target);if((record?.kind==='popover'||record?.kind==='command')&&event.newState==='closed')restore(record);if(owns(event.target)&&event.target.matches('.dds-topnav-menu'))positionNavDropdowns(event.target.closest('[data-dds-topnav]'));},{capture:true,signal});
- doc.addEventListener('close',event=>{if(!owns(event.target)||event.target.tagName!=='DIALOG')return;for(const record of [...floating.values()])if(event.target.contains(record.trigger))restore(record);},{capture:true,signal});
+ doc.addEventListener('cancel',event=>{
+  if(!mobileMenus.has(event.target)||event.defaultPrevented)return;
+  event.preventDefault();closeNavigationMenu(event.target,true);
+ },{capture:true,signal});
+ doc.addEventListener('close',event=>{
+  const dialog=event.target;
+  if(dialog.tagName!=='DIALOG'||dialog.open)return;
+  for(const menu of mobileMenus.keys())if(menu!==dialog&&dialog.contains(menu))closeNavigationMenu(menu,false);
+  if(!owns(dialog))return;
+  if(mobileMenus.has(dialog)){
+   releaseMobileMenu(dialog);
+   const header=dialog.closest('[data-dds-topnav]');
+   if(navs.get(header)?.menu===dialog)setNav(header,false);
+  }
+  for(const record of [...floating.values()])if(dialog.contains(record.trigger))restore(record);
+ },{capture:true,signal});
  const dismissMenus=()=>closeMenus(true);
  const positionPopups=()=>{for(const record of floating.values())if(record.kind!=='menu')positionFloating(record);};
  view.addEventListener('resize',()=>{dismissMenus();positionPopups();},{signal});
@@ -676,6 +767,7 @@ export function mountDDS(root,{controls=true,charts=true,tooltips=true,onAction}
   for(const record of [...floating.values()])restore(record);for(const [handle,pointer]of dragging)try{handle.releasePointerCapture(pointer);}catch{}dragging.clear();
   for(const host of toastTimers.keys()){host.hidden=true;host.classList.remove('show');}
   for(const [header,state] of navs)cleanNav(header,state);
+  for(const menu of mobileMenus.keys())closeMobileMenu(menu,{immediate:true});
   for(const carousel of carousels.keys())unpageCarousel(carousel);
   for(const stop of stops)stop();for(const scope of [...portals])removePortal(scope);navs.clear();carousels.clear();toastTimers.clear();if(bindings.get(root)===cleanup)bindings.delete(root);
  };

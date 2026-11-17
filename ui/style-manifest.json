@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "44c878432b760d99c6de32fcaec28c8bd559c7b44a41d7c4b1b38fa24d3a8da4",
+  "sha256": "bcd3bbaf0058788902f880b77f8563a1fa7a7cef5500069744e032841ee87705",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -142,6 +142,9 @@
     "dds-meta-primary",
     "dds-meta-secondary",
     "dds-mini-image",
+    "dds-mobile-nav-body",
+    "dds-mobile-nav-dialog",
+    "dds-mobile-nav-heading",
     "dds-nav-control",
     "dds-nav-details",
     "dds-nav-link",
@@ -400,7 +403,7 @@
     },
     {
       "file": "extensions.css",
-      "sha256": "4b3fb209af950745e2a7900c54c0fb585c55f60b37cab0f51c9536f648bb95e1",
+      "sha256": "8128d88d3eaeb7e63bc50a0be8fcbbf09cf8a0cad2a23dcf22b544fbb5b83b72",
       "retainedRules": 195,
       "excludedSelectors": 36
     },
@@ -412,9 +415,9 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "59d79ef0b10ee3b781977833e509e910648e7ff659247d80d01b6c9626a02c06",
+      "sha256": "03049bc02c461402153e25c994aec087770b8fb0f2cebf3d8b316142d43cdc48",
       "retainedRules": 4,
-      "excludedSelectors": 181
+      "excludedSelectors": 186
     },
     {
       "file": "interactions.css",
@@ -454,8 +457,8 @@
     },
     {
       "file": "component-layout.css",
-      "sha256": "00293f3b2c709b58a8f19148dea68412c5e1642dd23b75cf52e0ab12bf39e3c4",
-      "retainedRules": 60,
+      "sha256": "758018704e7286b089a8ffb74917e945efff90c923d38b9e688eed7eb1ef5b7a",
+      "retainedRules": 71,
       "excludedSelectors": 0
     }
   ],
@@ -3246,15 +3249,23 @@
     },
     {
       "source": "document-layout.css",
-      "selector": ".workspace > #main .doc-header-desktop-details"
+      "selector": ".workspace > #main .doc-header-example"
     },
     {
       "source": "document-layout.css",
-      "selector": ".workspace > #main .doc-header-desktop-details > summary"
+      "selector": ".workspace > #main .doc-header-example > h3"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-frame"
     },
     {
       "source": "document-layout.css",
       "selector": ".workspace > #main .doc-header-scroll"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-scroll:has(.dds-topnav-menu[open])"
     },
     {
       "source": "document-layout.css",
@@ -3263,6 +3274,18 @@
     {
       "source": "document-layout.css",
       "selector": ".workspace > #main .doc-header-desktop"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-desktop:has(.dds-topnav-menu[open])"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-mobile"
+    },
+    {
+      "source": "document-layout.css",
+      "selector": ".workspace > #main .doc-header-preview-set + .helper"
     },
     {
       "source": "document-layout.css",

@@ -83,25 +83,13 @@
   .dds-block-example .bws-side-shell{display:block;block-size:auto;min-block-size:320px}
   .dds-block-example .bws-side-desktop{display:none}
   .dds-block-example .bws-side-mobile{display:block;border-block-end:1px solid var(--border)}
-  .dds-block-example .bws-side-mobile-trigger{
+  .dds-block-example .bws-side-mobile-bar{
     display:flex;
+    align-items:center;
     justify-content:space-between;
-    min-block-size:44px;
-    padding:var(--space-3) var(--space-4);
-    border-radius:0;
-    list-style:none;
+    gap:var(--space-3);
+    padding:var(--space-2) var(--space-4);
   }
-  .dds-block-example .bws-side-mobile-trigger::marker{content:''}
-  .dds-block-example .bws-side-mobile-trigger::-webkit-details-marker{display:none}
-  .dds-block-example .bws-side-mobile-trigger:focus-visible{outline-offset:-1px}
-  .dds-block-example .bws-side-mobile-trigger > .icon{flex:none;inline-size:20px;block-size:20px}
-  .dds-block-example .bws-side-mobile .dds-side-nav{
-    --dds-side-nav-inset:var(--space-2);
-    block-size:auto;
-    max-block-size:min(22rem,60dvh);
-    border-inline-end:0;
-  }
-  .dds-block-example .bws-side-mobile .dds-side-nav-row{min-block-size:44px}
   .dds-block-example .bws-side-main{padding:var(--space-4)}
 }
 .dds-block-example .bws-board-wrap{max-width:100%;min-width:0;overflow:auto;overscroll-behavior-x:contain}

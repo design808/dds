@@ -80,9 +80,11 @@ Item은 `variants: {appearance: 'divided'}`로 외곽 경계 없이 행 사이�
 
 ## 크기와 배치
 
-Side Nav는 `createComponent('sidebar', {data: {groups, title, account, footer, collapsible}})` 또는 `renderSideNav(groups, options)`로 생성합니다. `groups`는 `{label, items}` 배열입니다. 항목에 `label`, `icon`, `href`, `current`를 연결하고 필요한 경우 `count`, `badge`, `action`, `children`을 전달합니다. `account`의 `items`는 작업 공간을 바꾸는 실제 링크를 받습니다. 주소 없는 항목과 독립 버튼은 각각 `side-nav-item`과 `side-nav-item-action`을 발생시킵니다. `mountDDS`로 접기 버튼과 툴팁을 연결합니다.
+Side navigation은 `createComponent('sidebar', {data: {groups, title, account, footer, collapsible}})` 또는 `renderSideNav(groups, options)`로 생성합니다. `groups`는 `{label, items}` 배열입니다. 항목에 `label`, `icon`, `href`, `current`를 연결하고 필요한 경우 `count`, `badge`, `action`, `children`을 전달합니다. `account`의 `items`는 작업 공간을 바꾸는 실제 링크를 받습니다. 주소 없는 항목과 독립 버튼은 각각 `side-nav-item`과 `side-nav-item-action`을 발생시킵니다. `mountDDS`로 접기 버튼과 툴팁을 연결합니다.
 
-Side Nav와 본문을 같은 그리드 행이나 플렉스에 놓고 상위 레이아웃에서 높이를 지정합니다. 그리드에서는 `grid-template-columns: 260px minmax(0, 1fr)`와 `grid-template-rows: minmax(0, 1fr)`를 시작점으로 사용할 수 있습니다. 잠긴 높이 없이 놓으면 콘텐츠 높이에 맞춰집니다. 접기 버튼을 제공하면 호스트에서 `.dds-side-nav[data-dds-collapsed=true]`를 감지해 탐색 열을 기본 68px로 바꿉니다. 레일 너비를 조정할 때는 공통 부모에서 `--dds-side-nav-rail-width`를 설정하고 탐색 열에도 같은 값을 연결합니다.
+Side navigation과 본문을 같은 그리드 행이나 플렉스에 놓고 상위 레이아웃에서 높이를 지정합니다. 그리드에서는 `grid-template-columns: 260px minmax(0, 1fr)`와 `grid-template-rows: minmax(0, 1fr)`를 시작점으로 사용할 수 있습니다. 잠긴 높이 없이 놓으면 콘텐츠 높이에 맞춰집니다. 접기 버튼을 제공하면 호스트에서 `.dds-side-nav[data-dds-collapsed=true]`를 감지해 탐색 열을 기본 68px로 바꿉니다. 레일 너비를 조정할 때는 공통 부모에서 `--dds-side-nav-rail-width`를 설정하고 탐색 열에도 같은 값을 연결합니다.
+
+모바일에서는 본문을 전체 너비로 놓고 햄버거 버튼으로 전체 화면 탐색을 엽니다. 같은 탐색 데이터로 생성한 Side navigation을 `ui/index.js`의 `renderMobileNavDialog(id, {title, content})`에 전달합니다. 버튼과 다이얼로그를 `.dds-ui` 범위 안에 둡니다. 버튼에 `data-dds-mobile-nav-open`과 `aria-controls`로 같은 ID를 연결하고 초기값 `aria-expanded="false"`와 `aria-haspopup="dialog"`를 설정합니다. `mountDDS`가 열기, 닫기, Escape와 초점 복귀를 연결합니다. 화면이 넓어져 햄버거 버튼을 숨길 때는 열린 메뉴도 닫습니다. 화면을 바꾸는 버튼은 이동을 처리한 뒤 메뉴를 닫고 갱신한 본문으로 초점을 옮깁니다.
 
 컨트롤 높이·글자·내부 패딩·색·경계·모서리·상태는 DDS 규격을 유지한다. 가용 폭, 페이지 그리드, 컴포넌트 바깥 여백과 필요한 영역 높이는 서비스에서 정한다.
 
@@ -94,7 +96,7 @@ Side Nav와 본문을 같은 그리드 행이나 플렉스에 놓고 상위 레�
 
 공통 컴포넌트에는 DDS 스크롤바 스타일이 연결되어 있다. 서비스가 별도로 만든 스크롤 영역에서도 DDS 범위 안에 `dds-scrollbar` 클래스를 사용하면 같은 스타일을 적용할 수 있다.
 
-Top navigation은 전체 헤더 폭의 부모에 연결한다. 부모의 `--dds-topnav-content-width`로 좌우 여백을 포함한 내부 최대 폭을, `--dds-topnav-gutter`로 좌우 여백을 정한다. 하단 1px 경계는 바깥 헤더에 유지한다. `100vw`나 음수 여백으로 부모를 벗어나게 하지 않는다. 서비스 화면의 테마 전환 버튼은 푸터에 하나만 두며 기존 provider·저장 키를 재사용한다. 아이콘 버튼의 기능 이름과 hover·키보드 탐색 툴팁을 갱신한다. DDS 문서 사이트의 상단 테마 버튼은 서비스 헤더에 복사하지 않는다.
+Top navigation은 전체 헤더 폭의 부모에 연결한다. 부모의 `--dds-topnav-content-width`로 좌우 여백을 포함한 내부 최대 폭을, `--dds-topnav-gutter`로 좌우 여백을 정한다. 하단 1px 경계는 바깥 헤더에 유지한다. 컨테이너가 900px 이하가 되면 `mountDDS`가 같은 메뉴 요소를 전체 화면 `dialog`에 연결한다. 메뉴 제목과 닫기는 위에 고정되고, 주 메뉴와 언어·프로필을 포함하는 목록만 스크롤된다. 서비스 화면의 테마 전환 버튼은 푸터에 하나만 두며 기존 provider·저장 키를 재사용한다. 아이콘 버튼의 기능 이름과 hover·키보드 탐색 툴팁을 갱신한다.
 
 열린 모달의 제목·본문·행동 사이 간격은 원본이 제공한다. 본문 필드와 문단은 `slots.content`에 넣고 하단 버튼을 직접 구성할 때는 `slots.actions`를 사용한다. 하단 버튼은 오른쪽에 정렬된다. `variants: {scrollable: true}`를 지정하면 제목과 하단 버튼은 고정되고 설명과 콘텐츠가 담긴 본문만 스크롤된다. `variants.actions: false`는 하단 버튼 영역을 숨긴다.
 

@@ -1,6 +1,7 @@
-import {icon} from './icons.js?v=52d03817fac7e7b9';
-import {collectionCount, statusBadge, metricContent} from './visibility.js?v=52d03817fac7e7b9';
-import {renderSideNav} from './ui/core.js?v=52d03817fac7e7b9';
+import {icon} from './icons.js?v=610ff83a2c7af4db';
+import {collectionCount, statusBadge, metricContent} from './visibility.js?v=610ff83a2c7af4db';
+import {renderMobileNavDialog,renderSideNav} from './ui/core.js?v=610ff83a2c7af4db';
+import {renderButton} from './ui/button.js?v=610ff83a2c7af4db';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'workspace').replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -121,14 +122,17 @@ function sidebar(prefix){
   const options={label:'업무 탐색',footer:[workspaceNavItem('settings','설정','Settings')]};
   const desktop=renderSideNav(workspaceNav,{...options,idPrefix:prefix,title:'워크스페이스',collapsible:true});
   const mobile=renderSideNav(workspaceNav,{...options,idPrefix:prefix+'-mobile'});
+  const mobileId=prefix+'-mobile-menu';
+  const mobileTrigger=renderButton({variant:'outlined',color:'assistive',label:'탐색 메뉴 열기',iconOnly:true,before:'Menu',attributes:{
+    'data-dds-mobile-nav-open':mobileId,'aria-controls':mobileId,'aria-expanded':'false','aria-haspopup':'dialog',
+  }});
+  const mobileDialog=renderMobileNavDialog(mobileId,{title:'워크스페이스',content:`<div class="dds-ui" data-dds-component="sidebar">${mobile}</div>`});
   return `<div class="bws-side-shell">
     <div class="dds-ui bws-side-desktop" data-dds-component="sidebar">${desktop}</div>
-    <details class="bws-side-mobile">
-      <summary class="dds-nav-control bws-side-mobile-trigger" aria-controls="${prefix}-mobile-menu">
-        <span>워크스페이스<span class="sr-only"> 탐색 메뉴</span></span>${icon('Menu')}
-      </summary>
-      <div class="dds-ui" data-dds-component="sidebar" id="${prefix}-mobile-menu">${mobile}</div>
-    </details>
+    <div class="dds-ui bws-side-mobile">
+      <header class="bws-side-mobile-bar"><span class="dds-nav-link">워크스페이스</span>${mobileTrigger}</header>
+      ${mobileDialog}
+    </div>
     <section class="bws-side-main" id="${prefix}-panel"><h2 class="db-title" data-bws-side-title tabindex="-1">대시보드</h2></section>
   </div>`;
 }
@@ -177,6 +181,14 @@ export function bindWorkspaceBlocks(root=document){
   const controller=new AbortController(),options={signal:controller.signal},downloads=new Map();
   const blocks=[...root.querySelectorAll('[data-bws-block]')];if(root.matches?.('[data-bws-block]'))blocks.unshift(root);
   for(const block of blocks)if(!blockStates.has(block))blockStates.set(block,defaultState(block.dataset.bwsBlock));
+  const sidebars=blocks.filter(block=>block.dataset.bwsBlock==='sidebar');
+  const sidebarResize=sidebars.length?new ResizeObserver(entries=>{
+    for(const {target} of entries){
+      const menu=target.querySelector('[data-dds-mobile-nav-dialog][open]');
+      if(menu&&!target.querySelector('[data-dds-mobile-nav-open]').getClientRects().length)menu.close();
+    }
+  }):null;
+  for(const block of sidebars)sidebarResize.observe(block);
   const context=target=>{const block=target.closest?.('[data-bws-block]');return block&&blocks.includes(block)?[block,blockStates.get(block)]:[];};
   function redraw(block,state){const view=block.querySelector('[data-bws-view]');const renderer={dashboard:dashboardBody,'data-flow':flowBody,'journey-flow':journeyBody,'cohort-retention':cohortBody,kanban:kanbanBoard,'metric-explorer':metricBody}[state.id];if(view&&renderer)view.innerHTML=renderer(state);if(state.id==='dashboard'){const days=analytics(state).days;block.querySelector('[data-bws-date]').textContent=days[0].date.replace('-','/')+' – '+days.at(-1).date.replace('-','/');}}
   function chooseTab(tab){const [block,state]=context(tab);if(!block)return;const group=tab.closest('[data-bws-group]');state[group.dataset.bwsGroup]=group.dataset.bwsGroup==='period'?Number(tab.dataset.bwsTab):tab.dataset.bwsTab;for(const other of group.querySelectorAll('[data-bws-tab]')){other.setAttribute('aria-selected',String(other===tab));other.tabIndex=other===tab?0:-1;}redraw(block,state);block.querySelector('[data-bws-view]')?.setAttribute('aria-labelledby',[...block.querySelectorAll('[data-bws-tab][aria-selected="true"]')].map(item=>item.id).join(' '));}
@@ -194,9 +206,9 @@ export function bindWorkspaceBlocks(root=document){
     }
     const title=block.querySelector('[data-bws-side-title]');
     title.textContent=target.querySelector('.dds-side-nav-label').textContent;
-    const mobileMenu=target.closest('.bws-side-mobile[open]');
+    const mobileMenu=target.closest('[data-dds-mobile-nav-dialog][open]');
     if(mobileMenu){
-      mobileMenu.open=false;
+      mobileMenu.close();
       title.focus({preventScroll:true});
     }
   },options);
@@ -237,15 +249,7 @@ export function bindWorkspaceBlocks(root=document){
     if(event.key!=='Escape')return;
     const dialog=event.target.closest?.('.bws-task-dialog[open]');
     if(dialog){const [block,state]=context(dialog);event.preventDefault();event.stopPropagation();closeTask(block,state);return;}
-    const menu=event.target.closest?.('.bws-side-mobile[open]');
-    if(menu&&!event.target.closest('.dds-side-nav-disclosure[open]')){
-      event.preventDefault();
-      event.stopPropagation();
-      menu.open=false;
-      menu.querySelector('summary').focus({preventScroll:true});
-      return;
-    }
     for(const tip of root.querySelectorAll('.bws-tooltip:not([hidden])'))tip.hidden=true;
   },options);
-  const cleanup=()=>{controller.abort();for(const block of blocks){const dialog=block.querySelector('dialog');if(dialog?.open)dialog.close();}for(const [url,timer] of downloads){clearTimeout(timer);URL.revokeObjectURL(url);}downloads.clear();if(bindings.get(root)===cleanup)bindings.delete(root);};bindings.set(root,cleanup);return cleanup;
+  const cleanup=()=>{controller.abort();sidebarResize?.disconnect();for(const block of blocks){const dialog=block.querySelector('dialog');if(dialog?.open)dialog.close();}for(const [url,timer] of downloads){clearTimeout(timer);URL.revokeObjectURL(url);}downloads.clear();if(bindings.get(root)===cleanup)bindings.delete(root);};bindings.set(root,cleanup);return cleanup;
 }

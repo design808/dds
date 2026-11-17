@@ -43,6 +43,51 @@
 @media(max-height:480px){
   .dds-dialog[data-dds-scrollable=true]{gap:var(--space-3);padding-block:var(--space-4);}
 }
+/* Full-viewport navigation shares a fixed heading and a scrollable body. */
+.dds-mobile-nav-dialog{
+  --dialog-start:none;
+  --mobile-nav-inset:max(var(--space-4),calc((100% - 640px) / 2));
+  position:fixed;
+  inset:0;
+  flex-direction:column;
+  inline-size:100%;
+  max-inline-size:none;
+  block-size:100vh;
+  block-size:100dvh;
+  max-block-size:none;
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:var(--background);
+  box-shadow:none;
+  overflow:hidden;
+}
+.dds-mobile-nav-dialog[open]{display:flex}
+.dds-mobile-nav-dialog::backdrop{background:var(--background);backdrop-filter:none}
+.dds-mobile-nav-dialog[data-dds-mobile-nav-instant],.dds-mobile-nav-dialog[data-dds-mobile-nav-instant]::backdrop{transition:none;animation:none}
+.dds-mobile-nav-heading{
+  display:flex;
+  flex:none;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--space-3);
+  padding:calc(var(--space-3) + env(safe-area-inset-top,0px)) var(--mobile-nav-inset) var(--space-3);
+  border-block-end:1px solid var(--border);
+}
+.dds-mobile-nav-heading h2{margin:0;font-size:var(--type-heading-2-size);line-height:var(--type-heading-2-line-height);font-weight:600}
+.dds-mobile-nav-heading > button{flex:none}
+.dds-mobile-nav-body{
+  flex:1 1 auto;
+  min-block-size:0;
+  overflow:auto;
+  overscroll-behavior:contain;
+  scrollbar-gutter:auto;
+  padding:var(--space-4) var(--mobile-nav-inset) max(var(--space-4),env(safe-area-inset-bottom,0px));
+}
+.dds-mobile-nav-body:has(> .dds-side-nav, > .dds-ui > .dds-side-nav){display:flex;overflow:hidden}
+.dds-mobile-nav-dialog .dds-side-nav{--dds-side-nav-inset:var(--space-2);border-inline-end:0}
+.dds-mobile-nav-dialog .dds-side-nav-row{min-block-size:44px}
 /* Floating runtime UI inherits tokens through a portal without adding a layout
    row or section gap to the containing dialog. */
 .dds-ui-portal{display:contents}

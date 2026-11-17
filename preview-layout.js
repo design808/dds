@@ -1,8 +1,9 @@
-import {thumbnailSceneWidth,fitThumbnailScene} from './preview-scenes.js?v=52d03817fac7e7b9';
+import {thumbnailSceneWidth,fitThumbnailScene} from './preview-scenes.js?v=610ff83a2c7af4db';
 
-// Only inert gallery thumbnails are fitted. Detail examples and variants retain
-// their real container width and the component's own scrolling/interaction.
+// Gallery cards fit an inert scene. The desktop header detail has its own
+// responsive scene, with unscaled controls when there is little room to fit it.
 const observed=new Map();
+const desktopHeaderExamples=new Map();
 const textareaHeights=new WeakMap();
 let scheduled=false;
 
@@ -24,6 +25,17 @@ function expandTextareas(scene){
 
 function fit(){
   scheduled=false;
+  for(const [frame,scene] of desktopHeaderExamples){
+    if(!frame.isConnected||!frame.contains(scene)){
+      observer.unobserve(frame);desktopHeaderExamples.delete(frame);continue;
+    }
+    const width=frame.clientWidth;
+    if(!width)continue;
+    const sceneMinimum=parseFloat(getComputedStyle(scene).minWidth);
+    const zoom=width>=640?Math.min(1,width/sceneMinimum):1;
+    setStyle(scene,'--doc-header-zoom',String(zoom));
+    frame.tabIndex=frame.scrollWidth>width+1?0:-1;
+  }
   for(const [box,record] of observed){
     const {scene,stage}=record;
     if(!box.isConnected||!box.contains(scene)){
@@ -61,6 +73,12 @@ function schedule(){
 
 const observer=new ResizeObserver(schedule);
 function discover(){
+  for(const frame of document.querySelectorAll('#main .doc-header-scroll')){
+    if(desktopHeaderExamples.has(frame))continue;
+    const scene=frame.querySelector('.doc-header-desktop');
+    if(!scene)continue;
+    desktopHeaderExamples.set(frame,scene);observer.observe(frame);
+  }
   for(const box of document.querySelectorAll('#main .component-preview')){
     if(observed.has(box))continue;
     const scene=box.querySelector('.preview-inner.inert-preview');
