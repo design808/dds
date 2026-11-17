@@ -1,4 +1,4 @@
-import {thumbnailSceneWidth,fitThumbnailScene} from './preview-scenes.js?v=610ff83a2c7af4db';
+import {thumbnailSceneWidth,fitThumbnailScene} from './preview-scenes.js?v=1da6401975a34e58';
 
 // Gallery cards fit an inert scene. The desktop header detail has its own
 // responsive scene, with unscaled controls when there is little room to fit it.

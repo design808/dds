@@ -77,6 +77,7 @@
 }
 .dds-mobile-nav-heading h2{margin:0;font-size:var(--type-heading-2-size);line-height:var(--type-heading-2-line-height);font-weight:600}
 .dds-mobile-nav-heading > button{flex:none}
+.dds-button:is([data-dds-mobile-nav-open],[data-dds-mobile-nav-close]){border:0}
 .dds-mobile-nav-body{
   flex:1 1 auto;
   min-block-size:0;

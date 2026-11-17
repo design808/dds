@@ -1924,6 +1924,7 @@ html[data-theme=dark][data-direction-multicolor=true] .dds-ui .dds-chart-example
 }
 .dds-ui .dds-mobile-nav-heading h2{margin:0;font-size:var(--type-heading-2-size);line-height:var(--type-heading-2-line-height);font-weight:600}
 .dds-ui .dds-mobile-nav-heading > button{flex:none}
+.dds-ui .dds-button:is([data-dds-mobile-nav-open],[data-dds-mobile-nav-close]){border:0}
 .dds-ui .dds-mobile-nav-body{
   flex:1 1 auto;
   min-block-size:0;

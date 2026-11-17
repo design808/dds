@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=610ff83a2c7af4db';
+import {icon} from './icons.js?v=1da6401975a34e58';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[character]));
 const safeId = value => String(value || 'address-book').replace(/[^a-zA-Z0-9_-]/g, '-');

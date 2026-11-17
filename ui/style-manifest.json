@@ -17,7 +17,7 @@
   },
   "scope": ".dds-ui",
   "wrapperDisplay": "contents",
-  "sha256": "bcd3bbaf0058788902f880b77f8563a1fa7a7cef5500069744e032841ee87705",
+  "sha256": "3561b0b8127dc6edc17513e121232f24eb3929681313aa3e363258b13e6aa743",
   "canonicalComponentCount": 115,
   "canonicalMarkupClasses": [
     "accordion",
@@ -415,7 +415,7 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "03049bc02c461402153e25c994aec087770b8fb0f2cebf3d8b316142d43cdc48",
+      "sha256": "f9d95b15c91ea0239f2729cb725368636b6a9a539973f1567dbfd8817e408bbd",
       "retainedRules": 4,
       "excludedSelectors": 186
     },
@@ -457,8 +457,8 @@
     },
     {
       "file": "component-layout.css",
-      "sha256": "758018704e7286b089a8ffb74917e945efff90c923d38b9e688eed7eb1ef5b7a",
-      "retainedRules": 71,
+      "sha256": "140326c697276cb5366f36cd531f82b7f385cf893549d99f1793383befd873fe",
+      "retainedRules": 72,
       "excludedSelectors": 0
     }
   ],
@@ -3245,6 +3245,10 @@
     },
     {
       "source": "document-layout.css",
+      "selector": ".workspace > #main .playground-inner:has(> .doc-header-preview-set)"
+    },
+    {
+      "source": "document-layout.css",
       "selector": ".workspace > #main .doc-header-preview-set"
     },
     {
@@ -3254,10 +3258,6 @@
     {
       "source": "document-layout.css",
       "selector": ".workspace > #main .doc-header-example > h3"
-    },
-    {
-      "source": "document-layout.css",
-      "selector": ".workspace > #main .doc-header-frame"
     },
     {
       "source": "document-layout.css",
@@ -3285,7 +3285,7 @@
     },
     {
       "source": "document-layout.css",
-      "selector": ".workspace > #main .doc-header-preview-set + .helper"
+      "selector": ".workspace > #main .playground-inner:has(> .doc-header-preview-set)"
     },
     {
       "source": "document-layout.css",

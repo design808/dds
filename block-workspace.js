@@ -1,7 +1,7 @@
-import {icon} from './icons.js?v=610ff83a2c7af4db';
-import {collectionCount, statusBadge, metricContent} from './visibility.js?v=610ff83a2c7af4db';
-import {renderMobileNavDialog,renderSideNav} from './ui/core.js?v=610ff83a2c7af4db';
-import {renderButton} from './ui/button.js?v=610ff83a2c7af4db';
+import {icon} from './icons.js?v=1da6401975a34e58';
+import {collectionCount, statusBadge, metricContent} from './visibility.js?v=1da6401975a34e58';
+import {renderMobileNavDialog,renderSideNav} from './ui/core.js?v=1da6401975a34e58';
+import {renderButton} from './ui/button.js?v=1da6401975a34e58';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'workspace').replace(/[^a-zA-Z0-9_-]/g,'-');
