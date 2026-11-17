@@ -1,7 +1,7 @@
 // Canonical extended-component markup. No document listeners or automatic mounting.
-import {icon} from './icons.js?v=1da6401975a34e58';
-import {renderMobileNavDialog} from './core.js?v=1da6401975a34e58';
-import {collectionCount,statusBadge} from '../visibility.js?v=1da6401975a34e58';
+import {icon} from './icons.js?v=ef54ffa1d3086c30';
+import {renderMobileNavDialog} from './core.js?v=ef54ffa1d3086c30';
+import {collectionCount,statusBadge} from '../visibility.js?v=ef54ffa1d3086c30';
 const button=(text,attrs='',cls='')=>`<button type="button" class="btn ${cls}" ${attrs}>${text}</button>`;
 const ic=(name,label,attrs='')=>`<button type="button" class="icon-btn" aria-label="${label}" ${attrs}>${icon(name)}</button>`;
 const link=(text,route,current=false)=>`<a class="dds-nav-link dds-nav-control" href="#${route}" ${current?'aria-current="page"':''}>${text}</a>`;

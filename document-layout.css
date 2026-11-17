@@ -535,11 +535,12 @@
 .workspace > #main .doc-header-preview-set {display:grid;gap:var(--space-6);width:100%;min-width:0;--dds-topnav-gutter:var(--space-3);}
 .workspace > #main .doc-header-example {display:grid;gap:var(--space-3);min-width:0;}
 .workspace > #main .doc-header-example > h3 {margin:0;color:var(--text-primary);font-size:var(--type-body-1-normal-size);line-height:var(--type-body-1-normal-line-height);font-weight:var(--font-weight-semibold);letter-spacing:var(--type-body-1-normal-tracking);}
-.workspace > #main .doc-header-scroll {overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;}
-.workspace > #main .doc-header-scroll:has(.dds-topnav-menu[open]) {overflow-y:auto;}
+.workspace > #main .doc-header-scroll {min-width:0;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;}
+.workspace > #main .doc-header-scroll[data-doc-header-fitted] {overflow:visible;}
 .workspace > #main .doc-header-scroll:focus-visible {outline:1px solid var(--primary);outline-offset:0;}
-.workspace > #main .doc-header-desktop {width:100%;min-width:960px;zoom:var(--doc-header-zoom,1);}
-.workspace > #main .doc-header-desktop:has(.dds-topnav-menu[open]) {min-height:272px;}
+.workspace > #main .doc-header-desktop {width:100%;min-width:960px;min-height:0;zoom:var(--doc-header-zoom,1);transition:min-height 0s var(--duration-normal);}
+/* Keep the shadow clear of both the scroll edge and the next example. */
+.workspace > #main .doc-header-desktop:has(.dds-topnav-menu[open]) {min-height:calc(var(--doc-header-menu-height,272px) + 112px);transition-delay:0s;}
 .workspace > #main .doc-header-mobile {width:100%;max-width:390px;}
 
 @media (max-width: 767px) {

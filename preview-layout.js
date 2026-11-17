@@ -1,4 +1,4 @@
-import {thumbnailSceneWidth,fitThumbnailScene} from './preview-scenes.js?v=1da6401975a34e58';
+import {thumbnailSceneWidth,fitThumbnailScene} from './preview-scenes.js?v=ef54ffa1d3086c30';
 
 // Gallery cards fit an inert scene. The desktop header detail has its own
 // responsive scene, with unscaled controls when there is little room to fit it.
@@ -34,7 +34,15 @@ function fit(){
     const sceneMinimum=parseFloat(getComputedStyle(scene).minWidth);
     const zoom=width>=640?Math.min(1,width/sceneMinimum):1;
     setStyle(scene,'--doc-header-zoom',String(zoom));
-    frame.tabIndex=frame.scrollWidth>width+1?0:-1;
+    const sceneBounds=scene.getBoundingClientRect(),fitted=sceneBounds.width<=width+1;
+    frame.toggleAttribute('data-doc-header-fitted',fitted);
+    frame.tabIndex=fitted?-1:0;
+    const menu=scene.querySelector('.dds-topnav-menu[open] > .dds-topnav-dropdown');
+    if(menu?.offsetParent){
+      const scale=sceneBounds.width/scene.offsetWidth;
+      const menuOffset=(menu.offsetParent.getBoundingClientRect().top-sceneBounds.top)/scale;
+      setStyle(scene,'--doc-header-menu-height',Math.ceil(menuOffset+menu.offsetTop+menu.offsetHeight)+'px');
+    }
   }
   for(const [box,record] of observed){
     const {scene,stage}=record;
@@ -95,6 +103,9 @@ function discover(){
 
 const main=document.getElementById('main');
 if(main)new MutationObserver(discover).observe(main,{childList:true,characterData:true,subtree:true});
+main?.addEventListener('toggle',event=>{
+  if(event.target.matches('.doc-header-desktop .dds-topnav-menu'))schedule();
+},true);
 window.addEventListener('dds-design-settings-change',schedule);
 document.fonts?.addEventListener('loadingdone',schedule);
 document.fonts?.ready.then(schedule);

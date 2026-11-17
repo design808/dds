@@ -415,7 +415,7 @@
     },
     {
       "file": "document-layout.css",
-      "sha256": "f9d95b15c91ea0239f2729cb725368636b6a9a539973f1567dbfd8817e408bbd",
+      "sha256": "e6b214c90fa761a583dae7f8e83eb5c5db27c8c3075af1477c559feed91004c0",
       "retainedRules": 4,
       "excludedSelectors": 186
     },
@@ -3265,7 +3265,7 @@
     },
     {
       "source": "document-layout.css",
-      "selector": ".workspace > #main .doc-header-scroll:has(.dds-topnav-menu[open])"
+      "selector": ".workspace > #main .doc-header-scroll[data-doc-header-fitted]"
     },
     {
       "source": "document-layout.css",

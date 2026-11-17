@@ -1,6 +1,6 @@
-import {calendarDays} from './ui/extended.js?v=1da6401975a34e58';
-import {chartData} from './ui/charts.js?v=1da6401975a34e58';
-import {secondaryThumbnail} from './preview-states.js?v=1da6401975a34e58';
+import {calendarDays} from './ui/extended.js?v=ef54ffa1d3086c30';
+import {chartData} from './ui/charts.js?v=ef54ffa1d3086c30';
+import {secondaryThumbnail} from './preview-states.js?v=ef54ffa1d3086c30';
 
 // Documentation thumbnails use a logical scene, never the gallery card as a device.
 // These are presentation widths; no service component or breakpoint is changed.
