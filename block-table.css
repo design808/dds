@@ -20,6 +20,7 @@
 .dds-block-example .dbt-table thead th {background:var(--surface);color:var(--text-secondary);font-size:var(--type-label-1-size);line-height:var(--type-label-1-line-height);font-weight:var(--font-weight-medium);letter-spacing:var(--type-label-1-tracking)}
 .dds-block-example .dbt-table tbody th {font-weight:var(--font-weight-medium);color:var(--text-strong)}
 .dds-block-example .dbt-table tbody tr:last-child :is(th,td) {border-bottom:0}
+.dds-block-example .dbt-cell-label {display:none}
 .dds-block-example .dbt-subscription {max-width:100%;font-size:var(--type-label-2-size);line-height:var(--type-label-2-line-height);white-space:normal}
 .dds-block-example .dbt-subscription>.icon {width:14px;height:14px;flex-shrink:0}
 .dds-block-example .dbt-subscription[data-subscription=subscribed] {border-color:transparent;color:var(--success);background:var(--success-bg)}
@@ -45,6 +46,17 @@
   .dds-block-example .dbt-footer {align-items:flex-start}
   .dds-block-example .dbt-footer-controls {width:100%;justify-content:space-between;gap:var(--space-3)}
   .dds-block-example .dbt-pagination {margin-left:auto}
+  .dds-block-example .dbt-table {display:block;position:relative;min-width:0}
+  .dds-block-example .dbt-table :is(thead,colgroup) {position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .dds-block-example .dbt-table tbody {display:block}
+  .dds-block-example .dbt-table tbody tr {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-1) var(--space-3);padding:var(--space-4);border-block-end:1px solid var(--border)}
+  .dds-block-example .dbt-table tbody tr:last-child {border-block-end:0}
+  .dds-block-example .dbt-table tbody :is(th,td) {min-width:0;padding:0;border:0}
+  .dds-block-example .dbt-table tbody th {background:transparent}
+  .dds-block-example .dbt-table tbody :is(th,td:nth-child(2),td:last-child) {grid-column:1/-1}
+  .dds-block-example .dbt-table tbody td:nth-child(2) {color:var(--text-secondary)}
+  .dds-block-example .dbt-table tbody td:last-child:not([colspan]) {margin-block-start:var(--space-2)}
+  .dds-block-example .dbt-cell-label {display:block;color:var(--text-secondary);font-size:var(--type-label-2-size);line-height:var(--type-label-2-line-height)}
 }
 @container(max-width:300px) {
   .dds-block-example .dbt-toolbar {grid-template-columns:minmax(0,1fr)}

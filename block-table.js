@@ -1,4 +1,4 @@
-import {icon} from './icons.js?v=6259b05e21604bbd';
+import {icon} from './icons.js?v=52d03817fac7e7b9';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[character]));
 const safeId = value => String(value || 'address-book').replace(/[^a-zA-Z0-9_-]/g, '-');
@@ -38,8 +38,14 @@ function pageData(state) {
 }
 
 function tableRows(rows) {
-  if (!rows.length) return '<tr><td colspan="5"><div class="dbt-empty"><p>검색 조건에 맞는 연락처가 없습니다.</p><button class="dds-button" type="button" data-variant="outlined" data-color="assistive" data-control-size="sm" data-dbt-action="reset">필터 초기화</button></div></td></tr>';
-  return rows.map(contact => `<tr><th scope="row">${escapeHTML(contact.name)}</th><td>${escapeHTML(contact.email)}</td><td>${bookLabels[contact.book]}</td><td>${languageLabels[contact.language]}</td><td><span class="badge dds-badge dbt-subscription" data-subscription="${contact.subscription}">${icon(contact.subscription === 'subscribed' ? 'Check' : 'Minus')}<span>${subscriptionLabels[contact.subscription]}</span></span></td></tr>`).join('');
+  if (!rows.length) return '<tr role="row"><td role="cell" colspan="5"><div class="dbt-empty"><p>검색 조건에 맞는 연락처가 없습니다.</p><button class="dds-button" type="button" data-variant="outlined" data-color="assistive" data-control-size="sm" data-dbt-action="reset">필터 초기화</button></div></td></tr>';
+  return rows.map(contact => `<tr role="row">
+    <th role="rowheader" scope="row">${escapeHTML(contact.name)}</th>
+    <td role="cell">${escapeHTML(contact.email)}</td>
+    <td role="cell"><span class="dbt-cell-label" aria-hidden="true">주소록</span>${bookLabels[contact.book]}</td>
+    <td role="cell"><span class="dbt-cell-label" aria-hidden="true">언어</span>${languageLabels[contact.language]}</td>
+    <td role="cell"><span class="badge dds-badge dbt-subscription" data-subscription="${contact.subscription}">${icon(contact.subscription === 'subscribed' ? 'Check' : 'Minus')}<span>${subscriptionLabels[contact.subscription]}</span></span></td>
+  </tr>`).join('');
 }
 
 function filterSelect(prefix, key, label, options) {
@@ -69,7 +75,7 @@ export function renderTableBlock(id, uid) {
       <button class="dds-button dbt-export" type="button" data-control-size="sm" data-variant="solid" data-color="primary" data-dbt-action="export">내보내기</button>
     </div>
     <div class="table-wrap dbt-table-wrap" tabindex="0" role="region" aria-labelledby="${prefix}-title" aria-describedby="${prefix}-summary">
-      <table class="dbt-table"><caption class="sr-only">이름, 이메일, 주소록, 언어와 수신 상태</caption><colgroup><col class="dbt-col-name"><col class="dbt-col-email"><col class="dbt-col-book"><col class="dbt-col-language"><col class="dbt-col-status"></colgroup><thead><tr><th scope="col">이름</th><th scope="col">이메일</th><th scope="col">주소록</th><th scope="col">언어</th><th scope="col">상태</th></tr></thead><tbody data-dbt-rows>${tableRows(data.rows)}</tbody></table>
+      <table class="dbt-table" role="table"><caption class="sr-only">이름, 이메일, 주소록, 언어와 수신 상태</caption><colgroup><col class="dbt-col-name"><col class="dbt-col-email"><col class="dbt-col-book"><col class="dbt-col-language"><col class="dbt-col-status"></colgroup><thead role="rowgroup"><tr role="row"><th scope="col">이름</th><th scope="col">이메일</th><th scope="col">주소록</th><th scope="col">언어</th><th scope="col">상태</th></tr></thead><tbody role="rowgroup" data-dbt-rows>${tableRows(data.rows)}</tbody></table>
     </div>
     <footer class="dbt-footer"><p class="dbt-summary" id="${prefix}-summary" role="status" aria-live="polite" data-dbt-summary>${summary(data)}</p><div class="dbt-footer-controls">
       <div class="dbt-page-size"><label class="sr-only" for="${prefix}-page-size">한 페이지에 표시할 행 수</label><select id="${prefix}-page-size" aria-label="한 페이지에 표시할 행 수" data-dbt-page-size data-control-size="sm" data-control-width="content"><option value="10">10개씩</option><option value="20">20개씩</option><option value="50">50개씩</option></select></div>

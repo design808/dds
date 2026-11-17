@@ -1,6 +1,6 @@
-import {icon} from './icons.js?v=6259b05e21604bbd';
-import {statusBadge, collectionCount} from './visibility.js?v=6259b05e21604bbd';
-import {chartData, chartDemo} from './chart-system.js?v=6259b05e21604bbd';
+import {icon} from './icons.js?v=52d03817fac7e7b9';
+import {statusBadge, collectionCount} from './visibility.js?v=52d03817fac7e7b9';
+import {chartData, chartDemo} from './chart-system.js?v=52d03817fac7e7b9';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[character]));
 let renderSequence = 0;
@@ -65,7 +65,18 @@ const features = [
 
 function featureNavigation(prefix) {
   const previews = [appearancePreview(), componentsPreview(prefix), adoptionPreview()];
-  return `<section class="dbc-feature-navigation" data-dbc-block="feature-navigation" aria-labelledby="${prefix}-title"><div class="dbc-feature-copy"><h2 class="dbc-feature-title" id="${prefix}-title">서비스 화면을 만드는<br>Deep Design System</h2><div class="dbc-feature-accordion">${features.map((feature, index) => `<section class="dbc-feature-item"><h3><button type="button" class="dbc-feature-trigger" id="${prefix}-trigger-${feature.id}" data-dbc-feature="${feature.id}" aria-expanded="${index === 0}" aria-controls="${prefix}-description-${feature.id}"><span>${feature.title}</span>${icon('ChevronDown')}</button></h3><div class="dbc-feature-description" id="${prefix}-description-${feature.id}" role="region" aria-labelledby="${prefix}-trigger-${feature.id}" ${index === 0 ? '' : 'hidden'}><p class="db-muted">${feature.description}</p>${action(feature.action, feature.href)}</div></section>`).join('')}</div></div><div class="dbc-feature-previews">${features.map((feature, index) => `<div class="dbc-feature-preview" id="${prefix}-preview-${feature.id}" data-dbc-preview="${feature.id}" role="img" aria-label="${feature.previewLabel}" ${index === 0 ? '' : 'hidden'}>${previews[index]}</div>`).join('')}</div></section>`;
+  return `<section class="dbc-feature-navigation" data-dbc-block="feature-navigation" aria-labelledby="${prefix}-title">
+    <h2 class="dbc-feature-title" id="${prefix}-title">서비스 화면을 만드는<br>Deep Design System</h2>
+    ${features.map((feature, index) => {
+      const descriptionId = `${prefix}-description-${feature.id}`;
+      const previewId = `${prefix}-preview-${feature.id}`;
+      const hidden = index === 0 ? '' : 'hidden';
+      return `<div class="dbc-feature-item"><div class="dbc-feature-panel">
+        <h3><button type="button" class="dbc-feature-trigger" id="${prefix}-trigger-${feature.id}" data-dbc-feature="${feature.id}" aria-expanded="${index === 0}" aria-controls="${descriptionId} ${previewId}"><span>${feature.title}</span>${icon('ChevronDown')}</button></h3>
+        <div class="dbc-feature-description" id="${descriptionId}" role="region" aria-labelledby="${prefix}-trigger-${feature.id}" ${hidden}><p class="db-muted">${feature.description}</p>${action(feature.action, feature.href)}</div>
+      </div><div class="dbc-feature-preview" id="${previewId}" data-dbc-preview="${feature.id}" role="img" aria-label="${feature.previewLabel}" ${hidden}>${previews[index]}</div></div>`;
+    }).join('')}
+  </section>`;
 }
 
 function button(label, attrs = '', variant = 'solid', color = 'primary', size = 'sm') {
@@ -105,7 +116,7 @@ function contentGallery(prefix) {
     ['progress', '진행률', `<div class="dbc-gallery-progress"><div class="db-header"><span>입력 완료</span><span>64%</span></div><progress max="11" value="7" aria-label="입력 완료 비율"></progress></div>`],
     ['contributions', '활동량 히트맵', chartDemo('contributions', prefix + '-gallery-heatmap', true)]
   ];
-  return `<section class="dbc-content-gallery db-stack" data-dbc-block="content-gallery"><header class="dbc-landing-heading"><h2>하나의 기준으로,<br>필요한 화면을 조합하세요.</h2><p class="db-muted">기본 입력부터 상태 표시까지, 자주 쓰는 요소를 같은 방식으로 사용합니다.</p></header><div class="dbc-gallery-grid">${examples.map(([id, title, preview]) => `<article class="dds-content-card dbc-gallery-card"><div class="dbc-gallery-preview" aria-hidden="true" inert>${preview}</div><h3 class="db-section-title"><a class="dds-card-link" href="#/components/${id}">${title}</a></h3><span class="dbc-gallery-arrow" aria-hidden="true">${icon('ArrowUpRight')}</span></article>`).join('')}</div><div class="dbc-centered-actions">${action('모든 컴포넌트 보기', '#/components')}</div></section>`;
+  return `<section class="dbc-content-gallery db-stack" data-dbc-block="content-gallery"><header class="dbc-landing-heading"><h2>하나의 기준으로,<br>필요한 화면을 조합하세요.</h2><p class="db-muted">기본 입력부터 상태 표시까지, 자주 쓰는 요소를 같은 방식으로 사용합니다.</p></header><div class="dbc-gallery-grid">${examples.map(([id, title, preview]) => `<article class="dds-content-card dbc-gallery-card"><div class="dbc-gallery-preview" aria-hidden="true" inert>${preview}</div><h3 class="db-section-title dds-card-title"><a class="dds-card-link" href="#/components/${id}">${title}</a></h3><span class="dbc-gallery-arrow" aria-hidden="true">${icon('ArrowUpRight')}</span></article>`).join('')}</div><div class="dbc-centered-actions">${action('모든 컴포넌트 보기', '#/components')}</div></section>`;
 }
 function howItWorks() {
   const visuals = [
@@ -114,7 +125,7 @@ function howItWorks() {
     `<div class="dbc-phone"><span class="dbc-phone-speaker"></span><span class="dbc-phone-title">내 작업</span><div class="dbc-phone-card"><span>새로운 문서</span><i></i><i></i></div><span class="dds-button" data-variant="solid" data-color="primary" data-control-size="sm"><span class="dds-button-label">문서 보기</span></span></div>`
   ];
   const steps = [['브랜드 기준 정하기', '서비스의 색상과 서체를 정하고 화면 전체에 같은 기준을 적용합니다.'], ['필요한 구성 조합하기', '목적에 맞는 블록을 골라 페이지의 흐름과 정보를 배치합니다.'], ['서비스에 맞춰 완성하기', '실제 콘텐츠와 기능을 연결하고 다양한 화면 크기에서 확인합니다.']];
-  return `<section class="dbc-how-it-works db-stack" data-dbc-block="how-it-works"><header><h2 class="dbc-large-title">화면을 완성하는<br>세 가지 단계</h2></header><div class="dbc-steps-grid">${steps.map(([title, description], index) => `<article class="dbc-step"><div class="dbc-step-visual" aria-hidden="true" inert>${visuals[index]}</div><h3 class="db-section-title">${index + 1}. ${title}</h3><p class="db-muted">${description}</p></article>`).join('')}</div></section>`;
+  return `<section class="dbc-how-it-works db-stack" data-dbc-block="how-it-works"><header><h2 class="dbc-large-title">화면을 완성하는<br>세 가지 단계</h2></header><div class="dbc-steps-grid">${steps.map(([title, description], index) => `<article class="dbc-step"><h3 class="db-section-title">${index + 1}. ${title}</h3><p class="db-muted">${description}</p><div class="dbc-step-visual" aria-hidden="true" inert>${visuals[index]}</div></article>`).join('')}</div></section>`;
 }
 const planFeatures = ['개인 작업 공간', '문서 작성과 보관', '문서 검색과 필터', '기본 보기 설정', '표준 컴포넌트', '팀 작업 공간', '문서 공동 검토', '공유 설정'];
 function pricing(prefix) {

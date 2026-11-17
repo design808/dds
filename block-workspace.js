@@ -1,6 +1,6 @@
-import {icon} from './icons.js?v=6259b05e21604bbd';
-import {collectionCount, statusBadge, metricContent} from './visibility.js?v=6259b05e21604bbd';
-import {renderSideNav} from './ui/core.js?v=6259b05e21604bbd';
+import {icon} from './icons.js?v=52d03817fac7e7b9';
+import {collectionCount, statusBadge, metricContent} from './visibility.js?v=52d03817fac7e7b9';
+import {renderSideNav} from './ui/core.js?v=52d03817fac7e7b9';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const safeId=value=>String(value||'workspace').replace(/[^a-zA-Z0-9_-]/g,'-');
@@ -40,18 +40,20 @@ function button(label,action,{variant='outlined',color='assistive',glyph='',only
 function tabs(prefix,group,items,selected){return `<div class="segmented bws-tabs" role="tablist" aria-label="${group==='period'?'조회 기간':group==='mode'?'표시 방식':'데이터 구분'}" data-bws-group="${group}">${items.map(([key,label])=>`<button type="button" role="tab" id="${prefix}-${group}-${key}" aria-controls="${prefix}-view" aria-selected="${String(key)===String(selected)}" tabindex="${String(key)===String(selected)?0:-1}" data-bws-tab="${key}">${label}</button>`).join('')}</div>`;}
 function table(headers,rows,caption=''){return `<div class="table-wrap bws-table-wrap" tabindex="0" role="region" aria-label="${esc(caption||headers.join(' · '))}"><table>${caption?`<caption class="sr-only">${esc(caption)}</caption>`:''}<thead><tr>${headers.map(text=>`<th scope="col">${esc(text)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map((cell,index)=>`<${index?'td':'th scope="row"'}>${cell}</${index?'td':'th'}>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
 function defaultState(id){return {id,period:30,metric:0,compare:false,source:'all',mode:'heatmap',selectedCohort:0,selectedNav:'overview',collapsed:false,processed:0,flowSource:'database',showFlowTable:false,tasks:taskSeeds.map(task=>({...task})),currentTask:null,invoice:{company:'Acme Product',email:'billing@example.com',tax:8,nextId:4,saved:false,items:[{id:1,title:'Product strategy',quantity:6,rate:150},{id:2,title:'Interface design',quantity:10,rate:130},{id:3,title:'Design handoff',quantity:2,rate:125}]}};}
-function chartSVG(series,labels,{unit='',zero=true,mini=false,selected=-1,pointLabels=labels}={}){
+function chartSVG(series,labels,{unit='',zero=true,mini=false,compact=false,selected=-1,pointLabels=labels}={}){
   const all=series.flatMap(item=>item.values.filter(value=>value!=null));
   let maximum=unit==='%'&&zero?100:Math.max(...all)*1.06;
   const minimum=zero?0:Math.min(...all)*.99;
   if(unit===''&&zero){const target=maximum/3,magnitude=10**Math.floor(Math.log10(Math.max(1,target))),step=[1,2,2.5,3,4,5,6,8,10].find(value=>value*magnitude>=target)*magnitude;maximum=Math.ceil(step)*3;}
   const axisValue=value=>unit===' USD'?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',notation:'compact',maximumFractionDigits:2}).format(value):number(unit===''?Math.round(value):value)+(unit==='%'?'%':'');
   const ticks=Array.from({length:4},(_,step)=>minimum+(maximum-minimum)*step/3),axisLabels=ticks.map(axisValue);
-  const width=600,height=mini?64:270,left=mini?0:Math.max(56,Math.min(124,Math.ceil(Math.max(...axisLabels.map(label=>label.length))*7.5+16))),right=mini?600:584,top=mini?5:20,bottom=mini?59:224;
+  const width=compact?288:600,height=mini?64:compact?224:270;
+  const left=mini?0:Math.max(56,Math.min(124,Math.ceil(Math.max(...axisLabels.map(label=>label.length))*7.5+16)));
+  const right=mini?width:width-16,top=mini?5:20,bottom=mini?59:height-46;
   const x=index=>left+(right-left)*index/Math.max(1,labels.length-1);
   const y=value=>bottom-(value-minimum)/Math.max(.001,maximum-minimum)*(bottom-top);
   let markup='';
-  if(!mini){markup+=`<g data-chart-axis="y">${ticks.map((value,index)=>{const at=y(value);return `<line class="dds-chart-grid" x1="${left}" x2="${right}" y1="${at}" y2="${at}"/><text x="${left-10}" y="${at+4}" text-anchor="end">${esc(axisLabels[index])}</text>`;}).join('')}</g><g data-chart-axis="x">${labels.map((label,index)=>`<text data-chart-tick="${index}" x="${x(index)}" y="254" text-anchor="${index===0?'start':index===labels.length-1?'end':'middle'}">${esc(label)}</text>`).join('')}</g>`;}
+  if(!mini){markup+=`<g data-chart-axis="y">${ticks.map((value,index)=>{const at=y(value);return `<line class="dds-chart-grid" x1="${left}" x2="${right}" y1="${at}" y2="${at}"/><text x="${left-10}" y="${at+4}" text-anchor="end">${esc(axisLabels[index])}</text>`;}).join('')}</g><g data-chart-axis="x">${labels.map((label,index)=>`<text data-chart-tick="${index}" x="${x(index)}" y="${height-16}" text-anchor="${index===0?'start':index===labels.length-1?'end':'middle'}">${esc(label)}</text>`).join('')}</g>`;}
   series.forEach((item,seriesIndex)=>{
     let started=false;
     const singlePoint=item.values.filter(value=>value!=null).length===1;
@@ -62,9 +64,10 @@ function chartSVG(series,labels,{unit='',zero=true,mini=false,selected=-1,pointL
     markup+=`<path d="${path}" fill="none" stroke="${color}" stroke-width="${mini?2:2}" stroke-linecap="round" stroke-linejoin="round" opacity="${opacity}" ${seriesIndex&&series.length===2?'stroke-dasharray="5 4"':''}/>`;
     if(!mini)item.values.forEach((value,index)=>{if(value!=null)markup+=`<g tabindex="0" class="bws-chart-point" role="img" aria-label="${esc(pointLabels[index]+' · '+item.name+' '+number(value)+unit)}" data-bws-point="${esc(pointLabels[index]+' · '+item.name+' '+number(value)+unit)}"><circle cx="${x(index)}" cy="${y(value)}" r="10" fill="transparent"/><circle class="bws-chart-dot${singlePoint?' is-single':''}" cx="${x(index)}" cy="${y(value)}" r="3" fill="${color}"/></g>`;});
   });
-  return `<svg class="${mini?'bws-sparkline':'dds-chart-svg bws-line-svg'}" viewBox="0 0 ${width} ${height}" ${mini?'preserveAspectRatio="none" aria-hidden="true"':'role="group" aria-label="기간별 추이"'}>${markup}</svg>`;
+  const classes=mini?'bws-sparkline':'dds-chart-svg bws-line-svg'+(compact?' bws-line-compact':' bws-line-wide');
+  return `<svg class="${classes}" viewBox="0 0 ${width} ${height}" ${mini?'preserveAspectRatio="none" aria-hidden="true"':'role="group" aria-label="기간별 추이"'}>${markup}</svg>`;
 }
-function chartPanel(series,labels,options={}){return `<div class="bws-chart">${series.length===2?`<div class="bws-chart-legend" aria-label="데이터 계열">${series.map((item,index)=>`<span><i class="${index?'is-previous':''}" aria-hidden="true"></i>${esc(item.name)}</span>`).join('')}</div>`:''}<div class="bws-chart-scroll" tabindex="0" role="region" aria-label="기간별 추이 그래프">${chartSVG(series,labels,options)}</div><div class="dds-chart-tooltip bws-tooltip" role="tooltip" hidden></div><details class="bws-data"><summary>원본 데이터 보기</summary>${table(['기간',...series.map(item=>item.name)],(options.pointLabels||labels).map((label,index)=>[esc(label),...series.map(item=>item.values[index]==null?'—':esc(number(item.values[index])+(options.unit||'')))]))}</details></div>`;}
+function chartPanel(series,labels,options={}){return `<div class="bws-chart">${series.length===2?`<div class="bws-chart-legend" aria-label="데이터 계열">${series.map((item,index)=>`<span><i class="${index?'is-previous':''}" aria-hidden="true"></i>${esc(item.name)}</span>`).join('')}</div>`:''}<div class="bws-chart-scroll dds-scrollbar" tabindex="0" role="region" aria-label="기간별 추이 그래프">${chartSVG(series,labels,options)}${chartSVG(series,labels,{...options,compact:true})}</div><div class="dds-chart-tooltip bws-tooltip" role="tooltip" hidden></div><details class="bws-data"><summary>원본 데이터 보기</summary>${table(['기간',...series.map(item=>item.name)],(options.pointLabels||labels).map((label,index)=>[esc(label),...series.map(item=>item.values[index]==null?'—':esc(number(item.values[index])+(options.unit||'')))]))}</details></div>`;}
 function analytics(state){
   const days=analyticsDays.slice(-state.period),values=days.map(day=>day.visitors),total=sum(values),signups=days.map(day=>Math.round(day.visitors*.04973));
   if(state.period===30)signups[signups.length-1]+=2072-sum(signups);
@@ -87,7 +90,9 @@ function dashboardBody(state){
 }
 function flowBody(state){
   const sources=[['app','앱','Web · iOS','AppWindow',12],['database','데이터베이스','PostgreSQL','Database',18],['events','이벤트','Webhooks','Zap',8]],destinations=[['웨어하우스','모든 레코드','Warehouse'],['대시보드','실시간 지표','LayoutDashboard'],['알림','선택된 이벤트','Bell']];
-  return `<div class="bws-flow-scroll" tabindex="0" role="region" aria-label="데이터 흐름"><figure class="bws-flow-canvas" aria-label="데이터 소스, 변환과 목적지"><svg viewBox="0 0 720 360" aria-hidden="true" class="bws-flow-edges">${[60,180,300].map((at,index)=>`<path d="M180 ${at} C250 ${at},265 180,315 180" class="${sources[index][0]===state.flowSource?'is-active':''}"/><path d="M405 180 C470 180,475 ${at},540 ${at}" class="${state.processed?'is-active':''}"/>`).join('')}</svg>${sources.map(([key,title,description,glyph],index)=>`<button class="bws-flow-node bws-flow-source dds-content-card" type="button" style="--row:${index}" data-bws-source="${key}" aria-pressed="${state.flowSource===key}">${icon(glyph)}<span><strong>${title}</strong><small>${description}</small></span></button>`).join('')}<div class="bws-flow-transform">${button('변환','transform',{glyph:'Workflow'})}<span class="dds-meta-secondary" data-bws-processed>${state.processed}건 처리</span></div>${destinations.map(([title,description,glyph],index)=>`<div class="bws-flow-node bws-flow-destination dds-content-card" style="--row:${index}">${icon(glyph)}<span><strong>${title}</strong><small>${description}</small></span></div>`).join('')}</figure></div>`;
+  const incoming=sources.map(([key,title,description,glyph],index)=>`<button class="bws-flow-node bws-flow-source dds-content-card" type="button" style="--row:${index}" data-bws-source="${key}" aria-pressed="${state.flowSource===key}">${icon(glyph)}<span><strong>${title}</strong><small>${description}</small></span></button>`).join('');
+  const outgoing=destinations.map(([title,description,glyph],index)=>`<div class="bws-flow-node bws-flow-destination dds-content-card" style="--row:${index}">${icon(glyph)}<span><strong>${title}</strong><small>${description}</small></span></div>`).join('');
+  return `<div class="bws-flow-scroll dds-scrollbar" tabindex="0" role="region" aria-label="데이터 흐름"><figure class="bws-flow-canvas" aria-label="데이터 소스, 변환과 목적지"><svg viewBox="0 0 720 360" aria-hidden="true" class="bws-flow-edges">${[60,180,300].map((at,index)=>`<path d="M180 ${at} C250 ${at},265 180,315 180" class="${sources[index][0]===state.flowSource?'is-active':''}"/><path d="M405 180 C470 180,475 ${at},540 ${at}" class="${state.processed?'is-active':''}"/>`).join('')}</svg><div class="bws-flow-group"><h3 class="bws-flow-group-title db-section-title">입력 소스</h3>${incoming}</div><div class="bws-flow-transform">${button('변환','transform',{glyph:'Workflow'})}<output class="dds-meta-secondary" data-bws-processed>${state.processed}건 처리</output></div><div class="bws-flow-group"><h3 class="bws-flow-group-title db-section-title">출력 대상</h3>${outgoing}</div></figure></div>`;
 }
 function journeyCounts(state){return state.source==='all'?[0,1,2,3,4].map(index=>sum(Object.values(journeySources).map(values=>values[index]))):journeySources[state.source];}
 function journeyBody(state){
@@ -100,7 +105,8 @@ function journeyBody(state){
   }
   svg+=counts.map((count,index)=>`<rect x="${xs[index]}" y="${top}" width="12" height="${Math.max(3,count*scale)}" fill="var(--primary)"/><text x="${xs[index]}" y="${top-29}">${names[index]}</text><text x="${xs[index]}" y="${top-10}" class="bws-flow-number">${number(count)}</text>`).join('');
   const rows=counts.slice(0,4).flatMap((value,index)=>[[names[index],names[index+1],number(counts[index+1]),(counts[index+1]/value*100).toFixed(1)+'%'],[names[index],dropNames[index],number(value-counts[index+1]),((value-counts[index+1])/value*100).toFixed(1)+'%']]);
-  return `<p class="dds-meta-secondary">최근 30일 · ${number(counts[0])} 방문 · 유료 전환 ${number(counts[4])}</p><div class="dds-content-card bws-journey"><div class="bws-chart-scroll" tabindex="0" role="region" aria-label="유료 전환 흐름"><svg class="bws-sankey" viewBox="0 0 840 530" role="img" aria-label="방문 ${counts[0]}명 중 가입 ${counts[1]}명, 설정 완료 ${counts[2]}명, 활성화 ${counts[3]}명, 유료 전환 ${counts[4]}명">${svg}</svg></div></div><details class="bws-data"><summary>흐름 표</summary>${table(['시작','다음 단계','사용자','이동 비율'],rows)}</details>`;
+  const stages=names.map((name,index)=>`<li><div class="db-header"><strong>${name}</strong><span>${number(counts[index])}명</span></div><div class="bws-journey-bar" aria-hidden="true" style="--stage-rate:${counts[index]/counts[0]*100}%"></div>${index?`<p class="dds-meta-secondary">이전 단계 대비 ${(counts[index]/counts[index-1]*100).toFixed(1)}%</p>`:''}</li>`).join('');
+  return `<p class="dds-meta-secondary">최근 30일 · ${number(counts[0])} 방문 · 유료 전환 ${number(counts[4])}</p><div class="dds-content-card bws-journey"><div class="bws-chart-scroll bws-journey-wide dds-scrollbar" tabindex="0" role="region" aria-label="유료 전환 흐름"><svg class="bws-sankey" viewBox="0 0 840 530" role="img" aria-label="방문 ${counts[0]}명 중 가입 ${counts[1]}명, 설정 완료 ${counts[2]}명, 활성화 ${counts[3]}명, 유료 전환 ${counts[4]}명">${svg}</svg></div><ol class="bws-journey-stages" aria-label="유료 전환 단계">${stages}</ol></div><details class="bws-data"><summary>흐름 표</summary>${table(['시작','다음 단계','사용자','이동 비율'],rows)}</details>`;
 }
 function cohortRows(state){return cohortSizes.map((size,index)=>{const selfSize=Math.round(size*.7),selectedSize=state.source==='self'?selfSize:state.source==='sales'?size-selfSize:size;const values=cohortBase.map((base,month)=>{if(month>=12-index)return null;const all=Math.round(size*Math.min(99,base+index*.6)/100),self=Math.min(selfSize,Math.round(all*.68)),count=state.source==='self'?self:state.source==='sales'?all-self:all;return {count,rate:count/selectedSize*100};});return {label:cohortNames[index],size:selectedSize,values};});}
 function cohortBody(state){
@@ -112,8 +118,19 @@ function cohortBody(state){
   return `<div class="bws-retention-key"><span>유지율</span>${[20,40,60,80].map(value=>`<span><i style="--retention:${value}%"></i>${value}%</span>`).join('')}</div><div class="bws-cohort-table">${table(headers,[...cells,['가중 평균',number(sum(rows.map(row=>row.size))),...weighted]],'월별 코호트 유지율')}</div><p class="dds-meta-secondary bws-cell-status" role="status" data-bws-cell-status>유지율을 선택하면 해당 기간의 인원을 확인할 수 있습니다.</p>`;
 }
 function sidebar(prefix){
-  const nav=renderSideNav(workspaceNav,{idPrefix:prefix,title:'워크스페이스',label:'업무 탐색',collapsible:true,footer:[workspaceNavItem('settings','설정','Settings')]});
-  return `<div class="bws-side-shell"><div class="dds-ui" data-dds-component="sidebar">${nav}</div><section class="bws-side-main" id="${prefix}-panel"><h2 class="db-title" data-bws-side-title>대시보드</h2></section></div>`;
+  const options={label:'업무 탐색',footer:[workspaceNavItem('settings','설정','Settings')]};
+  const desktop=renderSideNav(workspaceNav,{...options,idPrefix:prefix,title:'워크스페이스',collapsible:true});
+  const mobile=renderSideNav(workspaceNav,{...options,idPrefix:prefix+'-mobile'});
+  return `<div class="bws-side-shell">
+    <div class="dds-ui bws-side-desktop" data-dds-component="sidebar">${desktop}</div>
+    <details class="bws-side-mobile">
+      <summary class="dds-nav-control bws-side-mobile-trigger" aria-controls="${prefix}-mobile-menu">
+        <span>워크스페이스<span class="sr-only"> 탐색 메뉴</span></span>${icon('Menu')}
+      </summary>
+      <div class="dds-ui" data-dds-component="sidebar" id="${prefix}-mobile-menu">${mobile}</div>
+    </details>
+    <section class="bws-side-main" id="${prefix}-panel"><h2 class="db-title" data-bws-side-title tabindex="-1">대시보드</h2></section>
+  </div>`;
 }
 function kanbanBoard(state){return `<div class="bws-board-wrap" tabindex="0" role="region" aria-label="작업 보드"><div class="bws-board">${columns.map(([key,label])=>`<section class="bws-column" data-bws-column="${key}" aria-label="${label}"><div class="db-header bws-column-heading"><div class="bws-column-label"><span class="bws-column-dot" aria-hidden="true"></span><h3 class="db-section-title">${label}</h3></div>${collectionCount(state.tasks.filter(task=>task.column===key).length,{label:label+' 작업'})}</div><div class="bws-task-list">${state.tasks.filter(task=>task.column===key).map(task=>`<button class="dds-content-card bws-task" type="button" draggable="true" data-bws-task="${task.id}" data-interactive="true" aria-haspopup="dialog"><span class="dds-card-title">${esc(task.title)}</span><span class="badge dds-badge bws-task-tag">${task.tag}</span><span class="avatar bws-avatar" aria-label="담당자 ${task.person}">${task.initial}</span></button>`).join('')}</div></section>`).join('')}</div></div>`;}
 function metricValues(config,period){return Array.from({length:period},(_,index)=>{const t=index/Math.max(1,period-1),curve=t*t*(3-2*t),value=config.start+(config.end-config.start)*curve+Math.sin(t*Math.PI*4)*(config.end-config.start)*.025;return config.unit==='percent'?Math.round(value*10)/10:Math.round(value);});}
@@ -124,8 +141,16 @@ function metricBody(state){
   return `<div class="bws-metric-grid">${metricConfig.map((config,index)=>{const data=metricValues(config,state.period);return `<button type="button" class="dds-content-card dds-metric bws-metric" data-bws-metric="${index}" aria-pressed="${state.metric===index}">${metricContent({label:config.title,value:config.end,previous:config.start,valueText:metricFormat(config,config.end),icon:metricIcons[index],mode:config.unit==='percent'?'points':'relative',better:'higher',comparison:'기간 시작 대비'},icon)}${chartSVG([{name:config.title,values:data}],labels,{mini:true,zero:false})}</button>`;}).join('')}</div><section class="dds-content-card bws-chart-card"><h3 class="db-section-title">${chosen.title}</h3><p class="dds-meta-date">${dates.at(-1)}</p><strong class="bws-metric-current">${metricFormat(chosen,values.at(-1))}</strong>${chartPanel([{name:chosen.title,values}],labels,{zero:false,unit:chosen.unit==='percent'?'%':chosen.unit==='currency'?' USD':'',pointLabels:dates})}</section>`;
 }
 function invoiceTotals(invoice){const subtotal=sum(invoice.items.map(item=>Math.round(Math.max(0,item.quantity)*Math.max(0,item.rate)*100)));const tax=Math.round(subtotal*Math.max(0,Math.min(100,invoice.tax))/100);return {subtotal,tax,total:subtotal+tax};}
-function invoiceRows(invoice,prefix){return invoice.items.map((item,index)=>`<tr data-bws-invoice-item="${item.id}"><td><input aria-label="${index+1} 작업" id="${prefix}-item-${item.id}" data-bws-item-field="title" value="${esc(item.title)}" placeholder="작업 내용" data-control-size="sm"></td><td><input aria-label="${index+1} 수량" type="number" min="0" step="1" data-bws-item-field="quantity" value="${item.quantity}" data-control-size="sm"></td><td><input aria-label="${index+1} 단가" type="number" min="0" step="0.01" data-bws-item-field="rate" value="${item.rate}" data-control-size="sm"></td><td class="bws-line-amount" data-bws-line-amount>${money(item.quantity*item.rate)}</td><td>${button((index+1)+'번 항목 삭제','delete-item',{glyph:'Trash2',only:true,extra:`data-item-id="${item.id}"`})}</td></tr>`).join('');}
-function invoice(prefix,state){const totals=invoiceTotals(state.invoice);return `<header class="db-header"><div><h2 class="db-title">인보이스</h2><p class="db-muted">INV-2026-041 · <span data-bws-invoice-status>초안</span></p></div>${button('초안 저장','save-invoice',{variant:'solid',color:'primary'})}</header><section class="dds-content-card bws-invoice-paper"><div class="db-header bws-invoice-issuer"><div><h3 class="db-section-title">Deep Studio</h3><p class="dds-meta-secondary">Seoul, Korea</p></div><dl><div><dt>발행일</dt><dd>2026.10.22</dd></div><div><dt>납부 기한</dt><dd>2026.11.21</dd></div></dl></div><div class="db-rule"></div><div class="db-fields"><section><p class="dds-meta-secondary">발행인</p><h3 class="db-section-title">Deep Studio</h3><p class="dds-meta-secondary">hello@example.com</p></section><div class="db-stack bws-customer-fields"><div class="field"><label for="${prefix}-customer">청구 대상</label><input id="${prefix}-customer" value="${state.invoice.company}" data-bws-invoice-field="company" data-control-size="sm"></div><div class="field"><label for="${prefix}-billing-email">청구 이메일</label><input id="${prefix}-billing-email" type="email" value="${state.invoice.email}" data-bws-invoice-field="email" data-control-size="sm"></div></div></div><div class="table-wrap bws-invoice-table-wrap" tabindex="0" role="region" aria-label="청구 항목"><table class="bws-invoice-table"><caption class="sr-only">청구 작업과 금액</caption><thead><tr><th scope="col">작업</th><th scope="col">수량</th><th scope="col">단가 (USD)</th><th scope="col">금액</th><th scope="col"><span class="sr-only">삭제</span></th></tr></thead><tbody data-bws-invoice-rows>${invoiceRows(state.invoice,prefix)}</tbody></table></div><div>${button('항목 추가','add-item',{glyph:'Plus'})}</div><div class="bws-invoice-bottom"><p class="dds-meta-secondary">발행일로부터 30일 이내 납부</p><dl class="bws-invoice-totals"><div><dt>소계</dt><dd data-bws-subtotal>${money(totals.subtotal/100)}</dd></div><div><dt><label for="${prefix}-tax">세율</label><span class="bws-tax-field"><input id="${prefix}-tax" aria-label="세율" type="number" min="0" max="100" step="0.1" value="8" data-bws-invoice-field="tax" data-control-size="sm"><span>%</span></span></dt><dd data-bws-tax>${money(totals.tax/100)}</dd></div><div class="bws-grand-total"><dt>총 청구액</dt><dd data-bws-total>${money(totals.total/100)}</dd></div></dl></div><p class="bws-negative" role="alert" data-bws-invoice-error hidden>수량과 단가는 0 이상, 세율은 0부터 100 사이로 입력해 주세요.</p><span class="sr-only" role="status" data-bws-save-status></span></section>`;}
+function invoiceRows(invoice,prefix){
+  return invoice.items.map((item,index)=>`<tr role="row" data-bws-invoice-item="${item.id}">
+    <td role="cell"><span class="bws-invoice-cell-label" aria-hidden="true">작업</span><input aria-label="${index+1} 작업" id="${prefix}-item-${item.id}" data-bws-item-field="title" value="${esc(item.title)}" placeholder="작업 내용" data-control-size="sm"></td>
+    <td role="cell"><span class="bws-invoice-cell-label" aria-hidden="true">수량</span><input aria-label="${index+1} 수량" type="number" min="0" step="1" data-bws-item-field="quantity" value="${item.quantity}" data-control-size="sm"></td>
+    <td role="cell"><span class="bws-invoice-cell-label" aria-hidden="true">단가 (USD)</span><input aria-label="${index+1} 단가" type="number" min="0" step="0.01" data-bws-item-field="rate" value="${item.rate}" data-control-size="sm"></td>
+    <td role="cell" class="bws-line-amount"><span class="bws-invoice-cell-label" aria-hidden="true">금액</span><span data-bws-line-amount>${money(item.quantity*item.rate)}</span></td>
+    <td role="cell">${button((index+1)+'번 항목 삭제','delete-item',{glyph:'Trash2',only:true,extra:`data-item-id="${item.id}"`})}</td>
+  </tr>`).join('');
+}
+function invoice(prefix,state){const totals=invoiceTotals(state.invoice);return `<header class="db-header"><div><h2 class="db-title">인보이스</h2><p class="db-muted">INV-2026-041 · <span data-bws-invoice-status>초안</span></p></div>${button('초안 저장','save-invoice',{variant:'solid',color:'primary'})}</header><section class="dds-content-card bws-invoice-paper"><div class="db-header bws-invoice-issuer"><div><h3 class="db-section-title">Deep Studio</h3><p class="dds-meta-secondary">Seoul, Korea</p></div><dl><div><dt>발행일</dt><dd>2026.10.22</dd></div><div><dt>납부 기한</dt><dd>2026.11.21</dd></div></dl></div><div class="db-rule"></div><div class="db-fields"><section><p class="dds-meta-secondary">발행인</p><h3 class="db-section-title">Deep Studio</h3><p class="dds-meta-secondary">hello@example.com</p></section><div class="db-stack bws-customer-fields"><div class="field"><label for="${prefix}-customer">청구 대상</label><input id="${prefix}-customer" value="${state.invoice.company}" data-bws-invoice-field="company" data-control-size="sm"></div><div class="field"><label for="${prefix}-billing-email">청구 이메일</label><input id="${prefix}-billing-email" type="email" value="${state.invoice.email}" data-bws-invoice-field="email" data-control-size="sm"></div></div></div><div class="table-wrap bws-invoice-table-wrap" tabindex="0" role="region" aria-label="청구 항목"><table class="bws-invoice-table" role="table"><caption class="sr-only">청구 작업과 금액</caption><thead role="rowgroup"><tr role="row"><th scope="col">작업</th><th scope="col">수량</th><th scope="col">단가 (USD)</th><th scope="col">금액</th><th scope="col"><span class="sr-only">삭제</span></th></tr></thead><tbody role="rowgroup" data-bws-invoice-rows>${invoiceRows(state.invoice,prefix)}</tbody></table></div><div>${button('항목 추가','add-item',{glyph:'Plus'})}</div><div class="bws-invoice-bottom"><p class="dds-meta-secondary">발행일로부터 30일 이내 납부</p><dl class="bws-invoice-totals"><div><dt>소계</dt><dd data-bws-subtotal>${money(totals.subtotal/100)}</dd></div><div><dt><label for="${prefix}-tax">세율</label><span class="bws-tax-field"><input id="${prefix}-tax" aria-label="세율" type="number" min="0" max="100" step="0.1" value="8" data-bws-invoice-field="tax" data-control-size="sm"><span>%</span></span></dt><dd data-bws-tax>${money(totals.tax/100)}</dd></div><div class="bws-grand-total"><dt>총 청구액</dt><dd data-bws-total>${money(totals.total/100)}</dd></div></dl></div><p class="bws-negative" role="alert" data-bws-invoice-error hidden>수량과 단가는 0 이상, 세율은 0부터 100 사이로 입력해 주세요.</p><span class="sr-only" role="status" data-bws-save-status></span></section>`;}
 
 export function renderWorkspaceBlock(id,uid){
   if(!workspaceBlocks.some(block=>block.id===id))return '';
@@ -159,15 +184,21 @@ export function bindWorkspaceBlocks(root=document){
   function updateInvoice(block,state){const invoice=state.invoice,totals=invoiceTotals(invoice);for(const row of block.querySelectorAll('[data-bws-invoice-item]')){const item=invoice.items.find(value=>value.id===Number(row.dataset.bwsInvoiceItem));if(item)row.querySelector('[data-bws-line-amount]').textContent=money(Math.max(0,item.quantity)*Math.max(0,item.rate));}block.querySelector('[data-bws-subtotal]').textContent=money(totals.subtotal/100);block.querySelector('[data-bws-tax]').textContent=money(totals.tax/100);block.querySelector('[data-bws-total]').textContent=money(totals.total/100);const invalid=invoice.items.some(item=>item.quantity<0||item.rate<0)||invoice.tax<0||invoice.tax>100;block.querySelector('[data-bws-invoice-error]').hidden=!invalid;block.querySelector('[data-bws-action="save-invoice"]').disabled=invalid;block.querySelector('[data-bws-invoice-status]').textContent=invoice.saved?'초안 저장됨':'초안';}
   function downloadCSV(rows){const text='\uFEFF'+rows.map(row=>row.map(value=>'"'+String(value).replace(/"/g,'""')+'"').join(',')).join('\r\n'),url=URL.createObjectURL(new Blob([text],{type:'text/csv;charset=utf-8'})),link=document.createElement('a');link.href=url;link.download='analytics.csv';link.hidden=true;document.body.append(link);link.click();link.remove();downloads.set(url,setTimeout(()=>{URL.revokeObjectURL(url);downloads.delete(url);},1000));}
   root.addEventListener('dds:action',event=>{
-    const {action,target}=event.detail||{};
+    const {action,target,value}=event.detail||{};
     if(action!=='side-nav-item')return;
     const [block]=context(target);
     if(block?.dataset.bwsBlock!=='sidebar')return;
     for(const item of block.querySelectorAll('[data-dds-action="side-nav-item"]')){
-      if(item===target)item.setAttribute('aria-current','page');
+      if(item.dataset.ddsActionValue===value)item.setAttribute('aria-current','page');
       else item.removeAttribute('aria-current');
     }
-    block.querySelector('[data-bws-side-title]').textContent=target.querySelector('.dds-side-nav-label').textContent;
+    const title=block.querySelector('[data-bws-side-title]');
+    title.textContent=target.querySelector('.dds-side-nav-label').textContent;
+    const mobileMenu=target.closest('.bws-side-mobile[open]');
+    if(mobileMenu){
+      mobileMenu.open=false;
+      title.focus({preventScroll:true});
+    }
   },options);
   root.addEventListener('click',event=>{
     const target=event.target.closest?.('[data-bws-tab],[data-bws-metric],[data-bws-source],[data-bws-action],[data-bws-task],[data-bws-cell],[data-bws-cohort]');if(!target||target.disabled)return;const [block,state]=context(target);if(!block)return;
@@ -202,6 +233,19 @@ export function bindWorkspaceBlocks(root=document){
     for(const event of ['pagehide','popstate','hashchange'])window.addEventListener(event,dismissTips,options);
     window.addEventListener('pageshow',event=>{if(event.persisted)dismissTips();},options);
   }
-  root.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const dialog=event.target.closest?.('.bws-task-dialog[open]');if(dialog){const [block,state]=context(dialog);event.preventDefault();event.stopPropagation();closeTask(block,state);return;}for(const tip of root.querySelectorAll('.bws-tooltip:not([hidden])'))tip.hidden=true;},options);
+  root.addEventListener('keydown',event=>{
+    if(event.key!=='Escape')return;
+    const dialog=event.target.closest?.('.bws-task-dialog[open]');
+    if(dialog){const [block,state]=context(dialog);event.preventDefault();event.stopPropagation();closeTask(block,state);return;}
+    const menu=event.target.closest?.('.bws-side-mobile[open]');
+    if(menu&&!event.target.closest('.dds-side-nav-disclosure[open]')){
+      event.preventDefault();
+      event.stopPropagation();
+      menu.open=false;
+      menu.querySelector('summary').focus({preventScroll:true});
+      return;
+    }
+    for(const tip of root.querySelectorAll('.bws-tooltip:not([hidden])'))tip.hidden=true;
+  },options);
   const cleanup=()=>{controller.abort();for(const block of blocks){const dialog=block.querySelector('dialog');if(dialog?.open)dialog.close();}for(const [url,timer] of downloads){clearTimeout(timer);URL.revokeObjectURL(url);}downloads.clear();if(bindings.get(root)===cleanup)bindings.delete(root);};bindings.set(root,cleanup);return cleanup;
 }

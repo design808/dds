@@ -1,5 +1,5 @@
 /** Official, opt-in presentation axes. Content, items and business logic stay with the host. */
-import {icon} from './icons.js?v=6259b05e21604bbd';
+import {icon} from './icons.js?v=52d03817fac7e7b9';
 
 const choice=(label,values,defaultValue,labels)=>Object.freeze({label,type:'enum',values:Object.freeze(values),default:defaultValue,labels:Object.freeze(labels||Object.fromEntries(values.map(value=>[value,value])))});
 const flag=(label,defaultValue=false)=>Object.freeze({label,type:'boolean',default:defaultValue});

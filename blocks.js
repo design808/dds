@@ -1,11 +1,11 @@
-import {icon} from './icons.js?v=6259b05e21604bbd';
-import {components} from './catalog.js?v=6259b05e21604bbd';
-import {bindCharts} from './chart-system.js?v=6259b05e21604bbd';
-import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=6259b05e21604bbd';
-import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=6259b05e21604bbd';
-import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=6259b05e21604bbd';
-import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=6259b05e21604bbd';
-import {listBlocks,renderListBlock,bindListBlocks} from './block-list.js?v=6259b05e21604bbd';
+import {icon} from './icons.js?v=52d03817fac7e7b9';
+import {components} from './catalog.js?v=52d03817fac7e7b9';
+import {bindCharts} from './chart-system.js?v=52d03817fac7e7b9';
+import {formBlocks,renderFormBlock,bindFormBlocks} from './block-forms.js?v=52d03817fac7e7b9';
+import {contentBlocks,renderContentBlock,bindContentBlocks} from './block-content.js?v=52d03817fac7e7b9';
+import {tableBlocks,renderTableBlock,bindTableBlocks} from './block-table.js?v=52d03817fac7e7b9';
+import {workspaceBlocks,renderWorkspaceBlock,bindWorkspaceBlocks} from './block-workspace.js?v=52d03817fac7e7b9';
+import {listBlocks,renderListBlock,bindListBlocks} from './block-list.js?v=52d03817fac7e7b9';
 
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const blockCategories=[
@@ -121,7 +121,7 @@ export function bindBlocks(root){
     const stopForms=bindFormBlocks(expanded),stopContent=bindContentBlocks(expanded),stopTable=bindTableBlocks(expanded),stopWorkspace=bindWorkspaceBlocks(expanded),stopLists=bindListBlocks(expanded);
     const stopCharts=bindCharts(expanded);
     cleanupExample=()=>{stopForms?.();stopContent?.();stopTable?.();stopWorkspace?.();stopLists?.();stopCharts?.();};
-    setDevice('desktop');
+    setDevice(window.matchMedia('(max-width: 560px)').matches?'mobile':'desktop');
     if(!dialog.open)dialog.showModal();
     root.querySelector('[data-block-close]').focus({preventScroll:true});
   };
@@ -144,6 +144,7 @@ export function bindBlocks(root){
     if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)close();
   },{signal});
   dialog.addEventListener('close',()=>{
+    if(dialog.open)return;
     cleanupExample();cleanupExample=()=>{};
     if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});
     closingTimer=setTimeout(()=>{if(!dialog.open)expanded.replaceChildren();},220);
